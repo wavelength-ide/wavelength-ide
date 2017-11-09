@@ -30,12 +30,37 @@
 	bookmarks=true,
 }
 \usepackage{csquotes}
-\MakeOuterQuote{"}
 
 \usepackage{amsmath}
 \usepackage{bm}
 
+\usepackage{glossaries}
+\GlsSetQuote{+}
+%
 \usepackage{pkg/pflichtenheft}
+
+\MakeOuterQuote{"}
+
+\makeglossaries
+
+%%% Beginn Glossareinträge
+
+% Syntax:
+%\newglossaryentry{label}
+%{
+%	name=Name,
+%	plural=Namen,
+%	description={Beschreibung}
+%}
+
+% Verwendung der Glossareinträge:
+% Normalerweise \gls{label}
+% Am Anfang des Satzes \Gls{label}
+% Bei Plural: \glspl{label}
+% Bei Plural am Anfang des Satzes: \Glspl{label}
+% Falls nichts davon passt: \glslink{label}{Anderer Text}
+
+%%% Ende Glossareinträge
 
 \begin{document}
 \maketitle
@@ -116,8 +141,6 @@
 
 \section{Glossar}
 
-% Syntax?
-% \textbf{Eintrag}:
-% Erklärung
+\printglossaries
 
 \end{document}

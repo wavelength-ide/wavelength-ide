@@ -7,6 +7,8 @@ all: $(NAME).pdf
 build/%.pdf: %.tex
 	mkdir -p build
 	latexmk -pdf -g -f -auxdir=build -outdir=build $<
+	cd build; makeglossaries pflichtenheft
+	latexmk -pdf -g -f -auxdir=build -outdir=build $<
 
 %.pdf: build/%.pdf
 	mv $< $@ # atomic!

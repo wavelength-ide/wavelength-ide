@@ -1,0 +1,123 @@
+\documentclass[parskip=full,11pt,twoside]{scrartcl}
+
+\usepackage[l2tabu,orthodox]{nag}
+\usepackage[utf8]{inputenc}
+
+\title{Wavelength $\bm{\lambda}$-IDE}
+\author{Muhammet Guemues, Markus Himmel, Marc Huisinga,\\Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt}
+
+% section numbers in margins:
+\renewcommand\sectionlinesformat[4]{\makebox[0pt][r]{#3}#4}
+
+% header & footer
+\usepackage{scrlayer-scrpage}
+\lofoot{\today}
+\refoot{\today}
+\pagestyle{scrheadings}
+
+\usepackage[sfdefault,light]{roboto}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{datetime2}
+\usepackage{hyperref}
+\usepackage[nameinlink]{cleveref}
+\crefname{figure}{Abb}{Abb}
+\usepackage[section]{placeins}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\hypersetup{
+	pdftitle={Pflichtenheft},
+	bookmarks=true,
+}
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage{amsmath}
+\usepackage{bm}
+
+\usepackage{pkg/pflichtenheft}
+
+\begin{document}
+\maketitle
+
+\section{Einleitung}
+
+
+\pagebreak
+\section{Kriterien}
+% Diese Section sollte kurz und knapp "für Manager" sein
+% und auf eine Seite passen.
+
+\subsection{Muss}
+
+% Syntax:
+% \criterium{Überschrift des Kriteriums}{ctr:label}
+% Beschreibung des Kriteriums
+
+\subsection{Kann}
+
+% Syntax:
+% \criteriumOptional{Überschrift des Kriteriums}{ctr:label}
+% Beschreibung des Kriteriums
+
+
+\subsection{Abgrenzung}
+
+% Syntax:
+% \criteriumNot{Überschrift der Abgrenzung}{ctr:label}
+
+\pagebreak
+%%%%%%%%%%%%%%
+\section{Produkteinsatz}
+
+\section{Produktumgebung}
+
+%%%%%%%%%%%
+\section{Funktionale Anforderungen}
+
+% Syntax:
+% \functionality{Überschrift der FA}{fnc:label}
+% \fulfills{crt:label1}
+% \fulfills{crt:label2}
+% Beschreibung der FA
+
+%%%%%%%%%%%
+\section{Nicht-Funktionale Anforderungen}
+
+% Syntax:
+% \nonFunctionality{Überschrift der NA}{nfc:label}
+% Brschreibung der NA
+
+%%%%%%%%%%%
+\section{Tests}
+
+% Syntax:
+% \test{Überschrift des Tests}{tst:label}
+% \tests{fnc:label}
+% \tests{nfc:label}
+%
+% \teststep{Stand}
+% {Aktion}
+% {Reaktion}
+%
+% \teststep{Stand}
+% {Aktion}
+% {Reaktion}
+%
+% ...
+
+%%%%%%%%%%%%%
+\pagebreak
+\appendix
+
+\section{Seitenentwürfe}
+
+% Hier ganz normale figures mit Bildern
+
+\section{Glossar}
+
+% Syntax?
+% \textbf{Eintrag}:
+% Erklärung
+
+\end{document}

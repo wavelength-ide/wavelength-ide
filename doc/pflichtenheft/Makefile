@@ -7,7 +7,7 @@ all: $(NAME).pdf
 build/%.pdf: %.tex
 	mkdir -p build
 	latexmk -pdf -g -f -auxdir=build -outdir=build $<
-	cd build; makeglossaries pflichtenheft
+	cd build; makeglossaries $(basename $<)
 	latexmk -pdf -g -f -auxdir=build -outdir=build $<
 
 %.pdf: build/%.pdf

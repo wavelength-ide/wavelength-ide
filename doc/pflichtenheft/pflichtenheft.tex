@@ -123,7 +123,7 @@
 \newglossaryentry{vbr}
 {
 	name=volle $\beta$-Reduktion,
-	description={Die volle $\beta$-Reduktion ist eine \gls{aws}, bei der jeder \gls{redex} jederzeit $\beta$-reduziert werden kann}
+	description={Die volle $\beta$-Reduktion ist eine \gls{aws}, bei der jeder \gls{redex} jederzeit $\beta$-reduziert werden kann. Der Nutzer bekommt bei dieser \gls{aws} die Möglichkeit die entsprechende Auswertungsreihenfolge selbst zu bestimmen}
 }
 \newglossaryentry{nr}
 {
@@ -154,6 +154,29 @@
 {
 	name=vereinfachte $\lambda$-Syntax,
 	description={Zur Vereinfachung der Benutzereingaben genügt es einen \emph{\textbackslash} statt eines \emph{$\lambda$} einzufügen}
+}
+\newglossaryentry{brow}
+{
+	name=kompatibler Browser,
+	plural=kompatible Browser,
+	description={Für folgende Browser kann Kompatibilität garantiert werden : Mozilla Firefox, Microsoft Internet Explorer (ab Version 8), Safari (ab Version 5), Chromium, Google Chrome und Opera} 
+}
+\newglossaryentry{ao}
+{
+	name=Applicative Order,
+	description={Applicative Order ist eine \gls{aws}, bei der der rechteste innerste Redex zuerst $\beta$-reduziert wird}
+}
+\newglossaryentry{mfe}
+{
+	name=Mehrfacheinrückung,
+	plural=Mehrfacheinrückungen,
+	description={Mehrfacheinrückungen ergänzen die \glspl{st} um verschiedene Einrückungsebenen}
+}
+\newglossaryentry{st}
+{
+	name=Smart Tab,
+	plural=Smart Tabs,
+	description={Smart Tabs sind dazu gedacht, bei einem Zeilenwechsel die neue Zeile genauso einzurücken wie die alte Zeile}
 }
 %%% Beginn Glossareinträge
 
@@ -186,12 +209,71 @@
 % und auf eine Seite passen.
 
 \subsection{Muss}
+\criterium{Benutzereingabe und Auswertung}{CMio}
+Die Anwendung muss in der Lage sein, vom Nutzer eingegebene \glspl{lt} in \gls{vls} entgegen zu nehmen, diese nach der \gls{nr} auszuwerten und das Ergebnis in Textform separat auszugeben. Der Benutzer muss in der Lage sein, die Auswertung zu unterbrechen.
+\criterium{Fehlerhandling}{CMerr}
+Die Anwendung muss in der Lage sein, syntaktisch falsche Eingaben als solche zu erkennen und eine Fehlermeldung auszugeben.
 
 % Syntax:
 % \criterium{Überschrift des Kriteriums}{ctr:label}
 % Beschreibung des Kriteriums
 
 \subsection{Kann}
+\criteriumOptional{Online-Funktionen}{COweb}
+Die Anwendung kann über das Internet mittels \gls{brow} verwendet werden.
+Dabei ist es möglich über vordefinierte Links Übungsaufgaben aufzurufen. Weiter kann aus der aktuellen Eingabe ein Link generiert werden, dessen Aufruf die Eingabe wiederherstellt.
+
+\criteriumOptional{Editor}{COedit}
+Anwender sollen ihre \glspl{lt} über einen Editor eingeben können. Dieser Editor soll einen Wechsel der Schriftgröße ermöglichen. Zusätzlich soll der Editor \glspl{mfe} und \glspl{st} unterstützen. Weiter soll der Nutzer eigene Kommentare schreiben können, die bei der Auswertung nicht berücksichtigt werden.
+
+\criteriumOptional{Ausgabeformate}{COout}
+Dem Nutzer sollen folgende Ausgabeformate zur Verfügung gestellt werden : 
+\begin{itemize}
+\item \gls{vls}
+\item Unicode
+\item LaTeX
+\item Haskell-Code
+\item Lisp-Code
+\end{itemize}
+
+\criteriumOptional{Reduktion}{COro}
+Der Nutzer kann für eingegebene \glspl{lt} bestimmen, nach welcher \gls{aws} diese ausgewertet werden sollen. Dabei stehen folgende \glspl{aws} zur Verfügung:
+\begin{itemize}
+\item \gls{nr}
+\item \gls{vbr}
+\item \gls{cbn}
+\item \gls{cbv}
+\item \gls{ao}
+\end{itemize}
+Bei der Auswertung gibt es die Möglichkeiten einer \emph{Sofortauswertung}, bei der nur das Ergebnis angezeigt wird, oder einer \emph{Schritt-für-Schritt Auswertung}, bei der der Nutzer selbst den nächsten auszuwertenden Term bestimmt oder die Auswahl der \gls{aws} überlässt. Weiterhin soll es möglich sein einzelne Schritte rückgängig zu machen und alle bisher gemachten Schritte anzeigen zu lassen.
+
+\criteriumOptional{Darstellungsformate}{COrep}
+Dem Nutzer sollen im Editor folgende Darstellungsformate zur Verfügung stehen : 
+\begin{itemize}
+\item \gls{vls}
+\item Unicode
+\item Darstellung als Baum
+\end{itemize}
+
+\criteriumOptional{Fehlerbehandlung}{COerr}
+Treten Fehler bei der Reduktion auf, so sind folgende Daten dem Nutzer anzuzeigen : 
+\begin{itemize}
+\item Zeilen- und Spaltenindex des Fehlers
+\item das Zeichen, das den Fehler verursacht hat
+\item die Art des Fehlers
+\item Vorschläge und/oder Ansätze zur Fehlerbehebung
+\end{itemize}
+Weiterhin soll die Fehlerstelle im Editor markiert werden.
+
+\criteriumOptional{Bibliotheken}{COlib}
+Die Anwendung soll durch verschiedene Standardbibliotheken ergänzt werden. Diese umfassen : 
+\begin{itemize}
+\item natürliche Zahlen
+\item arithmetische Operationen auf Zahlen
+\item Tupel
+\item Listen
+\item Übungsaufgaben
+\end{itemize}
 
 % Syntax:
 % \criteriumOptional{Überschrift des Kriteriums}{ctr:label}
@@ -202,7 +284,8 @@
 
 % Syntax:
 % \criteriumNot{Überschrift der Abgrenzung}{ctr:label}
-
+\criteriumNot{Nutzung über Mobilgeräte}{CNmobile}
+Die Nutzung der Anwendung über mobile Endgeräte ist nicht vorgesehen und wird daher weder unterstützt noch getestet.
 
 \pagebreak
 %%%%%%%%%%%%%%

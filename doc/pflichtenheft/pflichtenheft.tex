@@ -43,6 +43,118 @@
 
 \makeglossaries
 
+\newglossaryentry{lk}
+{ 
+	name=$\lambda$-Kalkül,
+	description={Der $\lambda$-Kalkül ist eine formale Sprache, die, basierend auf Funktionsdefinitionen, eine systematische Untersuchung von Funktionen zulässt}
+}
+\newglossaryentry{lapp}
+{ 
+	name=$\lambda$-Applikation,
+	plural=$\lambda$-Applikationen,
+	description={Applikationen stellen die Anwendung eines \gls{lt}s auf einen weiteren \gls{lt} dar. Sie haben im Allgemeinen die Form : \emph{<\gls{lt}1> <\gls{lt}2>}, wobei die spitzen Klammern hier nur der Übersicht wegen eingefügt wurden und im eigentlichen 			    Ausdruck nicht vorkommen}
+}
+\newglossaryentry{labs}
+{ 
+	name=$\lambda$-Abstraktion,
+	plural=$\lambda$-Abstraktionen,
+	description={Abstraktionen stellen eine Funktionsdefinition dar, allerdings gilt die Einschränkung, dass diese nur einen Parameter haben dürfen. Die Funktion bekommt den Namen $\lambda$, gefolgt von einer Variablen, dann wird ein \emph{.} gesetzt und 
+			    anschließend folgt ein \gls{lt}. Abstraktionen haben also die Form : \emph{$\lambda$} <\gls{var}>.<\gls{lt}>, wobei die spitzen Klammern nur der Übersicht dienen und im eigentlichen Ausdruck nicht vorkommen}
+}
+\newglossaryentry{lt}
+{
+	name=$\lambda$-Term,
+	plural=$\lambda$-Terme,
+	description={ Terme im \gls{lk} sind entweder \emph{\glspl{lapp}} oder \emph{\glspl{labs}} oder \emph{\glspl{var}} }
+}
+\newglossaryentry{var}
+{ 
+	name=Variable,
+	plural=Variablen,
+	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen bis auf die folgenden : 
+	\begin{tabular} {| l | c | r |}
+	\hline
+	 $\lambda$ & . & \textbackslash \\
+	 \hline
+	\end{tabular}
+	}	
+}
+\newglossaryentry{alpha} 
+{
+	name=$\alpha$-Äquivalenz,
+	description={Die $\alpha$-Äquivalenz zweier \glspl{lt} bedeutet, dass einer der beiden Terme durch Umbenennung der Variablen in den anderen Term überführt werden kann}
+}
+\newglossaryentry{beta}
+{
+	name=$\beta$-Reduktion,
+	description={Die $\beta$-Reduktion entspricht einer Funktionsauswertung. Diese ist aber nur auf \glspl{redex} anwendbar. Formal gilt für eine Variable $V$ und \glspl{lt} $T_1$ und $T_2$ die \gls{subs}: $(\lambda V.T_1) T_2 \stackrel{\beta}{\Rightarrow} 			T_1[T_2\textbackslash V]$}
+}
+\newglossaryentry{redex} 
+{
+	name=Redex,
+	plural=Redexe,
+	description={Redexe (Regular Expressions) sind Ausdrücke der Form : \emph{($\lambda$.\gls{lt}1) \gls{lt}2}}
+}
+\newglossaryentry{fv} 
+{
+	name=freie Variable,
+	plural=freie Variablen,
+	description={Eine Variable in einem \gls{lt} heißt \emph{frei}, wenn sie kein Parameter einer \gls{labs} ist.}
+}
+\newglossaryentry{gv} 
+{
+	name=gebundene Variable,
+	plural=gebundene Variablen,
+	description={Eine Variable in einem \gls{lt} heißt \emph{gebunden}, wenn sie Parameter einer \gls{labs} ist.}
+}
+\newglossaryentry{subs}
+{
+	name=Substitution,
+	plural=Substitutionen,
+	description={Bei einer Substitution einer \glspl{var} $y$ in einer \gls{labs} $\lambda x.T_1$, wobei $T_1$ ein \gls{lt} ist,  werden alle freien Vorkommen von x in $T_1$ mit y ersetzt und der Parameter in y umbenannt. 
+			In Formeln : $\lambda x.T_1 \stackrel{Substitution mit y}{\Longrightarrow}\lambda y.[T_1\textbackslash y]$}
+}
+\newglossaryentry{aws}
+{
+	name=Auswertungsstrategie,
+	plural=Auswertungsstrategien,
+	description={Eine Auswertungsstrategie ist ein Algorithmus, der bestimmt, wie ein \gls{lt} ausgewertet wird. Dabei kann es vorkommen, dass eine Auswertungsstrategie bei der Auswertung eines \gls{lt} in eine Endlosschleife gerät, während eine andere 				Strategie terminiert. Die Anwendung stellt folgende Strategien bereit : \gls{nr}, \gls{cbn}, \gls{cbv}}
+}
+\newglossaryentry{vbr}
+{
+	name=volle $\beta$-Reduktion,
+	description={Die volle $\beta$-Reduktion ist eine \gls{aws}, bei der jeder \gls{redex} jederzeit $\beta$-reduziert werden kann}
+}
+\newglossaryentry{nr}
+{
+	name=normale Reduktionsordnung,
+	description={Die normale Reduktionsordnung ist eine \gls{aws}, bei der immer der linkeste äußerste \gls{redex} zuerst $\beta$-reduziert wird}
+}
+\newglossaryentry{cbn}
+{
+	name=Call by Name,
+	description={Call by Name ist eine \gls{aws}, bei der der linkeste äußerste \gls{redex}, der nicht von einem $\lambda$ umgeben ist, zuerst $\beta$-reduziert wird}
+}
+\newglossaryentry{cbv}
+{
+	name=Call by Value,
+	description={Call by Value ist eine \gls{aws}, bei der der linkeste äußerste \gls{redex}, der nicht von einem $\lambda$ umgeben ist und dessen Argument ein konkreter Wert ist, zuerst $\beta$-reduziert wird.}
+}
+\newglossaryentry{yc} 
+{
+	name=Y-Kombinator,
+	description={Formal dient der Y-Kombinator dazu, \gls{rec} zu ermöglichen. Er ist definiert als : $Y := \lambda f.(\lambda x.f(x x))(\lambda x.f(x x))$}
+}	
+\newglossaryentry{rec}
+{
+	name=Rekursion,
+	description={Eine Funktion heißt rekursiv, wenn sie sich selbst aufruft. Der Aufruf wird dann als Rekursion bezeichnet.}
+}
+\newglossaryentry{vls}
+{
+	name=vereinfachte $\lambda$-Syntax,
+	description={Zur Vereinfachung der Benutzereingaben genügt es einen \emph{\textbackslash} statt eines \emph{$\lambda$} einzufügen}
+}
 %%% Beginn Glossareinträge
 
 % Syntax:
@@ -90,6 +202,7 @@
 
 % Syntax:
 % \criteriumNot{Überschrift der Abgrenzung}{ctr:label}
+
 
 \pagebreak
 %%%%%%%%%%%%%%

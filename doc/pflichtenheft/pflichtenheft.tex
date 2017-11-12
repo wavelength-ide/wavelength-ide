@@ -15,7 +15,7 @@
 \refoot{\today}
 \pagestyle{scrheadings}
 
-\usepackage[sfdefault,light]{roboto}
+%\usepackage[sfdefault,light]{roboto}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{datetime2}
@@ -33,6 +33,7 @@
 
 \usepackage{amsmath}
 \usepackage{bm}
+\usepackage{mathtools}
 
 \usepackage{glossaries}
 \GlsSetQuote{+}
@@ -52,14 +53,13 @@
 { 
 	name=$\lambda$-Applikation,
 	plural=$\lambda$-Applikationen,
-	description={Applikationen stellen die Anwendung eines \gls{lt}s auf einen weiteren \gls{lt} dar. Sie haben im Allgemeinen die Form : \emph{<\gls{lt}1> <\gls{lt}2>}, wobei die spitzen Klammern hier nur der Übersicht wegen eingefügt wurden und im eigentlichen 			    Ausdruck nicht vorkommen}
+	description={Applikationen stellen die Anwendung eines \gls{lt}s auf einen weiteren \gls{lt} dar. Sie haben im Allgemeinen die Form: \emph{<\gls{lt}1> <\gls{lt}2>}, wobei die spitzen Klammern hier nur der Übersicht wegen eingefügt wurden und im eigentlichen 			    Ausdruck nicht vorkommen}
 }
 \newglossaryentry{labs}
 { 
 	name=$\lambda$-Abstraktion,
 	plural=$\lambda$-Abstraktionen,
-	description={Abstraktionen stellen eine Funktionsdefinition dar, allerdings gilt die Einschränkung, dass diese nur einen Parameter haben dürfen. Die Funktion bekommt den Namen $\lambda$, gefolgt von einer Variablen, dann wird ein \emph{.} gesetzt und 
-			    anschließend folgt ein \gls{lt}. Abstraktionen haben also die Form : \emph{$\lambda$} <\gls{var}>.<\gls{lt}>, wobei die spitzen Klammern nur der Übersicht dienen und im eigentlichen Ausdruck nicht vorkommen}
+	description={Abstraktionen stellen eine Funktionsdefinition einer Funktion in einer Variablen dar. Abstraktionen haben die Form \emph{$\lambda$} <\gls{var}>.<\gls{lt}>, wobei die Ausdrücke in den spitzen Klammern inklusive der spitzen Klammern durch die entsprechenden Objekte zu ersetzen sind}
 }
 \newglossaryentry{lt}
 {
@@ -71,13 +71,13 @@
 { 
 	name=Variable,
 	plural=Variablen,
-	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen bis auf die folgenden : 
+	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen bis auf die folgenden:
 	\begin{tabular} {| l | c | r |}
 	\hline
 	 $\lambda$ & . & \textbackslash \\
 	 \hline
 	\end{tabular}
-	}	
+	}
 }
 \newglossaryentry{alpha} 
 {
@@ -87,38 +87,38 @@
 \newglossaryentry{beta}
 {
 	name=$\beta$-Reduktion,
-	description={Die $\beta$-Reduktion entspricht einer Funktionsauswertung. Diese ist aber nur auf \glspl{redex} anwendbar. Formal gilt für eine Variable $V$ und \glspl{lt} $T_1$ und $T_2$ die \gls{subs}: $(\lambda V.T_1) T_2 \stackrel{\beta}{\Rightarrow} 			T_1[T_2\textbackslash V]$}
+	description={Die $\beta$-Reduktion entspricht einer Funktionsauswertung. Sie ist nur auf \glspl{redex} anwendbar. Formal gilt für eine Variable $V$ und \glspl{lt} $T_1$ und $T_2$ die \gls{subs}: $(\lambda V.T_1) T_2 \stackrel{\beta}{\Rightarrow} 			T_1[T_2/V]$}
 }
 \newglossaryentry{redex} 
 {
 	name=Redex,
 	plural=Redexe,
-	description={Redexe (Regular Expressions) sind Ausdrücke der Form : \emph{($\lambda$.\gls{lt}1) \gls{lt}2}}
+	description={Redexe (Reducible Expressions) sind Ausdrücke der Form \emph{($\lambda$.\gls{lt}1) \gls{lt}2}}
 }
 \newglossaryentry{fv} 
 {
 	name=freie Variable,
 	plural=freie Variablen,
-	description={Eine Variable in einem \gls{lt} heißt \emph{frei}, wenn sie kein Parameter einer \gls{labs} ist.}
+	description={Eine Variable in einem \gls{lt} heißt \emph{frei}, wenn sie kein Parameter einer \gls{labs} ist}
 }
 \newglossaryentry{gv} 
 {
 	name=gebundene Variable,
 	plural=gebundene Variablen,
-	description={Eine Variable in einem \gls{lt} heißt \emph{gebunden}, wenn sie Parameter einer \gls{labs} ist.}
+	description={Eine Variable in einem \gls{lt} heißt \emph{gebunden}, wenn sie Parameter einer \gls{labs} ist}
 }
 \newglossaryentry{subs}
 {
 	name=Substitution,
 	plural=Substitutionen,
-	description={Bei einer Substitution einer \glspl{var} $y$ in einer \gls{labs} $\lambda x.T_1$, wobei $T_1$ ein \gls{lt} ist,  werden alle freien Vorkommen von x in $T_1$ mit y ersetzt und der Parameter in y umbenannt. 
-			In Formeln : $\lambda x.T_1 \stackrel{Substitution mit y}{\Longrightarrow}\lambda y.[T_1\textbackslash y]$}
+	description={Bei einer Substitution einer \glspl{var} $y$ in einer \gls{labs} $\lambda x.T_1$, wobei $T_1$ ein \gls{lt} ist,  werden alle freien Vorkommen von $x$ in $T_1$ durch $y$ ersetzt und der Parameter in y umbenannt. 
+			In Formeln: $\lambda x.T_1 \stackrel{\text{Substitution mit $y$}}{\Longrightarrow}\lambda y.[T_1/y]$}
 }
 \newglossaryentry{aws}
 {
 	name=Auswertungsstrategie,
 	plural=Auswertungsstrategien,
-	description={Eine Auswertungsstrategie ist ein Algorithmus, der bestimmt, wie ein \gls{lt} ausgewertet wird. Dabei kann es vorkommen, dass eine Auswertungsstrategie bei der Auswertung eines \gls{lt} in eine Endlosschleife gerät, während eine andere 				Strategie terminiert. Die Anwendung stellt folgende Strategien bereit : \gls{nr}, \gls{cbn}, \gls{cbv}}
+	description={Eine Auswertungsstrategie ist ein Algorithmus, der bestimmt, wie ein \gls{lt} ausgewertet wird. Dabei kann es vorkommen, dass eine Auswertungsstrategie bei der Auswertung eines \gls{lt} in eine Endlosschleife gerät, während eine andere 				Strategie terminiert}
 }
 \newglossaryentry{vbr}
 {
@@ -143,28 +143,23 @@
 \newglossaryentry{yc} 
 {
 	name=Y-Kombinator,
-	description={Formal dient der Y-Kombinator dazu, \gls{rec} zu ermöglichen. Er ist definiert als : $Y := \lambda f.(\lambda x.f(x x))(\lambda x.f(x x))$}
+	description={Formal dient der Y-Kombinator dazu, \gls{rec} zu ermöglichen. Er ist definiert als: $Y \coloneqq \lambda f.(\lambda x.f(x\,x))(\lambda x.f(x\,x))$}
 }	
 \newglossaryentry{rec}
 {
 	name=Rekursion,
-	description={Eine Funktion heißt rekursiv, wenn sie sich selbst aufruft. Der Aufruf wird dann als Rekursion bezeichnet.}
-}
-\newglossaryentry{vls}
-{
-	name=vereinfachte $\lambda$-Syntax,
-	description={Zur Vereinfachung der Benutzereingaben genügt es einen \emph{\textbackslash} statt eines \emph{$\lambda$} einzufügen}
+	description={Eine Funktion heißt rekursiv, wenn sie sich selbst aufruft. Der Aufruf wird dann als Rekursion bezeichnet}
 }
 \newglossaryentry{brow}
 {
 	name=kompatibler Browser,
 	plural=kompatible Browser,
-	description={Für folgende Browser kann Kompatibilität garantiert werden : Mozilla Firefox, Microsoft Internet Explorer (ab Version 8), Safari (ab Version 5), Chromium, Google Chrome und Opera} 
+	description={Ein Browser, der in Abschnitt (hier ein Label) für unterstützt erklärt wurde}
 }
 \newglossaryentry{ao}
 {
 	name=Applicative Order,
-	description={Applicative Order ist eine \gls{aws}, bei der der rechteste innerste Redex zuerst $\beta$-reduziert wird}
+	description={Eine \gls{aws}, bei der der rechteste innerste Redex zuerst $\beta$-reduziert wird}
 }
 \newglossaryentry{mfe}
 {
@@ -176,9 +171,16 @@
 {
 	name=Smart Tab,
 	plural=Smart Tabs,
-	description={Smart Tabs sind dazu gedacht, bei einem Zeilenwechsel die neue Zeile genauso einzurücken wie die alte Zeile}
+	description={Bei einem Zeilenwechsel wird die neue Zeile genauso eingerückt wie die alte Zeile}
 }
 %%% Beginn Glossareinträge
+
+\newglossaryentry{vls}
+{
+	name={vereinfachte $\lambda$-Syntax},
+	description={Variante der herkömmlichen Syntax des \glslink{lk}{$\lambda$-Kalküls},
+	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird}
+}
 
 % Syntax:
 %\newglossaryentry{label}
@@ -209,74 +211,78 @@
 % und auf eine Seite passen.
 
 \subsection{Muss}
-\criterium{Benutzereingabe und Auswertung}{CMio}
-Die Anwendung muss in der Lage sein, vom Nutzer eingegebene \glspl{lt} in \gls{vls} entgegen zu nehmen, diese nach der \gls{nr} auszuwerten und das Ergebnis in Textform separat auszugeben. Der Benutzer muss in der Lage sein, die Auswertung zu unterbrechen.
-\criterium{Fehlerhandling}{CMerr}
-Die Anwendung muss in der Lage sein, syntaktisch falsche Eingaben als solche zu erkennen und eine Fehlermeldung auszugeben.
+
+\criterium{Eingabe von \glslink{lt}{$\lambda$-Termen}}{crt:input}
+\glspl{lt} können in Form der \glslink{vls}{vereinfachten $\lambda$-Syntax}
+mit der Tastatur in die Software eingegeben werden.
+
+\criterium{Reduktion von \glslink{lt}{$\lambda$-Termen}}{crt:reduce}
+Eingegebene \glspl{lt} können, sofern möglich, mit Hilfe der \glslink{nr}{Normal-Reduktionsordnung} vollständig
+reduziert werden. Die so bestimmte Normalform kann in \glslink{vls}{vereinfachter $\lambda$-Syntax}
+ausgegeben werden.
+
+\criterium{Fehlermeldung bei invalider Eingabe}{crt:error}
+Beim dem Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
+Fehlermeldung ausgegeben.
+
+\criterium{Abbruch der Ausführung}{ctr:cancel}
+Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 
 % Syntax:
-% \criterium{Überschrift des Kriteriums}{ctr:label}
+% \criterium{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
 
 \subsection{Kann}
-\criteriumOptional{Online-Funktionen}{COweb}
-Die Anwendung kann über das Internet mittels \gls{brow} verwendet werden.
-Dabei ist es möglich über vordefinierte Links Übungsaufgaben aufzurufen. Weiter kann aus der aktuellen Eingabe ein Link generiert werden, dessen Aufruf die Eingabe wiederherstellt.
+\criteriumOptional{Verfügbarkeit im Internet}{crt:webapp}
+Die Anwendung kann ohne Installation in einem \glslink{brow}{kompatiblen Internetbrowser} ausgeführt werden.
 
-\criteriumOptional{Editor}{COedit}
-Anwender sollen ihre \glspl{lt} über einen Editor eingeben können. Dieser Editor soll einen Wechsel der Schriftgröße ermöglichen. Zusätzlich soll der Editor \glspl{mfe} und \glspl{st} unterstützen. Weiter soll der Nutzer eigene Kommentare schreiben können, die bei der Auswertung nicht berücksichtigt werden.
+\criteriumOptional{Weitere Reduktionsordnungen}{crt:reducestrats}
+Die Anwendung kann neben der \glslink{nr}{Normal-Reduktionsordnung} auch \gls{cbn}, \gls{cbv}
+und \gls{ao} als \gls{aws} verwenden.
 
-\criteriumOptional{Ausgabeformate}{COout}
-Dem Nutzer sollen folgende Ausgabeformate zur Verfügung gestellt werden : 
-\begin{itemize}
-\item \gls{vls}
-\item Unicode
-\item LaTeX
-\item Haskell-Code
-\item Lisp-Code
-\end{itemize}
+\criteriumOptional{Weitere Ausgabeformate}{crt:output}
+Die eingegebenen und reduzierten \glspl{lt} können neben der \glslink{vls}{vereinfachten $\lambda$-Syntax}
+auch als Unicode-Text, \LaTeX-Quellcode, Haskell-Quellcode und Lisp-Quellcode formatiert und ausgegeben
+werden.
 
-\criteriumOptional{Reduktion}{COro}
-Der Nutzer kann für eingegebene \glspl{lt} bestimmen, nach welcher \gls{aws} diese ausgewertet werden sollen. Dabei stehen folgende \glspl{aws} zur Verfügung:
-\begin{itemize}
-\item \gls{nr}
-\item \gls{vbr}
-\item \gls{cbn}
-\item \gls{cbv}
-\item \gls{ao}
-\end{itemize}
-Bei der Auswertung gibt es die Möglichkeiten einer \emph{Sofortauswertung}, bei der nur das Ergebnis angezeigt wird, oder einer \emph{Schritt-für-Schritt Auswertung}, bei der der Nutzer selbst den nächsten auszuwertenden Term bestimmt oder die Auswahl der \gls{aws} überlässt. Weiterhin soll es möglich sein einzelne Schritte rückgängig zu machen und alle bisher gemachten Schritte anzeigen zu lassen.
+\criteriumOptional{Darstellungsformate}{crt:display}
+Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in
+\glslink{vls}{vereinfachter $\lambda$-Syntax}, Unicode-Darstellung und als Syntaxbaum
+dargestellt werden.
 
-\criteriumOptional{Darstellungsformate}{COrep}
-Dem Nutzer sollen im Editor folgende Darstellungsformate zur Verfügung stehen : 
-\begin{itemize}
-\item \gls{vls}
-\item Unicode
-\item Darstellung als Baum
-\end{itemize}
+\criteriumOptional{Erweiterte Fehlerdiagnostik}{crt:diag}
+Im Falle syntaktischer Fehler werden dem Nutzer die genaue Position des Fehlers, die
+Art des Fehlers sowie Behebungsmöglichkeiten angezeigt und die relevante Stelle im
+Editor hervorgehoben.
 
-\criteriumOptional{Fehlerbehandlung}{COerr}
-Treten Fehler bei der Reduktion auf, so sind folgende Daten dem Nutzer anzuzeigen : 
-\begin{itemize}
-\item Zeilen- und Spaltenindex des Fehlers
-\item das Zeichen, das den Fehler verursacht hat
-\item die Art des Fehlers
-\item Vorschläge und/oder Ansätze zur Fehlerbehebung
-\end{itemize}
-Weiterhin soll die Fehlerstelle im Editor markiert werden.
+\criteriumOptional{Intelligenter Editor}{crt:editor}
+Der Editor zur Eingabe der \glspl{lt} unterstützt einen Wechsel der Schriftgröße,
+\glspl{mfe} und \glspl{st}.
 
-\criteriumOptional{Bibliotheken}{COlib}
-Die Anwendung soll durch verschiedene Standardbibliotheken ergänzt werden. Diese umfassen : 
-\begin{itemize}
-\item natürliche Zahlen
-\item arithmetische Operationen auf Zahlen
-\item Tupel
-\item Listen
-\item Übungsaufgaben
-\end{itemize}
+\criteriumOptional{Standardbibliothek}{crt:lib}
+Es existiert eine Standardbibliothek, die Funktionen für den Umgang mit natürlichen
+Zahlen, Listen und Tupeln und den Kombinatoren des SKI-Kalküls bereitstellt.
+
+\criteriumOptional{Übungsaufgaben}{crt:ex}
+Das Programm enthält ein Übungsaufgaben-System, welches neben Aufgaben in aufsteigendem
+Schwierigkeitsgrad auch Einführungen und automatisierte Tests für die Lösungen des Nutzers
+enthält.
+
+\criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
+Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
+Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden.
+
+\criteriumOptional{Schritt-für-Schritt-Auswertung}{crt:steps}
+Durch Klick kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
+\gls{aws} einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
+gemacht werden.
+
+\criteriumOptional{Permalinks}{crt:perma}
+Es kann ein Link generiert werden, der beim Aufrufen des gesamten Zustand
+der Sitzung widerherstellt.
 
 % Syntax:
-% \criteriumOptional{Überschrift des Kriteriums}{ctr:label}
+% \criteriumOptional{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
 
 
@@ -284,8 +290,8 @@ Die Anwendung soll durch verschiedene Standardbibliotheken ergänzt werden. Dies
 
 % Syntax:
 % \criteriumNot{Überschrift der Abgrenzung}{ctr:label}
-\criteriumNot{Nutzung über Mobilgeräte}{CNmobile}
-Die Nutzung der Anwendung über mobile Endgeräte ist nicht vorgesehen und wird daher weder unterstützt noch getestet.
+\criteriumNot{Nutzung über Mobilgeräte}{crt:mobile}
+Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
 
 \pagebreak
 %%%%%%%%%%%%%%
@@ -337,6 +343,7 @@ Die Nutzung der Anwendung über mobile Endgeräte ist nicht vorgesehen und wird 
 
 \section{Glossar}
 
+\glsaddall
 \printglossaries
 
 \end{document}

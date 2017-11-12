@@ -15,7 +15,7 @@
 \refoot{\today}
 \pagestyle{scrheadings}
 
-\usepackage[sfdefault,light]{roboto}
+%\usepackage[sfdefault,light]{roboto}
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{datetime2}
@@ -44,6 +44,27 @@
 \makeglossaries
 
 %%% Beginn Glossareinträge
+
+\newglossaryentry{lk}
+{
+	name={$\lambda$-Kalk{\"u}l},
+	description={Ein formaler Kalkül, in dem Berechnungen nur auf Basis von
+		Funktionsanwendung realisiert werden}
+}
+
+\newglossaryentry{lt}
+{
+	name={$\lambda$-Term},
+	description={Ein syntaktisch gültiger Term im \gls{lk}},
+	plural={$\lambda$-Terme}
+}
+
+\newglossaryentry{vls}
+{
+	name={vereinfachte $\lambda$-Syntax},
+	description={Variante der herkömmlichen Syntax des \glslink{lk}{$\lambda$-Kalküls},
+	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird}
+}
 
 % Syntax:
 %\newglossaryentry{label}
@@ -75,21 +96,58 @@
 
 \subsection{Muss}
 
+\criterium{Eingabe von \glslink{lt}{$\lambda$-Termen}}{crt:input}
+\glspl{lt} können in Form der \glslink{vls}{vereinfachten $\lambda$-Syntax}
+mit der Tastatur in die Software eingegeben werden.
+
+\criterium{Reduktion von \glslink{lt}{$\lambda$-Termen}}{crt:reduce}
+Eingegebene \glspl{lt} können mit Hilfe der Normal-Reduktionsordnung vollständig
+reduziert werden. Die so bestimmte Normalform kann in \glslink{vls}{vereinfachter $\lambda$-Syntax}
+ausgegeben werden.
+
+\criterium{Fehlermeldung bei invalider Eingabe}{crt:error}
+Beim dem Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
+Fehlermeldung ausgegeben.
+
+\criterium{Abbruch der Ausführung}{ctr:cancel}
+Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
+
 % Syntax:
-% \criterium{Überschrift des Kriteriums}{ctr:label}
+% \criterium{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
 
 \subsection{Kann}
 
+\criteriumOptional{Verfügbarkeit im Internet}{crt:webapp}
+Die Anwendung kann ohne Installation im Internetbrowser ausgeführt werden.
+
+\criteriumOptional{Weitere Reduktionsordnungen}{crt:reducestrats}
+Die Anwendung kann neben der Normal-Reduktionsordnung auch \enquote{Call-by-name}
+und \enquote{Call-by-value} als Reduktionsstrategie verwenden.
+
+\criteriumOptional{Weitere Ausgabeformate}{crt:output}
+Die eingegebenen und reduzierten \glspl{lt} können neben der \glslink{vls}{vereinfachten $\lambda$-Syntax}
+auch als Unicode-Text, \LaTeX-Quellcode, Haskell-Quellcode und Lisp-Quellcode formatiert und ausgegeben
+werden.
+
+\criteriumOptional{Darstellungsformate}{crt:display}
+Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in
+\glslink{vls}{vereinfachter $\lambda$-Syntax}, Unicode-Darstellung und als Syntaxbaum
+dargestellt werden.
+
+\criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
+Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
+Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden.
+
 % Syntax:
-% \criteriumOptional{Überschrift des Kriteriums}{ctr:label}
+% \criteriumOptional{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
 
 
 \subsection{Abgrenzung}
 
 % Syntax:
-% \criteriumNot{Überschrift der Abgrenzung}{ctr:label}
+% \criteriumNot{Überschrift der Abgrenzung}{crt:label}
 
 \pagebreak
 %%%%%%%%%%%%%%
@@ -141,6 +199,7 @@
 
 \section{Glossar}
 
+\glsaddall
 \printglossaries
 
 \end{document}

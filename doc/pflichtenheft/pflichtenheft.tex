@@ -19,7 +19,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{datetime2}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
 \crefname{figure}{Abb}{Abb}
 \usepackage[section]{placeins}
@@ -34,6 +34,7 @@
 \usepackage{amsmath}
 \usepackage{bm}
 \usepackage{mathtools}
+\usepackage{amssymb}
 
 \usepackage{glossaries}
 \GlsSetQuote{+}
@@ -65,7 +66,7 @@
 {
 	name=$\lambda$-Term,
 	plural=$\lambda$-Terme,
-	description={ Terme im \gls{lk} sind entweder \emph{\glspl{lapp}} oder \emph{\glspl{labs}} oder \emph{\glspl{var}} }
+	description={Terme im \gls{lk} sind entweder \emph{\glspl{lapp}} oder \emph{\glspl{labs}} oder \emph{\glspl{var}}}
 }
 \newglossaryentry{var}
 { 
@@ -180,6 +181,13 @@
 	name={vereinfachte $\lambda$-Syntax},
 	description={Variante der herkömmlichen Syntax des \glslink{lk}{$\lambda$-Kalküls},
 	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird}
+}
+
+\newglossaryentry{cn}
+{
+	name=Church-Zahl,
+	description={Gängige Umsetzung der natürlichen Zahlen inklusive der Null im \gls{lk}. $n\in\mathbb{N}_0$ wird dargestellt als $\lambda f.\lambda x. \underbrace{f\cdots f}_{\text{$n$ mal}} x$},
+	plural=Church-Zahlen
 }
 
 % Syntax:
@@ -302,6 +310,7 @@ Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
 %%%%%%%%%%%
 \section{Funktionale Anforderungen}
 \functionality{Editor}{fnc:ed}
+\fulfills{crt:editor}
 Nutzer können beliebigen Text in einem Editorfeld eingeben. 
 Der Editor verfügt über die folgenden Funktionalitäten:
 \begin{itemize}
@@ -342,6 +351,40 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 	Hierbei werden textverändernde Operationen zu einem Aktionsblock zusammengefasst, falls sie in Folge ausgeführt wurden. In Folge ausführen bedeutet, dass sich zwischen den Operationen keine Pausen befinden, welche länger als 500ms sind. Außerdem müssen alle Operationen in einem Aktionsblock entweder Eingabeoperationen oder Löschoperationen sein, was bedeutet, dass der Wechsel zwischen Eingabeoperationen und Löschoperationen einen neuen Aktionsblock anfängt.
 	Es können beliebig viele Aktionsblöcke rückgängig gemacht werden.
 	\item Mit der Tastenkombination STRG+Y kann der letzte Aktionsblock, welcher rückgängig gemacht wurde, wieder ausgeführt werden, falls ein solcher existiert.
+\end{itemize}
+
+\functionality{Standardbibliothek}{fnc:lib}
+\fulfills{crt:lib}
+Der Nutzer kann auf eine Bibliothek von Definitionen zurückgreifen. Die Standardbibliothek
+ist in Module aufgeteilt. Jedes Modul kann einzeln eingebunden werden. Die folgende
+Module werden bereitgestellt:
+
+\begin{itemize}
+	\item Basisbibliothek. Dieses Modul enthält den \gls{yc}.
+
+	\item Natürliche Zahlen. Es werden Funktionen zur einfachen Eingabe natürlicher
+		Zahlen bereitgestellt. Ferner existieren Funktionen zur Bestimmung des Vorgängers
+		und Nachfolgers einer natürlichen Zahl und Funktionen zur Bestimmung der Summe,
+		der Differenz, des Produktes und des Ergebnisses der Exponentiation zweier
+		natürlicher Zahlen.
+
+		Die Implementation erfolgt durch \glspl{cn}, die Art der Benutzung der
+		Funktionen ist jedoch agnostisch bezüglich der Implementationsweise.
+
+	\item Wahrheitswerte. Es werden Definitionen für \texttt{true} und \texttt{false}
+		bereitgestellt, sodass \texttt{true a b} zu \texttt{a} und \texttt{false a b}
+		zu \texttt{b} ausgewertet wird.
+
+	\item Tupel und Listen. Es wird eine \texttt{null}-Definition zusammen mit einer
+		\texttt{isNull}-Funktion bereitgestellt. Es existieren Funktionen
+		\texttt{cons}, \texttt{car} und \texttt{cdr}, % oder doch make_tuple, first, second? Oder prepend, head, tail?
+		mit denen ein 2-Tupel erzeugt werden kann und das erste bzw. zweite Element
+		eines 2-Tupels extrahiert werden kann. Die gleichen Funktionen können auch zum
+		Umgang mit einfach verketteten Listen verwendet werden: \texttt{null} ist die
+		leere Liste, \texttt{cons a list} hängt \texttt{a} vorne an \texttt{list} an,
+		\texttt{car} gibt das erste Element und \texttt{cdr} den Rest der Liste zurück.
+
+	% WIP
 \end{itemize}
 
 % Syntax:

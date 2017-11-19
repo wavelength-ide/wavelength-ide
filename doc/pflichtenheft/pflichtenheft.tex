@@ -278,9 +278,13 @@ enthält.
 
 \criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
 Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
-Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden.
+Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden. Hierbei
+können entweder alle Teilschritte, die ersten und letzten Teilschritte, oder
+einzelne Teilschritte in periodischen Abständen angezeigt werden.
 
 \criteriumOptional{Schritt-für-Schritt-Auswertung}{crt:steps}
+Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
+oder durch Pausieren einer laufenden Auswertung erreicht werden kann.
 Durch Klick kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
 \gls{aws} einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
 gemacht werden.
@@ -289,6 +293,9 @@ gemacht werden.
 Es kann ein Link generiert werden, der beim Aufrufen des gesamten Zustand
 der Sitzung widerherstellt.
 
+\criteriumOptional{Namensbindung}{crt:bind}
+Einem \gls{lt} kann ein Name zugewiesen werden. Dieser kann anstelle des Terms
+verwendet werden.
 % Syntax:
 % \criteriumOptional{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums

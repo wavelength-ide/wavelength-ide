@@ -174,7 +174,6 @@
 	plural=Smart Tabs,
 	description={Bei einem Zeilenwechsel wird die neue Zeile genauso eingerückt wie die alte Zeile}
 }
-%%% Beginn Glossareinträge
 
 \newglossaryentry{vls}
 {
@@ -186,8 +185,8 @@
 \newglossaryentry{cn}
 {
 	name=Church-Zahl,
-	description={Gängige Umsetzung der natürlichen Zahlen inklusive der Null im \gls{lk}. $n\in\mathbb{N}_0$ wird dargestellt als $\lambda f.\lambda x. \underbrace{f\cdots f}_{\text{$n$ mal}} x$},
-	plural=Church-Zahlen
+	plural=Church-Zahlen,
+	description={Gängige Umsetzung der natürlichen Zahlen inklusive der Null im \gls{lk}. $n\in\mathbb{N}_0$ wird dargestellt als $\lambda f.\lambda x. \underbrace{f\cdots f}_{\text{$n$ mal}} x$}
 }
 
 % Syntax:
@@ -209,6 +208,7 @@
 
 \begin{document}
 \maketitle
+\pagebreak
 
 \section{Einleitung}
 
@@ -244,7 +244,7 @@ Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 \criteriumOptional{Verfügbarkeit im Internet}{crt:webapp}
 Die Anwendung kann ohne Installation in einem \glslink{brow}{kompatiblen Internetbrowser} ausgeführt werden.
 
-\criteriumOptional{Weitere Reduktionsordnungen}{crt:reducestrats}
+\criteriumOptional{Weitere \glspl{aws}}{crt:awsstrats}
 Die Anwendung kann neben der \glslink{nr}{Normal-Reduktionsordnung} auch \gls{cbn}, \gls{cbv}
 und \gls{ao} als \gls{aws} verwenden.
 
@@ -308,6 +308,9 @@ verwendet werden.
 \criteriumNot{Nutzung über Mobilgeräte}{crt:mobile}
 Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
 
+\criteriumNot{Lokalisierung}{crt:lokal}
+Die Anwendung soll nur in englischer Sprache verfügbar sein.
+
 \pagebreak
 %%%%%%%%%%%%%%
 \section{Produkteinsatz}
@@ -318,6 +321,7 @@ Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
 \section{Funktionale Anforderungen}
 \functionality{Editor}{fnc:ed}
 \fulfills{crt:editor}
+\fulfills{crt:input}
 Nutzer können beliebigen Text in einem Editorfeld eingeben. 
 Der Editor verfügt über die folgenden Funktionalitäten:
 \begin{itemize}
@@ -359,6 +363,32 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 	Es können beliebig viele Aktionsblöcke rückgängig gemacht werden.
 	\item Mit der Tastenkombination STRG+Y kann der letzte Aktionsblock, welcher rückgängig gemacht wurde, wieder ausgeführt werden, falls ein solcher existiert.
 \end{itemize}
+
+\functionality{Komplettauswertung}{fnc:completereduce}
+\fulfills{crt:reduce}
+\fulfills{crt:display}
+%TODO: have to add something here
+
+\functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
+\fulfills{crt:reduce}
+Der Nutzer kann zur automatischen Auswertung eines \glslink{lt}{$\lambda$-Terms} die \glslink{nr}{normale Reduktionsordnung} verwenden.
+
+\functionality{\gls{cbn}}{fnc:cbn}
+\fulfills{crt:awsstrats}
+Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{cbn} verwenden.
+
+\functionality{\gls{cbv}}{fnc:cbv}
+\fulfills{crt:awsstrats}
+Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{cbv} verwenden.
+
+\functionality{\gls{ao}}{fnc:ao}
+\fulfills{crt:awsstrats}
+Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{ao} verwenden.
+
+\functionality{Auswahl einer \gls{aws}}{fnc:awsstrats}
+\fulfills{crt:awsstrats}
+Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen. Hierbei kann nur eine \gls{aws} gleichzeitig aktiv sein. Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt.
+
 
 \functionality{Standardbibliothek}{fnc:lib}
 \fulfills{crt:lib}

@@ -81,13 +81,15 @@
 }
 \newglossaryentry{alpha} 
 {
-	name=$\alpha$-Äquivalenz,
-	description={Die $\alpha$-Äquivalenz zweier \glspl{lt} bedeutet, dass einer der beiden Terme durch Umbenennung der Variablen in den anderen Term überführt werden kann}
+	name=$\alpha$-Konversion,
+	description={Die $\alpha$-Konversion entspricht einer Variablenumbenennung in einer \gls{lapp}. \underline{Beispiel:} Umbenennung von x in y: $\lambda x.T \stackrel{\alpha}{\Rightarrow} \lambda y.T[y/x]$}
 }
 \newglossaryentry{beta}
 {
 	name=$\beta$-Reduktion,
-	description={Die $\beta$-Reduktion entspricht einer Funktionsauswertung. Sie ist nur auf \glspl{redex} anwendbar. Formal gilt für eine Variable $V$ und \glspl{lt} $T_1$ und $T_2$ die \gls{subs}: $(\lambda V.T_1) T_2 \stackrel{\beta}{\Rightarrow} 			T_1[T_2/V]$}
+	description={Die $\beta$-Reduktion entspricht einer Funktionsauswertung. Sie ist nur auf \glspl{redex} anwendbar.
+			Sollten durch die Auswertung freie Variablen gebunden werden, so müssen diese vorher durch \gls{alpha} in ungenutzte Variablen umbenannt werden.
+	 		Formal gilt für eine Variable $V$ und \glspl{lt} $T_1$ und $T_2$ die \gls{subs}: $(\lambda V.T_1) T_2 \stackrel{\beta}{\Rightarrow} T_1[T_2/V]$}
 }
 \newglossaryentry{redex} 
 {
@@ -203,7 +205,12 @@
 \maketitle
 
 \section{Einleitung}
-
+Ziel dieses Projektes ist die Bereitstellung einer online Entwicklungsumgebung für den \gls{lk}. 
+Die Entwicklungsumgebung wird für die Lehre entworfen: 
+Sie kann von Dozenten zur Demonstration eingesetzt werden, ebenso kann sie von Studenten zum Lernen verwendet werden.
+Mit der Anwendung können \glspl{lt} eingegeben und entsprechend einer \gls{aws} ausgewertet werden.
+Dabei kann die Auswertung Schritt-für-Schritt verfolgt werden.
+Der Lernprozess wird durch ein System von Übungsaufgaben unterstützt.
 
 \pagebreak
 \section{Kriterien}
@@ -279,7 +286,7 @@ gemacht werden.
 
 \criteriumOptional{Permalinks}{crt:perma}
 Es kann ein Link generiert werden, der beim Aufrufen des gesamten Zustand
-der Sitzung widerherstellt.
+der Sitzung wiederherstellt.
 
 % Syntax:
 % \criteriumOptional{Überschrift des Kriteriums}{crt:label}
@@ -294,12 +301,7 @@ der Sitzung widerherstellt.
 Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
 
 \pagebreak
-%%%%%%%%%%%%%%
-\section{Produkteinsatz}
 
-\section{Produktumgebung}
-
-%%%%%%%%%%%
 \section{Funktionale Anforderungen}
 
 % Syntax:

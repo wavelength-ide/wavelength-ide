@@ -3,7 +3,9 @@
 \usepackage[l2tabu,orthodox]{nag}
 \usepackage[utf8]{inputenc}
 
-\title{Wavelength $\bm{\lambda}$-IDE}
+\titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
+\title{Wavelength}
+\subtitle{$\bm{\lambda}$-IDE}
 \author{Muhammet Guemues, Markus Himmel, Marc Huisinga,\\Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt}
 
 % section numbers in margins:
@@ -19,7 +21,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[ngerman]{babel}
 \usepackage{datetime2}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage[nameinlink]{cleveref}
 \crefname{figure}{Abb}{Abb}
 \usepackage[section]{placeins}
@@ -34,6 +36,7 @@
 \usepackage{amsmath}
 \usepackage{bm}
 \usepackage{mathtools}
+\usepackage{amssymb}
 
 \usepackage{glossaries}
 \GlsSetQuote{+}
@@ -65,7 +68,7 @@
 {
 	name=$\lambda$-Term,
 	plural=$\lambda$-Terme,
-	description={ Terme im \gls{lk} sind entweder \emph{\glspl{lapp}} oder \emph{\glspl{labs}} oder \emph{\glspl{var}} }
+	description={Terme im \gls{lk} sind entweder \emph{\glspl{lapp}} oder \emph{\glspl{labs}} oder \emph{\glspl{var}}}
 }
 \newglossaryentry{var}
 { 
@@ -175,13 +178,19 @@
 	plural=Smart Tabs,
 	description={Bei einem Zeilenwechsel wird die neue Zeile genauso eingerückt wie die alte Zeile}
 }
-%%% Beginn Glossareinträge
 
 \newglossaryentry{vls}
 {
 	name={vereinfachte $\lambda$-Syntax},
 	description={Variante der herkömmlichen Syntax des \glslink{lk}{$\lambda$-Kalküls},
 	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird}
+}
+
+\newglossaryentry{cn}
+{
+	name=Church-Zahl,
+	plural=Church-Zahlen,
+	description={Gängige Umsetzung der natürlichen Zahlen inklusive der Null im \gls{lk}. $n\in\mathbb{N}_0$ wird dargestellt als $\lambda f.\lambda x. \underbrace{f\cdots f}_{\text{$n$ mal}} x$}
 }
 
 % Syntax:
@@ -203,6 +212,10 @@
 
 \begin{document}
 \maketitle
+\pagebreak
+
+\tableofcontents
+\pagebreak
 
 \section{Einleitung}
 Ziel dieses Projektes ist die Bereitstellung einer online Entwicklungsumgebung für den \gls{lk}. 
@@ -243,7 +256,7 @@ Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 \criteriumOptional{Verfügbarkeit im Internet}{crt:webapp}
 Die Anwendung kann ohne Installation in einem \glslink{brow}{kompatiblen Internetbrowser} ausgeführt werden.
 
-\criteriumOptional{Weitere Reduktionsordnungen}{crt:reducestrats}
+\criteriumOptional{Weitere \glspl{aws}}{crt:awsstrats}
 Die Anwendung kann neben der \glslink{nr}{Normal-Reduktionsordnung} auch \gls{cbn}, \gls{cbv}
 und \gls{ao} als \gls{aws} verwenden.
 
@@ -277,9 +290,13 @@ enthält.
 
 \criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
 Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
-Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden.
+Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden. Hierbei
+können entweder alle Teilschritte, die ersten und letzten Teilschritte, oder
+einzelne Teilschritte in periodischen Abständen angezeigt werden.
 
 \criteriumOptional{Schritt-für-Schritt-Auswertung}{crt:steps}
+Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
+oder durch Pausieren einer laufenden Auswertung erreicht werden kann.
 Durch Klick kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
 \gls{aws} einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
 gemacht werden.
@@ -288,6 +305,9 @@ gemacht werden.
 Es kann ein Link generiert werden, der beim Aufrufen des gesamten Zustand
 der Sitzung wiederherstellt.
 
+\criteriumOptional{Namensbindung}{crt:bind}
+Einem \gls{lt} kann ein Name zugewiesen werden. Dieser kann anstelle des Terms
+verwendet werden.
 % Syntax:
 % \criteriumOptional{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
@@ -300,9 +320,115 @@ der Sitzung wiederherstellt.
 \criteriumNot{Nutzung über Mobilgeräte}{crt:mobile}
 Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
 
+\criteriumNot{Lokalisierung}{crt:lokal}
+Die Anwendung soll nur in englischer Sprache verfügbar sein.
+
 \pagebreak
 
 \section{Funktionale Anforderungen}
+\functionality{Editor}{fnc:ed}
+\fulfills{crt:input}
+\fulfills{crt:editor}
+Nutzer können beliebigen Text in einem Editorfeld eingeben. 
+Der Editor verfügt über die folgenden Funktionalitäten:
+\begin{itemize}
+	\item Das Editorfeld besteht aus einer oder mehreren Zeilen, welche jeweils beliebig viele Symbole enthalten kann. Das Editorfeld ist anfangs leer; Es gibt nur eine Zeile ohne Symbole.
+	\item Der Editor enthält einen blinkenden Cursor. Der Cursor zeigt die aktuelle Stelle im Editor an, die bearbeitet wird. Der Cursor befindet sich anfangs am Anfang der ersten Zeile.
+	\item Wird ein beliebiges Symbol mit der Tastatur eingegeben, so erscheint das Symbol rechts vom Cursor. Der Cursor bewegt sich hinter das Symbol. Befindet sich rechts vom Cursor bereits Text, so wird der Text nach rechts geschoben, um Platz für das neue Zeichen zu schaffen. 
+	\item Mit der Taste 'Enter' wird eine neue Zeile hinter der Zeile des Cursors erzeugt. 
+	Alle Zeilen nach dem Cursor werden nach unten geschoben, um Platz für die Zeile zu schaffen. 
+	Text hinter dem Cursor in der Zeile des Cursors wird in der selben Reihenfolge an den Anfang der neuen Zeile geschoben.
+	Der Cursor wird an den Anfang der neuen Zeile bewegt.
+	\item Mit der Taste 'Backspace' wird das Symbol links vom Cursor gelöscht und der Cursor um ein Symbol nach links bewegt. 
+	Das Löschen erfolgt, indem das Symbol entfernt wird und jeglicher Text rechts vom Symbol nach links geschoben wird, um die Lücke zu füllen.
+	Befindet sich der Cursor bereits am Anfang der Zeile und existieren Zeilen über der Zeile des Cursors, so wird die Zeile gelöscht. 
+	Hierfür wird der Cursor ans Ende der Zeile über dem Cursor bewegt, der verbleibende Text der zu löschenden Zeile ans Ende der oberen Zeile bewegt, die Zeile entfernt und alle darauffolgenden Zeilen nach oben geschoben um die Lücke zu füllen.
+	\item Mit der Taste 'Delete' wird das Symbol rechts vom Cursor gelöscht und der Cursor um ein Symbol nach rechts bewegt.
+	Befindet sich der Cursor bereits am Ende der Zeile und existieren Zeilen unter der Zeile des Cursors, so wird die Zeile gelöscht. 
+	\item Mit den Pfeiltasten kann der Cursor in die entsprechende Richtung bewegt werden. 
+	Mit der linken bzw. der rechten Pfeiltaste wird der Cursor um ein Symbol nach links bzw. um ein Symbol nach rechts bewegt. 
+	Befindet sich vor bzw. hinter dem Cursor kein Symbol und existiere Symbol in der Zeile über bzw. unter der Zeile des Cursors bewegt, insofern diese Zeile existiert.
+	Existiert kein Zeichen in der Zeile über bzw. unter dem Cursor, so wird der Cursor an den Anfang der Zeile bewegt.
+	\item Mit der Taste 'Home' wird der Cursor auf den Anfang der Zeile bewegt.
+	\item Mit der Taste 'End' wird der Cursor auf das Ende der Zeile bewegt.
+	\item Mit der Tastenkombination Shift+linke Pfeiltaste wird der Cursor zum Anfang des nächsten rechten Worts oder sonst zum Ende der Zeile bewegt. Wörter werden hierbei durch eines oder mehrere Whitespace-Symbole getrennt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der unteren Zeile bewegt.
+	\item Mit der Tastenkombination Shift+rechte Pfeiltaste wird der Cursor zum Anfang des nächsten linken Worts bewegt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der oberen Zeile bewegt.
+	\item Durch einen Mausklick kann der Cursor vor das nächste Symbol links vom Mauszeiger bewegt werden.
+	\item Durch das Halten der linken Maustaste kann Text zwischen dem Cursor und dem Mauszeiger markiert werden. 
+	Befindet sich der Mauszeiger auf einer unteren Zeile, so wird der Text vom Cursor bis zum Zeilenende, alle Zeilen zwischen Cursor und Mauszeiger sowie der Text vom Zeilenanfang bis zum Mauszeiger markiert. 
+	Befindet sich der Mauszeiger auf einer oberen Zeile, so wird der Text vom Cursor bis zum Zeilenanfang, alle Zeilen zwischen Cursor und Mauszeiger sowie der Text vom Zeilenende bis zum Mauszeiger markiert. 
+	Der Cursor wird bei der Bewegung des Mauszeigers immer vor das nächste Symbol links vom Mauszeiger bewegt, die Markierung wird jedoch von der ersten Cursorposition aus fortgesetzt.
+	Durch einen Mausklick oder die Verwendung der Pfeiltasten wird der Cursor wie beschrieben bewegt und die Markierung beendet.
+	Durch die Eingabe eines Symbols, der Verwendung der 'Backspace' Taste, der 'Enter' Taste oder von STRG+V wird die beschriebene Aktion durchgeführt und der markierte Text gelöscht.
+	\item Mit der Tastenkombination STRG+C kann der aktuell markierte Text in die Zwischenablage kopiert werden.
+	\item Mit der Tastenkombination STRG+X kann der aktuell markierte Text ausgeschnitten werden. Hierfür wird der markierte Text in die Zwischenablage kopiert und daraufhin gelöscht.
+	\item Mit der Tastenkombination STRG+V wird der Text in der Zwischenablage an der Position des Cursors eingefügt. Der Cursor wird hinter den eingefügten Text bewegt. Text und Zeilen hinter der ursprünglichen Position des Cursors werden hinter die neue Position des Cursors bewegt, um Platz für den eingefügten Text zu schaffen.
+	\item Mit der Tastenkombination STRG+A wird der gesamte Text in der Eingabe markiert und der Cursor ans Ende des Texts bewegt.
+	\item Wird die Taste 'STRG' während einer Aktion welche den Cursor bewegt gehalten, so wird der Text zwischen der alten und der neuen Cursorposition markiert. Wird die Taste weiterhin gehalten und eine weitere Aktion ausgeführt, so startet die Markierung weiterhin bei der ersten alten Cursorposition.
+	\item Mit der Tastenkombination STRG+Z kann der letzte Aktionsblock rückgängig gemacht werden, falls ein solcher existiert. 
+	Hierbei werden textverändernde Operationen zu einem Aktionsblock zusammengefasst, falls sie in Folge ausgeführt wurden. In Folge ausführen bedeutet, dass sich zwischen den Operationen keine Pausen befinden, welche länger als 500ms sind. Außerdem müssen alle Operationen in einem Aktionsblock entweder Eingabeoperationen oder Löschoperationen sein, was bedeutet, dass der Wechsel zwischen Eingabeoperationen und Löschoperationen einen neuen Aktionsblock anfängt.
+	Es können beliebig viele Aktionsblöcke rückgängig gemacht werden.
+	\item Mit der Tastenkombination STRG+Y kann der letzte Aktionsblock, welcher rückgängig gemacht wurde, wieder ausgeführt werden, falls ein solcher existiert.
+\end{itemize}
+
+\functionality{Komplettauswertung}{fnc:completereduce}
+\fulfills{crt:reduce}
+\fulfills{crt:display}
+%TODO: have to add something here
+
+\functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
+\fulfills{crt:reduce}
+Der Nutzer kann zur automatischen Auswertung eines \glslink{lt}{$\lambda$-Terms} die \glslink{nr}{normale Reduktionsordnung} verwenden.
+
+\functionality{\gls{cbn}}{fnc:cbn}
+\fulfills{crt:awsstrats}
+Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{cbn} verwenden.
+
+\functionality{\gls{cbv}}{fnc:cbv}
+\fulfills{crt:awsstrats}
+Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{cbv} verwenden.
+
+\functionality{\gls{ao}}{fnc:ao}
+\fulfills{crt:awsstrats}
+Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{ao} verwenden.
+
+\functionality{Auswahl einer \gls{aws}}{fnc:awsstrats}
+\fulfills{crt:awsstrats}
+Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen. Hierbei kann nur eine \gls{aws} gleichzeitig aktiv sein. Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt.
+
+
+\functionality{Standardbibliothek}{fnc:lib}
+\fulfills{crt:lib}
+Der Nutzer kann auf eine Bibliothek von Definitionen zurückgreifen. Die Standardbibliothek
+ist in Module aufgeteilt. Jedes Modul kann einzeln eingebunden werden. Die folgende
+Module werden bereitgestellt:
+
+\begin{itemize}
+	\item Basisbibliothek. Dieses Modul enthält den \gls{yc}.
+
+	\item Natürliche Zahlen. Es werden Funktionen zur einfachen Eingabe natürlicher
+		Zahlen bereitgestellt. Ferner existieren Funktionen zur Bestimmung des Vorgängers
+		und Nachfolgers einer natürlichen Zahl und Funktionen zur Bestimmung der Summe,
+		der Differenz, des Produktes und des Ergebnisses der Exponentiation zweier
+		natürlicher Zahlen.
+
+		Die Implementation erfolgt durch \glspl{cn}.
+
+	\item Wahrheitswerte. Es werden Definitionen für \texttt{true} und \texttt{false}
+		bereitgestellt, sodass \texttt{true a b} zu \texttt{a} und \texttt{false a b}
+		zu \texttt{b} ausgewertet wird.
+
+	\item Tupel und Listen. Es wird eine \texttt{null}-Definition zusammen mit einer
+		\texttt{isNull}-Funktion bereitgestellt. Es existieren Funktionen
+		\texttt{cons}, \texttt{car} und \texttt{cdr}, % oder doch make_tuple, first, second? Oder prepend, head, tail?
+		mit denen ein 2-Tupel erzeugt werden kann und das erste bzw. zweite Element
+		eines 2-Tupels extrahiert werden kann. Die gleichen Funktionen können auch zum
+		Umgang mit einfach verketteten Listen verwendet werden: \texttt{null} ist die
+		leere Liste, \texttt{cons a list} hängt \texttt{a} vorne an \texttt{list} an,
+		\texttt{car} gibt das erste Element und \texttt{cdr} den Rest der Liste zurück.
+
+	% WIP
+\end{itemize}
 
 % Syntax:
 % \functionality{Überschrift der FA}{fnc:label}

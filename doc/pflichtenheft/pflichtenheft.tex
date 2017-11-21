@@ -92,6 +92,7 @@
 \newglossaryentry{beta}
 {
 	name=$\beta$-Reduktion,
+	plural=$\beta$-Reduktionen,
 	description={Die $\beta$-Reduktion entspricht einer Funktionsauswertung. Sie ist nur auf \glspl{redex} anwendbar.
 			Sollten durch die Auswertung freie Variablen gebunden werden, so müssen diese vorher durch \gls{alpha} in ungenutzte Variablen umbenannt werden.
 	 		Formal gilt für eine Variable $V$ und \glspl{lt} $T_1$ und $T_2$ die \gls{subs}: $(\lambda V.T_1) T_2 \stackrel{\beta}{\Rightarrow} T_1[T_2/V]$}
@@ -188,6 +189,19 @@
 	name=Church-Zahl,
 	plural=Church-Zahlen,
 	description={Gängige Umsetzung der natürlichen Zahlen inklusive der Null im \gls{lk}. $n\in\mathbb{N}_0$ wird dargestellt als $\lambda f.\lambda x. \underbrace{f\cdots f}_{\text{$n$ mal}} x$}
+}
+
+\newglossaryentry{cmpltapp}
+{
+	name=Komplettauswertung,
+	description={Wiederholte \gls{beta} auf einem \gls{lt} basierend auf einer gegebenen \gls{aws}. 
+	Muss nicht zwingend terminieren.}
+}
+
+\newglossaryentry{nrmlform}
+{
+	name={$\beta$-Normalform},
+	description={Ein \gls{lt} ist in $\beta$-Normalform, wenn keine \gls{beta} mehr anwendbar ist.}
 }
 
 % Syntax:
@@ -368,10 +382,27 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 	\item Mit der Tastenkombination STRG+Y kann der letzte Aktionsblock, welcher rückgängig gemacht wurde, wieder ausgeführt werden, falls ein solcher existiert.
 \end{itemize}
 
-\functionality{Komplettauswertung}{fnc:completereduce}
+\functionality{\gls{cmpltapp}}{fnc:completereduce}
 \fulfills{crt:reduce}
 \fulfills{crt:display}
-%TODO: have to add something here
+Der Nutzer hat die Möglichkeit auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
+Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des grünen Knopfes (\cref{fig:actionButtons}) gestartet. %TODO umbenennung des "grünen Knopfes"
+Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt.
+Der Nuter kann die \gls{aws} während der Komplettauswertung nicht ändern.\\
+Die Komplettauswertung übernimmt die automatische Auswertung, bis die derzeit aktive \gls{aws} keine \gls{beta} mehr vorgibt.
+Wenn der \gls{lt} keine \gls{nrmlform} bestitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht. \\
+%TODO bild und/oder glossar eintrag für ausgabefenster?
+Terminiert die Auswertung, wird im Ausgabefenster das Ergebnis im gewählten Ausgabeumfang ausgegeben. %TODO referenz auf Bild
+Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster alle 100 \glspl{beta} der aktuell berechnete \gls{lt} ausgegeben.
+Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen:
+\begin{itemize}
+	%TODO umbenennung der Knöpfe
+	\item Das Drücken des roten Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
+	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Das Drücken des grünen Knopfes hat keine Funktion mehr, bis der Benutzer eine neue Eingabe in das Eingabefeld geschrieben hat oder %TODO Es ist jetzt spät. Lass mal erst auf einen Zustandsautomaten einigen
+	\item Das Drücken des pinken Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. %TODO Step-by-Step-Modus glossary entry
+	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den Step-by-Step-Modus.
+\end{itemize}
+
 
 \functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
 \fulfills{crt:reduce}
@@ -609,6 +640,8 @@ Der grüne Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des ro
 \begin{figure}[H]
 	\centering
 	\includegraphics{img/actionButton}
+	%TODO "grüner Knopf" umbenennen
+	\caption{\label{fig:actionButtons} Schritt-zurück, Step-by-Step-Modus, Schritt-vorwärts, "roter Knopf" und "grüner Knopf" (von links nach rechts)}
 \end{figure}
 
 Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt werden. 

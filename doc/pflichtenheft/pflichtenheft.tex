@@ -428,6 +428,19 @@ Module werden bereitgestellt:
 	% WIP
 \end{itemize}
 
+\functionality{Fehlerdiagnostik}{fnc:diag}
+\fulfills{crt:error}
+\fulfills{crt:diag}
+Wenn der Nutzer versucht, einen syntaktisch inkorrekten \gls{lt} auszuwerten,
+wird eine Meldung angezeigt. Die Meldung enthält die genaue Position (Zeilen-
+und Spaltennummer), an der die Interpretation der Eingabe fehlschlug, eine Beschriebung
+des Fehlertyps (Unerwartetes Zeichen, unbalancierte Klammerung, \ldots) und in einfachen
+Fällen einen Hinweis auf mögliche Fehlerbehebung (beispielsweise wenn Einfügen einer
+schließenden Klammer an der problematischen Stelle zu einem syntaktisch korrekten
+\gls{lt} führt).
+
+Die problematische Stelle wird im Editor zusätzlich farblich markiert.
+
 % Syntax:
 % \functionality{Überschrift der FA}{fnc:label}
 % \fulfills{crt:label1}

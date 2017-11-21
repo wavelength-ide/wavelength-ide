@@ -127,11 +127,6 @@
 	plural=Auswertungsstrategien,
 	description={Eine Auswertungsstrategie ist ein Algorithmus, der bestimmt, wie ein \gls{lt} ausgewertet wird. Dabei kann es vorkommen, dass eine Auswertungsstrategie bei der Auswertung eines \gls{lt} in eine Endlosschleife gerät, während eine andere 				Strategie terminiert}
 }
-\newglossaryentry{vbr}
-{
-	name=volle $\beta$-Reduktion,
-	description={Die volle $\beta$-Reduktion ist eine \gls{aws}, bei der jeder \gls{redex} jederzeit $\beta$-reduziert werden kann. Der Nutzer bekommt bei dieser \gls{aws} die Möglichkeit die entsprechende Auswertungsreihenfolge selbst zu bestimmen}
-}
 \newglossaryentry{nr}
 {
 	name=normale Reduktionsordnung,
@@ -244,7 +239,7 @@ reduziert werden. Die so bestimmte Normalform kann in \glslink{vls}{vereinfachte
 ausgegeben werden.
 
 \criterium{Fehlermeldung bei invalider Eingabe}{crt:error}
-Beim dem Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
+Beim Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
 Fehlermeldung ausgegeben.
 
 \criterium{Abbruch der Ausführung}{ctr:cancel}
@@ -299,12 +294,12 @@ einzelne Teilschritte in periodischen Abständen angezeigt werden.
 \criteriumOptional{Schritt-für-Schritt-Auswertung}{crt:steps}
 Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
 oder durch Pausieren einer laufenden Auswertung erreicht werden kann.
-Durch Klick kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
+Durch Klicken kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
 \gls{aws} einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
 gemacht werden.
 
 \criteriumOptional{Permalinks}{crt:perma}
-Es kann ein Link generiert werden, der beim Aufrufen des gesamten Zustand
+Es kann ein Link generiert werden, der beim Aufrufen den gesamten Zustand
 der Sitzung wiederherstellt.
 
 \criteriumOptional{Namensbindung}{crt:bind}
@@ -334,7 +329,7 @@ Die Anwendung soll nur in englischer Sprache verfügbar sein.
 Nutzer können beliebigen Text in einem Editorfeld eingeben. 
 Der Editor verfügt über die folgenden Funktionalitäten:
 \begin{itemize}
-	\item Das Editorfeld besteht aus einer oder mehreren Zeilen, welche jeweils beliebig viele Symbole enthalten kann. Das Editorfeld ist anfangs leer; Es gibt nur eine Zeile ohne Symbole.
+	\item Das Editorfeld besteht aus einer oder mehreren Zeilen, welche jeweils beliebig viele Symbole enthalten kann. Das Editorfeld ist anfangs leer; es gibt nur eine Zeile ohne Symbole.
 	\item Der Editor enthält einen blinkenden Cursor. Der Cursor zeigt die aktuelle Stelle im Editor an, die bearbeitet wird. Der Cursor befindet sich anfangs am Anfang der ersten Zeile.
 	\item Wird ein beliebiges Symbol mit der Tastatur eingegeben, so erscheint das Symbol rechts vom Cursor. Der Cursor bewegt sich hinter das Symbol. Befindet sich rechts vom Cursor bereits Text, so wird der Text nach rechts geschoben, um Platz für das neue Zeichen zu schaffen. 
 	\item Mit der Taste 'Enter' wird eine neue Zeile hinter der Zeile des Cursors erzeugt. 
@@ -353,7 +348,7 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 	Existiert kein Zeichen in der Zeile über bzw. unter dem Cursor, so wird der Cursor an den Anfang der Zeile bewegt.
 	\item Mit der Taste 'Home' wird der Cursor auf den Anfang der Zeile bewegt.
 	\item Mit der Taste 'End' wird der Cursor auf das Ende der Zeile bewegt.
-	\item Mit der Tastenkombination Shift+linke Pfeiltaste wird der Cursor zum Anfang des nächsten rechten Worts oder sonst zum Ende der Zeile bewegt. Wörter werden hierbei durch eines oder mehrere Whitespace-Symbole getrennt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der unteren Zeile bewegt.
+	\item Mit der Tastenkombination Shift+linke Pfeiltaste wird der Cursor zum Anfang des nächsten rechten Worts oder sonst zum Ende der Zeile bewegt. Wörter werden hierbei durch ein oder mehrere Whitespace-Symbole getrennt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der unteren Zeile bewegt.
 	\item Mit der Tastenkombination Shift+rechte Pfeiltaste wird der Cursor zum Anfang des nächsten linken Worts bewegt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der oberen Zeile bewegt.
 	\item Durch einen Mausklick kann der Cursor vor das nächste Symbol links vom Mauszeiger bewegt werden.
 	\item Durch das Halten der linken Maustaste kann Text zwischen dem Cursor und dem Mauszeiger markiert werden. 
@@ -366,7 +361,7 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 	\item Mit der Tastenkombination STRG+X kann der aktuell markierte Text ausgeschnitten werden. Hierfür wird der markierte Text in die Zwischenablage kopiert und daraufhin gelöscht.
 	\item Mit der Tastenkombination STRG+V wird der Text in der Zwischenablage an der Position des Cursors eingefügt. Der Cursor wird hinter den eingefügten Text bewegt. Text und Zeilen hinter der ursprünglichen Position des Cursors werden hinter die neue Position des Cursors bewegt, um Platz für den eingefügten Text zu schaffen.
 	\item Mit der Tastenkombination STRG+A wird der gesamte Text in der Eingabe markiert und der Cursor ans Ende des Texts bewegt.
-	\item Wird die Taste 'STRG' während einer Aktion welche den Cursor bewegt gehalten, so wird der Text zwischen der alten und der neuen Cursorposition markiert. Wird die Taste weiterhin gehalten und eine weitere Aktion ausgeführt, so startet die Markierung weiterhin bei der ersten alten Cursorposition.
+	\item Wird die Taste 'STRG' während einer Aktion, welche den Cursor bewegt, gehalten, so wird der Text zwischen der alten und der neuen Cursorposition markiert. Wird die Taste weiterhin gehalten und eine weitere Aktion ausgeführt, so startet die Markierung weiterhin bei der ersten alten Cursorposition.
 	\item Mit der Tastenkombination STRG+Z kann der letzte Aktionsblock rückgängig gemacht werden, falls ein solcher existiert. 
 	Hierbei werden textverändernde Operationen zu einem Aktionsblock zusammengefasst, falls sie in Folge ausgeführt wurden. In Folge ausführen bedeutet, dass sich zwischen den Operationen keine Pausen befinden, welche länger als 500ms sind. Außerdem müssen alle Operationen in einem Aktionsblock entweder Eingabeoperationen oder Löschoperationen sein, was bedeutet, dass der Wechsel zwischen Eingabeoperationen und Löschoperationen einen neuen Aktionsblock anfängt.
 	Es können beliebig viele Aktionsblöcke rückgängig gemacht werden.
@@ -402,7 +397,7 @@ Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswäh
 \functionality{Standardbibliothek}{fnc:lib}
 \fulfills{crt:lib}
 Der Nutzer kann auf eine Bibliothek von Definitionen zurückgreifen. Die Standardbibliothek
-ist in Module aufgeteilt. Jedes Modul kann einzeln eingebunden werden. Die folgende
+ist in Module aufgeteilt. Jedes Modul kann einzeln eingebunden werden. Die folgenden
 Module werden bereitgestellt:
 
 \begin{itemize}
@@ -437,7 +432,7 @@ Module werden bereitgestellt:
 \fulfills{crt:diag}
 Wenn der Nutzer versucht, einen syntaktisch inkorrekten \gls{lt} auszuwerten,
 wird eine Meldung angezeigt. Die Meldung enthält die genaue Position (Zeilen-
-und Spaltennummer), an der die Interpretation der Eingabe fehlschlug, eine Beschriebung
+und Spaltennummer), an der die Interpretation der Eingabe fehlschlug, eine Beschreibung
 des Fehlertyps (Unerwartetes Zeichen, unbalancierte Klammerung, \ldots) und in einfachen
 Fällen einen Hinweis auf mögliche Fehlerbehebung (beispielsweise wenn Einfügen einer
 schließenden Klammer an der problematischen Stelle zu einem syntaktisch korrekten
@@ -456,7 +451,19 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
 % Syntax:
 % \nonFunctionality{Überschrift der NA}{nfc:label}
-% Brschreibung der NA
+% Beschreibung der NA
+
+\nonFunctionality{Antwortverhalten und Antwortzeit}{nfc:response}
+Die Anwendung einer \gls{aws} führt nach 2 Sekunden entweder zu einem Ergebnis oder der Nutzer wird benachrichtigt.
+Die Nachricht zeigt an, dass die Eingabe noch ausgewertet wird.
+Eine solche Nachricht wird in Intervallen von 20 Sekunden ausgegeben.
+Der Nutzer wird darauf hingewiesen, dass die Auswertung auch abgebrochen werden kann.
+
+\nonFunctionality{Benutzeroberfläche}{nfc:guiResponse}
+Die Benutzeroberfläche kann während der Auswertung einer Eingabe weiter verwendet werden.
+In diesem Zustand kann die Eingabe ohne Auswirkung auf die laufende Auswertung verändert werden.
+Ebenso können Einstellungen ohne Auswirkung auf die laufende Auswertung geändert werden.
+Wird erneut eine Auswertung angefordert, so wird die laufende Auswertung abgebrochen und die zum Zeitpunkt der Anforderung vorhandene Eingabe ausgewertet.
 
 %%%%%%%%%%%
 \section{Tests}

@@ -471,6 +471,7 @@ Wird erneut eine Auswertung angefordert, so wird die laufende Auswertung abgebro
 \test{Komplettauswertung}{tst:complete}
 \tests{fnc:ed}
 \tests{fnc:completereduce}
+% Fehlt: \tests{fnc:partial}
 \tests{fnc:nr}
 
 \teststep{Nutzer "Ben Fielder" hat einen Browser geöffnet.}
@@ -495,7 +496,82 @@ die \gls{nr} und als Ausgabeumfang die volle Ausgabe ausgewählt sind.}
 {Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \gls{nr} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
+\test{Schritt-für-Schritt-Auswertung}{tst:steps}
+\tests{fnc:awsstrats}
+\tests{fnc:cbn}
+\tests{fnc:cbv}
+\tests{fnc:ao}
+% fehlt: \tests{fnc:steps}
+% fehlt: \tests{fnc:interactive}
 
+\teststep{Benutzer "Donald Knuth" befindet sich auf der Wavelength-Seite.}
+{Er gibt einen syntaktisch korrekten \gls{lt} in das Eingabefeld ein und betätigt
+die "Fußabdruck"-Schaltfläche.}
+{Der eingegebene Term wird in das Darstellungsfeld übernommen und die Vor- und
+Zurück-Schaltflächen werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschritt
+gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
+
+\teststep{Die IDE ist bereit für die Schritt-für-Schritt-Auswertung.}
+{Don betätigt die Vor-Schaltfläche.}
+{Das Resultat der markierten Reduktion erscheint als neue Zeile im Darstellungsfeld.
+Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
+aktuellen Zeile der nächste Reduktionsschritt markiert.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don betätigt die Zurück-Schaltfläche.}
+{Der zweite Reduktionsschritt wird aus dem Darstellungsfeld entfernt. Die Markierungen
+auf dem Ausgangsschritt erscheinen wieder.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don schwebt mit der Maus über einem nicht markierten, zu einem \gls{redex} gehörenden
+$\lambda$-Symbol in der aktiven Zeile im Darstellungsfeld.}
+{Die alten Markierungen verschwinden. Neue Markierungen für den \gls{redex}, über dem
+sich die Maus befindet, erscheinen.}
+
+\teststep{Der Mauszeiger befindet sich über einem Redex.}
+{Don bewegt die Maus von diesem Redex weg.}
+{Die Markierungen verschwinden und die Markierungen gemäß der \glslink{nr}{normalen Reduktionsordnung}
+werden wieder angezeigt.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don klickt mit der Maus auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol.}
+{Es erscheint eine neue Zeile im Darstellungsfeld, die das Ergebnis der angeklickten
+Reduktion enthält. Die Markierungen in der darüberliegenden Zeile werden ausgeblendet
+und in der neuen Zeile erscheinen die Markierungen gemäß der ausgewählten
+Reduktionsordnung.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don wählt das Drop-down-Menü für die Reduktionsordnung an. Er wählt "\gls{cbn}".}
+{Die Markierungen für die vorher ausgewählte Reduktionsordnung werden ausgeblendet.
+Stattdessen wird der nächste Schritt gemäß \gls{cbn} angezeigt.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don betätigt die Vor-Schaltfläche.}
+{Das Resultat der markierten Reduktion (gemäß \gls{cbn}) erscheint als neue Zeile im Darstellungsfeld.
+Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
+aktuellen Zeile der nächste Reduktionsschritt markiert.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don wählt das Drop-down-Menü für die Reduktionsordnung an. Er wählt "\gls{cbv}".}
+{Die Markierungen für die vorher ausgewählte Reduktionsordnung werden ausgeblendet.
+Stattdessen wird der nächste Schritt gemäß \gls{cbv} angezeigt.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don betätigt die Vor-Schaltfläche.}
+{Das Resultat der markierten Reduktion (gemäß \gls{cbv}) erscheint als neue Zeile im Darstellungsfeld.
+Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
+aktuellen Zeile der nächste Reduktionsschritt markiert.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don wählt das Drop-down-Menü für die Reduktionsordnung an. Er wählt "\gls{ao}".}
+{Die Markierungen für die vorher ausgewählte Reduktionsordnung werden ausgeblendet.
+Stattdessen wird der nächste Schritt gemäß \gls{ao} angezeigt.}
+
+\teststep{Die IDE ist bereit für die nächste Eingabe.}
+{Don betätigt die Vor-Schaltfläche.}
+{Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Darstellungsfeld.
+Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
+aktuellen Zeile der nächste Reduktionsschritt markiert.}
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}
@@ -596,7 +672,6 @@ Bei Betätigen des Share Knopfes unterhalt des Ausgabefensters wird ein entsprec
 %%%%%%%%%
 \section{Glossar}
 
-\glsaddall
 \printglossaries
 
 \end{document}

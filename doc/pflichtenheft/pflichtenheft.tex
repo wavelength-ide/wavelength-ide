@@ -38,6 +38,9 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 
+\usepackage{float}
+\usepackage{subcaption}
+
 \usepackage{glossaries}
 \GlsSetQuote{+}
 %
@@ -480,7 +483,44 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
 \section{Seitenentwürfe}
 
-% Hier ganz normale figures mit Bildern
+Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das Editorfeld, das Untere ist das Ausgebefeld.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width = \textwidth]{img/startseite}
+	\caption{Die Startseite der IDE bei Aufruf der Website.} 
+\end{figure}
+
+
+Der gr\"une Knopf l\"ost die Auswertung zum Endergebnis aus. Durch Dr\"ucken des roten Knopfes wird die Auswertung abgebrochen. Bei Dr\"ucken des rosafarbenen Knopfes wird die Schritt f�r Schrittauswertung gestartet, durch welche sich der Nutzer mit den beiden Kn\"opfen daneben navigieren kann.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{img/actionButton}
+\end{figure}
+
+Durch Auswahl eines Men\"us mittig links k\"onnen die Ausgabeoptionen festgelegt werden. 
+
+\begin{figure}[H]
+	\begin{subfigure}[l]{0.25\textwidth}
+	\centering
+		\includegraphics{img/displayMenu}
+	\caption{Auswahl des Darstellungsformats}	
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[m]{0.25\textwidth}
+	\centering
+		\includegraphics{img/reductionMenu}
+	\caption{Auswahl der Auswertungsstrategie}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}[r]{0.25\textwidth}
+	\centering
+		\includegraphics{img/outputSizeMenu}
+	\caption{Auswahl der Ausgabel\"ange}	
+	\end{subfigure}
+\end{figure}
+
 
 \section{Glossar}
 

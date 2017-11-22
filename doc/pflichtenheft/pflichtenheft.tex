@@ -667,7 +667,7 @@ Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt w
 	\caption{\label{fig:outputOptions} Ausgabeoptionen}
 \end{figure}
 
-Bei Auswahl des Zahnradsymbols in der linken oberen Ecke öffnet sich ein weiteres Optionsmenü, in welchem unter Anderem Übungsaufgaben ausgewählt werden können. 
+Bei Auswahl des Zahnradsymbols in der linken oberen Ecke öffnet sich ein weiteres Optionsmenü, in welchem unter anderem Übungsaufgaben ausgewählt werden können. 
 
 \begin{figure}[H]
 	\centering
@@ -675,32 +675,75 @@ Bei Auswahl des Zahnradsymbols in der linken oberen Ecke öffnet sich ein weiter
 	\caption{Das Optionsmenü bei Auswahl einer Übungsaufgabe.}
 \end{figure}
 
-Wurde eine Übungsaufgabe ausgewählt, so wird die Aufgabenstellung und eventuell vorgegebene Eingaben in das Editorfenster geladen. Durch Betätigen des Button im rechten oberen Eck kann zur Startseite zurück gewechselt werden.
-
 \begin{figure}[H]
 	\centering
+	\includegraphics[width=\textwidth]{img/wavelength_exerciseMode}
+	\caption{Wurde eine Übungsaufgabe ausgewählt, so wird die Aufgabenstellung und eventuell vorgegebene Eingaben in das Editorfenster geladen. Der Übungsmodus kann durch Klicken des entsprechenden Button beendet werden.}
 \end{figure}
 
-Bei fehlerhafter Eingabe wird eine Fehlermeldung im Ausgabefenster ausgegeben.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/fehlerausgabe}
+	\caption{Bei fehlerhafter Eingabe wird eine Fehlermeldung im Ausgabefenster ausgegeben.
+}
 \end{figure}
 
-Ein Exportieren der aktuellen Anzeige im Ausgabefenster im gewünschten Format ist durch Klicken auf den Export Knopf unterhalb des Ausgabefensters möglich. 
+
 
 \begin{figure}[H]
-	\centering
-	\includegraphics{img/exportMenu}
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+		\includegraphics{img/exportMenu}
+	\end{subfigure}
+	\begin{subfigure}{0.75\textwidth}
+		\centering
+		\includegraphics[width=0.75\textwidth]{img/wavelength_export_window_unicode}
+	\end{subfigure}
+	\caption{Durch Klick auf den Export Knopf, kann das aktuelle Ausgabefenster in das gewünschte Format exportiert werden.}
 \end{figure}
 
-Bei Betätigen des Share Knopfes unterhalt des Ausgabefensters wird ein entsprechender Link erstellt.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{img/share}
+	\caption{Bei Betätigen des Share Knopfes wird ein entsprechender Link erstellt.}
 \end{figure}
+
+Wird das Darstellungsformat "Tree" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} als Syntaxbaum im Ausgabefeld angezeigt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/displayTree1}
+	\caption{Die Ausgabe im Darstellungsformat "Tree"}
+\end{figure}
+
+
+\begin{figure}[H]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics{img/displayTree2}
+		\caption{ausgewählte \gls{lapp}}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics{img/displayTree3}
+		\caption{neue Ausgabe}
+	\end{subfigure}
+	\caption{Wird eine "@"-Symbol (\gls{lapp}) angeklickt, so wird dieser Teilterm als neue Ausgabe angezeigt.}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics{img/disPlayTree4}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics{img/displayTree5}
+	\end{subfigure}
+	\caption{Wird die Wurzel angeklickt, so wird der fertig ausgewertete \gls{lt} angezeigt.}
+\end{figure}
+
 
 %%%%%%%%%
 \section{Glossar}

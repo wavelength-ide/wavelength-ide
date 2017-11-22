@@ -210,6 +210,7 @@
 		Danach steht dieser Name als Ersatz für den \gls{lt}.
 		Die Zuweisung hat die Form: <Name> $\coloneqq$ <\gls{lt}>, wobei die spitzen Klammern hier nur
 		der Übersicht wegen eingefügt wurden und im eigentlichen Ausdruck nicht vorkommen.
+		Auf der rechten Seite des Gleichheitszeichen darf der Name selbst nicht verwendet werden.
 		Als Name zugelassen sind alle Zeichen und Zeichenfolgen ohne die folgenden Zeichen: 
 		\begin{tabular}{| l | c | c | c | r |}
 			\hline
@@ -492,23 +493,25 @@ Es wird der zuletzt berechnete \gls{lt} angezeigt.
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:bind}
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
+\glslink{rec}{Namensrekursion} ist ausgeschlossen.
 Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.
 Der Name kann in der Eingabe an Stelle des \glslink{lt}{$\lambda$-Terms} eingesetzt werden.
-In der Ausgabe wird der Name nicht berücksichtigt. 
+Die Ausgabe berücksichtigt den Namen soweit möglich:
+Ist der konkrete \gls{lt} für die Reduktion unerheblich, so wird immer der Name verwendet.
+Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 
 \functionality{Schritt-für-Schritt Auswertung}{fnc:steps}
 \fulfills{crt:steps}
-Es gibt einen Knopf um den Schritt-für-Schritt Modus einzuleiten.
-Durch Drücken dieses Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
+Durch Drücken des "step-by-step"-Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
 Ist sie syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und der Schritt-für-Schritt Modus beendet.
-Ist sie syntaktisch korrekt, so wird die Eingabe in das Darstellungsfeld übernommen.
+Ist sie syntaktisch korrekt, so wird die Eingabe in das Darstellungsfeld übernommen. 
+Der "vor"-Knopf wird aktiviert.
+Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird markiert.
 \\
 Der Knopf kann auch während einer laufenden Auswertung gedrückt werden.
 In diesem Fall wird die Auswertung pausiert.
-%Die vorherigen Schritte werden nicht gespeichert.
-%Es ist nicht möglich, diese rückgängig zu machen.
-\\
-Der "vor"-Knopf wird aktiviert.
+Die letzten 100 \glspl{beta} stehen zum "Zurückgehen" zur Verfügung.
+Der "vor"- und der "zurück"-Knopf werden aktiviert.
 Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird markiert.
 
 Beim Klick auf "vor" passiert Folgendes:
@@ -519,9 +522,6 @@ Beim Klick auf "vor" passiert Folgendes:
 \item Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird in der neuen Zeile markiert.
 \item Der "zurück"-Knopf wird aktiviert.
 \end{itemize}
-
-Wurde der "vor"-Knopf mindestens einmal gedrückt, so wird der "zurück"-Knopf aktiviert.
-Er kann so oft gedrückt werden wie der "vor"-Knopf gedrückt wurde.
 
 Beim Klick auf "zurück" passiert Folgendes:
 \begin{itemize}

@@ -229,11 +229,11 @@
 \pagebreak
 
 \section{Einleitung}
-Ziel dieses Projektes ist die Bereitstellung einer online Entwicklungsumgebung für den \gls{lk}. 
+Ziel dieses Projektes ist die Bereitstellung einer Online-Entwicklungsumgebung für den \gls{lk}. 
 Die Entwicklungsumgebung wird für die Lehre entworfen: 
 Sie kann von Dozenten zur Demonstration eingesetzt werden, ebenso kann sie von Studenten zum Lernen verwendet werden.
 Mit der Anwendung können \glspl{lt} eingegeben und entsprechend einer \gls{aws} ausgewertet werden.
-Dabei kann die Auswertung auch Schritt-für-Schritt verfolgt werden.
+Dabei kann die Auswertung auch Schritt für Schritt verfolgt werden.
 Der Lernprozess wird durch ein System von Übungsaufgaben unterstützt.
 
 \pagebreak
@@ -264,7 +264,7 @@ Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 % Beschreibung des Kriteriums
 
 \subsection{Kann}
-\criteriumOptional{Verfügbarkeit im Internet}{crt:webapp}
+\criteriumOptional{Verfügbarkeit im Browser}{crt:webapp}
 Die Anwendung kann ohne Installation in einem \glslink{brow}{kompatiblen Internetbrowser} ausgeführt werden.
 
 \criteriumOptional{Weitere \glspl{aws}}{crt:awsstrats}
@@ -603,6 +603,32 @@ Stattdessen wird der nächste Schritt gemäß \gls{ao} angezeigt.}
 {Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Darstellungsfeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
+
+\test{Erstellen vom Permalinks}{tst:perma}
+% fehlt: \tests{fnc:perma}
+% fehlt: \tests{fnc:steps}
+
+\teststep{Benutzer "Edsger Dijkstra" befindet sich auf der Wavelength-Seite.}
+{Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine Reduktionsordnung und einen
+Darstellungsmodus aus, begibt sich in den Schritt-für-Schritt-Modus und durchläuft einige
+Schritte der Auswertung.}
+{Die Anwendung verhält sich wie spezifiziert.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Edsger wählt die "Share"-Schaltfläche im unteren Bereich der Anwendung an.}
+{Neben der Schaltfläche erscheint eine URL wie in Abbildung~\ref{img:share}
+abgebildet.}
+
+\teststep{Edsger hat die URL in seine Zwischenablage kopiert.}
+{Edsger wählt die URL in einem neuen Browserfenster an.}
+{Die IDE öffnet sich im neuen Fenster und befindet sich im gleichen Zustand wie im
+alten Fenster.}
+
+\teststep{Die IDE ist im neuen Fenster geöffnet.}
+{Edsger wählt die Zurück-Schaltfläche.}
+{Der letzte, im alten Browserfenster durchgeführte, Schritt wird im neuen Browserfenster
+rückgängig gemacht.}
+
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}
@@ -708,6 +734,7 @@ Bei Auswahl des Zahnradsymbols in der linken oberen Ecke öffnet sich ein weiter
 	\centering
 	\includegraphics{img/share}
 	\caption{Bei Betätigen des Share Knopfes wird ein entsprechender Link erstellt.}
+	\label{img:share}
 \end{figure}
 
 Wird das Darstellungsformat "Tree" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} als Syntaxbaum im Ausgabefeld angezeigt.

@@ -244,6 +244,8 @@
 
 \section{Einleitung}
 Ziel dieses Projektes ist die Bereitstellung einer Online-Entwicklungsumgebung für den \gls{lk}. 
+Sie muss nicht heruntergeladen werden.
+Sie kann direkt über einen \glslink{brow}{kompatiblen Browser} verwendet werden.
 Die Entwicklungsumgebung wird für die Lehre entworfen: 
 Sie kann von Dozenten zur Demonstration eingesetzt werden, ebenso kann sie von Studenten zum Lernen verwendet werden.
 Mit der Anwendung können \glspl{lt} eingegeben und entsprechend einer \gls{aws} ausgewertet werden.
@@ -276,10 +278,6 @@ Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 % Syntax:
 % \criterium{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
-
-\subsection{Kann}
-\criteriumOptional{Verfügbarkeit im Browser}{crt:webapp}
-Die Anwendung kann ohne Installation in einem \glslink{brow}{kompatiblen Internetbrowser} ausgeführt werden.
 
 \criteriumOptional{Weitere \glspl{aws}}{crt:awsstrats}
 Die Anwendung kann neben der \glslink{nr}{Normal-Reduktionsordnung} auch \gls{cbn}, \gls{cbv}
@@ -490,14 +488,6 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 Der Nutzer kann eine laufende Reduktion jederzeit abbrechen.
 Nach Abbruch ist es nicht möglich, die Auswertung fortzusetzen.
 Es wird der zuletzt berechnete \gls{lt} angezeigt.
-
-\functionality{Verfügbarkeit im Internet}{fnc:webapp}
-\fulfills{crt:webapp}
-Die Entwicklungsumgebung steht online zur Verfügung.
-Zur Benutzung muss sie nicht heruntergeladen werden.
-Sie kann direkt über einen \glslink{brow}{kompatiblen Browser} verwendet werden.
-%Es wird eine Implementierung mit dem Google Web Toolkit (GWT) angestrebt.
-%Dieses unterstützt folgende Browser: Firefox; Internet Explorer 8, 9, 10, 11; Safari 5, 6; Chromium und Google Chrome; Opera in der neuesten Version.
 
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:bind}

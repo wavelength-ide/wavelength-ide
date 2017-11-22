@@ -203,6 +203,20 @@
 	name={$\beta$-Normalform},
 	description={Ein \gls{lt} ist in $\beta$-Normalform, wenn keine \gls{beta} mehr anwendbar ist.}
 }
+\newglossaryentry{nb}
+{
+	name=Namensbindung,
+	description={Einem \gls{lt} kann ein Name zugewiesen werden. 
+		Danach steht dieser Name als Ersatz für den \gls{lt}.
+		Die Zuweisung hat die Form: <Name> $\coloneqq$ <\gls{lt}>, wobei die spitzen Klammern hier nur
+		der Übersicht wegen eingefügt wurden und im eigentlichen Ausdruck nicht vorkommen.
+		Als Name zugelassen sind alle Zeichen und Zeichenfolgen ohne die folgenden Zeichen: 
+		\begin{tabular}{| l | c | c | c | r |}
+			\hline
+				$\lambda$ & . & = & : & \textbackslash \\
+			\hline
+		\end{tabular}}
+}
 
 % Syntax:
 %\newglossaryentry{label}
@@ -256,7 +270,7 @@ ausgegeben werden.
 Beim Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
 Fehlermeldung ausgegeben.
 
-\criterium{Abbruch der Ausführung}{ctr:cancel}
+\criterium{Abbruch der Ausführung}{crt:cancel}
 Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 
 % Syntax:
@@ -471,6 +485,89 @@ schließenden Klammer an der problematischen Stelle zu einem syntaktisch korrekt
 
 Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
+\functionality{Abbruch der Ausführung}{fnc:cancel}
+\fulfills{crt:cancel}
+Der Nutzer kann eine laufende Reduktion jederzeit abbrechen.
+Nach Abbruch ist es nicht möglich, die Auswertung fortzusetzen.
+Es wird der zuletzt berechnete \gls{lt} angezeigt.
+
+\functionality{Verfügbarkeit im Internet}{fnc:webapp}
+\fulfills{crt:webapp}
+Die Entwicklungsumgebung steht online zur Verfügung.
+Zur Benutzung muss sie nicht heruntergeladen werden.
+Sie kann direkt über einen \glslink{brow}{kompatiblen Browser} verwendet werden.
+%Es wird eine Implementierung mit dem Google Web Toolkit (GWT) angestrebt.
+%Dieses unterstützt folgende Browser: Firefox; Internet Explorer 8, 9, 10, 11; Safari 5, 6; Chromium und Google Chrome; Opera in der neuesten Version.
+
+\functionality{Namensbindung}{fnc:bind}
+\fulfills{crt:bind}
+\glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
+Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.
+Der Name kann in der Eingabe an Stelle des \glslink{lt}{$\lambda$-Terms} eingesetzt werden.
+In der Ausgabe wird der Name nicht berücksichtigt. 
+
+\functionality{Schritt-für-Schritt Auswertung}{fnc:steps}
+\fulfills{crt:steps}
+Es gibt einen Knopf um den Schritt-für-Schritt Modus einzuleiten.
+Durch Drücken dieses Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
+Ist sie syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und der Schritt-für-Schritt Modus beendet.
+Ist sie syntaktisch korrekt, so wird die Eingabe in das Darstellungsfeld übernommen.
+\\
+Der Knopf kann auch während einer laufenden Auswertung gedrückt werden.
+In diesem Fall wird die Auswertung pausiert.
+%Die vorherigen Schritte werden nicht gespeichert.
+%Es ist nicht möglich, diese rückgängig zu machen.
+\\
+Der "vor"-Knopf wird aktiviert.
+Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird markiert.
+
+Beim Klick auf "vor" passiert Folgendes:
+\begin{itemize}
+\item Der markierte Term wird reduziert.
+\item Der reduzierte Term wird in einer neuen Zeile im Darstellungsfeld angezeigt.
+\item Die Markierung in der alten Zeile wird entfernt.
+\item Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird in der neuen Zeile markiert.
+\item Der "zurück"-Knopf wird aktiviert.
+\end{itemize}
+
+Wurde der "vor"-Knopf mindestens einmal gedrückt, so wird der "zurück"-Knopf aktiviert.
+Er kann so oft gedrückt werden wie der "vor"-Knopf gedrückt wurde.
+
+Beim Klick auf "zurück" passiert Folgendes:
+\begin{itemize}
+\item Die neueste Zeile im Darstellungsfeld wird entfernt.
+\item In der Zeile davor wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.
+\item Ist die neueste Zeile die erste, so wird der "zurück"-Knopf deaktiviert.
+\end{itemize}
+
+Wird der Cursor auf ein nicht markiertes, zu einem \gls{redex} gehörendes $\lambda$-Symbol bewegt, so passiert Folgendes:
+\begin{itemize}
+\item Die Markierung in der aktuellen Zeile wird entfernt.
+\item Der zum $\lambda$-Symbol gehörige \gls{redex} wird markiert.
+\item Wird der Cursor wegbewegt, so wird die neue Markierung entfernt und die alte wiederhergestellt.
+\end{itemize}
+
+Wird auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol geklickt, so passiert Folgendes:
+\begin{itemize}
+\item Der angeklickte Term wird reduziert.
+\item Das Ergebnis wird in einer neuen Zeile angezeigt.
+\item Die Markierungen in der alten Zeile werden entfernt.
+\item In der neuen Zeile wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.
+\end{itemize}
+
+Wird die \gls{aws} geändert, so wird die Markierung in der aktuellen Zeile entfernt.
+Dann wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.\\
+Wird das Darstellungsformat geändert, so wird die gesamte Ausgabe im Darstellungsfeld entfernt.
+Die entfernte Ausgabe wird im neuen Darstellungsformat rekonstruiert und angezeigt.\\
+Wird die Ausgabelänge geändert, so werden alle Zeilen im Darstellungsfeld angepasst.\\
+Beim Klick auf den "Abbruch"-Knopf wird der Schritt-für-Schritt Modus beendet.
+Alle Einträge im Darstellungsfeld werden entfernt.
+Der "vor"- und der "zurück"-Knopf werden deaktiviert.\\
+Beim Klick auf den "play"-Knopf wird der Schritt für Schritt Modus beendet.
+Alle Einträge im Darstellungsfeld werden entfernt.
+Der "vor"- und der "zurück"-Knopf werden deaktiviert.
+Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
+
 % Syntax:
 % \functionality{Überschrift der FA}{fnc:label}
 % \fulfills{crt:label1}
@@ -532,7 +629,7 @@ Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 \tests{fnc:cbn}
 \tests{fnc:cbv}
 \tests{fnc:ao}
-% fehlt: \tests{fnc:steps}
+\tests{fnc:steps}
 % fehlt: \tests{fnc:interactive}
 
 \teststep{Benutzer "Donald Knuth" befindet sich auf der Wavelength-Seite.}

@@ -290,8 +290,7 @@ auch als Unicode-Text, \LaTeX-Quellcode, Haskell-Quellcode und Lisp-Quellcode fo
 werden.
 
 \criteriumOptional{Darstellungsformate}{crt:display}
-Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in
-\glslink{vls}{vereinfachter $\lambda$-Syntax}, Unicode-Darstellung und als Syntaxbaum
+Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in Unicode-Darstellung und als Syntaxbaum
 dargestellt werden.
 
 \criteriumOptional{Erweiterte Fehlerdiagnostik}{crt:diag}
@@ -350,6 +349,7 @@ Die Anwendung soll nur in englischer Sprache verfügbar sein.
 \pagebreak
 
 \section{Funktionale Anforderungen}
+
 \functionality{Editor}{fnc:ed}
 \fulfills{crt:input}
 \fulfills{crt:editor}
@@ -399,23 +399,28 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 \fulfills{crt:reduce}
 \fulfills{crt:display}
 Der Nutzer hat die Möglichkeit auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
-Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des grünen Knopfes (\cref{fig:actionButtons}) gestartet. %TODO umbenennung des "grünen Knopfes"
-Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt.
-Der Nuter kann die \gls{aws} während der Komplettauswertung nicht ändern.\\
+Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des Start Knopfes (\cref{fig:actionButtons}) gestartet.
+Ist die Eingabe syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und die Komplettauswertung verlassen.
+Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} und die Form der Ausgabe durch den derzeitigen Darstellungsmodus (\cref{fig:outputOptions}).\\
 Die Komplettauswertung übernimmt die automatische Auswertung, bis die derzeit aktive \gls{aws} keine \gls{beta} mehr vorgibt.
-Wenn der \gls{lt} keine \gls{nrmlform} bestitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht. \\
-%TODO bild und/oder glossar eintrag für ausgabefenster?
-Terminiert die Auswertung, wird im Ausgabefenster das Ergebnis im gewählten Ausgabeumfang ausgegeben. %TODO referenz auf Bild
-Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster alle 100 \glspl{beta} der aktuell berechnete \gls{lt} ausgegeben.
+Wenn der \gls{lt} keine \gls{nrmlform} bestitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht. 
+
+\functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
+\fulfills{crt:partial}
+Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster der derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
+%TODO Periodically ok?
+Insbesondere bei Auswahl der Ausgabelänge Full oder Periodically werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
+
+%TODO Verweise auf den Zusatndsautomaten
+\functionality{Unterbrechung der \gls{cmpltapp}}{fnc:cancelcmplt}
+\fulfills{crt:cancel}
 Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen:
 \begin{itemize}
-	%TODO umbenennung der Knöpfe
-	\item Das Drücken des roten Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
-	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Das Drücken des grünen Knopfes hat keine Funktion mehr, bis der Benutzer eine neue Eingabe in das Eingabefeld geschrieben hat oder %TODO Es ist jetzt spät. Lass mal erst auf einen Zustandsautomaten einigen
-	\item Das Drücken des pinken Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. %TODO Step-by-Step-Modus glossary entry
+	\item Das Drücken des Abbrechen Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
+	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden
+	\item Das Drücken des Pause Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
 	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den Step-by-Step-Modus.
 \end{itemize}
-
 
 \functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
 \fulfills{crt:reduce}
@@ -435,8 +440,31 @@ Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{a
 
 \functionality{Auswahl einer \gls{aws}}{fnc:awsstrats}
 \fulfills{crt:awsstrats}
-Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen. Hierbei kann nur eine \gls{aws} gleichzeitig aktiv sein. Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. Siehe \cref{fig:outputOptions}
+Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
+Hierbei kann nur eine \gls{aws} gleichzeitig aktiv sein. 
+Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
+Der Nutzer kann die \gls{aws} nicht während der \gls{cmpltapp} ändern. 
+%TODO add Step-by-Step-Modus zum glossary
+Insbesondere kann der Nutzer die \gls{aws} im Step-by-Step-Modus ändern.
+%TODO link zu bildern wegen markierungen
+Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und die Art der Markierung von \gls{lt} im Ausgabefenster.
 
+\functionality{Auswahl der Ausgabelänge}{fnc:selectsize}
+\fulfills{crt:partial}
+Der Nutzer kann die Ausgabelänge über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}).
+Hierbei kann nur ein Ausgabeumfang gleichzeitig aktiv sein. 
+Standardmäßig ist der Ausgabeumfang Result only ausgewählt. 
+Der Nutzer kann den Ausgabeumfang während der \gls{cmpltapp} nicht ändern.
+Der Ausgabeumfang bestimmt die Menge an Teilergebnissen einer Auswertung, die die \gls{cmpltapp} in das Ausgabefeld schreibt.
+Hierbei stehen dem Nutzer folgende Ausgabelängen zur verfügung:
+\begin{itemize}
+	\item Result only. Es wird nur das Ergebnis der \gls{cmpltapp} ausgegeben
+	\item Shortened. Es werden zu Beginn der Auswertung die ersten 50 Schritte ausgegeben.
+	Zudem wir das Ergebnis ausgegeben, sobald es errechnet wurde.
+	\item Full. Es wird jeder einzelne Teilschritt ausgegeben sobald er berechnet wurde.
+	\item Periodically. Jeder hundertste Teilschritt wird ausgegeben sobald er berechne wurde. 
+	Insbesondere wird auch das Endergebnis ausgegeben
+\end{itemize}
 
 \functionality{Standardbibliothek}{fnc:lib}
 \fulfills{crt:lib}
@@ -757,8 +785,9 @@ Der grüne Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des ro
 \begin{figure}[H]
 	\centering
 	\includegraphics{img/actionButton}
-	%TODO "grüner Knopf" umbenennen
-	\caption{\label{fig:actionButtons} Schritt-zurück, Step-by-Step-Modus, Schritt-vorwärts, "roter Knopf" und "grüner Knopf" (von links nach rechts)}
+	%TODO pausieren Button hinzufügen
+	\caption{\label{fig:actionButtons} Schritt-zurück, Step-by-Step-Modus, 
+	Schritt-vorwärts, Start und Abbrechen (von links nach rechts)}
 \end{figure}
 
 Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt werden. 
@@ -779,6 +808,7 @@ Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt w
 	\begin{subfigure}[r]{0.25\textwidth}
 	\centering
 		\includegraphics{img/outputSizeMenu}
+	%TODO Add periodically?
 	\caption{Auswahl der Ausgabelänge}	
 	\end{subfigure}
 	\caption{\label{fig:outputOptions} Ausgabeoptionen}

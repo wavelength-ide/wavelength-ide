@@ -407,17 +407,18 @@ Wenn der \gls{lt} keine \gls{nrmlform} bestitzt oder die \gls{aws} diese nicht f
 
 \functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
 \fulfills{crt:partial}
-Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster der derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
+Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster das derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
 %TODO Periodically ok?
-Insbesondere bei Auswahl der Ausgabelänge Full oder Periodically werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
+Insbesondere bei einer Auswahl der Ausgabelänge Full oder Periodically werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
 
 %TODO Verweise auf den Zusatndsautomaten
 \functionality{Unterbrechung der \gls{cmpltapp}}{fnc:cancelcmplt}
 \fulfills{crt:cancel}
-Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen:
+Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{fig:state}):
 \begin{itemize}
 	\item Das Drücken des Abbrechen Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
-	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden
+	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
+	Dies wird dem Nutzer durch eine entsprechende Ausgabe auf dem Ausgabefled mitgeteilt.
 	\item Das Drücken des Pause Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
 	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den Step-by-Step-Modus.
 \end{itemize}
@@ -444,7 +445,6 @@ Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswäh
 Hierbei kann nur eine \gls{aws} gleichzeitig aktiv sein. 
 Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
 Der Nutzer kann die \gls{aws} nicht während der \gls{cmpltapp} ändern. 
-%TODO add Step-by-Step-Modus zum glossary
 Insbesondere kann der Nutzer die \gls{aws} im Step-by-Step-Modus ändern.
 %TODO link zu bildern wegen markierungen
 Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und die Art der Markierung von \gls{lt} im Ausgabefenster.
@@ -618,12 +618,32 @@ Ebenso können Einstellungen ohne Auswirkung auf die laufende Auswertung geände
 Wird erneut eine Auswertung angefordert, so wird die laufende Auswertung abgebrochen und die zum Zeitpunkt der Anforderung vorhandene Eingabe ausgewertet.
 
 %%%%%%%%%%%
+\section{Zustandsautomat}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/Zustandsautomat}
+	\caption{\label{fig:state} Zustandsautomat der Anwendung}
+\end{figure}
+
+Die Anwendung kann sich in drei verschiedenen Zuständen befinden, wobei jeder Zustand ein Gegenstück im Übungsmodus besitzt. 
+%TODO verlinken vom Übunsgmodus
+Der Übungsmodus wird durch Auswahl einer Übungsaufgabe betreten und durch Beendigung des Übungsmodus verlassen.\\
+Beim Start der Anwendung befindet sich der Nutzer im Eingabemodus. In diesem Modus kann der Nutzer einen \gls{lt} in das Eingabefeld eingeben. 
+Durch drücken des Step-by-Step oder Start Knopfes (\cref{fig:actionButtons}) gelangt der Nutzer in den jeweiligen Auswertungsmodus und es beginnt die Auswertung des eingegebenen \glslink{lt}{$\lambda$-Terms}. 
+Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Ausgabefeld stehen, werden diese gelöscht.\\ 
+Durch Drücken des Start oder Pause Knopfes kann der Nutzer zwischen den entsprechenden Auswertungsmodi wechseln. 
+Insbesondere wird beim Wechsel von Step-by-Step-Modus zur Komplettauswertung der zuletzt ausgegebene \gls{lt} des Ausgabefeldes weiter ausgewertet.
+Die Auswertungsmodi können erst durch das Drücken des Abbrechen Knopfes verlassen werden. Es erscheint eine entsprechende Ausgabe in Ausgabefeld. Erst jetzt kann der Nutzer neue Eingaben im Eingabefeld auswerten lassen.
+
+
+%%%%%%%%%%%
 \section{Tests}
 
 \test{Komplettauswertung}{tst:complete}
 \tests{fnc:ed}
 \tests{fnc:completereduce}
-% Fehlt: \tests{fnc:partial}
+\tests{fnc:live}
 \tests{fnc:nr}
 
 \teststep{Nutzer "Ben Fielder" hat einen Browser geöffnet.}
@@ -814,7 +834,7 @@ Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt w
 	\begin{subfigure}[r]{0.25\textwidth}
 	\centering
 		\includegraphics{img/outputSizeMenu}
-	%TODO Add periodically?
+	%TODO Add periodically als ausgabelänge
 	\caption{Auswahl der Ausgabelänge}	
 	\end{subfigure}
 	\caption{\label{fig:outputOptions} Ausgabeoptionen}

@@ -280,6 +280,8 @@ Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 % \criterium{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
 
+\subsection{Kann}
+
 \criteriumOptional{Weitere \glspl{aws}}{crt:awsstrats}
 Die Anwendung kann neben der \glslink{nr}{Normal-Reduktionsordnung} auch \gls{cbn}, \gls{cbv}
 und \gls{ao} als \gls{aws} verwenden.
@@ -397,7 +399,6 @@ Der Editor verfügt über die folgenden Funktionalitäten:
 
 \functionality{\gls{cmpltapp}}{fnc:completereduce}
 \fulfills{crt:reduce}
-\fulfills{crt:display}
 Der Nutzer hat die Möglichkeit auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
 Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des Start Knopfes (\cref{fig:actionButtons}) gestartet.
 Ist die Eingabe syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und die Komplettauswertung verlassen.
@@ -408,20 +409,39 @@ Wenn der \gls{lt} keine \gls{nrmlform} bestitzt oder die \gls{aws} diese nicht f
 \functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
 \fulfills{crt:partial}
 Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster das derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
-%TODO Periodically ok?
 Insbesondere bei einer Auswahl der Ausgabelänge Full oder Periodically werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
 
-%TODO Verweise auf den Zusatndsautomaten
 \functionality{Unterbrechung der \gls{cmpltapp}}{fnc:cancelcmplt}
 \fulfills{crt:cancel}
 Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{fig:state}):
 \begin{itemize}
 	\item Das Drücken des Abbrechen Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
 	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
-	Dies wird dem Nutzer durch eine entsprechende Ausgabe auf dem Ausgabefled mitgeteilt.
+	Dies wird dem Nutzer durch eine entsprechende Ausgabe auf dem Ausgabefeld mitgeteilt.
 	\item Das Drücken des Pause Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
 	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den Step-by-Step-Modus.
 \end{itemize}
+
+%TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
+\functionality{Unicode-Darstellung}{fnc:unicode}
+\fulfills{crt:display}
+%TODO Verlinken von Bildern
+Der Nutzer hat die Möglichkeit sich Auswertungen von \gls{lt} in Unicode anzeigen zu lassen. Die Anzeige wird auf dem Ausgabefeld ausgegeben.\\
+Jeder neu ausgegeben Auswertungsschritt wird in einer neuen Zeile Ausgegeben. 
+Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt.
+
+\functionality{Syntaxbaum Darstellung}{fnc:tree}
+\fulfills{crt:display}
+Der Nutzer hat die Möglichkeit sich Auswertungen von \gls{lt} als Syntaxbaum anzeigen zu lassen. Die Anzeige wird auf dem Ausgabefeld ausgegeben.\\
+Jeder neu ausgegeben Auswertungsschritt wird in als neuer Baum unter dem letzten Auswertungsschritt ausgegeben. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
+%TODO auf Baumübersetung einigen
+\begin{itemize}
+	\item \gls{lapp} werden als Elternknoten mit dem Namen dargestellt wobei die \gls{lt}
+\end{itemize}
+
+\functionality{Auswahl der Darstellungsform}{fnc:display}
+\fulfills{crt:display}
+%TODO Verlinken von Bildern
 
 \functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
 \fulfills{crt:reduce}

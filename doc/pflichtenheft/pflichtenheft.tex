@@ -425,22 +425,20 @@ Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{
 %TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
 \functionality{Unicode-Darstellung}{fnc:unicode}
 \fulfills{crt:display}
-%TODO Verlinken von Bildern
 Der Nutzer hat die Möglichkeit sich Auswertungen von \gls{lt} in Unicode anzeigen zu lassen. Die Anzeige wird auf dem Ausgabefeld ausgegeben.\\
 Jeder neu ausgegeben Auswertungsschritt wird in einer neuen Zeile Ausgegeben. 
-Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt.
+Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt (siehe \cref{fig:unicode}).
 
 \functionality{Syntaxbaum Darstellung}{fnc:tree}
 \fulfills{crt:display}
-Der Nutzer hat die Möglichkeit sich Auswertungen von \gls{lt} als Syntaxbaum anzeigen zu lassen. Die Anzeige wird auf dem Ausgabefeld ausgegeben.\\
+Der Nutzer hat die Möglichkeit sich Auswertungen von \gls{lt} als Syntaxbaum anzeigen zu lassen. Die Anzeige wird auf dem Ausgabefeld ausgegeben (siehe \cref{fig:tree}).\\
 Jeder neu ausgegeben Auswertungsschritt wird in als neuer Baum unter dem letzten Auswertungsschritt ausgegeben. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
-%TODO auf Baumübersetung einigen
-%TODO Baumdarstellung in den GUI entwürfen updaten
+%TODO auf Baumübersetzung einigen
 %TODO Verlinken von Bildern
 \begin{itemize}
-	\item \gls{lapp} werden als Elternknoten mit dem Namen ``App'' dargestellt. 
+	\item \gls{lapp} werden als Elternknoten mit dem Namen "App" dargestellt. 
 	Der erste und zweite \gls{lt} der \gls{lapp} wird als Kindknoten angefügt.
-	\item \gls{labs} mit der \gls{var} $x$ werden als Elternknoten mit dem Namen ``$\lambda x$'' dargestellt. 
+	\item \gls{labs} mit der \gls{var} $x$ werden als Elternknoten mit dem Namen "$\lambda x$" dargestellt. 
 	Der Elternknoten besitzt einen Kindknoten, welcher den \gls{lt} der \gls{labs} enthält.
 	\item Sollte ein Kindknoten des Baums wieder eine \gls{lapp} oder eine \gls{labs} enthalten, wird dieser Knoten wieder als Eltern und Kindknoten dargestellt.
 	\end{itemize}
@@ -559,7 +557,7 @@ Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 
 \functionality{Schritt-für-Schritt Auswertung}{fnc:steps}
 \fulfills{crt:steps}
-Durch Drücken des "step-by-step"-Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
+Durch Drücken des "Step-by-Step"-Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
 Ist sie syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und der Schritt-für-Schritt Modus beendet.
 Ist sie syntaktisch korrekt, so wird die Eingabe in das Darstellungsfeld übernommen. 
 Der "vor"-Knopf wird aktiviert.
@@ -610,7 +608,7 @@ Wird die Ausgabelänge geändert, so werden alle Zeilen im Darstellungsfeld ange
 Beim Klick auf den "Abbruch"-Knopf wird der Schritt-für-Schritt Modus beendet.
 Alle Einträge im Darstellungsfeld werden entfernt.
 Der "vor"- und der "zurück"-Knopf werden deaktiviert.\\
-Beim Klick auf den "play"-Knopf wird der Schritt für Schritt Modus beendet.
+Beim Klick auf den "Start"-Knopf wird der Schritt für Schritt Modus beendet.
 Alle Einträge im Darstellungsfeld werden entfernt.
 Der "vor"- und der "zurück"-Knopf werden deaktiviert.
 Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
@@ -693,7 +691,7 @@ die \gls{nr} und als Ausgabeumfang die volle Ausgabe ausgewählt sind.}
 {Die IDE ist mit den korrekten Standardeinstellungen initialisiert.}
 
 \teststep{Alle Einstellungen sind korrekt.}
-{Ben betätigt den grünen "Play"-Knopf}
+{Ben betätigt den "Start"-Knopf}
 {Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \gls{nr} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
@@ -707,7 +705,7 @@ Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
 \teststep{Benutzer "Donald Knuth" befindet sich auf der Wavelength-Seite.}
 {Er gibt einen syntaktisch korrekten \gls{lt} in das Eingabefeld ein und betätigt
-die "Fußabdruck"-Schaltfläche.}
+die "Step-by-Step"-Schaltfläche.}
 {Der eingegebene Term wird in das Darstellungsfeld übernommen und die Vor- und
 Zurück-Schaltflächen werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschritt
 gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
@@ -821,13 +819,12 @@ rückgängig gemacht.}
 \section{Seitenentwürfe}
 
 %TODO: resizing erklären
-%TODO: Pause Button
 %TODO: einheitliche Benennung Button
 %TODO: FA resizing
 %TODO: wohin mit Kurzbeschreibung der Übungsaufgaben
 
 % Hier ganz normale figures mit Bildern
-Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das Editorfeld, das untere ist das Ausgabefeld. 
+Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das Editorfeld, das untere ist das Ausgabefeld. Das Größenverhältnis der Felder kann mittels einer Schaltfläche angepasst werden.
 
 \begin{figure}[H]
 	\centering
@@ -837,19 +834,23 @@ Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das
 \end{figure}
 
 
-Der grüne Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des roten Knopfes wird die Auswertung abgebrochen. Bei Drücken des rosafarbenen Knopfes wird die Schritt für Schrittauswertung gestartet, durch welche sich der Nutzer mit den beiden Knöpfen daneben navigieren kann.
+Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "Abbrechen"-Buttons wird die Auswertung abgebrochen. Bei Drücken der "Step-by-Step"-Schaltfläche wird die Schritt-für-Schritt-Auswertung gestartet, durch welche sich der Nutzer mit den beiden Knöpfen daneben navigieren kann.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{img/actionButton}
-	%TODO pausieren Button hinzufügen
 	\caption{\label{fig:actionButtons} Schritt-zurück, Step-by-Step-Modus, 
-	Schritt-vorwärts, Start und Abbrechen (von links nach rechts)}
+	Schritt-vor, Start und Abbrechen (von links nach rechts)}
 \end{figure}
 
 
 
-Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt werden. 
+\begin{figure}[H]
+	\centering
+	\includegraphics{img/pauseButton}
+	\caption{Wurde die Auswertung mittels "Start" gestartet, erscheint ein "Pause"-Knopf um in den Step-by-Step-Modus wechseln zu können.}
+\end{figure}
+
 
 \begin{figure}[H]
 	\begin{subfigure}[l]{0.25\textwidth}
@@ -867,10 +868,9 @@ Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt w
 	\begin{subfigure}[r]{0.25\textwidth}
 	\centering
 		\includegraphics{img/outputSizeMenu}
-	%TODO Add periodically als ausgabelänge
 	\caption{Auswahl der Ausgabelänge}	
 	\end{subfigure}
-	\caption{\label{fig:outputOptions} Ausgabeoptionen}
+	\caption{\label{fig:outputOptions} Verschiedene Ausgabeoptionen können festgelegt werden.}
 \end{figure}
 
 
@@ -920,7 +920,7 @@ Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt w
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/displayTree1}
-	\caption{Wird das Darstellungsformat "Tree" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} als Syntaxbaum im Ausgabefeld angezeigt.}
+	\caption{\label{fig:tree}Wird das Darstellungsformat "Tree" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} als Syntaxbaum im Ausgabefeld angezeigt.}
 \end{figure}
 
 
@@ -942,7 +942,7 @@ Durch Auswahl eines Menüs mittig links können die Ausgabeoptionen festgelegt w
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/Unicode_Darstellunsgmodus}
-	\caption{Wird das Darstellungsformat "Unicode" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} in Unicode im Ausgabefeld angezeigt.}
+	\caption{\label{fig:unicode}Wird das Darstellungsformat "Unicode" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} in Unicode im Ausgabefeld angezeigt.}
 \end{figure}
 
 

@@ -435,13 +435,23 @@ Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha}
 Der Nutzer hat die Möglichkeit sich Auswertungen von \gls{lt} als Syntaxbaum anzeigen zu lassen. Die Anzeige wird auf dem Ausgabefeld ausgegeben.\\
 Jeder neu ausgegeben Auswertungsschritt wird in als neuer Baum unter dem letzten Auswertungsschritt ausgegeben. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
 %TODO auf Baumübersetung einigen
+%TODO Baumdarstellung in den GUI entwürfen updaten
+%TODO Verlinken von Bildern
 \begin{itemize}
-	\item \gls{lapp} werden als Elternknoten mit dem Namen dargestellt wobei die \gls{lt}
-\end{itemize}
+	\item \gls{lapp} werden als Elternknoten mit dem Namen ``App'' dargestellt. 
+	Der erste und zweite \gls{lt} der \gls{lapp} wird als Kindknoten angefügt.
+	\item \gls{labs} mit der \gls{var} $x$ werden als Elternknoten mit dem Namen ``$\lambda x$'' dargestellt. 
+	Der Elternknoten besitzt einen Kindknoten, welcher den \gls{lt} der \gls{labs} enthält.
+	\item Sollte ein Kindknoten des Baums wieder eine \gls{lapp} oder eine \gls{labs} enthalten, wird dieser Knoten wieder als Eltern und Kindknoten dargestellt.
+	\end{itemize}
 
 \functionality{Auswahl der Darstellungsform}{fnc:display}
 \fulfills{crt:display}
-%TODO Verlinken von Bildern
+Der Nutzer kann die derzeitig aktive Darstellungsform seiner Ausgabe über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}).
+Die Darstellungsform entscheidet über die Visualisierung der Ausgabe im Ausgabefenster. Die Darstellungsform hat jedoch keine Auswirkung auf das Exportieren von Ergebnissen.\\
+Standardmäßig ist die Unicode-Darstellung ausgewählt.
+Der Nutzer kann die Darstellungsform nur im Eingabemodus ändern (vgl.\cref{fig:state}).
+Das bedeutet insbesondere, dass der Nutzer das Darstellungsformat nicht während einer laufenden Auswertung ändern kann.
 
 \functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
 \fulfills{crt:reduce}
@@ -462,12 +472,11 @@ Der Nutzer kann zur automatischen Auswertung eines \gls{lt} die \gls{aws} \gls{a
 \functionality{Auswahl einer \gls{aws}}{fnc:awsstrats}
 \fulfills{crt:awsstrats}
 Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
-Hierbei kann nur eine \gls{aws} gleichzeitig aktiv sein. 
-Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
-Der Nutzer kann die \gls{aws} nicht während der \gls{cmpltapp} ändern. 
-Insbesondere kann der Nutzer die \gls{aws} im Step-by-Step-Modus ändern.
 %TODO link zu bildern wegen markierungen
-Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und die Art der Markierung von \gls{lt} im Ausgabefenster.
+Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und die Art der Markierung von \gls{lt} im Ausgabefenster.\\
+Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
+Der Nutzer kann die \gls{aws} nicht während der \gls{cmpltapp} ändern (vgl.\cref{fig:state}). 
+Insbesondere kann der Nutzer die \gls{aws} im Step-by-Step-Modus ändern.
 
 \functionality{Auswahl der Ausgabelänge}{fnc:selectsize}
 \fulfills{crt:partial}

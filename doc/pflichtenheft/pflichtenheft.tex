@@ -289,16 +289,16 @@ Der Lernprozess wird durch ein System von Übungsaufgaben unterstützt.
 \glspl{lt} können in Form der \glslink{vls}{vereinfachten $\lambda$-Syntax}
 mit der Tastatur in die Software eingegeben werden.
 
-\criterium{Reduktion von \glslink{lt}{$\lambda$-Termen}}{crt:reduce}
+\criterium{Auswertung von \glslink{lt}{$\lambda$-Termen}}{crt:reduce}
 Eingegebene \glspl{lt} können, sofern möglich, mit Hilfe der \glslink{nr}{Normal-Reduktionsordnung} vollständig
 reduziert werden. Die so bestimmte Normalform kann in \glslink{vls}{vereinfachter $\lambda$-Syntax}
-ausgegeben werden.
+dargestellt werden.
 
 \criterium{Fehlermeldung bei invalider Eingabe}{crt:error}
 Beim Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
-Fehlermeldung ausgegeben.
+Fehlermeldung dargestellt.
 
-\criterium{Abbruch der Ausführung}{crt:cancel}
+\criterium{Abbruch der Reduktion}{crt:cancel}
 Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 
 % Syntax:
@@ -311,9 +311,9 @@ Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
 Die Anwendung kann neben der \glslink{nr}{Normal-Reduktionsordnung} auch \gls{cbn}, \gls{cbv}
 und \gls{ao} als \gls{aws} verwenden.
 
-\criteriumOptional{Weitere Ausgabeformate}{crt:output}
+\criteriumOptional{Exportformate}{crt:output}
 Die eingegebenen und reduzierten \glspl{lt} können neben der \glslink{vls}{vereinfachten $\lambda$-Syntax}
-auch als Unicode-Text, \LaTeX-Quellcode, Haskell-Quellcode und Lisp-Quellcode formatiert und ausgegeben
+auch als Unicode-Text, \LaTeX-Quellcode, Haskell-Quellcode und Lisp-Quellcode formatiert und exportiert
 werden.
 
 \criteriumOptional{Darstellungsformate}{crt:display}
@@ -327,27 +327,27 @@ Editor hervorgehoben.
 
 %TODO nötig?
 \criteriumOptional{Intelligenter Editor}{crt:editor}
-Der Editor zur Eingabe der \glspl{lt} unterstützt einen Wechsel der Schriftgröße,
+Der Editor zur Eingabe der \glspl{lt} unterstützt Standart-Editor-Funktionen,
 \glspl{mfe} und \glspl{st}.
 
 \criteriumOptional{Standardbibliothek}{crt:lib}
 Es existiert eine Standardbibliothek, die Funktionen für den Umgang mit natürlichen
-Zahlen, Listen und Tupeln und den Kombinatoren des SKI-Kalküls bereitstellt.
+Zahlen, Listen,  Tupeln, Booleans und den Kombinatoren des SKI-Kalküls bereitstellt.
 
 \criteriumOptional{Übungsaufgaben}{crt:ex}
 Das Programm enthält ein Übungsaufgaben-System, welches neben Aufgaben in aufsteigendem
 Schwierigkeitsgrad auch Einführungen und automatisierte Tests für die Lösungen des Nutzers
 enthält.
 
-\criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
+\criteriumOptional{Darstellung von Teilschritten}{crt:partial}
 Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
-Reduktionsstrategie können im ausgewählten Ausgabeformat ausgegeben werden. Hierbei
+\gls{aws} können im ausgewählten Darstellungsformat dargestellt werden. Hierbei
 können entweder alle Teilschritte, die ersten und letzten Teilschritte, oder
 einzelne Teilschritte in periodischen Abständen angezeigt werden.
 
-\criteriumOptional{Schritt-für-Schritt-Auswertung}{crt:steps}
+\criteriumOptional{Schritt-für-Schritt-Reduktion}{crt:steps}
 Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
-oder durch Pausieren einer laufenden Auswertung erreicht werden kann.
+oder durch Pausieren einer laufenden Reduktion erreicht werden kann.
 Durch Klicken kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
 \gls{aws} einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
 gemacht werden.
@@ -356,9 +356,10 @@ gemacht werden.
 Es kann ein Link generiert werden, der beim Aufrufen den gesamten Zustand
 der Sitzung wiederherstellt.
 
-\criteriumOptional{Namensbindung}{crt:bind}
+\criteriumOptional{Komfortabler $\lambda$-Code}{crt:comfcode}
 Einem \gls{lt} kann ein Name zugewiesen werden. Dieser kann anstelle des Terms
-verwendet werden.
+verwendet werden. Außerdem können Kommentare geschrieben werden, die bei der
+Auswertung nicht beachtet werden.
 % Syntax:
 % \criteriumOptional{Überschrift des Kriteriums}{crt:label}
 % Beschreibung des Kriteriums
@@ -369,7 +370,7 @@ verwendet werden.
 % Syntax:
 % \criteriumNot{Überschrift der Abgrenzung}{ctr:label}
 \criteriumNot{Nutzung über Mobilgeräte}{crt:mobile}
-Die Anwendung soll nicht auf mobilen Endgeräten eingesetzt werden.
+Die Anwendung muss nicht auf mobilen Endgeräten einsetzbar sein.
 
 \criteriumNot{Lokalisierung}{crt:lokal}
 Die Anwendung soll nur in englischer Sprache verfügbar sein.
@@ -572,7 +573,7 @@ Nach Abbruch ist es nicht möglich, die Auswertung fortzusetzen.
 Es wird der zuletzt berechnete \gls{lt} angezeigt.
 
 \functionality{Namensbindung}{fnc:bind}
-\fulfills{crt:bind}
+\fulfills{crt:comfcode}
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
 \glslink{rec}{Namensrekursion} ist ausgeschlossen.
 Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.

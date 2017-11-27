@@ -173,7 +173,7 @@
 {
 	name=Mehrfacheinrückung,
 	plural=Mehrfacheinrückungen,
-	description={Mehrfacheinrückungen rückt alle markierten Zeilen ein}
+	description={Alle markierten Zeilen werden eingerückt.}
 }
 \newglossaryentry{st}
 {
@@ -383,46 +383,16 @@ Die Anwendung soll nur in englischer Sprache verfügbar sein.
 \fulfills{crt:input}
 \fulfills{crt:editor}
 Nutzer können beliebigen Text in einem Editorfeld eingeben. 
-Der Editor verfügt über die folgenden Funktionalitäten:
+Das Editorfeld verfügt über Standart-Textfeld-Funktionalitäten mit dazugehörigen gängigen Tastenkombinationen:
 \begin{itemize}
-	\item Das Editorfeld besteht aus einer oder mehreren Zeilen, welche jeweils beliebig viele Symbole enthalten kann. Das Editorfeld ist anfangs leer; es gibt nur eine Zeile ohne Symbole.
-	\item Der Editor enthält einen blinkenden Cursor. Der Cursor zeigt die aktuelle Stelle im Editor an, die bearbeitet wird. Der Cursor befindet sich anfangs am Anfang der ersten Zeile.
-	\item Wird ein beliebiges Symbol mit der Tastatur eingegeben, so erscheint das Symbol rechts vom Cursor. Der Cursor bewegt sich hinter das Symbol. Befindet sich rechts vom Cursor bereits Text, so wird der Text nach rechts geschoben, um Platz für das neue Zeichen zu schaffen. 
-	\item Mit der Taste 'Enter' wird eine neue Zeile hinter der Zeile des Cursors erzeugt. 
-	Alle Zeilen nach dem Cursor werden nach unten geschoben, um Platz für die Zeile zu schaffen. 
-	Text hinter dem Cursor in der Zeile des Cursors wird in der selben Reihenfolge an den Anfang der neuen Zeile geschoben.
-	Der Cursor wird an den Anfang der neuen Zeile bewegt.
-	\item Mit der Taste 'Backspace' wird das Symbol links vom Cursor gelöscht und der Cursor um ein Symbol nach links bewegt. 
-	Das Löschen erfolgt, indem das Symbol entfernt wird und jeglicher Text rechts vom Symbol nach links geschoben wird, um die Lücke zu füllen.
-	Befindet sich der Cursor bereits am Anfang der Zeile und existieren Zeilen über der Zeile des Cursors, so wird die Zeile gelöscht. 
-	Hierfür wird der Cursor ans Ende der Zeile über dem Cursor bewegt, der verbleibende Text der zu löschenden Zeile ans Ende der oberen Zeile bewegt, die Zeile entfernt und alle darauffolgenden Zeilen nach oben geschoben um die Lücke zu füllen.
-	\item Mit der Taste 'Delete' wird das Symbol rechts vom Cursor gelöscht und der Cursor um ein Symbol nach rechts bewegt.
-	Befindet sich der Cursor bereits am Ende der Zeile und existieren Zeilen unter der Zeile des Cursors, so wird die Zeile gelöscht. 
-	\item Mit den Pfeiltasten kann der Cursor in die entsprechende Richtung bewegt werden. 
-	Mit der linken bzw. der rechten Pfeiltaste wird der Cursor um ein Symbol nach links bzw. um ein Symbol nach rechts bewegt. 
-	Befindet sich vor bzw. hinter dem Cursor kein Symbol und existiere Symbol in der Zeile über bzw. unter der Zeile des Cursors bewegt, insofern diese Zeile existiert.
-	Existiert kein Zeichen in der Zeile über bzw. unter dem Cursor, so wird der Cursor an den Anfang der Zeile bewegt.
-	\item Mit der Taste 'Home' wird der Cursor auf den Anfang der Zeile bewegt.
-	\item Mit der Taste 'End' wird der Cursor auf das Ende der Zeile bewegt.
-	\item Mit der Tastenkombination Shift+linke Pfeiltaste wird der Cursor zum Anfang des nächsten rechten Worts oder sonst zum Ende der Zeile bewegt. Wörter werden hierbei durch ein oder mehrere Whitespace-Symbole getrennt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der unteren Zeile bewegt.
-	\item Mit der Tastenkombination Shift+rechte Pfeiltaste wird der Cursor zum Anfang des nächsten linken Worts bewegt. Ist der Cursor bereits am Ende der Zeile, so wird der Cursor zum Anfang der oberen Zeile bewegt.
-	\item Durch einen Mausklick kann der Cursor vor das nächste Symbol links vom Mauszeiger bewegt werden.
-	\item Durch das Halten der linken Maustaste kann Text zwischen dem Cursor und dem Mauszeiger markiert werden. 
-	Befindet sich der Mauszeiger auf einer unteren Zeile, so wird der Text vom Cursor bis zum Zeilenende, alle Zeilen zwischen Cursor und Mauszeiger sowie der Text vom Zeilenanfang bis zum Mauszeiger markiert. 
-	Befindet sich der Mauszeiger auf einer oberen Zeile, so wird der Text vom Cursor bis zum Zeilenanfang, alle Zeilen zwischen Cursor und Mauszeiger sowie der Text vom Zeilenende bis zum Mauszeiger markiert. 
-	Der Cursor wird bei der Bewegung des Mauszeigers immer vor das nächste Symbol links vom Mauszeiger bewegt, die Markierung wird jedoch von der ersten Cursorposition aus fortgesetzt.
-	Durch einen Mausklick oder die Verwendung der Pfeiltasten wird der Cursor wie beschrieben bewegt und die Markierung beendet.
-	Durch die Eingabe eines Symbols, der Verwendung der 'Backspace' Taste, der 'Enter' Taste oder von STRG+V wird die beschriebene Aktion durchgeführt und der markierte Text gelöscht.
-	\item Mit der Tastenkombination STRG+C kann der aktuell markierte Text in die Zwischenablage kopiert werden.
-	\item Mit der Tastenkombination STRG+X kann der aktuell markierte Text ausgeschnitten werden. Hierfür wird der markierte Text in die Zwischenablage kopiert und daraufhin gelöscht.
-	\item Mit der Tastenkombination STRG+V wird der Text in der Zwischenablage an der Position des Cursors eingefügt. Der Cursor wird hinter den eingefügten Text bewegt. Text und Zeilen hinter der ursprünglichen Position des Cursors werden hinter die neue Position des Cursors bewegt, um Platz für den eingefügten Text zu schaffen.
-	\item Mit der Tastenkombination STRG+A wird der gesamte Text in der Eingabe markiert und der Cursor ans Ende des Texts bewegt.
-	\item Wird die Taste 'STRG' während einer Aktion, welche den Cursor bewegt, gehalten, so wird der Text zwischen der alten und der neuen Cursorposition markiert. Wird die Taste weiterhin gehalten und eine weitere Aktion ausgeführt, so startet die Markierung weiterhin bei der ersten alten Cursorposition.
-	\item Mit der Tastenkombination STRG+Z kann der letzte Aktionsblock rückgängig gemacht werden, falls ein solcher existiert. 
-	Hierbei werden textverändernde Operationen zu einem Aktionsblock zusammengefasst, falls sie in Folge ausgeführt wurden. In Folge ausführen bedeutet, dass sich zwischen den Operationen keine Pausen befinden, welche länger als 500ms sind. Außerdem müssen alle Operationen in einem Aktionsblock entweder Eingabeoperationen oder Löschoperationen sein, was bedeutet, dass der Wechsel zwischen Eingabeoperationen und Löschoperationen einen neuen Aktionsblock anfängt.
-	Es können beliebig viele Aktionsblöcke rückgängig gemacht werden.
-	\item Mit der Tastenkombination STRG+Y kann der letzte Aktionsblock, welcher rückgängig gemacht wurde, wieder ausgeführt werden, falls ein solcher existiert.
+	\item Editieren, Markieren und Navigieren von Text im Eingabefeld
+	\item Kopieren, Ausschneiden und Einfügen
+	\item Undo und Redo
 \end{itemize}
+Außerdem verfügt das Editorfeld über \gls{st}s und \gls{mfe}.
+Bei der Eingabe einer öffnenden Klammer wird auch direkt die schließende Klammer hinter der öffnenden Klammer eingefügt.
+Wird der Editor-Cursor vor oder hinter eine Klammer bewegt, so wird die zugehörige schließende Klammer angezeigt.
+Neben dem Editorfeld werden Zeilennummern angezeigt.
 
 \functionality{\gls{cmpltapp}}{fnc:completereduce}
 \fulfills{crt:reduce}
@@ -731,12 +701,13 @@ Die Auswertungsmodi können erst durch das Drücken des Abbrechen Knopfes verlas
 {Ben navigiert zur URL des Wavelength-Projekts.}
 {Die IDE öffnet sich wie in Abbildung~\ref{img:start}.}
 
-\teststep{Die IDE ist bereit.}
-{Ben gibt in das Eingabefeld im oberen Teil des Fensters einen gültigen \gls{lt},
-dessen Reduktion durch die \gls{nr} terminiert, ein.
-Hierbei verwendet er zur Navigation des Textfelds die Pfeiltasten und die
-"Home"- und "End"-Tasten seiner Tastatur und die Tastenkombination "Strg+Z", um eine
-versehentliche Änderung rückgängig zu machen.}
+\teststep{Die IDE ist fertig geladen.}
+{Ben gibt in das Eingabefeld im oberen Teil des Fensters einen gültigen \gls{lt} mit Klammern ein,
+dessen Reduktion durch die \gls{nr} terminiert.
+Hierbei navigiert er über den Text und macht eine vermeintlich fehlerbehaftete Änderung rückgängig. 
+Ben merkt, dass die Änderung doch korrekt war und springt wieder zum aktuellen Stand. Er kopiert etwas Text und fügt diesen an einer anderen Stelle wieder ein.
+Der \gls{lt} ist mehrere Zeilen lang und Ben rückt mehrere Zeilen des \gls{lt}s gleichzeitig ein.
+Ben fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
 {Das Textfeld verhält sich wie erwartet.}
 
 \teststep{Der \gls{lt} wurde eingegeben.}

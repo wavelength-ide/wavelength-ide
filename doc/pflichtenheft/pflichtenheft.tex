@@ -942,12 +942,16 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 
 \teststep{Benutzer "Wilhelm Ackermann" befindet sich auf der Wavelength-Seite.}
 {Wilhelm gibt einen gültigen \gls{lt} ein und drückt auf den "Start"-Knopf. }
-{Die Eingabe wird ausgewertet und nur das Ergebnis wird angezeigt.}
+{Die Eingabe wird ausgewertet und nur das Ergebnis wird angezeigt (vgl. \gls{std}).}
 
-\teststep{Die IDE ist bereit für die nächste Aktion}
-{Wilhelm wählt in der "Display"-Box eine andere Ausgabelänge aus (vgl. \cref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Wilhelm wählt in der "output size"-Box eine andere Ausgabelänge aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:selectsize}).}
 
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Wilhelm wählt in der "display"-Box das Darstellungsformat "Tree" und drückt den "Start"-Knopf.}
+{Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:completereduce}).
+ Im Darstellungsfeld erscheint ein Syntaxbaum gemäß der ausgewählten Ausgabelänge (vgl. \ref{fnc:selectsize}).}
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}

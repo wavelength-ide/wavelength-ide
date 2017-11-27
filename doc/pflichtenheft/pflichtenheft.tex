@@ -875,13 +875,18 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion}
 {Ada drückt auf den "zeige Lösung"-Knopf.}
-{Die Musterlösung wird im Aufgabenfeld eingefügt.}
+{Die Musterlösung wird im Aufgabenfeld eingefügt.
+ Der "zeige Lösung"-Knopf wird zum "verberge Lösung"-Knopf.}
 
 \teststep{Im Aufgabenfeld wird die Musterlösung angezeigt.}
 {Ada kopiert die Musterlösung, überschreibt ihre Eingabe damit und drückt den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert. 
  Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
-
+ 
+\teststep{Die IDE ist bereit für die nächste Aktion}
+{Ada drückt auf den "verberge Lösung"-Knopf.}
+{Die Musterlösung wird aus dem Aufgabenfeld entfernt.}
+ 
 \teststep{Die IDE ist bereit für die nächste Aktion}
 {Ada drückt den "Beenden"-Knopf.}
 {Der Übungsmodus wird beendet, der "Beenden"-Knopf verschwindet, Eingabe und Ausgabe werden entfernt.
@@ -903,7 +908,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 \test{Export}{tst:output}
 \tests{fnc:output}
 
-\teststep{Benutzer "Robert Tarjan" befindet sich auf der Wavelength-Seite}
+\teststep{Benutzer "Robert Tarjan" befindet sich auf der Wavelength-Seite.}
 {Robert gibt einen gültigen \gls{lt} ein und drückt auf den "Exportieren"-Knopf.}
 {Es öffnet sich eine Liste mit allen Ausgabeformaten.}
 
@@ -920,7 +925,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 \test{Namensbindung}{tst:bind}
 \tests{fnc:bind}
 
-\teststep{Benutzer "Haskell Curry" befindet sich auf der Wavelength-Seite}
+\teststep{Benutzer "Haskell Curry" befindet sich auf der Wavelength-Seite.}
 {Haskell gibt einen gültigen \gls{lt} ein und nennt ihn "curry".
  Haskell verwendet "curry" in einem weiteren gültigen \gls{lt} und drückt den "Start"-Knopf.}
 {Die Eingabe wird gemäß Spezifikation ausgewertet (vgl. \gls{nb}).}
@@ -931,6 +936,17 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
  Er drückt den "Start"-Knopf.}
 {Es wird eine Fehlermeldung ausgegeben.
  Haskell wird darauf hingewiesen, dass er einen ungültigen Namen gewählt hat.}
+
+\test{Auswahl der Ausgabelänge}{tst:selectsize}
+\tests{fnc:selectsize}
+
+\teststep{Benutzer "Wilhelm Ackermann" befindet sich auf der Wavelength-Seite.}
+{Wilhelm gibt einen gültigen \gls{lt} ein und drückt auf den "Start"-Knopf. }
+{Die Eingabe wird ausgewertet und nur das Ergebnis wird angezeigt.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion}
+{Wilhelm wählt in der "Display"-Box eine andere Ausgabelänge aus (vgl. \cref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
+{Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:selectsize}).}
 
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}

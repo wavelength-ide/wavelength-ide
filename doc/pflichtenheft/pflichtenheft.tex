@@ -157,7 +157,12 @@
 {
 	name=kompatibler Browser,
 	plural=kompatible Browser,
-	description={Ein Browser, der in Abschnitt (hier ein Label) für unterstützt erklärt wurde}
+	description={Als kompatible Browser gelten die folgenden:
+	\begin{itemize}
+	\item Microsoft Edge ab Version 41.16299.15.0
+	\item Mozilla Firefox ab Version 57.0
+	\item Google Chrome ab Version 62.0.3202
+	\end{itemize}}
 }
 \newglossaryentry{ao}
 {
@@ -201,7 +206,7 @@
 \newglossaryentry{nrmlform}
 {
 	name={$\beta$-Normalform},
-	description={Ein \gls{lt} ist in $\beta$-Normalform, wenn keine \gls{beta} mehr anwendbar ist.}
+	description={Ein \gls{lt} ist in $\beta$-Normalform, wenn keine \gls{beta} mehr anwendbar ist}
 }
 \newglossaryentry{nb}
 {
@@ -217,6 +222,26 @@
 				$\lambda$ & . & = & : & \textbackslash \\
 			\hline
 		\end{tabular}}
+}
+\newglossaryentry{ex}
+{
+	name=Übungsaufgabe,
+	plural=Übungsaufgaben,
+	description={Eine Übungsaufgabe besteht aus einer Beschreibung und eventuell einem Stück Code.
+	 Beim Laden der Übungsaufgabe wird die Beschreibung in das Aufgabenfeld eingefügt.
+	 Der Code wird ins Eingabefeld eingefügt}
+}
+\newglossaryentry{std}
+{
+	name=Standardeinstellung,
+	plural=Standardeinstellungen,
+	description={Standardmäßig sind folgende Einstellungen ausgewählt:
+	 \begin{itemize}
+	 \item Modus: Eingabemodus (vgl. \cref{fig:state})
+	 \item \gls{aws}: \gls{nr} (vgl. \cref{fig:outputOptions})
+	 \item Darstellungsformat: Unicode (vgl. \cref{fig:outputOptions})
+	 \item Ausgabelänge: Result only (vgl. \cref{fig:outputOptions})
+	 \end{itemize}}
 }
 
 % Syntax:
@@ -540,12 +565,6 @@ schließenden Klammer an der problematischen Stelle zu einem syntaktisch korrekt
 
 Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
-\functionality{Abbruch der Ausführung}{fnc:cancel}
-\fulfills{crt:cancel}
-Der Nutzer kann eine laufende Reduktion jederzeit abbrechen.
-Nach Abbruch ist es nicht möglich, die Auswertung fortzusetzen.
-Es wird der zuletzt berechnete \gls{lt} angezeigt.
-
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:bind}
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
@@ -620,6 +639,20 @@ Die in der Adresszeile des Browsers angezeigte URL codiert den gesamten Zustand 
 Nach jeder Aktion des Nutzers wird die angezeigte URL angepasst.\\
 Durch Drücken des "Teilen"-Buttons wird die aktuelle URL in die Zwischenablage kopiert.
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
+
+\functionality{Wahl des Ausgabeformats}{fnc:output}
+\fulfills{crt:output}
+Beim Klicken auf den "Export"-Knopf kann eines der folgenden Ausgabeformate gewählt werden: (siehe auch \cref{fig:export})
+\begin{itemize}
+\item \gls{vls}
+\item Unicode-Text
+\item \LaTeX-Quellcode
+\item Lisp-Quellcode
+\item Haskell-Quellcode.
+\end{itemize}
+Nach der Auswahl öffnet sich ein Fenster.
+Dieses enthält die aktuelle Eingabe im ausgewählten Format.
+Die formatierte Eingabe kann nun kopiert werden.
 
 \functionality{Übungsaufgaben}{fnc:ex}
 \fulfills{crt:ex}
@@ -809,6 +842,96 @@ alten Fenster.}
 {Der letzte, im alten Browserfenster durchgeführte, Schritt wird im neuen Browserfenster
 rückgängig gemacht.}
 
+\test{Übungsmodus}{tst:ex}
+\tests{fnc:ex}
+
+\teststep{Benutzerin "Ada Lovelace" befindet sich auf der Wavelength-Seite.}
+{Ada wählt im Menü (vgl. \cref{fig:exerciseMode}) eine Übungsaufgabe aus.}
+{Der Übungsmodus wird aktiviert. 
+ Das Eingabefeld wird aufgeteilt in ein schmaleres Eingabefeld und ein Aufgabenfeld.
+ Im Aufgabenfeld erscheint eine Beschreibung der gewählten \gls{ex}.
+ Der "Beenden"- und der "zeige Lösung"-Knopf erscheinen.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Ada gibt eine syntaktisch korrekte Lösung ein, die kein korrektes Ergebnis liefert.
+ Ada drückt den "Start"-Knopf.}
+{Die IDE wertet die Eingabe wie spezifiziert aus.
+ Es wird angezeigt, dass die Lösung inkorrekt ist.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Ada gibt die korrekte Lösung ein. Ada drückt den "Start"-Knopf.}
+{Die IDE wertet die Eingabe wie spezifiziert aus.
+ Es wird angezeigt, dass die Lösung korrekt ist.}
+ 
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Ada wählt eine andere Übungsaufgabe aus.}
+{Eingabe und Ausgabe werden entfernt.
+Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Ada vervollständigt den Code zu einer korrekten Lösung und durchläuft den Schritt-für-Schritt Modus komplett.}
+{Die IDE verhält sich wie spezifiziert.
+ Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion}
+{Ada drückt auf den "zeige Lösung"-Knopf.}
+{Die Musterlösung wird im Aufgabenfeld eingefügt.}
+
+\teststep{Im Aufgabenfeld wird die Musterlösung angezeigt.}
+{Ada kopiert die Musterlösung, überschreibt ihre Eingabe damit und drückt den "Start"-Knopf.}
+{Die IDE verhält sich wie spezifiziert. 
+ Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion}
+{Ada drückt den "Beenden"-Knopf.}
+{Der Übungsmodus wird beendet, der "Beenden"-Knopf verschwindet, Eingabe und Ausgabe werden entfernt.
+ Das Aufgabenfeld wird entfernt.}
+
+\test{Darstellungsformate}{tst:display}
+\tests{fnc:display}
+\tests{fnc:unicode}
+\tests{fnc:tree}
+
+\teststep{Benutzer "Richard Hamming" befindet sich auf der Wavelength-Seite.}
+{Richard gibt einen syntaktisch korrekten \gls{lt} ein und drückt den "Start"-Knopf.}
+{Der eingegebene \gls{lt} wird ausgewertet und im Unicode-Format im Ausgabefenster angezeigt.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion}
+{Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) ein anderes Darstellungsformat und drückt den "Start"-Knopf.}
+{Der eingegebene \gls{lt} wird ausgewertet und im gewählten Darstellungsformat wie spezifiziert dargestellt.}
+
+\test{Export}{tst:output}
+\tests{fnc:output}
+
+\teststep{Benutzer "Robert Tarjan" befindet sich auf der Wavelength-Seite}
+{Robert gibt einen gültigen \gls{lt} ein und drückt auf den "Exportieren"-Knopf.}
+{Es öffnet sich eine Liste mit allen Ausgabeformaten.}
+
+\teststep{Die IDE erwartet die Auswahl eines Ausgabeformates.}
+{Robert wählt ein beliebiges Ausgabeformat aus der Liste aus.}
+{Die Liste mit den Ausgabeformaten verschwindet.
+Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingabe.}
+
+\teststep{Robert ist im Fenster mit der formatierten Eingabe.}
+{Robert kopiert die formatierte Eingabe und schließt das Fenster.}
+{Das Fenster mit der formatierten Eingabe verschwindet. 
+ Die Eingabe aus dem ersten Schritt ist noch im Eingabefeld.}
+ 
+\test{Namensbindung}{tst:bind}
+\tests{fnc:bind}
+
+\teststep{Benutzer "Haskell Curry" befindet sich auf der Wavelength-Seite}
+{Haskell gibt einen gültigen \gls{lt} ein und nennt ihn "curry".
+ Haskell verwendet "curry" in einem weiteren gültigen \gls{lt} und drückt den "Start"-Knopf.}
+{Die Eingabe wird gemäß Spezifikation ausgewertet (vgl. \gls{nb}).}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Haskell gibt einen gültigen \gls{lt} ein.
+ Er benennt ihn mit einem gemäß Spezifikation (vgl. \gls{nb}) ungültigen Namen.
+ Er drückt den "Start"-Knopf.}
+{Es wird eine Fehlermeldung ausgegeben.
+ Haskell wird darauf hingewiesen, dass er einen ungültigen Namen gewählt hat.}
+
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}
@@ -868,7 +991,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 	\begin{subfigure}[l]{0.25\textwidth}
 	\centering
 		\includegraphics{img/displayMenu}
-	\caption{Auswahl des Darstellungsformats}	
+	\caption{\label{fig:display}Auswahl des Darstellungsformats}	
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}[m]{0.25\textwidth}
@@ -931,7 +1054,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 		\centering
 		\includegraphics[width=0.75\textwidth]{img/wavelength_export_window_unicode}
 	\end{subfigure}
-	\caption{Durch Klick auf den Export Knopf, kann das aktuelle Ausgabefenster in das gewünschte Format exportiert werden.}
+	\caption{\label{fig:export}Durch Klick auf den Export Knopf, kann das aktuelle Ausgabefenster in das gewünschte Format exportiert werden.}
 \end{figure}
 
 

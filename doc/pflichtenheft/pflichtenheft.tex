@@ -624,8 +624,9 @@ Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codie
 \fulfills{crt:ex}
 Das Programm enthält eine Sammlung von Übungsaufgaben zum Lambda Kalkül.\\
 Im Optionsmenü wird eine Liste aller Übungsaufgaben (\cref{fig:exmenu}) angezeigt.\\
-Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus und die Aufgabenstellung wird im Eingabefenster angezeigt.\\
-Der Nutzer kann dann die Aufgabe bearbeiten und, durch Drücken der "Step-by-Step"- und "Play"-Buttons, seine Lösung überprüfen lassen.\\
+Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus. Die Aufgabenstellung wird in einem separaten Textfeld neben dem Eingabefeld angezeigt. Eventuell vorgegebener Code wird in das Eingabefeld geladen (siehe \cref{fig:exerciseMode}).\\
+Der Nutzer kann dann die Aufgabe bearbeiten und, durch Drücken der "Step-by-Step"- und "Play"-Buttons, seine Lösung überprüfen lassen (siehe \cref{fig:solutionCheck}).\\
+Weiterhin hat der Nutzer die Möglichkeit, sich durch Drücken eines Buttons die Musterlösung anzeigen zu lassen (siehe \cref{fig:showSolution}). Durch Drücken des seben Buttons wird diese wieder ausgeblendet. \\
 Solange sich das Programm im Übungsmodus befindet, kann der Nutzer durch Drücken des "Exit exercise mode"-Buttons in den Eingabemodus zurückkehren.\\
 Beim Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld zurückgesetzt.
 
@@ -893,19 +894,21 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/wavelength_exerciseMode}
-	\caption{Wurde eine Übungsaufgabe ausgewählt, so wird die Aufgabenstellung in einem Textfeld angezeigt. Eventuell vorgegebene Eingaben werden in das Editorfenster geladen. Die Musterlösung der Aufgabe wird durch Klicken eines entsprechenden Button angezeigt werden. Mit Klick auf einen weiteren Button kann der Übungsmodus beendet werden.}
+	\caption{\label{fig:exerciseMode} Wurde eine Übungsaufgabe ausgewählt, so wird die Aufgabenstellung in einem Textfeld angezeigt. Eventuell vorgegebene Eingaben werden in das Editorfenster geladen. Die Musterlösung der Aufgabe wird durch Klicken eines entsprechenden Button angezeigt werden. Mit Klick auf einen weiteren Button kann der Übungsmodus beendet werden.}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{img/exerciseModeSolution}
-	\caption{Wird die Musterlösung angezeigt, so hat der Nutzer die Möglichkeit diese auch wieder auszublenden.}
-\end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/exerciseModeSolutionCheck}
-	\caption{Lässt der Nutzer seine Eingabe prüfen, so wird im Ausgabefeld angezeigt, ob diese korrekt ist.}
+	\caption{\label{fig:solutionCheck}Lässt der Nutzer seine Eingabe prüfen, so wird im Ausgabefeld angezeigt, ob diese korrekt ist.}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/exerciseModeSolution}
+	\caption{\label{fig:showSolution}Wird die Musterlösung angezeigt, so hat der Nutzer die Möglichkeit diese auch wieder auszublenden.}
 \end{figure}
 
 

@@ -958,6 +958,48 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Bob drückt den "Abbrechen"-Button.}
 {Die Auswertung wird abgebrochen, das Ausgabefenster wird zurückgesetzt, das Eingabefenster kann bearbeitet werden.}
  
+\test{Standardbibliothek}{test:lib}
+\tests{fnc:lib}
+
+\teststep{Benutzer "Alan Turing" befindet sich auf der Wavelength-Seite.}
+{Alan wählt im Menü eine Bibliothek aus.}
+{Die gewählte Bibliothek wird geladen.}
+
+\teststep{Die Basisbibliothek ist eingebunden.}
+{Alan benutzt den \gls{yc} in einem gültigen \gls{lt} und drückt den "Start"-Knopf.}
+{Die IDE verhält sich wie spezifiziert.}
+
+\teststep{Die natürlichen Zahlen sind eingebunden.}
+{Alan definiert eine natürliche Zahl.
+ Für diese Zahl benutzt er die Funktionen, um Vorgänger und Nachfolger zu bestimmen.
+ Dann drückt er den "Start"-Knopf.}
+{Die IDE verhält sich wie spezifiziert.}
+
+\teststep{Die natürlichen Zahlen sind eingebunden.}
+{Alan verrechnet zwei natürliche Zahlen mit den gegebenen Operationen (siehe \ref{fnc:lib}).}
+{Die IDE verhält sich wie spezifiziert.}
+
+\teststep{Die Wahrheitswerte sind eingebunden.}
+{Alan definiert zwei gültige \glspl{lt} a und b.
+ Alan gibt ein: "true a b" und drückt den "Start"-Knopf.}
+{Es wird "a" ausgegeben.}
+
+\teststep{Die Wahrheitswerte sind eingebunden.}
+{Alan definiert zwei gültige \glspl{lt} a und b.
+ Alan gibt ein: "false a b" und drückt den "Start"-Knopf.}
+{Es wird "b" ausgegeben.}
+
+\teststep{Tupel und Listen sind eingebunden.}
+{Alan erschafft ein Tupel und benutzt die Funktionen car bzw. cdr (siehe \ref{fnc:lib}).
+ Er drückt den "Start"-Knopf.}
+{Es wird das erste bzw. das zweite Element des Tupels ausgegeben.}
+
+\teststep{Tupel und Listen sind eingebunden.}
+{Alan erschafft eine leere Liste \emph{list} mit \emph{null}. 
+ Mit dem Befehl \emph{cons a list} hängt er das Element \emph{a} an den Anfang von \emph{list}.
+ Mit dem Befehl \emph{cons b list} hängt er das Element \emph{b} an den Anfang von \emph{list}.
+ Alan benutzt die Funktion \emph{car} bzw. \emph{cdr} (siehe \ref{fnc:lib}) und drückt den "Start"-Knopf.}
+{Es wird \emph{a} bzw. \emph{b} ausgegeben.}
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}

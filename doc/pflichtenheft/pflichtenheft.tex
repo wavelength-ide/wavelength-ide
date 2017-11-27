@@ -615,9 +615,19 @@ Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
 
 \functionality{Permalinks}{fnc:perma}
 \fulfills{crt:perma}
-Der in der Adresszeile des Browsers angezeigte URL codiert den gesamten Zustand der Sitzung. 
+Die in der Adresszeile des Browsers angezeigte URL codiert den gesamten Zustand der Sitzung. 
 Nach jeder Aktion des Nutzers wird die angezeigte URL angepasst.\\
+Durch Drücken des "Teilen"-Buttons wird die aktuelle URL in die Zwischenablage kopiert.
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
+
+\functionality{Übungsaufgaben}{fnc:ex}
+\fulfills{crt:ex}
+Das Programm enthält eine Sammlung von Übungsaufgaben zum Lambda Kalkül.\\
+Im Optionsmenü wird eine Liste aller Übungsaufgaben (\cref{fig:exmenu}) angezeigt.\\
+Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus und die Aufgabenstellung wird im Eingabefenster angezeigt.\\
+Der Nutzer kann dann die Aufgabe bearbeiten und, durch Drücken der "Step-by-Step"- und "Play"-Buttons, seine Lösung überprüfen lassen.\\
+Solange sich das Programm im Übungsmodus befindet, kann der Nutzer durch Drücken des "Exit exercise mode"-Buttons in den Eingabemodus zurückkehren.\\
+Beim Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld zurückgesetzt.
 
 % Syntax:
 % \functionality{Überschrift der FA}{fnc:label}
@@ -773,8 +783,8 @@ Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der n
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
 \test{Erstellen vom Permalinks}{tst:perma}
-% fehlt: \tests{fnc:perma}
-% fehlt: \tests{fnc:steps}
+\tests{fnc:perma}
+\tests{fnc:steps}
 
 \teststep{Benutzer "Edsger Dijkstra" befindet sich auf der Wavelength-Seite.}
 {Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine Reduktionsordnung und einen
@@ -877,7 +887,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/wavelength_exercise_menu_open}
-	\caption{Im Optionsmenü hat der Nutzer die Möglichkeit die Bibliothek einzubinden oder eine Übungsaufgabe auzuwählen.}
+	\caption{\label{fig:exmenu}Im Optionsmenü hat der Nutzer die Möglichkeit die Bibliothek einzubinden oder eine Übungsaufgabe auzuwählen.}
 \end{figure}
 
 \begin{figure}[H]

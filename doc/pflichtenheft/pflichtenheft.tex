@@ -499,21 +499,20 @@ Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswäh
 %TODO link zu bildern wegen markierungen
 Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und die Art der Markierung von \gls{lt} im Ausgabefenster.\\
 Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
-Der Nutzer kann die \gls{aws} nicht während der \gls{cmpltapp} ändern (vgl.\cref{fig:state}). 
+Der Nutzer kann die \gls{aws} nicht während der \gls{cmpltapp} ändern (vgl. \cref{fig:state}). 
 Insbesondere kann der Nutzer die \gls{aws} im Step-by-Step-Modus ändern.
 
 \functionality{Auswahl der Ausgabelänge}{fnc:selectsize}
 \fulfills{crt:partial}
-Der Nutzer kann die Ausgabelänge über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}).
-Hierbei kann nur ein Ausgabeumfang gleichzeitig aktiv sein. 
-Standardmäßig ist der Ausgabeumfang Result only ausgewählt. 
-Der Nutzer kann den Ausgabeumfang während der \gls{cmpltapp} nicht ändern.
+Der Nutzer kann die Ausgabelänge über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
+Standardmäßig ist der Ausgabeumfang ``Result only'' ausgewählt. 
 Der Ausgabeumfang bestimmt die Menge an Teilergebnissen einer Auswertung, die die \gls{cmpltapp} in das Ausgabefeld schreibt.
+Der Nutzer kann den Ausgabeumfang während der \gls{cmpltapp} nicht ändern (vgl. \cref{fig:state}).
 Hierbei stehen dem Nutzer folgende Ausgabelängen zur verfügung:
 \begin{itemize}
 	\item Result only. Es wird nur das Ergebnis der \gls{cmpltapp} ausgegeben
 	\item Shortened. Es werden zu Beginn der Auswertung die ersten 50 Schritte ausgegeben.
-	Zudem wir das Ergebnis ausgegeben, sobald es errechnet wurde.
+	Zudem wir das Ergebnis ausgegeben, sobald es berechnet wurde.
 	\item Full. Es wird jeder einzelne Teilschritt ausgegeben sobald er berechnet wurde.
 	\item Periodically. Jeder hundertste Teilschritt wird ausgegeben sobald er berechne wurde. 
 	Insbesondere wird auch das Endergebnis ausgegeben
@@ -562,8 +561,15 @@ des Fehlertyps (Unerwartetes Zeichen, unbalancierte Klammerung, \ldots) und in e
 Fällen einen Hinweis auf mögliche Fehlerbehebung (beispielsweise wenn Einfügen einer
 schließenden Klammer an der problematischen Stelle zu einem syntaktisch korrekten
 \gls{lt} führt).
-
 Die problematische Stelle wird im Editor zusätzlich farblich markiert.
+
+%TODO brauchen wir die Anforderung wirklich (vergleiche abbruch der komplettauswertung)
+% Eventuell eine Anforderung für das Unterbechen des Step-by-Step-Modus schreiben
+\functionality{Abbruch der Ausführung}{fnc:cancel}
+\fulfills{crt:cancel}
+Der Nutzer kann eine laufende Reduktion jederzeit abbrechen.
+Nach Abbruch ist es nicht möglich, die Auswertung fortzusetzen.
+Es wird der zuletzt berechnete \gls{lt} angezeigt.
 
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:bind}
@@ -636,9 +642,11 @@ Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
 \functionality{Permalinks}{fnc:perma}
 \fulfills{crt:perma}
 Die in der Adresszeile des Browsers angezeigte URL codiert den gesamten Zustand der Sitzung. 
+%TODO was genau heiß nach jeder Aktion?
 Nach jeder Aktion des Nutzers wird die angezeigte URL angepasst.\\
 Durch Drücken des "Teilen"-Buttons wird die aktuelle URL in die Zwischenablage kopiert.
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
+%TODO der Export Knopf sollte noch erwähnt werden
 
 \functionality{Wahl des Ausgabeformats}{fnc:output}
 \fulfills{crt:output}
@@ -736,7 +744,11 @@ die \gls{nr} und als Ausgabeumfang die volle Ausgabe ausgewählt sind.}
 {Die IDE ist mit den korrekten Standardeinstellungen initialisiert.}
 
 \teststep{Alle Einstellungen sind korrekt.}
+<<<<<<< 92c0e152dc66f9e1c14bbf1890566645dce0b9c5
 {Ben betätigt den "Start"-Knopf}
+=======
+{Ben betätigt den grünen "Start"-Knopf}
+>>>>>>> Bisschen mit den Folien rumgespiel und ein paar kleine Sachen im Pflichtenheft ergänzt.
 {Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \gls{nr} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
@@ -816,6 +828,16 @@ Stattdessen wird der nächste Schritt gemäß \gls{ao} angezeigt.}
 {Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Darstellungsfeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
+
+%Wechsel zwischen Auswertungsmodi
+\test{Wechsel zwischen Komplett- und Schritt-für-Schritt-Auswertung}{tst:switchmodus}
+\tests{fnc:cancelcmplt}
+
+\teststep{Benutzer Alev Korun hat bereits einen gültigen \gls{lt} in des Eingabefeld eingegeben und wertet diesen durch die Komplettauswertung mit den Standardeinstellung aus.}
+{Alev drückt den Knopf "Pause"-Knopf.}
+{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Ausgabefenster aus.}
+%TODO more teststeps
+
 
 \test{Erstellen vom Permalinks}{tst:perma}
 \tests{fnc:perma}

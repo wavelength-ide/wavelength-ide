@@ -536,11 +536,11 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
 %TODO brauchen wir die Anforderung wirklich (vergleiche abbruch der komplettauswertung)
 % Eventuell eine Anforderung für das Unterbechen des Step-by-Step-Modus schreiben
-\functionality{Abbruch der Ausführung}{fnc:cancel}
+\functionality{Abbruch der Auswertung}{fnc:cancel}
 \fulfills{crt:cancel}
-Der Nutzer kann eine laufende Reduktion jederzeit abbrechen.
-Nach Abbruch ist es nicht möglich, die Auswertung fortzusetzen.
-Es wird der zuletzt berechnete \gls{lt} angezeigt.
+Durch das Drücken des "Abbrechen"-Knopfes kann der Nutzer jederzeit in den Eingabemodus zurückkehren.\\
+Dabei wird die Auswertung abgebrochen und der Inhalt des Ausgabefeldes gelöscht.
+Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
 
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:comfcode}
@@ -614,10 +614,9 @@ Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
 \fulfills{crt:perma}
 Die in der Adresszeile des Browsers angezeigte URL codiert den gesamten Zustand der Sitzung. 
 %TODO was genau heiß nach jeder Aktion?
-Nach jeder Aktion des Nutzers wird die angezeigte URL angepasst.\\
+Nach jeder Aktion des Nutzers, wird die angezeigte URL angepasst.\\
 Durch Drücken des "Teilen"-Buttons wird die URL in einem Textfeld neben dem Button angezeigt.
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
-%TODO der Export Knopf sollte noch erwähnt werden
 
 \functionality{Wahl des Ausgabeformats}{fnc:output}
 \fulfills{crt:output}
@@ -942,6 +941,23 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Wilhelm wählt in der "display"-Box das Darstellungsformat "Tree" und drückt den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:completereduce}).
  Im Darstellungsfeld erscheint ein Syntaxbaum gemäß der ausgewählten Ausgabelänge (vgl. \ref{fnc:selectsize}).}
+ 
+\test{Wechsel des Auswertungsmodus}{test:changemodes}
+\tests{fnc:cancelcmplt}
+\tests{fnc:cancel}
+
+\teststep{Die Komplettauswertung eines korrekten \gls{lt} läuft}
+{Nutzer "Bob" drückt den "Pause"-Button.}
+{Die Auswertung wird angehalten, der aktuelle \gls{lt} wird in das Ausgabefenster geschrieben, die IDE wechselt in den Step-by-Step Modus.}
+
+\teststep{Die IDE befindet sich im Step-by-Step-Modus}
+{Bob drückt den "Play"-Blutton.}
+{Die ID wechselt in den Komplettauswertungs-Modus, der eingegebene \gls{lt} wird ohne Aktionen des Nutzers ausgewertet.}
+
+\teststep{Die Komplettauswertung eines \gls{lt} läuft}
+{Bob drückt den "Abbrechen"-Button.}
+{Die Auswertung wird abgebrochen, das Ausgabefenster wird zurückgesetzt, das Eingabefenster kann bearbeitet werden.}
+ 
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}

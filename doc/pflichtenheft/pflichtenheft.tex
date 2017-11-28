@@ -571,60 +571,24 @@ Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 
 \functionality{Schritt-für-Schritt-Modus}{fnc:steps}
 \fulfills{crt:steps}
-Durch Drücken des Schritt-für-Schritt-Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
-Ist sie syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und der Schritt-für-Schritt-Modus beendet.
-Ist sie syntaktisch korrekt, so wird die Eingabe in das Ausgabefeld übernommen. 
-Der "vor"-Knopf wird aktiviert.
-Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird markiert.
-\\
-Der Knopf kann auch während einer laufenden Auswertung gedrückt werden.
-In diesem Fall wird die Auswertung pausiert.
-Die letzten 100 \glspl{beta} stehen zum "Zurückgehen" zur Verfügung.
-Der "vor"- und der "zurück"-Knopf werden aktiviert.
-Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird markiert.
+Durch Drücken des Schritt-für-Schritt-Knopfes wird zuerst die Eingabe aus dem Eingabefeld überprüft und eventuell eine Fehlermeldung ausgegeben, falls die Eingabe nicht syntaktisch korrekt ist.
+Die korrekte Eingabe wird als erster Schritt in das Ausgabefeld geladen und der nächste zu reduzierende \gls{redex} gemäß der ausgewählten \gls{aws} markiert.
+Es werden die Knöpfe zum Laden von Bibliotheken und Aufgaben sowie der Schritt-für-Schritt-Knopf deaktiviert.
+Außerdem wird das Eingabefeld, das Ausgabeformats- und das Ausgabeumfangs-Dropdown-Menü deaktiviert, während der "vor"-Knopf aktiviert wird.
 
-Beim Klick auf "vor" passiert Folgendes:
-\begin{itemize}
-	\item Der markierte Term wird reduziert.
-	\item Der reduzierte Term wird in einer neuen Zeile im Ausgabefeld angezeigt.
-	\item Die Markierung in der alten Zeile wird entfernt.
-	\item Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird in der neuen Zeile markiert.
-	\item Der "zurück"-Knopf wird aktiviert.
-\end{itemize}
+Beim Klick auf "vor" wird der markierte \gls{redex} in der neuesten Zeile gemäß der ausgewählten \gls{aws} reduziert und der reduzierte Term mit Markierung in einer neuen Zeile ausgegeben.
+Die Markierung in der alten Zeile bleibt hierbei erhalten.
 
-Beim Klick auf "zurück" passiert Folgendes:
-\begin{itemize}
-	\item Die neueste Zeile im Ausgabefeld wird entfernt.
-	\item In der Zeile davor wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.
-	\item Ist die neueste Zeile die erste, so wird der "zurück"-Knopf deaktiviert.
-\end{itemize}
+Befindet sich mehr als eine Zeile in der Ausgabe, so kann die Ausführung zu dem Zustand der vorigen Zeile mit dem "zurück"-Knopf zurückgespult werden.
+Wird der "zurück"-Knopf betätigt, so wird die neueste Zeile entfernt und die Markierung der Zeile davor gemäß der ausgewählten \gls{aws} markiert.
 
-Wird der Cursor auf ein nicht markiertes, zu einem \gls{redex} gehörendes $\lambda$-Symbol bewegt, so passiert Folgendes:
-\begin{itemize}
-	\item Die Markierung in der aktuellen Zeile wird entfernt.
-	\item Der zum $\lambda$-Symbol gehörige \gls{redex} wird markiert.
-	\item Wird der Cursor wegbewegt, so wird die neue Markierung entfernt und die alte wiederhergestellt.
-\end{itemize}
+Wird der Mauszeiger in der neuesten Zeile auf ein nicht markiertes, zu einem \gls{redex} gehörendes $\lambda$-Symbol bewegt, so wird der zum $\lambda$-Symbol gehörige \gls{redex} markiert und die alte Markierung entfernt. Die alte Markierung wird wiederhergestellt, sobald der Mauszeiger wieder vom $\lambda$-Symbol wegbewegt wird.
 
-Wird auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol geklickt, so passiert Folgendes:
-\begin{itemize}
-	\item Der angeklickte Term wird reduziert.
-	\item Das Ergebnis wird in einer neuen Zeile angezeigt.
-	\item Die Markierungen in der alten Zeile werden entfernt.
-	\item In der neuen Zeile wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.
-\end{itemize}
+Wird in der neuesten Zeile auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol geklickt, so wird dieser reduziert und der reduzierte Term mit Markierung in einer neuen Zeile ausgegeben.
 
-Wird die \gls{aws} geändert, so wird die Markierung in der aktuellen Zeile entfernt.
-Dann wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.\\
-Wird das Ausgabeformat geändert, so wird die gesamte Ausgabe im Ausgabefeld entfernt.
-Die entfernte Ausgabe wird im neuen Ausgabeformat rekonstruiert und angezeigt.\\
-Beim Klick auf den "Abbruch"-Knopf wird der Schritt-für-Schritt-Modus beendet.
-Alle Einträge im Ausgabefeld werden entfernt.
-Der "vor"- und der "zurück"-Knopf werden deaktiviert.\\
-Beim Klick auf den "Start"-Knopf wird der \hyperref[fnc:steps]{Schritt-für-Schritt-Modus} beendet.
-Alle Einträge im Ausgabefeld werden entfernt.
-Der "vor"- und der "zurück"-Knopf werden deaktiviert.
-Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
+Die \gls{aws} kann im Schritt-für-Schritt-Modus geändert werden, was die Markierung der alten \gls{aws} durch die der neuen ersetzt.
+
+Wird der "Start"-Knopf betätigt, so wird die \gls{cmpltapp} mit der ausgewählten \gls{aws} gestartet und das Ausgabefeld sowie die "vor"- und "zurück"-Knöpfe deaktiviert.
 
 \functionality{Permalinks}{fnc:perma}
 \fulfills{crt:perma}

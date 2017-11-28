@@ -617,9 +617,16 @@ Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
 
 \functionality{Permalinks}{fnc:perma}
 \fulfills{crt:perma}
-Die in der Adresszeile des Browsers angezeigte URL kodiert den gesamten Zustand der Sitzung. Dies schließt den Inhalt des Eingabefelds, den Inhalt des Ausgabefeld, den gegenwärtigen Modus und die ausgewählten Optionen mit ein.
-Nach jeder Aktion, die den Zustand der IDE verändert, wird auch die angezeigte URL angepasst.\\
-Aktionen umfassen sowohl Eingaben des Nutzers, Interaktionen mit der Benutzeroberfläche als auch die automatischen Ausgaben während der Komplettauswertung. 
+Die in der Adresszeile des Browsers angezeigte URL kodiert den Zustand der Sitzung.\\
+Der Zustand besteht aus:
+\begin{itemize}
+	\item Inhalt des Eingabefeldes.
+	\item Inhalt des Ausgabefeldes.
+	\item Ausgewähltes Ausgabeformat, \gls{aws}, und Ausgabeumfang.
+	\item Der aktuelle Zustand der IDE (siehe \cref{fig:state}).
+\end{itemize}
+Nach jeder Aktion wird die angezeigte URL angepasst, sofern sich der Zustand der IDE verändert.\\
+Aktionen umfassen sowohl Eingaben des Nutzers, Interaktionen mit der Benutzeroberfläche als auch die automatischen Ausgaben während der Komplettauswertung.\\ 
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
 
 \functionality{Wahl des Exportformats}{fnc:output}
@@ -784,10 +791,10 @@ verwendet aber die jeweils ausgewählte Reduktionsordnung.}
 
 \teststep{Benutzer Alev Korun hat bereits einen gültigen \gls{lt} in das Eingabefeld eingegeben und wertet diesen durch die Komplettauswertung mit den Standardeinstellung aus.}
 {Alev drückt den Knopf "Pause"-Knopf.}
-{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Ausgabefeld aus.}
+{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Ausgabefeld aus, die IDE wechselt in den Schritt-für-Schritt-Modus}
 %TODO more teststeps
 
-\teststep{Die Auswertung eines gültigen \gls{lt} wurde begonnen, IDE befindet sich im Step-By-Step Modus}
+\teststep{Die Komplettauswertung eines gültigen \gls{lt} wurde unterbochen, IDE befindet sich im Step-By-Step Modus}
 {Alev drückt den "Play"-Knopf.}
 {Das Ausgabefeld ist nicht mehr interaktiv, die IDE wechselt in den Komplettauswertungs-Modus und verhält sich weiterhin wie spezifiziert.}
 

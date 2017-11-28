@@ -245,8 +245,8 @@
 	 \begin{itemize}
 	 \item Modus: Eingabemodus (vgl. \cref{fig:state})
 	 \item \gls{aws}: \gls{nr} (vgl. \cref{fig:outputOptions})
-	 \item Darstellungsformat: Unicode (vgl. \cref{fig:outputOptions})
-	 \item Darstellungsumfang: Result only (vgl. \cref{fig:outputOptions})
+	 \item Ausgabeformat: Unicode (vgl. \cref{fig:outputOptions})
+	 \item Ausgabesumfang: Result only (vgl. \cref{fig:outputOptions})
 	 \end{itemize}}
 }
 
@@ -322,8 +322,8 @@ Die eingegebenen und reduzierten \glspl{lt} können neben der \glslink{vls}{vere
 auch als Unicode-Text, \LaTeX-Quellcode, Haskell-Quellcode und Lisp-Quellcode formatiert und exportiert
 werden.
 
-\criteriumOptional{Darstellungsformate}{crt:display}
-Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in Unicode-Darstellung und als Syntaxbaum
+\criteriumOptional{Ausgabeformate}{crt:display}
+Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in Unicode-Ausgabe und als Syntaxbaum
 dargestellt werden.
 
 \criteriumOptional{Erweiterte Fehlerdiagnostik}{crt:diag}
@@ -345,9 +345,9 @@ Das Programm enthält ein Übungsaufgaben-System, welches neben Aufgaben in aufs
 Schwierigkeitsgrad auch Einführungen und automatisierte Tests für die Lösungen des Nutzers
 enthält.
 
-\criteriumOptional{Darstellung von Teilschritten}{crt:partial}
+\criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
 Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
-\gls{aws} können im ausgewählten Darstellungsformat dargestellt werden. Hierbei
+\gls{aws} können im ausgewählten Ausgabeformat dargestellt werden. Hierbei
 können entweder alle Teilschritte, die ersten und letzten Teilschritte, oder
 einzelne Teilschritte in periodischen Abständen angezeigt werden.
 
@@ -405,14 +405,14 @@ Neben dem Editorfeld werden Zeilennummern angezeigt.
 Der Nutzer hat die Möglichkeit auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
 Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des Start-Knopfes (\cref{fig:actionButtons}) gestartet.
 Ist die Eingabe syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und die Komplettauswertung verlassen.
-Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Darstellung wird durch das derzeit aktive Darstellungsformat (\cref{fig:outputOptions}) bestimmt.\\
+Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) bestimmt.\\
 Die Komplettauswertung übernimmt die automatische Auswertung, bis die derzeit aktive \gls{aws} keine \gls{beta} mehr vorgibt.
 Wenn der \gls{lt} keine \gls{nrmlform} besitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht.
 
 \functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
 \fulfills{crt:partial}
-Solange die \gls{cmpltapp} nicht terminiert, wird im Darstellungsfenster der derzeitige Ergebnisstand im gewählten Darstellungsumfang ausgegeben. 
-Insbesondere bei einer Auswahl der Darstellungsumfang von ``Full'' oder ``Periodically'' werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
+Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster der derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
+Insbesondere bei einer Auswahl des Ausgabeumfangs von ``Full'' oder ``Periodically'' werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
 
 \functionality{Unterbrechung der \gls{cmpltapp}}{fnc:cancelcmplt}
 \fulfills{crt:cancel}
@@ -420,21 +420,21 @@ Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{
 \begin{itemize}
 	\item Das Drücken des Abbrechen-Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
 	Anschließend wird der zuletzt berechnete \gls{lt} dargestellt. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
-	Dies wird dem Nutzer durch eine entsprechende Ausgabe im Darstellungsfeld mitgeteilt.
+	Dies wird dem Nutzer durch eine entsprechende Ausgabe im Ausgabefeld mitgeteilt.
 	\item Das Drücken des Pause-Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
 	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den \hyperref[fnc:steps]{Schritt-für-Schritt-Modus}.
 \end{itemize}
 
 %TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
-\functionality{Unicode-Darstellung}{fnc:unicode}
+\functionality{Unicode-Ausgabe}{fnc:unicode}
 \fulfills{crt:display}
-Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en in Unicode darstellen zu lassen. Die Darstellung wird im Darstellungsfeld ausgegeben.\\
+Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
 Jeder neu ausgegebene Auswertungsschritt wird in einer neuen Zeile dargestellt. 
 Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt (siehe \cref{fig:unicode}).
 
-\functionality{Syntaxbaum-Darstellung}{fnc:tree}
+\functionality{Syntaxbaum-Ausgabe}{fnc:tree}
 \fulfills{crt:display}
-Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en als Syntaxbaum darstellen zu lassen. Die Darstellung wird im Darstellungsfeld ausgegeben (siehe \cref{fig:tree}).\\
+Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en als Syntaxbaum ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben (siehe \cref{fig:tree}).\\
 Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten Auswertungsschritt dargestellt. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
 %TODO auf Baumübersetzung einigen
 %TODO Verlinken von Bildern
@@ -446,13 +446,13 @@ Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten A
 	\item Sollte ein Kindknoten des Baums wieder eine \gls{lapp} oder eine \gls{labs} enthalten, wird dieser Knoten wieder als Eltern und Kindknoten dargestellt.
 \end{itemize}
 
-\functionality{Auswahl des Darstellungsformats}{fnc:display}
+\functionality{Auswahl des Ausgabeformats}{fnc:display}
 \fulfills{crt:display}
-Der Nutzer kann das derzeitig aktive Darstellungsformat über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}).
-Das Darstellungsformat entscheidet über die Visualisierung im Darstellungsfenster. Das Darstellungsformat hat jedoch keine Auswirkung auf das Exportieren von Ergebnissen.\\
-Standardmäßig ist die Unicode-Darstellung ausgewählt.
-Der Nutzer kann die Darstellungsform nur im Eingabemodus ändern (vgl. \cref{fig:state}).
-Das bedeutet insbesondere, dass der Nutzer das Darstellungsformat nicht während einer laufenden Auswertung ändern kann.
+Der Nutzer kann das derzeitig aktive Ausgabeformat über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}).
+Das Ausgabeformat entscheidet über die Visualisierung im Ausgabefenster. Das Ausgabeformat hat jedoch keine Auswirkung auf das Exportieren von Ergebnissen.\\
+Standardmäßig ist die Unicode-Ausgabe ausgewählt.
+Der Nutzer kann das Ausgabeformat nur im Eingabemodus ändern (vgl. \cref{fig:state}).
+Das bedeutet insbesondere, dass der Nutzer das Ausgabeformat nicht während einer laufenden Auswertung ändern kann.
 
 \functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
 \fulfills{crt:reduce}
@@ -474,16 +474,16 @@ Der Nutzer kann zur automatischen Auswertung eines \gls{lt}s die \gls{aws} \gls{
 \fulfills{crt:awsstrats}
 Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
 %TODO link zu bildern wegen markierungen
-Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und damit die Markierung des nächsten zu reduzierenden \gls{lt}s im Darstellungsfeld.\\
+Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und damit die Markierung des nächsten zu reduzierenden \gls{lt}s im Ausgabefeld.\\
 Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
 Der Nutzer kann die \gls{aws} im \hyperref[fnc:steps]{Schritt-für-Schritt-Modus} ändern, jedoch nicht während der \gls{cmpltapp}.
 
-\functionality{Auswahl des Darstellungsumfangs}{fnc:selectsize}
+\functionality{Auswahl des Ausgabeumfangs}{fnc:selectsize}
 \fulfills{crt:partial}
-Der Nutzer kann den Darstellungsumfang über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
-Standardmäßig ist der Darstellungsumfang ``Result only'' ausgewählt. 
-Der Darstellungsumfang bestimmt die Menge an Teilergebnissen einer Auswertung, die die \gls{cmpltapp} in das Darstellungsfeld schreibt.
-Der Nutzer kann den Darstellungsumfang während der \gls{cmpltapp} nicht ändern (vgl. \cref{fig:state}).
+Der Nutzer kann den Ausgabeumfang über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
+Standardmäßig ist der Ausgabeumfang ``Result only'' ausgewählt. 
+Der Ausgabeumfang bestimmt die Menge an Teilergebnissen einer Auswertung, die die \gls{cmpltapp} in das Ausgabefeld schreibt.
+Der Nutzer kann den Ausgabeumfang während der \gls{cmpltapp} nicht ändern (vgl. \cref{fig:state}).
 Hierbei stehen dem Nutzer folgende Optionen zur Verfügung:
 \begin{itemize}
 	\item Result only. Es wird nur das Ergebnis der \gls{cmpltapp} dargestellt.
@@ -531,7 +531,7 @@ Module werden bereitgestellt:
 \fulfills{crt:error}
 \fulfills{crt:diag}
 Wenn der Nutzer versucht, einen syntaktisch inkorrekten \gls{lt} auszuwerten,
-wird im Darstellungsfenster eine Fehlermeldung angezeigt. Die Fehlermeldung enthält die genaue Position (Zeilen-
+wird im Ausgabefeld eine Fehlermeldung angezeigt. Die Fehlermeldung enthält die genaue Position (Zeilen-
 und Spaltennummer), an der die Interpretation der Eingabe fehlschlug, eine Beschreibung
 des Fehlertyps (Unerwartetes Zeichen, unbalancierte Klammerung, \ldots) und in einfachen
 Fällen einen Hinweis auf mögliche Fehlerbehebung (beispielsweise wenn Einfügen einer
@@ -544,7 +544,7 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 \functionality{Abbruch der Auswertung}{fnc:cancel}
 \fulfills{crt:cancel}
 Durch das Drücken des "Abbrechen"-Knopfes kann der Nutzer jederzeit in den Eingabemodus zurückkehren.\\
-Dabei wird die Auswertung abgebrochen und der Inhalt des Darstellungsfelds erhalten, die Steuerung der Darstellung aber deaktiviert.
+Dabei wird die Auswertung abgebrochen und der Inhalt des Ausgabefelds erhalten, die Steuerung der Ausgabe aber deaktiviert.
 Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
 
 \functionality{Namensbindung}{fnc:bind}
@@ -553,7 +553,7 @@ Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
 \glslink{rec}{Namensrekursion} ist ausgeschlossen.
 Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.
 Der Name kann in der Eingabe an Stelle des \glslink{lt}{$\lambda$-Terms} eingesetzt werden.
-Die Darstellung berücksichtigt den Namen soweit möglich:
+Die Ausgabe berücksichtigt den Namen soweit möglich:
 Ist der konkrete \gls{lt} für die Reduktion unerheblich, so wird immer der Name verwendet.
 Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 
@@ -561,7 +561,7 @@ Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 \fulfills{crt:steps}
 Durch Drücken des Schritt-für-Schritt-Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
 Ist sie syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und der Schritt-für-Schritt-Modus beendet.
-Ist sie syntaktisch korrekt, so wird die Eingabe in das Darstellungsfeld übernommen. 
+Ist sie syntaktisch korrekt, so wird die Eingabe in das Ausgabefeld übernommen. 
 Der "vor"-Knopf wird aktiviert.
 Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird markiert.
 \\
@@ -574,7 +574,7 @@ Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten
 Beim Klick auf "vor" passiert Folgendes:
 \begin{itemize}
 	\item Der markierte Term wird reduziert.
-	\item Der reduzierte Term wird in einer neuen Zeile im Darstellungsfeld angezeigt.
+	\item Der reduzierte Term wird in einer neuen Zeile im Ausgabefeld angezeigt.
 	\item Die Markierung in der alten Zeile wird entfernt.
 	\item Der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} wird in der neuen Zeile markiert.
 	\item Der "zurück"-Knopf wird aktiviert.
@@ -582,7 +582,7 @@ Beim Klick auf "vor" passiert Folgendes:
 
 Beim Klick auf "zurück" passiert Folgendes:
 \begin{itemize}
-	\item Die neueste Zeile im Darstellungsfeld wird entfernt.
+	\item Die neueste Zeile im Ausgabefeld wird entfernt.
 	\item In der Zeile davor wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.
 	\item Ist die neueste Zeile die erste, so wird der "zurück"-Knopf deaktiviert.
 \end{itemize}
@@ -604,19 +604,19 @@ Wird auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol geklickt, so pass
 
 Wird die \gls{aws} geändert, so wird die Markierung in der aktuellen Zeile entfernt.
 Dann wird der nächste \glslink{beta}{$\beta$-Reduktionsschritt} gemäß der ausgewählten \gls{aws} markiert.\\
-Wird das Darstellungsformat geändert, so wird die gesamte Darstellung im Darstellungsfeld entfernt.
-Die entfernte Darstellung wird im neuen Darstellungsformat rekonstruiert und angezeigt.\\
+Wird das Ausgabeformat geändert, so wird die gesamte Ausgabe im Ausgabefeld entfernt.
+Die entfernte Ausgabe wird im neuen Ausgabeformat rekonstruiert und angezeigt.\\
 Beim Klick auf den "Abbruch"-Knopf wird der Schritt-für-Schritt-Modus beendet.
-Alle Einträge im Darstellungsfeld werden entfernt.
+Alle Einträge im Ausgabefeld werden entfernt.
 Der "vor"- und der "zurück"-Knopf werden deaktiviert.\\
 Beim Klick auf den "Start"-Knopf wird der \hyperref[fnc:steps]{Schritt-für-Schritt-Modus} beendet.
-Alle Einträge im Darstellungsfeld werden entfernt.
+Alle Einträge im Ausgabefeld werden entfernt.
 Der "vor"- und der "zurück"-Knopf werden deaktiviert.
 Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
 
 \functionality{Permalinks}{fnc:perma}
 \fulfills{crt:perma}
-Die in der Adresszeile des Browsers angezeigte URL kodiert den gesamten Zustand der Sitzung. Dies schließt den Inhalt des Eingabefelds, die ausgewählten Optionen und den Inhalt des Darstellungsfelds mit ein.
+Die in der Adresszeile des Browsers angezeigte URL kodiert den gesamten Zustand der Sitzung. Dies schließt den Inhalt des Eingabefelds, die ausgewählten Optionen und den Inhalt des Ausgabefelds mit ein.
 %TODO was genau heiß nach jeder Aktion?
 Nach jeder Aktion des Nutzers wird die angezeigte URL angepasst.\\
 Durch Drücken des "Teilen"-Knopfes öffnet sich ein Feld, in welchem die aktuelle URL steht.
@@ -633,7 +633,7 @@ Beim Klicken auf den "Export"-Knopf kann eines der folgenden Exportformate gewä
 	\item Haskell-Quellcode.
 \end{itemize}
 Nach der Auswahl öffnet sich ein Fenster.
-Dieses enthält den aktuelle Inhalt des Darstellungsfelds im ausgewählten Format.
+Dieses enthält den aktuelle Inhalt des Ausgabefelds im ausgewählten Format.
 Der Inhalt kann nun kopiert werden.
 
 \functionality{Übungsaufgaben}{fnc:ex}
@@ -644,7 +644,7 @@ Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus. Di
 Der Nutzer kann dann die Aufgabe bearbeiten und, durch Drücken der Schritt-für-Schritt- und Ausführen-Knöpfe, seine Lösung überprüfen lassen (siehe \cref{fig:solutionCheck}).\\
 Weiterhin hat der Nutzer die Möglichkeit, sich durch Drücken eines Knopfes die Musterlösung anzeigen zu lassen (siehe \cref{fig:showSolution}). Durch Drücken des selben Knopfes wird diese wieder ausgeblendet. \\
 Solange sich das Programm im Übungsmodus befindet, kann der Nutzer durch Drücken des "Exit exercise mode"-Knopfes in den Eingabemodus zurückkehren.\\
-Beim Wechsel in den Eingabemodus werden Eingabefeld und Darstellungsfeld geleert.
+Beim Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld geleert.
 
 % Syntax:
 % \functionality{Überschrift der FA}{fnc:label}
@@ -683,10 +683,10 @@ Die Anwendung kann sich in drei verschiedenen Zuständen befinden, wobei jeder Z
 Der Übungsmodus wird durch Auswahl einer Übungsaufgabe betreten und durch Beendigung des Übungsmodus verlassen.\\
 Beim Start der Anwendung befindet sich der Nutzer im Eingabemodus. In diesem Modus kann der Nutzer einen \gls{lt} in das Eingabefeld eingeben. 
 Durch Drücken des Schritt-für-Schritt- oder Start-Knopfes (\cref{fig:actionButtons}) gelangt der Nutzer in den jeweiligen Auswertungsmodus und es beginnt die Auswertung des eingegebenen \glslink{lt}{$\lambda$-Terms}. 
-Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Darstellungsfeldfeld stehen, werden diese gelöscht.\\ 
+Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Ausgabefeld stehen, werden diese gelöscht.\\ 
 Durch Drücken des Start- oder Pause-Knopfes kann der Nutzer zwischen den entsprechenden Auswertungsmodi wechseln. 
-Beim Wechsel vom Step-by-Step-Modus zur Komplettauswertung wird der zuletzt dargestellte \gls{lt} des Darstellungsfeldes weiter ausgewertet.
-Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlassen werden. Es erscheint eine entsprechende Darstellung im Darstellungsfeld. Erst jetzt kann der Nutzer neue Eingaben im Eingabefeld eingeben.
+Beim Wechsel vom Step-by-Step-Modus zur Komplettauswertung wird der zuletzt dargestellte \gls{lt} des Ausgabefeldes weiter ausgewertet.
+Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlassen werden. Es erscheint eine entsprechende Ausgabe im Ausgabefeld. Erst jetzt kann der Nutzer neue Eingaben im Eingabefeld eingeben.
 
 
 %%%%%%%%%%%
@@ -712,8 +712,8 @@ Ben fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
 {Das Textfeld verhält sich wie erwartet.}
 
 \teststep{Der \gls{lt} wurde eingegeben.}
-{Ben überprüft, dass als Darstellungsformat die Unicode-Darstellung, als Reduktionsordnung
-die \gls{nr} und als Darstellungsumfang die volle Ausgabe ausgewählt sind.}
+{Ben überprüft, dass als Ausgabeformat die Unicode-Ausgabe, als Reduktionsordnung
+die \gls{nr} und als Ausgabeumfang die volle Ausgabe ausgewählt sind.}
 {Die IDE ist mit den korrekten Standardeinstellungen initialisiert.}
 
 \teststep{Alle Einstellungen sind korrekt.}
@@ -732,24 +732,24 @@ Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 \teststep{Benutzer "Donald Knuth" befindet sich auf der Wavelength-Seite.}
 {Er gibt einen syntaktisch korrekten \gls{lt} in das Eingabefeld ein und betätigt
 den "Schritt-für-Schritt"-Knopf.}
-{Der eingegebene Term wird in das Darstellungsfeld übernommen und die Vor- und
+{Der eingegebene Term wird in das Ausgabefeld übernommen und die Vor- und
 Zurück-Knöpfe werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschritt
 gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
 
 \teststep{Die IDE ist bereit für die Schritt-für-Schritt-Auswertung.}
 {Don betätigt den Vor-Knopf.}
-{Das Resultat der markierten Reduktion erscheint als neue Zeile im Darstellungsfeld.
+{Das Resultat der markierten Reduktion erscheint als neue Zeile im Ausgabefeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don betätigt den Zurück-Knopf.}
-{Der zweite Reduktionsschritt wird aus dem Darstellungsfeld entfernt. Die Markierungen
+{Der zweite Reduktionsschritt wird aus dem Ausgabefeld entfernt. Die Markierungen
 auf dem Ausgangsschritt erscheinen wieder.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don schwebt mit der Maus über einem nicht markierten, zu einem \gls{redex} gehörenden
-$\lambda$-Symbol in der aktiven Zeile im Darstellungsfeld.}
+$\lambda$-Symbol in der aktiven Zeile im Ausgabefeld.}
 {Die alten Markierungen verschwinden. Neue Markierungen für den \gls{redex}, über dem
 sich die Maus befindet, erscheinen.}
 
@@ -760,7 +760,7 @@ werden wieder angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don klickt mit der Maus auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol.}
-{Es erscheint eine neue Zeile im Darstellungsfeld, die das Ergebnis der angeklickten
+{Es erscheint eine neue Zeile im Ausgabefeld, die das Ergebnis der angeklickten
 Reduktion enthält. Die Markierungen in der darüberliegenden Zeile werden ausgeblendet
 und in der neuen Zeile erscheinen die Markierungen gemäß der ausgewählten
 Reduktionsordnung.}
@@ -772,7 +772,7 @@ Stattdessen wird der nächste Schritt gemäß \gls{cbn} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don betätigt den Vor-Knopf.}
-{Das Resultat der markierten Reduktion (gemäß \gls{cbn}) erscheint als neue Zeile im Darstellungsfeld.
+{Das Resultat der markierten Reduktion (gemäß \gls{cbn}) erscheint als neue Zeile im Ausgabefeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
@@ -783,7 +783,7 @@ Stattdessen wird der nächste Schritt gemäß \gls{cbv} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don betätigt den Vor-Knopf.}
-{Das Resultat der markierten Reduktion (gemäß \gls{cbv}) erscheint als neue Zeile im Darstellungsfeld.
+{Das Resultat der markierten Reduktion (gemäß \gls{cbv}) erscheint als neue Zeile im Ausgabefeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
@@ -794,7 +794,7 @@ Stattdessen wird der nächste Schritt gemäß \gls{ao} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don betätigt den Vor-Knopf.}
-{Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Darstellungsfeld.
+{Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Ausgabefeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
@@ -804,7 +804,7 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
 \teststep{Benutzer Alev Korun hat bereits einen gültigen \gls{lt} in das Eingabefeld eingegeben und wertet diesen durch die Komplettauswertung mit den Standardeinstellung aus.}
 {Alev drückt den Knopf "Pause"-Knopf.}
-{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Darstellungsfeld aus.}
+{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Ausgabefeld aus.}
 %TODO more teststeps
 
 
@@ -814,7 +814,7 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
 \teststep{Benutzer "Edsger Dijkstra" befindet sich auf der Wavelength-Seite.}
 {Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine Reduktionsordnung und ein
-Darstellungsformat aus, begibt sich in den Schritt-für-Schritt-Modus und durchläuft einige
+Ausgabeformat aus, begibt sich in den Schritt-für-Schritt-Modus und durchläuft einige
 Schritte der Auswertung.}
 {Die Anwendung verhält sich wie spezifiziert.}
 
@@ -825,7 +825,7 @@ abgebildet.}
 
 \teststep{Edsger hat die URL in seine Zwischenablage kopiert.}
 {Edsger wählt die URL in einem neuen Browserfenster an.}
-{Die IDE öffnet sich im neuen Fenster und Eingabe- und Darstellungsfeld befinden sich im gleichen Zustand wie im alten Fenster.}
+{Die IDE öffnet sich im neuen Fenster und Eingabe- und Ausgabefeld befinden sich im gleichen Zustand wie im alten Fenster.}
 
 \teststep{Die IDE ist im neuen Fenster geöffnet.}
 {Edsger betätigt den Zurück-Knopf.}
@@ -855,7 +855,7 @@ rückgängig gemacht.}
  
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada wählt eine andere Übungsaufgabe aus.}
-{Eingabe und Darstellung werden entfernt.
+{Eingabe und Ausgabe werden entfernt.
 Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
@@ -882,7 +882,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 {Der Übungsmodus wird beendet, der "Beenden"-Knopf verschwindet, Eingabe und Ausgabe werden entfernt.
  Das Aufgabenfeld wird entfernt.}
 
-\test{Darstellungsformate}{tst:display}
+\test{Ausgabeformate}{tst:display}
 \tests{fnc:display}
 \tests{fnc:unicode}
 \tests{fnc:tree}
@@ -892,8 +892,8 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 {Der eingegebene \gls{lt} wird ausgewertet und im Unicode-Format im Ausgabefenster angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion}
-{Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) ein anderes Darstellungsformat und drückt den "Start"-Knopf.}
-{Der eingegebene \gls{lt} wird ausgewertet und im gewählten Darstellungsformat wie spezifiziert dargestellt.}
+{Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) ein anderes Ausgabeformat und drückt den "Start"-Knopf.}
+{Der eingegebene \gls{lt} wird ausgewertet und im gewählten Ausgabeformat wie spezifiziert dargestellt.}
 
 \test{Export}{tst:output}
 \tests{fnc:output}
@@ -939,9 +939,9 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:selectsize}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Wilhelm wählt in der "display"-Box das Darstellungsformat "Tree" und drückt den "Start"-Knopf.}
+{Wilhelm wählt in der "display"-Box das Ausgabeformat "Tree" und drückt den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:completereduce}).
- Im Darstellungsfeld erscheint ein Syntaxbaum gemäß der ausgewählten Ausgabelänge (vgl. \ref{fnc:selectsize}).}
+ Im Ausgabefeld erscheint ein Syntaxbaum gemäß der ausgewählten Ausgabelänge (vgl. \ref{fnc:selectsize}).}
  
 \test{Wechsel des Auswertungsmodus}{test:changemodes}
 \tests{fnc:cancelcmplt}
@@ -1056,7 +1056,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 	\begin{subfigure}[l]{0.25\textwidth}
 	\centering
 		\includegraphics{img/displayMenu}
-	\caption{\label{fig:display}Auswahl des Darstellungsformats}	
+	\caption{\label{fig:display}Auswahl des Ausgabeformats}	
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}[m]{0.25\textwidth}
@@ -1134,7 +1134,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/displayTree1}
-	\caption{\label{fig:tree}Wird das Darstellungsformat "Tree" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} als Syntaxbaum im Ausgabefeld angezeigt.}
+	\caption{\label{fig:tree}Wird das Ausgabeformat "Tree" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} als Syntaxbaum im Ausgabefeld angezeigt.}
 \end{figure}
 
 
@@ -1163,7 +1163,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/Unicode_Darstellunsgmodus}
-	\caption{\label{fig:unicode}Wird das Darstellungsformat "Unicode" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} in Unicode im Ausgabefeld angezeigt.}
+	\caption{\label{fig:unicode}Wird das Ausgabeformat "Unicode" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} in Unicode im Ausgabefeld angezeigt.}
 \end{figure}
 
 \pagebreak

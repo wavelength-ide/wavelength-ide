@@ -170,6 +170,7 @@
 	\item Google Chrome ab Version 62.0.3202
 	\end{itemize}}
 }
+
 \newglossaryentry{ao}
 {
 	name=Applicative Order,
@@ -248,6 +249,21 @@
 	 \item Ausgabeformat: Unicode (vgl. \cref{fig:outputOptions})
 	 \item Ausgabesumfang: Result only (vgl. \cref{fig:outputOptions})
 	 \end{itemize}}
+}
+
+\newglossaryentry{action}
+{
+	name=Aktion,
+	plural=Aktionen,
+	description={Aktionen umfassen alle möglichen Interaktionen des Nutzers mit der IDE, die deren Zustand verändern:
+	\begin{itemize}
+	\item Das Wechseln des Modus (\cref{fig:state})
+	\item Die Auswahl eines Ausgabeformats, einer \gls{aws} oder einer Ausgabegröße über das entsprechende Drop-down-Menü
+	\item Das Bearbeiten des Eingabefeldes
+	\item Das Auswählen eines \gls{redex} zur Auswertung im Step-by-Step-Modus
+	\item Das Drücken eines Knopfes, der zu einer Veränderung des Inhalts des Ausgabefeld führt.
+	\end{itemize}		
+	}
 }
 
 % Syntax:
@@ -331,9 +347,8 @@ Im Falle syntaktischer Fehler werden dem Nutzer die genaue Position des Fehlers,
 Art des Fehlers sowie Behebungsmöglichkeiten angezeigt und die relevante Stelle im
 Editor hervorgehoben.
 
-%TODO nötig?
 \criteriumOptional{Intelligenter Editor}{crt:editor}
-Der Editor zur Eingabe der \glspl{lt} unterstützt Standart-Editor-Funktionen,
+Der Editor zur Eingabe der \glspl{lt} unterstützt Standard-Editor-Funktionen,
 \glspl{mfe} und \glspl{st}.
 
 \criteriumOptional{Standardbibliothek}{crt:lib}

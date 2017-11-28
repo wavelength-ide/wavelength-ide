@@ -739,18 +739,16 @@ gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
 \teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus.}
 {Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion erscheint als neue Zeile im Ausgabefeld.
-Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
-aktuellen Zeile der nächste Reduktionsschritt markiert.}
+In der neuen Zeile ist der nächste Reduktionsschritt markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don betätigt den Zurück-Knopf.}
-{Der zweite Reduktionsschritt wird aus dem Ausgabefeld entfernt. Die Markierungen
-auf dem Ausgangsschritt erscheinen wieder.}
+{Der zweite Reduktionsschritt wird aus dem Ausgabefeld entfernt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don schwebt mit der Maus über einem nicht markierten, zu einem \gls{redex} gehörenden
 $\lambda$-Symbol in der aktiven Zeile im Ausgabefeld.}
-{Die alten Markierungen verschwinden. Neue Markierungen für den \gls{redex}, über dem
+{Die alten Markierungen in der aktiven Zeile verschwinden. Neue Markierungen für den \gls{redex}, über dem
 sich die Maus befindet, erscheinen.}
 
 \teststep{Der Mauszeiger befindet sich über einem Redex.}
@@ -761,8 +759,7 @@ werden wieder angezeigt.}
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don klickt mit der Maus auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol.}
 {Es erscheint eine neue Zeile im Ausgabefeld, die das Ergebnis der angeklickten
-Reduktion enthält. Die Markierungen in der darüberliegenden Zeile werden ausgeblendet
-und in der neuen Zeile erscheinen die Markierungen gemäß der ausgewählten
+Reduktion enthält. In der neuen Zeile erscheinen die Markierungen gemäß der ausgewählten
 Reduktionsordnung.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
@@ -773,30 +770,13 @@ Stattdessen wird der nächste Schritt gemäß \gls{cbn} angezeigt.}
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion (gemäß \gls{cbn}) erscheint als neue Zeile im Ausgabefeld.
-Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
-aktuellen Zeile der nächste Reduktionsschritt markiert.}
+In der neuen Zeile wird der nächste Reduktionsschritt markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don wählt das Drop-down-Menü für die Reduktionsordnung an. Er wählt "\gls{cbv}".}
-{Die Markierungen für die vorher ausgewählte Reduktionsordnung werden ausgeblendet.
-Stattdessen wird der nächste Schritt gemäß \gls{cbv} angezeigt.}
+{Don wiederholt die vorangegangenen beiden Schritte für "\gls{cbv}" und "\gls{ao}".}
+{Die Applikation verhält sich wie in den vorherigen beiden Schritten beschrieben,
+verwendet aber die jeweils ausgewählte Reduktionsordnung.}
 
-\teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt den Vor-Knopf.}
-{Das Resultat der markierten Reduktion (gemäß \gls{cbv}) erscheint als neue Zeile im Ausgabefeld.
-Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
-aktuellen Zeile der nächste Reduktionsschritt markiert.}
-
-\teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don wählt das Drop-down-Menü für die Reduktionsordnung an. Er wählt "\gls{ao}".}
-{Die Markierungen für die vorher ausgewählte Reduktionsordnung werden ausgeblendet.
-Stattdessen wird der nächste Schritt gemäß \gls{ao} angezeigt.}
-
-\teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt den Vor-Knopf.}
-{Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Ausgabefeld.
-Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
-aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
 %Wechsel zwischen Auswertungsmodi
 \test{Wechsel zwischen Komplett- und Schritt-für-Schritt-Auswertung}{tst:switchmodus}

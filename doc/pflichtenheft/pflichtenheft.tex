@@ -915,11 +915,11 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Benutzer "Robert Tarjan" befindet sich auf der Wavelength-Seite.}
 {Robert gibt einen gültigen \gls{lt} ein und drückt auf den "Exportieren"-Knopf.}
-{Es öffnet sich eine Liste mit allen Ausgabeformaten.}
+{Es öffnet sich eine Liste mit allen Exportformaten.}
 
-\teststep{Die IDE erwartet die Auswahl eines Ausgabeformates.}
-{Robert wählt ein beliebiges Ausgabeformat aus der Liste aus.}
-{Die Liste mit den Ausgabeformaten verschwindet.
+\teststep{Die IDE erwartet die Auswahl eines Exportformats.}
+{Robert wählt ein beliebiges Exportformat aus der Liste aus.}
+{Die Liste mit den Exportformaten verschwindet.
 Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingabe.}
 
 \teststep{Robert ist im Fenster mit der formatierten Eingabe.}
@@ -950,29 +950,29 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Die Eingabe wird ausgewertet und nur das Ergebnis wird angezeigt (vgl. \gls{std}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Wilhelm wählt in der "output size"-Box eine andere Ausgabelänge aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
+{Wilhelm wählt in der "Output size"-Box einen anderen Darstellungsumfang aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:selectsize}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Wilhelm wählt in der "display"-Box das Ausgabeformat "Tree" und drückt den "Start"-Knopf.}
+{Wilhelm wählt in der "Display"-Box das Ausgabeformat "Tree" und drückt den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:completereduce}).
- Im Ausgabefeld erscheint ein Syntaxbaum gemäß der ausgewählten Ausgabelänge (vgl. \ref{fnc:selectsize}).}
+ Im Ausgabefeld erscheint ein Syntaxbaum gemäß des ausgewählten Ausgabeumfangs (vgl. \ref{fnc:selectsize}).}
  
 \test{Wechsel des Auswertungsmodus}{test:changemodes}
 \tests{fnc:cancelcmplt}
 \tests{fnc:cancel}
 
-\teststep{Die Komplettauswertung eines korrekten \gls{lt} läuft}
+\teststep{Die Komplettauswertung eines korrekten \gls{lt} läuft.}
 {Nutzer "Bob" drückt den "Pause"-Button.}
-{Die Auswertung wird angehalten, der aktuelle \gls{lt} wird in das Ausgabefenster geschrieben, die IDE wechselt in den Step-by-Step Modus.}
+{Die Auswertung wird angehalten, der aktuelle \gls{lt} wird in das Ausgabefeld geschrieben, die IDE wechselt in den Schritt-für-Schritt-Modus.}
 
-\teststep{Die IDE befindet sich im Step-by-Step-Modus}
+\teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus}
 {Bob drückt den "Play"-Blutton.}
-{Die ID wechselt in den Komplettauswertungs-Modus, der eingegebene \gls{lt} wird ohne Aktionen des Nutzers ausgewertet.}
+{Die IDE wechselt in den Komplettauswertungs-Modus, der eingegebene \gls{lt} wird ohne Aktionen des Nutzers ausgewertet.}
 
 \teststep{Die Komplettauswertung eines \gls{lt} läuft}
 {Bob drückt den "Abbrechen"-Button.}
-{Die Auswertung wird abgebrochen, das Ausgabefenster wird zurückgesetzt, das Eingabefenster kann bearbeitet werden.}
+{Die Auswertung wird abgebrochen, das Ausgabefeld wird erhalten und deaktiviert, das Eingabefenster kann bearbeitet werden.}
  
 \test{Standardbibliothek}{test:lib}
 \tests{fnc:lib}
@@ -986,7 +986,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Die IDE verhält sich wie spezifiziert.}
 
 \teststep{Die natürlichen Zahlen sind eingebunden.}
-{Alan definiert eine natürliche Zahl.
+{Alan definiert eine natürliche Zahl durch ein \gls{lit}.
  Für diese Zahl benutzt er die Funktionen, um Vorgänger und Nachfolger zu bestimmen.
  Dann drückt er den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert.}

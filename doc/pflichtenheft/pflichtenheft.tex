@@ -890,6 +890,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
  
 \test{Namensbindung}{tst:bind}
 \tests{fnc:bind}
+\tests{fnc:diag}
 
 \teststep{Benutzer "Haskell Curry" befindet sich auf der Wavelength-Seite.}
 {Haskell gibt einen gültigen \gls{lt} ein und nennt ihn "curry".
@@ -977,6 +978,26 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
  Mit dem Befehl \emph{cons b list} hängt er das Element \emph{b} an den Anfang von \emph{list}.
  Alan benutzt die Funktion \emph{car} bzw. \emph{cdr} (siehe \ref{fnc:lib}) und drückt den "Start"-Knopf.}
 {Es wird \emph{a} bzw. \emph{b} ausgegeben.}
+
+\test{Fehlerdiagnostik}{tst:diag}
+\tests{fnc:diag}
+
+\teststep{Benutzer "Richard Bellman" befindet sich auf der Wavelength-Seite.}
+{Richard gibt einen syntaktisch inkorrekten \gls{lt} ein, der eine schließende Klammer
+zu wenig enthält und wählt den Start-Knopf an.}
+{Im Ausgabefeld wird eine Nachricht angezeigt, die auf unbalancierte Klammerung hinweist.
+Die Nachricht enthält einen Vorschlag für einen korrigierten Term. Im Eingabefenster wird
+die Klammer, die keinen Partner besitzt, markiert.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Richard löscht die aktuelle Eingabe aus dem Eingabefenster und gibt einen \gls{lt} ein, der strukturell weder \gls{lapp}, noch
+\gls{labs}, noch \gls{var} ist. Dann wählt er den Start-Knopf an.}
+{Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass der eingegebene
+Term strukturell inkorrekt ist.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Richard leert das Eingabefeld und wählt den Start-Knopf an.}
+{Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass die Eingabe leer war.}
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}

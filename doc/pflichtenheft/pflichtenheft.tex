@@ -411,7 +411,10 @@ Neben dem Eingabefeld werden Zeilennummern angezeigt.
 Der Nutzer hat die Möglichkeit, auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
 Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des Start-Knopfes (\cref{fig:actionButtons}) gestartet.
 Ist die Eingabe syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und die Komplettauswertung verlassen.
-Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) bestimmt.\\
+Es werden die Knöpfe zum Laden von Bibliotheken und Aufgaben sowie der Schritt-für-Schritt-Knopf deaktiviert.
+Außerdem wird das Eingabefeld, das Ausgabeformats-, das \gls{aws}-Dropdown-Menü und das Ausgabeumfangs-Dropdown-Menü deaktiviert.
+Der Start-Knopf wird zu einem Pause-Knopf.
+Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) und den derzeitig aktiven Ausgabeumfang bestimmt.\\
 Die Komplettauswertung übernimmt die automatische Auswertung, bis die derzeit aktive \gls{aws} keine \gls{beta} mehr vorgibt.
 Wenn der \gls{lt} keine \gls{nrmlform} besitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht.
 
@@ -428,7 +431,7 @@ Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{
 	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
 	Dies wird dem Nutzer durch eine entsprechende Ausgabe im Ausgabefeld mitgeteilt.
 	\item Das Drücken des Pause-Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
-	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den \hyperref[fnc:steps]{Schritt-für-Schritt-Modus}.
+	Der zuletzt ausgewertete \gls{lt} wird ausgegeben, die Anwendung gelangt in den \hyperref[fnc:steps]{Schritt-für-Schritt-Modus} und das \gls{aws}-Dropdown-Menü wird wieder aktiviert.
 \end{itemize}
 
 %TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
@@ -554,6 +557,13 @@ schließenden Klammer an der problematischen Stelle zu einem syntaktisch korrekt
 \gls{lt} führt).
 Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
+\functionality{Abbruch der Auswertung}{fnc:cancel}
+\fulfills{crt:cancel}
+Durch das Drücken des "Abbrechen"-Knopfes kann der Nutzer während dem Schritt-für-Schritt-Modus und während der Komplettauswertung in den Eingabemodus zurückkehren.\\
+Dabei wird die Auswertung abgebrochen und der Inhalt des Ausgabefelds erhalten, die Steuerung der Ausgabe aber deaktiviert.
+Alle Knöpfe, Felder und Menüs, welche beim Start der Auswertung deaktiviert wurden, werden wieder aktiviert.
+Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
+
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:comfcode}
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
@@ -650,13 +660,13 @@ Die Benutzeroberfläche ist während der Auswertung noch verwendbar, d.h. die Ob
 Die IDE unterliegt der BSD-3-Klausel.
 
 \nonFunctionality{Öffentlichkeit}{nfc:opensource}
-Alle zur IDE gehörigen Programmcodes, Dokumente, etc sind öffentlich und ohne Anmeldung zugänglich unter \href{https://github.com/wavelength-ide/wavelength-ide}{dieser Seite}.
+Alle zur IDE gehörigen Programmcodes, Dokumente, usw. sind öffentlich und ohne Anmeldung zugänglich unter \href{https://github.com/wavelength-ide/wavelength-ide}{https://github.com/wavelength-ide/wavelength-ide}.
 
 \nonFunctionality{Implementierung}{nfc:implementation}
 Die Implementierung muss in einer statisch typisierten, objektorientierten Programmiersprache erfolgen.
 
 \nonFunctionality{Benutzbarkeit}{nfc:usability}
-Nach Aufruf der Seite kann ein Nutzer in 3 Schritten einen \gls{lt} nach der \gls{nr} auswerten:
+Nach Aufruf der Seite kann ein Nutzer in drei Schritten einen \gls{lt} nach der \gls{nr} auswerten:
 \begin{itemize}
 \item Eingabe eines \glslink{lt}{$\lambda$-Terms}
 \item Drücken des "Start"-Knopfes

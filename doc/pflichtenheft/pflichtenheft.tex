@@ -251,21 +251,6 @@
 	 \end{itemize}}
 }
 
-\newglossaryentry{action}
-{
-	name=Aktion,
-	plural=Aktionen,
-	description={Aktionen umfassen alle möglichen Interaktionen des Nutzers mit der IDE, die deren Zustand verändern:
-	\begin{itemize}
-	\item Das Wechseln des Modus (\cref{fig:state})
-	\item Die Auswahl eines Ausgabeformats, einer \gls{aws} oder einer Ausgabegröße über das entsprechende Drop-down-Menü
-	\item Das Bearbeiten des Eingabefeldes
-	\item Das Auswählen eines \gls{redex} zur Auswertung im Schritt-für-Schritt-Modus
-	\item Das Drücken eines Knopfes, der zu einer Veränderung des Inhalts des Ausgabefeld führt.
-	\end{itemize}		
-	}
-}
-
 % Syntax:
 %\newglossaryentry{label}
 %{
@@ -542,6 +527,7 @@ Module werden bereitgestellt:
 	% WIP
 \end{itemize}
 
+%TODO Test schreiben
 \functionality{Fehlerdiagnostik}{fnc:diag}
 \fulfills{crt:error}
 \fulfills{crt:diag}
@@ -631,10 +617,9 @@ Die \gls{cmpltapp} wird mit der ausgewählten \gls{aws} gestartet.
 
 \functionality{Permalinks}{fnc:perma}
 \fulfills{crt:perma}
-Die in der Adresszeile des Browsers angezeigte URL kodiert den gesamten Zustand der Sitzung. Dies schließt den Inhalt des Eingabefelds, die ausgewählten Optionen und den Inhalt des Ausgabefelds mit ein.
-%TODO was genau heiß nach jeder Aktion?
-Nach jeder Aktion des Nutzers wird die angezeigte URL angepasst.\\
-Durch Drücken des "Teilen"-Knopfes öffnet sich ein Feld, in welchem die aktuelle URL steht.
+Die in der Adresszeile des Browsers angezeigte URL kodiert den gesamten Zustand der Sitzung. Dies schließt den Inhalt des Eingabefelds, den Inhalt des Ausgabefeld, den gegenwärtigen Modus und die ausgewählten Optionen mit ein.
+Nach jeder Aktion, die den Zustand der IDE verändert, wird auch die angezeigte URL angepasst.\\
+Aktionen umfassen sowohl Eingaben des Nutzers, Interaktionen mit der Benutzeroberfläche als auch die automatischen Ausgaben während der Komplettauswertung. 
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
 
 \functionality{Wahl des Exportformats}{fnc:output}
@@ -822,6 +807,11 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 {Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Ausgabefeld aus.}
 %TODO more teststeps
 
+\teststep{Die Auswertung eines gültigen \gls{lt} wurde begonnen, IDE befindet sich im Step-By-Step Modus}
+{Alev drückt den "Play"-Knopf.}
+{Das Ausgabefeld ist nicht mehr interaktiv, die IDE wechselt in den Komplettauswertungs-Modus und verhält sich weiterhin wie spezifiziert.}
+
+
 
 \test{Erstellen vom Permalinks}{tst:perma}
 \tests{fnc:perma}
@@ -950,7 +940,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Die Eingabe wird ausgewertet und nur das Ergebnis wird angezeigt (vgl. \gls{std}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Wilhelm wählt in der "Output size"-Box einen anderen Darstellungsumfang aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
+{Wilhelm wählt in der "Output size"-Box einen anderen Ausgabeungsumfang aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:selectsize}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}

@@ -437,7 +437,7 @@ Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{
 %TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
 \functionality{Unicode-Ausgabe}{fnc:unicode}
 \fulfills{crt:display}
-Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
+Der Nutzer hat die Möglichkeit, sich Auswertungen v \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
 Jeder neu ausgegebene Auswertungsschritt wird in einer neuen Zeile ausgegeben. 
 Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt (siehe \cref{fig:unicode}).
 
@@ -445,14 +445,12 @@ Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha}
 \fulfills{crt:display}
 Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en als Syntaxbaum ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben (siehe \cref{fig:tree}).\\
 Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten Auswertungsschritt ausgegeben. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
-%TODO auf Baumübersetzung einigen
-%TODO Verlinken von Bildern
 \begin{itemize}
 	\item \gls{lapp}en werden als Elternknoten mit dem Namen "App" dargestellt. 
-	Der erste und zweite \gls{lt} der \gls{lapp} werden als Kindknoten angefügt.
+	Der erste und zweite \gls{lt} der \gls{lapp} werden als Kindknoten angefügt (\cref{fig:ltAppTreeB}).
 	\item \gls{labs}en mit der \gls{var} $x$ werden als Elternknoten mit dem Namen "$\lambda x$" dargestellt. 
 	Der Elternknoten besitzt einen Kindknoten, welcher den \gls{lt} der \gls{labs} enthält.
-	\item Sollte ein Kindknoten des Baums wieder eine \gls{lapp} oder eine \gls{labs} enthalten, wird dieser Knoten wieder als Eltern und Kindknoten dargestellt.
+	\item Sollte ein Kindknoten des Baums wieder eine \gls{lapp} oder eine \gls{labs} enthalten, wird dieser Knoten wieder als Eltern und Kindknoten dargestellt (\cref{fig:ltAppTreeA}).
 \end{itemize}
 
 \functionality{Auswahl des Ausgabeformats}{fnc:display}
@@ -463,30 +461,20 @@ Standardmäßig ist die Unicode-Ausgabe ausgewählt.
 Der Nutzer kann das Ausgabeformat nur im Eingabemodus ändern (vgl. \cref{fig:state}).
 Das bedeutet insbesondere, dass der Nutzer das Ausgabeformat nicht während einer laufenden Auswertung ändern kann.
 
-\functionality{\glslink{nr}{Normal-Reduktionsordnung}}{fnc:nr}
-\fulfills{crt:reduce}
-Der Nutzer kann zur automatischen Auswertung eines \gls{lt}s die \glslink{nr}{normale Reduktionsordnung} verwenden. Siehe \cref{fig:outputOptions}.
-
-\functionality{\gls{cbn}}{fnc:cbn}
-\fulfills{crt:awsstrats}
-Der Nutzer kann zur automatischen Auswertung eines \gls{lt}s die \gls{aws} \gls{cbn} verwenden. Siehe \cref{fig:outputOptions}.
-
-\functionality{\gls{cbv}}{fnc:cbv}
-\fulfills{crt:awsstrats}
-Der Nutzer kann zur automatischen Auswertung eines \gls{lt}s die \gls{aws} \gls{cbv} verwenden. Siehe \cref{fig:outputOptions}.
-
-\functionality{\gls{ao}}{fnc:ao}
-\fulfills{crt:awsstrats}
-Der Nutzer kann zur automatischen Auswertung eines \gls{lt}s die \gls{aws} \gls{ao} verwenden. Siehe \cref{fig:outputOptions}.
-
 \functionality{Auswahl einer \gls{aws}}{fnc:awsstrats}
 \fulfills{crt:awsstrats}
-Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
-%TODO link zu bildern wegen markierungen
-Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und damit die Markierung des nächsten zu reduzierenden \gls{lt}s im Ausgabefeld.\\
+Der Nutzer kann die derzeitig aktive \gls{aws} über ein Drop-down-Menü auswählen (\cref{fig:awsOptions})).\\
+Die folgenden \gls{aws} können gewählt werden:
+\begin{itemize}
+	\item Normale-Reduktionsordnung
+	\item Call by Name
+	\item Call by Value
+	\item Applicative Order
+\end{itemize}
+Die \gls{aws} bestimmt die Reihenfolge von automatischen \glspl{beta} und damit die Markierung des nächsten zu reduzierenden \gls{lt}s im Ausgabefeld (\cref{fig:unicode}).\\
 Standardmäßig ist die \glslink{nr}{Normal-Reduktionsordnung} ausgewählt. 
 Der Nutzer kann die \gls{aws} im \hyperref[fnc:steps]{Schritt-für-Schritt-Modus} ändern, jedoch nicht während der \gls{cmpltapp}.
-
+ 
 \functionality{Auswahl des Ausgabeumfangs}{fnc:selectsize}
 \fulfills{crt:partial}
 Der Nutzer kann den Ausgabeumfang über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}). 
@@ -701,7 +689,6 @@ Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlas
 \tests{fnc:ed}
 \tests{fnc:completereduce}
 \tests{fnc:live}
-\tests{fnc:nr}
 
 \teststep{Nutzer "Ben Fielder" hat einen Browser geöffnet.}
 {Ben navigiert zur URL des Wavelength-Projekts.}
@@ -724,9 +711,6 @@ Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
 \test{Schritt-für-Schritt-Modus}{tst:steps}
 \tests{fnc:awsstrats}
-\tests{fnc:cbn}
-\tests{fnc:cbv}
-\tests{fnc:ao}
 \tests{fnc:steps}
 % fehlt: \tests{fnc:interactive}
 
@@ -1069,7 +1053,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 	\begin{subfigure}[m]{0.25\textwidth}
 	\centering
 		\includegraphics{img/reductionMenu}
-	\caption{Auswahl der Auswertungsstrategie}
+	\caption{\label{fig:awsOptions}Auswahl der Auswertungsstrategie}
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}[r]{0.25\textwidth}
@@ -1149,13 +1133,13 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 	\begin{subfigure}{0.25\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{img/displayTree2}
-		\caption{Syntaxbaum mit ausgewählter \gls{lapp} (unterstrichen).}
+		\caption{\label{fig:ltAppTreeA}Syntaxbaum mit ausgewählter \gls{lapp} (unterstrichen).}
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}{0.25\textwidth}
 		\centering
 		\includegraphics[width=0.9\textwidth]{img/displayTree3}
-		\caption{Neue Ausgabe beim Anklicken der ausgewählten \gls{lapp}.}
+		\caption{\label{fig:ltAppTreeB}Neue Ausgabe beim Anklicken der ausgewählten \gls{lapp}.}
 	\end{subfigure}
 	\hspace*{\fill}
 	\begin{subfigure}{0.25\textwidth}

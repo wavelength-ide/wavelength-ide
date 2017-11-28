@@ -260,7 +260,7 @@
 	\item Das Wechseln des Modus (\cref{fig:state})
 	\item Die Auswahl eines Ausgabeformats, einer \gls{aws} oder einer Ausgabegröße über das entsprechende Drop-down-Menü
 	\item Das Bearbeiten des Eingabefeldes
-	\item Das Auswählen eines \gls{redex} zur Auswertung im Step-by-Step-Modus
+	\item Das Auswählen eines \gls{redex} zur Auswertung im Schritt-für-Schritt-Modus
 	\item Das Drücken eines Knopfes, der zu einer Veränderung des Inhalts des Ausgabefeld führt.
 	\end{itemize}		
 	}
@@ -366,7 +366,7 @@ Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausg
 können entweder alle Teilschritte, die ersten und letzten Teilschritte, oder
 einzelne Teilschritte in periodischen Abständen angezeigt werden.
 
-\criteriumOptional{Schritt-für-Schritt-Reduktion}{crt:steps}
+\criteriumOptional{Schritt-für-Schritt-Modus}{crt:steps}
 Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
 oder durch Pausieren einer laufenden Reduktion erreicht werden kann.
 Durch Klicken kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
@@ -403,17 +403,17 @@ Die Anwendung soll nur in englischer Sprache verfügbar sein.
 \functionality{Editor}{fnc:ed}
 \fulfills{crt:input}
 \fulfills{crt:editor}
-Nutzer können beliebigen Text in einem Editorfeld eingeben. 
-Das Editorfeld verfügt über Standart-Textfeld-Funktionalitäten mit dazugehörigen gängigen Tastenkombinationen:
+Nutzer können beliebigen Text in einem Eingabefeld eingeben. 
+Das Eingabefeld verfügt über Standart-Textfeld-Funktionalitäten mit dazugehörigen gängigen Tastenkombinationen:
 \begin{itemize}
 	\item Editieren, Markieren und Navigieren von Text im Eingabefeld
 	\item Kopieren, Ausschneiden und Einfügen
 	\item Undo und Redo
 \end{itemize}
-Außerdem verfügt das Editorfeld über \gls{st}s und \gls{mfe}.
+Außerdem verfügt das Eingabefeld über \gls{st}s und \gls{mfe}.
 Bei der Eingabe einer öffnenden Klammer wird auch direkt die schließende Klammer hinter der öffnenden Klammer eingefügt.
 Wird der Editor-Cursor vor oder hinter eine Klammer bewegt, so wird die zugehörige schließende Klammer angezeigt.
-Neben dem Editorfeld werden Zeilennummern angezeigt.
+Neben dem Eingabefeld werden Zeilennummern angezeigt.
 
 \functionality{\gls{cmpltapp}}{fnc:completereduce}
 \fulfills{crt:reduce}
@@ -426,7 +426,7 @@ Wenn der \gls{lt} keine \gls{nrmlform} besitzt oder die \gls{aws} diese nicht fi
 
 \functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
 \fulfills{crt:partial}
-Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefenster der derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
+Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefeld der derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
 Insbesondere bei einer Auswahl des Ausgabeumfangs von ``Full'' oder ``Periodically'' werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
 
 \functionality{Unterbrechung der \gls{cmpltapp}}{fnc:cancelcmplt}
@@ -464,7 +464,7 @@ Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten A
 \functionality{Auswahl des Ausgabeformats}{fnc:display}
 \fulfills{crt:display}
 Der Nutzer kann das derzeitig aktive Ausgabeformat über ein Drop-down-Menü auswählen (\cref{fig:outputOptions}).
-Das Ausgabeformat entscheidet über die Visualisierung im Ausgabefenster. Das Ausgabeformat hat jedoch keine Auswirkung auf das Exportieren von Ergebnissen.\\
+Das Ausgabeformat entscheidet über die Visualisierung im Ausgabefeld. Das Ausgabeformat hat jedoch keine Auswirkung auf das Exportieren von Ergebnissen.\\
 Standardmäßig ist die Unicode-Ausgabe ausgewählt.
 Der Nutzer kann das Ausgabeformat nur im Eingabemodus ändern (vgl. \cref{fig:state}).
 Das bedeutet insbesondere, dass der Nutzer das Ausgabeformat nicht während einer laufenden Auswertung ändern kann.
@@ -572,7 +572,7 @@ Die Ausgabe berücksichtigt den Namen soweit möglich:
 Ist der konkrete \gls{lt} für die Reduktion unerheblich, so wird immer der Name verwendet.
 Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 
-\functionality{Schritt-für-Schritt Auswertung}{fnc:steps}
+\functionality{Schritt-für-Schritt-Modus}{fnc:steps}
 \fulfills{crt:steps}
 Durch Drücken des Schritt-für-Schritt-Knopfes wird die Eingabe aus dem Eingabefeld überprüft:
 Ist sie syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und der Schritt-für-Schritt-Modus beendet.
@@ -700,7 +700,7 @@ Beim Start der Anwendung befindet sich der Nutzer im Eingabemodus. In diesem Mod
 Durch Drücken des Schritt-für-Schritt- oder Start-Knopfes (\cref{fig:actionButtons}) gelangt der Nutzer in den jeweiligen Auswertungsmodus und es beginnt die Auswertung des eingegebenen \glslink{lt}{$\lambda$-Terms}. 
 Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Ausgabefeld stehen, werden diese gelöscht.\\ 
 Durch Drücken des Start- oder Pause-Knopfes kann der Nutzer zwischen den entsprechenden Auswertungsmodi wechseln. 
-Beim Wechsel vom Step-by-Step-Modus zur Komplettauswertung wird der zuletzt ausgegebene \gls{lt} des Ausgabefeldes weiter ausgewertet.
+Beim Wechsel vom Schritt-für-Schritt-Modus zur Komplettauswertung wird der zuletzt ausgegebene \gls{lt} des Ausgabefeldes weiter ausgewertet.
 Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlassen werden. Es erscheint eine entsprechende Ausgabe im Ausgabefeld. Erst jetzt kann der Nutzer neue Eingaben im Eingabefeld eingeben.
 
 
@@ -718,7 +718,7 @@ Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlas
 {Die IDE öffnet sich wie in Abbildung~\ref{img:start}.}
 
 \teststep{Die IDE ist fertig geladen.}
-{Ben gibt in das Eingabefeld im oberen Teil des Fensters einen gültigen \gls{lt} mit Klammern ein,
+{Ben gibt in das Eingabefeld im Eingabefeld einen gültigen \gls{lt} mit Klammern ein,
 dessen Reduktion durch die \gls{nr} terminiert.
 Hierbei navigiert er über den Text und macht eine vermeintlich fehlerbehaftete Änderung rückgängig. 
 Ben merkt, dass die Änderung doch korrekt war und springt wieder zum aktuellen Stand. Er kopiert etwas Text und fügt diesen an einer anderen Stelle wieder ein.
@@ -736,7 +736,7 @@ die \gls{nr} und als Ausgabeumfang die volle Ausgabe ausgewählt sind.}
 {Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \glslink{nr}{normalen Reduktionsordnung} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
-\test{Schritt-für-Schritt-Auswertung}{tst:steps}
+\test{Schritt-für-Schritt-Modus}{tst:steps}
 \tests{fnc:awsstrats}
 \tests{fnc:cbn}
 \tests{fnc:cbv}
@@ -751,7 +751,7 @@ den "Schritt-für-Schritt"-Knopf.}
 Zurück-Knöpfe werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschritt
 gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
 
-\teststep{Die IDE ist bereit für die Schritt-für-Schritt-Auswertung.}
+\teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus.}
 {Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion erscheint als neue Zeile im Ausgabefeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
@@ -834,8 +834,8 @@ Schritte der Auswertung.}
 {Die Anwendung verhält sich wie spezifiziert.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Edsger wählt die "Share"-Schaltfläche im unteren Bereich der Anwendung an.}
-{Neben der Schaltfläche erscheint eine URL wie in Abbildung~\ref{img:share}
+{Edsger verwendet den "Teilen"-Knopf im unteren Bereich der Anwendung an.}
+{Neben dem Knopf erscheint eine URL wie in Abbildung~\ref{img:share}
 abgebildet.}
 
 \teststep{Edsger hat die URL in seine Zwischenablage kopiert.}
@@ -904,7 +904,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Benutzer "Richard Hamming" befindet sich auf der Wavelength-Seite.}
 {Richard gibt einen syntaktisch korrekten \gls{lt} ein und drückt den "Start"-Knopf.}
-{Der eingegebene \gls{lt} wird ausgewertet und im Unicode-Format im Ausgabefenster angezeigt.}
+{Der eingegebene \gls{lt} wird ausgewertet und im Unicode-Format im Ausgabefeld angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion}
 {Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) ein anderes Ausgabeformat und drückt den "Start"-Knopf.}
@@ -942,7 +942,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Es wird eine Fehlermeldung ausgegeben.
  Haskell wird darauf hingewiesen, dass er einen ungültigen Namen gewählt hat.}
 
-\test{Auswahl der Ausgabelänge}{tst:selectsize}
+\test{Auswahl des Ausgabeumfangs}{tst:selectsize}
 \tests{fnc:selectsize}
 
 \teststep{Benutzer "Wilhelm Ackermann" befindet sich auf der Wavelength-Seite.}
@@ -963,7 +963,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 \tests{fnc:cancel}
 
 \teststep{Die Komplettauswertung eines korrekten \gls{lt} läuft.}
-{Nutzer "Bob" drückt den "Pause"-Button.}
+{Nutzer "Bob" drückt den "Pause"-Knopf.}
 {Die Auswertung wird angehalten, der aktuelle \gls{lt} wird in das Ausgabefeld geschrieben, die IDE wechselt in den Schritt-für-Schritt-Modus.}
 
 \teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus}
@@ -971,8 +971,8 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Die IDE wechselt in den Komplettauswertungs-Modus, der eingegebene \gls{lt} wird ohne Aktionen des Nutzers ausgewertet.}
 
 \teststep{Die Komplettauswertung eines \gls{lt} läuft}
-{Bob drückt den "Abbrechen"-Button.}
-{Die Auswertung wird abgebrochen, das Ausgabefeld wird erhalten und deaktiviert, das Eingabefenster kann bearbeitet werden.}
+{Bob drückt den "Abbrechen"-Knopf.}
+{Die Auswertung wird abgebrochen, das Ausgabefeld wird erhalten und deaktiviert, das Eingabefeld kann bearbeitet werden.}
  
 \test{Standardbibliothek}{test:lib}
 \tests{fnc:lib}
@@ -1039,7 +1039,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 
 
 % Hier ganz normale figures mit Bildern
-Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das Editorfeld, das untere ist das Ausgabefeld. Das Größenverhältnis der Felder kann mittels einer Schaltfläche angepasst werden.
+Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das Eingabefeld, das untere ist das Ausgabefeld. Das Größenverhältnis der Felder kann mittels einer Schaltfläche angepasst werden.
 
 \begin{figure}[H]
 	\centering
@@ -1049,12 +1049,12 @@ Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das
 \end{figure}
 
 
-Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "Abbrechen"-Knopfes wird die Auswertung abgebrochen. Beim Drücken des Schritt-für-Schritt-Knopfes wird die Schritt-für-Schritt-Auswertung gestartet, durch welche sich der Nutzer mit den beiden Knöpfen daneben navigieren kann.
+Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "Abbrechen"-Knopfes wird die Auswertung abgebrochen. Beim Drücken des Schritt-für-Schritt-Knopfes wird der Schritt-für-Schritt-Modus gestartet, in welchem der Nutzer mit den beiden Knöpfen daneben navigieren kann.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{img/actionButton}
-	\caption{\label{fig:actionButtons} Schritt-zurück, Step-by-Step-Modus, 
+	\caption{\label{fig:actionButtons} Schritt-zurück, Schritt-für-Schritt-Modus, 
 	Schritt-vor, Start und Abbrechen (von links nach rechts)}
 \end{figure}
 
@@ -1098,7 +1098,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/exerciseMode}
-	\caption{\label{fig:exerciseMode}Wurde eine Übungsaufgabe ausgewählt, so wird die Aufgabestellung im neu erscheinenden Aufgabefeld angezeigt. Eventuell vorgegebene Eingaben werden in das Eingabefeld geladen. Der Nutzer hat die Möglichkeit, das Größenverhältnis dieser beiden Felder anzupassen. Die Musterlösung der Aufgabe wird durch Klicken eines entsprechenden Button angezeigt oder auch wieder ausgeblendet. Mit Klick auf einen weiteren Knopf kann der Übungsmodus beendet werden.}
+	\caption{\label{fig:exerciseMode}Wurde eine Übungsaufgabe ausgewählt, so wird die Aufgabenstellung im neu erscheinenden Aufgabefeld angezeigt. Eventuell vorgegebene Eingaben werden in das Eingabefeld geladen. Der Nutzer hat die Möglichkeit, das Größenverhältnis dieser beiden Felder anzupassen. Die Musterlösung der Aufgabe wird durch Klicken eines entsprechenden Knopfes angezeigt oder auch wieder ausgeblendet. Mit Klick auf einen weiteren Knopf kann der Übungsmodus beendet werden.}
 \end{figure}
 
 
@@ -1119,7 +1119,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{img/fehlerausgabe}
-	\caption{Bei fehlerhafter Eingabe wird eine Fehlermeldung im Ausgabefenster ausgegeben.
+	\caption{Bei fehlerhafter Eingabe wird eine Fehlermeldung im Ausgabefeld ausgegeben.
 }
 \end{figure}
 
@@ -1141,7 +1141,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 \begin{figure}[H]
 	\centering
 	\includegraphics{img/share}
-	\caption{Bei Betätigen des Share-Knopfes wird ein entsprechender Link erstellt.}
+	\caption{Bei Betätigen des Teilen-Knopfes wird ein entsprechender Link erstellt.}
 	\label{img:share}
 \end{figure}
 

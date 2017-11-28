@@ -712,13 +712,13 @@ Ben fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
 {Das Textfeld verhält sich wie erwartet.}
 
 \teststep{Der \gls{lt} wurde eingegeben.}
-{Ben überprüft, dass als Darstellungsmodus die Unicode-Darstellung, als Reduktionsordnung
-die \gls{nr} und als Ausgabeumfang die volle Ausgabe ausgewählt sind.}
+{Ben überprüft, dass als Darstellungsformat die Unicode-Darstellung, als Reduktionsordnung
+die \gls{nr} und als Darstellungsumfang die volle Ausgabe ausgewählt sind.}
 {Die IDE ist mit den korrekten Standardeinstellungen initialisiert.}
 
 \teststep{Alle Einstellungen sind korrekt.}
 {Ben betätigt den "Start"-Knopf}
-{Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \gls{nr} auftreten.
+{Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \glslink{nr}{normalen Reduktionsordnung} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
 \test{Schritt-für-Schritt-Auswertung}{tst:steps}
@@ -731,19 +731,19 @@ Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
 \teststep{Benutzer "Donald Knuth" befindet sich auf der Wavelength-Seite.}
 {Er gibt einen syntaktisch korrekten \gls{lt} in das Eingabefeld ein und betätigt
-die "Step-by-Step"-Schaltfläche.}
+den "Schritt-für-Schritt"-Knopf.}
 {Der eingegebene Term wird in das Darstellungsfeld übernommen und die Vor- und
-Zurück-Schaltflächen werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschritt
+Zurück-Knöpfe werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschritt
 gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
 
 \teststep{Die IDE ist bereit für die Schritt-für-Schritt-Auswertung.}
-{Don betätigt die Vor-Schaltfläche.}
+{Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion erscheint als neue Zeile im Darstellungsfeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt die Zurück-Schaltfläche.}
+{Don betätigt den Zurück-Knopf.}
 {Der zweite Reduktionsschritt wird aus dem Darstellungsfeld entfernt. Die Markierungen
 auf dem Ausgangsschritt erscheinen wieder.}
 
@@ -771,7 +771,7 @@ Reduktionsordnung.}
 Stattdessen wird der nächste Schritt gemäß \gls{cbn} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt die Vor-Schaltfläche.}
+{Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion (gemäß \gls{cbn}) erscheint als neue Zeile im Darstellungsfeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
@@ -782,7 +782,7 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 Stattdessen wird der nächste Schritt gemäß \gls{cbv} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt die Vor-Schaltfläche.}
+{Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion (gemäß \gls{cbv}) erscheint als neue Zeile im Darstellungsfeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
@@ -793,7 +793,7 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 Stattdessen wird der nächste Schritt gemäß \gls{ao} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt die Vor-Schaltfläche.}
+{Don betätigt den Vor-Knopf.}
 {Das Resultat der markierten Reduktion (gemäß \gls{ao}) erscheint als neue Zeile im Darstellungsfeld.
 Die Markierungen der vorherigen Zeile werden entfernt, stattdessen wird in der neuen
 aktuellen Zeile der nächste Reduktionsschritt markiert.}
@@ -802,9 +802,9 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 \test{Wechsel zwischen Komplett- und Schritt-für-Schritt-Auswertung}{tst:switchmodus}
 \tests{fnc:cancelcmplt}
 
-\teststep{Benutzer Alev Korun hat bereits einen gültigen \gls{lt} in des Eingabefeld eingegeben und wertet diesen durch die Komplettauswertung mit den Standardeinstellung aus.}
+\teststep{Benutzer Alev Korun hat bereits einen gültigen \gls{lt} in das Eingabefeld eingegeben und wertet diesen durch die Komplettauswertung mit den Standardeinstellung aus.}
 {Alev drückt den Knopf "Pause"-Knopf.}
-{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Ausgabefenster aus.}
+{Die Komplettauswertung pausiert und gibt das zuletzt berechnete Ergebnis im Darstellungsfeld aus.}
 %TODO more teststeps
 
 
@@ -813,8 +813,8 @@ aktuellen Zeile der nächste Reduktionsschritt markiert.}
 \tests{fnc:steps}
 
 \teststep{Benutzer "Edsger Dijkstra" befindet sich auf der Wavelength-Seite.}
-{Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine Reduktionsordnung und einen
-Darstellungsmodus aus, begibt sich in den Schritt-für-Schritt-Modus und durchläuft einige
+{Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine Reduktionsordnung und ein
+Darstellungsformat aus, begibt sich in den Schritt-für-Schritt-Modus und durchläuft einige
 Schritte der Auswertung.}
 {Die Anwendung verhält sich wie spezifiziert.}
 
@@ -825,12 +825,11 @@ abgebildet.}
 
 \teststep{Edsger hat die URL in seine Zwischenablage kopiert.}
 {Edsger wählt die URL in einem neuen Browserfenster an.}
-{Die IDE öffnet sich im neuen Fenster und befindet sich im gleichen Zustand wie im
-alten Fenster.}
+{Die IDE öffnet sich im neuen Fenster und Eingabe- und Darstellungsfeld befinden sich im gleichen Zustand wie im alten Fenster.}
 
 \teststep{Die IDE ist im neuen Fenster geöffnet.}
-{Edsger wählt die Zurück-Schaltfläche.}
-{Der letzte, im alten Browserfenster durchgeführte, Schritt wird im neuen Browserfenster
+{Edsger betätigt den Zurück-Knopf.}
+{Der letzte im alten Browserfenster durchgeführte Schritt wird im neuen Browserfenster
 rückgängig gemacht.}
 
 \test{Übungsmodus}{tst:ex}
@@ -847,26 +846,26 @@ rückgängig gemacht.}
 {Ada gibt eine syntaktisch korrekte Lösung ein, die kein korrektes Ergebnis liefert.
  Ada drückt den "Start"-Knopf.}
 {Die IDE wertet die Eingabe wie spezifiziert aus.
- Es wird angezeigt, dass die Lösung inkorrekt ist.}
+ Nach dem letzten Schritt wird angezeigt, dass die Lösung inkorrekt ist.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada gibt die korrekte Lösung ein. Ada drückt den "Start"-Knopf.}
 {Die IDE wertet die Eingabe wie spezifiziert aus.
- Es wird angezeigt, dass die Lösung korrekt ist.}
+ Nach dem letzten Schritt wird angezeigt, dass die Lösung korrekt ist.}
  
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada wählt eine andere Übungsaufgabe aus.}
-{Eingabe und Ausgabe werden entfernt.
+{Eingabe und Darstellung werden entfernt.
 Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Ada vervollständigt den Code zu einer korrekten Lösung und durchläuft den Schritt-für-Schritt Modus komplett.}
+{Ada vervollständigt den Code zu einer korrekten Lösung und durchläuft den Schritt-für-Schritt-Modus komplett von Hand.}
 {Die IDE verhält sich wie spezifiziert.
  Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion}
 {Ada drückt auf den "zeige Lösung"-Knopf.}
-{Die Musterlösung wird im Aufgabenfeld eingefügt.
+{Die Musterlösung wird im Aufgabefeld angefügt.
  Der "zeige Lösung"-Knopf wird zum "verberge Lösung"-Knopf.}
 
 \teststep{Im Aufgabenfeld wird die Musterlösung angezeigt.}
@@ -874,7 +873,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 {Die IDE verhält sich wie spezifiziert. 
  Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
  
-\teststep{Die IDE ist bereit für die nächste Aktion}
+\teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada drückt auf den "verberge Lösung"-Knopf.}
 {Die Musterlösung wird aus dem Aufgabenfeld entfernt.}
  

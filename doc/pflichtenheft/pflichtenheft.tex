@@ -1022,10 +1022,6 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 
 \section{Seitenentwürfe}
 
-%TODO: resizing erklären
-%TODO: einheitliche Benennung Button
-%TODO: FA resizing
-%TODO: wohin mit Kurzbeschreibung der Übungsaufgaben
 
 % Hier ganz normale figures mit Bildern
 Bei Aufruf der Website wird eine leere IDE angezeigt. Das obere Textfeld ist das Editorfeld, das untere ist das Ausgabefeld. Das Größenverhältnis der Felder kann mittels einer Schaltfläche angepasst werden.
@@ -1143,15 +1139,22 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 
 
 \begin{figure}[H]
-	\begin{subfigure}{0.5\textwidth}
+	\begin{subfigure}{0.25\textwidth}
 		\centering
-		\includegraphics{img/displayTree2}
-		\caption{ausgewählte \gls{lapp}}
+		\includegraphics[width=\textwidth]{img/displayTree2}
+		\caption{Syntaxbaum mit ausgewählter \gls{lapp} (unterstrichen).}
 	\end{subfigure}
-	\begin{subfigure}{0.5\textwidth}
+	\hspace*{\fill}
+	\begin{subfigure}{0.25\textwidth}
 		\centering
-		\includegraphics{img/displayTree3}
-		\caption{neue Ausgabe}
+		\includegraphics[width=0.9\textwidth]{img/displayTree3}
+		\caption{Neue Ausgabe bei Anklicken der ausgewählten \gls{lapp}.}
+	\end{subfigure}
+	\hspace*{\fill}
+	\begin{subfigure}{0.25\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{img/displayTree5}
+		\caption{Ausgabe bei Auswahl der Wurzel.}	
 	\end{subfigure}
 	\caption{Wird eine "App"-Symbol (\gls{lapp}) angeklickt, so wird dieser Teilterm als neue Ausgabe angezeigt.}
 \end{figure}
@@ -1163,7 +1166,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 	\caption{\label{fig:unicode}Wird das Darstellungsformat "Unicode" ausgewählt (siehe \cref{fig:outputOptions}), so wird der eingegebene \gls{lt} in Unicode im Ausgabefeld angezeigt.}
 \end{figure}
 
-
+\pagebreak
 
 %%%%%%%%%
 \section{Glossar}

@@ -408,7 +408,7 @@ Neben dem Eingabefeld werden Zeilennummern angezeigt.
 
 \functionality{\gls{cmpltapp}}{fnc:completereduce}
 \fulfills{crt:reduce}
-Der Nutzer hat die Möglichkeit auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
+Der Nutzer hat die Möglichkeit, auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
 Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des Start-Knopfes (\cref{fig:actionButtons}) gestartet.
 Ist die Eingabe syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und die Komplettauswertung verlassen.
 Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) bestimmt.\\
@@ -446,7 +446,7 @@ Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten A
 %TODO Verlinken von Bildern
 \begin{itemize}
 	\item \gls{lapp}en werden als Elternknoten mit dem Namen "App" dargestellt. 
-	Der erste und zweite \gls{lt} der \gls{lapp} wird als Kindknoten angefügt.
+	Der erste und zweite \gls{lt} der \gls{lapp} werden als Kindknoten angefügt.
 	\item \gls{labs}en mit der \gls{var} $x$ werden als Elternknoten mit dem Namen "$\lambda x$" dargestellt. 
 	Der Elternknoten besitzt einen Kindknoten, welcher den \gls{lt} der \gls{labs} enthält.
 	\item Sollte ein Kindknoten des Baums wieder eine \gls{lapp} oder eine \gls{labs} enthalten, wird dieser Knoten wieder als Eltern und Kindknoten dargestellt.
@@ -527,18 +527,18 @@ Module werden bereitgestellt:
 	der Nutzer die Auswertung nicht konkret herbeiführt, im Moment der Reduktion direkt durch das Literal
 	für das Ergebnis der Operation ersetzt.
 	
-	\item Wahrheitswerte. Es werden Definitionen für \texttt{ true } und \texttt{ false }
-	bereitgestellt, sodass \texttt{ true a b } zu \texttt{ a } und \texttt{ false a b }
-	zu \texttt{ b } ausgewertet wird.
+	\item Wahrheitswerte. Es werden Definitionen für \texttt{true} und \texttt{false}
+	bereitgestellt, sodass \texttt{true a b} zu \texttt{a} und \texttt{false a b}
+	zu \texttt{b} ausgewertet wird.
 	
-	\item Tupel und Listen. Es wird eine \texttt{ null}-Definition zusammen mit einer
-	\texttt{ isNull}-Funktion bereitgestellt. Es existieren Funktionen
-	\texttt{ cons}, \texttt{car} und \texttt{ cdr}, % oder doch make_tuple, first, second? Oder prepend, head, tail?
+	\item Tupel und Listen. Es wird eine \texttt{null}-Definition zusammen mit einer
+	\texttt{isNull}-Funktion bereitgestellt. Es existieren Funktionen
+	\texttt{cons}, \texttt{car} und \texttt{cdr}, % oder doch make_tuple, first, second? Oder prepend, head, tail?
 	mit denen ein 2-Tupel erzeugt werden kann und das erste bzw. zweite Element
 	eines 2-Tupels extrahiert werden kann. Die gleichen Funktionen können auch zum
 	Umgang mit einfach verketteten Listen verwendet werden: \texttt{null} ist die
-	leere Liste, \texttt{ cons a list} hängt \texttt{ a } vorne an \texttt{ list } an,
-	\texttt{ car } gibt das erste Element und \texttt{ cdr } den Rest der Liste zurück.
+	leere Liste, \texttt{cons a list} hängt \texttt{a} vorne an \texttt{list} an,
+	\texttt{car} gibt das erste Element und \texttt{cdr} den Rest der Liste zurück.
 \end{itemize}
 
 %TODO Test schreiben
@@ -666,9 +666,9 @@ Die Implementierung muss in einer statisch typisierten, objektorientierten Progr
 \nonFunctionality{Benutzbarkeit}{nfc:usability}
 Nach Aufruf der Seite kann ein Nutzer in 3 Schritten einen \gls{lt} nach der \gls{nr} auswerten:
 \begin{itemize}
-\item \gls{lt} eingeben
-\item "Start"-Knopf drücken
-\item auf Ende der Auswertung warten
+\item Eingabe eines \glslink{lt}{$\lambda$-Terms}
+\item Drücken des "Start"-Knopfes
+\item Warten auf das Ende der Auswertung
 \end{itemize}
 
 
@@ -714,9 +714,9 @@ Der \gls{lt} ist mehrere Zeilen lang und Ben rückt mehrere Zeilen des \gls{lt}s
 Ben fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
 {Das Textfeld verhält sich wie erwartet.}
 
-\teststep{Als Ausgabeformat ist die Unicode-Ausgabe, als Reduktionsordnung die \gls{nr} und
-als Ausgabeumfang die volle Ausgabe vorausgewählt.}
-{Ben betätigt den "Start"-Knopf}
+\teststep{Als Ausgabeformat ist die Unicode-Ausgabe, als \gls{aws} die \gls{nr} und
+als Ausgabeumfang die Ausgabe des Ergebnisses vorausgewählt.}
+{Ben betätigt den "Start"-Knopf.}
 {Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \glslink{nr}{normalen Reduktionsordnung} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
@@ -759,11 +759,11 @@ werden wieder angezeigt.}
 {Don klickt mit der Maus auf ein zu einem \gls{redex} gehörendes $\lambda$-Symbol.}
 {Es erscheint eine neue Zeile im Ausgabefeld, die das Ergebnis der angeklickten
 Reduktion enthält. In der neuen Zeile erscheinen die Markierungen gemäß der ausgewählten
-Reduktionsordnung.}
+\gls{aws}.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don wählt das Drop-down-Menü für die Reduktionsordnung an. Er wählt "\gls{cbn}".}
-{Die Markierungen für die vorher ausgewählte Reduktionsordnung werden ausgeblendet.
+{Don wählt das Drop-down-Menü für die \gls{aws} an. Er wählt "\gls{cbn}".}
+{Die Markierungen für die vorher ausgewählte \gls{aws} werden ausgeblendet.
 Stattdessen wird der nächste Schritt gemäß \gls{cbn} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
@@ -774,20 +774,20 @@ In der neuen Zeile wird der nächste Reduktionsschritt markiert.}
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
 {Don wiederholt die vorangegangenen beiden Schritte für "\gls{cbv}" und "\gls{ao}".}
 {Die Applikation verhält sich wie in den vorherigen beiden Schritten beschrieben,
-verwendet aber die jeweils ausgewählte Reduktionsordnung.}
+verwendet aber die jeweils ausgewählte \gls{aws}.}
 
 \test{Erstellen vom Permalinks}{tst:perma}
 \tests{fnc:perma}
 \tests{fnc:steps}
 
 \teststep{Benutzer "Edsger Dijkstra" befindet sich auf der Wavelength-Seite.}
-{Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine Reduktionsordnung und ein
+{Edsger gibt einen gültigen \gls{lt} in die Software ein, wählt eine \gls{aws} und ein
 Ausgabeformat aus, begibt sich in den Schritt-für-Schritt-Modus und durchläuft einige
 Schritte der Auswertung.}
 {Die Anwendung verhält sich wie spezifiziert.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Edsger verwendet den "Teilen"-Knopf im unteren Bereich der Anwendung an.}
+{Edsger verwendet den "Teilen"-Knopf im unteren Bereich der Anwendung.}
 {Neben dem Knopf erscheint eine URL wie in Abbildung~\ref{img:share}
 abgebildet.}
 
@@ -831,7 +831,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 {Die IDE verhält sich wie spezifiziert.
  Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
 
-\teststep{Die IDE ist bereit für die nächste Aktion}
+\teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada drückt auf den "zeige Lösung"-Knopf.}
 {Die Musterlösung wird im Aufgabefeld angefügt.
  Der "zeige Lösung"-Knopf wird zum "verberge Lösung"-Knopf.}
@@ -845,7 +845,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 {Ada drückt auf den "verberge Lösung"-Knopf.}
 {Die Musterlösung wird aus dem Aufgabenfeld entfernt.}
  
-\teststep{Die IDE ist bereit für die nächste Aktion}
+\teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada drückt den "Beenden"-Knopf.}
 {Der Übungsmodus wird beendet, der "Beenden"-Knopf verschwindet, Eingabe und Ausgabe werden entfernt.
  Das Aufgabenfeld wird entfernt.}
@@ -909,7 +909,7 @@ nur einmal gebunden werden dürfen.}
 {Die Eingabe wird ausgewertet und nur das Ergebnis wird angezeigt (vgl. \gls{std}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Wilhelm wählt in der "Output size"-Box einen anderen Ausgabeungsumfang aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
+{Wilhelm wählt in der "Output size"-Box einen anderen Ausgabeumfang aus (vgl. \ref{fig:outputOptions}) und drückt auf den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:selectsize}).}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
@@ -972,9 +972,13 @@ nur einmal gebunden werden dürfen.}
 
 \teststep{Tupel und Listen sind eingebunden.}
 {Alan erschafft eine leere Liste \emph{list} mit \emph{null}. 
- Mit dem Befehl \emph{cons a list} hängt er das Element \emph{a} an den Anfang von \emph{list}.
- Mit dem Befehl \emph{cons b list} hängt er das Element \emph{b} an den Anfang von \emph{list}.
- Alan benutzt die Funktion \emph{car} bzw. \emph{cdr} (siehe \ref{fnc:lib}) und drückt den "Start"-Knopf.}
+ Mit dem Befehl \emph{cons a list} hängt er das Element \emph{a} an den Anfang von \emph{list} und bindet das Resultat
+ an den Namen \emph{list2}.
+ Mit dem Befehl \emph{cons b list2} hängt er das Element \emph{b} an den Anfang von \emph{list2} und bindet das
+ Resultat an den Namen \emph{list3}.
+ Alan benutzt die Funktionen \emph{car} und \emph{cdr} (siehe \ref{fnc:lib}), um das erste bzw. zweite Element von \emph{list3}
+ zu erhalten
+ und drückt den "Start"-Knopf.}
 {Es wird \emph{a} bzw. \emph{b} ausgegeben.}
 
 \test{Fehlerdiagnostik}{tst:diag}
@@ -988,7 +992,7 @@ Die Nachricht enthält einen Vorschlag für einen korrigierten Term. Im Eingabef
 die Klammer, die keinen Partner besitzt, markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Richard löscht die aktuelle Eingabe aus dem Eingabefenster und gibt einen \gls{lt} ein, der strukturell weder \gls{lapp}, noch
+{Richard löscht die aktuelle Eingabe aus dem Eingabefenster und gibt einen inkorrekten Term ein, der strukturell weder \gls{lapp}, noch
 \gls{labs}, noch \gls{var} ist. Dann wählt er den Start-Knopf an.}
 {Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass der eingegebene
 Term strukturell inkorrekt ist.}
@@ -1000,7 +1004,7 @@ Term strukturell inkorrekt ist.}
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Richard gibt zwei syntaktisch korrekte \glspl{lt}, die beide keine \gls{nb} sind, nacheinander
 in das Eingabefeld ein und wählt den Start-Knopf an.}
-{im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass eine gültige Eingabe
+{Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass eine gültige Eingabe
 aus beliebig vielen Namensbindungen gefolgt von genau einem freistehendem \gls{lt} besteht.}
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}

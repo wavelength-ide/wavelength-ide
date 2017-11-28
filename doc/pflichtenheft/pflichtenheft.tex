@@ -302,7 +302,7 @@ dargestellt werden.
 
 \criterium{Fehlermeldung bei invalider Eingabe}{crt:error}
 Beim Versuch, einen syntaktisch inkorrekten \gls{lt} reduzieren zu lassen, wird eine
-Fehlermeldung dargestellt.
+Fehlermeldung ausgegeben.
 
 \criterium{Abbruch der Reduktion}{crt:cancel}
 Der Benutzer kann die Reduktion eines \glslink{lt}{$\lambda$-Terms} abbrechen.
@@ -324,7 +324,7 @@ werden.
 
 \criteriumOptional{Ausgabeformate}{crt:display}
 Die eingegebenen und reduzierten \glspl{lt} können innerhalb der Applikation in Unicode-Ausgabe und als Syntaxbaum
-dargestellt werden.
+ausgegeben werden.
 
 \criteriumOptional{Erweiterte Fehlerdiagnostik}{crt:diag}
 Im Falle syntaktischer Fehler werden dem Nutzer die genaue Position des Fehlers, die
@@ -347,7 +347,7 @@ enthält.
 
 \criteriumOptional{Ausgabe von Teilschritten}{crt:partial}
 Die zum Erreichen der Normalform notwendigen Reduktionsschritte gemäß der ausgewählten
-\gls{aws} können im ausgewählten Ausgabeformat dargestellt werden. Hierbei
+\gls{aws} können im ausgewählten Ausgabeformat ausgegeben werden. Hierbei
 können entweder alle Teilschritte, die ersten und letzten Teilschritte, oder
 einzelne Teilschritte in periodischen Abständen angezeigt werden.
 
@@ -419,7 +419,7 @@ Insbesondere bei einer Auswahl des Ausgabeumfangs von ``Full'' oder ``Periodical
 Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{fig:state}):
 \begin{itemize}
 	\item Das Drücken des Abbrechen-Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
-	Anschließend wird der zuletzt berechnete \gls{lt} dargestellt. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
+	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
 	Dies wird dem Nutzer durch eine entsprechende Ausgabe im Ausgabefeld mitgeteilt.
 	\item Das Drücken des Pause-Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
 	Der zuletzt ausgewertete \gls{lt} wird ausgegeben und die Anwendung gelangt in den \hyperref[fnc:steps]{Schritt-für-Schritt-Modus}.
@@ -429,13 +429,13 @@ Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{
 \functionality{Unicode-Ausgabe}{fnc:unicode}
 \fulfills{crt:display}
 Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
-Jeder neu ausgegebene Auswertungsschritt wird in einer neuen Zeile dargestellt. 
+Jeder neu ausgegebene Auswertungsschritt wird in einer neuen Zeile ausgegeben. 
 Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt (siehe \cref{fig:unicode}).
 
 \functionality{Syntaxbaum-Ausgabe}{fnc:tree}
 \fulfills{crt:display}
 Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en als Syntaxbaum ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben (siehe \cref{fig:tree}).\\
-Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten Auswertungsschritt dargestellt. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
+Jeder neu ausgegebene Auswertungsschritt wird als neuer Baum unter dem letzten Auswertungsschritt ausgegeben. Hierbei wird ein \gls{lt} in folgender Weise in einen Baum übersetzt:
 %TODO auf Baumübersetzung einigen
 %TODO Verlinken von Bildern
 \begin{itemize}
@@ -486,11 +486,11 @@ Der Ausgabeumfang bestimmt die Menge an Teilergebnissen einer Auswertung, die di
 Der Nutzer kann den Ausgabeumfang während der \gls{cmpltapp} nicht ändern (vgl. \cref{fig:state}).
 Hierbei stehen dem Nutzer folgende Optionen zur Verfügung:
 \begin{itemize}
-	\item Result only. Es wird nur das Ergebnis der \gls{cmpltapp} dargestellt.
-	\item Shortened. Es werden nur die ersten 50 Schritte und die letzten 50 Schritte dargestellt.
-	\item Full. Es wird jeder einzelne Teilschritt dargestellt, sobald er berechnet wurde.
-	\item Periodically. Jeder hundertste Teilschritt wird dargestellt, sobald er berechnet wurde. 
-	Der erste Schritt und das Endergebnis werden ebenfalls dargestellt.
+	\item Result only. Es wird nur das Ergebnis der \gls{cmpltapp} ausgegeben.
+	\item Shortened. Es werden nur die ersten 50 Schritte und die letzten 50 Schritte ausgegeben.
+	\item Full. Es wird jeder einzelne Teilschritt ausgegeben, sobald er berechnet wurde.
+	\item Periodically. Jeder hundertste Teilschritt wird ausgegeben, sobald er berechnet wurde. 
+	Der erste Schritt und das Endergebnis werden ebenfalls ausgegeben.
 \end{itemize}
 
 \functionality{Standardbibliothek}{fnc:lib}
@@ -685,7 +685,7 @@ Beim Start der Anwendung befindet sich der Nutzer im Eingabemodus. In diesem Mod
 Durch Drücken des Schritt-für-Schritt- oder Start-Knopfes (\cref{fig:actionButtons}) gelangt der Nutzer in den jeweiligen Auswertungsmodus und es beginnt die Auswertung des eingegebenen \glslink{lt}{$\lambda$-Terms}. 
 Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Ausgabefeld stehen, werden diese gelöscht.\\ 
 Durch Drücken des Start- oder Pause-Knopfes kann der Nutzer zwischen den entsprechenden Auswertungsmodi wechseln. 
-Beim Wechsel vom Step-by-Step-Modus zur Komplettauswertung wird der zuletzt dargestellte \gls{lt} des Ausgabefeldes weiter ausgewertet.
+Beim Wechsel vom Step-by-Step-Modus zur Komplettauswertung wird der zuletzt ausgegebene \gls{lt} des Ausgabefeldes weiter ausgewertet.
 Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlassen werden. Es erscheint eine entsprechende Ausgabe im Ausgabefeld. Erst jetzt kann der Nutzer neue Eingaben im Eingabefeld eingeben.
 
 
@@ -893,7 +893,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion}
 {Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) ein anderes Ausgabeformat und drückt den "Start"-Knopf.}
-{Der eingegebene \gls{lt} wird ausgewertet und im gewählten Ausgabeformat wie spezifiziert dargestellt.}
+{Der eingegebene \gls{lt} wird ausgewertet und im gewählten Ausgabeformat wie spezifiziert ausgegeben.}
 
 \test{Export}{tst:output}
 \tests{fnc:output}

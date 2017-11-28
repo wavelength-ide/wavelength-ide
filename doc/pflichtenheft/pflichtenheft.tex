@@ -77,7 +77,7 @@
 	name=Literal,
 	plural=Literale,
 	description={Zeichenfolge, die Werte von Basistypen repräsentiert. Im vorliegenden
-		Dokument werden nur Literale für natürliche Zahlen in Dezimaldarstellung betrachtet.}
+		Dokument werden nur Literale für natürliche Zahlen in Dezimaldarstellung betrachtet}
 }
 \newglossaryentry{var}
 { 
@@ -148,7 +148,7 @@
 \newglossaryentry{cbv}
 {
 	name=Call by Value,
-	description={Call by Value ist eine \gls{aws}, bei der der linkeste äußerste \gls{redex}, der nicht von einem $\lambda$ umgeben ist und dessen Argument ein konkreter Wert ist, zuerst $\beta$-reduziert wird.}
+	description={Call by Value ist eine \gls{aws}, bei der der linkeste äußerste \gls{redex}, der nicht von einem $\lambda$ umgeben ist und dessen Argument ein konkreter Wert ist, zuerst $\beta$-reduziert wird}
 }
 \newglossaryentry{yc} 
 {
@@ -181,7 +181,7 @@
 {
 	name=Mehrfacheinrückung,
 	plural=Mehrfacheinrückungen,
-	description={Alle markierten Zeilen werden eingerückt.}
+	description={Alle markierten Zeilen werden eingerückt}
 }
 \newglossaryentry{st}
 {
@@ -196,7 +196,10 @@
 	description={Variante der herkömmlichen Syntax des \glslink{lk}{$\lambda$-Kalküls},
 	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird
 	und natürliche Zahlen in Dezimaldarstellung anstelle von \glspl{cn} verwendet werden
-	können}
+	können.
+	Ferner besteht die Möglichkeit zur \gls{nb}. Ein korrekter Term in der vereinfachten
+	$\lambda$-Syntax besteht aus einer beliebigen Zahl von Namensbindungen gefolgt von
+	genau einem freistehenden \gls{lt}}
 }
 
 \newglossaryentry{cn}
@@ -210,7 +213,7 @@
 {
 	name=Komplettauswertung,
 	description={Wiederholte \gls{beta} auf einem \gls{lt} basierend auf einer gegebenen \gls{aws}. 
-	Muss nicht zwingend terminieren.}
+	Muss nicht zwingend terminieren}
 }
 
 \newglossaryentry{nrmlform}
@@ -562,7 +565,7 @@ Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
 \functionality{Namensbindung}{fnc:bind}
 \fulfills{crt:comfcode}
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
-\glslink{rec}{Namensrekursion} ist ausgeschlossen.
+\glslink{rec}{Namensrekursion} ist ausgeschlossen. Ein Name darf nur einmal vergeben werden.
 Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.
 Der Name kann in der Eingabe an Stelle des \glslink{lt}{$\lambda$-Terms} eingesetzt werden.
 Die Ausgabe berücksichtigt den Namen soweit möglich:
@@ -885,6 +888,11 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Es wird eine Fehlermeldung ausgegeben.
  Haskell wird darauf hingewiesen, dass er einen ungültigen Namen gewählt hat.}
 
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Haskell bindet zwei gültige \glspl{lt} an den gleichen Namen.}
+{Es wird eine Fehlermeldung asgegeben. Haskell wird darauf hingewiesen, dass Namen
+nur einmal gebunden werden dürfen.}
+
 \test{Auswahl des Ausgabeumfangs}{tst:selectsize}
 \tests{fnc:selectsize}
 
@@ -980,6 +988,12 @@ Term strukturell inkorrekt ist.}
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Richard leert das Eingabefeld und wählt den Start-Knopf an.}
 {Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass die Eingabe leer war.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Richard gibt zwei syntaktisch korrekte \glspl{lt}, die beide keine \gls{nb} sind, nacheinander
+in das Eingabefeld ein und wählt den Start-Knopf an.}
+{im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass eine gültige Eingabe
+aus beliebig vielen Namensbindungen gefolgt von genau einem freistehendem \gls{lt} besteht.}
 % Syntax:
 % \test{Überschrift des Tests}{tst:label}
 % \tests{fnc:label}

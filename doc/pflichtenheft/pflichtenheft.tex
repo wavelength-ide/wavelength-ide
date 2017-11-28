@@ -76,7 +76,8 @@
 {
 	name=Literal,
 	plural=Literale,
-	description={Zeichenfolge, die Werte von Basistypen darstellt}
+	description={Zeichenfolge, die Werte von Basistypen repräsentiert. Im vorliegenden
+		Dokument werden nur Literale für natürliche Zahlen in Dezimaldarstellung betrachtet.}
 }
 \newglossaryentry{var}
 { 
@@ -193,7 +194,9 @@
 {
 	name={vereinfachte $\lambda$-Syntax},
 	description={Variante der herkömmlichen Syntax des \glslink{lk}{$\lambda$-Kalküls},
-	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird}
+	bei der das $\lambda$-Symbol durch ein \texttt{\textbackslash}-Symbol ersetzt wird
+	und natürliche Zahlen in Dezimaldarstellung anstelle von \glspl{cn} verwendet werden
+	können}
 }
 
 \newglossaryentry{cn}
@@ -493,6 +496,13 @@ Hierbei stehen dem Nutzer folgende Optionen zur Verfügung:
 	Der erste Schritt und das Endergebnis werden ebenfalls ausgegeben.
 \end{itemize}
 
+\functionality{Ganzzahlliterale}{fnc:lit}
+\fulfills{crt:lib}
+
+Bei Verwendung der \glslink{vls}{vereinfachten $\lambda$-Syntax} können natürliche
+Zahlen in Dezimaldarstellung als \glspl{lit} eingegeben werden. Diese werden automatisch in die
+entsprechenden \glspl{cn} überführt.
+
 \functionality{Standardbibliothek}{fnc:lib}
 \fulfills{crt:lib}
 Der Nutzer kann auf eine Bibliothek von Definitionen zurückgreifen. Die Standardbibliothek
@@ -502,14 +512,17 @@ Module werden bereitgestellt:
 \begin{itemize}
 	\item Basisbibliothek. Dieses Modul enthält den \gls{yc}.
 	
-	\item Natürliche Zahlen. Es werden Funktionen zur einfachen Eingabe natürlicher
-	Zahlen bereitgestellt. Ferner existieren Funktionen zur Bestimmung des Vorgängers
+	\item Natürliche Zahlen. Es existieren Funktionen zur Bestimmung des Vorgängers
 	und Nachfolgers einer natürlichen Zahl und Funktionen zur Bestimmung der Summe,
 	der Differenz, des Produktes und des Ergebnisses der Exponentiation zweier
-	natürlicher Zahlen. Zusätzlich werden \glspl{lit} für natürliche Zahlen bereitgestellt, welche bei der Reduktion
-	so lange erhalten bleiben, bis sie verändert werden.
+	natürlicher Zahlen.
 	
 	Die Implementation erfolgt durch \glspl{cn}.
+
+	Stellt die Applikation fest, dass eine Operation über eine als Literal
+	eingegebene natürliche Zahl durchgeführt werden soll, wird diese Operation, sofern
+	der Nutzer die Auswertung nicht konkret herbeiführt, direkt durch das Literal
+	für das Ergebnis der Operation ersetzt.
 	
 	\item Wahrheitswerte. Es werden Definitionen für \texttt{ true } und \texttt{ false }
 	bereitgestellt, sodass \texttt{ true a b } zu \texttt{ a } und \texttt{ false a b }
@@ -523,8 +536,6 @@ Module werden bereitgestellt:
 	Umgang mit einfach verketteten Listen verwendet werden: \texttt{null} ist die
 	leere Liste, \texttt{ cons a list} hängt \texttt{ a } vorne an \texttt{ list } an,
 	\texttt{ car } gibt das erste Element und \texttt{ cdr } den Rest der Liste zurück.
-	
-	% WIP
 \end{itemize}
 
 %TODO Test schreiben
@@ -933,6 +944,7 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Die Auswertung wird abgebrochen, das Ausgabefeld wird erhalten und deaktiviert, das Eingabefeld kann bearbeitet werden.}
  
 \test{Standardbibliothek}{test:lib}
+\tests{fnc:lit}
 \tests{fnc:lib}
 
 \teststep{Benutzer "Alan Turing" befindet sich auf der Wavelength-Seite.}

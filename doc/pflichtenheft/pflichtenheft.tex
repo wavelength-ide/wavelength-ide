@@ -541,7 +541,7 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
 \functionality{Abbruch der Auswertung}{fnc:cancel}
 \fulfills{crt:cancel}
-Durch das Drücken des "Abbrechen"-Knopfes (\cref{fig:actionButtons}) kann der Nutzer während dem Schritt-für-Schritt-Modus und während der Komplettauswertung in den Eingabemodus zurückkehren.\\
+Durch das Drücken des "Abbrechen"-Knopfes (\cref{fig:actionButtons}) kann der Nutzer während des Schritt-für-Schritt-Modus und während der \gls{cmpltapp} in den Eingabemodus zurückkehren.\\
 Dabei wird die Auswertung abgebrochen und der Inhalt des Ausgabefelds erhalten, die Steuerung der Ausgabe aber deaktiviert.
 Alle Knöpfe, Felder und Menüs, welche beim Start der Auswertung deaktiviert wurden, werden wieder aktiviert.
 Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
@@ -549,7 +549,7 @@ Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
 \functionality{Komfortabler $\lambda$-Code}{fnc:bind}
 \fulfills{crt:comfcode}
 Im Editor können Kommentare verfasst werden, 
-indem an Beginn der Zeile ein '//' eingefügt wird.\\
+indem am Beginn der Zeile ein '//' eingefügt wird.\\
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
 \glslink{rec}{Namensrekursion} ist ausgeschlossen. Ein Name darf nur einmal vergeben werden.
 Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.
@@ -557,7 +557,6 @@ Der Name kann in der Eingabe an Stelle des \glslink{lt}{$\lambda$-Terms} eingese
 Die Ausgabe berücksichtigt den Namen soweit möglich:
 Ist der konkrete \gls{lt} für die Reduktion unerheblich, so wird immer der Name verwendet.
 Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
-
 
 \functionality{Schritt-für-Schritt-Modus}{fnc:steps}
 \fulfills{crt:steps}
@@ -893,6 +892,11 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
 {Es wird eine Fehlermeldung ausgegeben. Haskell wird darauf hingewiesen, dass Namen
 nur einmal gebunden werden dürfen.}
 
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Haskell gibt ein: \emph{"//($\lambda$x.x) (5)" und drückt den "Start"-Knopf.}
+{Es wird eine Fehlermeldung ausgegeben.
+ Haskell wird darauf hingewiesen, dass seine Eingabe leer war.} 
+
 \test{Auswahl des Ausgabeumfangs}{tst:selectsize}
 \tests{fnc:selectsize}
 
@@ -907,20 +911,20 @@ nur einmal gebunden werden dürfen.}
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Wilhelm wählt in der "Display"-Box das Ausgabeformat "Tree" und drückt den "Start"-Knopf.}
 {Die IDE verhält sich wie spezifiziert (vgl. \ref{fnc:completereduce}).
- Im Ausgabefeld erscheint ein Syntaxbaum gemäß des ausgewählten Ausgabeumfangs (vgl. \ref{fnc:selectsize}).}
+ Im Ausgabefeld erscheint ein Syntaxbaum gemäß des ausgewählten Ausgabeumfangs (vgl. \ref{fnc:tree}).}
  
 \test{Wechsel des Auswertungsmodus}{test:changemodes}
 \tests{fnc:cancel}
 
-\teststep{Die Komplettauswertung eines korrekten \gls{lt} läuft.}
+\teststep{Die \gls{cmpltapp} eines korrekten \glslink{lt}{$\lambda$-Terms} läuft.}
 {Nutzer "Bob" drückt den "Pause"-Knopf.}
 {Die Auswertung wird angehalten, der aktuelle \gls{lt} wird in das Ausgabefeld geschrieben, die IDE wechselt in den Schritt-für-Schritt-Modus.}
 
-\teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus}
-{Bob drückt den "Play"-Blutton.}
+\teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus.}
+{Bob drückt den "Start"-Knopf.}
 {Die IDE wechselt in den Komplettauswertungs-Modus, der eingegebene \gls{lt} wird ohne Aktionen des Nutzers ausgewertet.}
 
-\teststep{Die Komplettauswertung eines \gls{lt} läuft}
+\teststep{Die \gls{cmpltapp} eines \glslink{lt}{$\lambda$-Terms} läuft.}
 {Bob drückt den "Abbrechen"-Knopf.}
 {Die Auswertung wird abgebrochen, das Ausgabefeld wird erhalten und deaktiviert, das Eingabefeld kann bearbeitet werden.}
  

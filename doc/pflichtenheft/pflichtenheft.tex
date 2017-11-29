@@ -592,7 +592,7 @@ Nach jeder Aktion wird die angezeigte URL angepasst, sofern sich der Zustand der
 Aktionen umfassen sowohl Eingaben des Nutzers, Interaktionen mit der Benutzeroberfläche als auch die automatischen Ausgaben während der Komplettauswertung.\\ 
 Wird das Programm durch einen Link geöffnet, so wird der von der Link-URL codierte Zustand wiederhergestellt.
 
-\functionality{Wahl des Exportformats}{fnc:output}
+\functionality{Export}{fnc:output}
 \fulfills{crt:output}
 Beim Klicken auf den "Export"-Knopf kann eines der folgenden Exportformate gewählt werden: (siehe auch \cref{fig:export})
 \begin{itemize}
@@ -600,7 +600,7 @@ Beim Klicken auf den "Export"-Knopf kann eines der folgenden Exportformate gewä
 	\item Unicode-Text: Stellt das $\lambda$-Symbol als Unicode-Symbol dar.
 	\item \LaTeX-Quellcode: Formatiert den Text als \LaTeX-Quellcode. Enthält auch die Markierungen der Ausgabe.
 	\item Lisp-Quellcode: Formatiert den Text als Lisp-Quellcode mit Lisp-Lambdas. Analoge Ausführung in Lisp ist nicht garantiert. 
-	\item Haskell-Quellcode: Formatiert den Text als Haskell-Quellcode mit Haskell-Lambdas. Analoge Ausführung in Haskell sowie Inferrieren eines passenden Typen sind nicht garantiert. 
+	\item Haskell-Quellcode: Formatiert den Text als Haskell-Quellcode mit Haskell-Lambdas. Analoge Ausführung in Haskell sowie Typisierbarkeit sind nicht garantiert. 
 \end{itemize}
 Nach der Auswahl öffnet sich ein Fenster.
 Dieses enthält den aktuellen Inhalt des Ausgabefelds im ausgewählten Format.
@@ -858,18 +858,22 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 \tests{fnc:output}
 
 \teststep{Benutzer "Robert Tarjan" befindet sich auf der Wavelength-Seite.}
-{Robert gibt einen gültigen \gls{lt} ein und drückt auf den "Exportieren"-Knopf.}
+{Robert gibt einen gültigen \gls{lt} ein, wählt als Ausgabeumfang "full", drückt
+auf den "Start"-Knopf, wartet, bis das finale Ergebnis im Ausgabefeld zu sehen ist
+und drückt auf den "Exportieren"-Knopf.}
 {Es öffnet sich eine Liste mit allen Exportformaten.}
 
 \teststep{Die IDE erwartet die Auswahl eines Exportformats.}
 {Robert wählt ein beliebiges Exportformat aus der Liste aus.}
 {Die Liste mit den Exportformaten verschwindet.
-Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingabe.}
+Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der im gewählten Format
+formatierten Ausgabe, die
+inhaltlich mit dem Ausgabefenster übereinstimmt.}
 
-\teststep{Robert ist im Fenster mit der formatierten Eingabe.}
-{Robert kopiert die formatierte Eingabe und schließt das Fenster.}
-{Das Fenster mit der formatierten Eingabe verschwindet. 
- Die Eingabe aus dem ersten Schritt ist noch im Eingabefeld.}
+\teststep{Der Fokus befindet sich auf dem Fenster mit der formatierten Ausgabe.}
+{Robert kopiert die formatierte Eingabe in die Zwischenablage und schließt das Fenster.}
+{Das Fenster mit der formatierten Eingabe verschwindet. Eingabe und Ausgabe sind
+unverändert.}
  
 \test{Namensbindung}{tst:bind}
 \tests{fnc:bind}

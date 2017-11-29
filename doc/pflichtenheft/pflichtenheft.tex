@@ -612,16 +612,21 @@ Der Inhalt kann nun kopiert werden.
 \fulfills{crt:ex}
 Das Programm enthält eine Sammlung von Übungsaufgaben zum \gls{lk}.\\
 Im Optionsmenü wird eine Liste aller Übungsaufgaben (\cref{fig:exmenu}) angezeigt.\\
-Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus. 
+Wählt der Nutzer eine Übung aus, so wird der Nutzer über ein Fenster darauf hingewiesen, dass durch einen Wechsel in den Übungsmodus seine aktuelle Eingabe und Ausgabe gelöscht wird. In diesem Fenster kann der Nutzer auswählen, ob er mit dem Moduswechsel fortfahren oder diesen abbrechen möchte. Wird "fortfahren" ausgewählt, so wechselt das Programm in den Übungsmodus und Eingabe und Ausgabe werden geleert.
+
 Die Aufgabenstellung wird in einem neuen Aufgabefeld neben dem Eingabefeld angezeigt. 
 Eventuell vorgegebener Code wird in das Eingabefeld geladen (siehe \cref{fig:exerciseMode}).
-Hierzu können auch vom Test vorgegeben Platzhalter für Eingaben zählen.\\
-Der Nutzer kann anschließend die Aufgabe bearbeiten. 
-Wenn er seine Lösung auswerten möchte, werden für die vorher festgelegten Platzhalter konkrete \gls{lt} eingesetzt.
-Sobald die Auswertung die \gls{nrmlform} erreicht, wird dem Nutzer ausgegeben, ob sein Ergebnis mit dem erwartete Ergebnis übereinstimmt (siehe \cref{fig:solutionCheck}).\\
+Die Aufgabestellung definiert eventuell bereits gebundene Namen, welche Eingaben, die von der IDE bereitgestellt werden, zum Testen der Aufgabestellung enthalten.\\
+Der Nutzer kann anschließend die Aufgabe bearbeiten.
+ 
+Wenn der Nutzer seine Lösung auswerten möchte, werden für die vorher festgelegten Platzhalter konkrete \gls{lt} eingesetzt. Die Platzhalter können möglicherweise bei jeder Ausführung mit anderen Werten ersetzt werden.
+Sobald die Auswertung die \gls{nrmlform} erreicht, wird dem Nutzer ausgegeben, ob sein Ergebnis mit dem erwarteten Ergebnis übereinstimmt (siehe \cref{fig:solutionCheck}). Außerdem wird dem Nutzer die erwartete \gls{nrmlform} ausgegeben.\\
+Wird ein Schritt rückgängig gemacht, so werden auch die Informationen über das Ergebnis des Tests entfernt, bis der Nutzer wieder die \gls{nrmlform} erreicht. \\
 Weiterhin hat der Nutzer die Möglichkeit, sich durch Drücken eines Knopfes die Musterlösung anzeigen zu lassen (siehe \cref{fig:showSolution}). Durch Drücken des selben Knopfes wird diese wieder ausgeblendet. \\
+
 Solange sich das Programm im Übungsmodus befindet, kann der Nutzer durch Drücken des "Exit exercise mode"-Knopfes in den Eingabemodus zurückkehren.\\
-Beim Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld geleert.
+Bevor der Übungsmodus verlassen wird, öffnet sich ein Fenster, das den Nutzer darauf aufmerksam macht, dass seine Eingaben und Ausgaben im Übungsmodus durch das Verlassen des Übungsmodus verloren gehen. In diesem Fenster kann der Nutzer auswählen, ob er mit dem Moduswechsel fortfahren oder diesen abbrechen möchte. \\
+Beim letztendlichen Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld geleert.
 
 % Syntax:
 % \functionality{Überschrift der FA}{fnc:label}
@@ -786,7 +791,9 @@ rückgängig gemacht.}
 
 \teststep{Benutzerin "Ada Lovelace" befindet sich auf der Wavelength-Seite.}
 {Ada wählt im Menü (vgl. \cref{fig:exerciseMode}) eine Übungsaufgabe aus.}
-{Der Übungsmodus wird aktiviert. 
+{Es öffnet sich ein Fenster, das Ada darauf hinweist, dass ihre Eingabe und Ausgabe verloren geht.
+ Ada wählt "fortfahren" aus.
+ Der Übungsmodus wird aktiviert. 
  Das Eingabefeld wird aufgeteilt in ein schmaleres Eingabefeld und ein Aufgabenfeld.
  Im Aufgabenfeld erscheint eine Beschreibung der gewählten \gls{ex}.
  Der "Beenden"- und der "zeige Lösung"-Knopf erscheinen.}
@@ -828,7 +835,9 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
  
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada drückt den "Beenden"-Knopf.}
-{Der Übungsmodus wird beendet, der "Beenden"-Knopf verschwindet, Eingabe und Ausgabe werden entfernt.
+{Es öffnet sich ein Fenster, das Ada darauf hinweist, dass ihre Eingabe und Ausgabe verloren geht.
+ Ada wählt "fortfahren" aus.
+ Der Übungsmodus wird beendet, der "Beenden"-Knopf verschwindet, Eingabe und Ausgabe werden entfernt.
  Das Aufgabenfeld wird entfernt.}
 
 \test{Ausgabeformate}{tst:display}
@@ -1074,7 +1083,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{img/exerciseModeSolutionCheck}
+	\includegraphics[width=\textwidth]{img/exercise_mode_solution_check.png}
 	\caption{\label{fig:solutionCheck}Lässt der Nutzer seine Eingabe prüfen, so wird im Ausgabefeld angezeigt, ob diese korrekt ist.}
 \end{figure}
 

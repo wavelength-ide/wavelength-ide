@@ -86,7 +86,7 @@
 % Mein PDF-Viewer bekommt das nicht hin, das Bild im Hintergrund anzuzeigen
 {
 %\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[height=\paperheight]{img/Logo.pdf}};}
-\begin{frame}[plain,noframenumbering]
+\begin{frame}[plain]
 \maketitle
 \end{frame}
 }
@@ -96,8 +96,6 @@
 %\begin{frame}{Content}{}
 %\tableofcontents
 %\end{frame}
-
-\section{Mach mal bissel GUI}
 
 \begin{frame}[plain,noframenumbering]
 
@@ -122,8 +120,7 @@
     \only<11>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree3.png}}%
     \only<9-11>{\caption{Schritt-für-Schritt Auswertung}}
     %Übungsmodus
-    %TODO eventuell updaten
-    \only<12>{\includegraphics[width=\textwidth]{img/Exercise_Menue.pdf}}%
+    \only<12>{\includegraphics[width=\textwidth]{img/exercise_menue_open.png}}%
     \only<13>{\includegraphics[width=\textwidth]{img/Exercise_(1).pdf}}%
     \only<14>{\includegraphics[width=\textwidth]{img/Exercise_(2).pdf}}%
     \only<15>{\includegraphics[width=\textwidth]{img/Exercise_(3).pdf}}%
@@ -131,11 +128,12 @@
     %Fortgeschrittene Funktionen
     \only<16>{\includegraphics[width=\textwidth]{img/Startseite.png}}%
     \only<16>{\caption{Startseite der Entwicklungsumgebung}}
-    %TODO Folie für Bibliothek
+    \only<17>{\includegraphics[width=\textwidth]{img/exercise_menue_open.png}}%
+    \only<17>{\caption{Auswahl einer Bibliothek}}
     %Export von Ausgaben
-    \only<17>{\includegraphics[width=\textwidth]{img/Share_Pressed.png}}%
-    \only<18>{\includegraphics[width=\textwidth]{img/Share_Export.png}}%
-    \only<17-18>{\caption{Teilen von $\lambda$-Auswertungen}}
+    \only<18>{\includegraphics[width=\textwidth]{img/Share_Pressed.png}}%
+    \only<19>{\includegraphics[width=\textwidth]{img/Share_Export.png}}%
+    \only<18-19>{\caption{Teilen von $\lambda$-Auswertungen}}
 \end{figure}
 \end{overlayarea}
 

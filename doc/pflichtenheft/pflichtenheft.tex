@@ -542,8 +542,10 @@ Dabei wird die Auswertung abgebrochen und der Inhalt des Ausgabefelds erhalten, 
 Alle Knöpfe, Felder und Menüs, welche beim Start der Auswertung deaktiviert wurden, werden wieder aktiviert.
 Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
 
-\functionality{Namensbindung}{fnc:bind}
+\functionality{Komfortabler $\lambda$-Code}{fnc:bind}
 \fulfills{crt:comfcode}
+Im Editor können Kommentare verfasst werden, 
+indem an Beginn der Zeile ein '//' eingefügt wird.\\
 \glslink{lt}{$\lambda$-Termen} können Namen zugewiesen werden.
 \glslink{rec}{Namensrekursion} ist ausgeschlossen. Ein Name darf nur einmal vergeben werden.
 Die Syntax für die Definition findet sich im Glossar unter \gls{nb}.
@@ -551,6 +553,7 @@ Der Name kann in der Eingabe an Stelle des \glslink{lt}{$\lambda$-Terms} eingese
 Die Ausgabe berücksichtigt den Namen soweit möglich:
 Ist der konkrete \gls{lt} für die Reduktion unerheblich, so wird immer der Name verwendet.
 Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
+
 
 \functionality{Schritt-für-Schritt-Modus}{fnc:steps}
 \fulfills{crt:steps}
@@ -605,8 +608,13 @@ Der Inhalt kann nun kopiert werden.
 \fulfills{crt:ex}
 Das Programm enthält eine Sammlung von Übungsaufgaben zum \gls{lk}.\\
 Im Optionsmenü wird eine Liste aller Übungsaufgaben (\cref{fig:exmenu}) angezeigt.\\
-Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus. Die Aufgabenstellung wird in einem neuen Aufgabefeld neben dem Eingabefeld angezeigt. Eventuell vorgegebener Code wird in das Eingabefeld geladen (siehe \cref{fig:exerciseMode}).\\
-Der Nutzer kann dann die Aufgabe bearbeiten und, durch Drücken der Schritt-für-Schritt- und Ausführen-Knöpfe, seine Lösung überprüfen lassen (siehe \cref{fig:solutionCheck}).\\
+Wählt der Nutzer eine Übung aus, wechselt das Programm in den Übungsmodus. 
+Die Aufgabenstellung wird in einem neuen Aufgabefeld neben dem Eingabefeld angezeigt. 
+Eventuell vorgegebener Code wird in das Eingabefeld geladen (siehe \cref{fig:exerciseMode}).
+Hierzu können auch vom Test vorgegeben Platzhalter für Eingaben zählen.\\
+Der Nutzer kann anschließend die Aufgabe bearbeiten. 
+Wenn er seine Lösung auswerten möchte, werden für die vorher festgelegten Platzhalter konkrete \gls{lt} eingesetzt.
+Sobald die Auswertung die \gls{nrmlform} erreicht, wird dem Nutzer ausgegeben, ob sein Ergebnis mit dem erwartete Ergebnis übereinstimmt (siehe \cref{fig:solutionCheck}).\\
 Weiterhin hat der Nutzer die Möglichkeit, sich durch Drücken eines Knopfes die Musterlösung anzeigen zu lassen (siehe \cref{fig:showSolution}). Durch Drücken des selben Knopfes wird diese wieder ausgeblendet. \\
 Solange sich das Programm im Übungsmodus befindet, kann der Nutzer durch Drücken des "Exit exercise mode"-Knopfes in den Eingabemodus zurückkehren.\\
 Beim Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld geleert.
@@ -655,8 +663,7 @@ Nach Aufruf der Seite kann ein Nutzer in drei Schritten einen \gls{lt} nach der 
 \end{figure}
 
 Die Anwendung kann sich in drei verschiedenen Zuständen befinden, wobei jeder Zustand ein Gegenstück im Übungsmodus besitzt. 
-%TODO verlinken vom Übunsgmodus
-Der Übungsmodus wird durch Auswahl einer Übungsaufgabe betreten und durch Beendigung des Übungsmodus verlassen.\\
+Der Übungsmodus wird durch Auswahl einer Übungsaufgabe betreten und durch Beendigung des Übungsmodus verlassen (vgl. \cref{fig:state}).\\
 Beim Start der Anwendung befindet sich der Nutzer im Eingabemodus. In diesem Modus kann der Nutzer einen \gls{lt} in das Eingabefeld eingeben. 
 Durch Drücken des Schritt-für-Schritt- oder Start-Knopfes (\cref{fig:actionButtons}) gelangt der Nutzer in den jeweiligen Auswertungsmodus und es beginnt die Auswertung des eingegebenen \glslink{lt}{$\lambda$-Terms}. 
 Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Ausgabefeld stehen, werden diese gelöscht.\\ 
@@ -1049,7 +1056,7 @@ Der "Start"-Knopf löst die Auswertung zum Endergebnis aus. Durch Drücken des "
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{img/wavelength_exercise_menu_open}
+	\includegraphics[width=\textwidth]{img/exercise_menue_open.png}
 	\caption{\label{fig:exmenu}Im Optionsmenü hat der Nutzer die Möglichkeit, Bibliotheken einzubinden oder eine Übungsaufgabe auszuwählen.}
 \end{figure}
 

@@ -427,7 +427,7 @@ Insbesondere bei einer Auswahl des Ausgabeumfangs von "Full" oder "Periodically"
 %TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
 \functionality{Unicode-Ausgabe}{fnc:unicode}
 \fulfills{crt:display}
-Der Nutzer hat die Möglichkeit, sich Auswertungen v \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
+Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
 Jeder neu ausgegebene Auswertungsschritt wird in einer neuen Zeile ausgegeben. 
 Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt (siehe \cref{fig:unicode}).
 
@@ -522,7 +522,6 @@ Module werden bereitgestellt:
 	\texttt{car} gibt das erste Element und \texttt{cdr} den Rest der Liste zurück.
 \end{itemize}
 
-%TODO Test schreiben
 \functionality{Fehlerdiagnostik}{fnc:diag}
 \fulfills{crt:error}
 \fulfills{crt:diag}
@@ -662,8 +661,9 @@ Nach Aufruf der Seite kann ein Nutzer in drei Schritten einen \gls{lt} nach der 
 	\caption{\label{fig:state} Zustandsautomat der Anwendung}
 \end{figure}
 
-Die Anwendung kann sich in drei verschiedenen Zuständen befinden, wobei jeder Zustand ein Gegenstück im Übungsmodus besitzt. 
-Der Übungsmodus wird durch Auswahl einer Übungsaufgabe betreten und durch Beendigung des Übungsmodus verlassen (vgl. \cref{fig:state}).\\
+%Alternative zu hyperref?
+Die Anwendung kann sich in drei verschiedenen Zuständen befinden, wobei jeder Zustand ein Gegenstück im \hyperref[fnc:ex]{Übungsmodus} besitzt. 
+Der Übungsmodus wird durch Auswahl einer Übungsaufgabe betreten und durch Beendigung des Übungsmodus verlassen.\\
 Beim Start der Anwendung befindet sich der Nutzer im Eingabemodus. In diesem Modus kann der Nutzer einen \gls{lt} in das Eingabefeld eingeben. 
 Durch Drücken des Schritt-für-Schritt- oder Start-Knopfes (\cref{fig:actionButtons}) gelangt der Nutzer in den jeweiligen Auswertungsmodus und es beginnt die Auswertung des eingegebenen \glslink{lt}{$\lambda$-Terms}. 
 Zeitgleich wird das Eingabefeld deaktiviert. Wenn noch Ausgaben einer früheren Auswertung im Ausgabefeld stehen, werden diese gelöscht.\\ 

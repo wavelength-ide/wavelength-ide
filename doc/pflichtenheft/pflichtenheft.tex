@@ -83,12 +83,16 @@
 { 
 	name=Variable,
 	plural=Variablen,
-	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen ohne die folgenden Zeichen:
-	\begin{tabular} {| l | c | c | c | c | c | r |}
+	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen aus $[a-zA-Z0-9_-]$.\\
+	Explizit nicht erlaubt sind Zeichenfolgen mit mindestens einem der folgenden Zeichen:  
+	\begin{tabular} {| l | c | c | c | c | c | c | c |r |}
 	\hline
-	 $\lambda$ & . & \textbackslash & : & = & ( & ) \\
+	 $\lambda$ & . & \textbackslash & : & = & ( & ) & / \\
 	 \hline
 	\end{tabular}
+	\\ Weiterhin darf eine Variable keine Leerzeichen enthalten.
+	Eine Variable darf nicht mit einer Zahl beginnen.
+	Die Namen berücksichtigen Groß- und Kleinschreibung.
 	}
 }
 \newglossaryentry{alpha} 
@@ -229,12 +233,7 @@
 		Die Zuweisung hat die Form: <Name> $\coloneqq$ <\gls{lt}>, wobei die spitzen Klammern hier nur
 		der Übersicht wegen eingefügt wurden und im eigentlichen Ausdruck nicht vorkommen.
 		Auf der rechten Seite des Gleichheitszeichen darf der Name selbst nicht verwendet werden.
-		Als Name zugelassen sind alle Zeichen und Zeichenfolgen ohne die folgenden Zeichen: 
-		\begin{tabular}{| l | c | c | c | c | c | r |}
-			\hline
-				$\lambda$ & . & = & : & \textbackslash & ( & )\\
-			\hline
-		\end{tabular}}
+		Als Name zugelassen sind alle gültigen Variablen(vgl. \gls{var}).}
 }
 \newglossaryentry{ex}
 {

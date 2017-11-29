@@ -691,22 +691,22 @@ Die Auswertungsmodi können erst durch das Drücken des Abbrechen-Knopfes verlas
 \tests{fnc:completereduce}
 \tests{fnc:live}
 
-\teststep{Nutzer "Ben Fielder" hat einen Browser geöffnet.}
+\teststep{Nutzer "Stephen Cook" hat einen Browser geöffnet.}
 {Ben navigiert zur URL des Wavelength-Projekts.}
 {Die IDE öffnet sich wie in Abbildung~\ref{img:start}.}
 
 \teststep{Die IDE ist fertig geladen.}
-{Ben gibt im Eingabefeld einen gültigen \gls{lt} mit Klammern ein,
+{Stephen gibt im Eingabefeld einen gültigen \gls{lt} mit Klammern ein,
 dessen Reduktion durch die \gls{nr} terminiert.
 Hierbei navigiert er über den Text und macht eine vermeintlich fehlerbehaftete Änderung rückgängig. 
-Ben merkt, dass die Änderung doch korrekt war und springt wieder zum aktuellen Stand. Er kopiert etwas Text und fügt diesen an einer anderen Stelle wieder ein.
-Der \gls{lt} ist mehrere Zeilen lang und Ben rückt mehrere Zeilen des \gls{lt}s gleichzeitig ein.
-Ben fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
+Stephen merkt, dass die Änderung doch korrekt war und springt wieder zum aktuellen Stand. Er kopiert etwas Text und fügt diesen an einer anderen Stelle wieder ein.
+Der \gls{lt} ist mehrere Zeilen lang und Stephen rückt mehrere Zeilen des \gls{lt}s gleichzeitig ein.
+Stephen fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
 {Das Textfeld verhält sich wie erwartet.}
 
 \teststep{Als Ausgabeformat ist die Unicode-Ausgabe, als \gls{aws} die \gls{nr} und
 als Ausgabeumfang die Ausgabe des Ergebnisses vorausgewählt.}
-{Ben betätigt den "Start"-Knopf.}
+{Stephen betätigt den "Start"-Knopf.}
 {Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \glslink{nr}{normalen Reduktionsordnung} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
@@ -723,12 +723,12 @@ Zurück-Knöpfe werden aktiv. Im Term wird der nächste $\beta$-Reduktionsschrit
 gemäß der \glslink{nr}{normalen Reduktionsordnung} markiert.}
 
 \teststep{Die IDE befindet sich im Schritt-für-Schritt-Modus.}
-{Don betätigt den Vor-Knopf.}
+{Don betätigt den "Vor"-Knopf.}
 {Das Resultat der markierten Reduktion erscheint als neue Zeile im Ausgabefeld.
 In der neuen Zeile ist der nächste Reduktionsschritt markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt den Zurück-Knopf.}
+{Don betätigt den "Zurück"-Knopf.}
 {Der zweite Reduktionsschritt wird aus dem Ausgabefeld entfernt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
@@ -754,7 +754,7 @@ Reduktion enthält. In der neuen Zeile erscheinen die Markierungen gemäß der a
 Stattdessen wird der nächste Schritt gemäß \gls{cbn} angezeigt.}
 
 \teststep{Die IDE ist bereit für die nächste Eingabe.}
-{Don betätigt den Vor-Knopf.}
+{Don betätigt den "Vor"-Knopf.}
 {Das Resultat der markierten Reduktion (gemäß \gls{cbn}) erscheint als neue Zeile im Ausgabefeld.
 In der neuen Zeile wird der nächste Reduktionsschritt markiert.}
 
@@ -783,7 +783,7 @@ abgebildet.}
 {Die IDE öffnet sich im neuen Fenster und Eingabefeld, Ausgabefeld und Ausgabeformat befinden sich im gleichen Zustand wie im alten Fenster.}
 
 \teststep{Die IDE ist im neuen Fenster geöffnet.}
-{Edsger betätigt den Zurück-Knopf.}
+{Edsger betätigt den "Zurück"-Knopf.}
 {Der letzte im alten Browserfenster durchgeführte Schritt wird im neuen Browserfenster
 rückgängig gemacht.}
 
@@ -888,14 +888,9 @@ Es öffnet sich ein Fenster (vgl. \cref{fig:export}) mit der formatierten Eingab
  Haskell wird darauf hingewiesen, dass er einen ungültigen Namen gewählt hat.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Haskell bindet zwei gültige \glspl{lt} an den gleichen Namen.}
+{Haskell bindet zwei gültige \glspl{lt} an den gleichen Namen und drückt den "Start"-Knopf}
 {Es wird eine Fehlermeldung ausgegeben. Haskell wird darauf hingewiesen, dass Namen
 nur einmal gebunden werden dürfen.}
-
-\teststep{Die IDE ist bereit für die nächste Aktion.}
-{Haskell gibt ein: \emph{"//($\lambda$x.x) (5)" und drückt den "Start"-Knopf.}
-{Es wird eine Fehlermeldung ausgegeben.
- Haskell wird darauf hingewiesen, dass seine Eingabe leer war.} 
 
 \test{Auswahl des Ausgabeumfangs}{tst:selectsize}
 \tests{fnc:selectsize}
@@ -985,24 +980,28 @@ nur einmal gebunden werden dürfen.}
 
 \teststep{Benutzer "Richard Bellman" befindet sich auf der Wavelength-Seite.}
 {Richard gibt einen syntaktisch inkorrekten \gls{lt} ein, der eine schließende Klammer
-zu wenig enthält und wählt den Start-Knopf an.}
+zu wenig enthält und wählt den "Start"-Knopf an.}
 {Im Ausgabefeld wird eine Nachricht angezeigt, die auf unbalancierte Klammerung hinweist.
 Die Nachricht enthält einen Vorschlag für einen korrigierten Term. Im Eingabefenster wird
 die Klammer, die keinen Partner besitzt, markiert.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Richard löscht die aktuelle Eingabe aus dem Eingabefenster und gibt einen inkorrekten Term ein, der strukturell weder \gls{lapp}, noch
-\gls{labs}, noch \gls{var} ist. Dann wählt er den Start-Knopf an.}
+\gls{labs}, noch \gls{var} ist. Dann wählt er den "Start"-Knopf an.}
 {Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass der eingegebene
 Term strukturell inkorrekt ist.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Richard leert das Eingabefeld und wählt den Start-Knopf an.}
+{Richard leert das Eingabefeld und wählt den "Start"-Knopf an.}
+{Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass die Eingabe leer war.}
+
+\teststep{Die IDE ist bereit für die nächste Aktion.}
+{Richard gibt \emph{"//($\lambda$x.x) (5)"} in das Eingabefeld ein und drückt den "Start"-Knopf.}
 {Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass die Eingabe leer war.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Richard gibt zwei syntaktisch korrekte \glspl{lt}, die beide keine \gls{nb} sind, nacheinander
-in das Eingabefeld ein und wählt den Start-Knopf an.}
+in das Eingabefeld ein und wählt den "Start"-Knopf an.}
 {Im Ausgabefeld erscheint eine Nachricht, die darauf hinweist, dass eine gültige Eingabe
 aus beliebig vielen Namensbindungen gefolgt von genau einem freistehendem \gls{lt} besteht.}
 % Syntax:

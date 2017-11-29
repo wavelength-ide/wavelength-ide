@@ -411,12 +411,16 @@ Neben dem Eingabefeld werden Zeilennummern angezeigt.
 Der Nutzer hat die Möglichkeit, auf einen eingegebenen \gls{lt} automatisch \glspl{beta} anwenden zu lassen. 
 Die hierzu verwendete \gls{cmpltapp} wird durch das Drücken des Start-Knopfes (\cref{fig:actionButtons}) gestartet.
 Ist die Eingabe syntaktisch falsch, so wird eine Fehlermeldung ausgegeben und die Komplettauswertung verlassen.
+
 Es werden die Knöpfe zum Laden von Bibliotheken und Aufgaben sowie der Schritt-für-Schritt-Knopf deaktiviert.
 Außerdem wird das Eingabefeld, das Ausgabeformats-, das \gls{aws}-Dropdown-Menü und das Ausgabeumfangs-Dropdown-Menü deaktiviert.
 Der Start-Knopf wird zu einem Pause-Knopf.
-Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) und den derzeitig aktiven Ausgabeumfang bestimmt.\\
+
+Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) und den derzeitig aktiven Ausgabeumfang bestimmt.
+
 Die Komplettauswertung übernimmt die automatische Auswertung, bis die derzeit aktive \gls{aws} keine \gls{beta} mehr vorgibt.
 Wenn der \gls{lt} keine \gls{nrmlform} besitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht.
+
 Wird der Pause-Knopf (siehe \cref{fig:actionButtons}) betätigt, so wechselt die Ausgabe in den Schritt-für-Schritt-Modus und das \gls{aws}-Dropdown-Menü wird wieder aktiviert.
 
 \functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
@@ -430,6 +434,7 @@ Insbesondere bei einer Auswahl des Ausgabeumfangs von "Full" oder "Periodically"
 Der Nutzer hat die Möglichkeit, sich Auswertungen von \gls{lt}en in Unicode ausgeben zu lassen. Die Ausgabe wird im Ausgabefeld ausgegeben.\\
 Jeder neu ausgegebene Auswertungsschritt wird in einer neuen Zeile ausgegeben. 
 Dabei wird am Anfang der Zeile kenntlich gemacht, ob es sich um eine \gls{alpha} oder \gls{beta} handelt (siehe \cref{fig:unicode}).
+Wird der Mauszeiger in der letzten Zeile über eine Klammer bewegt, so wird die Klammer und die dazugehörige öffnende oder schließende Klammer markiert.
 
 \functionality{Syntaxbaum-Ausgabe}{fnc:tree}
 \fulfills{crt:display}
@@ -556,8 +561,8 @@ Ansonsten wird der Name aufgelöst und der \gls{lt} verwendet.
 
 \functionality{Schritt-für-Schritt-Modus}{fnc:steps}
 \fulfills{crt:steps}
-Durch Drücken des Schritt-für-Schritt-Knopfes wird zuerst die Eingabe aus dem Eingabefeld überprüft und eventuell eine Fehlermeldung ausgegeben, falls die Eingabe nicht syntaktisch korrekt ist.
-Die korrekte Eingabe wird als erster Schritt in das Ausgabefeld geladen und der nächste zu reduzierende \gls{redex} gemäß der ausgewählten \gls{aws} markiert.
+Durch Drücken des Schritt-für-Schritt-Knopfes wird zuerst die Eingabe aus dem Eingabefeld überprüft und eventuell eine Fehlermeldung ausgegeben, falls die Eingabe nicht syntaktisch korrekt ist. \\
+Die korrekte Eingabe wird als erster Schritt in das Ausgabefeld geladen und der nächste zu reduzierende \gls{redex} gemäß der ausgewählten \gls{aws} markiert. \\
 Es werden die Knöpfe zum Laden von Bibliotheken und Aufgaben sowie der Schritt-für-Schritt-Knopf deaktiviert.
 Außerdem wird das Eingabefeld, das Ausgabeformats- und das Ausgabeumfangs-Dropdown-Menü deaktiviert, während der "vor"-Knopf aktiviert wird.
 

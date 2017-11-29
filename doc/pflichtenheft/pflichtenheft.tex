@@ -417,22 +417,12 @@ Der Start-Knopf wird zu einem Pause-Knopf.
 Die Reihenfolge der \glspl{beta} wird durch die derzeit aktive \gls{aws} bestimmt. Die Ausgabe wird durch das derzeit aktive Ausgabeformat (\cref{fig:outputOptions}) und den derzeitig aktiven Ausgabeumfang bestimmt.\\
 Die Komplettauswertung übernimmt die automatische Auswertung, bis die derzeit aktive \gls{aws} keine \gls{beta} mehr vorgibt.
 Wenn der \gls{lt} keine \gls{nrmlform} besitzt oder die \gls{aws} diese nicht findet, terminiert die \gls{cmpltapp} nicht.
+Wird der Pause-Knopf (siehe \cref{fig:actionButtons}) betätigt, so wechselt die Ausgabe in den Schritt-für-Schritt-Modus und das \gls{aws}-Dropdown-Menü wird wieder aktiviert.
 
 \functionality{Live-Updates der \gls{cmpltapp}}{fnc:live}
 \fulfills{crt:partial}
 Solange die \gls{cmpltapp} nicht terminiert, wird im Ausgabefeld der derzeitige Ergebnisstand im gewählten Ausgabeumfang ausgegeben. 
-Insbesondere bei einer Auswahl des Ausgabeumfangs von ``Full'' oder ``Periodically'' werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
-
-\functionality{Unterbrechung der \gls{cmpltapp}}{fnc:cancelcmplt}
-\fulfills{crt:cancel}
-Der Nutzer kann die \gls{cmpltapp} auf folgende Weisen unterbrechen (vgl. \cref{fig:state}):
-\begin{itemize}
-	\item Das Drücken des Abbrechen-Knopfes (\cref{fig:actionButtons}) bricht die \gls{cmpltapp} ab. 
-	Anschließend wird der zuletzt berechnete \gls{lt} ausgegeben. Es können nun keine weiteren Auswertungen am \gls{lt} vorgenommen werden. 
-	Dies wird dem Nutzer durch eine entsprechende Ausgabe im Ausgabefeld mitgeteilt.
-	\item Das Drücken des Pause-Knopfes (\cref{fig:actionButtons}) pausiert die \gls{cmpltapp}. 
-	Der zuletzt ausgewertete \gls{lt} wird ausgegeben, die Anwendung gelangt in den \hyperref[fnc:steps]{Schritt-für-Schritt-Modus} und das \gls{aws}-Dropdown-Menü wird wieder aktiviert.
-\end{itemize}
+Insbesondere bei einer Auswahl des Ausgabeumfangs von "Full" oder "Periodically" werden dem Nutzer regelmäßig die derzeit berechneten \gls{lt} ausgegeben.
 
 %TODO extra funktionale anforderungen für die farbliche markierung von Unicode und Bäumen?
 \functionality{Unicode-Ausgabe}{fnc:unicode}
@@ -478,7 +468,7 @@ Der Nutzer kann die \gls{aws} im \hyperref[fnc:steps]{Schritt-für-Schritt-Modus
 \functionality{Auswahl des Ausgabeumfangs}{fnc:selectsize}
 \fulfills{crt:partial}
 Der Nutzer kann den Ausgabeumfang über ein Dropdown-Menü auswählen (\cref{fig:outputOptions}). 
-Standardmäßig ist der Ausgabeumfang ``Result only'' ausgewählt. 
+Standardmäßig ist der Ausgabeumfang "Result only" ausgewählt. 
 Der Ausgabeumfang bestimmt die Menge an Teilergebnissen einer Auswertung, die die \gls{cmpltapp} in das Ausgabefeld schreibt.
 Der Nutzer kann den Ausgabeumfang während der \gls{cmpltapp} nicht ändern (vgl. \cref{fig:state}).
 Hierbei stehen dem Nutzer folgende Optionen zur Verfügung:
@@ -547,7 +537,7 @@ Die problematische Stelle wird im Editor zusätzlich farblich markiert.
 
 \functionality{Abbruch der Auswertung}{fnc:cancel}
 \fulfills{crt:cancel}
-Durch das Drücken des "Abbrechen"-Knopfes kann der Nutzer während dem Schritt-für-Schritt-Modus und während der Komplettauswertung in den Eingabemodus zurückkehren.\\
+Durch das Drücken des "Abbrechen"-Knopfes (\cref{fig:actionButtons}) kann der Nutzer während dem Schritt-für-Schritt-Modus und während der Komplettauswertung in den Eingabemodus zurückkehren.\\
 Dabei wird die Auswertung abgebrochen und der Inhalt des Ausgabefelds erhalten, die Steuerung der Ausgabe aber deaktiviert.
 Alle Knöpfe, Felder und Menüs, welche beim Start der Auswertung deaktiviert wurden, werden wieder aktiviert.
 Anschließend kann der Nutzer das Eingabefeld wieder bearbeiten.
@@ -633,13 +623,6 @@ Beim Wechsel in den Eingabemodus werden Eingabefeld und Ausgabefeld geleert.
 % Syntax:
 % \nonFunctionality{Überschrift der NA}{nfc:label}
 % Beschreibung der NA
-
-\nonFunctionality{Antwortverhalten und Antwortzeit}{nfc:response}
-Die Anwendung einer \gls{aws} führt nach 100 \glspl{beta} entweder zu einem Ergebnis oder der Nutzer wird benachrichtigt.
-Die Nachricht zeigt an, dass die Eingabe noch ausgewertet wird.
-Eine solche Nachricht wird alle 100 \glspl{beta} ausgegeben.
-Der Nutzer wird darauf hingewiesen, dass die Auswertung auch abgebrochen werden kann.
-%Spinner?
 
 \nonFunctionality{Benutzeroberfläche}{nfc:guiResponse}
 Die Benutzeroberfläche ist während der Auswertung noch verwendbar, d.h. die Oberfläche blockiert nicht vollständig während der Ausführung.
@@ -904,7 +887,6 @@ nur einmal gebunden werden dürfen.}
  Im Ausgabefeld erscheint ein Syntaxbaum gemäß des ausgewählten Ausgabeumfangs (vgl. \ref{fnc:selectsize}).}
  
 \test{Wechsel des Auswertungsmodus}{test:changemodes}
-\tests{fnc:cancelcmplt}
 \tests{fnc:cancel}
 
 \teststep{Die Komplettauswertung eines korrekten \gls{lt} läuft.}

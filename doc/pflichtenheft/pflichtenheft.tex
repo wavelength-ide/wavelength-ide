@@ -850,9 +850,13 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 {Richard gibt einen syntaktisch korrekten \gls{lt} ein und drückt den "Start"-Knopf.}
 {Der eingegebene \gls{lt} wird ausgewertet und im Unicode-Format im Ausgabefeld angezeigt.}
 
+\teststep{Im Ausgabefeld wird das Ergebnis der vorherigen Schritts angezeigt.}
+{Richard bewegt den Mauszeiger auf eine öffnende Klammer in der letzten Zeile der Ausgabe.}
+{Die öffnende Klammer und die zugehörige schließende Klammer werden markiert.}
+
 \teststep{Die IDE ist bereit für die nächste Aktion}
-{Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) ein anderes Ausgabeformat und drückt den "Start"-Knopf.}
-{Der eingegebene \gls{lt} wird ausgewertet und im gewählten Ausgabeformat wie spezifiziert ausgegeben.}
+{Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) das Ausgabeformat "tree" und drückt den "Start"-Knopf.}
+{Der eingegebene \gls{lt} wird ausgewertet und wie spezifiziert(vgl. \ref{fnc:tree}) ausgegeben.}
 
 \test{Export}{tst:output}
 \tests{fnc:output}

@@ -24,7 +24,7 @@
 %-------------------------------------------------------
 
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{helvet}
 \usepackage{lipsum}
@@ -86,7 +86,7 @@
 % Mein PDF-Viewer bekommt das nicht hin, das Bild im Hintergrund anzuzeigen
 {
 %\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[height=\paperheight]{img/Logo.pdf}};}
-\begin{frame}[plain,noframenumbering]
+\begin{frame}[plain]
 \maketitle
 \end{frame}
 }
@@ -97,50 +97,47 @@
 %\tableofcontents
 %\end{frame}
 
-\begin{frame}[plain,noframenumbering]
+\begin{frame}[plain]
 
 \begin{overlayarea}{\textwidth}{\textheight}
 \begin{figure}
     \only<1>{\includegraphics[width=\textwidth]{img/Startseite.png}}%lol this comment is important
-    \only<2>{\includegraphics[width=\textwidth]{img/MussKrit_Eingabe1.png}}%
-    \only<3>{\includegraphics[width=\textwidth]{img/MussKrit_Eingabe2.png}}%
-    \only<4>{\includegraphics[width=\textwidth]{img/MussKrit_Ausgabe.png}}%
-	\only<1-4>{\caption{Startseite und erste Benutzung der Entwicklungsumgebung}}
+    \only<2>{\includegraphics[width=\textwidth]{img/Zoom1.png}}%
+    \only<3>{\includegraphics[width=\textwidth]{img/Zoom2.png}}%    
+    \only<4>{\includegraphics[width=\textwidth]{img/MussKrit_Eingabe2.png}}%
+    \only<5>{\includegraphics[width=\textwidth]{img/MussKrit_Ausgabe.png}}%
+	\only<1-5>{\caption{Startseite und erste Benutzung der Entwicklungsumgebung}}
 	%Voller Ausgabeumfang
-    \only<5>{\includegraphics[width=\textwidth]{img/Ausgabe_Full.png}}%
-    \only<5>{\caption{Ausgabe der kompletten Auswertung}}
+    \only<6>{\includegraphics[width=\textwidth]{img/Ausgabe_Full.png}}%
+    \only<6>{\caption{Ausgabe der kompletten Auswertung}}
     %Baumdarstellung
-    \only<6>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree1.png}}%
-    \only<7>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree2.png}}%
-    \only<8>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree3.png}}%
-    \only<6-8>{\caption{Baumdarstellung der Auswertung}}
+    \only<7>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree1.png}}%
+    \only<8>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree2.png}}%
+    \only<9>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree3.png}}%
+    \only<7-9>{\caption{Baumdarstellung der Auswertung}}
     %Schritt-für-Schritt in Baumdarstellung
-    \only<9>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree1.png}}%
-    \only<10>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree2.png}}%
-    \only<11>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree3.png}}%
-    \only<9-11>{\caption{Schritt-für-Schritt Auswertung}}
+    \only<10>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree1.png}}%
+    \only<11>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree2.png}}%
+    \only<12>{\includegraphics[width=\textwidth]{img/Ausgabe_Tree3.png}}%
+    \only<10-12>{\caption{Schritt-für-Schritt Auswertung}}
     %Übungsmodus
-    \only<12>{\includegraphics[width=\textwidth]{img/exercise_menue_open.png}}%
-    \only<13>{\includegraphics[width=\textwidth]{img/Exercise_(1).pdf}}%
-    \only<14>{\includegraphics[width=\textwidth]{img/Exercise_(2).pdf}}%
-    \only<15>{\includegraphics[width=\textwidth]{img/Exercise_(3).pdf}}%
-    \only<12-15>{\caption{Übungsmodus}}
+    \only<13>{\includegraphics[width=\textwidth]{img/exercise_menue_open.png}}%
+    \only<14>{\includegraphics[width=\textwidth]{img/Exercise_(1).pdf}}%
+    \only<15>{\includegraphics[width=\textwidth]{img/Exercise_(2).pdf}}%
+    \only<16>{\includegraphics[width=\textwidth]{img/Exercise_(3).pdf}}%
+    \only<13-16>{\caption{Übungsmodus}}
     %Fortgeschrittene Funktionen
-    \only<16>{\includegraphics[width=\textwidth]{img/Startseite.png}}%
-    \only<16>{\caption{Startseite der Entwicklungsumgebung}}
-    \only<17>{\includegraphics[width=\textwidth]{img/exercise_menue_open.png}}%
-    \only<17>{\caption{Auswahl einer Bibliothek}}
+    \only<17>{\includegraphics[width=\textwidth]{img/Startseite.png}}%
+    \only<17>{\caption{Startseite der Entwicklungsumgebung}}
+    \only<18>{\includegraphics[width=\textwidth]{img/exercise_menue_open.png}}%
+    \only<18>{\caption{Auswahl einer Bibliothek}}
     %Export von Ausgaben
-    \only<18>{\includegraphics[width=\textwidth]{img/Share_Pressed.png}}%
-    \only<19>{\includegraphics[width=\textwidth]{img/Share_Export.png}}%
-    \only<18-19>{\caption{Teilen von $\lambda$-Auswertungen}}
+    \only<19>{\includegraphics[width=\textwidth]{img/Share_Pressed.png}}%
+    \only<20>{\includegraphics[width=\textwidth]{img/Share_Export.png}}%
+    \only<19-20>{\caption{Teilen von $\lambda$-Auswertungen}}
 \end{figure}
 \end{overlayarea}
 
-\end{frame}
-
-\begin{frame}[noframenumbering]
-  \finalpage{Vielen Dank für ihre Aufmerksamkeit!}
 \end{frame}
 
 \end{document}

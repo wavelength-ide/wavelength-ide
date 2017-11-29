@@ -83,10 +83,10 @@
 { 
 	name=Variable,
 	plural=Variablen,
-	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen bis auf die folgenden:
-	\begin{tabular} {| l | c | r |}
+	description={Variablen sind Platzhalter für konkrete Werte. Als Variablen zugelassen sind beliebige Zeichen und Zeichenkombinationen ohne die folgenden Zeichen:
+	\begin{tabular} {| l | c | c | c | c | c | r |}
 	\hline
-	 $\lambda$ & . & \textbackslash \\
+	 $\lambda$ & . & \textbackslash & : & = & ( & ) \\
 	 \hline
 	\end{tabular}
 	}
@@ -230,9 +230,9 @@
 		der Übersicht wegen eingefügt wurden und im eigentlichen Ausdruck nicht vorkommen.
 		Auf der rechten Seite des Gleichheitszeichen darf der Name selbst nicht verwendet werden.
 		Als Name zugelassen sind alle Zeichen und Zeichenfolgen ohne die folgenden Zeichen: 
-		\begin{tabular}{| l | c | c | c | r |}
+		\begin{tabular}{| l | c | c | c | c | c | r |}
 			\hline
-				$\lambda$ & . & = & : & \textbackslash \\
+				$\lambda$ & . & = & : & \textbackslash & ( & )\\
 			\hline
 		\end{tabular}}
 }

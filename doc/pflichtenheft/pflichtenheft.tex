@@ -699,13 +699,15 @@ dessen Reduktion durch die \gls{nr} terminiert.
 Hierbei navigiert er über den Text und macht eine vermeintlich fehlerbehaftete Änderung rückgängig. 
 Stephen merkt, dass die Änderung doch korrekt war und springt wieder zum aktuellen Stand. Er kopiert etwas Text und fügt diesen an einer anderen Stelle wieder ein.
 Der \gls{lt} ist mehrere Zeilen lang und Stephen rückt mehrere Zeilen des \gls{lt}s gleichzeitig ein.
-Stephen fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein.}
+Stephen fügt eine neue Zeile hinter einer bereits eingerückten Zeile ein und schreibt in diese Zeile einen Kommentar.
+Stephen bewegt seinen Mauszeiger über eine Klammer, um die dazugehörige schließende Klammer zu finden.
+Er ändert den Ausgabeumfang auf die Ausgabe aller Teilschritte und die \gls{aws} zur \gls{cbn}-Reduktionsordnung.}
 {Das Textfeld verhält sich wie erwartet.}
 
 \teststep{Als Ausgabeformat ist die Unicode-Ausgabe, als \gls{aws} die \gls{nr} und
 als Ausgabeumfang die Ausgabe aller Teilschritte vorausgewählt.}
 {Stephen betätigt den "Start"-Knopf.}
-{Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß der \glslink{nr}{normalen Reduktionsordnung} auftreten.
+{Das Ausgabefeld füllt sich graduell mit den Zwischenschritten, welche gemäß \gls{cbn} auftreten.
 Zum Schluss wird die Normalform des eingangs eingegebenen Terms ausgegeben.}
 
 \test{Schritt-für-Schritt-Modus}{tst:steps}
@@ -800,7 +802,7 @@ rückgängig gemacht.}
 {Ada gibt eine syntaktisch korrekte Lösung ein, die kein korrektes Ergebnis liefert.
  Ada drückt den "Start"-Knopf.}
 {Die IDE wertet die Eingabe wie spezifiziert aus.
- Nach dem letzten Schritt wird angezeigt, dass die Lösung inkorrekt ist.}
+ Nach dem letzten Schritt wird angezeigt, dass die Lösung inkorrekt ist, sowie das erwartete Ergebnis.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
 {Ada gibt die korrekte Lösung ein. Ada drückt den "Start"-Knopf.}
@@ -813,8 +815,8 @@ rückgängig gemacht.}
 Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
-{Ada vervollständigt den Code zu einer korrekten Lösung und durchläuft den Schritt-für-Schritt-Modus komplett von Hand.}
-{Die IDE verhält sich wie spezifiziert.
+{Ada vervollständigt den Code zu einer korrekten Lösung, verwendet dabei die in der Aufgabestellung genannten vordefinierten Namen für die Eingabe und durchläuft den Schritt-für-Schritt-Modus komplett von Hand.}
+{Die IDE verhält sich wie spezifiziert. Beim Starten des Schritt-für-Schritt-Modus werden die vordefinierten Namen durch Testwerte ersetzt.
  Als letzter Schritt wird angezeigt, dass die eingegebene Lösung korrekt ist.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion.}
@@ -853,7 +855,7 @@ Im Aufgabenfeld erscheinen eine Beschreibung der \gls{ex} und ein Stück Code.}
 
 \teststep{Die IDE ist bereit für die nächste Aktion}
 {Richard wählt im Dropdown-Menü (vgl. \cref{fig:display}) das Ausgabeformat "tree" und drückt den "Start"-Knopf.}
-{Der eingegebene \gls{lt} wird ausgewertet und wie spezifiziert(vgl. \ref{fnc:tree}) ausgegeben.}
+{Der eingegebene \gls{lt} wird ausgewertet und wie spezifiziert (vgl. \ref{fnc:tree}) ausgegeben.}
 
 \test{Export}{tst:output}
 \tests{fnc:output}

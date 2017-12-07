@@ -1,0 +1,16 @@
+@startuml
+
+interface ViewPresenter
+interface LiveUpdated
+
+View --> ViewPresenter
+Presenter -- Eventbus
+Presenter ..|> ViewPresenter
+Presenter --> Model
+Presenter ..|> LiveUpdated
+Model --> LiveUpdated
+AppController <-- Eventbus
+AppController --> Presenter
+AppController --> View
+
+@enduml

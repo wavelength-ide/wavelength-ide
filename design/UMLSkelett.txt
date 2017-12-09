@@ -1,0 +1,102 @@
+@startuml
+package view {
+	class MainView
+	class ExportButton
+	class ShareButton
+	class SharePanel
+	class InputOutputResizer
+	class InputView
+	class InputPanel
+	class LineNumberPanel
+	class Editor
+	class OptionView
+	class DisplayFormatMenu
+	class ReductionOrderMenu
+	class OutputSizeMenu
+	class ControlView
+	class RunPauseButton
+	class TerminateButton
+	class NextButton
+	class PreviousButton
+	class StepByStepButton
+	class MainMenuView
+	class LibraryList
+	class LibraryCheckbox
+	class ExerciseList
+	class ExerciseButton
+	class ExportView
+	class ExportPanel
+	class CopyButton
+	class CloseButton
+	class TreeDisplayView
+	class TreeDisplayPanel
+	class TreeReduceButton
+	class TextDisplayView
+	class TextDisplayPanel
+	class TextReduceButton
+	class ExerciseView
+	class SolutionButton
+	class ExitButton
+	class ExercisePanel
+	class ProblemPanel
+	class SolutionPanel
+	class InputProblemResizer
+}
+
+package presenter {
+	class MainPresenter
+	class InputPresenter
+	class OptionPresenter
+	class ControlPresenter
+	class MainMenuPresenter
+	class ExportPresenter
+	class TreeDisplayPresenter
+	class TextDisplayPresenter
+	class ExercisePresenter
+}
+
+package model {
+	interface ReductionOrder
+		ReductionOrder <|.. Normal
+		ReductionOrder <|.. CallByName
+		ReductionOrder <|.. CallByValue
+		ReductionOrder <|.. Applicative
+	interface LiveUpdateExtent
+		LiveUpdateExtent <|.. ResultOnly
+		LiveUpdateExtent <|.. Shortened
+		LiveUpdateExtent <|.. Full
+		LiveUpdateExtent <|.. Periodically
+	interface ExportFormat
+		ExportFormat <|.. Plaintext
+		ExportFormat <|.. Unicode
+		ExportFormat <|.. LaTeX
+		ExportFormat <|.. Haskell
+		ExportFormat <|.. Lisp
+	interface Library
+		Library <|.. YCombinator
+		Library <|.. ChurchNumbers
+		Library <|.. CBoolean
+		Library <|.. CList
+	class Parser
+	class ParseError
+	class Normal
+	class Reducer
+	class CallByName
+	class CallByValue
+	class Applicative
+	class ResultOnly
+	class Shortened
+	class Full
+	class Periodically
+	class Plaintext
+	class Unicode
+	class LaTeX
+	class Haskell
+	class Lisp
+	class URLGenerator
+	class YCombinator
+	class ChurchNumbers
+	class CBoolean
+	class CList
+}
+@enduml

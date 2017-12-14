@@ -1,0 +1,84 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage{ifpdf}
+\usepackage[headings]{fullpage}
+\usepackage{listings}
+\lstset{language=Java,breaklines=true}
+\ifpdf \usepackage[pdftex, pdfpagemode={UseOutlines},bookmarks,colorlinks,linkcolor={blue},plainpages=false,pdfpagelabels,citecolor={red},breaklinks=true]{hyperref}
+  \usepackage[pdftex]{graphicx}
+  \pdfcompresslevel=9
+  \DeclareGraphicsRule{*}{mps}{*}{}
+\else
+  \usepackage[dvips]{graphicx}
+\fi
+
+\newcommand{\entityintro}[3]{%
+  \hbox to \hsize{%
+    \vbox{%
+      \hbox to .2in{}%
+    }%
+    {\bf  #1}%
+    \dotfill\pageref{#2}%
+  }
+  \makebox[\hsize]{%
+    \parbox{.4in}{}%
+    \parbox[l]{5in}{%
+      \vspace{1mm}%
+      #3%
+      \vspace{1mm}%
+    }%
+  }%
+}
+\newcommand{\refdefined}[1]{
+\expandafter\ifx\csname r@#1\endcsname\relax
+\relax\else
+{$($in \ref{#1}, page \pageref{#1}$)$}\fi}
+\date{\today}
+\chardef\textbackslash=`\\
+\title{Der Entwurf}
+
+\usepackage[sfdefault,light]{roboto}
+\usepackage{inconsolata}
+
+\lstset{basicstyle=\ttfamily}
+
+\begin{document}
+\sloppy
+\addtocontents{toc}{\protect\markboth{Contents}{Contents}}
+\tableofcontents
+\section{Package edu.kit.wavelength.model.terms}{
+\label{edu.kit.wavelength.model.terms}\hypertarget{edu.kit.wavelength.model.terms}{}
+\hskip -.05in
+\hbox to \hsize{\textit{ Package Contents\hfil Page}}
+\vskip .13in
+\hbox{{\bf  Classes}}
+\entityintro{LambdaTerm}{edu.kit.wavelength.model.terms.LambdaTerm}{Represents a term in the untyped lambda calculus.}
+\vskip .1in
+\vskip .1in
+\subsection{\label{edu.kit.wavelength.model.terms.LambdaTerm}Class LambdaTerm}{
+\hypertarget{edu.kit.wavelength.model.terms.LambdaTerm}{}\vskip .1in 
+Represents a term in the untyped lambda calculus.\vskip .1in 
+\subsubsection{Declaration}{
+\begin{lstlisting}[frame=none]
+public class LambdaTerm
+ extends java.lang.Object\end{lstlisting}
+\subsubsection{Constructor summary}{
+\begin{verse}
+\hyperlink{edu.kit.wavelength.model.terms.LambdaTerm()}{{\bf LambdaTerm()}} \\
+\end{verse}
+}
+\subsubsection{Constructors}{
+\vskip -2em
+\begin{itemize}
+\item{ 
+\index{LambdaTerm()}
+\hypertarget{edu.kit.wavelength.model.terms.LambdaTerm()}{{\bf  LambdaTerm}\\}
+\begin{lstlisting}[frame=none]
+public LambdaTerm()\end{lstlisting} %end signature
+}%end item
+\end{itemize}
+}
+}
+}
+\end{document}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.7.0//EN" "http://gwtproject.org/doctype/2.7.0/gwt-module.dtd">
+<module rename-to="wavelength">
+	<inherits name='com.google.gwt.user.User'/>
+	<inherits name='com.google.gwt.user.theme.clean.Clean'/>
+	<entry-point class='edu.kit.wavelength.client.Wavelength'/>
+</module>

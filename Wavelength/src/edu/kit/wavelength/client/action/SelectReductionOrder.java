@@ -1,13 +1,13 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.Wavelength;
+import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.model.ExecutionEngine;
 
 public class SelectReductionOrder implements Action {
 	
-	private ExecutionEngine executionEngine;
-	private Wavelength appController;
-
+	private ExecutionEngine execution;
+	private UIState state;
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

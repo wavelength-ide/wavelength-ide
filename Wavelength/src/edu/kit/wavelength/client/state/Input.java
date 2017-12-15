@@ -1,5 +1,5 @@
 package edu.kit.wavelength.client.state;
 
-public class Input extends AppState {
+public class Input extends State {
 
 }

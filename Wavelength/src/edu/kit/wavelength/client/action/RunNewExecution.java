@@ -1,12 +1,12 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.Wavelength;
+import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.model.ExecutionEngine;
 
-public class Run implements Action {
+public class RunNewExecution implements Action {
 	
-	private ExecutionEngine executionEngine;
-	private Wavelength appController;
+	private ExecutionEngine execution;
+	private UIState state;
 
 	@Override
 	public void run() {

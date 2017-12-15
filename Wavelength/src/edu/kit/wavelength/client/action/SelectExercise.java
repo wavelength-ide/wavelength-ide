@@ -1,12 +1,11 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.Wavelength;
-import edu.kit.wavelength.model.ExecutionEngine;
+import edu.kit.wavelength.client.UIState;
 
 public class SelectExercise implements Action {
 	
-	private ExecutionEngine executionEngine;
-	private Wavelength appController;
+	// possibly some other model class for exercises
+	private UIState state;
 
 	@Override
 	public void run() {

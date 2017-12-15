@@ -1,12 +1,11 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.Wavelength;
 import edu.kit.wavelength.model.ExecutionEngine;
 
 public class SelectLibrary implements Action {
 	
-	private ExecutionEngine executionEngine;
-	private Wavelength appController;
+	// possibly some other model class that handles libraries
+	private ExecutionEngine execution;
 
 	@Override
 	public void run() {

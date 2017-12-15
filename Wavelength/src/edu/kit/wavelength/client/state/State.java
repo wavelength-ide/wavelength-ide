@@ -4,9 +4,9 @@ package edu.kit.wavelength.client.state;
  * @author jpvdh
  *
  */
-public abstract class AppState {
+public abstract class State {
 
-	public AppState nextState() {
+	public State nextState() {
 		return null;
 	}
 

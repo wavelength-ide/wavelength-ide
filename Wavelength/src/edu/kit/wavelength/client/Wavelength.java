@@ -6,7 +6,9 @@ public class Wavelength implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
-
+		// initialize UIState
 	}
 
+	
+	
 }

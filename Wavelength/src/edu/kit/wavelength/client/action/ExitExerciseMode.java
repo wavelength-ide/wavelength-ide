@@ -1,7 +1,13 @@
 package edu.kit.wavelength.client.action;
 
-public class ExitExerciseMode implements Action {
+import edu.kit.wavelength.client.Wavelength;
+import edu.kit.wavelength.model.ExecutionEngine;
 
+public class ExitExerciseMode implements Action {
+	
+	private ExecutionEngine executionEngine;
+	private Wavelength appController;
+	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub

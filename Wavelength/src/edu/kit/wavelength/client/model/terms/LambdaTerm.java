@@ -1,5 +1,5 @@
 package edu.kit.wavelength.client.model.terms;
 
 public interface LambdaTerm {
-	public void acceptVisitor(Visitor v);
+	public <T> T acceptVisitor(Visitor<T> v);
 }

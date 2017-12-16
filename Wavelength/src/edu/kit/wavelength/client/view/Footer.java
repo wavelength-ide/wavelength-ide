@@ -1,5 +1,5 @@
 package edu.kit.wavelength.client.view;
 
-public class LinkLabelFooter {
+public class Footer {
 
 }

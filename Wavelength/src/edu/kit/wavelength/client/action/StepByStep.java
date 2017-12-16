@@ -5,7 +5,7 @@ import edu.kit.wavelength.model.ExecutionEngine;
 
 public class StepByStep implements Action {
 	
-	private ExecutionEngine engine;
+	private ExecutionEngine execution;
 	private UIState state;
 
 	@Override

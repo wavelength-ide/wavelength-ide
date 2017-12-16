@@ -1,6 +1,6 @@
-package edu.kit.wavelength.model.terms;
+package edu.kit.wavelength.client.model.terms;
 
-public class FreeVariable implements LambdaTerm {
+public class Application implements LambdaTerm {
 
 	@Override
 	public void acceptVisitor(Visitor v) {

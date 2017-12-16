@@ -1,4 +1,4 @@
-package edu.kit.wavelength.model.terms;
+package edu.kit.wavelength.client.model.terms;
 
 public class Abstraction implements LambdaTerm {
 

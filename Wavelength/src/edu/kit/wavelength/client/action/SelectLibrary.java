@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.model.ExecutionEngine;
+import edu.kit.wavelength.client.model.ExecutionEngine;
 
 public class SelectLibrary implements Action {
 	

@@ -1,4 +1,4 @@
-package edu.kit.wavelength.model.reductions;
+package edu.kit.wavelength.client.model.reductions;
 
 public class CallByName implements ReductionOrder {
 	

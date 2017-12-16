@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class TreeOutput implements DisplayOutput {
+public class TreeOutput implements OutputDisplayer {
 	
 	public void setOutput(String output) {
 		

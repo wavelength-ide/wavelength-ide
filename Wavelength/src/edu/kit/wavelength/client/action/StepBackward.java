@@ -5,7 +5,7 @@ import edu.kit.wavelength.model.ExecutionEngine;
 
 public class StepBackward implements Action {
 	
-	private ExecutionEngine executionEngine;
+	private ExecutionEngine execution;
 	private UIState state;
 
 	@Override

@@ -5,7 +5,7 @@ import edu.kit.wavelength.model.ExecutionEngine;
 
 public class StepForward implements Action {
 	
-	private ExecutionEngine executionEngine;
+	private ExecutionEngine engine;
 	private UIState state;
 
 	@Override

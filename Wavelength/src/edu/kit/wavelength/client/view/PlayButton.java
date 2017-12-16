@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class MainMenu implements Showable {
+public class PlayButton implements Showable {
 	
 	public void show() {
 		
@@ -9,5 +9,4 @@ public class MainMenu implements Showable {
 	public void hide() {
 		
 	}
-
 }

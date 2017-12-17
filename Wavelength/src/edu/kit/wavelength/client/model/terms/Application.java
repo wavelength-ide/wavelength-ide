@@ -6,5 +6,9 @@ public class Application implements LambdaTerm {
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;
 	}
+	
+	public LambdaTerm getLeftHandSide() {
+		return null;
+	}
 
 }

@@ -6,5 +6,9 @@ public class FreeVariable implements LambdaTerm {
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;
 	}
+	
+	public String getName() {
+		return null;
+	}
 
 }

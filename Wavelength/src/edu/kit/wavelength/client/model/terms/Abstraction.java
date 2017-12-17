@@ -6,5 +6,10 @@ public class Abstraction implements LambdaTerm {
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;
 	}
+	
+	public String getPreferredName()
+	{
+		return null;
+	}
 
 }

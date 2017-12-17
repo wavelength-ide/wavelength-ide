@@ -7,4 +7,11 @@ public class NamedTerm implements LambdaTerm {
 		return null;
 	}
 
+	public LambdaTerm getInner() {
+		return null;
+	}
+	
+	public String getName() {
+		return null;
+	}
 }

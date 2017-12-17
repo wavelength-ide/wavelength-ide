@@ -6,5 +6,9 @@ public class BoundVariable implements LambdaTerm {
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;
 	}
+	
+	public int getDeBruijnIndex() {
+		return 0;
+	}
 
 }

@@ -1,16 +1,15 @@
 package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
-import edu.kit.wavelength.client.view.ExerciseView;
-import edu.kit.wavelength.client.view.OutputDisplayer;
-import edu.kit.wavelength.client.view.TextContainer;
+import edu.kit.wavelength.client.view.Hideable;
+import edu.kit.wavelength.client.view.Writable;
 
 public class ExitExerciseMode implements Action {
 	
 	private UIState state;
-	private TextContainer editor;
-	private ExerciseView exercisePanel;
-	private OutputDisplayer output;
+	private Writable editor;
+	private Hideable exercisePanel;
+	private Writable output;
 	
 	@Override
 	public void run() {

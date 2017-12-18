@@ -1,9 +1,13 @@
 package edu.kit.wavelength.client.view;
 
-public class ExportWindow implements TextContainer {
-	
-	public void setText(String text) {
+public class ExportWindow implements Writable {
+
+	@Override
+	public void write(String input) {
+		// TODO Auto-generated method stub
 		
 	}
+	
+	
 
 }

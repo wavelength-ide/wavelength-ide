@@ -2,13 +2,13 @@ package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.view.Footer;
-import edu.kit.wavelength.client.view.Showable;
+import edu.kit.wavelength.client.view.Hideable;
 
 public class Share implements Action {
 	
 	// some class that contains the current share state
 	private UIState state;
-	private Showable LinkPanel;
+	private Hideable LinkPanel;
 	private Footer footer;
 
 	@Override

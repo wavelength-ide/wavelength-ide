@@ -1,14 +1,18 @@
 package edu.kit.wavelength.client.view;
 
-public class Editor implements Input, TextContainer {
+public class Editor implements Readable, Writable {
 
-
-	public String getInput() {
+	
+	
+	@Override
+	public String read() {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	// e.g set the sample code in exercise mode
-	public void setText(String text) {
+
+	@Override
+	public void write(String input) {
+		// TODO Auto-generated method stub
 		
 	}
 

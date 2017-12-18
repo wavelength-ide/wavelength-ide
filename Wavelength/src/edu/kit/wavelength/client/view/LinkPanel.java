@@ -1,17 +1,25 @@
 package edu.kit.wavelength.client.view;
 
-public class LinkPanel implements Showable, TextContainer {
+public class LinkPanel implements Hideable, Writable {
 
-	public void show() {
+	@Override
+	public void write(String input) {
+		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void hide() {
+		// TODO Auto-generated method stub
 		
 	}
 
-	public void setText(String text) {
+	@Override
+	public void show() {
+		// TODO Auto-generated method stub
 		
 	}
+
+	
 
 }

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class PauseButton implements Showable {
+public class PauseButton implements Hideable {
 	
 	public void show() {
 		

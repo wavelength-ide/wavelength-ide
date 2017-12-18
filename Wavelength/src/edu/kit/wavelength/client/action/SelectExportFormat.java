@@ -1,12 +1,12 @@
 package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
-import edu.kit.wavelength.client.view.TextContainer;
+import edu.kit.wavelength.client.view.Writable;
 
 public class SelectExportFormat implements Action {
 	
 	private UIState state;
-	private TextContainer ExportWindow;
+	private Writable ExportWindow;
 
 	@Override
 	public void run() {

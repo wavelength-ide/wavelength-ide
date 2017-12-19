@@ -12,7 +12,5 @@ public class Wavelength implements EntryPoint {
 	public void onModuleLoad() {
 		// initialize UIState
 	}
-
-	
-	
+		
 }

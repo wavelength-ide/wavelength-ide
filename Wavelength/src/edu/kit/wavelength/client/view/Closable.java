@@ -1,14 +1,12 @@
 package edu.kit.wavelength.client.view;
 
 /**
- * Closables can be closed by others.
- * 
- *
+ * A Closable can be closed.
  */
 public interface Closable {
 	
 	/**
-	 * Close this.
+	 * Closes this element.
 	 */
 	void close();
 }

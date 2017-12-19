@@ -1,21 +1,22 @@
 package edu.kit.wavelength.client.view;
 
 /**
- * Blockables can be blocked by others.
- * Being blocked means that an object is still visible but cannot react to any event.
- * By unblocking an object it can again react to events.
+ * A Blockable can be blocked and unblocked.
  * 
- *
+ * Being blocked means that an object is still visible but cannot react to any event.
+ * By unblocking an object it can react to events again.
+ * 
+ * TODO: sollte Blockable von einem 'View' Interface erben?
  */
 public interface Blockable {
 	
 	/**
-	 * Block this.
+	 * Blocks this element.
 	 */
 	void block();
 	
 	/**
-	 * Unblock this.
+	 * Unblocks this element.
 	 */
 	void unblock();
 }

@@ -1,15 +1,15 @@
 package edu.kit.wavelength.client.view;
 
 /**
- * By implementing the Writable interface a View component provides a means of giving
- *  it an input represented by a String.
- *  
+ * By implementing the Writable interface a View component provides a means of writing
+ * its content.
  */
 public interface Writable {
 	
 	/**
-	 * Writes the input in the View.
-	 * @param text String representation of an input
+	 * Writes content into this element.
+	 * 
+	 * @param text A String representation of designated new content
 	 */
 	void write(final String input);
 }

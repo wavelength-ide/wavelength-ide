@@ -1,13 +1,14 @@
 package edu.kit.wavelength.client.view;
 
-public class ExportWindow implements Writable {
+public class ExportWindow implements Writable, Closable {
 
 	@Override
 	public void write(String input) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
 
+	}
+
+	@Override
+	public void close() {
+
+	}
 }

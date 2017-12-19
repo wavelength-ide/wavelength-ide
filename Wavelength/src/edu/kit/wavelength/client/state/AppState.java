@@ -16,6 +16,7 @@ package edu.kit.wavelength.client.state;
  */
 public abstract class AppState {
 
+	//TODO: AppState braucht eine referenz auf den AppControler
 	/**
 	 * TODO: set the next state in the state class by calling setState() of the
 	 * AppController or let the AppControler get its next State by calling

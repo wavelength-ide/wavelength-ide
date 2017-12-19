@@ -24,12 +24,7 @@ public class ExerciseAutoExecution extends AppState{
 	}
 	
 	@Override
-	public void enterExport() {
-		
-	}
-	
-	@Override 
-	public void exitExport() {
+	public void enterExercise() {
 		
 	}
 

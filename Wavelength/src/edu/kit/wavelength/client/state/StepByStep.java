@@ -26,11 +26,6 @@ public class StepByStep extends AppState {
 	public void enterExport() {
 		
 	}
-	
-	@Override 
-	public void exitExport() {
-		
-	}
 
 	@Override
 	protected void enter() {

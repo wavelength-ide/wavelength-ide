@@ -24,11 +24,6 @@ public class Input extends AppState {
 	public void enterExport() {
 		
 	}
-	
-	@Override 
-	public void exitExport() {
-		
-	}
 
 	@Override
 	protected void enter() {

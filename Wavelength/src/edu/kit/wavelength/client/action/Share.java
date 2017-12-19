@@ -8,7 +8,7 @@ public class Share implements Action {
 	
 	// some class that contains the current share state
 	private UIState state;
-	private Hideable LinkPanel;
+	private Hideable linkPanel;
 	private Footer footer;
 
 	@Override

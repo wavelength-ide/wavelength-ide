@@ -7,7 +7,6 @@ import edu.kit.wavelength.client.view.ReductionOptions;
 public class SelectOutputOption implements Action {
 	
 	private ExecutionEngine execution;
-	private UIState state;
 	private ReductionOptions options;
 	
 	@Override

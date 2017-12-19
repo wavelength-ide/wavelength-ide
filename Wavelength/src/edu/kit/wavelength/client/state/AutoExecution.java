@@ -22,6 +22,16 @@ public class AutoExecution extends AppState{
 	public void pause() {
 
 	}
+	
+	@Override
+	public void export() {
+		
+	}
+	
+	@Override 
+	public void closeExport() {
+		
+	}
 
 	@Override
 	protected void enter() {

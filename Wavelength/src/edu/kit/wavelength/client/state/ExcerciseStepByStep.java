@@ -12,20 +12,25 @@ public class ExcerciseStepByStep extends AppState {
 	public void start() {
 
 	}
-
+	
 	@Override
 	public void stop() {
 
 	}
-
+	
 	@Override
 	public void pause() {
 
 	}
-
+	
 	@Override
-	public void exitExercise() {
-
+	public void export() {
+		
+	}
+	
+	@Override 
+	public void closeExport() {
+		
 	}
 
 	@Override

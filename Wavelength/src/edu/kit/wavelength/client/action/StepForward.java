@@ -9,7 +9,6 @@ import edu.kit.wavelength.client.view.Writable;
 public class StepForward implements Action {
 	
 	private ExecutionEngine execution;
-	private UIState state;
 	private Writable output;
 	private ReductionControl buttons;
 	private ReductionOptions options;

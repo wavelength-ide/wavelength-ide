@@ -57,6 +57,20 @@ public abstract class AppState {
 	public void exitExercise() {
 
 	}
+	
+	/**
+	 * Called when the application should enter export mode
+	 */
+	public void export() {
+		
+	}
+	
+	/**
+	 * Called when the application should exit export mode
+	 */
+	public void closeExport() {
+		
+	}
 
 	/**
 	 * Called automatically whenever the application enters this state

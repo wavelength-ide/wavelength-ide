@@ -6,6 +6,13 @@ package edu.kit.wavelength.client.state;
  * AppState is the superclass for all other states and has default
  * implementations for handling events. The main purpose of a state is to handle
  * the views correctly after big events.
+ * 
+ * A state is collecting all the different UI changes that have to be handled after a 
+ * big event. In doing so these UI changes are assembled at one class and not scattered
+ * over many classes. In addition, this state class ensures that only legal state transitions
+ * occur.
+ * 
+ * TODO: how do we define big events?
  */
 public abstract class AppState {
 
@@ -17,7 +24,7 @@ public abstract class AppState {
 	 * Called after handling an event.
 	 * Functions exit() and enter() of the old and new state are automatically called.
 	 *
-	 * @return the state of the application after the event was processed
+	 * @return the designated next state of the application after the event was processed
 	 */
 	public AppState nextState() {
 		return null;
@@ -59,16 +66,16 @@ public abstract class AppState {
 	}
 	
 	/**
-	 * Called when the application should enter export mode
+	 * Called when the calculation of the applications should be exported to text
 	 */
-	public void export() {
+	public void enterExport() {
 		
 	}
 	
 	/**
-	 * Called when the application should exit export mode
+	 * Called when exported text of a calculation is no longer needed
 	 */
-	public void closeExport() {
+	public void exitExport() {
 		
 	}
 

@@ -9,29 +9,9 @@ package edu.kit.wavelength.client.state;
 public class Export extends AppState {
 	
 	private AppState originState;
-
-	@Override
-	public void start() {
-
-	}
-	
-	@Override
-	public void stop() {
-
-	}
-	
-	@Override
-	public void pause() {
-
-	}
-	
-	@Override
-	public void export() {
-		
-	}
 	
 	@Override 
-	public void closeExport() {
+	public void exitExport() {
 		
 	}
 

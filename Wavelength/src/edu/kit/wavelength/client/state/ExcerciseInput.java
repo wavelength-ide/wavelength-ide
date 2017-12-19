@@ -23,12 +23,12 @@ public class ExcerciseInput extends AppState {
 	}
 	
 	@Override
-	public void export() {
+	public void enterExport() {
 		
 	}
 	
 	@Override 
-	public void closeExport() {
+	public void exitExport() {
 		
 	}
 

@@ -1,5 +1,10 @@
 package edu.kit.wavelength.model.encode;
 
+/**
+ * The Encoder class is used to convert the applications state into a String.
+ * The resulting String can be used to restore the application in the encoded state. 
+ * 
+ */
 public class Encoder {
 
 	/**

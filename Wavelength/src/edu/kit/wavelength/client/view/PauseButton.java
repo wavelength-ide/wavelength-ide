@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class PauseButton implements CustomButton, Hideable {
+public class PauseButton implements Blockable, Hideable {
 	
 	public void show() {
 		

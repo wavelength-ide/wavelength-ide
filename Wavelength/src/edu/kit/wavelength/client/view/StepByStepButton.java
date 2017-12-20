@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class StepByStepButton implements CustomButton {
+public class StepByStepButton implements Blockable {
 
 	@Override
 	public void block() {

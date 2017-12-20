@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class PlayButton implements CustomButton, Hideable {
+public class PlayButton implements Blockable, Hideable {
 	
 	public void show() {
 		

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class StopButton implements CustomButton {
+public class StopButton implements Blockable {
 
 	@Override
 	public void block() {

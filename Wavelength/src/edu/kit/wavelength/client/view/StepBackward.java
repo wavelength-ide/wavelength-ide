@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class StepBackward implements CustomButton {
+public class StepBackward implements Blockable {
 
 	@Override
 	public void block() {

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class ExportButton implements CustomButton {
+public class ExportButton implements Blockable {
 
 	@Override
 	public void block() {

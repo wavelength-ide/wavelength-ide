@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class StepModusButton implements CustomButton {
+public class StepByStepButton implements CustomButton {
 
 	@Override
 	public void block() {

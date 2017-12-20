@@ -1,13 +1,20 @@
 package edu.kit.wavelength.client.view;
 
-public class UnicodeOutput implements Writable {
+/**
+ * TODO: Welches Interface geben wir vor?
+ */
+public class UnicodeOutput implements Blockable{
 
 	@Override
-	public void write(String input) {
+	public void block() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	
+	@Override
+	public void unblock() {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

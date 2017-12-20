@@ -1,7 +1,9 @@
 package edu.kit.wavelength.client.view;
 
 /**
- * By implementing the Readable interface a View component provides a means of reading
+ * A Readable is a View whose content can be read.
+ * 
+ * By implementing this interface a View component provides a means of reading
  * its content.
  */
 public interface Readable {

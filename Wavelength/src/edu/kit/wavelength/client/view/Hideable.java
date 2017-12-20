@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.view;
 
 /**
- * Hideables can either be hidden or shown.
+ * A Hideable is a View that can be hidden or shown.
  * 
  * Being hidden means that an element is still there but not visible on the UI.
  */

@@ -10,5 +10,9 @@ public class Application implements LambdaTerm {
 	public LambdaTerm getLeftHandSide() {
 		return null;
 	}
+	
+	public LambdaTerm getRightHandSide() {
+		return null;
+	}
 
 }

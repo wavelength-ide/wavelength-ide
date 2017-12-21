@@ -11,5 +11,9 @@ public class Abstraction implements LambdaTerm {
 	{
 		return null;
 	}
+	
+	public LambdaTerm getInner() {
+		return null;
+	}
 
 }

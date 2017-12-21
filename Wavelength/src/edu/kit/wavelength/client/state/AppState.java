@@ -35,49 +35,49 @@ public abstract class AppState {
 	 * Called when a calculation should be started or continued
 	 */
 	public void start() {
-
+		// throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * Called when a calculation should be canceled
 	 */
 	public void stop() {
-
+		// throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * Called when a calculation should be paused and run in debugging mode
 	 */
 	public void pause() {
-
+		// throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * Called when the application should enter to exercise mode
 	 */
 	public void enterExercise() {
-
+		// throw new UnsupportedOperationException();
 	}
 
 	/**
 	 * Called when the application should exit exercise mode
 	 */
 	public void exitExercise() {
-
+		// throw new UnsupportedOperationException();
 	}
 	
 	/**
 	 * Called when the calculation of the applications should be exported to text
 	 */
 	public void enterExport() {
-		
+		// throw new UnsupportedOperationException();
 	}
 	
 	/**
 	 * Called when exported text of a calculation is no longer needed
 	 */
 	public void exitExport() {
-		
+		// throw new UnsupportedOperationException();
 	}
 
 	/**

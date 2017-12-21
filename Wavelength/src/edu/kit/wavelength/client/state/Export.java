@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.state;
 
+import edu.kit.wavelength.client.view.Hideable;
+import edu.kit.wavelength.client.view.Writable;
+
 /**
  * In this state the application displays the shown output in the requested format.
  * 
@@ -9,6 +12,11 @@ package edu.kit.wavelength.client.state;
 public class Export extends AppState {
 	
 	private AppState originState;
+	
+	private Hideable blockScreen;
+	private Hideable exportWindow;
+	private Writable exportOutput;
+
 	
 	@Override 
 	public void exitExport() {

@@ -15,4 +15,6 @@ public interface ReductionOrder {
 	 * the next redex to be evaluated.
 	 */
 	LambdaTerm next(LambdaTerm term);
+	
+	String serialize();
 }

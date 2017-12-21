@@ -9,4 +9,9 @@ public class Applicative implements ReductionOrder {
 	{
 		return null;
 	}
+	
+	@Override
+	public String serialize() {
+		return null;
+	}
 }

@@ -1,12 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class ExerciseTextField implements Hideable, Writable {
-
-	@Override
-	public void write(String input) {
-		// TODO Auto-generated method stub
-		
-	}
+public class ExitExercise implements Blockable, Hideable{
 
 	@Override
 	public void hide() {
@@ -16,6 +10,18 @@ public class ExerciseTextField implements Hideable, Writable {
 
 	@Override
 	public void show() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void block() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unblock() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -2,9 +2,9 @@ package edu.kit.wavelength.client.view;
 
 import edu.kit.wavelength.client.action.Action;
 
-public class ShowSolution extends LabeledView implements Hideable, Writable, ExchangableBehaviour {
+public class SolutionToggle extends LabeledView implements Hideable, Writable, ExchangableBehaviour {
 
-	public ShowSolution(String text, Action action) {
+	public SolutionToggle(String text, Action action) {
 		super(text, action);
 		// TODO Auto-generated constructor stub
 	}

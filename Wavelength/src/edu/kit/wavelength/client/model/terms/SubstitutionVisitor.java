@@ -1,11 +1,13 @@
 package edu.kit.wavelength.client.model.terms;
 
-public class BetaReducer extends TermTransformer {
+public class SubstitutionVisitor extends TermTransformer {
 	
-	private final Application toReduce;
+	private final int depth;
+	private final LambdaTerm substituent;
 	
-	public BetaReducer(Application toReduce) {
-		this.toReduce = toReduce;
+	public SubstitutionVisitor(int depth, LambdaTerm substituent) {
+		this.depth = depth;
+		this.substituent = substituent;
 	}
 
 	@Override
@@ -27,5 +29,5 @@ public class BetaReducer extends TermTransformer {
 	public LambdaTerm visitFreeVariable(FreeVariable var) {
 		return null;
 	}
- 
+
 }

@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.reductions;
 
+import edu.kit.wavelength.client.model.terms.Application;
 import edu.kit.wavelength.client.model.terms.LambdaTerm;
 
 /**
@@ -14,7 +15,7 @@ public interface ReductionOrder {
 	 * @return <code>null</code> if there is no redex in the given term. Otherwise,
 	 * the next redex to be evaluated.
 	 */
-	LambdaTerm next(LambdaTerm term);
+	Application next(LambdaTerm term);
 	
 	String serialize();
 }

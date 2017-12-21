@@ -1,0 +1,114 @@
+@startuml
+participant "order : NormalOrder" as no
+participant "ee : ExecutionEngine" as ee
+participant "t : LambdaTerm" as t
+
+
+activate ee
+ee -> no: next(t)
+activate no
+ee <-- no: u
+deactivate no
+
+'ee -> t: getLeftHandSide()
+'activate t
+'ee <-- t: u
+'deactivate t
+'ee -> t: getRightHandSide()
+'activate t
+'ee <-- t: x
+'deactivate t
+create participant "br : BetaReducer" as br
+ee -> br
+ee -> t: acceptVisitor(br)
+activate t
+t -> br: visitAbstraction(t)
+activate br
+'br -> t: equals(u)
+'activate t
+'br <-- t: false
+'deactivate t
+br -> t: getInner()
+activate t
+br <-- t: u
+deactivate t
+participant "u : Application" as u
+br -> u: acceptVisitor(br)
+activate u
+u -> br: visitApplication(u)
+activate br
+
+br -> u: equals(u)
+activate u
+br <-- u: true
+deactivate u
+
+br -> u: getLeftHandSide()
+activate u
+br <-- u: v
+deactivate u
+
+br -> u: getRightHandSide()
+activate u
+br <-- u: w
+deactivate u
+
+participant "v : Abstraction" as v
+create participant "s1 : SubstitutionVisitor" as s1
+br -> s1: create(-1, w)
+
+br -> v: acceptVisitor(s1)
+activate v
+
+v -> s1: visitAbstraction(v)
+activate s1
+s1 -> v: getInner()
+activate v
+s1 <-- v: x
+deactivate v
+
+participant "x : Abstraction" as x
+create participant "s2 : SubstitutionVisitor" as s2
+s1 -> s2: create(0, w)
+
+s1 -> x: acceptVisitor(s2)
+activate x
+x -> s2: visitAbstraction(x)
+activate s2
+
+s2 -> x: getInner()
+activate x
+s2 <-- x: y
+deactivate x
+
+participant "y : BoundVariable" as y
+create participant "s3 : SubstitutionVisitor" as s3
+s2 -> s3: create(1, w)
+
+s2 -> y: acceptVisitor(s3)
+activate y
+y -> s3: visitBoundVariable(y)
+activate s3
+y <-- s3: w
+deactivate s3
+s2 <-- y: w
+deactivate y
+x <-- s2: \y.w
+deactivate s2
+s1 <-- x: \y.w
+deactivate x
+v <-- s1: \y.w
+deactivate s1
+br <-- v: \y.w
+deactivate v
+u <-- br: \y.w
+deactivate br
+br <-- u: \y.w
+deactivate u
+t <-- br: \a.\y.w
+deactivate br
+ee <-- t: \a.\y.w
+deactivate t
+deactivate ee
+
+@enduml

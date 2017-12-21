@@ -7,8 +7,13 @@ import edu.kit.wavelength.client.view.ReductionControl;
 import edu.kit.wavelength.client.view.ReductionOptions;
 import edu.kit.wavelength.client.view.Writable;
 
+/**
+ * This action causes the application to leave the AutoExecution (or
+ * ExerciseAutoExecution)state when the user presses the pause button. The
+ * application is then in the StepByStep (or ExerciseStepByStep) state.
+ */
 public class Pause implements Action {
-	
+
 	private ExecutionEngine execution;
 	private UIState state;
 	private ReductionOptions options;
@@ -21,7 +26,7 @@ public class Pause implements Action {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

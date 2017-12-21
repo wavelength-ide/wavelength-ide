@@ -6,7 +6,6 @@ public abstract class TermTransformer implements Visitor<LambdaTerm> {
 		return null;
 	}
 	
-	
 	public LambdaTerm visitPartialApplication(PartialApplication app)
 	{
 		return null;

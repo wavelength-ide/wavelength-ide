@@ -9,11 +9,11 @@ public class PartialApplication implements LambdaTerm {
 		return null;
 	}
 	
-	public LambdaTerm getInner() {
-		return null;
-	}
-	
-	public List<LambdaTerm> getOperands() {
+	/**
+	 * Returns the lambda term that this partial application represents.
+	 * @return
+	 */
+	public LambdaTerm getRepresented() {
 		return null;
 	}
 	

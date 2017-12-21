@@ -6,13 +6,8 @@ public abstract class NameAgnosticVisitor<T> implements Visitor<T> {
 	{
 		return null;
 	}
-	
-	@Override
-	public T visitPartialApplication(PartialApplication app)
-	{
-		return null;
-	}
 
+	public abstract T visitPartialApplication(PartialApplication app);
 	public abstract T visitAbstraction(Abstraction abs);
 	public abstract T visitApplication(Application app);
 	public abstract T visitBoundVariable(BoundVariable var);

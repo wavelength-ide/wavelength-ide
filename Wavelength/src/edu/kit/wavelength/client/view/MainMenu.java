@@ -1,8 +1,8 @@
 package edu.kit.wavelength.client.view;
 
 /**
- * TODO: Stellt GWT Menüs so schon bereit? oder brauchen wir 
- * separaten view für Menü-Knopf und Menü?
+ * TODO: Stellt GWT MenÃ¼s so schon bereit? oder brauchen wir 
+ * separaten view fÃ¼r MenÃ¼-Knopf und MenÃ¼?
  */
 public class MainMenu implements Blockable, Hideable {
 	

@@ -5,10 +5,10 @@ import java.util.Collection;
 import edu.kit.wavelength.client.action.Action;
 
 /**
- * TODO: Wie �bergibt das Modell die verschiedenen Reduktionsordungen?
+ * TODO: Wie übergibt das Modell die verschiedenen Reduktionsordungen?
  * wird Ausgabeumfang auch im Modell gespeichert?
  * 
- * eventuell ist dieses Interface �berfl�ssig.
+ * eventuell ist dieses Interface überflüssig.
  */
 public class OptionBox implements Blockable {
 

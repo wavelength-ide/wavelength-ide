@@ -1,16 +1,13 @@
 package edu.kit.wavelength.client.view;
 
-public class ExportButton implements Blockable {
+import com.google.gwt.user.client.ui.Image;
 
-	@Override
-	public void block() {
-		// TODO Auto-generated method stub
-		
-	}
+import edu.kit.wavelength.client.action.Action;
 
-	@Override
-	public void unblock() {
-		// TODO Auto-generated method stub
+public class ExportButton extends VisualView {
+
+	public ExportButton(Image imageWhenUnblocked, Image imageWhenBlocked, Action action) {
+		super(imageWhenUnblocked, imageWhenBlocked, action);
 		
 	}
 

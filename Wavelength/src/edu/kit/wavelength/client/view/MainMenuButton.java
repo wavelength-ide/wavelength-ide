@@ -1,15 +1,15 @@
 package edu.kit.wavelength.client.view;
 
-public class MainMenuButton implements Blockable {
+import com.google.gwt.user.client.ui.Image;
 
-	@Override
-	public void block() {
+import edu.kit.wavelength.client.action.Action;
 
+public class MainMenuButton extends VisualView {
+
+	public MainMenuButton(Image imageWhenUnblocked, Image imageWhenBlocked, Action action) {
+		super(imageWhenUnblocked, imageWhenBlocked, action);
+		
 	}
 
-	@Override
-	public void unblock() {
-
-	}
 
 }

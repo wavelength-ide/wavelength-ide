@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class Task implements Hideable, Writable {
+public class SolutionView implements Hideable, Writable {
 
 	@Override
 	public void write(String input) {

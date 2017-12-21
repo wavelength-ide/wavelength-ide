@@ -2,7 +2,12 @@ package edu.kit.wavelength.client.view;
 
 import edu.kit.wavelength.client.action.Action;
 
-public class ShowSolution implements Blockable, Hideable, Writable, ExchangableBehaviour {
+public class ShowSolution extends LabeledView implements Hideable, Writable, ExchangableBehaviour {
+
+	public ShowSolution(String text, Action action) {
+		super(text, action);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public void exchangeBehavoiur(Action action) {
@@ -28,16 +33,5 @@ public class ShowSolution implements Blockable, Hideable, Writable, ExchangableB
 		
 	}
 
-	@Override
-	public void block() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void unblock() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

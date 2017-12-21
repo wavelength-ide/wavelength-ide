@@ -1,24 +1,27 @@
 package edu.kit.wavelength.client.view;
 
-public class PlayButton implements Blockable, Hideable {
-	
-	public void show() {
-		
+import com.google.gwt.user.client.ui.Image;
+
+import edu.kit.wavelength.client.action.Action;
+
+public class PlayButton extends VisualView implements Hideable {
+
+	public PlayButton(Image imageWhenUnblocked, Image imageWhenBlocked, Action action) {
+		super(imageWhenUnblocked, imageWhenBlocked, action);
+		// TODO Auto-generated constructor stub
 	}
-	
+
+	@Override
 	public void hide() {
-		
-	}
-
-	@Override
-	public void block() {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void unblock() {
+	public void show() {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 }

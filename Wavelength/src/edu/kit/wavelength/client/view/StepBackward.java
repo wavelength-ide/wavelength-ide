@@ -1,17 +1,15 @@
 package edu.kit.wavelength.client.view;
 
-public class StepBackward implements Blockable {
+import com.google.gwt.user.client.ui.Image;
 
-	@Override
-	public void block() {
-		// TODO Auto-generated method stub
-		
+import edu.kit.wavelength.client.action.Action;
+
+public class StepBackward extends VisualView {
+
+	public StepBackward(Image imageWhenUnblocked, Image imageWhenBlocked, Action action) {
+		super(imageWhenUnblocked, imageWhenBlocked, action);
+		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void unblock() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

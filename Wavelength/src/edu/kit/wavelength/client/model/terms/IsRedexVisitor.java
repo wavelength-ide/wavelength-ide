@@ -21,4 +21,9 @@ public class IsRedexVisitor extends NameAgnosticVisitor<Boolean> {
 	public Boolean visitFreeVariable(FreeVariable var) {
 		return null;
 	}
+
+	@Override
+	public Boolean visitPartialApplication(PartialApplication app) {
+		return null;
+	}
 }

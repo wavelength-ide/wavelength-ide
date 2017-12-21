@@ -22,4 +22,9 @@ public class IsAbstractionVisitor extends NameAgnosticVisitor<Boolean> {
 		return null;
 	}
 
+	@Override
+	public Boolean visitPartialApplication(PartialApplication app) {
+		return null;
+	}
+
 }

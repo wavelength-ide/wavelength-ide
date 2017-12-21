@@ -1,0 +1,48 @@
+@startuml
+participant "ee : ExecutionEngine" as ee
+participant "order : NormalOrder" as ro
+
+activate ee
+ee -> ro: next(LambdaTerm t)
+activate ro
+create participant "n : NormalOrderVisitor" as nav
+participant "t : Application" as t
+ro -> nav
+ro -> t: acceptVisitor(n)
+activate t
+t -> nav: visitApplication(t)
+activate nav
+create participant "isRedex : isRedexVisitor" as isr
+nav -> isr
+nav -> t: acceptVisitor(isRedex)
+activate t
+t -> isr: visitApplication(t)
+activate isr
+create participant "isAbs : isAbstractionVisitor" as ia
+isr -> ia
+isr -> t: getLeftHandSide()
+activate t
+isr <-- t: u
+deactivate t
+participant "u : Abstraction" as u
+isr -> u: acceptVisitor(isAbs)
+activate u
+u -> ia: visitAbstraction(u)
+activate ia
+u <-- ia: true
+deactivate ia
+isr <-- u: true
+deactivate u
+t <-- isr: true
+deactivate isr
+nav <-- t: true
+deactivate t
+t <-- nav: true
+deactivate nav
+ro <-- t: true
+deactivate t
+ee <-- ro: t
+deactivate ro
+deactivate ee
+
+@enduml

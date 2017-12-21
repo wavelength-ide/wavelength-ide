@@ -2,9 +2,7 @@ package edu.kit.wavelength.client.state;
 
 import edu.kit.wavelength.client.view.Blockable;
 import edu.kit.wavelength.client.view.ExchangableBehaviour;
-import edu.kit.wavelength.client.view.HidableVisualView;
 import edu.kit.wavelength.client.view.Hideable;
-import edu.kit.wavelength.client.view.VisualView;
 
 /**
  * In this state the application presents a task to the user and is waiting for an answer.

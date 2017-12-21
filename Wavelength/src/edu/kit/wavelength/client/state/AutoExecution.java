@@ -1,10 +1,9 @@
 package edu.kit.wavelength.client.state;
 
 import edu.kit.wavelength.client.view.Blockable;
-import edu.kit.wavelength.client.view.HidableVisualView;
 import edu.kit.wavelength.client.view.Hideable;
 import edu.kit.wavelength.client.view.Readable;
-import edu.kit.wavelength.client.view.VisualView;
+import edu.kit.wavelength.client.view.VisualButton;
 
 /**
  * In this state the application automatically calculates a given term.

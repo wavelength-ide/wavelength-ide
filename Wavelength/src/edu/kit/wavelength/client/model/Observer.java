@@ -1,7 +1,9 @@
 package edu.kit.wavelength.client.model;
 
+import edu.kit.wavelength.client.model.terms.LambdaTerm;
+
 /**
- * Interface implemented by oberservers of the ExecutionEngine class.
+ * Interface implemented by observers of the ExecutionEngine class.
  * 
  * @author markus
  *
@@ -21,5 +23,5 @@ public interface Observer {
 	 * Called when a new term should be displayed.
 	 * @param ID The numeric ID of the term that should be displayed.
 	 */
-	void termToDisplay(int ID);
+	void termToDisplay(LambdaTerm term);
 }

@@ -6,4 +6,5 @@ public interface Visitor<T> {
 	T visitBoundVariable(BoundVariable var);
 	T visitFreeVariable(FreeVariable var);
 	T visitNamedTerm(NamedTerm term);
+	T visitPartialApplication(PartialApplication app);
 }

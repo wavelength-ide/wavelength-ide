@@ -6,6 +6,12 @@ public abstract class TermTransformer implements Visitor<LambdaTerm> {
 		return null;
 	}
 	
+	
+	public LambdaTerm visitPartialApplication(PartialApplication app)
+	{
+		return null;
+	}
+	
 	public abstract LambdaTerm visitAbstraction(Abstraction abs);
 	public abstract LambdaTerm visitApplication(Application app);
 	public abstract LambdaTerm visitBoundVariable(BoundVariable var);

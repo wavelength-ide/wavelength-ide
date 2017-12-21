@@ -15,8 +15,8 @@ public class CloseExport implements Action {
 	 * Constructs a new CloseExport Action
 	 * 
 	 * @param blocker
-	 *            A View that blocks the whole Interface except the export
-	 *            window.
+	 *            A View that blocks the whole Interface except the View that
+	 *            shows the export.
 	 * @param exporter
 	 *            A View that presents the current export.
 	 */

@@ -5,10 +5,19 @@ import edu.kit.wavelength.client.view.Hideable;
 
 public class ShowSolution implements Action {
 
-	private Hideable panel;
+	private Hideable solution;
+	// TODO wird die Engine hier wirklich gebraucht?
 	private ExecutionEngine engine;
 
-	public ShowSolution(ExecutionEngine engine, Hideable panel) {
+	/**
+	 * Constructs a new ShowSolution Action
+	 * 
+	 * @param engine
+	 *            TODO
+	 * @param solution
+	 *            The solution that is displayed to the User
+	 */
+	public ShowSolution(ExecutionEngine engine, Hideable solution) {
 
 	}
 

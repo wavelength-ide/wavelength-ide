@@ -7,6 +7,12 @@ public class StepBackward implements Action {
 
 	private ExecutionEngine engine;
 
+	/**
+	 * Constructs a new StepBackward Action.
+	 * 
+	 * @param engine
+	 *            The Engine that is signaled to calculate the last step.
+	 */
 	public StepBackward(ExecutionEngine engine) {
 
 	}

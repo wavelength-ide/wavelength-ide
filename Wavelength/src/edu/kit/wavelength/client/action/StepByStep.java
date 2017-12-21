@@ -9,6 +9,12 @@ public class StepByStep implements Action {
 	private ExecutionEngine execution;
 	private UIState state;
 
+	/**
+	 * Constructs a new StepByStep Action.
+	 * 
+	 * @param state
+	 *            The state of the UI that has to change.
+	 */
 	public StepByStep(UIState state) {
 
 	}

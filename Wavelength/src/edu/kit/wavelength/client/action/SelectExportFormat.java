@@ -13,6 +13,15 @@ public class SelectExportFormat<T extends Writable & Hideable> implements Action
 	private T export;
 	private Hideable blocker;
 
+	/**
+	 * Constructs a new SelectExportFormat.
+	 * 
+	 * @param exporter
+	 *            A View that shows the export format to the User.
+	 * @param blocker
+	 *            A View that blocks the whole Interface except the View that
+	 *            shows the export.
+	 */
 	public SelectExportFormat(T exporter, Hideable blocker) {
 
 	}

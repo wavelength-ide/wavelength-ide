@@ -8,6 +8,12 @@ public class StepForward implements Action {
 	
 	private ExecutionEngine execution;
 
+	/**
+	 * Constructs a new StepForward Action.
+	 * 
+	 * @param engine
+	 *            The Engine that is signaled to calculate the next step.
+	 */
 	public StepForward(ExecutionEngine engine) {
 
 	}

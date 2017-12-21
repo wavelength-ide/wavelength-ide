@@ -2,13 +2,20 @@ package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
-import edu.kit.wavelength.client.view.Writable;
 
 public class Stop implements Action {
 
 	private UIState state;
 	private ExecutionEngine engine;
 
+	/**
+	 * Constructs a new Stop Action.
+	 * 
+	 * @param state
+	 *            The state of the Application that has to change.
+	 * @param engine
+	 *            The Engine that is signaled to stop its calculation.
+	 */
 	public Stop(UIState state, ExecutionEngine engine) {
 
 	}
@@ -16,7 +23,5 @@ public class Stop implements Action {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-
 	}
-
 }

@@ -8,11 +8,14 @@ import edu.kit.wavelength.client.view.Hideable;
  */
 public class HideSolution implements Action {
 
-	private Hideable solutionPanel;
+	private Hideable solution;
+
+	public HideSolution(Hideable solution) {
+
+	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 
 	}
 

@@ -2,21 +2,18 @@ package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
-import edu.kit.wavelength.client.view.ReductionControl;
-import edu.kit.wavelength.client.view.ReductionOptions;
-import edu.kit.wavelength.client.view.Writable;
 
+//TODO wer observed den neuen Term der ExecutionEngine?
 public class StepForward implements Action {
 	
 	private ExecutionEngine execution;
-	private Writable output;
-	private ReductionControl buttons;
-	private ReductionOptions options;
 
+	public StepForward(ExecutionEngine engine) {
+
+	}
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
-
 }

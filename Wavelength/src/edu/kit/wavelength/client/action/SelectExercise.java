@@ -6,20 +6,18 @@ import edu.kit.wavelength.client.view.Hideable;
 import edu.kit.wavelength.client.view.Writable;
 
 public class SelectExercise implements Action {
-	
-	// possibly some other model class for exercises
+
 	private UIState state;
-	private ExecutionEngine execution; 
-	private Hideable mainMenu;
-	private Hideable solutionPanel;
-	private Hideable taskPanel;
-	private Writable editor;
-	private Writable output;
+	// TODO braucht noch eine Referenz auf die Aufgaben
+
+	public SelectExercise(UIState state) {
+
+	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

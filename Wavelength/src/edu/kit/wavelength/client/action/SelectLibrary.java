@@ -8,13 +8,9 @@ public class SelectLibrary implements Action {
 	
 	// possibly some other model class that handles libraries
 	private ExecutionEngine execution;
-	private Hideable MainMenu;
-	private Writable input;
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
 	}
-
 }

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.UIState;
+import edu.kit.wavelength.client.view.Hideable;
 
 /**
  * This action causes the application to leave the Export state when the user
@@ -8,11 +8,15 @@ import edu.kit.wavelength.client.UIState;
  */
 public class CloseExport implements Action {
 
-	private UIState state;
+	private Hideable blocker;
+	private Hideable exporter;
+
+	public CloseExport(Hideable blocker, Hideable exporter) {
+
+	}
 
 	@Override
 	public void run() {
-		// state.exitExport();
-	}
 
+	}
 }

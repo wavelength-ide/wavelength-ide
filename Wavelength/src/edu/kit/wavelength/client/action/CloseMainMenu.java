@@ -1,6 +1,5 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.view.Hideable;
 
 /**
@@ -8,11 +7,16 @@ import edu.kit.wavelength.client.view.Hideable;
  */
 public class CloseMainMenu implements Action {
 
-	private Hideable mainMenu;
-	
+	private Hideable menu;
+
+	public CloseMainMenu(Hideable menu) {
+
+	}
+
 	@Override
 	public void run() {
-		// mainMenu.hide();		
+		// TODO Auto-generated method stub
+
 	}
 
 }

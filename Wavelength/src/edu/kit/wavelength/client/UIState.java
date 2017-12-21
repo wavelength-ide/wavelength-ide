@@ -1,5 +1,5 @@
 package edu.kit.wavelength.client;
 
-public class UIState {
+public interface UIState {
 
 }

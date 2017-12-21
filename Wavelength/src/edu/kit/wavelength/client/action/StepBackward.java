@@ -1,20 +1,20 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
-import edu.kit.wavelength.client.view.ReductionControl;
-import edu.kit.wavelength.client.view.Writable;
 
+//TODO wer observed den neuen Term der ExecutionEngine?
 public class StepBackward implements Action {
-	
-	private ExecutionEngine execution;
-	private Writable output;
-	private ReductionControl buttons;
+
+	private ExecutionEngine engine;
+
+	public StepBackward(ExecutionEngine engine) {
+
+	}
 
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view;
 
-public class ExportWindow implements Writable, Hideable {
+public class ExportWindow implements Writable, Hideable, Readable {
 
 	@Override
 	public void write(String input) {
@@ -17,5 +17,11 @@ public class ExportWindow implements Writable, Hideable {
 	public void show() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String read() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

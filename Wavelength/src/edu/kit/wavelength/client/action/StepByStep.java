@@ -3,6 +3,11 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
+/**
+ * This action causes the application to transition from Input (ExerciseInput)
+ * state or AutoExecution (ExerciseAutoExecution) state to StepByStep
+ * (ExerciseStepByStep) state.
+ */
 public class StepByStep implements Action {
 
 	// TODO wird hier die execution Engine neu Konstruiert?

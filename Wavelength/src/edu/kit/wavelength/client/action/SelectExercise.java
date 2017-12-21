@@ -2,6 +2,9 @@ package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
 
+/**
+ * This action causes the application to transition to the ExerciseInput state.
+ */
 public class SelectExercise implements Action {
 
 	private UIState state;
@@ -19,6 +22,7 @@ public class SelectExercise implements Action {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// state.enterExercise();
+
 	}
 }

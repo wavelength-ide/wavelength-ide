@@ -4,6 +4,13 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.view.Hideable;
 import edu.kit.wavelength.client.view.Writable;
 
+/**
+ * This action causes the application to transition to Export state.
+ *
+ * @param <T>
+ *            The referenced T object must be hideable. Also the application
+ *            must be able to set its text so the export output can be set.
+ */
 public class SelectExportFormat<T extends Writable & Hideable> implements Action {
 
 	/*

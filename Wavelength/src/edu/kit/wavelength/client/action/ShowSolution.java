@@ -3,6 +3,9 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.view.Hideable;
 
+/**
+ * This action shows the sample solution of the current exercise.
+ */
 public class ShowSolution implements Action {
 
 	private Hideable solution;

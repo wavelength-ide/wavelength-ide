@@ -3,6 +3,10 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
+/**
+ * This action causes the application to transition back in the Input (or
+ * ExerciseInput) state.
+ */
 public class Stop implements Action {
 
 	private UIState state;
@@ -22,6 +26,6 @@ public class Stop implements Action {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// state.stop();
 	}
 }

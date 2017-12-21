@@ -4,8 +4,12 @@ import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 //TODO wer observed den neuen Term der ExecutionEngine?
+
+/**
+ * This action displays the next reduction step.
+ */
 public class StepForward implements Action {
-	
+
 	private ExecutionEngine execution;
 
 	/**
@@ -17,9 +21,9 @@ public class StepForward implements Action {
 	public StepForward(ExecutionEngine engine) {
 
 	}
-	
+
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub	
+		// TODO Auto-generated method stub
 	}
 }

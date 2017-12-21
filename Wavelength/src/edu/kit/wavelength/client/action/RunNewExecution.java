@@ -16,7 +16,7 @@ public class RunNewExecution implements Action {
 	private Readable input;
 
 	/**
-	 * COnstructs a new RunNewExecution Action.
+	 * Constructs a new RunNewExecution Action.
 	 * 
 	 * @param engine
 	 *            The engine that has to start its calculations.

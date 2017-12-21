@@ -7,11 +7,12 @@ package edu.kit.wavelength.client.view;
  * its content.
  */
 public interface Writable {
-	
+
 	/**
 	 * Writes content into this element.
 	 * 
-	 * @param text A String representation of the designated new content
+	 * @param text
+	 *            A String representation of the designated new content
 	 */
 	void write(final String input);
 }

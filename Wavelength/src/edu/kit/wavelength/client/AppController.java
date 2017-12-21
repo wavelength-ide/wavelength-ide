@@ -14,30 +14,30 @@ public class AppController implements UIState {
 	}
 	
 	public void start() {
-		state.start();
+		// state.start();
 	}
 	
 	public void stop() {
-		state.stop();
+		// state.stop();
 	}
 	
 	public void pause() {
-		state.pause();
+		// state.pause();
 	}
 	
 	public void enterExercise() {
-		state.enterExercise();
+		// state.enterExercise();
 	}
 	
 	public void exitExercise() {
-		state.exitExercise();
+		// state.exitExercise();
 	}
 	
 	public void enterExport() {
-		state.enterExercise();
+		// state.enterExercise();
 	}
 	
 	public void exitExport() {
-		state.exitExercise();
+		// state.exitExercise();
 	}
 }

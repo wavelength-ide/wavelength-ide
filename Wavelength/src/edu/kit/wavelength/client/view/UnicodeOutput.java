@@ -16,5 +16,4 @@ public class UnicodeOutput implements Blockable{
 		// TODO Auto-generated method stub
 		
 	}
-
 }

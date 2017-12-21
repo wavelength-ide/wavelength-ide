@@ -19,5 +19,4 @@ public class SolutionView implements Hideable, Writable {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

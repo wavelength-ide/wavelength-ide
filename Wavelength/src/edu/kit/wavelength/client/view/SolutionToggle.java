@@ -31,7 +31,5 @@ public class SolutionToggle extends LabeledView implements Hideable, Writable, E
 	public void show() {
 		// TODO Auto-generated method stub
 		
-	}
-
-	
+	}	
 }

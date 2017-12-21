@@ -10,7 +10,7 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
  */
 public class StepByStep implements Action {
 
-	// TODO wird hier die execution Engine neu Konstruiert?
+	// TODO wird hier die execution Engine neu Konstruiert? Antwort: Vermutlich nicht!
 	private ExecutionEngine execution;
 	private UIState state;
 

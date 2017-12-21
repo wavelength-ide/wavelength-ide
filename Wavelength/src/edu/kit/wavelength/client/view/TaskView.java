@@ -19,5 +19,4 @@ public class TaskView implements Hideable, Writable {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

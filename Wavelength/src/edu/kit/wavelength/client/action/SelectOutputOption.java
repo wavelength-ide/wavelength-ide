@@ -9,7 +9,7 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
 public class SelectOutputOption implements Action {
 	
 	private ExecutionEngine execution;
-	//TODO Es muss eine Feld gehalten werden das bestimmt, welches Option ausgew�hlt wurde
+	//TODO Es muss eine Feld gehalten werden das bestimmt, welche Option ausgewählt wurde
 	
 	@Override
 	public void run() {

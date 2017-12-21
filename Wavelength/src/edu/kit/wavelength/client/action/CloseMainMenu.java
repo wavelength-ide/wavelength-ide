@@ -3,12 +3,18 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.view.Hideable;
 
 /**
- * This action hides the main menu when the user presses the main menu button.
+ * This action closes the main menu.
  */
 public class CloseMainMenu implements Action {
 
 	private Hideable menu;
 
+	/**
+	 * Constructs a new CloseMainMenue Action.
+	 * 
+	 * @param menu
+	 *            the menu to be closed.
+	 */
 	public CloseMainMenu(Hideable menu) {
 
 	}
@@ -16,7 +22,5 @@ public class CloseMainMenu implements Action {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-
 	}
-
 }

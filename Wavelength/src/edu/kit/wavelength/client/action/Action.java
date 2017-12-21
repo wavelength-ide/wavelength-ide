@@ -8,6 +8,7 @@ package edu.kit.wavelength.client.action;
  * interacting with the dedicated UI element.
  */
 public interface Action {
+	
 	/**
 	 * Called when the Action is triggered.
 	 */

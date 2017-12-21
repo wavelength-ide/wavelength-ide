@@ -3,8 +3,7 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.view.Readable;
 
 /**
- * This action copies the current export output to clipboard if the user presses
- * the dedicated button.
+ * This action copies the current export output to the clipboard.
  */
 public class CopyExport implements Action {
 

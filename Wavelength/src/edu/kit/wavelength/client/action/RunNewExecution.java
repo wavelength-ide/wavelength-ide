@@ -5,9 +5,9 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.view.Readable;
 
 /**
- * This action causes the application to transition from Input (or ExerciseInput) state to
- * AutoExecution (or ExerciseAutoExecution) state when the user presses the run button. It is only
- * triggered, if the current state is Input (or ExerciseInput) while pressing the button.
+ * This action causes the application to transition from Input (or
+ * ExerciseInput) state to AutoExecution (or ExerciseAutoExecution) state. It
+ * can only be triggered, if the current state is Input (or ExerciseInput).
  */
 public class RunNewExecution implements Action {
 
@@ -15,6 +15,17 @@ public class RunNewExecution implements Action {
 	private UIState state;
 	private Readable input;
 
+	/**
+	 * COnstructs a new RunNewExecution Action.
+	 * 
+	 * @param engine
+	 *            The engine that has to start its calculations.
+	 * @param state
+	 *            The state of the UI that has to change.
+	 * @param input
+	 *            The View that holds the Term that should be calculated by the
+	 *            Engine.
+	 */
 	public RunNewExecution(ExecutionEngine engine, UIState state, Readable input) {
 
 	}
@@ -22,9 +33,5 @@ public class RunNewExecution implements Action {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-<<<<<<< cb8a215ec605430a6e70d07c5c84bb0110f92390
-
-=======
->>>>>>> Actions überholt.
 	}
 }

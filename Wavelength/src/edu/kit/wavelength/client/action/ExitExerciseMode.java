@@ -9,6 +9,12 @@ public class ExitExerciseMode implements Action {
 
 	private UIState state;
 
+	/**
+	 * Constructs a new ExitExerciseMode Action.
+	 * 
+	 * @param state
+	 *            The state of the UI that has to change.
+	 */
 	public ExitExerciseMode(UIState state) {
 
 	}

@@ -3,13 +3,19 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.view.Hideable;
 
 /**
- * This action shows the main menu when the user presses the main menu button.
+ * This action opens the main menu.
  */
 public class OpenMainMenu implements Action {
 
-	private Hideable mainMenu;
+	private Hideable menu;
 
-	public OpenMainMenu(Hideable mainMenu) {
+	/**
+	 * Constructs a new OpenMainMenu Action.
+	 * 
+	 * @param menu
+	 *            The Menu that should be shown.
+	 */
+	public OpenMainMenu(Hideable menu) {
 
 	}
 

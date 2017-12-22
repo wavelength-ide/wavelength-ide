@@ -2,10 +2,8 @@ package edu.kit.wavelet;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 
 import com.sun.javadoc.*;
 
@@ -139,7 +137,7 @@ public class Wavelet {
         				for (int l = 0; l < p.length; ++l) {
         					if (l > 0)
         						out.write(", ");
-        					out.write(p[l].typeName());
+        					emitType(out, p[l].type());
         					out.write(" ");
         					out.write(p[l].name());
         				}
@@ -180,7 +178,7 @@ public class Wavelet {
         			for (int k = 0; k < m.size(); ++k) {
         				
         				out.write("\\item \\texttt{");
-        				out.write(m.get(k).returnType().typeName());
+        				emitType(out, m.get(k).returnType());
         				out.write(" ");
         				out.write(m.get(k).name());
         				out.write("(");
@@ -188,7 +186,7 @@ public class Wavelet {
         				for (int l = 0; l < p.length; ++l) {
         					if (l > 0)
         						out.write(", ");
-        					out.write(p[l].typeName());
+        					emitType(out, p[l].type());
         					out.write(" ");
         					out.write(p[l].name());
         				}

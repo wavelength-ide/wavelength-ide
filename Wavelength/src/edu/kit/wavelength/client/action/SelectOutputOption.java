@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.model.OutputSize;
 
 /**
  * This action sets the output options the user selected.
@@ -9,11 +9,16 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
 public class SelectOutputOption implements Action {
 	
 	private ExecutionEngine execution;
-	//TODO Es muss eine Feld gehalten werden das bestimmt, welche Option ausgewählt wurde
+	private OutputSize outputSize;
 	
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		
 	}
+	public SelectOutputOption(final OutputSize outputSize) {
+		
+	}
+	
+	
 }

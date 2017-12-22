@@ -1,6 +1,5 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.view.Hideable;
 import edu.kit.wavelength.client.view.Writable;
 

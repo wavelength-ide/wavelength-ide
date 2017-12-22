@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.UIState;
+import edu.kit.wavelength.client.exercise.Exercise;
 
 /**
  * This action causes the application to transition to the ExerciseInput state.
@@ -8,15 +9,17 @@ import edu.kit.wavelength.client.UIState;
 public class SelectExercise implements Action {
 
 	private UIState state;
-	// TODO braucht noch eine Referenz auf die Aufgaben
+	private Exercise exercise;
 
 	/**
 	 * Constructs a new SelectExercise Action.
 	 * 
 	 * @param state
 	 *            The state of the UI that has to change.
+	 * @param exercise
+	 *            the selected Exercise
 	 */
-	public SelectExercise(UIState state) {
+	public SelectExercise(final UIState state, final Exercise exercise) {
 
 	}
 

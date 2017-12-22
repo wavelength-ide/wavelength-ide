@@ -10,6 +10,12 @@ import com.google.gwt.user.client.ui.TextArea;
  */
 public class TextField implements Hideable, Writable {
 
+	/**
+	 * Constructs a new and empty TextField.
+	 * 
+	 * @param textField
+	 *            The GWT TextArea that this class wraps.
+	 */
 	public TextField(TextArea textField) {
 
 	}

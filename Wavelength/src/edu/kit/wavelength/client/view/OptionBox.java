@@ -1,27 +1,27 @@
 package edu.kit.wavelength.client.view;
 
-import java.util.List;
-
 import com.google.gwt.user.client.ui.ListBox;
 
 import edu.kit.wavelength.client.action.Action;
 
 /**
- * A OptionBox provides a means for the User to set Options for a calculation.
+ * A OptionBox is an adapter class for a GWT ListBox.
  * 
- * It is represented as a ListBox. This Box can be blocked and unblocked if
- * changing the Options must not be possible.
+ * It provides a means for the User to set Options for a calculation. This Box
+ * can be blocked and unblocked if changing the Options must not be possible.
  */
 public class OptionBox implements Blockable, EntryInjectable {
 
 	/**
-	 * Constructs a new empty OptionBox
+	 * Constructs a new and empty OptionBox.
 	 * 
+	 * @param listBox
+	 *            The GWT ListBox that this class wraps.
 	 */
-	public OptionBox(ListBox ListBox) {
+	public OptionBox(ListBox listBox) {
 
 	}
-	
+
 	@Override
 	public void block() {
 		// TODO Auto-generated method stub
@@ -37,7 +37,7 @@ public class OptionBox implements Blockable, EntryInjectable {
 	@Override
 	public void addEntry(String name, Action action) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

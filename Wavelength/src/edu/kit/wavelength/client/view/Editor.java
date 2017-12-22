@@ -33,5 +33,4 @@ public class Editor implements Readable, Writable, Blockable {
 		// TODO Auto-generated method stub
 
 	}
-
 }

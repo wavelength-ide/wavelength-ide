@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.state;
 
 import edu.kit.wavelength.client.view.Blockable;
-import edu.kit.wavelength.client.view.ExchangableBehaviour;
 import edu.kit.wavelength.client.view.Readable;
 
 /**
@@ -19,7 +18,6 @@ public class ExerciseAutoExecution extends AppState{
 	private Blockable runButton;
 	private Blockable buttons;
 	private Blockable footerButtons;
-	private ExchangableBehaviour solutionButton;
 
 
 	@Override

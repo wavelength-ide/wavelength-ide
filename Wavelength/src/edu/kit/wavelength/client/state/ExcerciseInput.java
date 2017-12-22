@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.state;
 
 import edu.kit.wavelength.client.view.Blockable;
-import edu.kit.wavelength.client.view.ExchangableBehaviour;
 import edu.kit.wavelength.client.view.Hideable;
 
 /**
@@ -20,7 +19,6 @@ public class ExcerciseInput extends AppState {
 	private Blockable runButton;
 	private Blockable buttons;
 	private Hideable exitButton;
-	private ExchangableBehaviour solutionButton;
 
 	@Override
 	public void start() {

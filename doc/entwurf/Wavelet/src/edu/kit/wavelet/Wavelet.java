@@ -10,6 +10,10 @@ import java.util.List;
 import com.sun.javadoc.*;
 
 public class Wavelet {
+	public static LanguageVersion languageVersion() {
+		return LanguageVersion.JAVA_1_5;
+	}
+
 	static void emitType(PrintWriter out, Type t) {
 		if (t.qualifiedTypeName().startsWith("edu.kit.wavelength"))
 		{
@@ -58,13 +62,35 @@ public class Wavelet {
         			out.write("Class");
         		if (cl.isInterface())
         			out.write("Interface");
-        		out.write(" \\lstinline{");
+        		out.write(" \\texttt{");
         		out.write(cl.typeName());
+        		TypeVariable[] gen = cl.typeParameters();
+        		if (gen.length > 0) {
+        			out.write("<");
+        			for (int k = 0; k < gen.length; ++k)
+        			{
+        				if (k > 0)
+        					out.write(", ");
+        				out.write(gen[k].typeName());
+        				Type[] bounds = gen[k].bounds();
+        				if (bounds.length > 0) {
+        					out.write(" extends ");
+        					for (int l = 0; l < bounds.length; ++l) {
+        						if (l > 0)
+        							out.write(" \\& ");
+        						emitType(out, bounds[l]);
+        					}
+        				}
+        			}
+        			out.write(">");
+        		}
+
         		out.write("}}\n");
         		
         		out.write("\\label{type:");
         		out.write(cl.qualifiedTypeName());
         		out.write("}\n");
+
         		
         		ClassDoc sup = cl.superclass();
         		if (sup != null && !sup.typeName().equals("Object")
@@ -91,6 +117,15 @@ public class Wavelet {
         		
         		out.write(cl.commentText());
         		out.write("\n\n");
+        		
+        		ParamTag[] ty = cl.typeParamTags();
+        		for (int k = 0; k < ty.length; ++k) {
+        			out.write("\\texttt{<");
+        			out.write(ty[k].parameterName());
+        			out.write(">}: ");
+        			out.write(ty[k].parameterComment());
+        			out.write("\n\n");
+        		}
         		
         		ConstructorDoc[] c = cl.constructors();
         		if (c.length > 0) {

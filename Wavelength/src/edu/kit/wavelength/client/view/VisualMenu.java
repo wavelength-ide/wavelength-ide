@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.view;
 
-import java.util.List;
-
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.MenuBar;
 
@@ -14,9 +12,9 @@ import edu.kit.wavelength.client.action.Action;
  * presents its options. In addition a the Menu can be blocked. This means that
  * the menu can still be opened but clicking an an option has no effect.
  */
-public class VisualMenu implements Blockable {
+public class VisualMenu implements Blockable, EntryInjectable {
 
-	public VisualMenu(Image image, List<String> labels, List<Action> actions, MenuBar menu) {
+	public VisualMenu(Image image, MenuBar menu){
 
 	}
 
@@ -28,6 +26,12 @@ public class VisualMenu implements Blockable {
 	@Override
 	public void unblock() {
 
+	}
+
+	@Override
+	public void addEntry(String name, Action action) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

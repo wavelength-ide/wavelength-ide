@@ -15,8 +15,6 @@ public class Input extends AppState {
 	private Blockable output;
 	private Blockable runButton;
 	private Blockable buttons;
-	
-	
 
 	@Override
 	public void start() {

@@ -4,8 +4,8 @@ import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
- * This action causes the application to transition back in the Input (or
- * ExerciseInput) state.
+ * This action causes the application to transition back in the {@link Input} (or
+ * {@link ExerciseInput}) state.
  */
 public class Stop implements Action {
 

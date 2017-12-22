@@ -4,10 +4,11 @@ import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
- * This Action causes the application to transition from StepByStep or
- * (ExerciseStepByStep) state to AutoExecution (or ExerciseAutoExecution) state.
- * It is only triggered, if the current state is StepByStep (or
- * ExerciseStepByStep) while pressing the button.
+ * This Action causes the application to transition from {@link StepByStep} or
+ * ({@link ExerciseStepByStep}) state to {@link AutoExecution} (or
+ * {@link ExerciseAutoExecution}) state. It is only triggered, if the current
+ * state is {@link StepByStep} (or {@link ExerciseStepByStep}) while pressing
+ * the button.
  */
 public class RunPausedExecution implements Action {
 
@@ -18,8 +19,8 @@ public class RunPausedExecution implements Action {
 	 * Constructs a new RunPausedExecution Action
 	 * 
 	 * @param engine
-	 *            The Engine that should continue its execution. It should use
-	 *            its last calculated Term.
+	 *            The Engine that should continue its execution. It should use its
+	 *            last calculated Term.
 	 * @param state
 	 *            The State of the UI that has to change.
 	 */

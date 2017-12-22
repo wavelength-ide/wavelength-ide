@@ -5,9 +5,10 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.view.Readable;
 
 /**
- * This action causes the application to transition from Input (or
- * ExerciseInput) state to AutoExecution (or ExerciseAutoExecution) state. It
- * can only be triggered, if the current state is Input (or ExerciseInput).
+ * This action causes the application to transition from {@link Input} (or
+ * {@link ExerciseInput}) state to {@link AutoExecution} (or
+ * {@link ExerciseAutoExecution}) state. It can only be triggered if the current
+ * state is {@link} Input (or {@link ExerciseInput}).
  */
 public class RunNewExecution implements Action {
 

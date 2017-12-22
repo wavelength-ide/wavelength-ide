@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.action;
 
-import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.exercise.Exercise;
 import edu.kit.wavelength.client.view.Hideable;
 
 /**
@@ -8,19 +8,18 @@ import edu.kit.wavelength.client.view.Hideable;
  */
 public class ShowSolution implements Action {
 
-	private Hideable solution;
-	// TODO wird die Engine hier wirklich gebraucht?
-	private ExecutionEngine engine;
+	private Hideable solutionView;
+	private Exercise exercise;
 
 	/**
 	 * Constructs a new ShowSolution Action
 	 * 
-	 * @param engine
-	 *            TODO
-	 * @param solution
-	 *            The solution that is displayed to the User
+	 * @param exercise
+	 *            The currently displayed exercise 
+	 * @param solutionView
+	 *            The UI element where the solution is displayed
 	 */
-	public ShowSolution(ExecutionEngine engine, Hideable solution) {
+	public ShowSolution(Exercise exercise, Hideable solutionView) {
 
 	}
 

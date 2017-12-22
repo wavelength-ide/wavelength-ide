@@ -4,7 +4,7 @@ import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.exercise.Exercise;
 
 /**
- * This action causes the application to transition to the ExerciseInput state.
+ * This action causes the application to transition to the {@link ExerciseInput} state.
  */
 public class SelectExercise implements Action {
 

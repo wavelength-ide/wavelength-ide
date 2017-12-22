@@ -7,15 +7,16 @@ import edu.kit.wavelength.client.view.Hideable;
  */
 public class HideSolution implements Action {
 
-	private Hideable solution;
+	private Hideable solutionView;
 
 	/**
 	 * Constructs a new HidesSolution Action
 	 * 
-	 * @param solution
-	 *            The solution that should be hidden.
+	 * @param solutionView
+	 *            The UI element to hide, the solution is currently displayed in
+	 *            this element
 	 */
-	public HideSolution(Hideable solution) {
+	public HideSolution(Hideable solutionView) {
 
 	}
 

@@ -9,6 +9,12 @@ public class CopyExport implements Action {
 
 	private Readable exporter;
 
+	/**
+	 * Constructs a new CopyExport Action.
+	 * 
+	 * @param exporter
+	 *            The area to copy the export from
+	 */
 	public CopyExport(Readable exporter) {
 
 	}

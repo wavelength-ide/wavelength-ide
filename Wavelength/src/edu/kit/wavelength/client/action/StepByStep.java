@@ -4,9 +4,9 @@ import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
- * This action causes the application to transition from Input (ExerciseInput)
- * state or AutoExecution (ExerciseAutoExecution) state to StepByStep
- * (ExerciseStepByStep) state.
+ * This action causes the application to transition from {@link Input} ({@link ExerciseInput})
+ * state or {@link AutoExecution} ({@link ExerciseAutoExecution}) state to {@link StepByStep}
+ * ({@link ExerciseStepByStep}) state.
  */
 public class StepByStep implements Action {
 

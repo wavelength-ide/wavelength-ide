@@ -4,9 +4,9 @@ import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
- * This action causes the application to leave the AutoExecution (or
- * ExerciseAutoExecution) state. The application is then in the StepByStep (or
- * ExerciseStepByStep) state.
+ * This action causes the application to leave the {@link AutoExecution} (or
+ *{@link ExerciseAutoExecution}) state. The application is then in the {@link StepByStep} (or
+ * {@link ExerciseStepByStep}) state.
  */
 public class Pause implements Action {
 

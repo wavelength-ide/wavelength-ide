@@ -14,7 +14,7 @@ public class CloseShare implements Action {
 	 * Constructs an new CloseShare Action.
 	 * 
 	 * @param panel
-	 *            The Panle that should be closed.
+	 *            The panel that should be closed.
 	 */
 	public CloseShare(Hideable panel) {
 

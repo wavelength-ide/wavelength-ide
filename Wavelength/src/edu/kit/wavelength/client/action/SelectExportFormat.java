@@ -4,7 +4,7 @@ import edu.kit.wavelength.client.view.Hideable;
 import edu.kit.wavelength.client.view.Writable;
 
 /**
- * This action causes the application to transition to Export state.
+ * This action causes the application to transition to {@link Export} state.
  *
  * @param <T>
  *            The referenced T object must be hideable. Also the application

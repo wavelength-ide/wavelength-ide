@@ -11,7 +11,6 @@ import edu.kit.wavelength.client.view.Readable;
  */
 public class ExerciseAutoExecution extends AppState{
 	
-	private Readable input;
 	private Blockable editor;
 	private Blockable reductionOptions;
 	private Blockable output;

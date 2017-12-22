@@ -13,7 +13,6 @@ import edu.kit.wavelength.client.view.VisualButton;
  */
 public class AutoExecution extends AppState {
 	
-	private Readable input;
 	private Blockable editor;
 	private Blockable reductionOptions;
 	private Blockable output;

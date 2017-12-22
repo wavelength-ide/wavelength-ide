@@ -12,7 +12,6 @@ import edu.kit.wavelength.client.view.Readable;
  */
 public class ExcerciseStepByStep extends AppState {
 	
-	private Readable input;
 	private Blockable editor;
 	private Hideable solutionView;
 	private Blockable reductionOptions;

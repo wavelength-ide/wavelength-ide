@@ -1,0 +1,32 @@
+\documentclass[a4paper, parskip=half]{scrartcl}
+
+\usepackage[sfdefault,light]{roboto}
+\usepackage{inconsolata}
+\usepackage[english]{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{microtype}
+
+\usepackage{listings}
+
+\usepackage[hidelinks]{hyperref}
+
+\lstset{basicstyle=\ttfamily}
+
+\title{THE DESIGN}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+\newpage
+\tableofcontents
+\newpage
+\section{Introduction}
+\section{Packages and classes}
+
+\input{build/doclet/out.tex}
+
+\section{The rest}
+\end{document}

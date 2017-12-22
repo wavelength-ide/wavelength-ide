@@ -2,6 +2,8 @@ package edu.kit.wavelength.client.view;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.ListBox;
+
 import edu.kit.wavelength.client.action.Action;
 
 /**
@@ -12,6 +14,14 @@ import edu.kit.wavelength.client.action.Action;
  */
 public class OptionBox implements Blockable, EntryInjectable {
 
+	/**
+	 * Constructs a new empty OptionBox
+	 * 
+	 */
+	public OptionBox(ListBox ListBox) {
+
+	}
+	
 	@Override
 	public void block() {
 		// TODO Auto-generated method stub
@@ -22,14 +32,6 @@ public class OptionBox implements Blockable, EntryInjectable {
 	public void unblock() {
 		// TODO Auto-generated method stub
 
-	}
-
-	/**
-	 * Constructs a new empty OptionBox
-	 * 
-	 */
-	public OptionBox() {
-		// TODO was wird hier übergeben?
 	}
 
 	@Override

@@ -27,6 +27,7 @@ public class VisualMenu implements Blockable, EntryInjectable {
 	public void unblock() {
 
 	}
+<<<<<<< a56d2116b2653f4828c357071fa967f13f2b6fd6
 
 	@Override
 	public void addEntry(String name, Action action) {
@@ -34,4 +35,6 @@ public class VisualMenu implements Blockable, EntryInjectable {
 		
 	}
 
+=======
+>>>>>>> Hauptsächlich änderungen an der OptionBox. Sie wird mit GWT funktionieren.
 }

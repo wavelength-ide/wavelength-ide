@@ -12,7 +12,7 @@ import edu.kit.wavelength.client.action.Action;
  * that the name of the label and the action that is performed when clicking
  * this button can be changed.
  */
-public class LabeledButton implements Blockable, Hideable, ExchangableBehaviour, Writable, ActionInjectable {
+public class LabeledButton implements Blockable, Hideable, Writable, ActionInjectable {
 
 	/**
 	 * Creates a new LabeledButton.
@@ -40,12 +40,6 @@ public class LabeledButton implements Blockable, Hideable, ExchangableBehaviour,
 
 	@Override
 	public void write(String input) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void exchangeBehavoiur(Action action) {
 		// TODO Auto-generated method stub
 
 	}

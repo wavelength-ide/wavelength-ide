@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.view;
 
+import com.google.gwt.user.client.ui.TextArea;
+
 /**
  * A TextField is an adapter class for a GWT TextArea.
  * 
@@ -7,6 +9,10 @@ package edu.kit.wavelength.client.view;
  * and can be hidden and shown.
  */
 public class TextField implements Hideable, Writable {
+
+	public TextField(TextArea textField) {
+
+	}
 
 	@Override
 	public void write(String input) {

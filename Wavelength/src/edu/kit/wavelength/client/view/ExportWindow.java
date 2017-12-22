@@ -7,7 +7,7 @@ package edu.kit.wavelength.client.view;
  * User can copy its content to his clipboard.
  */
 public class ExportWindow implements Writable, Hideable, Readable {
-
+	
 	@Override
 	public void write(String input) {
 

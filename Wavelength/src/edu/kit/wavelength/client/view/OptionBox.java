@@ -10,7 +10,7 @@ import edu.kit.wavelength.client.action.Action;
  * It is represented as a ListBox. This Box can be blocked and unblocked if
  * changing the Options must not be possible.
  */
-public class OptionBox implements Blockable {
+public class OptionBox implements Blockable, EntryInjectable {
 
 	@Override
 	public void block() {
@@ -25,17 +25,17 @@ public class OptionBox implements Blockable {
 	}
 
 	/**
-	 * Constructs a new OptionBox
+	 * Constructs a new empty OptionBox
 	 * 
-	 * @param labels
-	 *            A List containing the names of the Options this OptionBox
-	 *            provides
-	 * @param actions
-	 *            A List containing the Actions that are being performed when
-	 *            one of the labels are clicked. It must have the same order as
-	 *            the List providing the labels.
 	 */
-	public OptionBox(final List<String> labels, final List<Action> actions) {
+	public OptionBox() {
 		// TODO was wird hier übergeben?
 	}
+
+	@Override
+	public void addEntry(String name, Action action) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

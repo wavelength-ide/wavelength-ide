@@ -6,25 +6,23 @@ import edu.kit.wavelength.client.action.Action;
 
 /**
  * A LabeldButton is an adapter class that wraps a GWT Button.
- * 
+ *
  * It is labeled by text and can be blocked and unblocked to prevent the User
  * from interacting with it. In Addition its behavior can be changed. This means
  * that the name of the label and the action that is performed when clicking
  * this button can be changed.
  */
-public class LabeledButton implements Blockable, Hideable, ExchangableBehaviour, Writable {
+public class LabeledButton implements Blockable, Hideable, ExchangableBehaviour, Writable, ActionInjectable {
 
 	/**
 	 * Creates a new LabeledButton.
-	 * 
+	 *
 	 * @param text
 	 *            The label and name of this Button
-	 * @param action
-	 *            The action that this Button can invoke.
 	 * @param button
 	 *            The GWT Button that this class wraps.
 	 */
-	public LabeledButton(final String text, final Action action, final Button button) {
+	public LabeledButton(final String text, final Button button) {
 
 	}
 
@@ -60,6 +58,12 @@ public class LabeledButton implements Blockable, Hideable, ExchangableBehaviour,
 
 	@Override
 	public void show() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void setAction(Action action) {
 		// TODO Auto-generated method stub
 
 	}

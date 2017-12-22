@@ -203,6 +203,12 @@ public class Wavelet {
         					out.write(t.parameterComment());
         					out.write("\n\n");
         				}
+        				Tag[] rt = m.get(k).tags("return");
+        				if (rt.length > 0) {
+        					out.write("Returns: ");
+        					out.write(rt[0].text());
+        					out.write("\n\n");
+        				}
         			}
         			out.write("\\end{itemize}\n\n");
         		}

@@ -1,13 +1,28 @@
 package edu.kit.wavelength.client.model.terms;
 
+/**
+ * A visitor that substitutes bound variables with a given De Bruijn
+ * index with a given substituent.
+ *
+ */
 public class SubstitutionVisitor extends TermTransformer {
 	
 	private final int depth;
 	private final LambdaTerm substituent;
 	
+	/**
+	 * Creates a new substitution visitor.
+	 * @param depth The De Bruijn index that should be substituted
+	 * @param substituent The term that should be substituted with
+	 */
 	public SubstitutionVisitor(int depth, LambdaTerm substituent) {
 		this.depth = depth;
 		this.substituent = substituent;
+	}
+	
+	@Override
+	public LambdaTerm visitPartialApplication(PartialApplication app) {
+		return null;
 	}
 
 	@Override

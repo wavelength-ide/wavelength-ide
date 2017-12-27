@@ -1,11 +1,26 @@
 package edu.kit.wavelength.client.model.terms;
 
+/**
+ * A visitor that transforms a lambda term by beta reducing a given
+ * redex.
+ *
+ */
 public class BetaReducer extends TermTransformer {
 	
 	private final Application toReduce;
 	
+	/**
+	 * Creates a new beta reducer that reduces the given redex
+	 * @param toReduce The application that should be reduced.
+	 * This must be a redex, otherwise an exception is thrown.
+	 */
 	public BetaReducer(Application toReduce) {
 		this.toReduce = toReduce;
+	}
+	
+	@Override
+	public LambdaTerm visitPartialApplication(PartialApplication app) {
+		return null;
 	}
 
 	@Override

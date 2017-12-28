@@ -4,7 +4,7 @@ import edu.kit.wavelength.client.model.reductions.ReductionOrder;
 
 public class ExecutionEngine {
 
-	public ExecutionEngine(String input, ReductionType type, OutputSize size) {
+	public ExecutionEngine(String input, ReductionOrder order, OutputSize size) {
 		
 	}
 	

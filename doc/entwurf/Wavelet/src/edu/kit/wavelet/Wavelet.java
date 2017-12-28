@@ -36,6 +36,7 @@ public class Wavelet {
 			}
 			out.write(">");
 		}
+		out.write(t.dimension());
 	}
 	
 	public static boolean start(RootDoc root)

@@ -142,6 +142,12 @@ public class Wavelet {
         			out.write("\\begin{itemize}\n");
         			for (int k = 0; k < c.length; ++k) {
         				out.write("\\item \\texttt{");
+        				if (c[k].isPrivate())
+        					out.write("private ");
+        				if (c[k].isProtected())
+        					out.write("protected ");
+        				if (c[k].isPackagePrivate())
+        					out.write("package-private ");
         				out.write(c[k].name());
         				out.write("(");
         				Parameter[] p = c[k].parameters();
@@ -189,6 +195,14 @@ public class Wavelet {
         			for (int k = 0; k < m.size(); ++k) {
         				
         				out.write("\\item \\texttt{");
+        				
+        				if (m.get(k).isPrivate())
+        					out.write("private ");
+        				if (m.get(k).isProtected())
+        					out.write("protected ");
+        				if (m.get(k).isPackagePrivate())
+        					out.write("package-private ");
+        				
         				emitType(out, m.get(k).returnType());
         				out.write(" ");
         				out.write(m.get(k).name());

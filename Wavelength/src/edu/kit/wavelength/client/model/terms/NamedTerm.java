@@ -6,6 +6,15 @@ package edu.kit.wavelength.client.model.terms;
  */
 public class NamedTerm implements LambdaTerm {
 
+	/**
+	 * Creates a new named term.
+	 * @param name The name of the term
+	 * @param inner The actual term that is being named
+	 */
+	public NamedTerm(String name, LambdaTerm inner) {
+		
+	}
+	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;

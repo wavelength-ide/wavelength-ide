@@ -10,6 +10,15 @@ package edu.kit.wavelength.client.model.terms;
  *
  */
 public class Abstraction implements LambdaTerm {
+	
+	/**
+	 * Creates a new abstraction.
+	 * @param preferredName The preferred name for the variable that is abstracted
+	 * @param inner The lambda term that the abstraction encloses
+	 */
+	public Abstraction(String preferredName, LambdaTerm inner) {
+		
+	}
 
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {

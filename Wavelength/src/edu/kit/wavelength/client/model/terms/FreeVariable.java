@@ -12,6 +12,14 @@ package edu.kit.wavelength.client.model.terms;
  */
 public class FreeVariable implements LambdaTerm {
 
+	/**
+	 * Creates a new free variable term.
+	 * @param name The name of the free variable being referenced
+	 */
+	public FreeVariable(String name) {
+		
+	}
+	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;

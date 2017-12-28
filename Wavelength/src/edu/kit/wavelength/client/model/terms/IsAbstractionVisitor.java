@@ -7,7 +7,7 @@ package edu.kit.wavelength.client.model.terms;
  *
  */
 public class IsAbstractionVisitor extends NameAgnosticVisitor<Boolean> {
-
+	
 	@Override
 	public Boolean visitAbstraction(Abstraction abs) {
 		return null;

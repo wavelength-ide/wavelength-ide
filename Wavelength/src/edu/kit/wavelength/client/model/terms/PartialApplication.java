@@ -5,11 +5,22 @@ import java.util.List;
 /**
  * Represents a term that consists of a library function that may be accelerated, as well as
  * zero or more applications with arguments for said library function.
- * @author markus
  *
  */
-public class PartialApplication implements LambdaTerm {
+public abstract class PartialApplication implements LambdaTerm {
 
+	/**
+	 * Creates a new partial application that has not yet bound any parameters
+	 * @param name The name of the library function.
+	 * @param inner The lambda term for the non-accelerated library function
+	 * @param numParameters The number of parameters that the library function takes
+	 * @param checks For each parameter, a visitor that checks whether the given parameter
+	 * has the correct format for acceleration
+	 */
+	public PartialApplication(String name, LambdaTerm inner, int numParameters, Visitor<Boolean>[] checks) {
+		
+	}
+	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;
@@ -47,5 +58,12 @@ public class PartialApplication implements LambdaTerm {
 	public LambdaTerm accept(LambdaTerm nextParam) {
 		return null;
 	}
+	
+	/**
+	 * Directly determine the result of the computation given all parameters.
+	 * @param parameters The parameters for the computation
+	 * @return The result of the computation
+	 */
+	protected abstract LambdaTerm accelerate(LambdaTerm[] parameters);
 	
 }

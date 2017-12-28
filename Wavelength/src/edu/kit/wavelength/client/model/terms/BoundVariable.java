@@ -9,6 +9,14 @@ package edu.kit.wavelength.client.model.terms;
  */
 public class BoundVariable implements LambdaTerm {
 
+	/**
+	 * Creates a new bound variable term.
+	 * @param deBruijnIndex The De Bruijn index of the term
+	 */
+	public BoundVariable(int deBruijnIndex) {
+		
+	}
+	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;

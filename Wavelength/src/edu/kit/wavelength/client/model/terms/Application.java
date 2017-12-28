@@ -9,6 +9,15 @@ package edu.kit.wavelength.client.model.terms;
  */
 public class Application implements LambdaTerm {
 
+	/**
+	 * Creates a new application.
+	 * @param leftHandSide The left hand side of the application
+	 * @param rightHandSide The right hand side of the application
+	 */
+	public Application(LambdaTerm leftHandSide, LambdaTerm rightHandSide) {
+		
+	}
+	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
 		return null;

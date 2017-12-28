@@ -68,8 +68,11 @@ public class Wavelet {
         		ClassDoc cl = packages[i].allClasses()[j];
         		
         		out.write("\\subsubsection{");
-        		if (cl.isClass())
+        		if (cl.isClass()) {
+        			if (cl.isAbstract())
+        				out.write("Abstract ");
         			out.write("Class");
+        		}
         		if (cl.isInterface())
         			out.write("Interface");
         		out.write(" \\texttt{");
@@ -203,6 +206,9 @@ public class Wavelet {
         					out.write("protected ");
         				if (m.get(k).isPackagePrivate())
         					out.write("package-private ");
+        				
+        				if (m.get(k).isAbstract())
+        					out.write("abstract ");
         				
         				emitType(out, m.get(k).returnType());
         				out.write(" ");

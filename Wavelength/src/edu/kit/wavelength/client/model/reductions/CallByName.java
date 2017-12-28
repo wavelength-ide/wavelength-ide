@@ -3,7 +3,14 @@ package edu.kit.wavelength.client.model.reductions;
 import edu.kit.wavelength.client.model.terms.Application;
 import edu.kit.wavelength.client.model.terms.LambdaTerm;
 
-public class CallByName implements ReductionOrder {
+/**
+ * The call by name reduction order for the untyped lambda calculus.
+ * 
+ * The leftmost outermost redex that is not enclosed by an abstraction is
+ * selected for reduction.
+ *
+ */
+class CallByName implements ReductionOrder {
 	
 	@Override
 	public Application next(LambdaTerm term)
@@ -12,7 +19,7 @@ public class CallByName implements ReductionOrder {
 	}
 	
 	@Override
-	public String serialize() {
+	public String getName() {
 		return null;
 	}
 }

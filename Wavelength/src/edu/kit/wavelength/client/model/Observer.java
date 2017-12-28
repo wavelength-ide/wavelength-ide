@@ -4,8 +4,6 @@ import edu.kit.wavelength.client.model.terms.LambdaTerm;
 
 /**
  * Interface implemented by observers of the ExecutionEngine class.
- * 
- * @author markus
  *
  */
 public interface Observer {

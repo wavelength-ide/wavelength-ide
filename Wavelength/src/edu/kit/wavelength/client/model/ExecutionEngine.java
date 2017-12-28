@@ -29,14 +29,14 @@ public class ExecutionEngine {
 	}
 
 	/**
-	 * Executes a single reduction of the current lambda-term
+	 * Executes a single reduction of the current lambda term
 	 */
 	public void stepForward() {
 
 	}
 	
 	/**
-	 * Reverts to the previously output lamba-term.
+	 * Reverts to the previously output lambda term.
 	 */
 	public void stepBackward() {
 	

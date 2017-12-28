@@ -3,7 +3,12 @@ package edu.kit.wavelength.client.model.reductions;
 import edu.kit.wavelength.client.model.terms.Application;
 import edu.kit.wavelength.client.model.terms.LambdaTerm;
 
-public class Normal implements ReductionOrder {
+/**
+ * The applicative reduction order for the untyped lambda calculus.
+ *
+ * The rightmost innermost redex is selected for reduction.
+ */
+class ApplicativeOrder implements ReductionOrder {
 	
 	@Override
 	public Application next(LambdaTerm term)
@@ -12,7 +17,7 @@ public class Normal implements ReductionOrder {
 	}
 	
 	@Override
-	public String serialize() {
+	public String getName() {
 		return null;
 	}
 }

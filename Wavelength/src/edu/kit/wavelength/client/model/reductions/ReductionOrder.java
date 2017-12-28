@@ -17,5 +17,10 @@ public interface ReductionOrder {
 	 */
 	Application next(LambdaTerm term);
 	
-	String serialize();
+	/**
+	 * Returns the name of the reduction order, for example for display
+	 * when selecting a reduction order in a user interface.
+	 * @return The name of the reduction order.
+	 */
+	String getName();
 }

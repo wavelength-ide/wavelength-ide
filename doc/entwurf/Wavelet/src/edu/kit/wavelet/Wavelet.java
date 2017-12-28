@@ -25,6 +25,17 @@ public class Wavelet {
 		{
 			out.write(t.typeName());
 		}
+		ParameterizedType tt = t.asParameterizedType();
+		if (tt != null) {
+			out.write("<");
+			Type[] inn = tt.typeArguments();
+			for (int i = 0; i < inn.length; ++i) {
+				if (i > 0)
+					out.write(", ");
+				emitType(out, inn[i]);
+			}
+			out.write(">");
+		}
 	}
 	
 	public static boolean start(RootDoc root)

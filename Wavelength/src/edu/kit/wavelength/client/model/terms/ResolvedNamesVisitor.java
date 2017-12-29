@@ -39,7 +39,7 @@ public abstract class ResolvedNamesVisitor<T> implements Visitor<T> {
 	 * 
 	 * @param var The bound variable to be visited
 	 * @param resolvedName The resolved name for the bound variable
-	 * @return
+	 * @return The return value of the visitor upon visiting the given bound variable
 	 */
 	protected abstract T visitBoundVariable(BoundVariable var, String resolvedName);
 	
@@ -50,7 +50,7 @@ public abstract class ResolvedNamesVisitor<T> implements Visitor<T> {
 	 * @param abs The abstraction to be visited
 	 * @param resolvedName The resolved name for the variable of this
 	 * abstraction
-	 * @return
+	 * @return The return value of the visitor upon visiting the given abstraction
 	 */
 	protected abstract T visitAbstraction(Abstraction abs, String resolvedName);
 }

@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.terms.parsing;
+package edu.kit.wavelength.client.model.term.parsing;
 
 /**
  * The Tokeniser class is used during the first step of the parsing process to turn the input entered by the user into a sequence of Tokens. 

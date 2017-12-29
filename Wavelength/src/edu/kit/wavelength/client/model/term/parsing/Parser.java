@@ -1,6 +1,6 @@
-package edu.kit.wavelength.client.model.terms.parsing;
+package edu.kit.wavelength.client.model.term.parsing;
 
-import edu.kit.wavelength.client.model.terms.LambdaTerm;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 public class Parser {
 

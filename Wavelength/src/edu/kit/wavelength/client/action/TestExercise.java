@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.exercise.Exercise;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.Observer;
-import edu.kit.wavelength.client.model.terms.LambdaTerm;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * This Action tests a given {@link Exercise}. For each test case the solution

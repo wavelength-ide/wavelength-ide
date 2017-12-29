@@ -1,7 +1,7 @@
-package edu.kit.wavelength.client.model.reductions;
+package edu.kit.wavelength.client.model.reduction;
 
-import edu.kit.wavelength.client.model.terms.Application;
-import edu.kit.wavelength.client.model.terms.LambdaTerm;
+import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * The normal reduction order for the untyped lambda calculus.

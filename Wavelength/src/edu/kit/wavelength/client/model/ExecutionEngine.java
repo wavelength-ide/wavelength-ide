@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.model;
 
-import edu.kit.wavelength.client.model.reductions.ReductionOrder;
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.term.Application;
 
 public class ExecutionEngine {
 
@@ -29,10 +30,19 @@ public class ExecutionEngine {
 	}
 
 	/**
-	 * Executes a single reduction of the current lambda term
+	 * Executes a single reduction of the current lambda term.
 	 */
 	public void stepForward() {
 
+	}
+	
+	/**
+	 * Executes a single reduction of the supplied redex.
+	 * @param term The redex to be evaluated. Must be a redex, otherwise
+	 * an exception is thrown
+	 */
+	public void stepForward(Application redex) {
+		
 	}
 	
 	/**

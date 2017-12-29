@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.terms;
+package edu.kit.wavelength.client.model.term;
 
 /**
  * A visitor that gives non-colliding names for bound variables.

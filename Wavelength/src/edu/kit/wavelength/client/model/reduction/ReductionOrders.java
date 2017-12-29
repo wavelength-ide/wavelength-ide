@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.reductions;
+package edu.kit.wavelength.client.model.reduction;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model;
 
-import edu.kit.wavelength.client.model.reductions.ReductionOrder;
-import edu.kit.wavelength.client.model.terms.LambdaTerm;
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 public class ExecutionState {
 

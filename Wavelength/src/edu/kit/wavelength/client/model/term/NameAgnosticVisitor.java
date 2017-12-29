@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.terms;
+package edu.kit.wavelength.client.model.term;
 
 /**
  * A visitor that will treat a named term precisely like the term that

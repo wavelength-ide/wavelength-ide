@@ -1,13 +1,13 @@
-package edu.kit.wavelength.client.model.terms;
+package edu.kit.wavelength.client.model.term;
 
 /**
  * A visitor that returns a boolean that is true iff the given
- * lambda term represents a redex (possibly bound to one
+ * lambda term represents an abstraction (possibly bound to one
  * or more nested names).
  *
  */
-public final class IsRedexVisitor extends NameAgnosticVisitor<Boolean> {
-
+public final class IsAbstractionVisitor extends NameAgnosticVisitor<Boolean> {
+	
 	@Override
 	public Boolean visitAbstraction(Abstraction abs) {
 		return null;
@@ -32,4 +32,5 @@ public final class IsRedexVisitor extends NameAgnosticVisitor<Boolean> {
 	public Boolean visitPartialApplication(PartialApplication app) {
 		return null;
 	}
+
 }

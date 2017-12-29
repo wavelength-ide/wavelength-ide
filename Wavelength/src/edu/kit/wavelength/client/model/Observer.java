@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.model;
 
-import edu.kit.wavelength.client.model.terms.LambdaTerm;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * Interface implemented by observers of the ExecutionEngine class.

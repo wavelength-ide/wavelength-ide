@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.terms;
+package edu.kit.wavelength.client.model.term;
 
 /**
  * Represents a free variable in the untyped lambda calculus.

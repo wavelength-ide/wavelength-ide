@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.terms.parsing;
+package edu.kit.wavelength.client.model.term.parsing;
 
 /**
  * Token objects are used by both the Tokeniser and the Parser during the construction of an lambda-term from an input String.

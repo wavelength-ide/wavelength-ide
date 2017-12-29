@@ -7,7 +7,7 @@ package edu.kit.wavelength.client.model.terms;
  * both of which may be arbitrary lambda terms.
  *
  */
-public class Application implements LambdaTerm {
+public final class Application implements LambdaTerm {
 
 	/**
 	 * Creates a new application.
@@ -37,6 +37,11 @@ public class Application implements LambdaTerm {
 	 */
 	public LambdaTerm getRightHandSide() {
 		return null;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return false;
 	}
 
 }

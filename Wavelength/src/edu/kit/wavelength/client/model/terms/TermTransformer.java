@@ -4,7 +4,7 @@ package edu.kit.wavelength.client.model.terms;
  * A visitor that performs a transformation of some kind of a lambda term,
  * automatically removing names if their inner term has been changed by
  * the transformation.
- *
+ * 
  */
 public abstract class TermTransformer implements Visitor<LambdaTerm> {
 	@Override

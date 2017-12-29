@@ -5,7 +5,7 @@ package edu.kit.wavelength.client.model.terms;
  * redex.
  *
  */
-public class BetaReducer extends TermTransformer {
+public final class BetaReducer extends TermTransformer {
 	
 	private final Application toReduce;
 	

@@ -4,7 +4,7 @@ package edu.kit.wavelength.client.model.terms;
  * Represents a term that has a name.
  *
  */
-public class NamedTerm implements LambdaTerm {
+public final class NamedTerm implements LambdaTerm {
 
 	/**
 	 * Creates a new named term.
@@ -34,5 +34,10 @@ public class NamedTerm implements LambdaTerm {
 	 */
 	public String getName() {
 		return null;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return false;
 	}
 }

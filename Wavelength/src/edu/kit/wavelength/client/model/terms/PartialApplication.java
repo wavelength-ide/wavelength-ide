@@ -66,4 +66,7 @@ public abstract class PartialApplication implements LambdaTerm {
 	 */
 	protected abstract LambdaTerm accelerate(LambdaTerm[] parameters);
 	
+	@Override
+	public abstract boolean equals(Object other);
+	
 }

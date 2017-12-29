@@ -7,7 +7,7 @@ package edu.kit.wavelength.client.model.terms;
  * De Bruijn index.
  *
  */
-public class BoundVariable implements LambdaTerm {
+public final class BoundVariable implements LambdaTerm {
 
 	/**
 	 * Creates a new bound variable term.
@@ -24,10 +24,15 @@ public class BoundVariable implements LambdaTerm {
 	
 	/**
 	 * Returns the De Bruijn index of the variable.
-	 * @return The De Bruihn index
+	 * @return The De Bruijn index
 	 */
 	public int getDeBruijnIndex() {
 		return 0;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return false;
 	}
 
 }

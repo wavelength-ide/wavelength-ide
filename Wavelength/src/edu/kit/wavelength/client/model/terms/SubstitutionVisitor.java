@@ -5,7 +5,7 @@ package edu.kit.wavelength.client.model.terms;
  * index with a given substituent.
  *
  */
-public class SubstitutionVisitor extends TermTransformer {
+public final class SubstitutionVisitor extends TermTransformer {
 	
 	private final int depth;
 	private final LambdaTerm substituent;

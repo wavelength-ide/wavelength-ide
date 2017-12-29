@@ -10,7 +10,7 @@ package edu.kit.wavelength.client.model.terms;
  * change the lambda term.
  *
  */
-public class FreeVariable implements LambdaTerm {
+public final class FreeVariable implements LambdaTerm {
 
 	/**
 	 * Creates a new free variable term.
@@ -31,6 +31,11 @@ public class FreeVariable implements LambdaTerm {
 	 */
 	public String getName() {
 		return null;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return false;
 	}
 
 }

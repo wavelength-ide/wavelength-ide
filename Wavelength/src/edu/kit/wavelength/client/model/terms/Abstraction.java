@@ -9,7 +9,7 @@ package edu.kit.wavelength.client.model.terms;
  * will use De Bruijn indices to do so.
  *
  */
-public class Abstraction implements LambdaTerm {
+public final class Abstraction implements LambdaTerm {
 	
 	/**
 	 * Creates a new abstraction.
@@ -40,6 +40,11 @@ public class Abstraction implements LambdaTerm {
 	 */
 	public LambdaTerm getInner() {
 		return null;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return false;
 	}
 
 }

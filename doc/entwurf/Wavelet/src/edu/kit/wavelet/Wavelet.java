@@ -140,21 +140,28 @@ public class Wavelet {
         			out.write("\n\n");
         		}
         		
-        		ConstructorDoc[] c = cl.constructors();
-        		if (c.length > 0) {
+        		ConstructorDoc[] c_ = cl.constructors();
+        		ArrayList<ConstructorDoc> c = new ArrayList<>();
+        		
+        		for (int k = 0; k < c_.length; ++k) {
+        			if (c_[k].parameters().length != 0 || !c_[k].commentText().isEmpty())
+        				c.add(c_[k]);
+        		}
+        		
+        		if (c.size() > 0) {
         			out.write("Constructors:\n");
         			out.write("\\begin{itemize}\n");
-        			for (int k = 0; k < c.length; ++k) {
+        			for (int k = 0; k < c.size(); ++k) {
         				out.write("\\item \\texttt{");
-        				if (c[k].isPrivate())
+        				if (c.get(k).isPrivate())
         					out.write("private ");
-        				if (c[k].isProtected())
+        				if (c.get(k).isProtected())
         					out.write("protected ");
-        				if (c[k].isPackagePrivate())
+        				if (c.get(k).isPackagePrivate())
         					out.write("package-private ");
-        				out.write(c[k].name());
+        				out.write(c.get(k).name());
         				out.write("(");
-        				Parameter[] p = c[k].parameters();
+        				Parameter[] p = c.get(k).parameters();
         				for (int l = 0; l < p.length; ++l) {
         					if (l > 0)
         						out.write(", ");
@@ -164,9 +171,9 @@ public class Wavelet {
         				}
         				out.write(")");
         				out.write("}\n\n");
-        				out.write(c[k].commentText());
+        				out.write(c.get(k).commentText());
         				out.write("\n\n");
-        				Tag[] pars = c[k].tags("param");
+        				Tag[] pars = c.get(k).tags("param");
         				for (int l = 0; l < pars.length; ++l) {
         					ParamTag t = (ParamTag)pars[l];
         					out.write("\\texttt{");

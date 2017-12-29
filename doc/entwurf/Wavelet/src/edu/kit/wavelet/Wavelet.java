@@ -207,7 +207,7 @@ public class Wavelet {
         				if (m.get(k).isPackagePrivate())
         					out.write("package-private ");
         				
-        				if (m.get(k).isAbstract())
+        				if (!cl.isInterface() && m.get(k).isAbstract())
         					out.write("abstract ");
         				
         				emitType(out, m.get(k).returnType());

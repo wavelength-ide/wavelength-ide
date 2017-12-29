@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model;
+package edu.kit.wavelength.client.model.output;
 
 import java.util.List;
 
@@ -23,4 +23,10 @@ public interface OutputSize {
 	 * @return A list of step numbers, in the order in which they should be displayed
 	 */
 	List<Integer> displayAtEnd(int totalSteps, int lastDisplayed);
+	
+	/**
+	 * Returns the name of the output size.
+	 * @return The name of the output size
+	 */
+	String getName();
 }

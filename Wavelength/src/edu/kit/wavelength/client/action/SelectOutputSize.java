@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.action;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
-import edu.kit.wavelength.client.model.OutputSize;
+import edu.kit.wavelength.client.model.output.OutputSize;
 
 /**
  * This action sets the output size the user selected.

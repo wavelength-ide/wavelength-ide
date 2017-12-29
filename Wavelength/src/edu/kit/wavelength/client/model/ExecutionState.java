@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model;
 
+import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 

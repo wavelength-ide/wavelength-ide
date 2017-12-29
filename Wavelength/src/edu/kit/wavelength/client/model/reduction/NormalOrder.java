@@ -9,7 +9,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * The leftmost outermost redex is selected for redection.
  *
  */
-class NormalOrder implements ReductionOrder {
+final class NormalOrder implements ReductionOrder {
 	
 	@Override
 	public Application next(LambdaTerm term)

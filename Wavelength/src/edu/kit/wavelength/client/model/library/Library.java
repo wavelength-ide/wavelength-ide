@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.term.parsing;
+package edu.kit.wavelength.client.model.library;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
@@ -15,12 +15,18 @@ public interface Library {
 	 * @param name The name assigned to the desired term
 	 * @return The term with the entered name, null on error
 	 */
-	public abstract LambdaTerm getTerm(String name);
+	abstract LambdaTerm getTerm(String name);
 	
 	/**
 	 * Determines whether the library contains a term with the specified name.
 	 * @param name The name to search the library for.
 	 * @return True if the library contains a term with the entered name.
 	 */
-	public abstract boolean containsName(String name);
+	abstract boolean containsName(String name);
+	
+	/**
+	 * Returns the name of the library.
+	 * @return The name of the library
+	 */
+	abstract String getName();
 }

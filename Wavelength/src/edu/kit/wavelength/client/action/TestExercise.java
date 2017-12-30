@@ -66,4 +66,10 @@ public class TestExercise implements Action, Observer {
 
 	}
 
+	@Override
+	public void popTerm() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -1,12 +1,23 @@
 package edu.kit.wavelength.client.model;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Application;
 
 public class ExecutionEngine {
 
-	public ExecutionEngine(String input, ReductionOrder order, OutputSize size) {
+	/**
+	 * Creates a new execution engine.
+	 * @param input The textual representation of a lambda term to be handled
+	 * @param order The reduction order to be used by default
+	 * @param size The output size to be used
+	 * @param libraries The libraries to be taken into consideration during parsing
+	 * @param observers The observers to be notified during state changes
+	 */
+	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries, List<Observer> observers) {
 		
 	}
 	

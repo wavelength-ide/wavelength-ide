@@ -30,7 +30,7 @@ public class SelectExportFormat<T extends Writable & Hideable> implements Action
 	 *            A View that blocks the whole Interface except the View that shows
 	 *            the export.
 	 * @param exportFormat
-	 *            The export format the user choose.
+	 *            The export format the user chose.
 	 */
 	public SelectExportFormat(T exporter, Hideable blocker, Export exportFormat) {
 
@@ -38,6 +38,6 @@ public class SelectExportFormat<T extends Writable & Hideable> implements Action
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		// set exportFormat.getRepresentation() on exporter
 	}
 }

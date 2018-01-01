@@ -1,7 +1,8 @@
 package edu.kit.wavelength.client.export;
 
 /**
- * This interface encapsulates the available export formats.
+ * This interface encapsulates the available export formats. It translates the
+ * current output into the corresponding format.
  */
 public interface Export {
 

@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.action;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
- * This action binds the library size the user selected.
+ * This action binds the library the user selected.
  */
 public class SelectLibrary implements Action {
 

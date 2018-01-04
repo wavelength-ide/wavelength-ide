@@ -1,19 +1,26 @@
 package edu.kit.wavelength.client.view;
 
+import edu.kit.wavelength.client.model.term.LambdaTerm;
+
 /**
  * TODO: Welches Interface geben wir vor?
  */
-public class UnicodeOutput implements Blockable{
+public class UnicodeOutput implements Blockable, Output {
 
 	@Override
-	public void block() {
-		// TODO Auto-generated method stub
-		
+	public void block() {		
 	}
 
 	@Override
-	public void unblock() {
-		// TODO Auto-generated method stub
-		
+	public void unblock() {		
+	}
+
+	@Override
+	public void addTerm(LambdaTerm term) {	
+		// hier findet Übersetzung von LT nach Output statt 
+	}
+
+	@Override
+	public void popTerm() {		
 	}
 }

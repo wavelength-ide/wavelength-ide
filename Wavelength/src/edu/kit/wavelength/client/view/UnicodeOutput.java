@@ -2,9 +2,7 @@ package edu.kit.wavelength.client.view;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
-/**
- * TODO: Welches Interface geben wir vor?
- */
+
 public class UnicodeOutput implements Blockable, Output {
 
 	@Override

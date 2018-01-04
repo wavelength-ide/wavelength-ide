@@ -2,9 +2,7 @@ package edu.kit.wavelength.client.view;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
-/**
- * TODO: welches Interface geben wir vor?
- */
+
 public class TreeOutput implements Blockable, Output {
 
 	@Override

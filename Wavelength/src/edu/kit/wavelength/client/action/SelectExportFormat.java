@@ -13,10 +13,7 @@ import edu.kit.wavelength.client.view.Writable;
  */
 public class SelectExportFormat<T extends Writable & Hideable> implements Action {
 
-	/*
-	 * TODO Es wird noch der Visitor aus dem Model gebraucht, welcher den String
-	 * generiert
-	 */
+
 	private T exporter;
 	private Hideable blocker;
 	private Export exportFormat;

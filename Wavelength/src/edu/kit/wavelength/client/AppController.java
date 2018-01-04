@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.state.AppState;
 
 /**
@@ -9,6 +12,7 @@ import edu.kit.wavelength.client.state.AppState;
 public class AppController implements UIState {
 
 	private AppState state;
+	private List<LambdaTerm> currentOutput;
 
 	public AppController() {
 		// state = new Input();
@@ -40,5 +44,21 @@ public class AppController implements UIState {
 
 	public void exitExport() {
 		// state.exitExercise();
+	}
+
+	@Override
+	public void addTerm(LambdaTerm term) {
+		// add term to end of currentOutput
+		
+	}
+
+	@Override
+	public void popTerm() {
+		// pop last term in currentOutput		
+	}
+
+	@Override
+	public void clearOutput() {
+		// currentOutput = new List<LambdaTerm>();
 	}
 }

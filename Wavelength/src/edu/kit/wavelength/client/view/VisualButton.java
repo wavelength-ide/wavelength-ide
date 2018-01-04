@@ -30,31 +30,26 @@ public class VisualButton implements Blockable, Hideable, ActionInjectable {
 
 	@Override
 	public void block() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void unblock() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void setAction(Action action) {
-		// TODO Auto-generated method stub
 
 	}
 }

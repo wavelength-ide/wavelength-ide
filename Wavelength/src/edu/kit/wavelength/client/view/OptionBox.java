@@ -24,19 +24,16 @@ public class OptionBox implements Blockable, EntryInjectable {
 
 	@Override
 	public void block() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void unblock() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void addEntry(String name, Action action) {
-		// TODO Auto-generated method stub
 
 	}
 

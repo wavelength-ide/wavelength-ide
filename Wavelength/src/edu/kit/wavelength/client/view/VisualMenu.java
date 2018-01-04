@@ -38,7 +38,6 @@ public class VisualMenu implements Blockable, EntryInjectable {
 
 	@Override
 	public void addEntry(String name, Action action) {
-		// TODO Auto-generated method stub
 
 	}
 }

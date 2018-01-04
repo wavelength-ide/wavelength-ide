@@ -11,7 +11,6 @@ public class HaskellExport implements Export {
 
 	@Override
 	public String getRepresentation() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

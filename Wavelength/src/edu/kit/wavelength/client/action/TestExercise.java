@@ -35,7 +35,6 @@ public class TestExercise implements Action, Observer {
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -44,7 +43,6 @@ public class TestExercise implements Action, Observer {
 	 * testSolution, else do nothing.
 	 */
 	public void executionStarted() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -52,7 +50,6 @@ public class TestExercise implements Action, Observer {
 	 * Do not do anything here.
 	 */
 	public void executionStopped() {
-		// TODO Auto-generated method stub
 
 	}
 
@@ -62,13 +59,11 @@ public class TestExercise implements Action, Observer {
 	 * If all test cases are passed tell the User about it.
 	 */
 	public void termToDisplay(LambdaTerm term) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void popTerm() {
-		// TODO Auto-generated method stub
 		
 	}
 

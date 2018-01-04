@@ -28,31 +28,26 @@ public class PopUpTextBox implements Writable, Hideable, Readable, EntryInjectab
 
 	@Override
 	public void write(String input) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public String read() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void addEntry(String name, Action action) {
-		// TODO Auto-generated method stub
 
 	}
 }

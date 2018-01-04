@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.state.AppState;
+import edu.kit.wavelength.client.view.Output;
 
 /**
  * This class handles the current state of the application and the currently
@@ -14,6 +15,7 @@ public class AppController implements UIState {
 
 	private AppState state;
 	private List<LambdaTerm> currentOutput;
+	private Output outputFormat;
 
 	/**
 	 * Constructs a new AppController object. The initial state is Input and the
@@ -62,6 +64,16 @@ public class AppController implements UIState {
 	public void exitExercise() {
 		// state.exitExercise();
 	}
+	
+	public Output getOutputFormat() {
+		return null;
+	}
+	
+	public void setOutputFormat(Output format) {
+		
+	}
+	
+	
 
 	/**
 	 * Adds a lambda term to the current output.

@@ -6,12 +6,16 @@ import edu.kit.wavelength.client.view.Output;
 
 /**
  * TODO: change name and/or package?
+ * 
+ * This class observes the execution engine. It delegates the generation of the
+ * output to the output view.
  */
 public class SetOutput implements Observer {
-	
+
 	private UIState appController;
 	private Output output;
 
+	
 	@Override
 	public void executionStarted() {
 		// clear view -> create new Output object?
@@ -19,18 +23,18 @@ public class SetOutput implements Observer {
 	}
 
 	@Override
-	public void executionStopped() {		
+	public void executionStopped() {
 		// appController.stop() -> state transition
 	}
 
 	@Override
-	public void termToDisplay(LambdaTerm term) {	
+	public void termToDisplay(LambdaTerm term) {
 		// appController.addTerm()
 		// output.addTerm()
 	}
 
 	@Override
-	public void popTerm() {	
+	public void popTerm() {
 		// output.popTerm()
 	}
 

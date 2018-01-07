@@ -6,4 +6,9 @@ public interface UIState {
 	void addTerm(LambdaTerm term);
 	void popTerm();
 	void clearOutput();
+	void start();
+	void stop();
+	void pause();
+	void enterExercise();
+	void exitExercise();
 }

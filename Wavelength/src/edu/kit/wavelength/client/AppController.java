@@ -3,8 +3,8 @@ package edu.kit.wavelength.client;
 import java.util.List;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.state.AppState;
-import edu.kit.wavelength.client.view.Output;
+import edu.kit.wavelength.client.view.api.Output;
+import edu.kit.wavelength.client.view.webui.state.AppState;
 
 /**
  * This class handles the current state of the application and the currently

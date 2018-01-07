@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.export;
 
-import edu.kit.wavelength.client.export.Export;
+import edu.kit.wavelength.client.model.ExecutionState;
 
 /**
  * This class translates the current output into Lisp code. Since it is only
@@ -10,7 +10,8 @@ import edu.kit.wavelength.client.export.Export;
 public class LispExport implements Export {
 
 	@Override
-	public String getRepresentation() {
+	public String getRepresentation(ExecutionState state) {
+		// format repr
 		return null;
 	}
 

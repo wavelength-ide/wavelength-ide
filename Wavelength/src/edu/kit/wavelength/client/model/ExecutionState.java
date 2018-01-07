@@ -17,4 +17,8 @@ public class ExecutionState {
 	public String serialize() {
 		return null;
 	}
+	
+	public LambdaTerm[] getTerms() {
+		return null;
+	}
 }

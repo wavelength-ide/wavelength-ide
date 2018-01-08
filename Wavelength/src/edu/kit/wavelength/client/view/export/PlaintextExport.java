@@ -1,6 +1,8 @@
 package edu.kit.wavelength.client.view.export;
 
-import edu.kit.wavelength.client.model.ExecutionState;
+import java.util.List;
+
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * This class translates the current output into plain text.
@@ -8,7 +10,7 @@ import edu.kit.wavelength.client.model.ExecutionState;
 public class PlaintextExport implements Export {
 
 	@Override
-	public String getRepresentation(ExecutionState state) {
+	public String getRepresentation(List<LambdaTerm> displayedTerms) {
 		// format repr
 		return null;
 	}

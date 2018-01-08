@@ -39,7 +39,7 @@ public class SelectExportFormat<T extends Writable & Hideable> implements Action
 
 	@Override
 	public void run() {
-		exporter.write(exportFormat.getRepresentation(engine.getExecutionState()));
+		exporter.write(exportFormat.getRepresentation(engine.getDisplayed()));
 		blocker.show();
 		exporter.show();
 	}

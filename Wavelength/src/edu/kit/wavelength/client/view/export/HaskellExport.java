@@ -1,6 +1,8 @@
 package edu.kit.wavelength.client.view.export;
 
-import edu.kit.wavelength.client.model.ExecutionState;
+import java.util.List;
+
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.export.Export;
 
 /**
@@ -11,7 +13,7 @@ import edu.kit.wavelength.client.view.export.Export;
 public class HaskellExport implements Export {
 
 	@Override
-	public String getRepresentation(ExecutionState state) {
+	public String getRepresentation(List<LambdaTerm> displayedTerms) {
 		// format repr
 		return null;
 	}

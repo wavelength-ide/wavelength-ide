@@ -17,6 +17,15 @@ public final class ReductionOrders {
 		return null;
 	}
 	
+	/**
+	 * Returns the reduction order represented by a given string.
+	 * @param serialized A serialized reduction order
+	 * @return The reduction order the given string refers to, if known to the model
+	 */
+	public static ReductionOrder deserialize(String serialized) {
+		return null;
+	}
+	
 	private ReductionOrders() {
 	}
 }

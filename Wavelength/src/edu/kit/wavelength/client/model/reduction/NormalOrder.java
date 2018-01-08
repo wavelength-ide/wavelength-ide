@@ -21,4 +21,9 @@ final class NormalOrder implements ReductionOrder {
 	public String getName() {
 		return null;
 	}
+
+	@Override
+	public String serialize() {
+		return null;
+	}
 }

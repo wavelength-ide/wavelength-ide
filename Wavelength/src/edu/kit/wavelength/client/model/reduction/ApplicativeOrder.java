@@ -20,4 +20,9 @@ final class ApplicativeOrder implements ReductionOrder {
 	public String getName() {
 		return null;
 	}
+
+	@Override
+	public String serialize() {
+		return null;
+	}
 }

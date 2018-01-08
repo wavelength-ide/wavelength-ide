@@ -38,4 +38,9 @@ public final class FreeVariable implements LambdaTerm {
 		return false;
 	}
 
+	@Override
+	public String serialize() {
+		return null;
+	}
+
 }

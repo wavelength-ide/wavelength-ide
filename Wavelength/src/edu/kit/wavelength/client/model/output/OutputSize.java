@@ -2,12 +2,14 @@ package edu.kit.wavelength.client.model.output;
 
 import java.util.List;
 
+import edu.kit.wavelength.client.model.serialization.Serializable;
+
 /**
  * Policy to decide which lambda terms should be displayed,
  * both live and at the end of the computation.
  *
  */
-public interface OutputSize {
+public interface OutputSize extends Serializable {
 	/**
 	 * Decides whether the step with the given number should be displayed live.
 	 * @param step The step number to be considered

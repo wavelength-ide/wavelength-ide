@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.reduction;
 
+import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
@@ -7,7 +8,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * Represents a reduction order for the untyped lambda calculus.
  *
  */
-public interface ReductionOrder {
+public interface ReductionOrder extends Serializable {
 	/**
 	 * Determines the next redex to be evaluated according to the reduction order.
 	 * 

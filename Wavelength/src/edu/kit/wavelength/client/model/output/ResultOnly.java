@@ -24,4 +24,9 @@ final class ResultOnly implements OutputSize {
 		return null;
 	}
 
+	@Override
+	public String serialize() {
+		return null;
+	}
+
 }

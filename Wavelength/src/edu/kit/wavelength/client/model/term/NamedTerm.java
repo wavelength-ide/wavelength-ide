@@ -40,4 +40,9 @@ public final class NamedTerm implements LambdaTerm {
 	public boolean equals(Object other) {
 		return false;
 	}
+
+	@Override
+	public String serialize() {
+		return null;
+	}
 }

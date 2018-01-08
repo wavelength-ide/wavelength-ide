@@ -35,4 +35,9 @@ public final class BoundVariable implements LambdaTerm {
 		return false;
 	}
 
+	@Override
+	public String serialize() {
+		return null;
+	}
+
 }

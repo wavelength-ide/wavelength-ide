@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.library;
 
+import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /** 
@@ -8,7 +9,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * These names can be used in place of terms to both shorten terms and make them easier to understand.
  *
  */
-public interface Library {
+public interface Library extends Serializable {
 	
 	/**
 	 * Returns the LambdaTerm with the specified name.

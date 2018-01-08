@@ -23,4 +23,9 @@ final class Full implements OutputSize {
 		return null;
 	}
 
+	@Override
+	public String serialize() {
+		return null;
+	}
+
 }

@@ -44,4 +44,9 @@ public final class Application implements LambdaTerm {
 		return false;
 	}
 
+	@Override
+	public String serialize() {
+		return null;
+	}
+
 }

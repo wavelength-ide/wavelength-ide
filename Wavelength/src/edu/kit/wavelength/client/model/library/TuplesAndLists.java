@@ -24,4 +24,9 @@ final class TuplesAndLists implements Library {
 		return null;
 	}
 
+	@Override
+	public String serialize() {
+		return null;
+	}
+
 }

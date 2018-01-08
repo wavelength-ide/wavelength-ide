@@ -17,6 +17,15 @@ public final class OutputSizes {
 		return null;
 	}
 	
+	/**
+	 * Returns the output size referred to by a given string.
+	 * @param serialized The string to be deserialized
+	 * @return The output size that the given string represents, if known to the model
+	 */
+	public static OutputSize deserialize(String serialized) {
+		return null;
+	}
+	
 	private OutputSizes() {
 	}
 }

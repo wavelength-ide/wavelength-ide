@@ -18,6 +18,15 @@ public final class Libraries {
 		return null;
 	}
 	
+	/**
+	 * Returns the library referred to by the serialized string.
+	 * @param serialized A string created by calling serialize on a library known to the Libraries class
+	 * @return The library referred to by the serialized string
+	 */
+	public static Library deserialize(String serialized) {
+		return null;
+	}
+	
 	private Libraries() {
 	}
 }

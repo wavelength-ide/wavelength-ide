@@ -6,6 +6,7 @@ import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 public class ExecutionEngine {
 
@@ -65,6 +66,22 @@ public class ExecutionEngine {
 	}
 	
 	/**
+	 * Returns a list of all lambda terms that have been displayed.
+	 * @return A list of all lambda terms that have been displayed
+	 */
+	public List<LambdaTerm> getDisplayed() {
+		return null;
+	}
+	
+	/**
+	 * Returns the last lambda term that has been displayed.
+	 * @return The last lambda term that has been displayed
+	 */
+	public LambdaTerm getLast() {
+		return null;
+	}
+	
+	/**
 	 * Changes the active reduction order to the entered one.
 	 * @param type The new reduction order.
 	 */
@@ -81,7 +98,7 @@ public class ExecutionEngine {
 	}
 	
 	/**
-	 * Serializes the ExecutionEngine by serializing its current OutputSize and ReductionOrder.
+	 * Serializes the ExecutionEngine by serializing its current OutputSize, ReductionOrder and the terms it holds.
 	 * @return The ExecutionEngine's serialized String representation
 	 */
 	public String serialize() {

@@ -21,7 +21,7 @@ public interface Observer {
 	 * Called when a new term should be displayed.
 	 * @param ID The numeric ID of the term that should be displayed.
 	 */
-	void termToDisplay(LambdaTerm term);
+	void addTerm(LambdaTerm term);
 	
 	/**
 	 * Called when the last term that has been displayed should be removed.

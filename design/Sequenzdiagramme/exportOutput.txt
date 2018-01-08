@@ -1,0 +1,25 @@
+@startuml
+participant "export : SelectExportFormat" as export
+participant "blocker : Hideable" as blocker
+participant "format : ExportFormat" as format
+participant "engine : ExecutionEngine" as engine
+participant "exportWindow : <T extends Writable & Hideable>" as exportWindow
+
+activate export
+export -> engine : getDisplayed()
+activate engine
+export <-- engine : displayedLambdaTerms
+deactivate engine
+export -> format : getRepresentation(displayedLambdaTerms)
+activate format
+export <-- format : output
+deactivate format
+export -> blocker : show()
+activate blocker
+export <-- blocker
+deactivate blocker
+
+
+
+
+@enduml

@@ -5,7 +5,9 @@ import java.util.List;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * This class translates the current output into LaTeX code.
+ * This class translates the given lambda terms into LaTeX code. The generated
+ * representation assumes math mode when being pasted into an existing LaTeX
+ * document.
  */
 public class LatexExport implements Export {
 

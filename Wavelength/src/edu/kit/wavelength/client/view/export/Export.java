@@ -11,12 +11,19 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public interface Export {
 
 	/**
+	 * This method transforms the given lambda terms into the dedicated format.
 	 * 
-	 * @return The String representation of the current output in the corresponding
-	 *         format.
+	 * @param displayedTerms
+	 *            the terms that should be translated
+	 * @return the String representation of the given terms
 	 */
 	public String getRepresentation(List<LambdaTerm> displayedTerms);
 
+	/**
+	 * This method returns the name of the export format
+	 * 
+	 * @return the name of the export format
+	 */
 	public String getName();
-	
+
 }

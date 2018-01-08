@@ -6,9 +6,9 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.export.Export;
 
 /**
- * This class translates the current output into Haskell code. Since it is only
- * a syntactic translation, it is not guaranteed that the generated output is
- * executable Haskell.
+ * This class translates the given lambda terms into Haskell code. Since it is
+ * only a syntactic translation, it is not guaranteed that the generated
+ * representation is executable Haskell code.
  */
 public class HaskellExport implements Export {
 

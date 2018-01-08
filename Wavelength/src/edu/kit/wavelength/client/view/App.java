@@ -1,26 +1,18 @@
 package edu.kit.wavelength.client.view;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import com.google.gwt.user.client.ui.Image;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
-import edu.kit.wavelength.client.model.Observer;
 import edu.kit.wavelength.client.model.library.Libraries;
-import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
-import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
-import edu.kit.wavelength.client.view.api.Deactivatable;
-import edu.kit.wavelength.client.view.api.Readable;
-import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.webui.components.Checkbox;
 import edu.kit.wavelength.client.view.webui.components.Editor;

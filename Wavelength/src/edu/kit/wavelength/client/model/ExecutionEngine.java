@@ -24,9 +24,10 @@ public class ExecutionEngine {
 
 	/**
 	 * Executes a single reduction of the current lambda term.
+	 * @return whether this step is displayed
 	 */
-	public void stepForward() {
-
+	public boolean stepForward() {
+		return false;
 	}
 	
 	/**
@@ -35,7 +36,7 @@ public class ExecutionEngine {
 	 * an exception is thrown
 	 */
 	public void stepForward(Application redex) {
-		
+
 	}
 	
 	/**
@@ -62,18 +63,18 @@ public class ExecutionEngine {
 	}
 	
 	/**
+	 * Displays the currently reduced term, adding it to the list of displayed terms.
+	 * @return the current term
+	 */
+	public LambdaTerm displayCurrent() {
+		return null;
+	}
+	
+	/**
 	 * Changes the active reduction order to the entered one.
 	 * @param type The new reduction order.
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
-		
-	}
-	
-	/**
-	 * Changes the active output size to the entered one.
-	 * @param size The new output size.
-	 */
-	public void setOutputSize(OutputSize size) {
 		
 	}
 	

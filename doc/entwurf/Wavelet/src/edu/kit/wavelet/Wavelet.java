@@ -59,6 +59,9 @@ public class Wavelet {
         	out.write(packages[i].name());
         	out.write("}}");
         	out.write("\n");
+        	out.write("\\label{pkg:");
+        	out.write(packages[i].name());
+        	out.write("}\n");
         	
         	out.write("\\input{overview/");
         	out.write(packages[i].name());

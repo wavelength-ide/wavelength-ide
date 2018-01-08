@@ -6,7 +6,7 @@ import java.util.List;
  * Output size where every n-th term is displayed, for some n.
  *
  */
-final class Periodic implements OutputSize {
+public final class Periodic implements OutputSize {
 
 	/**
 	 * Creates a periodic output size with the given period.

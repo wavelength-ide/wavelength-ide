@@ -7,7 +7,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * and providing functions for basic arithmetic operations.
  *
  */
-final class NaturalNumbers implements Library{
+public final class NaturalNumbers implements Library{
 
 	@Override
 	public LambdaTerm getTerm(String name) {

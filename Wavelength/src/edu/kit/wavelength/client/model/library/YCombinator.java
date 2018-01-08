@@ -6,7 +6,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * A library containing the Y combinator.
  *
  */
-final class YCombinator implements Library {
+public final class YCombinator implements Library {
 
 	@Override
 	public LambdaTerm getTerm(String name) {

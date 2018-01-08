@@ -8,7 +8,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  *
  * The rightmost innermost redex is selected for reduction.
  */
-final class ApplicativeOrder implements ReductionOrder {
+public final class ApplicativeOrder implements ReductionOrder {
 	
 	@Override
 	public Application next(LambdaTerm term)

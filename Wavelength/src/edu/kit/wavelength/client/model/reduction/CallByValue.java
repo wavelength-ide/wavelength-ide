@@ -11,7 +11,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * reduction.
  *
  */
-final class CallByValue implements ReductionOrder {
+public final class CallByValue implements ReductionOrder {
 	
 	@Override
 	public Application next(LambdaTerm term)

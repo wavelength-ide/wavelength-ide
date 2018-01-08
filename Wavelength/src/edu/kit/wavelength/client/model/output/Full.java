@@ -6,7 +6,7 @@ import java.util.List;
  * Output size where every term is displayed live.
  *
  */
-final class Full implements OutputSize {
+public final class Full implements OutputSize {
 
 	@Override
 	public boolean displayLive(int step) {

@@ -7,7 +7,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * tuples and lists.
  *
  */
-final class TuplesAndLists implements Library {
+public final class TuplesAndLists implements Library {
 
 	@Override
 	public LambdaTerm getTerm(String name) {

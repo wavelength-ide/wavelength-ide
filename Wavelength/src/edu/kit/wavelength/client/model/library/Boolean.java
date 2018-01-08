@@ -6,7 +6,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * A library for working with boolean values.
  *
  */
-final class Boolean implements Library {
+public final class Boolean implements Library {
 
 	@Override
 	public LambdaTerm getTerm(String name) {

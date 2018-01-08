@@ -7,7 +7,7 @@ import java.util.List;
  * only displays the very last term in the end.
  *
  */
-final class ResultOnly implements OutputSize {
+public final class ResultOnly implements OutputSize {
 
 	@Override
 	public boolean displayLive(int step) {

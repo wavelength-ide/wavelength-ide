@@ -7,7 +7,7 @@ import java.util.List;
  * and at the end.
  *
  */
-final class Shortened implements OutputSize {
+public final class Shortened implements OutputSize {
 	
 	/**
 	 * Creates a shortened output size policy with the given cutoff.

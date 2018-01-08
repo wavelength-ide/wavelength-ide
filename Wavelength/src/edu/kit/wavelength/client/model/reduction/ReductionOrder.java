@@ -13,7 +13,7 @@ public interface ReductionOrder extends Serializable {
 	 * Determines the next redex to be evaluated according to the reduction order.
 	 * 
 	 * @param term The term whose next redex should be found.
-	 * @return <code>null</code> if there is no redex in the given term. Otherwise,
+	 * @return {@code null} if there is no redex in the given term. Otherwise,
 	 * the next redex to be evaluated.
 	 */
 	Application next(LambdaTerm term);

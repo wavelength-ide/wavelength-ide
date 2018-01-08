@@ -11,16 +11,17 @@ package edu.kit.wavelength.client.view.exercise;
 public interface Exercise {
 
 	String getName();
-	
+
 	/**
-	 * Returns the task.
+	 * Returns the explanation of the exercise.
 	 * 
-	 * @return the task
+	 * @return The task
 	 */
 	String getTask();
 
 	/**
-	 * Returns the solution
+	 * Returns the sample solution. Note that this may not be the only possible
+	 * solution.
 	 * 
 	 * @return the solution
 	 */
@@ -29,8 +30,7 @@ public interface Exercise {
 	/**
 	 * Returns whether this has predefined code or not.
 	 * 
-	 * @return {@code true} if this Exercise has predefined code and {@code false}
-	 *         if not.
+	 * @return {@code true} if this Exercise has predefined code
 	 */
 	boolean hasPredefinitions();
 
@@ -38,14 +38,14 @@ public interface Exercise {
 	 * Returns initial definitions that are supposed to be of help for the User.
 	 * Note that this may be empty.
 	 * 
-	 * @return predefined code
+	 * @return the predefined code
 	 */
 	String getPredefinitions();
 
 	/**
-	 * Returns an iterable collection of test cases.
+	 * Returns an iterable collection of test cases for testing a users soltion.
 	 * 
-	 * @return test cases
+	 * @return A collection of test cases
 	 */
 	Iterable<String> getTestCases();
 }

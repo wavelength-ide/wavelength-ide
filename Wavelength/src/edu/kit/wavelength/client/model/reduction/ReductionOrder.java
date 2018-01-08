@@ -5,7 +5,8 @@ import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * Represents a reduction order for the untyped lambda calculus.
+ * Represents a reduction order for the untyped lambda calculus. A reduction
+ * order is a policy to determine the next reducible expression (redex) to be evaluated.
  *
  */
 public interface ReductionOrder extends Serializable {
@@ -17,10 +18,11 @@ public interface ReductionOrder extends Serializable {
 	 * the next redex to be evaluated.
 	 */
 	Application next(LambdaTerm term);
-	
+
 	/**
-	 * Returns the name of the reduction order, for example for display
-	 * when selecting a reduction order in a user interface.
+	 * Returns the name of the reduction order, for example for display when
+	 * selecting a reduction order in a user interface.
+	 * 
 	 * @return The name of the reduction order.
 	 */
 	String getName();

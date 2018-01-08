@@ -3,14 +3,16 @@ package edu.kit.wavelength.client.view.export;
 import java.util.List;
 
 /**
- * This class keeps track of all available export formats.
+ * Static class giving access to all available export formats.
+ *
  */
 public final class Exports {
 
 	/**
-	 * This method provides the information of all available export formats.
+	 * Returns an unmodifiable list of all available export formats.
 	 * 
-	 * @return a collection of all export formats
+	 * @return An unmodifiable list that contains exactly one instance of every
+	 *         export format.
 	 */
 	public static List<Export> all() {
 		return null;

@@ -6,7 +6,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 /**
  * The normal reduction order for the untyped lambda calculus.
  * 
- * The leftmost outermost redex is selected for redection.
+ * The leftmost outermost redex is selected for reduction.
  *
  */
 public final class NormalOrder implements ReductionOrder {

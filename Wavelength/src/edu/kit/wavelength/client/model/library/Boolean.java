@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * A library for working with boolean values.
+ * This library contains lambda terms for the boolean values true and false.
  *
  */
 public final class Boolean implements Library {

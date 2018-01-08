@@ -1,11 +1,16 @@
 @startuml
+participant "exportOption : LabeledButton" as exportOption
 participant "export : SelectExportFormat" as export
 participant "exportWindow : <T extends Writable & Hideable>" as exportWindow
 participant "blocker : Hideable" as blocker
 participant "engine : ExecutionEngine" as engine
 participant "format : ExportFormat" as format
 
+activate exportOption
+exportOption -> export : run()
 activate export
+exportOption <-- export
+deactivate exportOption
 export -> engine : getDisplayed()
 activate engine
 export <-- engine : displayedLambdaTerms

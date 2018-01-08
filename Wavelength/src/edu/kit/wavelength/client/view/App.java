@@ -19,6 +19,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.api.Deactivatable;
+import edu.kit.wavelength.client.view.api.Readable;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.webui.components.Checkbox;
@@ -34,23 +35,29 @@ import edu.kit.wavelength.client.view.webui.components.VisualButton;
  * displayed output. The initial state is the Input state and the output is
  * empty when the application is started.
  */
-public class AppController implements Observer {
+public class App {
 	
-	private static AppController instance = null;
+	private static App instance = null;
 	
-	protected AppController() {}
+	// protected so that App class can be mocket
+	protected App() {}
 	
-	public static AppController get() {
+	public static App get() {
 		if (instance == null) {
-			instance = new AppController();
+			instance = new App();
 			instance.initialize();
 		}
 		return instance;
 	}
 	
-	private static final String UnicodeOutputName = "Unicode";
-	private static final String TreeOutputName = "Tree";
-	private static final List<String> OutputNames = Arrays.asList(UnicodeOutputName, TreeOutputName);
+	// settable to mock the App with mockito
+	public static void set(App c) {
+		instance = c;
+	}
+	
+	public static final String UnicodeOutputName = "Unicode";
+	public static final String TreeOutputName = "Tree";
+	public static final List<String> OutputNames = Arrays.asList(UnicodeOutputName, TreeOutputName);
 	
 	private VisualButton mainMenuButton;
 	private Editor editor;
@@ -69,8 +76,76 @@ public class AppController implements Observer {
 	private List<Checkbox> libraries;
 	private List<LabeledButton> exercises;
 	private ExecutionEngine engine;
+	// etc.
 	
-	private List<Deactivatable> deactivateOnStart;
+	public VisualButton mainMenuButton() {
+		return mainMenuButton;
+	}
+	
+	public Editor editor() {
+		return editor;
+	}
+	
+	public OptionBox outputFormatBox() {
+		return outputFormat;
+	}
+	
+	public OptionBox reductionOrderBox() {
+		return reductionOrder;
+	}
+	
+	public OptionBox outputSizeBox() {
+		return outputSize;
+	}
+	
+	public VisualButton stepBackwardsButton() {
+		return stepBackwards;
+	}
+	
+	public VisualButton stepByStepModeButton() {
+		return stepByStepMode;
+	}
+	
+	public VisualButton stepForwardsButton() {
+		return stepForwards;
+	}
+	
+	public VisualButton terminateButton() {
+		return terminate;
+	}
+	
+	public VisualButton runPauseButton() {
+		return runPause;
+	}
+	
+	public TreeOutput treeOutput() {
+		return treeOutput;
+	}
+	
+	public UnicodeOutput unicodeOutput() {
+		return unicodeOutput;
+	}
+	
+	public VisualButton exportButton() {
+		return export;
+	}
+	
+	public VisualButton shareButton() {
+		return share;
+	}
+	
+	public List<Checkbox> libraryBoxes() {
+		return libraries;
+	}
+	
+	public List<LabeledButton> exerciseButtons() {
+		return exercises;
+	}
+	
+	public ExecutionEngine engine() {
+		return engine;
+	}
+	
 	// etc.
 	
 	public void initialize() {
@@ -92,110 +167,5 @@ public class AppController implements Observer {
 		exercises = Exercises.all().stream().map(e -> new LabeledButton(e.getName())).collect(Collectors.toList());
 		// deactivation lists
 		runPause.setAction(new RunNewExecution());
-	}
-
-	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
-		return list.stream().filter(pred).findFirst().get();
-	}
-	
-	/**
-	 * This method gets called when the reduction process starts. It delegates the
-	 * handling to the current state.
-	 */
-	public void start() {
-		// example code for starting the execution
-		String code = editor.read();
-		String orderName = reductionOrder.read();
-		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
-		String sizeName = outputSize.read();
-		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
-		List<Library> libraries = this.libraries.stream()
-				.filter(Checkbox::isSet)
-				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
-				.collect(Collectors.toList());
-		List<Observer> observers = Arrays.asList(this);
-		engine = new ExecutionEngine(code, order, size, libraries, observers);
-		// possibly error handling, reporting back to editor etc.
-		String outputFormatName = outputFormat.read();
-		switch (outputFormatName) {
-		case UnicodeOutputName:
-			unicodeOutput = new UnicodeOutput();
-			// lots of formatting stuff
-			break;
-		case TreeOutputName:
-			treeOutput = new TreeOutput();
-			// lots of formatting stuff
-			break;
-		}
-	}
-	
-	public void startStepByStep() {
-		
-	}
-
-	/**
-	 * This method gets called when the reduction process stops. It delegates the
-	 * handling to the current state.
-	 */
-	public void stop() {
-
-	}
-
-	/**
-	 * This method gets called when the reduction process is paused. It delegates
-	 * the handling to the current state.
-	 */
-	public void pause() {
-
-	}
-
-	public void unpause() {
-		
-	}
-	
-	public void changeReductionOrder() {
-		
-	}
-	
-	/**
-	 * This method gets called when an exercise is selected. It delegates the
-	 * handling to the current state.
-	 */
-	public void enterExercise(Exercise selected) {
-
-	}
-
-	/**
-	 * This method gets called when the user exits the exercise mode. It delegates
-	 * the handling to the current state.
-	 */
-	public void exitExercise() {
-
-	}
-	
-	/**
-	 * Adds a lambda term to the current output.
-	 */
-	@Override
-	public void addTerm(LambdaTerm term) {
-		// add term to end of currentOutput
-	}
-	
-	/**
-	 * Removes the last lambda term from the current output.
-	 */
-	@Override
-	public void popTerm() {
-		// pop last term in currentOutput
-	}
-
-	@Override
-	public void executionStarted() {
-
-	}
-
-	@Override
-	public void executionStopped() {
-		
 	}
 }

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.view.AppController;
+import edu.kit.wavelength.client.view.App;
 
 /**
  * This action causes the application to transition from {@link Input} ({@link ExerciseInput})
@@ -11,6 +11,6 @@ public class StepByStep implements Action {
 
 	@Override
 	public void run() {
-		AppController.get().startStepByStep();
+		App.get().startStepByStep();
 	}
 }

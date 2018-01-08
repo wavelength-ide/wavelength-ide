@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.view.AppController;
+import edu.kit.wavelength.client.view.App;
 
 /**
  * This action causes the application to leave the {@link AutoExecution} (or
@@ -11,6 +11,6 @@ public class Pause implements Action {
 
 	@Override
 	public void run() {
-		AppController.get().pause();
+		App.get().pause();
 	}
 }

@@ -7,6 +7,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
+\usepackage{currfile}
+
 \usepackage{microtype}
 
 \usepackage{listings}
@@ -16,7 +18,7 @@
 \lstset{basicstyle=\ttfamily}
 
 \newcommand{\lnk}[1]{\hyperref[type:\pkg.#1]{#1}}
-\newcommand{\pkg}{}
+\newcommand{\pkg}{\currfilebase}
 
 \title{THE DESIGN}
 

@@ -7,12 +7,12 @@ package edu.kit.wavelength.client.model.term.parsing;
 public class Tokeniser {
 
 	/**
-	 * Divides a sequence of characters into Tokens. The characters' order is not changed.
+	 * Divides a sequence of characters into Tokens.
 	 * @param input The String to divide into tokens
-	 * @return An array containing all tokens. The order 
+	 * @return An array containing all tokens.
 	 */
 	
-	public Token[] tokenise(char[] input) {
+	public Token[] tokenise(String input) {
 		return null;
 	}
 }

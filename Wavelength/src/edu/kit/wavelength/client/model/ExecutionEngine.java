@@ -81,10 +81,10 @@ public class ExecutionEngine {
 	}
 	
 	/**
-	 * Creates an ExecutionState object containing the current state of this ExecutionEngine.
-	 * @return An ExecutionState object with the current state of the ExecutionEngine
+	 * Serializes the ExecutionEngine by serializing its current OutputSize and ReductionOrder.
+	 * @return The ExecutionEngine's serialized String representation
 	 */
-	public ExecutionState getExecutionState() {
+	public String serialize() {
 		return null;
 	}
 }

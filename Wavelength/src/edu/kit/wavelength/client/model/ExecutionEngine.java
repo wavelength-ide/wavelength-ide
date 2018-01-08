@@ -18,28 +18,8 @@ public class ExecutionEngine {
 	 * @param libraries The libraries to be taken into consideration during parsing
 	 * @param observers The observers to be notified during state changes
 	 */
-	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries, List<Observer> observers) {
+	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
 		
-	}
-	
-	/**
-	 * Starts the reduction process.
-	 */
-	public void start() {
-
-	}
-
-	/**
-	 * Pauses the reduction process after completing the current reduction step.
-	 * A paused execution can be resumed by either invoking startRunning, or by using the stepForward method.
-	 */
-	public void pause() {
-	}
-	
-	/**
-	 * Cancels the reduction process. A cancelled instruction can not be restarted.
-	 */
-	public void cancel() {
 	}
 
 	/**

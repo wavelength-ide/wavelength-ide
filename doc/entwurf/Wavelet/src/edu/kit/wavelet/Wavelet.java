@@ -49,6 +49,67 @@ public class Wavelet {
 		out.write(s);
 	}
 	
+	static void emitMethodBlock(PrintWriter out, ArrayList<MethodDoc> m, ClassDoc cl) {
+		out.write("\\begin{itemize}\n");
+		for (int k = 0; k < m.size(); ++k) {
+			
+			out.write("\\item \\texttt{");
+			
+			if (m.get(k).isPrivate())
+				out.write("private ");
+			if (m.get(k).isProtected())
+				out.write("protected ");
+			if (m.get(k).isPackagePrivate())
+				out.write("package-private ");
+			
+			if (!cl.isInterface() && m.get(k).isAbstract())
+				out.write("abstract ");
+			
+			if (m.get(k).typeParameters().length != 0) {
+				out.write("<");
+				for (int l = 0; l < m.get(k).typeParameters().length; ++l) {
+					if (l > 0)
+						out.write(", ");
+					out.write(m.get(k).typeParameters()[l].typeName());
+				}
+				out.write("> ");
+			}
+			
+			emitType(out, m.get(k).returnType());
+			out.write(" ");
+			out.write(m.get(k).name());
+			out.write("(");
+			Parameter[] p = m.get(k).parameters();
+			for (int l = 0; l < p.length; ++l) {
+				if (l > 0)
+					out.write(", ");
+				emitType(out, p[l].type());
+				out.write(" ");
+				out.write(p[l].name());
+			}
+			out.write(")");
+			out.write("}\n\n");
+			emitComment(out, m.get(k).commentText());
+			out.write("\n\n");
+			ParamTag[] pars = m.get(k).paramTags();
+			for (int l = 0; l < pars.length; ++l) {
+				ParamTag t = pars[l];
+				out.write("\\texttt{");
+				out.write(t.parameterName());
+				out.write("}: ");
+				emitComment(out, t.parameterComment());
+				out.write("\n\n");
+			}
+			Tag[] rt = m.get(k).tags("return");
+			if (rt.length > 0) {
+				out.write("Returns: ");
+				emitComment(out, rt[0].text());
+				out.write("\n\n");
+			}
+		}
+		out.write("\\end{itemize}\n\n");
+	}
+	
 	public static boolean start(RootDoc root)
 	{
 		PrintWriter out;
@@ -200,7 +261,8 @@ public class Wavelet {
         		}
         		
         		MethodDoc[] m_ = cl.methods();
-        		ArrayList<MethodDoc> m = new ArrayList<MethodDoc>();
+        		ArrayList<MethodDoc> ms = new ArrayList<MethodDoc>();
+        		ArrayList<MethodDoc> mns = new ArrayList<MethodDoc>();
         		
         		for (int k = 0; k < m_.length; ++k) {
         			AnnotationDesc[] ann = m_[k].annotations();
@@ -209,70 +271,22 @@ public class Wavelet {
         				if (ann[l].annotationType().typeName().equals("Override"))
         					over = true;
         			}
-        			if (!over)
-        				m.add(m_[k]);
+        			if (!over) {
+        				if (m_[k].isStatic())
+        					ms.add(m_[k]);
+        				else
+        					mns.add(m_[k]);
+        			}
         		}
         	
-        		if (m.size() > 0) {
+        		if (ms.size() > 0) {
+        			out.write("Static methods:\n");
+        			emitMethodBlock(out, ms, cl);
+        		}
+        		
+        		if (mns.size() > 0) {
         			out.write("Methods:\n");
-        			out.write("\\begin{itemize}\n");
-        			for (int k = 0; k < m.size(); ++k) {
-        				
-        				out.write("\\item \\texttt{");
-        				
-        				if (m.get(k).isPrivate())
-        					out.write("private ");
-        				if (m.get(k).isProtected())
-        					out.write("protected ");
-        				if (m.get(k).isPackagePrivate())
-        					out.write("package-private ");
-        				
-        				if (!cl.isInterface() && m.get(k).isAbstract())
-        					out.write("abstract ");
-        				
-        				if (m.get(k).typeParameters().length != 0) {
-        					out.write("<");
-        					for (int l = 0; l < m.get(k).typeParameters().length; ++l) {
-        						if (l > 0)
-        							out.write(", ");
-        						out.write(m.get(k).typeParameters()[l].typeName());
-        					}
-        					out.write("> ");
-        				}
-        				
-        				emitType(out, m.get(k).returnType());
-        				out.write(" ");
-        				out.write(m.get(k).name());
-        				out.write("(");
-        				Parameter[] p = m.get(k).parameters();
-        				for (int l = 0; l < p.length; ++l) {
-        					if (l > 0)
-        						out.write(", ");
-        					emitType(out, p[l].type());
-        					out.write(" ");
-        					out.write(p[l].name());
-        				}
-        				out.write(")");
-        				out.write("}\n\n");
-        				emitComment(out, m.get(k).commentText());
-        				out.write("\n\n");
-        				ParamTag[] pars = m.get(k).paramTags();
-        				for (int l = 0; l < pars.length; ++l) {
-        					ParamTag t = pars[l];
-        					out.write("\\texttt{");
-        					out.write(t.parameterName());
-        					out.write("}: ");
-        					emitComment(out, t.parameterComment());
-        					out.write("\n\n");
-        				}
-        				Tag[] rt = m.get(k).tags("return");
-        				if (rt.length > 0) {
-        					out.write("Returns: ");
-        					emitComment(out, rt[0].text());
-        					out.write("\n\n");
-        				}
-        			}
-        			out.write("\\end{itemize}\n\n");
+        			emitMethodBlock(out, mns, cl);
         		}
         	}
         }

@@ -10,6 +10,16 @@ public class Stop implements Action {
 
 	@Override
 	public void run() {
-		App.get().stop();
+		App app = App.get();
+		app.editor().unblock();
+		app.reductionOrderBox().unblock();
+		app.outputFormatBox().unblock();
+		app.outputSizeBox().unblock();
+		// TODO: app.runPauseButton().?
+		app.terminateButton().block();
+		app.stepBackwardsButton().block();
+		app.stepByStepModeButton().block();
+		app.stepForwardsButton().block();
+		// TODO: block current output view
 	}
 }

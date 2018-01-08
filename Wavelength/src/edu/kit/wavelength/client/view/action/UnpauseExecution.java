@@ -29,6 +29,5 @@ public class UnpauseExecution implements Action {
 
 	@Override
 	public void run() {
-		controller.unpause();
 	}
 }

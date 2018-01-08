@@ -11,6 +11,9 @@ public class Pause implements Action {
 
 	@Override
 	public void run() {
-		App.get().pause();
+		App app = App.get();
+		app.reductionOrderBox().unblock();
+		app.stepByStepModeButton().unblock();
+		// TODO: app.runPauseButton().?
 	}
 }

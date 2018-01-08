@@ -2,8 +2,6 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
-//TODO wer observed den neuen Term der ExecutionEngine?
-
 /**
  * This action displays the next reduction step.
  */

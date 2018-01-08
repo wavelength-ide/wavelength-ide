@@ -18,9 +18,12 @@ import edu.kit.wavelength.client.view.webui.components.Checkbox;
 import edu.kit.wavelength.client.view.webui.components.Editor;
 import edu.kit.wavelength.client.view.webui.components.LabeledButton;
 import edu.kit.wavelength.client.view.webui.components.OptionBox;
+import edu.kit.wavelength.client.view.webui.components.PopUpTextBox;
+import edu.kit.wavelength.client.view.webui.components.TextField;
 import edu.kit.wavelength.client.view.webui.components.TreeOutput;
 import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
 import edu.kit.wavelength.client.view.webui.components.VisualButton;
+import edu.kit.wavelength.client.view.webui.components.WindowFocus;
 
 /**
  * This class handles the current state of the application and the currently
@@ -64,11 +67,26 @@ public class App {
 	private TreeOutput treeOutput;
 	private UnicodeOutput unicodeOutput;
 	private VisualButton export;
+	private PopUpTextBox exportWindow;
+	private WindowFocus uiBlocker;
 	private VisualButton share;
+	private TextField sharePanel;
 	private List<Checkbox> libraries;
 	private List<LabeledButton> exercises;
 	private ExecutionEngine engine;
 	// etc.
+	
+	public TextField sharePanel() {
+		return this.sharePanel;
+	}
+	
+	public WindowFocus uiBlocker() {
+		return this.uiBlocker;
+	}
+	
+	public PopUpTextBox exportWindow() {
+		return this.exportWindow;
+	}
 	
 	public VisualButton mainMenuButton() {
 		return mainMenuButton;

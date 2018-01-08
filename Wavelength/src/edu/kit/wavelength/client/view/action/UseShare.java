@@ -1,7 +1,9 @@
 package edu.kit.wavelength.client.view.action;
 
+import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.URLSerializer;
 import edu.kit.wavelength.client.view.api.Hideable;
+import edu.kit.wavelength.client.view.webui.components.TextField;
 
 
 /**
@@ -15,27 +17,26 @@ import edu.kit.wavelength.client.view.api.Hideable;
 
 public class UseShare implements Action {
 
-	private Hideable shareOutput;
 	private URLSerializer serializer;
 	
 	/**
 	 * Constructs a new Share Action.
 	 * 
-	 * @param panel
-	 *            The Panel that presents the Link to the User.
+
 	 */
-	public UseShare(Hideable shareOutput, URLSerializer serializer) {
-		this.shareOutput = shareOutput;
+	public UseShare(URLSerializer serializer) {
 		this.serializer = serializer;
 	}
 
 	@Override
 	public void run() {
-		if (shareOutput.isShown()) {
-			shareOutput.hide();
+		TextField sharePanel = App.get().sharePanel(); 
+		if (sharePanel.isShown()) {
+			sharePanel.hide();
 		} else {
+			// TODO: woher kommt der serializer?
 			serializer.serialize();
-			shareOutput.show();
+			sharePanel.show();
 		}
 	}
 

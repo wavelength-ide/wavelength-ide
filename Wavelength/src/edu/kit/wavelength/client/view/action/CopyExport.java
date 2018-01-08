@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.api.Readable;
 
 /**
@@ -7,21 +8,9 @@ import edu.kit.wavelength.client.view.api.Readable;
  */
 public class CopyExport implements Action {
 
-	private Readable exporter;
-
-	/**
-	 * Constructs a new CopyExport Action.
-	 * 
-	 * @param exporter
-	 *            The area to copy the export from
-	 */
-	public CopyExport(Readable exporter) {
-		this.exporter = exporter;
-	}
-
 	@Override
 	public void run() {
-		String exported = exporter.read();
+		App.get().exportWindow().read();
 		// copy to clipboard
 	}
 }

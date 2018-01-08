@@ -24,6 +24,5 @@ public class SelectExercise implements Action {
 
 	@Override
 	public void run() {
-		App.get().enterExercise(exercise);
 	}
 }

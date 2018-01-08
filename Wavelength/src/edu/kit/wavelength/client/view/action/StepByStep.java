@@ -11,6 +11,5 @@ public class StepByStep implements Action {
 
 	@Override
 	public void run() {
-		App.get().startStepByStep();
 	}
 }

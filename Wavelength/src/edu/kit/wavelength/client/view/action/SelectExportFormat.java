@@ -1,9 +1,11 @@
 package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
 import edu.kit.wavelength.client.view.export.Export;
+import edu.kit.wavelength.client.view.webui.components.PopUpTextBox;
 
 /**
  * This action displays the current output in the selected export format.
@@ -14,33 +16,22 @@ import edu.kit.wavelength.client.view.export.Export;
  */
 public class SelectExportFormat<T extends Writable & Hideable> implements Action {
 
-	private T exporter;
-	private Hideable blocker;
 	private Export exportFormat;
-	private ExecutionEngine engine;
-	
+
 	/**
 	 * Constructs a new SelectExportFormat.
-	 * 
-	 * @param exporter
-	 *            A View that shows the export format to the User.
-	 * @param blocker
-	 *            A View that blocks the whole Interface except the View that shows
-	 *            the export.
 	 * @param exportFormat
 	 *            The export format the user chose.
 	 */
-	public SelectExportFormat(T exporter, Hideable blocker, Export exportFormat, ExecutionEngine engine) {
-		this.exporter = exporter;
-		this.blocker = blocker;
+	public SelectExportFormat(Export exportFormat) {
 		this.exportFormat = exportFormat;
-		this.engine = engine;
 	}
 
 	@Override
 	public void run() {
-		exporter.write(exportFormat.getRepresentation(engine.getDisplayed()));
-		blocker.show();
-		exporter.show();
+		PopUpTextBox exportWindow = App.get().exportWindow();
+		exportWindow.write(exportFormat.getRepresentation(App.get().engine().getDisplayed()));
+		App.get().uiBlocker().show();
+		exportWindow.show();
 	}
 }

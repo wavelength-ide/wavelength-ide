@@ -1,5 +1,9 @@
 package edu.kit.wavelength.client.view.exercise;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.ExecutionEngine;
+
 /**
  * An exercise consists of a task specifying what the User is supposed to do and
  * a solution specifying what the result should look like. Additionally
@@ -43,9 +47,9 @@ public interface Exercise {
 	String getPredefinitions();
 
 	/**
-	 * Returns an iterable collection of test cases for testing a users soltion.
+	 * Returns a {@link list} of test cases for testing a user´s solution
 	 * 
 	 * @return A collection of test cases
 	 */
-	Iterable<String> getTestCases();
+	List<String> getTestCases();
 }

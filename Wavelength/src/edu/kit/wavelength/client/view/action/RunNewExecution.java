@@ -24,7 +24,7 @@ import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
  * This action causes the application to transition from {@link Input} (or
  * {@link ExerciseInput}) state to {@link AutoExecution} (or
  * {@link ExerciseAutoExecution}) state. It can only be triggered if the current
- * state is {@link} Input (or {@link ExerciseInput}).
+ * state is {@link Input} (or {@link ExerciseInput}).
  */
 public class RunNewExecution implements Action {
 	

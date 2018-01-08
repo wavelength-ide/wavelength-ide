@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.export;
+package edu.kit.wavelength.client.view.export;
 
 import edu.kit.wavelength.client.model.ExecutionState;
 
@@ -13,6 +13,11 @@ public class LispExport implements Export {
 	public String getRepresentation(ExecutionState state) {
 		// format repr
 		return null;
+	}
+
+	@Override
+	public String getName() {
+		return "Lisp";
 	}
 
 }

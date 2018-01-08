@@ -1,9 +1,9 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.export.Export;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
+import edu.kit.wavelength.client.view.export.Export;
 
 /**
  * This action displays the current output in the selected export format.

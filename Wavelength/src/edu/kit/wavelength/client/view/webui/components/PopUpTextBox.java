@@ -1,8 +1,5 @@
 package edu.kit.wavelength.client.view.webui.components;
 
-import com.google.gwt.user.client.ui.DialogBox;
-
-import edu.kit.wavelength.client.view.action.Action;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Readable;
 import edu.kit.wavelength.client.view.api.Writable;
@@ -15,7 +12,7 @@ import edu.kit.wavelength.client.view.api.Writable;
  * TextField. In addition new Buttons can be added via the EntryInjectable
  * interface.
  */
-public class PopUpTextBox implements Writable, Hideable, Readable, EntryInjectable {
+public class PopUpTextBox implements Writable, Hideable, Readable {
 
 	/**
 	 * Creates a new and empty PopUpTextBox.
@@ -25,7 +22,7 @@ public class PopUpTextBox implements Writable, Hideable, Readable, EntryInjectab
 	 * @param name
 	 *            The title of the PupUpTextBox.
 	 */
-	public PopUpTextBox(DialogBox dialogBox, String name) {
+	public PopUpTextBox(String name, String text) {
 
 	}
 
@@ -52,11 +49,6 @@ public class PopUpTextBox implements Writable, Hideable, Readable, EntryInjectab
 	@Override
 	public String read() {
 		return null;
-	}
-	
-	@Override
-	public void addEntry(String name, Action action) {
-
 	}
 	
 }

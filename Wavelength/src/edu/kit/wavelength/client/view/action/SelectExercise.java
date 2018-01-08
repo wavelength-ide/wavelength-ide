@@ -1,14 +1,13 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.UIState;
-import edu.kit.wavelength.client.exercise.Exercise;
+import edu.kit.wavelength.client.view.AppController;
+import edu.kit.wavelength.client.view.exercise.Exercise;
 
 /**
  * This action causes the application to transition to the {@link ExerciseInput} state.
  */
 public class SelectExercise implements Action {
 
-	private UIState state;
 	private Exercise exercise;
 
 	/**
@@ -19,13 +18,12 @@ public class SelectExercise implements Action {
 	 * @param exercise
 	 *            the selected Exercise
 	 */
-	public SelectExercise(final UIState state, final Exercise exercise) {
+	public SelectExercise(final Exercise exercise) {
 
 	}
 
 	@Override
 	public void run() {
-		// state.enterExercise();
-
+		AppController.get().enterExercise(exercise);
 	}
 }

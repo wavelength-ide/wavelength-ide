@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.view.webui.components;
 
-import com.google.gwt.user.client.ui.Button;
-
 import edu.kit.wavelength.client.view.action.Action;
 import edu.kit.wavelength.client.view.api.Clickable;
 import edu.kit.wavelength.client.view.api.Deactivatable;
@@ -23,10 +21,8 @@ public class LabeledButton implements Deactivatable, Hideable, Writable, Clickab
 	 *
 	 * @param text
 	 *            The label and name of this Button
-	 * @param button
-	 *            The GWT Button that this class wraps.
 	 */
-	public LabeledButton(final String text, final Button button) {
+	public LabeledButton(final String text) {
 
 	}
 

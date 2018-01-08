@@ -7,7 +7,7 @@ import edu.kit.wavelength.client.view.api.Hideable;
  */
 public class HideComponent implements Action {
 
-	// intended for: using the menu button, using the export button
+	// intended for: using the menu button, using the export button, hiding the solution
 	
 	private Hideable hideable;
 	

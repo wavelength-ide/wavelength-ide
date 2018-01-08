@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.UIState;
-import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.view.AppController;
 
 /**
  * This action causes the application to leave the {@link AutoExecution} (or
@@ -10,22 +9,8 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
  */
 public class Pause implements Action {
 
-	private ExecutionEngine execution;
-	private UIState state;
-
-	/**
-	 * Constructs a new Pause Action
-	 * 
-	 * @param engine
-	 *            The engine that should be signaled, to stop its calculations.
-	 * @param state
-	 *            The state of the UI that has to change.
-	 */
-	public Pause(ExecutionEngine engine, UIState state) {
-
-	}
-
 	@Override
 	public void run() {
+		AppController.get().pause();
 	}
 }

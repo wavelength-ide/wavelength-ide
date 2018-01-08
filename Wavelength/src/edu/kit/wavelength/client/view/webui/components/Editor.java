@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.webui.components;
 
+import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.view.api.Deactivatable;
 import edu.kit.wavelength.client.view.api.Readable;
 import edu.kit.wavelength.client.view.api.Writable;
@@ -12,7 +13,7 @@ import edu.kit.wavelength.client.view.api.Writable;
  * written into the Editor to communicate with the User. The Editor can be
  * blocked too to prevent the User from changing its content.
  */
-public class Editor implements Readable, Writable, Deactivatable {
+public class Editor implements Readable, Writable, Deactivatable, Serializable {
 
 	@Override
 	public String read() {
@@ -32,5 +33,17 @@ public class Editor implements Readable, Writable, Deactivatable {
 	@Override
 	public void unblock() {
 
+	}
+
+	@Override
+	public String serialize() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deserialize(String serialized) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,8 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
+import edu.kit.wavelength.client.view.URLSerializer;
 import edu.kit.wavelength.client.view.api.Hideable;
-import edu.kit.wavelength.client.view.api.Writable;
-import edu.kit.wavelength.client.view.update.Serializer;
 
 
 /**
@@ -14,10 +13,10 @@ import edu.kit.wavelength.client.view.update.Serializer;
  *            must be able to set its text so the permalink can be set.
  */
 
-public class UseShare<T extends Hideable & Writable> implements Action {
+public class UseShare implements Action {
 
-	private T shareOutput;
-	private Serializer serializer;
+	private Hideable shareOutput;
+	private URLSerializer serializer;
 	
 	/**
 	 * Constructs a new Share Action.
@@ -25,7 +24,7 @@ public class UseShare<T extends Hideable & Writable> implements Action {
 	 * @param panel
 	 *            The Panel that presents the Link to the User.
 	 */
-	public UseShare(T shareOutput, Serializer serializer) {
+	public UseShare(Hideable shareOutput, URLSerializer serializer) {
 		this.shareOutput = shareOutput;
 		this.serializer = serializer;
 	}
@@ -35,7 +34,7 @@ public class UseShare<T extends Hideable & Writable> implements Action {
 		if (shareOutput.isShown()) {
 			shareOutput.hide();
 		} else {
-			shareOutput.write(serializer.serialize());
+			serializer.serialize();
 			shareOutput.show();
 		}
 	}

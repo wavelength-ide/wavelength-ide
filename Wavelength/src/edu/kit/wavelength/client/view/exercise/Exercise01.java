@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.exercise;
+package edu.kit.wavelength.client.view.exercise;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +12,11 @@ public class Exercise01 implements Exercise {
 
 	}
 
+	@Override
+	public String getName() {
+		return "Exercise 01";
+	}
+	
 	@Override
 	public String getTask() {
 		return "Implement the identity function and apply it on 5.";

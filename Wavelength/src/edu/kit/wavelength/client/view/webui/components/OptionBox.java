@@ -1,11 +1,8 @@
 package edu.kit.wavelength.client.view.webui.components;
 
-import java.io.IOException;
-import java.nio.CharBuffer;
+import java.util.List;
 
-import com.google.gwt.user.client.ui.ListBox;
-
-import edu.kit.wavelength.client.view.action.Action;
+import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.view.api.Deactivatable;
 import edu.kit.wavelength.client.view.api.Readable;
 
@@ -15,16 +12,13 @@ import edu.kit.wavelength.client.view.api.Readable;
  * It provides a means for the User to set Options for a calculation. This Box
  * can be blocked and unblocked if changing the Options must not be possible.
  */
-public class OptionBox implements Deactivatable, EntryInjectable, Readable {
+public class OptionBox implements Deactivatable, Readable, Serializable {
 
 	/**
 	 * Constructs a new and empty OptionBox.
-	 * 
-	 * @param listBox
-	 *            The GWT ListBox that this class wraps.
 	 */
-	public OptionBox(ListBox listBox) {
-
+	public OptionBox(List<String> entries) {
+		
 	}
 
 	@Override
@@ -38,14 +32,21 @@ public class OptionBox implements Deactivatable, EntryInjectable, Readable {
 	}
 
 	@Override
-	public void addEntry(String name, Action action) {
-
-	}
-
-	@Override
 	public String read() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String serialize() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deserialize(String serialized) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,9 +1,9 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.exercise.Exercise;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.Observer;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.view.exercise.Exercise;
 
 /**
  * This Action tests a given {@link Exercise}. For each test case the solution
@@ -17,6 +17,8 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  */
 public class TestExercise implements Action, Observer {
 
+	// what is this?
+	
 	private Exercise exercise;
 	private ExecutionEngine userExecutionEngine;
 	private ExecutionEngine testExecutionEngine;
@@ -64,6 +66,12 @@ public class TestExercise implements Action, Observer {
 
 	@Override
 	public void popTerm() {
+		
+	}
+
+	@Override
+	public void addTerm(LambdaTerm term) {
+		// TODO Auto-generated method stub
 		
 	}
 

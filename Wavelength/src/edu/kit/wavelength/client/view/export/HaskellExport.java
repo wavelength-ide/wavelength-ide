@@ -1,7 +1,7 @@
-package edu.kit.wavelength.client.export;
+package edu.kit.wavelength.client.view.export;
 
-import edu.kit.wavelength.client.export.Export;
 import edu.kit.wavelength.client.model.ExecutionState;
+import edu.kit.wavelength.client.view.export.Export;
 
 /**
  * This class translates the current output into Haskell code. Since it is only
@@ -14,6 +14,11 @@ public class HaskellExport implements Export {
 	public String getRepresentation(ExecutionState state) {
 		// format repr
 		return null;
+	}
+
+	@Override
+	public String getName() {
+		return "Haskell";
 	}
 
 }

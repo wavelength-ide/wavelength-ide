@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.exercise;
+package edu.kit.wavelength.client.view.exercise;
 
 /**
  * An exercise consists of a task specifying what the User is supposed to do and
@@ -10,6 +10,8 @@ package edu.kit.wavelength.client.exercise;
  */
 public interface Exercise {
 
+	String getName();
+	
 	/**
 	 * Returns the task.
 	 * 

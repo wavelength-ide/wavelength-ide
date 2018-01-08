@@ -1,16 +1,18 @@
-package edu.kit.wavelength.client.export;
+package edu.kit.wavelength.client.view.export;
 
 import edu.kit.wavelength.client.model.ExecutionState;
 
-/**
- * This class translates the current output into plain text.
- */
-public class PlainTextExport implements Export {
+public class UnicodeExport implements Export {
 
 	@Override
 	public String getRepresentation(ExecutionState state) {
 		// format repr
 		return null;
+	}
+
+	@Override
+	public String getName() {
+		return "Unicode";
 	}
 
 }

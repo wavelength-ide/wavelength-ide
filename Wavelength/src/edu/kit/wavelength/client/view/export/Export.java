@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.export;
+package edu.kit.wavelength.client.view.export;
 
 import edu.kit.wavelength.client.model.ExecutionState;
 
@@ -15,4 +15,6 @@ public interface Export {
 	 */
 	public String getRepresentation(ExecutionState state);
 
+	public String getName();
+	
 }

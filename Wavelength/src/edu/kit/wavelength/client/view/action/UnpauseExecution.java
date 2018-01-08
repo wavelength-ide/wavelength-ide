@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.UIState;
 import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.view.AppController;
 
 /**
  * This Action causes the application to transition from {@link StepByStep} or
@@ -10,10 +10,9 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
  * state is {@link StepByStep} (or {@link ExerciseStepByStep}) while pressing
  * the button.
  */
-public class RunPausedExecution implements Action {
+public class UnpauseExecution implements Action {
 
-	private ExecutionEngine engine;
-	private UIState state;
+	private AppController controller;
 
 	/**
 	 * Constructs a new RunPausedExecution Action
@@ -24,11 +23,12 @@ public class RunPausedExecution implements Action {
 	 * @param state
 	 *            The State of the UI that has to change.
 	 */
-	public RunPausedExecution(ExecutionEngine engine, UIState state) {
+	public UnpauseExecution(AppController controller) {
 
 	}
 
 	@Override
 	public void run() {
+		controller.unpause();
 	}
 }

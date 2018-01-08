@@ -44,9 +44,9 @@
      inkscape:window-height="783"
      id="namedview660"
      showgrid="false"
-     inkscape:zoom="0.71191553"
+     inkscape:zoom="0.35595777"
      inkscape:cx="789.01272"
-     inkscape:cy="331.28773"
+     inkscape:cy="780.77926"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -85,29 +85,6 @@
   <g
      id="g656">
     <!--cluster edu.kit.wavelength.client.model.term-->
-    <polygon
-       fill="#FFFFFF"
-       filter="url(#f16xu469gwgbmd)"
-       points="14,16,282,16,289,38.4883,2126,38.4883,2126,1314,14,1314,14,16"
-       style="stroke: #000000; stroke-width: 2.0;"
-       id="polygon13" />
-    <line
-       style="stroke: #000000; stroke-width: 2.0;"
-       x1="14"
-       x2="289"
-       y1="38.4883"
-       y2="38.4883"
-       id="line15" />
-    <text
-       fill="#000000"
-       font-family="sans-serif"
-       font-size="14"
-       font-weight="bold"
-       lengthAdjust="spacingAndGlyphs"
-       textLength="262"
-       x="18"
-       y="31.5352"
-       id="text17">edu.kit.wavelength.client.model.term</text>
     <!--class LambdaTerm-->
     <a
        target="_top"

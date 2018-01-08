@@ -10,14 +10,14 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    contentScriptType="application/ecmascript"
    contentStyleType="text/css"
-   height="1369.4785"
+   height="618.72601"
    preserveAspectRatio="none"
    version="1.1"
-   viewBox="0 0 5898 1369.4785"
-   width="5898"
+   viewBox="0 0 2523.2231 618.72601"
+   width="2523.2231"
    zoomAndPan="magnify"
    id="svg177"
-   sodipodi:docname="export.svg"
+   sodipodi:docname="exportPackage.svg"
    inkscape:version="0.92.2 5c3e80d, 2017-08-06">
   <metadata
      id="metadata181">
@@ -50,8 +50,8 @@
      fit-margin-bottom="0"
      inkscape:pagecheckerboard="false"
      inkscape:zoom="0.41158841"
-     inkscape:cx="2540.1527"
-     inkscape:cy="616.12536"
+     inkscape:cx="1022.6648"
+     inkscape:cy="276.94041"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -64,12 +64,16 @@
        spacingx="37.795275"
        spacingy="37.795275"
        empspacing="1"
-       units="cm" />
+       units="cm"
+       originx="-1517.4879"
+       originy="-339.18495" />
     <inkscape:grid
        type="xygrid"
        id="grid3961"
        dotted="true"
-       visible="false" />
+       visible="false"
+       originx="-1517.4879"
+       originy="-339.18495" />
   </sodipodi:namedview>
   <defs
      id="defs11">
@@ -102,31 +106,9 @@
          id="feBlend8" />
     </filter>
   </defs>
-  <polygon
-     id="polygon13"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1ubmvbd2h47fh)"
-     points="289,38.4883 1980,38.4883 1980,259 14,259 14,16 282,16 "
-     transform="matrix(1.0481731,0,0,2.5600252,1749.0136,348.51811)" />
-  <line
-     id="line15"
-     y2="447.04913"
-     y1="447.04913"
-     x2="2066.074"
-     x1="1763.1503"
-     style="stroke:#000000;stroke-width:2.09908724" />
-  <text
-     style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
-     id="text17"
-     y="31.5352"
-     x="18"
-     textLength="262"
-     lengthAdjust="spacingAndGlyphs"
-     font-weight="bold"
-     font-size="14"
-     transform="translate(1752.7126,392.38897)">edu.kit.wavelength.client.view.export</text>
   <g
      id="g4957"
-     transform="translate(-123.289,8.2706206)">
+     transform="translate(-1640.7769,-403.29691)">
     <a
        transform="translate(1980.2769,433.55812)"
        target="_top"
@@ -656,7 +638,7 @@
        inkscape:connector-curvature="0" />
     <polygon
        transform="translate(1935.9322,442.04972)"
-       points="801.8636,103.6034 822.7163,107.3673 804.0678,117.4288 "
+       points="804.0678,117.4288 801.8636,103.6034 822.7163,107.3673 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon161" />
     <path
@@ -666,7 +648,7 @@
        inkscape:connector-curvature="0" />
     <polygon
        transform="translate(1952.7961,437.41892)"
-       points="866.0156,116.8234 887.2039,117.0596 870.4929,130.0882 "
+       points="870.4929,130.0882 866.0156,116.8234 887.2039,117.0596 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon164" />
     <path
@@ -676,7 +658,7 @@
        inkscape:connector-curvature="0" />
     <polygon
        transform="translate(1938.7851,434.58163)"
-       points="997,117.3265 1004.0001,137.3264 990.0001,137.3265 "
+       points="990.0001,137.3265 997,117.3265 1004.0001,137.3264 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon167" />
     <path
@@ -686,7 +668,7 @@
        inkscape:connector-curvature="0" />
     <polygon
        transform="translate(1910.1226,438.1671)"
-       points="1123.5071,130.0882 1106.7961,117.0596 1127.9844,116.8234 "
+       points="1127.9844,116.8234 1123.5071,130.0882 1106.7961,117.0596 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon170" />
     <path
@@ -696,7 +678,7 @@
        inkscape:connector-curvature="0" />
     <polygon
        transform="translate(1940.0862,442.16542)"
-       points="1171.2607,107.2602 1192.1116,103.4867 1189.9138,117.3131 "
+       points="1189.9138,117.3131 1171.2607,107.2602 1192.1116,103.4867 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon173" />
   </g>

@@ -5,32 +5,27 @@ import edu.kit.wavelength.client.view.URLSerializer;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.webui.components.TextField;
 
-
 /**
- * This action displays the permalink which encodes the current UI state,
- * options, input and output.
+ * This action toggles the permalink panel. The permalink encodes the current
+ * input, output and settings.
  *
- * @param <T>
- *            The referenced T object must be hideable. Also the application
- *            must be able to set its text so the permalink can be set.
  */
 
 public class UseShare implements Action {
 
 	private URLSerializer serializer;
-	
-	/**
-	 * Constructs a new Share Action.
-	 * 
 
-	 */
 	public UseShare(URLSerializer serializer) {
 		this.serializer = serializer;
 	}
 
+	/**
+	 * Hides the share panel if it is currently shown, otherwise generates the
+	 * permalink that encodes the current input, output and settings.
+	 */
 	@Override
 	public void run() {
-		TextField sharePanel = App.get().sharePanel(); 
+		TextField sharePanel = App.get().sharePanel();
 		if (sharePanel.isShown()) {
 			sharePanel.hide();
 		} else {

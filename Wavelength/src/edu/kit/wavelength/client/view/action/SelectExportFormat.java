@@ -8,18 +8,17 @@ import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.webui.components.PopUpTextBox;
 
 /**
- * This action displays the current output in the selected export format.
- *
- * @param <T>
- *            The referenced T object must be hideable. Also the application
- *            must be able to set its text so the export output can be set.
+ * This action displays the currently displayed output in the selected export
+ * format in a pop up export window.
  */
-public class SelectExportFormat<T extends Writable & Hideable> implements Action {
+public class SelectExportFormat implements Action {
 
 	private Export exportFormat;
 
 	/**
+	 * TODO: besserer javadoc 
 	 * Constructs a new SelectExportFormat.
+	 * 
 	 * @param exportFormat
 	 *            The export format the user chose.
 	 */
@@ -27,6 +26,11 @@ public class SelectExportFormat<T extends Writable & Hideable> implements Action
 		this.exportFormat = exportFormat;
 	}
 
+	/**
+	 * Gets the representation of the current output in the selected export format
+	 * and writes it on the export output window. Displayes this window and disables
+	 * user interaction with all elements, except the export window.
+	 */
 	@Override
 	public void run() {
 		PopUpTextBox exportWindow = App.get().exportWindow();

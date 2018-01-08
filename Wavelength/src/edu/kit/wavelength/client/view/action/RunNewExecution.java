@@ -21,17 +21,19 @@ import edu.kit.wavelength.client.view.webui.components.TreeOutput;
 import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
 
 /**
- * This action causes the application to transition from {@link Input} (or
- * {@link ExerciseInput}) state to {@link AutoExecution} (or
- * {@link ExerciseAutoExecution}) state. It can only be triggered if the current
- * state is {@link Input} (or {@link ExerciseInput}).
+ * This class starts a new reduction process and sets the view accordingly.
  */
 public class RunNewExecution implements Action {
-	
+
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
 	}
-	
+
+	/**
+	 * Reads the users input and all required options from the option menus and
+	 * delegates the reduction process to a new ExectuionEngine instance.
+	 * Disables the editor and option menus and toggles the play button.
+	 */
 	@Override
 	public void run() {
 		App a = App.get();
@@ -41,8 +43,7 @@ public class RunNewExecution implements Action {
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
 		String sizeName = a.outputSizeBox().read();
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
-		List<Library> libraries = a.libraryBoxes().stream()
-				.filter(Checkbox::isSet)
+		List<Library> libraries = a.libraryBoxes().stream().filter(Checkbox::isSet)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
 				.collect(Collectors.toList());
 		List<Observer> observers = Arrays.asList(new UpdateOutput());

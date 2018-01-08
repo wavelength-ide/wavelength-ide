@@ -3,6 +3,7 @@ package edu.kit.wavelength.client.view.action;
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
+ *  TODO : javadoc erneuern
  * This action removes the last reduction step from the output area.
  */
 public class StepBackward implements Action {

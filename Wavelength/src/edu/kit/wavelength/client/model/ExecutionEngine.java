@@ -6,6 +6,7 @@ import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 public class ExecutionEngine {
 
@@ -65,6 +66,22 @@ public class ExecutionEngine {
 	}
 	
 	/**
+	 * Returns a list of all lambda terms that have been displayed.
+	 * @return A list of all lambda terms that have been displayed
+	 */
+	public List<LambdaTerm> getDisplayed() {
+		return null;
+	}
+	
+	/**
+	 * Returns the last lambda term that has been displayed.
+	 * @return The last lambda term that has been displayed
+	 */
+	public LambdaTerm getLast() {
+		return null;
+	}
+	
+	/**
 	 * Changes the active reduction order to the entered one.
 	 * @param type The new reduction order.
 	 */
@@ -78,13 +95,5 @@ public class ExecutionEngine {
 	 */
 	public void setOutputSize(OutputSize size) {
 		
-	}
-	
-	/**
-	 * Creates an ExecutionState object containing the current state of this ExecutionEngine.
-	 * @return An ExecutionState object with the current state of the ExecutionEngine
-	 */
-	public ExecutionState getExecutionState() {
-		return null;
 	}
 }

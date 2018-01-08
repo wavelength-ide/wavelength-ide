@@ -230,6 +230,16 @@ public class Wavelet {
         				if (!cl.isInterface() && m.get(k).isAbstract())
         					out.write("abstract ");
         				
+        				if (m.get(k).typeParameters().length != 0) {
+        					out.write("<");
+        					for (int l = 0; l < m.get(k).typeParameters().length; ++l) {
+        						if (l > 0)
+        							out.write(", ");
+        						out.write(m.get(k).typeParameters()[l].typeName());
+        					}
+        					out.write("> ");
+        				}
+        				
         				emitType(out, m.get(k).returnType());
         				out.write(" ");
         				out.write(m.get(k).name());

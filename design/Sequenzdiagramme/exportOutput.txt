@@ -1,9 +1,9 @@
 @startuml
 participant "export : SelectExportFormat" as export
-participant "blocker : Hideable" as blocker
-participant "format : ExportFormat" as format
-participant "engine : ExecutionEngine" as engine
 participant "exportWindow : <T extends Writable & Hideable>" as exportWindow
+participant "blocker : Hideable" as blocker
+participant "engine : ExecutionEngine" as engine
+participant "format : ExportFormat" as format
 
 activate export
 export -> engine : getDisplayed()
@@ -14,10 +14,20 @@ export -> format : getRepresentation(displayedLambdaTerms)
 activate format
 export <-- format : output
 deactivate format
+export -> exportWindow : write(output)
+activate exportWindow
+export <-- exportWindow
+deactivate exportWindow
 export -> blocker : show()
 activate blocker
 export <-- blocker
 deactivate blocker
+export -> exportWindow : show()
+activate exportWindow
+export <-- exportWindow
+deactivate exportWindow
+deactivate export
+
 
 
 

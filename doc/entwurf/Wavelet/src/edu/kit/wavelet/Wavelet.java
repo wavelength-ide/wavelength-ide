@@ -5,6 +5,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import java.util.regex.*;
+
 import com.sun.javadoc.*;
 
 public class Wavelet {
@@ -37,6 +39,14 @@ public class Wavelet {
 			out.write(">");
 		}
 		out.write(t.dimension());
+	}
+	
+	static void emitComment(PrintWriter out, String s) {
+		Pattern p = Pattern.compile("\\{@(?:(?:code)|(?:link)) ([^\\}]*)\\}");
+		Matcher m = p.matcher(s);
+		s = m.replaceAll("\\\\texttt{$1}");
+		
+		out.write(s);
 	}
 	
 	public static boolean start(RootDoc root)
@@ -131,7 +141,7 @@ public class Wavelet {
         			out.write("\n\n");
         		}
         		
-        		out.write(cl.commentText());
+        		emitComment(out, cl.commentText());
         		out.write("\n\n");
         		
         		ParamTag[] ty = cl.typeParamTags();
@@ -139,7 +149,7 @@ public class Wavelet {
         			out.write("\\texttt{<");
         			out.write(ty[k].parameterName());
         			out.write(">}: ");
-        			out.write(ty[k].parameterComment());
+        			emitComment(out, ty[k].parameterComment());
         			out.write("\n\n");
         		}
         		
@@ -174,7 +184,7 @@ public class Wavelet {
         				}
         				out.write(")");
         				out.write("}\n\n");
-        				out.write(c.get(k).commentText());
+        				emitComment(out, c.get(k).commentText());
         				out.write("\n\n");
         				Tag[] pars = c.get(k).tags("param");
         				for (int l = 0; l < pars.length; ++l) {
@@ -182,7 +192,7 @@ public class Wavelet {
         					out.write("\\texttt{");
         					out.write(t.parameterName());
         					out.write("}: ");
-        					out.write(t.parameterComment());
+        					emitComment(out, t.parameterComment());
         					out.write("\n\n");
         				}
         			}
@@ -234,7 +244,7 @@ public class Wavelet {
         				}
         				out.write(")");
         				out.write("}\n\n");
-        				out.write(m.get(k).commentText());
+        				emitComment(out, m.get(k).commentText());
         				out.write("\n\n");
         				ParamTag[] pars = m.get(k).paramTags();
         				for (int l = 0; l < pars.length; ++l) {
@@ -242,13 +252,13 @@ public class Wavelet {
         					out.write("\\texttt{");
         					out.write(t.parameterName());
         					out.write("}: ");
-        					out.write(t.parameterComment());
+        					emitComment(out, t.parameterComment());
         					out.write("\n\n");
         				}
         				Tag[] rt = m.get(k).tags("return");
         				if (rt.length > 0) {
         					out.write("Returns: ");
-        					out.write(rt[0].text());
+        					emitComment(out, rt[0].text());
         					out.write("\n\n");
         				}
         			}

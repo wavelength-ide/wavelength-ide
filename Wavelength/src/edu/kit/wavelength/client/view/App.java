@@ -23,14 +23,13 @@ import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 import edu.kit.wavelength.client.view.webui.component.Checkbox;
 import edu.kit.wavelength.client.view.webui.component.Editor;
-import edu.kit.wavelength.client.view.webui.component.TextButton;
+import edu.kit.wavelength.client.view.webui.component.ImageButton;
 import edu.kit.wavelength.client.view.webui.component.OptionBox;
 import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
+import edu.kit.wavelength.client.view.webui.component.TextButton;
 import edu.kit.wavelength.client.view.webui.component.TextField;
 import edu.kit.wavelength.client.view.webui.component.TreeOutput;
 import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
-import edu.kit.wavelength.client.view.webui.component.ImageButton;
-import edu.kit.wavelength.client.view.webui.component.WindowFocus;
 
 /**
  * This class handles the current state of the application and the currently
@@ -86,10 +85,6 @@ public class App {
 	
 	public TextField sharePanel() {
 		return this.sharePanel;
-	}
-	
-	public WindowFocus uiBlocker() {
-		return this.uiBlocker;
 	}
 	
 	public PopUpWindow exportWindow() {

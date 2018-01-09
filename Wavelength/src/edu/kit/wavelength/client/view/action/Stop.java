@@ -15,14 +15,14 @@ public class Stop implements Action {
 	@Override
 	public void run() {
 		App app = App.get();
-		app.editor().unblock();
-		app.reductionOrderBox().unblock();
-		app.outputFormatBox().unblock();
-		app.outputSizeBox().unblock();
-		app.terminateButton().block();
-		app.stepBackwardsButton().block();
-		app.stepByStepModeButton().block();
-		app.stepForwardsButton().block();
+		app.editor().unlock();
+		app.reductionOrderBox().unlock();
+		app.outputFormatBox().unlock();
+		app.outputSizeBox().unlock();
+		app.terminateButton().lock();
+		app.stepBackwardButton().lock();
+		app.stepByStepModeButton().lock();
+		app.stepForwardButton().lock();
 		//etc.
 	}
 }

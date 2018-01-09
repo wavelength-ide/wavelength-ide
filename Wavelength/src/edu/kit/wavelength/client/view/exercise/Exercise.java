@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.view.exercise;
 
-import java.util.List;
-
 import edu.kit.wavelength.client.model.ExecutionEngine;
 
 /**
@@ -45,11 +43,4 @@ public interface Exercise {
 	 * @return the predefined code
 	 */
 	String getPredefinitions();
-
-	/**
-	 * Returns a {@link list} of test cases for testing a user´s solution
-	 * 
-	 * @return A collection of test cases
-	 */
-	List<String> getTestCases();
 }

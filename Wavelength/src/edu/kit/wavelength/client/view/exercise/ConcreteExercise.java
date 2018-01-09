@@ -47,9 +47,4 @@ public class ConcreteExercise implements Exercise {
 		return this.predefinitions;
 	}
 
-	@Override
-	public List<String> getTestCases() {
-		return this.testCases;
-	}
-
 }

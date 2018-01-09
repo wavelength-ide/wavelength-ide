@@ -3,11 +3,7 @@ package edu.kit.wavelength.client.view.action;
 import edu.kit.wavelength.client.view.App;
 
 /**
- * This Action causes the application to transition from {@link StepByStep} or
- * ({@link ExerciseStepByStep}) state to {@link AutoExecution} (or
- * {@link ExerciseAutoExecution}) state. It is only triggered, if the current
- * state is {@link StepByStep} (or {@link ExerciseStepByStep}) while pressing
- * the button.
+ *  TODO : javadoc erneuern
  */
 public class UnpauseExecution implements Action {
 

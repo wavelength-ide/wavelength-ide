@@ -4,17 +4,17 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 
 /**
- * This action causes the application to transition to the {@link ExerciseInput} state.
+ * This class changes the view from standard input to exercise view to display
+ * the selected exercise.
  */
 public class SelectExercise implements Action {
 
 	private Exercise exercise;
 
 	/**
+	 * TODO : besserer javadoc 
 	 * Constructs a new SelectExercise Action.
 	 * 
-	 * @param state
-	 *            The state of the UI that has to change.
 	 * @param exercise
 	 *            the selected Exercise
 	 */
@@ -22,6 +22,11 @@ public class SelectExercise implements Action {
 
 	}
 
+	/**
+	 * Reduces the editors width and displays the task in the enabled task view
+	 * window. Also shows buttons for exiting this exercise view and for displaying
+	 * the sample solution.
+	 */
 	@Override
 	public void run() {
 	}

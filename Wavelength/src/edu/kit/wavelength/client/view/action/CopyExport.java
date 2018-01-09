@@ -4,10 +4,15 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.api.Readable;
 
 /**
- * This action copies the current export output to the clipboard.
+ * This action class copies the generated and displayed export output to the
+ * users clipboard.
  */
 public class CopyExport implements Action {
 
+	/**
+	 * Reads the current export output from the export output window and copies it
+	 * to the users clipboard.
+	 */
 	@Override
 	public void run() {
 		App.get().exportWindow().read();

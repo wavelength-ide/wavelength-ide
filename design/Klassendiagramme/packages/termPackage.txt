@@ -1,0 +1,158 @@
+@startuml
+package edu.kit.wavelength.client.model.term <<Folder>> {
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+    LambdaTerm deserialize(String serialized)
+    T acceptVisitor(Visitor<T> v)
+}
+interface Serializable [[java:edu.kit.wavelength.client.model.serialization.Serializable]] {
+}
+Serializable <|-- LambdaTerm
+class Abstraction [[java:edu.kit.wavelength.client.model.term.Abstraction]] {
+    +Abstraction(String preferredName, LambdaTerm inner)
+    +T acceptVisitor(Visitor<T> v)
+    +String getPreferredName()
+    +LambdaTerm getInner()
+    +boolean equals(Object other)
+    +String serialize()
+}
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+LambdaTerm <|.. Abstraction
+class IsRedexVisitor [[java:edu.kit.wavelength.client.model.term.IsRedexVisitor]] {
+    +Boolean visitAbstraction(Abstraction abs)
+    +Boolean visitApplication(Application app)
+    +Boolean visitBoundVariable(BoundVariable var)
+    +Boolean visitFreeVariable(FreeVariable var)
+    +Boolean visitPartialApplication(PartialApplication app)
+}
+NameAgnosticVisitor <|-- IsRedexVisitor
+class IsAbstractionVisitor [[java:edu.kit.wavelength.client.model.term.IsAbstractionVisitor]] {
+    +Boolean visitAbstraction(Abstraction abs)
+    +Boolean visitApplication(Application app)
+    +Boolean visitBoundVariable(BoundVariable var)
+    +Boolean visitFreeVariable(FreeVariable var)
+    +Boolean visitPartialApplication(PartialApplication app)
+}
+NameAgnosticVisitor <|-- IsAbstractionVisitor
+class BoundVariable [[java:edu.kit.wavelength.client.model.term.BoundVariable]] {
+    +BoundVariable(int deBruijnIndex)
+    +T acceptVisitor(Visitor<T> v)
+    +int getDeBruijnIndex()
+    +boolean equals(Object other)
+    +String serialize()
+}
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+LambdaTerm <|.. BoundVariable
+class SubstitutionVisitor [[java:edu.kit.wavelength.client.model.term.SubstitutionVisitor]] {
+    -int depth
+    +SubstitutionVisitor(int depth, LambdaTerm substituent)
+    +LambdaTerm visitPartialApplication(PartialApplication app)
+    +LambdaTerm visitAbstraction(Abstraction abs)
+    +LambdaTerm visitApplication(Application app)
+    +LambdaTerm visitBoundVariable(BoundVariable var)
+    +LambdaTerm visitFreeVariable(FreeVariable var)
+}
+class LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+SubstitutionVisitor --> "1" LambdaTerm : substituent
+class TermTransformer [[java:edu.kit.wavelength.client.model.term.TermTransformer]] {
+}
+TermTransformer <|-- SubstitutionVisitor
+class Application [[java:edu.kit.wavelength.client.model.term.Application]] {
+    +Application(LambdaTerm leftHandSide, LambdaTerm rightHandSide)
+    +T acceptVisitor(Visitor<T> v)
+    +LambdaTerm getLeftHandSide()
+    +LambdaTerm getRightHandSide()
+    +boolean equals(Object other)
+    +String serialize()
+}
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+LambdaTerm <|.. Application
+abstract class TermTransformer [[java:edu.kit.wavelength.client.model.term.TermTransformer]] {
+    +LambdaTerm visitNamedTerm(NamedTerm term)
+    +{abstract}LambdaTerm visitPartialApplication(PartialApplication app)
+    +{abstract}LambdaTerm visitAbstraction(Abstraction abs)
+    +{abstract}LambdaTerm visitApplication(Application app)
+    +{abstract}LambdaTerm visitBoundVariable(BoundVariable var)
+    +{abstract}LambdaTerm visitFreeVariable(FreeVariable var)
+}
+Visitor <|.. TermTransformer
+abstract class NameAgnosticVisitor [[java:edu.kit.wavelength.client.model.term.NameAgnosticVisitor]] {
+    +T visitNamedTerm(NamedTerm term)
+    +{abstract}T visitPartialApplication(PartialApplication app)
+    +{abstract}T visitAbstraction(Abstraction abs)
+    +{abstract}T visitApplication(Application app)
+    +{abstract}T visitBoundVariable(BoundVariable var)
+    +{abstract}T visitFreeVariable(FreeVariable var)
+}
+Visitor <|.. NameAgnosticVisitor
+abstract class ResolvedNamesVisitor [[java:edu.kit.wavelength.client.model.term.ResolvedNamesVisitor]] {
+    +T visitAbstraction(Abstraction abs)
+    +{abstract}T visitApplication(Application app)
+    +T visitBoundVariable(BoundVariable var)
+    +{abstract}T visitNamedTerm(NamedTerm term)
+    +{abstract}T visitPartialApplication(PartialApplication app)
+    +{abstract}T visitFreeVariable(FreeVariable var)
+    #{abstract}T visitBoundVariable(BoundVariable var, String resolvedName)
+    #{abstract}T visitAbstraction(Abstraction abs, String resolvedName)
+}
+Visitor <|.. ResolvedNamesVisitor
+class NamedTerm [[java:edu.kit.wavelength.client.model.term.NamedTerm]] {
+    +NamedTerm(String name, LambdaTerm inner)
+    +T acceptVisitor(Visitor<T> v)
+    +LambdaTerm getInner()
+    +String getName()
+    +boolean equals(Object other)
+    +String serialize()
+}
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+LambdaTerm <|.. NamedTerm
+interface Visitor [[java:edu.kit.wavelength.client.model.term.Visitor]] {
+    T visitAbstraction(Abstraction abs)
+    T visitApplication(Application app)
+    T visitBoundVariable(BoundVariable var)
+    T visitFreeVariable(FreeVariable var)
+    T visitNamedTerm(NamedTerm term)
+    T visitPartialApplication(PartialApplication app)
+}
+class FreeVariable [[java:edu.kit.wavelength.client.model.term.FreeVariable]] {
+    +FreeVariable(String name)
+    +T acceptVisitor(Visitor<T> v)
+    +String getName()
+    +boolean equals(Object other)
+    +String serialize()
+}
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+LambdaTerm <|.. FreeVariable
+class BetaReducer [[java:edu.kit.wavelength.client.model.term.BetaReducer]] {
+    +BetaReducer(Application toReduce)
+    +LambdaTerm visitPartialApplication(PartialApplication app)
+    +LambdaTerm visitAbstraction(Abstraction abs)
+    +LambdaTerm visitApplication(Application app)
+    +LambdaTerm visitBoundVariable(BoundVariable var)
+    +LambdaTerm visitFreeVariable(FreeVariable var)
+}
+class Application [[java:edu.kit.wavelength.client.model.term.Application]] {
+}
+BetaReducer --> "1" Application : toReduce
+class TermTransformer [[java:edu.kit.wavelength.client.model.term.TermTransformer]] {
+}
+TermTransformer <|-- BetaReducer
+abstract class PartialApplication [[java:edu.kit.wavelength.client.model.term.PartialApplication]] {
+    +PartialApplication(String name, LambdaTerm inner, int numParameters, Visitor<Boolean>[] checks)
+    +T acceptVisitor(Visitor<T> v)
+    +LambdaTerm getRepresented()
+    +String getName()
+    +LambdaTerm accept(LambdaTerm nextParam)
+    #{abstract}LambdaTerm accelerate(LambdaTerm[] parameters)
+    +{abstract}boolean equals(Object other)
+}
+interface LambdaTerm [[java:edu.kit.wavelength.client.model.term.LambdaTerm]] {
+}
+LambdaTerm <|.. PartialApplication
+}
+@enduml

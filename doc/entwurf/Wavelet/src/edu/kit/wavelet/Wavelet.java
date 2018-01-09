@@ -271,7 +271,7 @@ public class Wavelet {
         				if (ann[l].annotationType().typeName().equals("Override"))
         					over = true;
         			}
-        			if (!over) {
+        			if (!over || !m_[k].commentText().isEmpty()) {
         				if (m_[k].isStatic())
         					ms.add(m_[k]);
         				else

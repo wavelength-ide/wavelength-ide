@@ -786,9 +786,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.24748737"
-     inkscape:cx="3180.4527"
-     inkscape:cy="1192.7479"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="1557.9932"
+     inkscape:cy="230.67744"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -13594,29 +13594,6 @@ Country: DE
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon16675" />
     <path
-       sodipodi:nodetypes="cc"
-       d="m 1206.7821,-192.32062 137.6523,164.465763"
-       id="path17328"
-       style="fill:none;stroke:#a80036;stroke-width:0.53103483"
-       inkscape:connector-curvature="0" />
-    <polygon
-       inkscape:transform-center-y="4.0903024"
-       inkscape:transform-center-x="-1.207455"
-       transform="matrix(0.18525678,0.13072857,-0.13072857,0.18525678,1066.4279,-508.1864)"
-       points="1723.8292,1167.0163 1726.4744,1172.0165 1721.4742,1174.6618 1731.2529,1173.4884 "
-       style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       id="polygon17330" />
-    <path
-       d="m 1216.9917,1.1177812 c 0,62.9165048 0,143.0377688 0,205.6916988"
-       id="path17336"
-       style="fill:none;stroke:#a80036;stroke-width:0.63668388;stroke-dasharray:4.45678684, 4.45678684"
-       inkscape:connector-curvature="0" />
-    <polygon
-       transform="matrix(0.2267378,0,0,0.2267378,1002.3975,-321.67142)"
-       points="1018.0001,1064.1282 1004.0001,1064.1282 1011,1044.1282 "
-       style="fill:none;stroke:#a80036;stroke-width:1"
-       id="polygon17338" />
-    <path
        inkscape:connector-curvature="0"
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
        id="path17340"
@@ -13774,5 +13751,136 @@ Country: DE
        id="path17410"
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
        inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path17412"
+       d="m 266.89798,79.087596 264.6212,1.012324"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       inkscape:transform-center-y="0.44564758"
+       inkscape:transform-center-x="0.033866038"
+       transform="matrix(-0.50447762,0.16636895,-0.16636895,-0.50447762,1807.384,265.07792)"
+       points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       id="polygon17414" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path17416"
+       d="m 741.42843,-38.946389 227.96173,0.04414"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path17418"
+       d="m 969.2424,-416.66275 0.14776,377.760501"
+       sodipodi:nodetypes="cc" />
+    <polygon
+       id="polygon17420"
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       points="1018.0001,1064.1282 1004.0001,1064.1282 1011,1044.1282 "
+       transform="matrix(0.43243114,0,0,-0.43243114,-69.504946,376.87292)" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path17422"
+       d="m 368.06415,-103.18276 c 0,6.08498 0,13.833923 0,19.893509" />
+    <path
+       d="m 642.92494,-103.18276 c -84.07379,0 -191.13788,0 -274.86079,0"
+       id="path17424"
+       style="fill:none;stroke:#a80036;stroke-width:0.48940709;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path17426"
+       d="m 642.92494,-143.85349 c 0,12.44027 0,28.28237 0,40.67073" />
+    <path
+       d="m 527.19723,-143.85349 c 0,12.44027 0,28.28237 0,40.67073"
+       id="path17428"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <polygon
+       id="polygon17430"
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
+       transform="matrix(0.43243114,0,0,0.43243114,587.19107,-738.78761)" />
+    <path
+       d="m 1024.5272,-278.62544 c 0,8.5927 0,18.57058 0,26.54809"
+       id="path17432"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
+       id="path17434"
+       d="m 1024.5272,-252.07735 c -55.81486,0 -120.62758,0 -172.44685,0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       id="path17436"
+       d="m 917.93791,-250.73084 c 0,27.06573 0,58.49457 0,83.62254" />
+    <path
+       d="m 852.08035,-251.54818 c 0,27.06573 0,58.49457 0,83.62254"
+       id="path17438"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <polygon
+       transform="matrix(0.43243114,0,0,0.43243114,642.25396,-548.48092)"
+       points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon17440" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.44116828;stroke-miterlimit:4;stroke-dasharray:3.08817785, 3.08817785;stroke-dashoffset:0"
+       id="path17442"
+       d="m 1079.5901,-87.7896 c 0,6.68957 0,14.457527 0,20.66816" />
+    <path
+       d="m 1079.0502,-64.208858 c -73.462,0 -158.76674,0 -226.96985,0"
+       id="path17444"
+       style="fill:none;stroke:#a80036;stroke-width:0.57362282;stroke-miterlimit:4;stroke-dasharray:4.01535983, 4.01535983;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.51095408;stroke-miterlimit:4;stroke-dasharray:3.57667848, 3.57667848;stroke-dashoffset:0"
+       id="path17446"
+       d="m 852.08035,-151.53557 c 0,28.26464 0,61.085663 0,87.326712" />
+    <path
+       d="m 917.93791,-151.76239 c 0,28.26464 0,61.085606 0,87.326643"
+       id="path17448"
+       style="fill:none;stroke:#a80036;stroke-width:0.51095408;stroke-miterlimit:4;stroke-dasharray:3.57667848, 3.57667848;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <text
+       transform="matrix(0.2267378,0,0,0.18916948,647.27169,17.323669)"
+       font-size="13"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="58"
+       x="1489"
+       y="1012.0684"
+       id="text17450"
+       style="font-size:17.03388596px;font-family:sans-serif;fill:#000000">
+      <tspan
+         style="font-size:17.03388596px;line-height:3.25"
+         id="tspan17452">libraries</tspan>
+    </text>
+    <text
+       style="font-size:22.43122864px;font-family:sans-serif;fill:#000000"
+       id="text17456"
+       y="1012.0684"
+       x="1489"
+       textLength="58"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="13"
+       transform="matrix(0.13075107,0,0,0.18916948,447.8726,22.426347)">size</text>
+    <text
+       transform="matrix(0.19066257,0,0,0.18916948,69.062801,23.900452)"
+       font-size="13"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="58"
+       x="1489"
+       y="1012.0684"
+       id="text17460"
+       style="font-size:22.43122864px;font-family:sans-serif;fill:#000000">order</text>
   </g>
 </svg>

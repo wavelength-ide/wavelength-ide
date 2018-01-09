@@ -10,11 +10,11 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    contentScriptType="application/ecmascript"
    contentStyleType="text/css"
-   height="618.72601"
+   height="670"
    preserveAspectRatio="none"
    version="1.1"
-   viewBox="0 0 2523.2231 618.72601"
-   width="2523.2231"
+   viewBox="0 0 2000 670"
+   width="2000"
    zoomAndPan="magnify"
    id="svg177"
    sodipodi:docname="exportPackage.svg"
@@ -41,40 +41,20 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:window-width="1440"
-     inkscape:window-height="783"
+     inkscape:window-height="781"
      id="namedview179"
-     showgrid="true"
+     showgrid="false"
      fit-margin-top="0"
-     fit-margin-left="-0.5"
+     fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:pagecheckerboard="false"
-     inkscape:zoom="0.41158841"
-     inkscape:cx="1022.6648"
-     inkscape:cy="276.94041"
+     inkscape:zoom="0.14551848"
+     inkscape:cx="-232.98333"
+     inkscape:cy="897.89813"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg177">
-    <inkscape:grid
-       type="xygrid"
-       id="grid270"
-       snapvisiblegridlinesonly="true"
-       dotted="false"
-       spacingx="37.795275"
-       spacingy="37.795275"
-       empspacing="1"
-       units="cm"
-       originx="-1517.4879"
-       originy="-339.18495" />
-    <inkscape:grid
-       type="xygrid"
-       id="grid3961"
-       dotted="true"
-       visible="false"
-       originx="-1517.4879"
-       originy="-339.18495" />
-  </sodipodi:namedview>
+     inkscape:current-layer="svg177" />
   <defs
      id="defs11">
     <filter
@@ -105,581 +85,631 @@
          mode="normal"
          id="feBlend8" />
     </filter>
+    <filter
+       y="-1"
+       x="-1"
+       width="3"
+       id="f1ubmvbd2h47fh-0"
+       height="3">
+      <feGaussianBlur
+         id="feGaussianBlur2-2"
+         stdDeviation="2.0"
+         result="blurOut" />
+      <feColorMatrix
+         id="feColorMatrix4-4"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         type="matrix"
+         result="blurOut2"
+         in="blurOut" />
+      <feOffset
+         id="feOffset6-8"
+         result="blurOut3"
+         in="blurOut2"
+         dy="4.0"
+         dx="4.0" />
+      <feBlend
+         id="feBlend8-3"
+         mode="normal"
+         in2="blurOut3"
+         in="SourceGraphic" />
+    </filter>
   </defs>
+  <polygon
+     id="polygon13"
+     style="fill:#ffffff;stroke:#000000;stroke-width:1.25692189;stroke-miterlimit:4;stroke-dasharray:none;filter:url(#f1ubmvbd2h47fh)"
+     points="282,16 289,38.4883 1980,38.4883 1980,259 14,259 14,16 "
+     transform="matrix(1,0,0,2.5318815,7.2298699,-10)" />
+  <line
+     id="line15"
+     y2="53"
+     y1="53"
+     x2="290.76331"
+     x1="21.22987"
+     style="stroke:#000000;stroke-width:1.9800216" />
+  <text
+     style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
+     id="text17"
+     y="31.5352"
+     x="18"
+     textLength="262"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="14"
+     transform="translate(7.2298699,14.5)">edu.kit.wavelength.client.view.export</text>
   <g
-     id="g4957"
-     transform="translate(-1640.7769,-403.29691)">
+     transform="translate(-1883.0096,-356.7)"
+     id="g4957">
     <a
-       transform="translate(1980.2769,433.55812)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.UnicodeExport"
-       xlink:show="new"
+       id="a38"
+       xlink:type="simple"
        xlink:title="java:edu.kit.wavelength.client.view.export.UnicodeExport"
-       xlink:type="simple"
-       id="a38">
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.UnicodeExport"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(1980.2769,433.55812)">
       <rect
-         height="73.910202"
-         id="UnicodeExport"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="362"
+         y="177"
          x="22"
-         y="177" />
+         width="362"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="UnicodeExport"
+         height="73.910202" />
       <circle
-         cx="156.75"
-         cy="193"
-         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse20"
-         r="11" />
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         cy="193"
+         cx="156.75" />
       <path
-         d="m 159.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         inkscape:connector-curvature="0"
          id="path22"
-         inkscape:connector-curvature="0" />
+         d="m 159.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
       <text
-         font-size="12"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="84"
-         x="177.25"
-         y="197.5352"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
          id="text24"
-         style="font-size:12px;font-family:sans-serif;fill:#000000">UnicodeExport</text>
+         y="197.5352"
+         x="177.25"
+         textLength="84"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="12">UnicodeExport</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="23"
-         x2="383"
-         y1="209"
+         id="line26"
          y2="209"
-         id="line26" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="23"
+         y1="209"
          x2="383"
-         y1="217"
+         x1="23"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line28"
          y2="217"
-         id="line28" />
+         y1="217"
+         x2="383"
+         x1="23"
+         style="stroke:#a80036;stroke-width:1.5" />
       <circle
-         cx="33"
-         cy="228.97749"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         r="3"
          id="ellipse30"
-         r="3" />
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="228.97749"
+         cx="33" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="336"
-         x="42"
-         y="231.6348"
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text32"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
-      <circle
-         cx="33"
-         cy="241.9326"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
-         id="ellipse34"
-         r="3" />
-      <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="90"
+         y="231.6348"
          x="42"
-         y="244.5898"
+         textLength="336"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
+      <circle
+         r="3"
+         id="ellipse34"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="241.9326"
+         cx="33" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text36"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getName()</text>
+         y="244.5898"
+         x="42"
+         textLength="90"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getName()</text>
     </a>
     <a
-       transform="translate(1936.9236,434.20711)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.Export"
-       xlink:show="new"
+       id="a55"
+       xlink:type="simple"
        xlink:title="java:edu.kit.wavelength.client.view.export.Export"
-       xlink:type="simple"
-       id="a55">
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.Export"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(1936.9236,434.20711)">
       <rect
-         height="73.910202"
-         id="Export"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="348"
+         y="43"
          x="823"
-         y="43" />
+         width="348"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="Export"
+         height="73.910202" />
       <circle
-         cx="973.75"
-         cy="59"
-         style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse41"
-         r="11" />
+         style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+         cy="59"
+         cx="973.75" />
       <path
-         d="m 969.6777,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z"
+         inkscape:connector-curvature="0"
          id="path43"
-         inkscape:connector-curvature="0" />
+         d="m 969.6777,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
       <text
-         font-size="12"
-         font-style="italic"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="38"
-         x="994.25"
-         y="63.535198"
+         style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
          id="text45"
-         style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000">Export</text>
+         y="63.535198"
+         x="994.25"
+         textLength="38"
+         lengthAdjust="spacingAndGlyphs"
+         font-style="italic"
+         font-size="12">Export</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="824"
-         x2="1170"
-         y1="75"
+         id="line47"
          y2="75"
-         id="line47" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="824"
+         y1="75"
          x2="1170"
-         y1="83"
+         x1="824"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line49"
          y2="83"
-         id="line49" />
+         y1="83"
+         x2="1170"
+         x1="824"
+         style="stroke:#a80036;stroke-width:1.5" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="336"
-         x="829"
-         y="97.634804"
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text51"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
-      <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="90"
+         y="97.634804"
          x="829"
-         y="110.5898"
+         textLength="336"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text53"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getName()</text>
+         y="110.5898"
+         x="829"
+         textLength="90"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getName()</text>
     </a>
     <a
-       transform="translate(2129,436.57302)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.PlaintextExport"
-       xlink:show="new"
+       id="a76"
+       xlink:type="simple"
        xlink:title="java:edu.kit.wavelength.client.view.export.PlaintextExport"
-       xlink:type="simple"
-       id="a76">
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.PlaintextExport"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(2129,436.57302)">
       <rect
-         height="73.910202"
-         id="PlaintextExport"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="362"
+         y="177"
          x="419"
-         y="177" />
+         width="362"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="PlaintextExport"
+         height="73.910202" />
       <circle
-         cx="552.25"
-         cy="193"
-         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse58"
-         r="11" />
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         cy="193"
+         cx="552.25" />
       <path
-         d="m 555.2231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         inkscape:connector-curvature="0"
          id="path60"
-         inkscape:connector-curvature="0" />
+         d="m 555.2231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
       <text
-         font-size="12"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="87"
-         x="572.75"
-         y="197.5352"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
          id="text62"
-         style="font-size:12px;font-family:sans-serif;fill:#000000">PlaintextExport</text>
+         y="197.5352"
+         x="572.75"
+         textLength="87"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="12">PlaintextExport</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="420"
-         x2="780"
-         y1="209"
+         id="line64"
          y2="209"
-         id="line64" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="420"
+         y1="209"
          x2="780"
-         y1="217"
+         x1="420"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line66"
          y2="217"
-         id="line66" />
+         y1="217"
+         x2="780"
+         x1="420"
+         style="stroke:#a80036;stroke-width:1.5" />
       <circle
-         cx="430"
-         cy="228.97749"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         r="3"
          id="ellipse68"
-         r="3" />
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="228.97749"
+         cx="430" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="336"
-         x="439"
-         y="231.6348"
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text70"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
-      <circle
-         cx="430"
-         cy="241.9326"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
-         id="ellipse72"
-         r="3" />
-      <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="90"
+         y="231.6348"
          x="439"
-         y="244.5898"
+         textLength="336"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
+      <circle
+         r="3"
+         id="ellipse72"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="241.9326"
+         cx="430" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text74"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getName()</text>
+         y="244.5898"
+         x="439"
+         textLength="90"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getName()</text>
     </a>
     <a
-       transform="translate(1952,440.49283)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.Exports"
-       xlink:show="new"
+       id="a95"
+       xlink:type="simple"
        xlink:title="java:edu.kit.wavelength.client.view.export.Exports"
-       xlink:type="simple"
-       id="a95">
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.Exports"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(1952,440.49283)">
       <rect
-         height="60.955101"
-         id="Exports"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="122"
+         y="49.5"
          x="344"
-         y="49.5" />
+         width="122"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="Exports"
+         height="60.955101" />
       <circle
-         cx="379.70001"
-         cy="65.5"
-         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse79"
-         r="11" />
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         cy="65.5"
+         cx="379.70001" />
       <path
-         d="m 382.6731,71.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         inkscape:connector-curvature="0"
          id="path81"
-         inkscape:connector-curvature="0" />
+         d="m 382.6731,71.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
       <text
-         font-size="12"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="44"
-         x="398.29999"
-         y="70.035202"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
          id="text83"
-         style="font-size:12px;font-family:sans-serif;fill:#000000">Exports</text>
+         y="70.035202"
+         x="398.29999"
+         textLength="44"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="12">Exports</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="345"
-         x2="465"
-         y1="81.5"
+         id="line85"
          y2="81.5"
-         id="line85" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="345"
+         y1="81.5"
          x2="465"
-         y1="89.5"
+         x1="345"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line87"
          y2="89.5"
-         id="line87" />
+         y1="89.5"
+         x2="465"
+         x1="345"
+         style="stroke:#a80036;stroke-width:1.5" />
       <circle
-         cx="355"
-         cy="101.4775"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         r="3"
          id="ellipse89"
-         r="3" />
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="101.4775"
+         cx="355" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         text-decoration="underline"
-         textLength="96"
-         x="364"
-         y="104.1348"
+         style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
          id="text91"
-         style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000">List&lt;Export&gt; all()</text>
+         y="104.1348"
+         x="364"
+         textLength="96"
+         text-decoration="underline"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">List&lt;Export&gt; all()</text>
       <line
-         style="stroke:#000000;stroke-width:1"
-         x1="364"
-         x2="460"
-         y1="106.1348"
+         id="line93"
          y2="106.1348"
-         id="line93" />
+         y1="106.1348"
+         x2="460"
+         x1="364"
+         style="stroke:#000000;stroke-width:1" />
     </a>
     <a
-       transform="translate(1942.9844,697.20254)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.LatexExport"
-       xlink:show="new"
+       id="a116"
+       xlink:type="simple"
        xlink:title="java:edu.kit.wavelength.client.view.export.LatexExport"
-       xlink:type="simple"
-       id="a116">
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.LatexExport"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(1942.9844,697.20254)">
       <rect
-         height="73.910202"
-         id="LatexExport"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="362"
+         y="177"
          x="816"
-         y="177" />
+         width="362"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="LatexExport"
+         height="73.910202" />
       <circle
-         cx="958.25"
-         cy="193"
-         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse98"
-         r="11" />
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         cy="193"
+         cx="958.25" />
       <path
-         d="m 961.2231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         inkscape:connector-curvature="0"
          id="path100"
-         inkscape:connector-curvature="0" />
+         d="m 961.2231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
       <text
-         font-size="12"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="69"
-         x="978.75"
-         y="197.5352"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
          id="text102"
-         style="font-size:12px;font-family:sans-serif;fill:#000000">LatexExport</text>
+         y="197.5352"
+         x="978.75"
+         textLength="69"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="12">LatexExport</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="817"
-         x2="1177"
-         y1="209"
+         id="line104"
          y2="209"
-         id="line104" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="817"
+         y1="209"
          x2="1177"
-         y1="217"
+         x1="817"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line106"
          y2="217"
-         id="line106" />
+         y1="217"
+         x2="1177"
+         x1="817"
+         style="stroke:#a80036;stroke-width:1.5" />
       <circle
-         cx="827"
-         cy="228.97749"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         r="3"
          id="ellipse108"
-         r="3" />
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="228.97749"
+         cx="827" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="336"
-         x="836"
-         y="231.6348"
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text110"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
-      <circle
-         cx="827"
-         cy="241.9326"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
-         id="ellipse112"
-         r="3" />
-      <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="90"
+         y="231.6348"
          x="836"
-         y="244.5898"
+         textLength="336"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
+      <circle
+         r="3"
+         id="ellipse112"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="241.9326"
+         cx="827" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text114"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getName()</text>
+         y="244.5898"
+         x="836"
+         textLength="90"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getName()</text>
     </a>
     <a
-       transform="translate(1757,436.57302)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.LispExport"
-       xlink:show="new"
+       id="a137"
+       xlink:type="simple"
        xlink:title="java:edu.kit.wavelength.client.view.export.LispExport"
-       xlink:type="simple"
-       id="a137">
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.LispExport"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(1757,436.57302)">
       <rect
-         height="73.910202"
-         id="LispExport"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="362"
+         y="177"
          x="1213"
-         y="177" />
+         width="362"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="LispExport"
+         height="73.910202" />
       <circle
-         cx="1359.25"
-         cy="193"
-         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse119"
-         r="11" />
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         cy="193"
+         cx="1359.25" />
       <path
-         d="m 1362.2231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         inkscape:connector-curvature="0"
          id="path121"
-         inkscape:connector-curvature="0" />
+         d="m 1362.2231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
       <text
-         font-size="12"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="61"
-         x="1379.75"
-         y="197.5352"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
          id="text123"
-         style="font-size:12px;font-family:sans-serif;fill:#000000">LispExport</text>
+         y="197.5352"
+         x="1379.75"
+         textLength="61"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="12">LispExport</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="1214"
-         x2="1574"
-         y1="209"
+         id="line125"
          y2="209"
-         id="line125" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="1214"
+         y1="209"
          x2="1574"
-         y1="217"
+         x1="1214"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line127"
          y2="217"
-         id="line127" />
+         y1="217"
+         x2="1574"
+         x1="1214"
+         style="stroke:#a80036;stroke-width:1.5" />
       <circle
-         cx="1224"
-         cy="228.97749"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         r="3"
          id="ellipse129"
-         r="3" />
-      <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="336"
-         x="1233"
-         y="231.6348"
-         id="text131"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
-      <circle
-         cx="1224"
-         cy="241.9326"
          style="fill:#84be84;stroke:#038048;stroke-width:1"
-         id="ellipse133"
-         r="3" />
+         cy="228.97749"
+         cx="1224" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="90"
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         id="text131"
+         y="231.6348"
          x="1233"
-         y="244.5898"
+         textLength="336"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
+      <circle
+         r="3"
+         id="ellipse133"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="241.9326"
+         cx="1224" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text135"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getName()</text>
+         y="244.5898"
+         x="1233"
+         textLength="90"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getName()</text>
     </a>
     <a
-       transform="translate(1830,436.57302)"
-       target="_top"
-       xlink:actuate="onRequest"
-       xlink:href="java:edu.kit.wavelength.client.view.export.HaskellExport"
-       xlink:show="new"
-       xlink:title="java:edu.kit.wavelength.client.view.export.HaskellExport"
+       id="a158"
        xlink:type="simple"
-       id="a158">
+       xlink:title="java:edu.kit.wavelength.client.view.export.HaskellExport"
+       xlink:show="new"
+       xlink:href="java:edu.kit.wavelength.client.view.export.HaskellExport"
+       xlink:actuate="onRequest"
+       target="_top"
+       transform="translate(1830,436.57302)">
       <rect
-         height="73.910202"
-         id="HaskellExport"
-         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh)"
-         width="362"
+         y="177"
          x="1610"
-         y="177" />
+         width="362"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ubmvbd2h47fh-0)"
+         id="HaskellExport"
+         height="73.910202" />
       <circle
-         cx="1746.75"
-         cy="193"
-         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         r="11"
          id="ellipse140"
-         r="11" />
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         cy="193"
+         cx="1746.75" />
       <path
-         d="m 1749.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         inkscape:connector-curvature="0"
          id="path142"
-         inkscape:connector-curvature="0" />
+         d="m 1749.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
       <text
-         font-size="12"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="80"
-         x="1767.25"
-         y="197.5352"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
          id="text144"
-         style="font-size:12px;font-family:sans-serif;fill:#000000">HaskellExport</text>
+         y="197.5352"
+         x="1767.25"
+         textLength="80"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="12">HaskellExport</text>
       <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="1611"
-         x2="1971"
-         y1="209"
+         id="line146"
          y2="209"
-         id="line146" />
-      <line
-         style="stroke:#a80036;stroke-width:1.5"
-         x1="1611"
+         y1="209"
          x2="1971"
-         y1="217"
+         x1="1611"
+         style="stroke:#a80036;stroke-width:1.5" />
+      <line
+         id="line148"
          y2="217"
-         id="line148" />
+         y1="217"
+         x2="1971"
+         x1="1611"
+         style="stroke:#a80036;stroke-width:1.5" />
       <circle
-         cx="1621"
-         cy="228.97749"
-         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         r="3"
          id="ellipse150"
-         r="3" />
-      <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="336"
-         x="1630"
-         y="231.6348"
-         id="text152"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
-      <circle
-         cx="1621"
-         cy="241.9326"
          style="fill:#84be84;stroke:#038048;stroke-width:1"
-         id="ellipse154"
-         r="3" />
+         cy="228.97749"
+         cx="1621" />
       <text
-         font-size="11"
-         lengthAdjust="spacingAndGlyphs"
-         textLength="90"
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         id="text152"
+         y="231.6348"
          x="1630"
-         y="244.5898"
+         textLength="336"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getRepresentation(List&lt;LambdaTerm&gt; displayedTerms)</text>
+      <circle
+         r="3"
+         id="ellipse154"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         cy="241.9326"
+         cx="1621" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
          id="text156"
-         style="font-size:11px;font-family:sans-serif;fill:#000000">String getName()</text>
+         y="244.5898"
+         x="1630"
+         textLength="90"
+         lengthAdjust="spacingAndGlyphs"
+         font-size="11">String getName()</text>
     </a>
     <path
-       d="m 2735,554.47852 c -109.7618,15.77033 -252.0508,36.62832 -378.1125,56.41878 -5.5508,0.87145 -11.1922,1.76565 -16.8875,2.67572"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
        id="Export-UnicodeExport"
-       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       d="m 2735,554.47852 c -109.7618,15.77033 -252.0508,36.62832 -378.1125,56.41878 -5.5508,0.87145 -11.1922,1.76565 -16.8875,2.67572" />
     <polygon
-       transform="translate(1935.9322,442.04972)"
-       points="804.0678,117.4288 801.8636,103.6034 822.7163,107.3673 "
+       id="polygon161"
        style="fill:none;stroke:#a80036;stroke-width:1"
-       id="polygon161" />
+       points="801.8636,103.6034 822.7163,107.3673 804.0678,117.4288 "
+       transform="translate(1935.9322,442.04972)" />
     <path
-       d="m 2820.252,560.21829 c -37.2124,17.22708 -79.5463,36.82508 -115.252,53.35473"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
        id="Export-PlaintextExport"
-       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       d="m 2820.252,560.21829 c -37.2124,17.22708 -79.5463,36.82508 -115.252,53.35473" />
     <polygon
-       transform="translate(1952.7961,437.41892)"
-       points="870.4929,130.0882 866.0156,116.8234 887.2039,117.0596 "
+       id="polygon164"
        style="fill:none;stroke:#a80036;stroke-width:1"
-       id="polygon164" />
+       points="866.0156,116.8234 887.2039,117.0596 870.4929,130.0882 "
+       transform="translate(1952.7961,437.41892)" />
     <path
-       d="m 2935.6371,574.38351 c 0,99.9563 0,203.73682 0,295.09501"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
        id="Export-LatexExport"
-       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       d="m 2935.6371,574.38351 c 0,99.9563 0,203.73682 0,295.09501" />
     <polygon
-       transform="translate(1938.7851,434.58163)"
-       points="990.0001,137.3265 997,117.3265 1004.0001,137.3264 "
+       id="polygon167"
        style="fill:none;stroke:#a80036;stroke-width:1"
-       id="polygon167" />
+       points="997,117.3265 1004.0001,137.3264 990.0001,137.3265 "
+       transform="translate(1938.7851,434.58163)" />
     <path
-       d="m 3036.8222,562.04891 c 49.0764,14.67252 104.907,31.36438 151.9963,45.44289"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
        id="Export-LispExport"
-       style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       d="m 3036.8222,562.04891 c 49.0764,14.67252 104.907,31.36438 151.9963,45.44289" />
     <polygon
-       transform="translate(1910.1226,438.1671)"
-       points="1127.9844,116.8234 1123.5071,130.0882 1106.7961,117.0596 "
+       id="polygon170"
        style="fill:none;stroke:#a80036;stroke-width:1"
-       id="polygon170" />
+       points="1123.5071,130.0882 1106.7961,117.0596 1127.9844,116.8234 "
+       transform="translate(1910.1226,438.1671)" />
     <path
-       d="m 3132.8153,552.73534 c 107.8565,16.24276 247.762,37.7625 371.6865,58.25177 5.0978,0.84289 10.2738,1.70679 15.4982,2.58591"
-       id="Export-HaskellExport"
+       inkscape:connector-curvature="0"
        style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:7, 7;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       id="Export-HaskellExport"
+       d="m 3132.8153,552.73534 c 107.8565,16.24276 247.762,37.7625 371.6865,58.25177 5.0978,0.84289 10.2738,1.70679 15.4982,2.58591" />
     <polygon
-       transform="translate(1940.0862,442.16542)"
-       points="1189.9138,117.3131 1171.2607,107.2602 1192.1116,103.4867 "
+       id="polygon173"
        style="fill:none;stroke:#a80036;stroke-width:1"
-       id="polygon173" />
+       points="1171.2607,107.2602 1192.1116,103.4867 1189.9138,117.3131 "
+       transform="translate(1940.0862,442.16542)" />
   </g>
 </svg>

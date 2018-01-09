@@ -1,0 +1,2252 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="1527.1016"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 2806 1527.1016"
+   width="2806"
+   zoomAndPan="magnify"
+   id="svg613"
+   sodipodi:docname="termPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata617">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="781"
+     id="namedview615"
+     showgrid="false"
+     inkscape:zoom="0.5034003"
+     inkscape:cx="1226.7139"
+     inkscape:cy="394.88249"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg613"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs11">
+    <filter
+       height="3"
+       id="f1i9odyp96bbjx"
+       width="3"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a34"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.LambdaTerm"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.LambdaTerm"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="970"
+       x="893"
+       width="236"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="LambdaTerm"
+       height="73.910202" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="986"
+       cx="967.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 963.6777,981.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 992 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="990.53522"
+       x="988.25"
+       textLength="78"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">LambdaTerm</text>
+    <line
+       id="line26"
+       y2="1002"
+       y1="1002"
+       x2="1128"
+       x1="894"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="1010"
+       y1="1010"
+       x2="1128"
+       x1="894"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text30"
+       y="1024.6348"
+       x="899"
+       textLength="224"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm deserialize(String serialized)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text32"
+       y="1037.5898"
+       x="899"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+  </a>
+  <a
+     id="a47"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.serialization.Serializable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.serialization.Serializable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="612.5"
+       x="1216"
+       width="98"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="Serializable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse37"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="628.5"
+       cx="1231" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path39"
+       d="m 1226.9277,624.2651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 634.5 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text41"
+       y="633.03522"
+       x="1245"
+       textLength="66"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Serializable</text>
+    <line
+       id="line43"
+       y2="644.5"
+       y1="644.5"
+       x2="1313"
+       x1="1217"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line45"
+       y2="652.5"
+       y1="652.5"
+       x2="1313"
+       x1="1217"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a84"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.Abstraction"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.Abstraction"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="1173.5"
+       x="22"
+       width="320"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="Abstraction"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse50"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="1189.5"
+       cx="145.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path52"
+       d="m 148.2231,1195.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text54"
+       y="1194.0352"
+       x="165.75"
+       textLength="65"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Abstraction</text>
+    <line
+       id="line56"
+       y2="1205.5"
+       y1="1205.5"
+       x2="341"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line58"
+       y2="1213.5"
+       y1="1213.5"
+       x2="341"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse60"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1225.4775"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text62"
+       y="1228.1348"
+       x="42"
+       textLength="294"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Abstraction(String preferredName, LambdaTerm inner)</text>
+    <circle
+       r="3"
+       id="ellipse64"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1238.4326"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text66"
+       y="1241.0898"
+       x="42"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+    <circle
+       r="3"
+       id="ellipse68"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1251.3877"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text70"
+       y="1254.0449"
+       x="42"
+       textLength="140"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getPreferredName()</text>
+    <circle
+       r="3"
+       id="ellipse72"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1264.3428"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text74"
+       y="1267"
+       x="42"
+       textLength="126"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getInner()</text>
+    <circle
+       r="3"
+       id="ellipse76"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1277.2979"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text78"
+       y="1279.9551"
+       x="42"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean equals(Object other)</text>
+    <circle
+       r="3"
+       id="ellipse80"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1290.2529"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text82"
+       y="1292.9102"
+       x="42"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a117"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.IsRedexVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.IsRedexVisitor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="580"
+       x="147"
+       width="312"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="IsRedexVisitor"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse87"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="596"
+       cx="257.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path89"
+       d="m 260.7231,601.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text91"
+       y="600.53522"
+       x="278.25"
+       textLength="82"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">IsRedexVisitor</text>
+    <line
+       id="line93"
+       y2="612"
+       y1="612"
+       x2="458"
+       x1="148"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line95"
+       y2="620"
+       y1="620"
+       x2="458"
+       x1="148"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse97"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="631.97748"
+       cx="158" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text99"
+       y="634.63483"
+       x="167"
+       textLength="223"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse101"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="644.93262"
+       cx="158" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text103"
+       y="647.58978"
+       x="167"
+       textLength="220"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse105"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="657.8877"
+       cx="158" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text107"
+       y="660.54492"
+       x="167"
+       textLength="249"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse109"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="670.84277"
+       cx="158" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text111"
+       y="673.5"
+       x="167"
+       textLength="227"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitFreeVariable(FreeVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse113"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="683.79791"
+       cx="158" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text115"
+       y="686.45508"
+       x="167"
+       textLength="286"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitPartialApplication(PartialApplication app)</text>
+  </a>
+  <a
+     id="a154"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.NameAgnosticVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.NameAgnosticVisitor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="305"
+       x="511.5"
+       width="277"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="NameAgnosticVisitor"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse120"
+       style="fill:#a9dcdf;stroke:#a80036;stroke-width:1"
+       cy="321"
+       cx="586.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path122"
+       d="m 586.8633,316.3481 -1.1538,5.0718 h 2.3159 z m -1.4942,-2.2412 h 2.9966 l 3.3452,12.3931 h -2.4487 l -0.7637,-3.063 h -3.2788 l -0.747,3.063 h -2.4488 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text124"
+       y="325.53519"
+       x="607.25"
+       textLength="118"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">NameAgnosticVisitor</text>
+    <line
+       id="line126"
+       y2="337"
+       y1="337"
+       x2="787.5"
+       x1="512.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line128"
+       y2="345"
+       y1="345"
+       x2="787.5"
+       x1="512.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse130"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="356.97751"
+       cx="522.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text132"
+       y="359.6348"
+       x="531.5"
+       textLength="198"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitNamedTerm(NamedTerm term)</text>
+    <circle
+       r="3"
+       id="ellipse134"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="369.93259"
+       cx="522.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text136"
+       y="372.58981"
+       x="531.5"
+       textLength="251"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse138"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="382.8877"
+       cx="522.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text140"
+       y="385.54489"
+       x="531.5"
+       textLength="188"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse142"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="395.8428"
+       cx="522.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text144"
+       y="398.5"
+       x="531.5"
+       textLength="185"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse146"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="408.79791"
+       cx="522.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text148"
+       y="411.45511"
+       x="531.5"
+       textLength="214"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse150"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="421.7529"
+       cx="522.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text152"
+       y="424.41019"
+       x="531.5"
+       textLength="192"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitFreeVariable(FreeVariable var)</text>
+  </a>
+  <a
+     id="a187"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.IsAbstractionVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.IsAbstractionVisitor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="580"
+       x="494"
+       width="312"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="IsAbstractionVisitor"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse157"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="596"
+       cx="590.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path159"
+       d="m 593.7231,601.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text161"
+       y="600.53522"
+       x="611.25"
+       textLength="110"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">IsAbstractionVisitor</text>
+    <line
+       id="line163"
+       y2="612"
+       y1="612"
+       x2="805"
+       x1="495"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line165"
+       y2="620"
+       y1="620"
+       x2="805"
+       x1="495"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse167"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="631.97748"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text169"
+       y="634.63483"
+       x="514"
+       textLength="223"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse171"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="644.93262"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text173"
+       y="647.58978"
+       x="514"
+       textLength="220"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse175"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="657.8877"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text177"
+       y="660.54492"
+       x="514"
+       textLength="249"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse179"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="670.84277"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text181"
+       y="673.5"
+       x="514"
+       textLength="227"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitFreeVariable(FreeVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse183"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="683.79791"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text185"
+       y="686.45508"
+       x="514"
+       textLength="286"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Boolean visitPartialApplication(PartialApplication app)</text>
+  </a>
+  <a
+     id="a220"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.BoundVariable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.BoundVariable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="1180"
+       x="377"
+       width="202"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="BoundVariable"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse190"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="1196"
+       cx="431.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path192"
+       d="m 434.7231,1201.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text194"
+       y="1200.5352"
+       x="452.25"
+       textLength="84"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">BoundVariable</text>
+    <line
+       id="line196"
+       y2="1212"
+       y1="1212"
+       x2="578"
+       x1="378"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line198"
+       y2="1220"
+       y1="1220"
+       x2="578"
+       x1="378"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse200"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1231.9775"
+       cx="388" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text202"
+       y="1234.6348"
+       x="397"
+       textLength="176"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">BoundVariable(int deBruijnIndex)</text>
+    <circle
+       r="3"
+       id="ellipse204"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1244.9326"
+       cx="388" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text206"
+       y="1247.5898"
+       x="397"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+    <circle
+       r="3"
+       id="ellipse208"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1257.8877"
+       cx="388" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text210"
+       y="1260.5449"
+       x="397"
+       textLength="117"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">int getDeBruijnIndex()</text>
+    <circle
+       r="3"
+       id="ellipse212"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1270.8428"
+       cx="388" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text214"
+       y="1273.5"
+       x="397"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean equals(Object other)</text>
+    <circle
+       r="3"
+       id="ellipse216"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1283.7979"
+       cx="388" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text218"
+       y="1286.4551"
+       x="397"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a261"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.SubstitutionVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.SubstitutionVisitor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="567"
+       x="841"
+       width="340"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="SubstitutionVisitor"
+       height="138.6855" />
+    <circle
+       r="11"
+       id="ellipse223"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="583"
+       cx="955.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path225"
+       d="m 958.7231,588.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text227"
+       y="587.53522"
+       x="976.25"
+       textLength="102"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">SubstitutionVisitor</text>
+    <line
+       id="line229"
+       y2="599"
+       y1="599"
+       x2="1180"
+       x1="842"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <rect
+       id="rect231"
+       y="607.97748"
+       x="849"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text233"
+       y="613.63483"
+       x="861"
+       textLength="48"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">int depth</text>
+    <line
+       id="line235"
+       y2="619.95508"
+       y1="619.95508"
+       x2="1180"
+       x1="842"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse237"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="631.93262"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text239"
+       y="634.58978"
+       x="861"
+       textLength="296"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">SubstitutionVisitor(int depth, LambdaTerm substituent)</text>
+    <circle
+       r="3"
+       id="ellipse241"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="644.8877"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text243"
+       y="647.54492"
+       x="861"
+       textLength="314"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse245"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="657.84277"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text247"
+       y="660.5"
+       x="861"
+       textLength="251"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse249"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="670.79791"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text251"
+       y="673.45508"
+       x="861"
+       textLength="248"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse253"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="683.75293"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text255"
+       y="686.41022"
+       x="861"
+       textLength="277"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse257"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="696.70801"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text259"
+       y="699.36517"
+       x="861"
+       textLength="255"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitFreeVariable(FreeVariable var)</text>
+  </a>
+  <a
+     id="a298"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.TermTransformer"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.TermTransformer"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="305"
+       x="841"
+       width="340"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="TermTransformer"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse264"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="321"
+       cx="955.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path266"
+       d="m 958.2231,326.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text268"
+       y="325.53519"
+       x="975.75"
+       textLength="103"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TermTransformer</text>
+    <line
+       id="line270"
+       y2="337"
+       y1="337"
+       x2="1180"
+       x1="842"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line272"
+       y2="345"
+       y1="345"
+       x2="1180"
+       x1="842"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse274"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="356.97751"
+       cx="852" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text276"
+       y="359.6348"
+       x="861"
+       textLength="261"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitNamedTerm(NamedTerm term)</text>
+    <circle
+       r="3"
+       id="ellipse278"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="369.93259"
+       cx="852" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text280"
+       y="372.58981"
+       x="861"
+       textLength="314"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">LambdaTerm visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse282"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="382.8877"
+       cx="852" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text284"
+       y="385.54489"
+       x="861"
+       textLength="251"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">LambdaTerm visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse286"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="395.8428"
+       cx="852" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text288"
+       y="398.5"
+       x="861"
+       textLength="248"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">LambdaTerm visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse290"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="408.79791"
+       cx="852" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text292"
+       y="411.45511"
+       x="861"
+       textLength="277"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">LambdaTerm visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse294"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="421.7529"
+       cx="852" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text296"
+       y="424.41019"
+       x="861"
+       textLength="255"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">LambdaTerm visitFreeVariable(FreeVariable var)</text>
+  </a>
+  <a
+     id="a335"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.Application"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.Application"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="1173.5"
+       x="1728"
+       width="390"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="Application"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse301"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="1189.5"
+       cx="1886.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path303"
+       d="m 1889.7231,1195.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text305"
+       y="1194.0352"
+       x="1907.25"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Application</text>
+    <line
+       id="line307"
+       y2="1205.5"
+       y1="1205.5"
+       x2="2117"
+       x1="1729"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line309"
+       y2="1213.5"
+       y1="1213.5"
+       x2="2117"
+       x1="1729"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse311"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1225.4775"
+       cx="1739" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text313"
+       y="1228.1348"
+       x="1748"
+       textLength="364"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Application(LambdaTerm leftHandSide, LambdaTerm rightHandSide)</text>
+    <circle
+       r="3"
+       id="ellipse315"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1238.4326"
+       cx="1739" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text317"
+       y="1241.0898"
+       x="1748"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+    <circle
+       r="3"
+       id="ellipse319"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1251.3877"
+       cx="1739" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text321"
+       y="1254.0449"
+       x="1748"
+       textLength="168"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getLeftHandSide()</text>
+    <circle
+       r="3"
+       id="ellipse323"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1264.3428"
+       cx="1739" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text325"
+       y="1267"
+       x="1748"
+       textLength="176"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getRightHandSide()</text>
+    <circle
+       r="3"
+       id="ellipse327"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1277.2979"
+       cx="1739" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text329"
+       y="1279.9551"
+       x="1748"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean equals(Object other)</text>
+    <circle
+       r="3"
+       id="ellipse331"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1290.2529"
+       cx="1739" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text333"
+       y="1292.9102"
+       x="1748"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a360"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.Visitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.Visitor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="43"
+       x="879.5"
+       width="263"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="Visitor"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse338"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="988.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path340"
+       d="m 984.6777,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text342"
+       y="63.535198"
+       x="1009.25"
+       textLength="36"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Visitor</text>
+    <line
+       id="line344"
+       y2="75"
+       y1="75"
+       x2="1141.5"
+       x1="880.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line346"
+       y2="83"
+       y1="83"
+       x2="1141.5"
+       x1="880.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text348"
+       y="97.634804"
+       x="885.5"
+       textLength="188"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitAbstraction(Abstraction abs)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text350"
+       y="110.5898"
+       x="885.5"
+       textLength="185"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitApplication(Application app)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text352"
+       y="123.5449"
+       x="885.5"
+       textLength="214"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitBoundVariable(BoundVariable var)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text354"
+       y="136.5"
+       x="885.5"
+       textLength="192"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitFreeVariable(FreeVariable var)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text356"
+       y="149.45509"
+       x="885.5"
+       textLength="198"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitNamedTerm(NamedTerm term)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text358"
+       y="162.4102"
+       x="885.5"
+       textLength="251"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitPartialApplication(PartialApplication app)</text>
+  </a>
+  <a
+     id="a405"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.ResolvedNamesVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.ResolvedNamesVisitor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="292"
+       x="1216.5"
+       width="357"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="ResolvedNamesVisitor"
+       height="151.64059" />
+    <circle
+       r="11"
+       id="ellipse363"
+       style="fill:#a9dcdf;stroke:#a80036;stroke-width:1"
+       cy="308"
+       cx="1326.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path365"
+       d="m 1326.8633,303.3481 -1.1538,5.0718 h 2.3159 z m -1.4942,-2.2412 h 2.9966 l 3.3452,12.3931 h -2.4487 l -0.7637,-3.063 h -3.2788 l -0.747,3.063 h -2.4488 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text367"
+       y="312.53519"
+       x="1347.25"
+       textLength="128"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">ResolvedNamesVisitor</text>
+    <line
+       id="line369"
+       y2="324"
+       y1="324"
+       x2="1572.5"
+       x1="1217.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line371"
+       y2="332"
+       y1="332"
+       x2="1572.5"
+       x1="1217.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse373"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="343.97751"
+       cx="1227.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text375"
+       y="346.6348"
+       x="1236.5"
+       textLength="188"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse377"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="356.93259"
+       cx="1227.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text379"
+       y="359.58981"
+       x="1236.5"
+       textLength="185"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse381"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="369.8877"
+       cx="1227.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text383"
+       y="372.54489"
+       x="1236.5"
+       textLength="214"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse385"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="382.8428"
+       cx="1227.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text387"
+       y="385.5"
+       x="1236.5"
+       textLength="198"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitNamedTerm(NamedTerm term)</text>
+    <circle
+       r="3"
+       id="ellipse389"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="395.79791"
+       cx="1227.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text391"
+       y="398.45511"
+       x="1236.5"
+       textLength="251"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse393"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="408.7529"
+       cx="1227.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text395"
+       y="411.41019"
+       x="1236.5"
+       textLength="192"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitFreeVariable(FreeVariable var)</text>
+    <polygon
+       id="polygon397"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="1227.5,416.708 1231.5,420.708 1227.5,424.708 1223.5,420.708 " />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text399"
+       y="424.3652"
+       x="1236.5"
+       textLength="331"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitBoundVariable(BoundVariable var, String resolvedName)</text>
+    <polygon
+       id="polygon401"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="1227.5,429.6631 1231.5,433.6631 1227.5,437.6631 1223.5,433.6631 " />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text403"
+       y="437.32031"
+       x="1236.5"
+       textLength="305"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">T visitAbstraction(Abstraction abs, String resolvedName)</text>
+  </a>
+  <a
+     id="a442"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.NamedTerm"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.NamedTerm"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="1173.5"
+       x="614"
+       width="270"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="NamedTerm"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse408"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="1189.5"
+       cx="708.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path410"
+       d="m 711.2231,1195.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text412"
+       y="1194.0352"
+       x="728.75"
+       textLength="73"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">NamedTerm</text>
+    <line
+       id="line414"
+       y2="1205.5"
+       y1="1205.5"
+       x2="883"
+       x1="615"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line416"
+       y2="1213.5"
+       y1="1213.5"
+       x2="883"
+       x1="615"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse418"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1225.4775"
+       cx="625" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text420"
+       y="1228.1348"
+       x="634"
+       textLength="244"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">NamedTerm(String name, LambdaTerm inner)</text>
+    <circle
+       r="3"
+       id="ellipse422"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1238.4326"
+       cx="625" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text424"
+       y="1241.0898"
+       x="634"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+    <circle
+       r="3"
+       id="ellipse426"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1251.3877"
+       cx="625" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text428"
+       y="1254.0449"
+       x="634"
+       textLength="126"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getInner()</text>
+    <circle
+       r="3"
+       id="ellipse430"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1264.3428"
+       cx="625" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text432"
+       y="1267"
+       x="634"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse434"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1277.2979"
+       cx="625" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text436"
+       y="1279.9551"
+       x="634"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean equals(Object other)</text>
+    <circle
+       r="3"
+       id="ellipse438"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1290.2529"
+       cx="625" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text440"
+       y="1292.9102"
+       x="634"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a475"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.FreeVariable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.FreeVariable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="1180"
+       x="919.5"
+       width="183"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="FreeVariable"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse445"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="1196"
+       cx="970.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path447"
+       d="m 973.2231,1201.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text449"
+       y="1200.5352"
+       x="990.75"
+       textLength="73"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">FreeVariable</text>
+    <line
+       id="line451"
+       y2="1212"
+       y1="1212"
+       x2="1101.5"
+       x1="920.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line453"
+       y2="1220"
+       y1="1220"
+       x2="1101.5"
+       x1="920.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse455"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1231.9775"
+       cx="930.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text457"
+       y="1234.6348"
+       x="939.5"
+       textLength="138"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">FreeVariable(String name)</text>
+    <circle
+       r="3"
+       id="ellipse459"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1244.9326"
+       cx="930.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text461"
+       y="1247.5898"
+       x="939.5"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+    <circle
+       r="3"
+       id="ellipse463"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1257.8877"
+       cx="930.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text465"
+       y="1260.5449"
+       x="939.5"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse467"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1270.8428"
+       cx="930.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text469"
+       y="1273.5"
+       x="939.5"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean equals(Object other)</text>
+    <circle
+       r="3"
+       id="ellipse471"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1283.7979"
+       cx="930.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text473"
+       y="1286.4551"
+       x="939.5"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a512"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.BetaReducer"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.BetaReducer"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="736"
+       x="1256"
+       width="340"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="BetaReducer"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse478"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="752"
+       cx="1385.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path480"
+       d="m 1388.2231,757.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text482"
+       y="756.53522"
+       x="1405.75"
+       textLength="73"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">BetaReducer</text>
+    <line
+       id="line484"
+       y2="768"
+       y1="768"
+       x2="1595"
+       x1="1257"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line486"
+       y2="776"
+       y1="776"
+       x2="1595"
+       x1="1257"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse488"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="787.97748"
+       cx="1267" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text490"
+       y="790.63483"
+       x="1276"
+       textLength="188"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">BetaReducer(Application toReduce)</text>
+    <circle
+       r="3"
+       id="ellipse492"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="800.93262"
+       cx="1267" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text494"
+       y="803.58978"
+       x="1276"
+       textLength="314"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse496"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="813.8877"
+       cx="1267" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text498"
+       y="816.54492"
+       x="1276"
+       textLength="251"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitAbstraction(Abstraction abs)</text>
+    <circle
+       r="3"
+       id="ellipse500"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="826.84277"
+       cx="1267" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text502"
+       y="829.5"
+       x="1276"
+       textLength="248"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse504"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="839.79791"
+       cx="1267" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text506"
+       y="842.45508"
+       x="1276"
+       textLength="277"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitBoundVariable(BoundVariable var)</text>
+    <circle
+       r="3"
+       id="ellipse508"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="852.75293"
+       cx="1267" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text510"
+       y="855.41022"
+       x="1276"
+       textLength="255"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm visitFreeVariable(FreeVariable var)</text>
+  </a>
+  <a
+     id="a553"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.PartialApplication"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.PartialApplication"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(298,82.730499)">
+    <rect
+       y="1167"
+       x="1137.5"
+       width="555"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1i9odyp96bbjx)"
+       id="PartialApplication"
+       height="138.6855" />
+    <circle
+       r="11"
+       id="ellipse515"
+       style="fill:#a9dcdf;stroke:#a80036;stroke-width:1"
+       cy="1183"
+       cx="1360.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path517"
+       d="m 1360.8633,1178.3481 -1.1538,5.0718 h 2.3159 z m -1.4942,-2.2412 h 2.9966 l 3.3452,12.3931 h -2.4487 l -0.7637,-3.063 h -3.2788 l -0.747,3.063 h -2.4488 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text519"
+       y="1187.5352"
+       x="1381.25"
+       textLength="100"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">PartialApplication</text>
+    <line
+       id="line521"
+       y2="1199"
+       y1="1199"
+       x2="1691.5"
+       x1="1138.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line523"
+       y2="1207"
+       y1="1207"
+       x2="1691.5"
+       x1="1138.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse525"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1218.9775"
+       cx="1148.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text527"
+       y="1221.6348"
+       x="1157.5"
+       textLength="529"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">PartialApplication(String name, LambdaTerm inner, int numParameters, Visitor&lt;Boolean&gt;[] checks)</text>
+    <circle
+       r="3"
+       id="ellipse529"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1231.9326"
+       cx="1148.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text531"
+       y="1234.5898"
+       x="1157.5"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">T acceptVisitor(Visitor&lt;T&gt; v)</text>
+    <circle
+       r="3"
+       id="ellipse533"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1244.8877"
+       cx="1148.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text535"
+       y="1247.5449"
+       x="1157.5"
+       textLength="165"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getRepresented()</text>
+    <circle
+       r="3"
+       id="ellipse537"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1257.8428"
+       cx="1148.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text539"
+       y="1260.5"
+       x="1157.5"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse541"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1270.7979"
+       cx="1148.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text543"
+       y="1273.4551"
+       x="1157.5"
+       textLength="246"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm accept(LambdaTerm nextParam)</text>
+    <polygon
+       id="polygon545"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="1148.5,1278.7529 1152.5,1282.7529 1148.5,1286.7529 1144.5,1282.7529 " />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text547"
+       y="1286.4102"
+       x="1157.5"
+       textLength="277"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">LambdaTerm accelerate(LambdaTerm[] parameters)</text>
+    <circle
+       r="3"
+       id="ellipse549"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="1296.708"
+       cx="1148.5" />
+    <text
+       style="font-style:italic;font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text551"
+       y="1299.3652"
+       x="1157.5"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="11">boolean equals(Object other)</text>
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="Serializable-LambdaTerm"
+     d="m 1539.2506,760.5763 -197.1024,291.9415"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon556"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1251.3025,660.5265 1247.3173,681.338 1235.2089,674.3104 "
+     transform="translate(298,82.730499)" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="LambdaTerm-Abstraction"
+     d="M 1171.143,1118.0995 638.2981,1256.2076" />
+  <polygon
+     id="polygon559"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="892.999,1031.1154 874.909,1042.1496 871.9764,1028.4601 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="NameAgnosticVisitor-IsRedexVisitor"
+     d="m 850.0782,526.5 c -55.839,43.2068 -124.6595,96.4584 -175.8003,136.0299" />
+  <polygon
+     id="polygon562"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="568.2052,431.2908 556.6713,449.0663 548.1038,437.9939 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="NameAgnosticVisitor-IsAbstractionVisitor"
+     d="m 948,534.0709 c 0,41.6487 0,90.9712 0,128.2343" />
+  <polygon
+     id="polygon565"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="650,431.2908 657.0001,451.2907 643.0001,451.2908 "
+     transform="translate(298,82.730499)" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="LambdaTerm-BoundVariable"
+     d="M 1180.0384,1133.5538 869.7627,1262.6262" />
+  <polygon
+     id="polygon568"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="900.8985,1044.1289 884.3922,1057.4158 879.7091,1044.2222 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="SubstitutionVisitor-LambdaTerm"
+     d="m 1309,788.9187 c 0,76.0499 0,195.3624 0,258.4409" />
+  <polygon
+     id="polygon571"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="1011,969.8135 1015,960.8135 1011,964.8135 1007,960.8135 "
+     transform="translate(298,82.730499)" />
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text573"
+     y="905.56842"
+     x="1012"
+     textLength="72"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13"
+     transform="translate(298,82.730499)">substituent</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text575"
+     y="959.17969"
+     x="1002.2625"
+     textLength="8"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13"
+     transform="translate(298,82.730499)">1</text>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="TermTransformer-SubstitutionVisitor"
+     d="m 1309,534.1219 c 0,36.9474 0,79.9256 0,115.1645" />
+  <polygon
+     id="polygon578"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1011,431.2908 1018.0001,451.2907 1004.0001,451.2908 "
+     transform="translate(298,82.730499)" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999991, 6.99999991;stroke-dashoffset:0"
+     id="LambdaTerm-Application"
+     d="m 1447.1293,1121.3965 628.1992,133.6712" />
+  <polygon
+     id="polygon581"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1137.2354,1043.701 1132.8284,1056.9893 1116.0486,1044.0495 "
+     transform="translate(311.90543,70.811555)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Visitor-TermTransformer"
+     d="m 1309,271.8606 c 0,37.3576 0,80.7373 0,115.4202" />
+  <polygon
+     id="polygon584"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1011,169.0889 1018.0001,189.0889 1004.0001,189.089 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Visitor-NameAgnosticVisitor"
+     d="m 1205.721,263.6864 c -53.9503,39.1551 -119.2429,86.542 -170.6094,123.8218" />
+  <polygon
+     id="polygon587"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="924.0721,169.0889 911.9974,186.5016 903.7741,175.1712 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Visitor-ResolvedNamesVisitor"
+     d="m 1418.0563,263.1387 c 51.1403,34.8926 111.9997,76.4165 163.4438,111.5164" />
+  <polygon
+     id="polygon590"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1103.4662,169.0889 1123.9324,174.5787 1116.0419,186.1434 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="LambdaTerm-NamedTerm"
+     d="m 1251.5595,1140.0457 c -38.9804,34.1451 -90.8181,79.5525 -132.556,116.113" />
+  <polygon
+     id="polygon593"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="968.614,1044.1282 958.1819,1062.572 948.9572,1052.0409 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="LambdaTerm-FreeVariable"
+     d="m 1309,1147.3535 c 0,35.1917 0,80.0068 0,115.0517" />
+  <polygon
+     id="polygon596"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1011,1044.1282 1018.0001,1064.1282 1004.0001,1064.1282 "
+     transform="translate(298,82.730499)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="BetaReducer-Application"
+     d="M 1894,944.46097 2153.2151,1254.169"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon599"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
+     transform="rotate(35.209145,1815.1005,1878.7412)"
+     inkscape:transform-center-x="-1.207455"
+     inkscape:transform-center-y="4.0903024" />
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text601"
+     y="1012.0684"
+     x="1489"
+     textLength="58"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13"
+     transform="translate(449.70339,85.539821)">toReduce</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text603"
+     y="1166.9971"
+     x="1711.9363"
+     textLength="8"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13"
+     transform="translate(416.19619,81.737254)">1</text>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="TermTransformer-BetaReducer"
+     d="m 1469.1305,523.5928 c 56.7697,32.127 117.3026,74.4554 160.8695,126.1377 41.3847,49.0936 66.3106,118.7979 79.9908,168.9689" />
+  <polygon
+     id="polygon606"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1153.2574,431.0059 1174.1512,434.5343 1167.3905,446.7937 "
+     transform="translate(298,82.730499)" />
+  <path
+     sodipodi:nodetypes="cc"
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999991, 6.99999991;stroke-dashoffset:0"
+     id="LambdaTerm-PartialApplication"
+     d="m 1417.0655,1142.3129 116.6487,107.0622" />
+  <polygon
+     id="polygon609"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1129.2212,1036.5058 1150.4101,1036.328 1145.8963,1049.5804 "
+     transform="rotate(17.49412,961.34771,1966.0867)" />
+</svg>

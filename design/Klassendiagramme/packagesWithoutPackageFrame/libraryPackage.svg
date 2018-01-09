@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="457px"
+   preserveAspectRatio="none"
+   style="width:1037px;height:457px;"
+   version="1.1"
+   viewBox="0 0 1037 457"
+   width="1037px"
+   zoomAndPan="magnify"
+   id="svg213"
+   sodipodi:docname="libraryPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata217">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview215"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="0.3972999"
+     inkscape:cx="518.5"
+     inkscape:cy="228.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg213" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="f155gakebh2e8t"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a46"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.library.TuplesAndLists"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.library.TuplesAndLists"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="337"
+       x="22"
+       width="220"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="TuplesAndLists"
+       height="99.820297" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="353"
+       cx="84.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 87.2231,358.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="357.53519"
+       x="104.75"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TuplesAndLists</text>
+    <line
+       id="line26"
+       y2="369"
+       y1="369"
+       x2="241"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="377"
+       y1="377"
+       x2="241"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse30"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="388.97751"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text32"
+       y="391.6348"
+       x="42"
+       textLength="190"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getTerm(String name)</text>
+    <circle
+       r="3"
+       id="ellipse34"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="401.93259"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text36"
+       y="404.58981"
+       x="42"
+       textLength="194"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean containsName(String name)</text>
+    <circle
+       r="3"
+       id="ellipse38"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="414.8877"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text40"
+       y="417.54489"
+       x="42"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse42"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="427.8428"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text44"
+       y="430.5"
+       x="42"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a65"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.library.Library"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.library.Library"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="190"
+       x="363"
+       width="206"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="Library"
+       height="86.865196" />
+    <circle
+       r="11"
+       id="ellipse49"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="206"
+       cx="441.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path51"
+       d="m 437.6777,201.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 212 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text53"
+       y="210.5352"
+       x="462.25"
+       textLength="40"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Library</text>
+    <line
+       id="line55"
+       y2="222"
+       y1="222"
+       x2="568"
+       x1="364"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line57"
+       y2="230"
+       y1="230"
+       x2="568"
+       x1="364"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text59"
+       y="244.6348"
+       x="369"
+       textLength="190"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getTerm(String name)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text61"
+       y="257.58981"
+       x="369"
+       textLength="194"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean containsName(String name)</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text63"
+       y="270.54489"
+       x="369"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+  </a>
+  <a
+     id="a94"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.library.Libraries"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.library.Libraries"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="709"
+       width="218"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="Libraries"
+       height="86.865196" />
+    <circle
+       r="11"
+       id="ellipse68"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="788.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path70"
+       d="m 791.7231,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text72"
+       y="63.535198"
+       x="809.25"
+       textLength="50"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Libraries</text>
+    <line
+       id="line74"
+       y2="75"
+       y1="75"
+       x2="926"
+       x1="710"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line76"
+       y2="83"
+       y1="83"
+       x2="926"
+       x1="710"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse78"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="94.977501"
+       cx="720" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text80"
+       y="97.634804"
+       x="729"
+       textLength="98"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;Library&gt; all()</text>
+    <line
+       id="line82"
+       y2="99.634804"
+       y1="99.634804"
+       x2="827"
+       x1="729"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse84"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="107.9326"
+       cx="720" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text86"
+       y="110.5898"
+       x="729"
+       textLength="192"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Library deserialize(String serialized)</text>
+    <line
+       id="line88"
+       y2="112.5898"
+       y1="112.5898"
+       x2="921"
+       x1="729"
+       style="stroke:#000000;stroke-width:1" />
+    <rect
+       id="rect90"
+       y="117.8877"
+       x="717"
+       width="6"
+       style="fill:#f24d5c;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text92"
+       y="123.5449"
+       x="729"
+       textLength="55"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Libraries()</text>
+  </a>
+  <a
+     id="a107"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.serialization.Serializable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.serialization.Serializable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="62.5"
+       x="417"
+       width="98"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="Serializable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse97"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="78.5"
+       cx="432" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path99"
+       d="m 427.9277,74.2651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 84.5 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text101"
+       y="83.035202"
+       x="446"
+       textLength="66"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Serializable</text>
+    <line
+       id="line103"
+       y2="94.5"
+       y1="94.5"
+       x2="514"
+       x1="418"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line105"
+       y2="102.5"
+       y1="102.5"
+       x2="514"
+       x1="418"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a136"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.library.YCombinator"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.library.YCombinator"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="337"
+       x="277"
+       width="220"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="YCombinator"
+       height="99.820297" />
+    <circle
+       r="11"
+       id="ellipse110"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="353"
+       cx="345.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path112"
+       d="m 348.7231,358.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text114"
+       y="357.53519"
+       x="366.25"
+       textLength="74"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">YCombinator</text>
+    <line
+       id="line116"
+       y2="369"
+       y1="369"
+       x2="496"
+       x1="278"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line118"
+       y2="377"
+       y1="377"
+       x2="496"
+       x1="278"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse120"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="388.97751"
+       cx="288" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text122"
+       y="391.6348"
+       x="297"
+       textLength="190"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getTerm(String name)</text>
+    <circle
+       r="3"
+       id="ellipse124"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="401.93259"
+       cx="288" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text126"
+       y="404.58981"
+       x="297"
+       textLength="194"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean containsName(String name)</text>
+    <circle
+       r="3"
+       id="ellipse128"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="414.8877"
+       cx="288" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text130"
+       y="417.54489"
+       x="297"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse132"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="427.8428"
+       cx="288" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text134"
+       y="430.5"
+       x="297"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a165"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.library.NaturalNumbers"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.library.NaturalNumbers"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="337"
+       x="532"
+       width="220"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="NaturalNumbers"
+       height="99.820297" />
+    <circle
+       r="11"
+       id="ellipse139"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="353"
+       cx="590.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path141"
+       d="m 593.2231,358.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text143"
+       y="357.53519"
+       x="610.75"
+       textLength="95"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">NaturalNumbers</text>
+    <line
+       id="line145"
+       y2="369"
+       y1="369"
+       x2="751"
+       x1="533"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line147"
+       y2="377"
+       y1="377"
+       x2="751"
+       x1="533"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse149"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="388.97751"
+       cx="543" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text151"
+       y="391.6348"
+       x="552"
+       textLength="190"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getTerm(String name)</text>
+    <circle
+       r="3"
+       id="ellipse153"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="401.93259"
+       cx="543" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text155"
+       y="404.58981"
+       x="552"
+       textLength="194"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean containsName(String name)</text>
+    <circle
+       r="3"
+       id="ellipse157"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="414.8877"
+       cx="543" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text159"
+       y="417.54489"
+       x="552"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse161"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="427.8428"
+       cx="543" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text163"
+       y="430.5"
+       x="552"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <a
+     id="a194"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.library.Boolean"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.library.Boolean"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="337"
+       x="787"
+       width="220"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f155gakebh2e8t)"
+       id="Boolean"
+       height="99.820297" />
+    <circle
+       r="11"
+       id="ellipse168"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="353"
+       cx="870.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path170"
+       d="m 873.2231,358.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text172"
+       y="357.53519"
+       x="890.75"
+       textLength="45"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Boolean</text>
+    <line
+       id="line174"
+       y2="369"
+       y1="369"
+       x2="1006"
+       x1="788"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line176"
+       y2="377"
+       y1="377"
+       x2="1006"
+       x1="788"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse178"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="388.97751"
+       cx="798" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text180"
+       y="391.6348"
+       x="807"
+       textLength="190"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getTerm(String name)</text>
+    <circle
+       r="3"
+       id="ellipse182"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="401.93259"
+       cx="798" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text184"
+       y="404.58981"
+       x="807"
+       textLength="194"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean containsName(String name)</text>
+    <circle
+       r="3"
+       id="ellipse186"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="414.8877"
+       cx="798" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text188"
+       y="417.54489"
+       x="807"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse190"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="427.8428"
+       cx="798" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text192"
+       y="430.5"
+       x="807"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Library-TuplesAndLists"
+     d="m 352.6795,285.5799 c -36.1153,16.5979 -75.9786,34.9183 -111.774,51.3692" />
+  <polygon
+     id="polygon197"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="355.9329,291.7887 350.0865,279.0678 371.1824,277.0763 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="Serializable-Library"
+     d="m 466,130.9633 c 0,18.6728 0,40.325 0,58.9075" />
+  <polygon
+     id="polygon200"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="473.0001,130.774 459.0001,130.7741 466,110.7741 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Library-YCombinator"
+     d="m 434.1969,295.2945 c -7.0992,13.7941 -14.5435,28.2586 -21.3669,41.5169" />
+  <polygon
+     id="polygon203"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="440.6449,298.0627 428.1968,291.6561 443.5731,277.0763 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Library-NaturalNumbers"
+     d="m 531.2275,290.3887 c 17.4634,15.2309 36.2118,31.5825 53.2273,46.4227" />
+  <polygon
+     id="polygon206"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="535.6376,284.9467 526.4355,295.4977 515.9638,277.0763 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Library-Boolean"
+     d="M 588.3402,273.6954 C 643.9821,292.3501 710.5368,315.1858 770,337 c 5.5615,2.0403 11.248,4.1589 16.982,6.3211" />
+  <polygon
+     id="polygon209"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="590.3311,266.9803 585.8935,280.2584 569.1436,267.2799 " />
+</svg>

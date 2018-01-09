@@ -1,0 +1,58 @@
+@startuml
+participant "menu : PopUpPanel" as menu
+participant "sEx1 : SelectExercise" as sEx1
+participant "app : App" as app
+participant "alertWindow : PopUpTextBox" as alertWindow
+participant "ex1 : Exercise1" as ex1
+participant "App" as sApp
+
+activate menu
+menu -> sEx1: run()
+activate sEx1
+sEx1 -> ex1: hasPredefinitions()
+activate ex1
+sEx1 <-- ex1: b : Boolean
+deactivate ex1
+
+alt b = true
+sEx1 -> sApp: get()
+activate sApp
+sEx1 <-- sApp: app
+deactivate sApp
+sEx1 -> app: alertWindow()
+activate app
+sEx1 <-- app: alertWindow
+deactivate app
+sEx1 -> alertWindow: write("Editor will be overridden!")
+activate alertWindow
+sEx1 <-- alertWindow
+deactivate alertWindow
+
+create participant "lEx1 : LoadExercise" as lEx1
+sEx1 -> lEx1
+sEx1 -> alertWindow: setAction(Action lEx1)
+activate alertWindow
+sEx1 <-- alertWindow
+deactivate alertWindow
+
+sEx1 -> alertWindow: show()
+activate alertWindow
+sEx1 <-- alertWindow
+deactivate alertWindow
+
+else b = false
+
+create participant "lEx1 : LoadExercise" as lEx1
+sEx1 -> lEx1
+sEx1 -> lEx1: run()
+activate lEx1
+sEx1 <-- lEx1
+deactivate lEx1
+
+end
+
+menu <-- sEx1
+deactivate sEx1
+deactivate menu
+
+@enduml

@@ -13,7 +13,7 @@ public class SelectExportFormat implements Action {
 	private Export exportFormat;
 
 	/**
-	 * Constructs a new action handler for the selction of an export format.
+	 * Constructs a new action handler for the selection of an export format.
 	 * 
 	 * @param exportFormat
 	 *            The export format the user chose.
@@ -24,14 +24,13 @@ public class SelectExportFormat implements Action {
 
 	/**
 	 * Gets the representation of the current output in the selected export format
-	 * and writes it on the export output window. Displays this window and disables
+	 * and writes it into the export output window. Displays this window and disables
 	 * user interaction with all elements, except the export window.
 	 */
 	@Override
 	public void run() {
 		PopUpWindow exportWindow = App.get().exportWindow();
 		exportWindow.write(exportFormat.getRepresentation(App.get().executor().getDisplayed()));
-		App.get().uiBlocker().show();
 		exportWindow.show();
 	}
 }

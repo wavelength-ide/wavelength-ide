@@ -70,7 +70,8 @@ public class App {
 	private ImageButton stepByStepMode;
 	private ImageButton stepForward;
 	private ImageButton terminate;
-	private ImageButton runPause;
+	private ImageButton run;
+	private ImageButton pause;
 	private TreeOutput treeOutput;
 	private UnicodeOutput unicodeOutput;
 	private ImageButton export;
@@ -116,7 +117,7 @@ public class App {
 	}
 	
 	public ImageButton stepBackwardButton() {
-		return stepBackwards;
+		return stepBackward;
 	}
 	
 	public ImageButton stepByStepModeButton() {
@@ -124,15 +125,19 @@ public class App {
 	}
 	
 	public ImageButton stepForwardButton() {
-		return stepForwards;
+		return stepForward;
 	}
 	
 	public ImageButton terminateButton() {
 		return terminate;
 	}
 	
-	public ImageButton runPauseButton() {
-		return runPause;
+	public ImageButton runButton() {
+		return run;
+	}
+	
+	public ImageButton pauseButton() {
+		return pause;
 	}
 	
 	public TreeOutput treeOutput() {
@@ -187,13 +192,14 @@ public class App {
 		stepByStepMode = new ImageButton(new Button(), new Image(), new Image());
 		stepForward = new ImageButton(new Button(), new Image(), new Image());
 		terminate = new ImageButton(new Button(), new Image(), new Image());
-		runPause = new ImageButton(new Button(), new Image(), new Image());
+		run = new ImageButton(new Button(), new Image(), new Image());
+		pause = new ImageButton(new Button(), new Image(), new Image());
 		export = new ImageButton(new Button(), new Image(), new Image());
 		share = new ImageButton(new Button(), new Image(), new Image());
 		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
 		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
-		runPause.setAction(new RunNewExecution());
+		run.setAction(new RunNewExecution());
 	}
 }

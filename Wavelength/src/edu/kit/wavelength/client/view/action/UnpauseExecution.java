@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.view.App;
-
 /**
  * This action continues the paused reduction process.
  */

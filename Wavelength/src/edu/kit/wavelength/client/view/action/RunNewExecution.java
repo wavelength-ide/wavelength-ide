@@ -43,7 +43,7 @@ public class RunNewExecution implements Action {
 
 	/**
 	 * Reads the users input and all required options from the option menus and
-	 * delegates the reduction process to a new ExectuionEngine instance.
+	 * delegates the reduction process to the Executor.
 	 * Disables the editor and option menus and toggles the play button.
 	 */
 	@Override
@@ -68,5 +68,8 @@ public class RunNewExecution implements Action {
 			a.treeOutput().show();
 			break;
 		}
+		lockOnRun.forEach(Lockable::lock);
+		a.runButton().hide();
+		a.pauseButton().show();
 	}
 }

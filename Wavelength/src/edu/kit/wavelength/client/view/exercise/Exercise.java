@@ -1,14 +1,9 @@
 package edu.kit.wavelength.client.view.exercise;
 
-import edu.kit.wavelength.client.model.ExecutionEngine;
-
 /**
  * An exercise consists of a task specifying what the User is supposed to do and
  * a solution specifying what the result should look like. Additionally
- * exercises may provide a basis for a given task. In order to evaluate a
- * solution there are some test cases provided as Strings, meaning that they
- * need to be evaluated by the {@link ExecutionEngine} and matched against a
- * possible solution.
+ * exercises may provide a basis for a given task.
  */
 public interface Exercise {
 

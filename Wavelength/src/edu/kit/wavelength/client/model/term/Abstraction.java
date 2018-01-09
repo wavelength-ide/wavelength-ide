@@ -5,7 +5,7 @@ package edu.kit.wavelength.client.model.term;
  * 
  * An abstraction has an inner term and a preferred name for the
  * variable it abstracts. When displaying the abstraction, a different
- * name may be used, since for terms referring to this abstraction
+ * name may be used, since terms referring to this abstraction
  * will use De Bruijn indices to do so.
  *
  */

@@ -9,7 +9,7 @@ public class Wavelength implements EntryPoint {
 
 	/**
 	 * This method is called when the application is first started. It initializes
-	 * the applications @link{App} class.
+	 * the application's {@link App} class.
 	 */
 	@Override
 	public void onModuleLoad() {

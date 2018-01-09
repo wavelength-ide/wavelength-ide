@@ -191,7 +191,7 @@ public class Wavelet {
         		ClassDoc[] in = cl.interfaces();
         		if (in.length > 0)
         		{
-        			out.write("Implements: ");
+        			out.write(cl.isInterface() ? "Extends: " : "Implements: ");
         			for (int k = 0; k < in.length; ++k) {
         				if (k > 0)
         					out.write(", ");

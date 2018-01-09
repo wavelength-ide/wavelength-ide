@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.Button;
 
 import edu.kit.wavelength.client.view.action.Action;
 import edu.kit.wavelength.client.view.api.Clickable;
-import edu.kit.wavelength.client.view.api.Deactivatable;
+import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
 
@@ -16,7 +16,7 @@ import edu.kit.wavelength.client.view.api.Writable;
  * that the name of the label and the action that is performed when clicking
  * this button can be changed.
  */
-public class LabeledButton implements Deactivatable, Hideable, Writable, Clickable {
+public class TextButton implements Lockable, Hideable, Writable, Clickable {
 
 	/**
 	 * Creates a new LabeledButton.
@@ -27,17 +27,17 @@ public class LabeledButton implements Deactivatable, Hideable, Writable, Clickab
 	 *            The label and name of this Button
 	 * 
 	 */
-	public LabeledButton(final Button button, final String text) {
+	public TextButton(final Button button, final String text) {
 
 	}
 
 	@Override
-	public void block() {
+	public void lock() {
 
 	}
 
 	@Override
-	public void unblock() {
+	public void unlock() {
 
 	}
 

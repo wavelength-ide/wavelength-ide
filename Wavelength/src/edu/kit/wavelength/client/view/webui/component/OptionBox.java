@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.view.webui.component;
 import com.google.gwt.user.client.ui.ListBox;
 
 import edu.kit.wavelength.client.model.serialization.Serializable;
-import edu.kit.wavelength.client.view.api.Deactivatable;
+import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Readable;
 
 /**
@@ -12,7 +12,7 @@ import edu.kit.wavelength.client.view.api.Readable;
  * It provides a means for the User to set Options for a calculation. This Box
  * can be blocked and unblocked if changing the Options must not be possible.
  */
-public class OptionBox implements Deactivatable, Readable, Serializable {
+public class OptionBox implements Lockable, Readable, Serializable {
 
 	/**
 	 * Constructs a new and empty OptionBox.
@@ -29,12 +29,12 @@ public class OptionBox implements Deactivatable, Readable, Serializable {
 	}
 
 	@Override
-	public void block() {
+	public void lock() {
 
 	}
 
 	@Override
-	public void unblock() {
+	public void unlock() {
 
 	}
 

@@ -16,6 +16,5 @@ public class CloseExport implements Action {
 	@Override
 	public void run() {
 		App.get().exportWindow().hide();
-		App.get().uiBlocker().hide();
 	}
 }

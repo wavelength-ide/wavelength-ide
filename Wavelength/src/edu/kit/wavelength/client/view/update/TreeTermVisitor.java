@@ -4,11 +4,16 @@ import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
+import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
+import edu.kit.wavelength.client.view.webui.component.TreeOutput;
 import edu.kit.wavelength.client.view.webui.component.TreeTerm;
 
+/**
+ * Visitor for generating the output of a {@link LambdaTerm} for the {@link TreeOutput} view.
+ */
 public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTerm> {
 
 	@Override

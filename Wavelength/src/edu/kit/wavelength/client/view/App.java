@@ -22,13 +22,13 @@ import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 import edu.kit.wavelength.client.view.webui.component.Checkbox;
 import edu.kit.wavelength.client.view.webui.component.Editor;
-import edu.kit.wavelength.client.view.webui.component.LabeledButton;
+import edu.kit.wavelength.client.view.webui.component.TextButton;
 import edu.kit.wavelength.client.view.webui.component.OptionBox;
-import edu.kit.wavelength.client.view.webui.component.PopUpTextBox;
+import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
 import edu.kit.wavelength.client.view.webui.component.TextField;
 import edu.kit.wavelength.client.view.webui.component.TreeOutput;
 import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
-import edu.kit.wavelength.client.view.webui.component.VisualButton;
+import edu.kit.wavelength.client.view.webui.component.ImageButton;
 import edu.kit.wavelength.client.view.webui.component.WindowFocus;
 
 /**
@@ -60,25 +60,25 @@ public class App {
 	public static final String TreeOutputName = "Tree";
 	public static final List<String> OutputNames = Arrays.asList(UnicodeOutputName, TreeOutputName);
 	
-	private VisualButton mainMenuButton;
+	private ImageButton mainMenuButton;
 	private Editor editor;
 	private OptionBox outputFormat;
 	private OptionBox reductionOrder;
 	private OptionBox outputSize;
-	private VisualButton stepBackwards;
-	private VisualButton stepByStepMode;
-	private VisualButton stepForwards;
-	private VisualButton terminate;
-	private VisualButton runPause;
+	private ImageButton stepBackwards;
+	private ImageButton stepByStepMode;
+	private ImageButton stepForwards;
+	private ImageButton terminate;
+	private ImageButton runPause;
 	private TreeOutput treeOutput;
 	private UnicodeOutput unicodeOutput;
-	private VisualButton export;
-	private PopUpTextBox exportWindow;
+	private ImageButton export;
+	private PopUpWindow exportWindow;
 	private WindowFocus uiBlocker;
-	private VisualButton share;
+	private ImageButton share;
 	private TextField sharePanel;
 	private List<Checkbox> libraries;
-	private List<LabeledButton> exercises;
+	private List<TextButton> exercises;
 	private Executor executor;
 	// etc.
 	
@@ -90,11 +90,11 @@ public class App {
 		return this.uiBlocker;
 	}
 	
-	public PopUpTextBox exportWindow() {
+	public PopUpWindow exportWindow() {
 		return this.exportWindow;
 	}
 	
-	public VisualButton mainMenuButton() {
+	public ImageButton mainMenuButton() {
 		return mainMenuButton;
 	}
 	
@@ -114,23 +114,23 @@ public class App {
 		return outputSize;
 	}
 	
-	public VisualButton stepBackwardsButton() {
+	public ImageButton stepBackwardsButton() {
 		return stepBackwards;
 	}
 	
-	public VisualButton stepByStepModeButton() {
+	public ImageButton stepByStepModeButton() {
 		return stepByStepMode;
 	}
 	
-	public VisualButton stepForwardsButton() {
+	public ImageButton stepForwardsButton() {
 		return stepForwards;
 	}
 	
-	public VisualButton terminateButton() {
+	public ImageButton terminateButton() {
 		return terminate;
 	}
 	
-	public VisualButton runPauseButton() {
+	public ImageButton runPauseButton() {
 		return runPause;
 	}
 	
@@ -142,11 +142,11 @@ public class App {
 		return unicodeOutput;
 	}
 	
-	public VisualButton exportButton() {
+	public ImageButton exportButton() {
 		return export;
 	}
 	
-	public VisualButton shareButton() {
+	public ImageButton shareButton() {
 		return share;
 	}
 	
@@ -154,7 +154,7 @@ public class App {
 		return libraries;
 	}
 	
-	public List<LabeledButton> exerciseButtons() {
+	public List<TextButton> exerciseButtons() {
 		return exercises;
 	}
 	
@@ -168,7 +168,7 @@ public class App {
 		String state = Window.Location.getPath();
 		// deserialize
 		
-		mainMenuButton = new VisualButton(new Button(), new Image(), new Image());
+		mainMenuButton = new ImageButton(new Button(), new Image(), new Image());
 		editor = new Editor();
 		//create ListBox for outputFormats
 		outputFormat = new OptionBox(new ListBox());
@@ -178,15 +178,15 @@ public class App {
 		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
 		//create ListBox for outputSizes
 		outputSize = new OptionBox(new ListBox());
-		stepBackwards = new VisualButton(new Button(), new Image(), new Image());
-		stepByStepMode = new VisualButton(new Button(), new Image(), new Image());
-		stepForwards = new VisualButton(new Button(), new Image(), new Image());
-		terminate = new VisualButton(new Button(), new Image(), new Image());
-		runPause = new VisualButton(new Button(), new Image(), new Image());
-		export = new VisualButton(new Button(), new Image(), new Image());
-		share = new VisualButton(new Button(), new Image(), new Image());
+		stepBackwards = new ImageButton(new Button(), new Image(), new Image());
+		stepByStepMode = new ImageButton(new Button(), new Image(), new Image());
+		stepForwards = new ImageButton(new Button(), new Image(), new Image());
+		terminate = new ImageButton(new Button(), new Image(), new Image());
+		runPause = new ImageButton(new Button(), new Image(), new Image());
+		export = new ImageButton(new Button(), new Image(), new Image());
+		share = new ImageButton(new Button(), new Image(), new Image());
 		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
-		exercises = Exercises.all().stream().map(e -> new LabeledButton(new Button(), e.getName())).collect(Collectors.toList());
+		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		runPause.setAction(new RunNewExecution());
 	}

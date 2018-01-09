@@ -5,7 +5,7 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
 import edu.kit.wavelength.client.view.export.Export;
-import edu.kit.wavelength.client.view.webui.component.PopUpTextBox;
+import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
 
 /**
  * This action displays the currently displayed output in the selected export
@@ -33,7 +33,7 @@ public class SelectExportFormat implements Action {
 	 */
 	@Override
 	public void run() {
-		PopUpTextBox exportWindow = App.get().exportWindow();
+		PopUpWindow exportWindow = App.get().exportWindow();
 		exportWindow.write(exportFormat.getRepresentation(App.get().executor().getDisplayed()));
 		App.get().uiBlocker().show();
 		exportWindow.show();

@@ -3,15 +3,15 @@ package edu.kit.wavelength.client.view.webui.component;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.Image;
 
-import edu.kit.wavelength.client.view.api.Deactivatable;
+import edu.kit.wavelength.client.view.api.Lockable;
 
 /**
  * This class wraps GWT's {@link DisclosurePanel}.
  * 
  * A PopUpPanel is represented by an icon that pops up a menu on click.
- * The icon depends on whether the Panel is deactivated or not according to the {@link Deactivatable} interface.
+ * The icon depends on whether the Panel is deactivated or not according to the {@link Lockable} interface.
  */
-public class Menu implements Deactivatable {
+public class Menu implements Lockable {
 
 	/**
 	 * Creates a new PopUpPanel.
@@ -23,14 +23,12 @@ public class Menu implements Deactivatable {
 		
 	}
 	@Override
-	public void block() {
-		// TODO Auto-generated method stub
+	public void lock() {
 		
 	}
 
 	@Override
-	public void unblock() {
-		// TODO Auto-generated method stub
+	public void unlock() {
 		
 	}
 

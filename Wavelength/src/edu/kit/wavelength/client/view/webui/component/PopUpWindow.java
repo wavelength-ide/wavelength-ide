@@ -13,7 +13,7 @@ import edu.kit.wavelength.client.view.api.Writable;
  * buttons (e.g. a close Button). It can be hidden or shown. Content can be written and read from the
  * TextField.
  */
-public class PopUpTextBox implements Writable, Hideable, Readable {
+public class PopUpWindow implements Writable, Hideable, Readable {
 
 	/**
 	 * Creates a new and empty PopUpTextBox.
@@ -21,7 +21,7 @@ public class PopUpTextBox implements Writable, Hideable, Readable {
 	 * @param dialogBox
 	 *            the wrapped {@link DialogBox}
 	 */
-	public PopUpTextBox(final DialogBox dialogBox) {
+	public PopUpWindow(final DialogBox dialogBox) {
 		
 	}
 

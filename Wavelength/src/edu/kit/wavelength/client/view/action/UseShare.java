@@ -14,6 +14,12 @@ public class UseShare implements Action {
 
 	private URLSerializer serializer;
 
+	/**
+	 * Constructs a new action handler for the permalink request.
+	 * 
+	 * @param serializer
+	 *            The instance to delegate the serialization process to.
+	 */
 	public UseShare(URLSerializer serializer) {
 		this.serializer = serializer;
 	}
@@ -28,7 +34,6 @@ public class UseShare implements Action {
 		if (sharePanel.isShown()) {
 			sharePanel.hide();
 		} else {
-			// TODO: woher kommt der serializer?
 			serializer.serialize();
 			sharePanel.show();
 		}

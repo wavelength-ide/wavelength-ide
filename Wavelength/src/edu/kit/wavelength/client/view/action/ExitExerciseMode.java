@@ -6,8 +6,10 @@ package edu.kit.wavelength.client.view.action;
 public class ExitExerciseMode implements Action {
 
 	/**
-	 * Resizes the editor window to full width, hides the solution and task windows
-	 * and hides the buttons for exiting and showing the solution.
+	 * Opens a popup window if the editor contains code that would be overwritten.
+	 * If this is not the case or the overwriting was accepted, this method resizes
+	 * the editor window to full width, hides the solution and task windows and
+	 * hides the buttons for exiting and showing the solution.
 	 */
 	@Override
 	public void run() {

@@ -1,27 +1,15 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.model.ExecutionEngine;
-
 /**
- *  TODO : javadoc erneuern
- * This action displays the next reduction step.
+ * This action requests and displays the next reduction step of the current
+ * execution.
  */
 public class StepForward implements Action {
 
-	private ExecutionEngine execution;
-
 	/**
-	 * Constructs a new StepForward Action.
-	 * 
-	 * @param engine
-	 *            The Engine that is signaled to calculate the next step.
+	 * Requests and displays the next reduction step.
 	 */
-	public StepForward(ExecutionEngine engine) {
-
-	}
-
 	@Override
 	public void run() {
-		execution.stepForward(true);
 	}
 }

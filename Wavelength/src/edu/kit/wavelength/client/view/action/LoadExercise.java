@@ -10,25 +10,23 @@ import edu.kit.wavelength.client.view.exercise.Exercise;
 public class LoadExercise implements Action {
 
 	/**
-	 * TODO : besserer javadoc Constructs a new SelectExercise Action.
+	 * Constructs a new action for changing the UI from standard input view to
+	 * exercise view.
 	 * 
 	 * @param exercise
-	 *            the selected Exercise
-	 * @param controller
-	 *            the AppController of the Application
+	 *            The selected Exercise that should be displayed to the user.
 	 */
-	public LoadExercise(final Exercise exercise, final App controller) {
+	public LoadExercise(final Exercise exercise) {
 
 	}
 
 	/**
 	 * Reduces the editors width and displays the task in the enabled task view
-	 * window. Also shows buttons for exiting this exercise view and for
-	 * displaying the sample solution.
+	 * window. Also shows buttons for exiting this exercise view and for displaying
+	 * the sample solution.
 	 */
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
 
 	}
 

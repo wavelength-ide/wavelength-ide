@@ -3,13 +3,16 @@ package edu.kit.wavelength.client.view.action;
 import edu.kit.wavelength.client.view.App;
 
 /**
- *  TODO : javadoc erneuern
- * This action causes the application to transition from {@link Input} ({@link ExerciseInput})
- * state or {@link AutoExecution} ({@link ExerciseAutoExecution}) state to {@link StepByStep}
- * ({@link ExerciseStepByStep}) state.
+ * This class starts a new reduction process by requesting only the first
+ * reduction step.
  */
 public class StepByStep implements Action {
 
+	/**
+	 * Reads the users input and all required options from the option menus and
+	 * delegates the reduction process to a new ExectuionEngine instance. Disables
+	 * the editor and some option menus and toggles the buttons accordingly.
+	 */
 	@Override
 	public void run() {
 	}

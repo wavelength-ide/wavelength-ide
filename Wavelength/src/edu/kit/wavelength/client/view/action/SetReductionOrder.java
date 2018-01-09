@@ -4,11 +4,13 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.action.Action;
 
 /**
- * TODO : javadoc erneuern
- * This action sets the reduction order the user selected.
+ * This action changes the reduction order for the further execution.
  */
 public class SetReductionOrder implements Action {
 
+	/**
+	 * Changes the reduction order to the selected one.
+	 */
 	@Override
 	public void run() {
 	}

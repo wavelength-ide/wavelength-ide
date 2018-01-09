@@ -15,6 +15,9 @@ import edu.kit.wavelength.client.view.api.Writable;
  */
 public class Editor implements Readable, Writable, Deactivatable, Serializable {
 
+	public Editor() {
+		
+	}
 	public static Editor deserialize(String serialized) {
 		return null;
 	}

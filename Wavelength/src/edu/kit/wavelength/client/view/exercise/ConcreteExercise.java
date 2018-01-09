@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  * This class is a concrete implementation of the {@link Exercise} interface.
- * The needed method´s return values are set in the constructor.
+ * The needed method's return values are set in the constructor.
  */
 public class ConcreteExercise implements Exercise {
 

@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view.webui.components;
 
-import java.util.List;
+import com.google.gwt.user.client.ui.ListBox;
 
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.view.api.Deactivatable;
@@ -16,11 +16,14 @@ public class OptionBox implements Deactivatable, Readable, Serializable {
 
 	/**
 	 * Constructs a new and empty OptionBox.
+	 * 
+	 * @param listBox
+	 *            the wrapped {@link ListBox}
 	 */
-	public OptionBox(List<String> entries) {
-		
+	public OptionBox(final ListBox listBox) {
+
 	}
-	
+
 	public static OptionBox deserialize(String serialized) {
 		return null;
 	}

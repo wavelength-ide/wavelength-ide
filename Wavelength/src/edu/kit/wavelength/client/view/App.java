@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.ListBox;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -165,22 +168,25 @@ public class App {
 		String state = Window.Location.getPath();
 		// deserialize
 		
-		mainMenuButton = new VisualButton(new Image(), new Image());
+		mainMenuButton = new VisualButton(new Button(), new Image(), new Image());
 		editor = new Editor();
-		outputFormat = new OptionBox(OutputNames);
+		//create ListBox for outputFormats
+		outputFormat = new OptionBox(new ListBox());
 		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName).collect(Collectors.toList());
-		reductionOrder = new OptionBox(reductionOrders);
+		//create ListBox for reductionOrders
+		reductionOrder = new OptionBox(new ListBox());
 		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
-		outputSize = new OptionBox(outputSizes);
-		stepBackwards = new VisualButton(new Image(), new Image());
-		stepByStepMode = new VisualButton(new Image(), new Image());
-		stepForwards = new VisualButton(new Image(), new Image());
-		terminate = new VisualButton(new Image(), new Image());
-		runPause = new VisualButton(new Image(), new Image());
-		export = new VisualButton(new Image(), new Image());
-		share = new VisualButton(new Image(), new Image());
-		libraries = Libraries.all().stream().map(l -> new Checkbox(l.getName())).collect(Collectors.toList());
-		exercises = Exercises.all().stream().map(e -> new LabeledButton(e.getName())).collect(Collectors.toList());
+		//create ListBox for outputSizes
+		outputSize = new OptionBox(new ListBox());
+		stepBackwards = new VisualButton(new Button(), new Image(), new Image());
+		stepByStepMode = new VisualButton(new Button(), new Image(), new Image());
+		stepForwards = new VisualButton(new Button(), new Image(), new Image());
+		terminate = new VisualButton(new Button(), new Image(), new Image());
+		runPause = new VisualButton(new Button(), new Image(), new Image());
+		export = new VisualButton(new Button(), new Image(), new Image());
+		share = new VisualButton(new Button(), new Image(), new Image());
+		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
+		exercises = Exercises.all().stream().map(e -> new LabeledButton(new Button(), e.getName())).collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		runPause.setAction(new RunNewExecution());
 	}

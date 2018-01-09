@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.webui.components;
 
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Image;
 
 import edu.kit.wavelength.client.view.action.Action;
@@ -14,16 +15,19 @@ import edu.kit.wavelength.client.view.api.Hideable;
  * Button is blocked or not. In Addition it can be hidden form the UI.
  */
 public class VisualButton implements Deactivatable, Hideable, Clickable {
-	
+
 	/**
 	 * Creates a new VisualButton.
 	 *
+	 * @param button
+	 *            the wrapped {@link Button}
 	 * @param imageWhenUnblocked
 	 *            The image that is shown when the Button is not blocked.
 	 * @param imageWhenBlocked
 	 *            The image that is shown when the Button is blocked.
+	 * 
 	 */
-	public VisualButton(final Image imageWhenUnblocked, final Image imageWhenBlocked) {
+	public VisualButton(final Button button, final Image imageWhenUnblocked, final Image imageWhenBlocked) {
 
 	}
 

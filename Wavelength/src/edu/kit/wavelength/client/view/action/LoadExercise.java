@@ -11,9 +11,9 @@ public class LoadExercise implements Action {
 	/**
 	 * Constructs a new action for changing the UI from standard input view to
 	 * exercise view.
-	 * 
+	 *
 	 * @param exercise
-	 *            The selected Exercise that should be displayed to the user.
+	 *            The selected Exercise that should be displayed to the user
 	 */
 	public LoadExercise(final Exercise exercise) {
 

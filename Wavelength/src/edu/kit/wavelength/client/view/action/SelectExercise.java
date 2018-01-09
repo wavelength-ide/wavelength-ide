@@ -12,9 +12,9 @@ public class SelectExercise implements Action {
 
 	/**
 	 * Constructs a new action handler for the selection of an exercise.
-	 * 
+	 *
 	 * @param exercise
-	 *            The selected exercise.
+	 *            the selected Exercise that should be loaded
 	 */
 	public SelectExercise(final Exercise exercise) {
 

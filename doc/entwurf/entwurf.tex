@@ -18,6 +18,7 @@
 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{bm}
 \graphicspath{./entwurf/}
 
 \usepackage[hidelinks]{hyperref}
@@ -31,8 +32,8 @@
 %\title{THE DESIGN}
 
 \titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
-\title{The Design}
-\subtitle{Wavelength - $\lambda$-IDE}
+\title{Design Document}
+\subtitle{Wavelength --- $\bm{\lambda}$-IDE}
 \author{Muhammet Guemues, Markus Himmel, Marc Huisinga,\\Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt}
 
 
@@ -43,10 +44,55 @@
 \tableofcontents
 \newpage
 \section{Introduction}
-\section{Packages and classes}
 
+This document contains the design for "Wavelength", a web-based IDE for the untyped
+lambda calculus, as described in the \textit{Pflichtenheft}.
+
+The object-oriented architecture of the project follows the model-view-controller (MVC)
+architectural pattern. It consists of two largely indepentent sets of packages.
+
+\subsection{The model}
+
+The first set of packages (\texttt{\pkglnk{model}} and its subpackages) comprises most of the model and provides means for interactively, but
+synchronously, operating on lambda terms. It is designed as a library that makes few
+assumptions about how it is used.
+
+It provides a package with a very general set of classes representing
+lambda terms as a tree structure of immutable objects. For operations on these lambda
+terms, the visitor pattern is utilized. Since many operations performed on lambda terms
+fall into a few categories (for example displaying terms in some way or transforming a term
+into another term), some special abstract visitors are provided in order to make these common
+operations less cumbersome. For the most fundamental operations on lambda terms, concrete
+visitors are provided, but the visitor interface may be implemented by any entity wishing
+to operate on lambda terms (for instance reduction orders or the user interface for displaying
+terms).
+
+In addition to lambda terms and visitors and the ability to parse strings into
+lambda terms, the model provides interfaces for reduction orders,
+output sizes and libraries as well as the implementations of the concrete reductions orders,
+output sizes and libraries mentioned in the \textit{Pflichtenheft}. These three
+concepts are each fully contained in serparate packages which only use the package
+providing lambda terms.
+
+The central interface of the model to the user interface is the
+\texttt{\hyperref[edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}}
+class, which manages the state of an interactive reduction of a lambda term. It
+keeps the current state and history of the execution and allows performing the next
+reduction step, either of a supplied redex or according to the currently set reduction
+order.
+
+\subsection{The user interface}
+
+%TODO fill me
+
+
+\section{Packages and classes}
 \input{build/doclet/out.tex}
 
-\section{Appendix}
+\section{Amendments to the requirements laid out in the \textit{Pflichtenheft}}
+
+% TODO the exercise test thingy
+
+\section{Typical processes}
 \input{sequenceDiagram.tex}
 \end{document}

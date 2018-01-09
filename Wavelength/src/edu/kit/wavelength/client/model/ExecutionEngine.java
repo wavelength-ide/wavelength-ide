@@ -42,7 +42,7 @@ public class ExecutionEngine {
 	
 	/**
 	 * Executes a single reduction of the supplied redex.
-	 * @param term The redex to be evaluated. Must be a redex, otherwise an
+	 * @param redex The redex to be evaluated. Must be a redex, otherwise an
 	 * exception is thrown.
 	 */
 	public void stepForward(Application redex) {
@@ -91,7 +91,7 @@ public class ExecutionEngine {
 	
 	/**
 	 * Changes the active reduction order to the entered one.
-	 * @param type The new reduction order.
+	 * @param reduction The new reduction order.
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
 		

@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
@@ -12,6 +13,7 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.view.App;
+import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.webui.component.Checkbox;
 
 /**
@@ -19,6 +21,22 @@ import edu.kit.wavelength.client.view.webui.component.Checkbox;
  */
 public class RunNewExecution implements Action {
 
+	// for brevity
+	private static App a = App.get();
+	
+	private static List<Lockable> lockOnRun = Arrays.asList(
+			a.outputFormatBox(), 
+			a.reductionOrderBox(), 
+			a.outputSizeBox(),
+			a.stepBackwardButton(),
+			a.stepByStepModeButton(),
+			a.stepForwardButton());
+	static {
+		lockOnRun.addAll(a.exerciseButtons());
+		lockOnRun.addAll(a.libraryBoxes());
+		lockOnRun.addAll(a.exportFormatButtons());
+	}
+	
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
 	}
@@ -30,7 +48,6 @@ public class RunNewExecution implements Action {
 	 */
 	@Override
 	public void run() {
-		App a = App.get();
 		// example code for starting the execution
 		String code = a.editor().read();
 		String orderName = a.reductionOrderBox().read();

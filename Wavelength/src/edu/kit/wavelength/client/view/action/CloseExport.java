@@ -10,8 +10,7 @@ import edu.kit.wavelength.client.view.App;
 public class CloseExport implements Action {
 
 	/**
-	 * Hides the export output window and re-enables the UI by hiding the UI
-	 * interaction blocker.
+	 * Hides the export output window and re-enables the UI.
 	 */
 	@Override
 	public void run() {

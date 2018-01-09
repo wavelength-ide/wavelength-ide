@@ -18,6 +18,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
+import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 import edu.kit.wavelength.client.view.webui.component.Checkbox;
@@ -65,20 +66,20 @@ public class App {
 	private OptionBox outputFormat;
 	private OptionBox reductionOrder;
 	private OptionBox outputSize;
-	private ImageButton stepBackwards;
+	private ImageButton stepBackward;
 	private ImageButton stepByStepMode;
-	private ImageButton stepForwards;
+	private ImageButton stepForward;
 	private ImageButton terminate;
 	private ImageButton runPause;
 	private TreeOutput treeOutput;
 	private UnicodeOutput unicodeOutput;
 	private ImageButton export;
 	private PopUpWindow exportWindow;
-	private WindowFocus uiBlocker;
 	private ImageButton share;
 	private TextField sharePanel;
 	private List<Checkbox> libraries;
 	private List<TextButton> exercises;
+	private List<TextButton> exportFormats;
 	private Executor executor;
 	// etc.
 	
@@ -114,7 +115,7 @@ public class App {
 		return outputSize;
 	}
 	
-	public ImageButton stepBackwardsButton() {
+	public ImageButton stepBackwardButton() {
 		return stepBackwards;
 	}
 	
@@ -122,7 +123,7 @@ public class App {
 		return stepByStepMode;
 	}
 	
-	public ImageButton stepForwardsButton() {
+	public ImageButton stepForwardButton() {
 		return stepForwards;
 	}
 	
@@ -158,6 +159,10 @@ public class App {
 		return exercises;
 	}
 	
+	public List<TextButton> exportFormatButtons() {
+		return exportFormats;
+	}
+	
 	public Executor executor() {
 		return executor;
 	}
@@ -178,15 +183,16 @@ public class App {
 		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
 		//create ListBox for outputSizes
 		outputSize = new OptionBox(new ListBox());
-		stepBackwards = new ImageButton(new Button(), new Image(), new Image());
+		stepBackward = new ImageButton(new Button(), new Image(), new Image());
 		stepByStepMode = new ImageButton(new Button(), new Image(), new Image());
-		stepForwards = new ImageButton(new Button(), new Image(), new Image());
+		stepForward = new ImageButton(new Button(), new Image(), new Image());
 		terminate = new ImageButton(new Button(), new Image(), new Image());
 		runPause = new ImageButton(new Button(), new Image(), new Image());
 		export = new ImageButton(new Button(), new Image(), new Image());
 		share = new ImageButton(new Button(), new Image(), new Image());
 		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
 		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
+		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		runPause.setAction(new RunNewExecution());
 	}

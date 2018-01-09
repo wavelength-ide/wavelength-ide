@@ -3,13 +3,14 @@ package edu.kit.wavelength.client.view.webui.component;
 import com.google.gwt.user.client.ui.CheckBox;
 
 import edu.kit.wavelength.client.model.serialization.Serializable;
+import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Readable;
 import edu.kit.wavelength.client.view.api.Toggleable;
 
 /**
  * This class wraps GWT's {@link CheckBox}.
  */
-public class Checkbox implements Readable, Toggleable, Serializable {
+public class Checkbox implements Readable, Toggleable, Serializable, Lockable {
 
 	/**
 	 * Creates a new Checkbox
@@ -37,8 +38,17 @@ public class Checkbox implements Readable, Toggleable, Serializable {
 
 	@Override
 	public String serialize() {
-		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void lock() {
+
+	}
+
+	@Override
+	public void unlock() {
+
 	}
 
 }

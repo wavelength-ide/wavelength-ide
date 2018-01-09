@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="182.8653"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 297 182.8653"
+   width="297"
+   zoomAndPan="magnify"
+   id="svg36"
+   sodipodi:docname="serializationPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata40">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview38"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1.1135135"
+     inkscape:cx="152.5"
+     inkscape:cy="102.91019"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg36" />
+  <defs
+     id="defs11">
+    <filter
+       height="3"
+       id="fx55rou9qc659"
+       width="3"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a32"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.serialization.Serializable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.serialization.Serializable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(-32.5,17.955101)">
+    <rect
+       y="43"
+       x="131.5"
+       width="99"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fx55rou9qc659)"
+       id="Serializable"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="146.95" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 142.8777,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="63.535198"
+       x="161.05"
+       textLength="66"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Serializable</text>
+    <line
+       id="line26"
+       y2="75"
+       y1="75"
+       x2="229.5"
+       x1="132.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="83"
+       y1="83"
+       x2="229.5"
+       x1="132.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text30"
+       y="97.634804"
+       x="137.5"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+</svg>

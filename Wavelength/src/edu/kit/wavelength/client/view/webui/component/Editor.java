@@ -16,6 +16,11 @@ import edu.kit.wavelength.client.view.api.Writable;
  */
 public class Editor implements Readable, Writable, Hideable, Lockable, Serializable {
 
+	/**
+	 * Creates a new Editor from the specified serialized string.
+	 * @param serialized serialized string, as created in serialize
+	 * @return new Editor
+	 */
 	public static Editor deserialize(String serialized) {
 		return null;
 	}
@@ -42,27 +47,22 @@ public class Editor implements Readable, Writable, Hideable, Lockable, Serializa
 
 	@Override
 	public String serialize() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	@Override
 	public boolean isLocked() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
 	public boolean isShown() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 }

@@ -12,6 +12,11 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
  */
 public interface Exercise {
 
+	/**
+	 * Gets the name of the exercise.
+	 * 
+	 * @return name
+	 */
 	String getName();
 
 	/**

@@ -11,6 +11,13 @@ public class ConcreteExercise implements Exercise {
 	private String solution;
 	private String predefinitions;
 	
+	/**
+	 * Creates a new Exercise.
+	 * @param name - name of the exercise
+	 * @param task - problem task to display
+	 * @param solution - intended solution for the problem
+	 * @param predefinitions - initial code to load into the editor
+	 */
 	public ConcreteExercise(final String name, final String task, final String solution, final String predefinitions) {
 		this.name = name;
 		this.task = task;

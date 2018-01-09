@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.model.term;
 
-import java.util.List;
-
 /**
  * Represents a term that consists of a library function that may be accelerated, as well as
  * zero or more applications with arguments for said library function.

@@ -15,6 +15,7 @@ import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
+import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
@@ -36,13 +37,16 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
  * displayed output. The initial state is the Input state and the output is
  * empty when the application is started.
  */
-public class App {
+public final class App implements Serializable {
 	
 	private static App instance = null;
 	
-	// protected so that App class can be mocked
 	protected App() {}
 	
+	/**
+	 * Gets a singleton instance of App.
+	 * @return instance
+	 */
 	public static App get() {
 		if (instance == null) {
 			instance = new App();
@@ -51,14 +55,22 @@ public class App {
 		return instance;
 	}
 	
-	// settable to mock the App with mockito
-	public static void set(App c) {
-		instance = c;
+	/**
+	 * Sets the singleton instance of App for testing.
+	 * @param a instance to set
+	 */
+	public static void set(App a) {
+		instance = a;
 	}
 	
+	/**
+	 * Name of the unicode format.
+	 */
 	public static final String UnicodeOutputName = "Unicode";
+	/**
+	 * Name of the tree format.
+	 */
 	public static final String TreeOutputName = "Tree";
-	public static final List<String> OutputNames = Arrays.asList(UnicodeOutputName, TreeOutputName);
 	
 	private ImageButton mainMenuButton;
 	private Editor editor;
@@ -83,93 +95,180 @@ public class App {
 	private Executor executor;
 	// etc.
 	
+	/**
+	 * Gets the panel that contains the URL to play back the state of the application.
+	 * @return panel
+	 */
 	public TextField sharePanel() {
 		return this.sharePanel;
 	}
 	
+	/**
+	 * Gets the window that shows exported output.
+	 * @return window
+	 */
 	public PopUpWindow exportWindow() {
 		return this.exportWindow;
 	}
 	
+	/**
+	 * Gets the button that is used to open the main menu.
+	 * @return button
+	 */
 	public ImageButton mainMenuButton() {
 		return mainMenuButton;
 	}
 	
+	/**
+	 * Gets the editor.
+	 * @return editor
+	 */
 	public Editor editor() {
 		return editor;
 	}
 	
+	/**
+	 * Gets the option box that allows the user to choose which output format to use.
+	 * @return box
+	 */
 	public OptionBox outputFormatBox() {
 		return outputFormat;
 	}
 	
+	/**
+	 * Gets the option box that allows the user to choose which reduction order to use.
+	 * @return box
+	 */
 	public OptionBox reductionOrderBox() {
 		return reductionOrder;
 	}
 	
+	/**
+	 * Gets the option box that allows the user to choose which output size to use.
+	 * @return box
+	 */
 	public OptionBox outputSizeBox() {
 		return outputSize;
 	}
 	
+	/**
+	 * Gets the button that can be used to play back to the previous displayed term.
+	 * @return button
+	 */
 	public ImageButton stepBackwardButton() {
 		return stepBackward;
 	}
 	
+	/**
+	 * Gets the button that can be used to initiate step by step reduction before execution.
+	 * @return button
+	 */
 	public ImageButton stepByStepModeButton() {
 		return stepByStepMode;
 	}
 	
+	/**
+	 * Gets the button that can be used to initiate the next reduction by the currently selected reduction order.
+	 * @return button
+	 */
 	public ImageButton stepForwardButton() {
 		return stepForward;
 	}
 	
+	/**
+	 * Gets the button that can be used to terminate the reduction.
+	 * @return button
+	 */
 	public ImageButton terminateButton() {
 		return terminate;
 	}
 	
+	/**
+	 * Gets the button that can be used to initiate the execution, automatically reducing the input with the given options
+	 * @return button
+	 */
 	public ImageButton runButton() {
 		return run;
 	}
 	
+	/**
+	 * Gets the button that can be used to transition from the automatic execution to the step by step mode.
+	 * @return button
+	 */
 	public ImageButton pauseButton() {
 		return pause;
 	}
 	
+	/**
+	 * Gets the output that displays terms as trees.
+	 * @return output
+	 */
 	public TreeOutput treeOutput() {
 		return treeOutput;
 	}
 	
+	/**
+	 * Gets the output that displays terms with unicode text.
+	 * @return output
+	 */
 	public UnicodeOutput unicodeOutput() {
 		return unicodeOutput;
 	}
 	
+	/**
+	 * Gets the button that can be used to open the menu that allows the user to choose an export format.
+	 * @return button
+	 */
 	public ImageButton exportButton() {
 		return export;
 	}
 	
+	/**
+	 * Gets the button that can be used to toggle the panel that displays the serialized URL.
+	 * @return button
+	 */
 	public ImageButton shareButton() {
 		return share;
 	}
 	
+	/**
+	 * Gets all checkboxes that can be used to enable libraries.
+	 * @return library checkboxes
+	 */
 	public List<Checkbox> libraryBoxes() {
 		return libraries;
 	}
 	
+	/**
+	 * Gets all buttons that can be used to load an exercise.
+	 * @return exercise buttons
+	 */
 	public List<TextButton> exerciseButtons() {
 		return exercises;
 	}
 	
+	/**
+	 * Gets all buttons that can be used to load the output into the export window with the given export format specified by the button.
+	 * @return export format buttons
+	 */
 	public List<TextButton> exportFormatButtons() {
 		return exportFormats;
 	}
 	
+	/**
+	 * Gets the wrapper that controls the reduction of lambda terms.
+	 * @return Executor
+	 */
 	public Executor executor() {
 		return executor;
 	}
 	
 	// etc.
 	
-	public void initialize() {
+	/**
+	 * Initializes App.
+	 */
+	private void initialize() {
 		String state = Window.Location.getPath();
 		// deserialize
 		
@@ -196,5 +295,10 @@ public class App {
 		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		run.setAction(new RunNewExecution());
+	}
+
+	@Override
+	public String serialize() {
+		return null;
 	}
 }

@@ -27,6 +27,11 @@ public class OptionBox implements Clickable, Hideable, Lockable, Readable, Seria
 
 	}
 
+	/**
+	 * Creates a new OptionBox from the specified serialized string.
+	 * @param serialized serialized string, as created in serialize
+	 * @return new OptionBox
+	 */
 	public static OptionBox deserialize(String serialized) {
 		return null;
 	}
@@ -43,43 +48,36 @@ public class OptionBox implements Clickable, Hideable, Lockable, Readable, Seria
 
 	@Override
 	public String read() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public String serialize() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isLocked() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public boolean isShown() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public void setAction(Action action) {
-		// TODO Auto-generated method stub
 		
 	}
 

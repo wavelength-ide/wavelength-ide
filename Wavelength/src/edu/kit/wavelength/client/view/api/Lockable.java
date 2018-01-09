@@ -18,5 +18,9 @@ public interface Lockable {
 	 */
 	void unlock();
 	
+	/**
+	 * Checks whether the view is locked right now.
+	 * @return whether the view is locked
+	 */
 	boolean isLocked();
 }

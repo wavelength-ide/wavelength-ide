@@ -23,6 +23,11 @@ public class Checkbox implements Readable, Hideable, Toggleable, Serializable, L
 		
 	}
 	
+	/**
+	 * Creates a new Checkbox from the specified serialized string.
+	 * @param serialized serialized string, as created in serialize
+	 * @return new Checkbox
+	 */
 	public static Checkbox deserialize(String serialized) {
 		return null;
 	}

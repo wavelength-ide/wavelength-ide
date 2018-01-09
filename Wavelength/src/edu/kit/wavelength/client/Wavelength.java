@@ -2,6 +2,8 @@ package edu.kit.wavelength.client;
 
 import com.google.gwt.core.client.EntryPoint;
 
+import edu.kit.wavelength.client.view.App;
+
 /**
  * This class marks the entry point of the application.
  */

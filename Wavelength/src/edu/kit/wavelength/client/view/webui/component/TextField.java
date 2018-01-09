@@ -4,6 +4,8 @@ import com.google.gwt.user.client.ui.TextArea;
 
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
+import edu.kit.wavelength.client.view.api.Readable;
+
 
 /**
  * A TextField is an adapter class for a GWT TextArea.
@@ -41,6 +43,11 @@ public class TextField implements Hideable, Writable, Readable {
 	@Override
 	public boolean isShown() {
 		return false;
+	}
+
+	@Override
+	public String read() {
+		return null;
 	}
 
 }

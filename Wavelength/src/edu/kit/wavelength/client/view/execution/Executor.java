@@ -11,6 +11,9 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
+/**
+ * Concurrently reduces lambda terms.
+ */
 public class Executor {
 
 	private List<ExecutionObserver> observers;
@@ -18,6 +21,10 @@ public class Executor {
 	private boolean autoRunning = false;
 	private ExecutionEngine engine;
 	
+	/**
+	 * Creates a new Executor.
+	 * @param observers Observers to update with reduced lambda terms
+	 */
 	public Executor(List<ExecutionObserver> observers) {
 		this.observers = observers;
 	}
@@ -40,23 +47,46 @@ public class Executor {
 		});
 	}
 	
+	/**
+	 * Starts the automatic execution of the input, parsing the term and then reducing it.
+	 * @param input code to parse and reduce
+	 * @param order order with which to reduce
+	 * @param size which terms to push to observers
+	 * @param libraries libraries to consider when parsing
+	 */
 	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
 		engine = new ExecutionEngine(input, order, size, libraries);
 		scheduleExecution();
 	}
 	
+	/**
+	 * Pauses the automatic execution, transitioning into the step by step mode.
+	 */
 	public void pause() {
 		autoRunning = false;
 	}
 
+	/**
+	 * Unpauses the automatic execution, transitioning from step by step mode into automatic execution.
+	 */
 	public void unpause() {
 		scheduleExecution();
 	}
 	
+	/**
+	 * Terminates the step by step- and automatic execution.
+	 */
 	public void terminate() {
 		pause();
 	}
 
+	/**
+	 * Initiates the step by step execution, allowing the caller to choose the next step.
+	 * @param input code to parse and execute
+	 * @param order order with which to reduce
+	 * @param size which terms to push to observers
+	 * @param libraries libraries to consider when parsing
+	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
 		engine = new ExecutionEngine(input, order, size, libraries);
 	}
@@ -72,7 +102,7 @@ public class Executor {
 	
 	/**
 	 * Executes a single reduction of the supplied redex.
-	 * @param term The redex to be evaluated. Must be a redex, otherwise
+	 * @param redex The redex to be evaluated. Must be a redex, otherwise
 	 * an exception is thrown
 	 */
 	public void stepForward(Application redex) {
@@ -89,7 +119,7 @@ public class Executor {
 
 	/**
 	 * Changes the active reduction order to the entered one.
-	 * @param type The new reduction order.
+	 * @param reduction The new reduction order.
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
 		engine.setReductionOrder(reduction);

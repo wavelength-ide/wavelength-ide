@@ -11,7 +11,7 @@ public interface Writable {
 	/**
 	 * Writes content into this element.
 	 * 
-	 * @param text
+	 * @param input
 	 *            A String representation of the designated new content
 	 */
 	void write(final String input);

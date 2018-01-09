@@ -4,28 +4,28 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 
 /**
- * This class changes the view from standard input to exercise view to display
- * the selected exercise.
+ * This action will try to load a new exercise and alerts the user when the
+ * content of the Editor would be overridden.
  */
 public class SelectExercise implements Action {
 
 	private Exercise exercise;
 
 	/**
-	 * TODO : besserer javadoc 
-	 * Constructs a new SelectExercise Action.
+	 * TODO : besserer javadoc Constructs a new SelectExercise Action.
 	 * 
 	 * @param exercise
 	 *            the selected Exercise
+	 * @param controller
+	 *            the AppController of the Application
 	 */
-	public SelectExercise(final Exercise exercise) {
+	public SelectExercise(final Exercise exercise, final App controller) {
 
 	}
 
 	/**
-	 * Reduces the editors width and displays the task in the enabled task view
-	 * window. Also shows buttons for exiting this exercise view and for displaying
-	 * the sample solution.
+	 * Opens a PopupWindow if the content of the editor would be overridden.
+	 * Otherwise just loads the selected exercise.
 	 */
 	@Override
 	public void run() {

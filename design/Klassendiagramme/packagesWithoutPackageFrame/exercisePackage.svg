@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="414px"
+   preserveAspectRatio="none"
+   style="width:508px;height:414px;"
+   version="1.1"
+   viewBox="0 0 508 414"
+   width="508px"
+   zoomAndPan="magnify"
+   id="svg119"
+   sodipodi:docname="exercisePackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata123">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="775"
+     id="namedview121"
+     showgrid="false"
+     inkscape:zoom="0.57004831"
+     inkscape:cx="254"
+     inkscape:cy="-73.677966"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg119" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="f1glkv965lvqig"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a70"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.exercise.ConcreteExercise"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.exercise.ConcreteExercise"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="216"
+       x="22"
+       width="456"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1glkv965lvqig)"
+       id="ConcreteExercise"
+       height="177.5508" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="232"
+       cx="196.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 199.2231,237.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="236.5352"
+       x="216.75"
+       textLength="99"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">ConcreteExercise</text>
+    <line
+       id="line26"
+       y2="248"
+       y1="248"
+       x2="477"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <rect
+       id="rect28"
+       y="256.97751"
+       x="30"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text30"
+       y="262.6348"
+       x="42"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String name</text>
+    <rect
+       id="rect32"
+       y="269.93259"
+       x="30"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text34"
+       y="275.58981"
+       x="42"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String task</text>
+    <rect
+       id="rect36"
+       y="282.8877"
+       x="30"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text38"
+       y="288.54489"
+       x="42"
+       textLength="79"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String solution</text>
+    <rect
+       id="rect40"
+       y="295.8428"
+       x="30"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text42"
+       y="301.5"
+       x="42"
+       textLength="110"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String predefinitions</text>
+    <line
+       id="line44"
+       y2="307.82031"
+       y1="307.82031"
+       x2="477"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse46"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="319.79791"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text48"
+       y="322.45511"
+       x="42"
+       textLength="430"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ConcreteExercise(String name, String task, String solution, String predefinitions)</text>
+    <circle
+       r="3"
+       id="ellipse50"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="332.7529"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text52"
+       y="335.41019"
+       x="42"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <circle
+       r="3"
+       id="ellipse54"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="345.70801"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text56"
+       y="348.3652"
+       x="42"
+       textLength="85"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getTask()</text>
+    <circle
+       r="3"
+       id="ellipse58"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="358.66309"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text60"
+       y="361.32031"
+       x="42"
+       textLength="104"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getSolution()</text>
+    <circle
+       r="3"
+       id="ellipse62"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="371.61819"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text64"
+       y="374.27539"
+       x="42"
+       textLength="147"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean hasPredefinitions()</text>
+    <circle
+       r="3"
+       id="ellipse66"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="384.57321"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text68"
+       y="387.2305"
+       x="42"
+       textLength="134"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getPredefinitions()</text>
+  </a>
+  <a
+     id="a93"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.exercise.Exercise"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.exercise.Exercise"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="188.5"
+       width="159"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1glkv965lvqig)"
+       id="Exercise"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse73"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="239.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path75"
+       d="m 235.6777,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text77"
+       y="63.535198"
+       x="260.25"
+       textLength="48"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Exercise</text>
+    <line
+       id="line79"
+       y2="75"
+       y1="75"
+       x2="346.5"
+       x1="189.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line81"
+       y2="83"
+       y1="83"
+       x2="346.5"
+       x1="189.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text83"
+       y="97.634804"
+       x="194.5"
+       textLength="90"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getName()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text85"
+       y="110.5898"
+       x="194.5"
+       textLength="85"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getTask()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text87"
+       y="123.5449"
+       x="194.5"
+       textLength="104"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getSolution()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text89"
+       y="136.5"
+       x="194.5"
+       textLength="147"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean hasPredefinitions()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text91"
+       y="149.45509"
+       x="194.5"
+       textLength="134"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getPredefinitions()</text>
+  </a>
+  <a
+     id="a112"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.exercise.Exercises"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.exercise.Exercises"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="69"
+       x="22.5"
+       width="131"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1glkv965lvqig)"
+       id="Exercises"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse96"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="85"
+       cx="57.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path98"
+       d="m 60.7231,90.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text100"
+       y="89.535202"
+       x="76.25"
+       textLength="54"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Exercises</text>
+    <line
+       id="line102"
+       y2="101"
+       y1="101"
+       x2="152.5"
+       x1="23.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line104"
+       y2="109"
+       y1="109"
+       x2="152.5"
+       x1="23.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse106"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="120.9775"
+       cx="33.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text108"
+       y="123.6348"
+       x="42.5"
+       textLength="105"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;Exercise&gt; all()</text>
+    <line
+       id="line110"
+       y2="125.6348"
+       y1="125.6348"
+       x2="147.5"
+       x1="42.5"
+       style="stroke:#000000;stroke-width:1" />
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Exercise-ConcreteExercise"
+     d="m 261.264,176.4029 c -1.1229,12.819 -2.296,26.212 -3.4431,39.3082" />
+  <polygon
+     id="polygon115"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="268.2618,176.7323 254.3152,175.5107 263.0338,156.1978 " />
+</svg>

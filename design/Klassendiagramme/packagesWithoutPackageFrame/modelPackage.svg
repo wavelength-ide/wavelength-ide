@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="241px"
+   preserveAspectRatio="none"
+   style="width:580px;height:241px;"
+   version="1.1"
+   viewBox="0 0 580 241"
+   width="580px"
+   zoomAndPan="magnify"
+   id="svg74"
+   sodipodi:docname="modelPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata78">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview76"
+     showgrid="false"
+     inkscape:zoom="1.0045793"
+     inkscape:cx="290"
+     inkscape:cy="120.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg74" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="f1f477o96cwrtd"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a70"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.ExecutionEngine"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.ExecutionEngine"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="22"
+       width="528"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1f477o96cwrtd)"
+       id="ExecutionEngine"
+       height="177.5508" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="235.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 238.2231,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="63.535198"
+       x="255.75"
+       textLength="93"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">ExecutionEngine</text>
+    <line
+       id="line26"
+       y2="75"
+       y1="75"
+       x2="549"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="83"
+       y1="83"
+       x2="549"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse30"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="94.977501"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text32"
+       y="97.634804"
+       x="42"
+       textLength="502"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ExecutionEngine(String input, ReductionOrder order, OutputSize size, List&lt;Library&gt; libraries)</text>
+    <circle
+       r="3"
+       id="ellipse34"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="107.9326"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text36"
+       y="110.5898"
+       x="42"
+       textLength="296"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean stepForward(boolean enablePartialApplication)</text>
+    <circle
+       r="3"
+       id="ellipse38"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="120.8877"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text40"
+       y="123.5449"
+       x="42"
+       textLength="196"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void stepForward(Application redex)</text>
+    <circle
+       r="3"
+       id="ellipse42"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="133.8428"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text44"
+       y="136.5"
+       x="42"
+       textLength="108"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isFinished()</text>
+    <circle
+       r="3"
+       id="ellipse46"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="146.7979"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text48"
+       y="149.45509"
+       x="42"
+       textLength="107"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void stepBackward()</text>
+    <circle
+       r="3"
+       id="ellipse50"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="159.7529"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text52"
+       y="162.4102"
+       x="42"
+       textLength="187"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;LambdaTerm&gt; getDisplayed()</text>
+    <circle
+       r="3"
+       id="ellipse54"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="172.70799"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text56"
+       y="175.3652"
+       x="42"
+       textLength="120"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm getLast()</text>
+    <circle
+       r="3"
+       id="ellipse58"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="185.6631"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text60"
+       y="188.3203"
+       x="42"
+       textLength="161"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm displayCurrent()</text>
+    <circle
+       r="3"
+       id="ellipse62"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="198.61819"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text64"
+       y="201.27541"
+       x="42"
+       textLength="277"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void setReductionOrder(ReductionOrder reduction)</text>
+    <circle
+       r="3"
+       id="ellipse66"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="211.5732"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text68"
+       y="214.2305"
+       x="42"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+  </a>
+</svg>

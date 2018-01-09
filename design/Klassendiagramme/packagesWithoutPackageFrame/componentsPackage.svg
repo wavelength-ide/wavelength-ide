@@ -1,0 +1,2873 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="900.24121"
+   preserveAspectRatio="none"
+   version="1.1"
+   viewBox="0 0 3200 900.2412"
+   width="3200"
+   zoomAndPan="magnify"
+   id="svg738"
+   sodipodi:docname="componentsPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata742">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1440"
+     inkscape:window-height="775"
+     id="namedview740"
+     showgrid="true"
+     inkscape:zoom="0.13087675"
+     inkscape:cx="2417.6222"
+     inkscape:cy="460.23388"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg738"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs11">
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker7019"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path7017"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6913"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6911"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6813"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6811"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6719"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6717"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6631"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6629"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6549"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6547"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6473"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6471"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6403"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6401"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6339"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6337"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6281"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6279"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6229"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6227"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6183"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6181"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6143"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6141"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6109"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6107"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6081"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6079"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="marker6059"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path6057"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path5781"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#a80036;fill-opacity:1;fill-rule:evenodd;stroke:#a80036;stroke-width:1.00000003pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         inkscape:connector-curvature="0" />
+    </marker>
+    <filter
+       height="3"
+       id="fcb0bxxuu75vi"
+       width="3"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a30"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TreeTerm"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TreeTerm"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(373.9733,77.88344)">
+    <rect
+       y="43"
+       x="2667"
+       width="90"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="TreeTerm"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="2682" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 2684.9731,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="63.535198"
+       x="2696"
+       textLength="58"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TreeTerm</text>
+    <line
+       id="line26"
+       y2="75"
+       y1="75"
+       x2="2756"
+       x1="2668"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="83"
+       y1="83"
+       x2="2756"
+       x1="2668"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a75"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.ImageButton"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.ImageButton"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="183"
+       x="2626.5"
+       width="491"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="ImageButton"
+       height="151.64059" />
+    <circle
+       r="11"
+       id="ellipse33"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199"
+       cx="2832.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path35"
+       d="m 2835.2231,204.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text37"
+       y="203.5352"
+       x="2852.75"
+       textLength="71"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">ImageButton</text>
+    <line
+       id="line39"
+       y2="215"
+       y1="215"
+       x2="3116.5"
+       x1="2627.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line41"
+       y2="223"
+       y1="223"
+       x2="3116.5"
+       x1="2627.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse43"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="234.97749"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text45"
+       y="237.6348"
+       x="2646.5"
+       textLength="465"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton(Button button, Image imageWhenActivated, Image imageWhenDeactivated)</text>
+    <circle
+       r="3"
+       id="ellipse47"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="247.9326"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text49"
+       y="250.5898"
+       x="2646.5"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse51"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="260.8877"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text53"
+       y="263.54489"
+       x="2646.5"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse55"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="273.8428"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text57"
+       y="276.5"
+       x="2646.5"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse59"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="286.79791"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text61"
+       y="289.45511"
+       x="2646.5"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse63"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="299.7529"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text65"
+       y="302.41019"
+       x="2646.5"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void setAction(Action action)</text>
+    <circle
+       r="3"
+       id="ellipse67"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="312.70801"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text69"
+       y="315.3652"
+       x="2646.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+    <circle
+       r="3"
+       id="ellipse71"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="325.66309"
+       cx="2637.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text73"
+       y="328.32031"
+       x="2646.5"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+  </a>
+  <a
+     id="a88"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Lockable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Lockable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="43"
+       x="1650.5"
+       width="83"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Lockable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse78"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="1665.5" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path80"
+       d="m 1661.4277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text82"
+       y="63.535198"
+       x="1679.5"
+       textLength="51"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Lockable</text>
+    <line
+       id="line84"
+       y2="75"
+       y1="75"
+       x2="1732.5"
+       x1="1651.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line86"
+       y2="83"
+       y1="83"
+       x2="1732.5"
+       x1="1651.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a101"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Hideable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Hideable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(42.6893,677.52421)">
+    <rect
+       y="43"
+       x="1274"
+       width="84"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Hideable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse91"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="1289" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path93"
+       d="m 1284.9277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text95"
+       y="63.535198"
+       x="1303"
+       textLength="52"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Hideable</text>
+    <line
+       id="line97"
+       y2="75"
+       y1="75"
+       x2="1357"
+       x1="1275"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line99"
+       y2="83"
+       y1="83"
+       x2="1357"
+       x1="1275"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a114"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Clickable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Clickable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="43"
+       x="2079"
+       width="84"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Clickable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse104"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="2094" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path106"
+       d="m 2089.9277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text108"
+       y="63.535198"
+       x="2108"
+       textLength="52"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Clickable</text>
+    <line
+       id="line110"
+       y2="75"
+       y1="75"
+       x2="2162"
+       x1="2080"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line112"
+       y2="83"
+       y1="83"
+       x2="2162"
+       x1="2080"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a147"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextField"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TextField"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="202.5"
+       x="277.5"
+       width="181"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="TextField"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse117"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="218.5"
+       cx="337.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path119"
+       d="m 340.2231,224.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text121"
+       y="223.0352"
+       x="357.75"
+       textLength="53"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TextField</text>
+    <line
+       id="line123"
+       y2="234.5"
+       y1="234.5"
+       x2="457.5"
+       x1="278.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line125"
+       y2="242.5"
+       y1="242.5"
+       x2="457.5"
+       x1="278.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse127"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="254.47749"
+       cx="288.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text129"
+       y="257.1348"
+       x="297.5"
+       textLength="155"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TextField(TextArea textField)</text>
+    <circle
+       r="3"
+       id="ellipse131"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="267.43259"
+       cx="288.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text133"
+       y="270.08981"
+       x="297.5"
+       textLength="123"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void write(String input)</text>
+    <circle
+       r="3"
+       id="ellipse135"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="280.3877"
+       cx="288.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text137"
+       y="283.04489"
+       x="297.5"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse139"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="293.3428"
+       cx="288.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text141"
+       y="296"
+       x="297.5"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse143"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="306.29791"
+       cx="288.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text145"
+       y="308.95511"
+       x="297.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a160"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Writable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Writable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(64.5218,666.22321)">
+    <rect
+       y="43"
+       x="342.5"
+       width="79"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Writable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse150"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="357.5" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path152"
+       d="m 353.4277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text154"
+       y="63.535198"
+       x="371.5"
+       textLength="47"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Writable</text>
+    <line
+       id="line156"
+       y2="75"
+       y1="75"
+       x2="420.5"
+       x1="343.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line158"
+       y2="83"
+       y1="83"
+       x2="420.5"
+       x1="343.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a173"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Readable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Readable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="43"
+       x="666.5"
+       width="87"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Readable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse163"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="681.5" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path165"
+       d="m 677.4277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text167"
+       y="63.535198"
+       x="695.5"
+       textLength="55"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Readable</text>
+    <line
+       id="line169"
+       y2="75"
+       y1="75"
+       x2="752.5"
+       x1="667.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line171"
+       y2="83"
+       y1="83"
+       x2="752.5"
+       x1="667.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a228"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.Editor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.Editor"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="170"
+       x="494"
+       width="212"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Editor"
+       height="177.5508" />
+    <circle
+       r="11"
+       id="ellipse176"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="186"
+       cx="578.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path178"
+       d="m 581.7231,191.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text180"
+       y="190.5352"
+       x="599.25"
+       textLength="34"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Editor</text>
+    <line
+       id="line182"
+       y2="202"
+       y1="202"
+       x2="705"
+       x1="495"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line184"
+       y2="210"
+       y1="210"
+       x2="705"
+       x1="495"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse186"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="221.97749"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text188"
+       y="224.6348"
+       x="514"
+       textLength="186"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Editor deserialize(String serialized)</text>
+    <line
+       id="line190"
+       y2="226.6348"
+       y1="226.6348"
+       x2="700"
+       x1="514"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse192"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="234.9326"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text194"
+       y="237.5898"
+       x="514"
+       textLength="67"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String read()</text>
+    <circle
+       r="3"
+       id="ellipse196"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="247.8877"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text198"
+       y="250.54491"
+       x="514"
+       textLength="123"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void write(String input)</text>
+    <circle
+       r="3"
+       id="ellipse200"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="260.8428"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text202"
+       y="263.5"
+       x="514"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse204"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="273.79791"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text206"
+       y="276.45511"
+       x="514"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse208"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="286.7529"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text210"
+       y="289.41019"
+       x="514"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+    <circle
+       r="3"
+       id="ellipse212"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="299.70801"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text214"
+       y="302.3652"
+       x="514"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+    <circle
+       r="3"
+       id="ellipse216"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="312.66309"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text218"
+       y="315.32031"
+       x="514"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse220"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="325.61819"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text222"
+       y="328.27539"
+       x="514"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse224"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="338.57321"
+       cx="505" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text226"
+       y="341.2305"
+       x="514"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a278"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.PopUpWindow"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.PopUpWindow"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="196"
+       x="22"
+       width="220"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="PopUpWindow"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse244"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="212"
+       cx="86.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path246"
+       d="m 89.7231,217.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text248"
+       y="216.5352"
+       x="107.25"
+       textLength="82"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">PopUpWindow</text>
+    <line
+       id="line250"
+       y2="228"
+       y1="228"
+       x2="241"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line252"
+       y2="236"
+       y1="236"
+       x2="241"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse254"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="247.97749"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text256"
+       y="250.6348"
+       x="42"
+       textLength="194"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">PopUpWindow(DialogBox dialogBox)</text>
+    <circle
+       r="3"
+       id="ellipse258"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="260.93259"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text260"
+       y="263.58981"
+       x="42"
+       textLength="123"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void write(String input)</text>
+    <circle
+       r="3"
+       id="ellipse262"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="273.8877"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text264"
+       y="276.54489"
+       x="42"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse266"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="286.8428"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text268"
+       y="289.5"
+       x="42"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse270"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="299.79791"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text272"
+       y="302.45511"
+       x="42"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+    <circle
+       r="3"
+       id="ellipse274"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="312.7529"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text276"
+       y="315.41019"
+       x="42"
+       textLength="67"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String read()</text>
+  </a>
+  <a
+     id="a311"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="202.5"
+       x="1738"
+       width="124"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="TreeOutput"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse281"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="218.5"
+       cx="1764.7" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path283"
+       d="m 1767.6731,224.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text285"
+       y="223.0352"
+       x="1781.3"
+       textLength="66"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TreeOutput</text>
+    <line
+       id="line287"
+       y2="234.5"
+       y1="234.5"
+       x2="1861"
+       x1="1739"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line289"
+       y2="242.5"
+       y1="242.5"
+       x2="1861"
+       x1="1739"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse291"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="254.47749"
+       cx="1749" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text293"
+       y="257.1348"
+       x="1758"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse295"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="267.43259"
+       cx="1749" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text297"
+       y="270.08981"
+       x="1758"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse299"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="280.3877"
+       cx="1749" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text301"
+       y="283.04489"
+       x="1758"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse303"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="293.3428"
+       cx="1749" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text305"
+       y="296"
+       x="1758"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse307"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="306.29791"
+       cx="1749" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text309"
+       y="308.95511"
+       x="1758"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a340"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.Menu"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.Menu"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="209"
+       x="1042"
+       width="124"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Menu"
+       height="99.820297" />
+    <circle
+       r="11"
+       id="ellipse314"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="225"
+       cx="1084.45" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path316"
+       d="m 1087.4231,230.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text318"
+       y="229.5352"
+       x="1104.55"
+       textLength="31"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Menu</text>
+    <line
+       id="line320"
+       y2="241"
+       y1="241"
+       x2="1165"
+       x1="1043"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line322"
+       y2="249"
+       y1="249"
+       x2="1165"
+       x1="1043"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse324"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="260.97751"
+       cx="1053" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text326"
+       y="263.6348"
+       x="1062"
+       textLength="97"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Menu(Panel panel)</text>
+    <circle
+       r="3"
+       id="ellipse328"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="273.93259"
+       cx="1053" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text330"
+       y="276.58981"
+       x="1062"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse332"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="286.8877"
+       cx="1053" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text334"
+       y="289.54489"
+       x="1062"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse336"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="299.8428"
+       cx="1053" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text338"
+       y="302.5"
+       x="1062"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a385"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.DisclosureButton"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.DisclosureButton"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="183"
+       x="2056.5"
+       width="535"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="DisclosureButton"
+       height="151.64059" />
+    <circle
+       r="11"
+       id="ellipse343"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199"
+       cx="2272.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path345"
+       d="m 2275.2231,204.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text347"
+       y="203.5352"
+       x="2292.75"
+       textLength="95"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">DisclosureButton</text>
+    <line
+       id="line349"
+       y2="215"
+       y1="215"
+       x2="2590.5"
+       x1="2057.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line351"
+       y2="223"
+       y1="223"
+       x2="2590.5"
+       x1="2057.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse353"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="234.97749"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text355"
+       y="237.6348"
+       x="2076.5"
+       textLength="509"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">DisclosureButton(DisclosurePanel panel, Image imageWhenLocked, Image imageWhenUnlocked)</text>
+    <circle
+       r="3"
+       id="ellipse357"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="247.9326"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text359"
+       y="250.5898"
+       x="2076.5"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse361"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="260.8877"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text363"
+       y="263.54489"
+       x="2076.5"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse365"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="273.8428"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text367"
+       y="276.5"
+       x="2076.5"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+    <circle
+       r="3"
+       id="ellipse369"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="286.79791"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text371"
+       y="289.45511"
+       x="2076.5"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse373"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="299.7529"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text375"
+       y="302.41019"
+       x="2076.5"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse377"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="312.70801"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text379"
+       y="315.3652"
+       x="2076.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+    <circle
+       r="3"
+       id="ellipse381"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="325.66309"
+       cx="2067.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text383"
+       y="328.32031"
+       x="2076.5"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void setAction(Action action)</text>
+  </a>
+  <a
+     id="a438"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextButton"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TextButton"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="170"
+       x="1201.5"
+       width="229"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="TextButton"
+       height="177.5508" />
+    <circle
+       r="11"
+       id="ellipse388"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="186"
+       cx="1280.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path390"
+       d="m 1283.7231,191.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text392"
+       y="190.5352"
+       x="1301.25"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TextButton</text>
+    <line
+       id="line394"
+       y2="202"
+       y1="202"
+       x2="1429.5"
+       x1="1202.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line396"
+       y2="210"
+       y1="210"
+       x2="1429.5"
+       x1="1202.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse398"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="221.97749"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text400"
+       y="224.6348"
+       x="1221.5"
+       textLength="203"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TextButton(Button button, String text)</text>
+    <circle
+       r="3"
+       id="ellipse402"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="234.9326"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text404"
+       y="237.5898"
+       x="1221.5"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse406"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="247.8877"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text408"
+       y="250.54491"
+       x="1221.5"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse410"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="260.8428"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text412"
+       y="263.5"
+       x="1221.5"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse414"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="273.79791"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text416"
+       y="276.45511"
+       x="1221.5"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse418"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="286.7529"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text420"
+       y="289.41019"
+       x="1221.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+    <circle
+       r="3"
+       id="ellipse422"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="299.70801"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text424"
+       y="302.3652"
+       x="1221.5"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void setAction(Action action)</text>
+    <circle
+       r="3"
+       id="ellipse426"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="312.66309"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text428"
+       y="315.32031"
+       x="1221.5"
+       textLength="135"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">int read(CharBuffer arg0)</text>
+    <circle
+       r="3"
+       id="ellipse430"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="325.61819"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text432"
+       y="328.27539"
+       x="1221.5"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+    <circle
+       r="3"
+       id="ellipse434"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="338.57321"
+       cx="1212.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text436"
+       y="341.2305"
+       x="1221.5"
+       textLength="123"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void write(String input)</text>
+  </a>
+  <a
+     id="a451"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.UnicodeTerm"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.UnicodeTerm"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(2425.5218,81.70382)">
+    <rect
+       y="43"
+       x="464.5"
+       width="109"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="UnicodeTerm"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse441"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="479.5" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path443"
+       d="m 482.4731,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text445"
+       y="63.535198"
+       x="493.5"
+       textLength="77"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UnicodeTerm</text>
+    <line
+       id="line447"
+       y2="75"
+       y1="75"
+       x2="572.5"
+       x1="465.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line449"
+       y2="83"
+       y1="83"
+       x2="572.5"
+       x1="465.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a510"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.OptionBox"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.OptionBox"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="163.5"
+       x="1465.5"
+       width="237"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="OptionBox"
+       height="190.50591" />
+    <circle
+       r="11"
+       id="ellipse454"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="179.5"
+       cx="1550.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path456"
+       d="m 1553.2231,185.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text458"
+       y="184.0352"
+       x="1570.75"
+       textLength="59"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">OptionBox</text>
+    <line
+       id="line460"
+       y2="195.5"
+       y1="195.5"
+       x2="1701.5"
+       x1="1466.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line462"
+       y2="203.5"
+       y1="203.5"
+       x2="1701.5"
+       x1="1466.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse464"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="215.47749"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text466"
+       y="218.1348"
+       x="1485.5"
+       textLength="143"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox(ListBox listBox)</text>
+    <circle
+       r="3"
+       id="ellipse468"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="228.4326"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text470"
+       y="231.0898"
+       x="1485.5"
+       textLength="211"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox deserialize(String serialized)</text>
+    <line
+       id="line472"
+       y2="233.0898"
+       y1="233.0898"
+       x2="1696.5"
+       x1="1485.5"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse474"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="241.3877"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text476"
+       y="244.04491"
+       x="1485.5"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse478"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="254.3428"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text480"
+       y="257"
+       x="1485.5"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse482"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="267.29791"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text484"
+       y="269.95511"
+       x="1485.5"
+       textLength="67"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String read()</text>
+    <circle
+       r="3"
+       id="ellipse486"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="280.2529"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text488"
+       y="282.91019"
+       x="1485.5"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+    <circle
+       r="3"
+       id="ellipse490"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="293.20801"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text492"
+       y="295.8652"
+       x="1485.5"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+    <circle
+       r="3"
+       id="ellipse494"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="306.16309"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text496"
+       y="308.82031"
+       x="1485.5"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse498"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="319.11819"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text500"
+       y="321.77539"
+       x="1485.5"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse502"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="332.07321"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text504"
+       y="334.7305"
+       x="1485.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+    <circle
+       r="3"
+       id="ellipse506"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="345.02829"
+       cx="1476.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text508"
+       y="347.68549"
+       x="1485.5"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void setAction(Action action)</text>
+  </a>
+  <a
+     id="a543"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="202.5"
+       x="1897"
+       width="124"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="UnicodeOutput"
+       height="112.7754" />
+    <circle
+       r="11"
+       id="ellipse513"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="218.5"
+       cx="1915.15" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path515"
+       d="m 1918.1231,224.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text517"
+       y="223.0352"
+       x="1929.85"
+       textLength="85"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UnicodeOutput</text>
+    <line
+       id="line519"
+       y2="234.5"
+       y1="234.5"
+       x2="2020"
+       x1="1898"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line521"
+       y2="242.5"
+       y1="242.5"
+       x2="2020"
+       x1="1898"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse523"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="254.47749"
+       cx="1908" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text525"
+       y="257.1348"
+       x="1917"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse527"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="267.43259"
+       cx="1908" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text529"
+       y="270.08981"
+       x="1917"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse531"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="280.3877"
+       cx="1908" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text533"
+       y="283.04489"
+       x="1917"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse535"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="293.3428"
+       cx="1908" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text537"
+       y="296"
+       x="1917"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse539"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="306.29791"
+       cx="1908" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text541"
+       y="308.95511"
+       x="1917"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a610"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.Checkbox"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.Checkbox"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(39.6893,85.52421)">
+    <rect
+       y="151"
+       x="741.5"
+       width="265"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Checkbox"
+       height="216.416" />
+    <circle
+       r="11"
+       id="ellipse546"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="167"
+       cx="841.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path548"
+       d="m 844.2231,172.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text550"
+       y="171.5352"
+       x="861.75"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Checkbox</text>
+    <line
+       id="line552"
+       y2="183"
+       y1="183"
+       x2="1005.5"
+       x1="742.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line554"
+       y2="191"
+       y1="191"
+       x2="1005.5"
+       x1="742.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse556"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="202.97749"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text558"
+       y="205.6348"
+       x="761.5"
+       textLength="239"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Checkbox(CheckBox checkBox, String name)</text>
+    <circle
+       r="3"
+       id="ellipse560"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="215.9326"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text562"
+       y="218.5898"
+       x="761.5"
+       textLength="208"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Checkbox deserialize(String serialized)</text>
+    <line
+       id="line564"
+       y2="220.5898"
+       y1="220.5898"
+       x2="969.5"
+       x1="761.5"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse566"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="228.8877"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text568"
+       y="231.54491"
+       x="761.5"
+       textLength="79"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isSet()</text>
+    <circle
+       r="3"
+       id="ellipse570"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="241.8428"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text572"
+       y="244.5"
+       x="761.5"
+       textLength="67"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String read()</text>
+    <circle
+       r="3"
+       id="ellipse574"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="254.7979"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text576"
+       y="257.45511"
+       x="761.5"
+       textLength="87"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String serialize()</text>
+    <circle
+       r="3"
+       id="ellipse578"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="267.7529"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text580"
+       y="270.41019"
+       x="761.5"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <circle
+       r="3"
+       id="ellipse582"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="280.70801"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text584"
+       y="283.3652"
+       x="761.5"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <circle
+       r="3"
+       id="ellipse586"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="293.66309"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text588"
+       y="296.32031"
+       x="761.5"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+    <circle
+       r="3"
+       id="ellipse590"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="306.61819"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text592"
+       y="309.27539"
+       x="761.5"
+       textLength="50"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void set()</text>
+    <circle
+       r="3"
+       id="ellipse594"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="319.57321"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text596"
+       y="322.2305"
+       x="761.5"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unset()</text>
+    <circle
+       r="3"
+       id="ellipse598"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="332.52829"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text600"
+       y="335.18549"
+       x="761.5"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <circle
+       r="3"
+       id="ellipse602"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="345.4834"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text604"
+       y="348.14059"
+       x="761.5"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <circle
+       r="3"
+       id="ellipse606"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="358.43851"
+       cx="752.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text608"
+       y="361.0957"
+       x="761.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a623"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Toggleable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Toggleable"
+     xlink:actuate="onRequest"
+     target="_top"
+     transform="translate(-65.3714,671.95381)">
+    <rect
+       y="43"
+       x="951"
+       width="96"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
+       id="Toggleable"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse613"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="966" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path615"
+       d="m 961.9277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text617"
+       y="63.535198"
+       x="980"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Toggleable</text>
+    <line
+       id="line619"
+       y2="75"
+       y1="75"
+       x2="1046"
+       x1="952"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line621"
+       y2="83"
+       y1="83"
+       x2="1046"
+       x1="952"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-ImageButton"
+     d="m 1793.5417,157.11611 954.0547,111.2916"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon626"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1733.6394,70.0801 1754.1058,64.5914 1753.0615,78.5524 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Clickable-ImageButton"
+     d="m 2222.7843,158.79701 518.9413,109.6129"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon632"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="2163.1479,71.1078 2183.7865,66.3069 2182.2757,80.2251 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="Writable-TextField"
+     d="m 399.9681,399.06411 c 7.3192,87.2935 16.735,199.5866 24.5848,293.2042" />
+  <polygon
+     id="polygon638"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="385.7538,111.7731 371.7909,110.7549 380.2269,91.3169 "
+     transform="rotate(167.01705,368.35508,401.77292)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Readable-TextField"
+     d="m 686.6995,167.03021 -231.454,120.7575"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon641"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="666.4516,76.5124 648.8219,88.2679 645.3389,74.7081 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Readable-Editor"
+     d="m 725.7444,194.31891 c -10.2794,17.9423 -22.7117,39.6423 -34.8918,60.9021" />
+  <polygon
+     id="polygon644"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="696.0684,91.3169 692.1999,112.1505 680.0523,105.1909 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="Writable-Editor"
+     d="m 533.6893,433.07501 c -18.9246,76.3056 -42.6739,172.0654 -65.9041,265.732" />
+  <polygon
+     id="polygon647"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="429.2453,99.2826 419.9921,109.7888 409.6099,91.3169 "
+     transform="rotate(-112.97887,642.43256,381.257)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-Editor"
+     d="m 1669.9423,157.36561 c -210.0755,16.537 -885.284,70.2547 -906.253,79.1586 -11.6935,4.9653 -23.0685,11.4678 -33.8823,18.8229" />
+  <polygon
+     id="polygon653"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1650.2059,70.2725 1630.8162,78.8188 1629.7187,64.8619 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="Writable-PopUpWindow"
+     d="m 281.6893,407.25471 c 19.9632,44.9126 42.9817,98.3783 63.2053,149.6398 17.0241,43.1514 34.9116,91.5491 51.4844,137.7734" />
+  <polygon
+     id="polygon659"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="324.5294,96.4132 345.0371,91.0807 332.3308,108.0381 "
+     transform="rotate(90.577179,69.929518,429.20367)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Readable-PopUpWindow"
+     d="m 686.1736,165.57481 c -17.9274,3.6181 -37.459,7.4983 -55.4843,10.9494 l -397.2007,104.7219"
+     sodipodi:nodetypes="ccc" />
+  <polygon
+     id="polygon665"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="666.2404,76.0398 648.0329,86.8791 645.2475,73.159 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="Lockable-TreeOutput"
+     d="m 1299.6893,702.52421 c -74.3958,-73.2465 -172.29,-169.6283 -253.5,-249.584" />
+  <polygon
+     id="polygon668"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1705.6783,91.3169 1721.5846,105.3166 1709.3825,112.1803 "
+     transform="matrix(0.38272688,-0.92386153,-0.92386153,-0.38272688,748.0905,2333.3375)"
+     inkscape:transform-center-x="0.069974056"
+     inkscape:transform-center-y="0.35258744" />
+  <g
+     id="g1142"
+     transform="translate(39.6893,85.52421)">
+    <path
+       d="m 2161.368,105.1806 c 23.4404,22.1702 53.8132,50.8972 81.9545,77.5136"
+       id="Clickable-DisclosureButton"
+       style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+       inkscape:connector-curvature="0" />
+    <polygon
+       points="2156.4304,110.1456 2146.7101,91.3169 2166.0505,99.9743 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon677" />
+  </g>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-DisclosureButton"
+     d="m 1792.9229,164.92701 379.8897,103.5265"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon683"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1733.5831,75.3115 1754.5901,72.5352 1751.7363,86.2413 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-TextButton"
+     d="m 1670.4236,167.13001 -212.7323,88.2723"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon686"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1650.4131,76.5127 1632.805,88.3006 1629.2971,74.7471 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="Writable-TextButton"
+     d="m 506.7401,699.73221 734.4492,-266.6572"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon692"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="438.7561,96.1833 421.7082,83.5987 442.883,82.8053 "
+     transform="rotate(-38.24139,1351.8571,302.90933)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Readable-TextButton"
+     d="m 813.0951,170.13451 c 9.2211,2.302 18.6266,4.5099 27.5942,6.3897 l 417.0598,78.9134"
+     sodipodi:nodetypes="ccc" />
+  <polygon
+     id="polygon695"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="753.7551,79.5112 774.8721,77.759 771.3557,91.3102 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Clickable-TextButton"
+     d="m 2098.2798,155.89411 -645.2004,99.4147"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon698"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="2078.8141,69.2079 2059.2485,77.3437 2058.4454,63.3668 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Clickable-OptionBox"
+     d="m 2098.2254,156.77011 -360.7779,92.132"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon701"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="2078.7085,69.5322 2059.3729,78.2001 2058.1877,64.2504 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-OptionBox"
+     d="m 1708.1045,194.45281 c -9.0412,16.0733 -19.7705,35.1475 -30.4955,54.2142" />
+  <polygon
+     id="polygon707"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1678.3217,91.3169 1674.6175,112.1803 1662.4154,105.3166 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Readable-OptionBox"
+     d="m 812.995,170.65231 700.2946,78.3099"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon710"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="753.6456,80.0778 774.7583,78.274 771.275,91.8338 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-UnicodeOutput"
+     d="m 1792.5849,170.66491 173.0119,117.2968"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon716"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1733.8613,78.7735 1755.0489,78.4799 1750.6076,91.7567 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Readable-Checkbox"
+     d="m 783.5787,192.19961 c 11.2318,13.1494 24.3269,28.4802 37.7992,44.2527" />
+  <polygon
+     id="polygon722"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="730.7707,91.3169 749.0831,101.978 738.4378,111.0708 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="Toggleable-Checkbox"
+     d="m 928.0487,457.70301 c 0.6726,69.529 1.4465,149.5373 2.2418,231.7454" />
+  <polygon
+     id="polygon728"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="966.3903,104.2586 983.1687,91.3169 978.1229,111.8971 "
+     transform="rotate(145.64037,860.55871,394.20859)" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="Lockable-Checkbox"
+     d="m 1670.0278,158.41151 -623.7087,88.1934"
+     sodipodi:nodetypes="cc" />
+  <polygon
+     id="polygon734"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1650.3227,69.5658 1630.8282,77.8703 1629.9044,63.9008 "
+     transform="translate(39.6893,85.52421)" />
+  <path
+     d="m 1417.8054,711.58511 c 199.0884,-85.5244 461.0601,-198.0621 678.3839,-291.4203"
+     id="path5749"
+     style="fill:none;stroke:#a80036;stroke-width:0.98532295;stroke-miterlimit:4;stroke-dasharray:6.89726009, 6.89726009;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <polygon
+     inkscape:transform-center-y="-0.8958266"
+     inkscape:transform-center-x="1.3084226"
+     transform="matrix(0.84160309,0.54009651,0.54009651,-0.84160309,-83.9666,-123.60194)"
+     points="1705.6783,91.3169 1721.5846,105.3166 1709.3825,112.1803 "
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="polygon5771" />
+  <path
+     d="M 1295.7013,734.54751 C 1108.5757,645.76101 862.3452,528.93081 658.08,432.01171"
+     id="path5773"
+     style="fill:none;stroke:#a80036;stroke-width:0.95359617;stroke-miterlimit:4;stroke-dasharray:6.67517319, 6.67517319;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <polygon
+     inkscape:transform-center-y="-1.9956694"
+     inkscape:transform-center-x="-2.8665985"
+     transform="matrix(-0.27837429,-0.96047267,-0.96047267,0.27837429,1879.6026,2353.6049)"
+     points="1721.5846,105.3166 1709.3825,112.1803 1705.6783,91.3169 "
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="polygon5775" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1.1114645;stroke-miterlimit:4;stroke-dasharray:7.78025117, 7.78025117;stroke-dashoffset:0;marker-mid:url(#marker7019)"
+     id="path5777"
+     d="m 1419.7061,736.45901 c 391.4478,-92.4107 906.5368,-214.0098 1333.839,-314.8851" />
+  <polygon
+     id="polygon5779"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1705.6783,91.3169 1721.5846,105.3166 1709.3825,112.1803 "
+     transform="matrix(0.56376269,0.82593682,0.82593682,-0.56376269,362.0851,-617.67446)"
+     inkscape:transform-center-x="3.2699198"
+     inkscape:transform-center-y="0.0050891483" />
+  <path
+     d="m 1331.417,700.45841 c -64.6758,-91.0764 -149.7799,-210.9199 -220.3796,-310.3387"
+     id="path7201"
+     style="fill:none;stroke:#a80036;stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <polygon
+     inkscape:transform-center-y="1.8041723"
+     inkscape:transform-center-x="1.3271833"
+     transform="matrix(0.61750099,-0.7865701,-0.7865701,-0.61750099,357.9802,2116.6044)"
+     points="1721.5846,105.3166 1709.3825,112.1803 1705.6783,91.3169 "
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="polygon7203" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="path7205"
+     d="M 1296.01,739.02251 C 983.9275,641.40501 573.2717,512.95461 232.6043,406.39571" />
+  <polygon
+     id="polygon7207"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1709.3825,112.1803 1705.6783,91.3169 1721.5846,105.3166 "
+     transform="matrix(-0.35000143,-0.93674916,-0.93674916,0.35000143,1999.7647,2309.5817)"
+     inkscape:transform-center-x="-3.1370134"
+     inkscape:transform-center-y="-1.5322378" />
+  <path
+     d="m 1331.4383,700.47301 c -51.8094,-89.694 -119.9832,-207.7183 -176.538,-305.6279"
+     id="path7209"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1.00761676;stroke-miterlimit:4;stroke-dasharray:7.05331731, 7.05331731;stroke-dashoffset:0"
+     id="path7211"
+     d="m 1359.8829,698.19581 c 0.4136,-77.7484 0.9577,-180.054 1.4092,-264.9239" />
+  <polygon
+     id="polygon7213"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1721.5846,105.3166 1709.3825,112.1803 1705.6783,91.3169 "
+     transform="matrix(0.84336791,-0.53733655,-0.53733655,-0.84336791,-29.477,1713.3185)"
+     inkscape:transform-center-x="-0.20736098"
+     inkscape:transform-center-y="3.4062205" />
+  <path
+     d="m 1375.3156,697.78331 c 38.1147,-75.7907 88.2678,-175.5203 129.8737,-258.2532"
+     id="path7215"
+     style="fill:none;stroke:#a80036;stroke-width:1.08025229;stroke-miterlimit:4;stroke-dasharray:7.56176563, 7.56176563;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <polygon
+     inkscape:transform-center-y="2.1492997"
+     inkscape:transform-center-x="-2.2595926"
+     transform="matrix(0.99502575,-0.09961809,-0.09961809,-0.99502575,-322.3888,979.69101)"
+     points="1709.3825,112.1803 1705.6783,91.3169 1721.5846,105.3166 "
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="polygon7217" />
+  <path
+     d="M 1297.1619,723.26501 C 1030.3174,628.51161 679.1884,503.82971 387.9026,400.39721"
+     id="path7219"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <polygon
+     inkscape:transform-center-y="-2.3259139"
+     inkscape:transform-center-x="-2.2048719"
+     transform="matrix(-0.11297742,-0.99359755,-0.99359755,0.11297742,1599.8911,2417.4248)"
+     points="1705.6783,91.3169 1721.5846,105.3166 1709.3825,112.1803 "
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="polygon7221" />
+  <polygon
+     id="polygon7223"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1709.3825,112.1803 1705.6783,91.3169 1721.5846,105.3166 "
+     transform="matrix(0.9483178,0.31732217,0.31732217,-0.9483178,-267.5978,262.80245)"
+     inkscape:transform-center-x="-0.027611545"
+     inkscape:transform-center-y="0.25653317" />
+  <polygon
+     inkscape:transform-center-y="0.50777152"
+     inkscape:transform-center-x="-0.32110798"
+     transform="matrix(0.96404017,0.26575658,0.26575658,-0.96404017,-281.1769,352.70321)"
+     points="1721.5846,105.3166 1709.3825,112.1803 1705.6783,91.3169 "
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="polygon7225" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="path7227"
+     d="m 1395.0386,702.84311 c 132.6912,-87.6706 307.2936,-203.0326 452.1385,-298.7336" />
+  <path
+     d="m 1395.0386,702.84311 c 132.6912,-87.6706 307.2936,-203.0326 452.1385,-298.7336"
+     id="path7229"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
+     id="path7231"
+     d="m 1403.0655,702.79861 c 169.114,-87.9248 391.6435,-203.6212 576.2474,-299.5997" />
+</svg>

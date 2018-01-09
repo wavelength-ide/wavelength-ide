@@ -1,40 +1,49 @@
 @startuml
 participant "exportOption : LabeledButton" as exportOption
 participant "export : SelectExportFormat" as export
-participant "exportWindow : <T extends Writable & Hideable>" as exportWindow
-participant "blocker : Hideable" as blocker
-participant "engine : ExecutionEngine" as engine
+participant "exportWindow : PopUpWindow" as exportWindow
+participant "app : App" as app
+participant "App" as sApp
+participant "executor : Executor" as executor
 participant "format : ExportFormat" as format
 
+[o-> exportOption
 activate exportOption
 exportOption -> export : run()
 activate export
-exportOption <-- export
-deactivate exportOption
-export -> engine : getDisplayed()
-activate engine
-export <-- engine : displayedLambdaTerms
-deactivate engine
-export -> format : getRepresentation(displayedLambdaTerms)
+export -> sApp: get()
+activate sApp
+export <-- sApp: app
+deactivate sApp
+export -> app: executor()
+activate app
+export <-- app: executor
+deactivate app
+
+export -> executor : getDisplayed()
+activate executor
+export <-- executor : displayedTerms : List<LambdaTerm>
+deactivate executor
+export -> format : getRepresentation(displayedTerms)
 activate format
-export <-- format : output
+export <-- format : output : String
 deactivate format
+
+export -> app: exportWindow()
+activate app
+export <-- app: exportWindow
+deactivate app
+
 export -> exportWindow : write(output)
 activate exportWindow
 export <-- exportWindow
 deactivate exportWindow
-export -> blocker : show()
-activate blocker
-export <-- blocker
-deactivate blocker
 export -> exportWindow : show()
 activate exportWindow
 export <-- exportWindow
 deactivate exportWindow
+exportOption <-- export
 deactivate export
-
-
-
-
+deactivate exportOption
 
 @enduml

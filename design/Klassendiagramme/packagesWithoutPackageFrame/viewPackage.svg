@@ -1,0 +1,1117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="959px"
+   preserveAspectRatio="none"
+   style="width:937px;height:959px;"
+   version="1.1"
+   viewBox="0 0 937 959"
+   width="937px"
+   zoomAndPan="magnify"
+   id="svg305"
+   sodipodi:docname="viewPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata309">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview307"
+     showgrid="false"
+     inkscape:zoom="0.24608968"
+     inkscape:cx="468.5"
+     inkscape:cy="479.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg305" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="fzcmqs83p7u00"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a32"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.SerializationObserver"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.SerializationObserver"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="878"
+       x="235.5"
+       width="175"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fzcmqs83p7u00)"
+       id="SerializationObserver"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="894"
+       cx="259.95001" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 262.9231,899.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="898.53522"
+       x="276.04999"
+       textLength="122"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">SerializationObserver</text>
+    <line
+       id="line26"
+       y2="910"
+       y1="910"
+       x2="409.5"
+       x1="236.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="918"
+       y1="918"
+       x2="409.5"
+       x1="236.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text30"
+       y="932.63483"
+       x="241.5"
+       textLength="163"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void updateSerialized(String s)</text>
+  </a>
+  <a
+     id="a257"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.App"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.App"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="659"
+       width="248"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fzcmqs83p7u00)"
+       id="App"
+       height="695.75391" />
+    <circle
+       r="11"
+       id="ellipse35"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="766.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path37"
+       d="m 769.7231,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text39"
+       y="63.535198"
+       x="787.25"
+       textLength="24"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">App</text>
+    <line
+       id="line41"
+       y2="75"
+       y1="75"
+       x2="906"
+       x1="660"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <rect
+       id="rect43"
+       y="83.977501"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text45"
+       y="89.634804"
+       x="679"
+       textLength="70"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">App instance</text>
+    <line
+       id="line47"
+       y2="91.634804"
+       y1="91.634804"
+       x2="749"
+       x1="679"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse49"
+       style="fill:none;stroke:#038048;stroke-width:1"
+       cy="99.932602"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text51"
+       y="102.5898"
+       x="679"
+       textLength="147"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String UnicodeOutputName</text>
+    <line
+       id="line53"
+       y2="104.5898"
+       y1="104.5898"
+       x2="826"
+       x1="679"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse55"
+       style="fill:none;stroke:#038048;stroke-width:1"
+       cy="112.8877"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text57"
+       y="115.5449"
+       x="679"
+       textLength="127"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String TreeOutputName</text>
+    <line
+       id="line59"
+       y2="117.5449"
+       y1="117.5449"
+       x2="806"
+       x1="679"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse61"
+       style="fill:none;stroke:#038048;stroke-width:1"
+       cy="125.8428"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text63"
+       y="128.5"
+       x="679"
+       textLength="146"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;String&gt; OutputNames</text>
+    <line
+       id="line65"
+       y2="130.5"
+       y1="130.5"
+       x2="825"
+       x1="679"
+       style="stroke:#000000;stroke-width:1" />
+    <rect
+       id="rect67"
+       y="135.7979"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text69"
+       y="141.45509"
+       x="679"
+       textLength="160"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton mainMenuButton</text>
+    <rect
+       id="rect71"
+       y="148.7529"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text73"
+       y="154.4102"
+       x="679"
+       textLength="67"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Editor editor</text>
+    <rect
+       id="rect75"
+       y="161.70799"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text77"
+       y="167.3652"
+       x="679"
+       textLength="134"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox outputFormat</text>
+    <rect
+       id="rect79"
+       y="174.6631"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text81"
+       y="180.3203"
+       x="679"
+       textLength="144"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox reductionOrder</text>
+    <rect
+       id="rect83"
+       y="187.61819"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text85"
+       y="193.27541"
+       x="679"
+       textLength="117"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox outputSize</text>
+    <rect
+       id="rect87"
+       y="200.5732"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text89"
+       y="206.2305"
+       x="679"
+       textLength="143"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton stepBackward</text>
+    <rect
+       id="rect91"
+       y="213.52831"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text93"
+       y="219.1855"
+       x="679"
+       textLength="157"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton stepByStepMode</text>
+    <rect
+       id="rect95"
+       y="226.4834"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text97"
+       y="232.14059"
+       x="679"
+       textLength="137"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton stepForward</text>
+    <rect
+       id="rect99"
+       y="239.43851"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text101"
+       y="245.0957"
+       x="679"
+       textLength="121"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton terminate</text>
+    <rect
+       id="rect103"
+       y="252.3936"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text105"
+       y="258.05081"
+       x="679"
+       textLength="89"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton run</text>
+    <rect
+       id="rect107"
+       y="265.3486"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text109"
+       y="271.00589"
+       x="679"
+       textLength="102"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton pause</text>
+    <rect
+       id="rect111"
+       y="278.30371"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text113"
+       y="283.96091"
+       x="679"
+       textLength="124"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeOutput treeOutput</text>
+    <rect
+       id="rect115"
+       y="291.25879"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text117"
+       y="296.91599"
+       x="679"
+       textLength="166"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeOutput unicodeOutput</text>
+    <rect
+       id="rect119"
+       y="304.2139"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text121"
+       y="309.87109"
+       x="679"
+       textLength="106"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton export</text>
+    <rect
+       id="rect123"
+       y="317.16891"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text125"
+       y="322.8262"
+       x="679"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">PopUpWindow exportWindow</text>
+    <rect
+       id="rect127"
+       y="330.12399"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text129"
+       y="335.78131"
+       x="679"
+       textLength="100"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton share</text>
+    <rect
+       id="rect131"
+       y="343.0791"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text133"
+       y="348.7363"
+       x="679"
+       textLength="110"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TextField sharePanel</text>
+    <rect
+       id="rect135"
+       y="356.03421"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text137"
+       y="361.69141"
+       x="679"
+       textLength="138"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;Checkbox&gt; libraries</text>
+    <rect
+       id="rect139"
+       y="368.98929"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text141"
+       y="374.64651"
+       x="679"
+       textLength="150"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;TextButton&gt; exercises</text>
+    <rect
+       id="rect143"
+       y="381.94431"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text145"
+       y="387.60159"
+       x="679"
+       textLength="179"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;TextButton&gt; exportFormats</text>
+    <rect
+       id="rect147"
+       y="394.89941"
+       x="667"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text149"
+       y="400.55661"
+       x="679"
+       textLength="99"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Executor executor</text>
+    <line
+       id="line151"
+       y2="406.87701"
+       y1="406.87701"
+       x2="906"
+       x1="660"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <polygon
+       id="polygon153"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="670,421.8545 666,417.8545 670,413.8545 674,417.8545 " />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text155"
+       y="421.51169"
+       x="679"
+       textLength="30"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">App()</text>
+    <circle
+       r="3"
+       id="ellipse157"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="431.8096"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text159"
+       y="434.4668"
+       x="679"
+       textLength="50"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">App get()</text>
+    <line
+       id="line161"
+       y2="436.4668"
+       y1="436.4668"
+       x2="729"
+       x1="679"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse163"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="444.76459"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+       id="text165"
+       y="447.42191"
+       x="679"
+       textLength="81"
+       text-decoration="underline"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void set(App c)</text>
+    <line
+       id="line167"
+       y2="449.42191"
+       y1="449.42191"
+       x2="760"
+       x1="679"
+       style="stroke:#000000;stroke-width:1" />
+    <circle
+       r="3"
+       id="ellipse169"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="457.7197"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text171"
+       y="460.37701"
+       x="679"
+       textLength="118"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TextField sharePanel()</text>
+    <circle
+       r="3"
+       id="ellipse173"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="470.6748"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text175"
+       y="473.332"
+       x="679"
+       textLength="164"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">PopUpWindow exportWindow()</text>
+    <circle
+       r="3"
+       id="ellipse177"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="483.62991"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text179"
+       y="486.28711"
+       x="679"
+       textLength="168"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton mainMenuButton()</text>
+    <circle
+       r="3"
+       id="ellipse181"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="496.58499"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text183"
+       y="499.24219"
+       x="679"
+       textLength="75"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Editor editor()</text>
+    <circle
+       r="3"
+       id="ellipse185"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="509.54001"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text187"
+       y="512.19733"
+       x="679"
+       textLength="162"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox outputFormatBox()</text>
+    <circle
+       r="3"
+       id="ellipse189"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="522.49512"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text191"
+       y="525.15228"
+       x="679"
+       textLength="172"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox reductionOrderBox()</text>
+    <circle
+       r="3"
+       id="ellipse193"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="535.4502"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text195"
+       y="538.10742"
+       x="679"
+       textLength="145"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">OptionBox outputSizeBox()</text>
+    <circle
+       r="3"
+       id="ellipse197"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="548.40527"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text199"
+       y="551.0625"
+       x="679"
+       textLength="186"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton stepBackwardButton()</text>
+    <circle
+       r="3"
+       id="ellipse201"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="561.36041"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text203"
+       y="564.01758"
+       x="679"
+       textLength="200"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton stepByStepModeButton()</text>
+    <circle
+       r="3"
+       id="ellipse205"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="574.31543"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text207"
+       y="576.97272"
+       x="679"
+       textLength="180"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton stepForwardButton()</text>
+    <circle
+       r="3"
+       id="ellipse209"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="587.27051"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text211"
+       y="589.92767"
+       x="679"
+       textLength="164"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton terminateButton()</text>
+    <circle
+       r="3"
+       id="ellipse213"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="600.22559"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text215"
+       y="602.88281"
+       x="679"
+       textLength="132"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton runButton()</text>
+    <circle
+       r="3"
+       id="ellipse217"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="613.18073"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text219"
+       y="615.83789"
+       x="679"
+       textLength="145"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton pauseButton()</text>
+    <circle
+       r="3"
+       id="ellipse221"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="626.13568"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text223"
+       y="628.79303"
+       x="679"
+       textLength="132"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeOutput treeOutput()</text>
+    <circle
+       r="3"
+       id="ellipse225"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="639.09082"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text227"
+       y="641.74799"
+       x="679"
+       textLength="174"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeOutput unicodeOutput()</text>
+    <circle
+       r="3"
+       id="ellipse229"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="652.0459"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text231"
+       y="654.70312"
+       x="679"
+       textLength="149"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton exportButton()</text>
+    <circle
+       r="3"
+       id="ellipse233"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="665.00098"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text235"
+       y="667.6582"
+       x="679"
+       textLength="143"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ImageButton shareButton()</text>
+    <circle
+       r="3"
+       id="ellipse237"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="677.95612"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text239"
+       y="680.61328"
+       x="679"
+       textLength="169"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;Checkbox&gt; libraryBoxes()</text>
+    <circle
+       r="3"
+       id="ellipse241"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="690.91107"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text243"
+       y="693.56842"
+       x="679"
+       textLength="193"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;TextButton&gt; exerciseButtons()</text>
+    <circle
+       r="3"
+       id="ellipse245"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="703.86621"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text247"
+       y="706.52338"
+       x="679"
+       textLength="222"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">List&lt;TextButton&gt; exportFormatButtons()</text>
+    <circle
+       r="3"
+       id="ellipse249"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="716.82129"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text251"
+       y="719.47852"
+       x="679"
+       textLength="107"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Executor executor()</text>
+    <circle
+       r="3"
+       id="ellipse253"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="729.77643"
+       cx="670" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text255"
+       y="732.43359"
+       x="679"
+       textLength="78"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void initialize()</text>
+  </a>
+  <a
+     id="a294"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.URLSerializer"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.URLSerializer"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="328"
+       x="22.5"
+       width="601"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fzcmqs83p7u00)"
+       id="URLSerializer"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse260"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="344"
+       cx="281.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path262"
+       d="m 284.2231,349.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text264"
+       y="348.53519"
+       x="301.75"
+       textLength="75"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">URLSerializer</text>
+    <line
+       id="line266"
+       y2="360"
+       y1="360"
+       x2="622.5"
+       x1="23.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <rect
+       id="rect268"
+       y="368.97751"
+       x="30.5"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text270"
+       y="374.6348"
+       x="42.5"
+       textLength="152"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Map&lt;Object,String&gt; entities</text>
+    <rect
+       id="rect272"
+       y="381.93259"
+       x="30.5"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text274"
+       y="387.58981"
+       x="42.5"
+       textLength="123"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Serializable serializable</text>
+    <rect
+       id="rect276"
+       y="394.8877"
+       x="30.5"
+       width="6"
+       style="fill:none;stroke:#c82930;stroke-width:1"
+       height="6" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text278"
+       y="400.54489"
+       x="42.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">int pollingDelayMS</text>
+    <line
+       id="line280"
+       y2="406.8652"
+       y1="406.8652"
+       x2="622.5"
+       x1="23.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse282"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="418.8428"
+       cx="33.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text284"
+       y="421.5"
+       x="42.5"
+       textLength="575"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">URLSerializer(Serializable serializable, List&lt;SerializationObserver&gt; serializationOutputs, int pollingDelayMS)</text>
+    <circle
+       r="3"
+       id="ellipse286"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="431.79791"
+       cx="33.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text288"
+       y="434.45511"
+       x="42.5"
+       textLength="95"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void startPolling()</text>
+    <circle
+       r="3"
+       id="ellipse290"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="444.7529"
+       cx="33.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text292"
+       y="447.41019"
+       x="42.5"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean serialize()</text>
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="URLSerializer-SerializationObserver"
+     d="m 323,454.1968 c 0,109.7116 0,331.9699 0,418.5987" />
+  <polygon
+     id="polygon297"
+     style="fill:#a80036;stroke:#a80036;stroke-width:1"
+     points="323,872.809 319,868.809 323,877.809 327,868.809 " />
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text299"
+     y="813.56842"
+     x="324"
+     textLength="128"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13">serializationOutputs</text>
+  <text
+     style="font-size:13px;font-family:sans-serif;fill:#000000"
+     id="text301"
+     y="867.06201"
+     x="316.34381"
+     textLength="6"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="13">*</text>
+</svg>

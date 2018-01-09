@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="297px"
+   preserveAspectRatio="none"
+   style="width:1814px;height:297px;"
+   version="1.1"
+   viewBox="0 0 1814 297"
+   width="1814px"
+   zoomAndPan="magnify"
+   id="svg218"
+   sodipodi:docname="updatePackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata222">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview220"
+     showgrid="false"
+     inkscape:zoom="0.22712238"
+     inkscape:cx="907"
+     inkscape:cy="148.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg218" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="fgzw6igx14etx"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a34"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.update.UpdateURL"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.update.UpdateURL"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="183.5"
+       x="1370.5"
+       width="189"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="UpdateURL"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199.5"
+       cx="1428.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 1431.7231,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="204.0352"
+       x="1449.25"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UpdateURL</text>
+    <line
+       id="line26"
+       y2="215.5"
+       y1="215.5"
+       x2="1558.5"
+       x1="1371.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="223.5"
+       y1="223.5"
+       x2="1558.5"
+       x1="1371.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse30"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="235.47749"
+       cx="1381.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text32"
+       y="238.1348"
+       x="1390.5"
+       textLength="163"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void updateSerialized(String s)</text>
+  </a>
+  <a
+     id="a47"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.SerializationObserver"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.SerializationObserver"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="1500"
+       width="154"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="SerializationObserver"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse37"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="1515" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path39"
+       d="m 1510.9277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text41"
+       y="63.535198"
+       x="1529"
+       textLength="122"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">SerializationObserver</text>
+    <line
+       id="line43"
+       y2="75"
+       y1="75"
+       x2="1653"
+       x1="1501"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line45"
+       y2="83"
+       y1="83"
+       x2="1653"
+       x1="1501"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a64"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.update.UpdateUnicodeOutput"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.update.UpdateUnicodeOutput"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="183.5"
+       x="916"
+       width="192"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="UpdateUnicodeOutput"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse50"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199.5"
+       cx="945.84998" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path52"
+       d="m 948.8231,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text54"
+       y="204.0352"
+       x="963.15002"
+       textLength="127"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UpdateUnicodeOutput</text>
+    <line
+       id="line56"
+       y2="215.5"
+       y1="215.5"
+       x2="1107"
+       x1="917"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line58"
+       y2="223.5"
+       y1="223.5"
+       x2="1107"
+       x1="917"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse60"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="235.47749"
+       cx="927" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text62"
+       y="238.1348"
+       x="936"
+       textLength="166"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void pushTerm(LambdaTerm t)</text>
+  </a>
+  <a
+     id="a77"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.execution.ExecutionObserver"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.execution.ExecutionObserver"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="1055"
+       width="140"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="ExecutionObserver"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse67"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="1070" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path69"
+       d="m 1065.9277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text71"
+       y="63.535198"
+       x="1084"
+       textLength="108"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">ExecutionObserver</text>
+    <line
+       id="line73"
+       y2="75"
+       y1="75"
+       x2="1194"
+       x1="1056"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line75"
+       y2="83"
+       y1="83"
+       x2="1194"
+       x1="1056"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a94"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.update.UpdateTreeOutput"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.update.UpdateTreeOutput"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="183.5"
+       x="1143"
+       width="192"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="UpdateTreeOutput"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse80"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199.5"
+       cx="1181.4" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path82"
+       d="m 1184.3731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text84"
+       y="204.0352"
+       x="1200.6"
+       textLength="108"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UpdateTreeOutput</text>
+    <line
+       id="line86"
+       y2="215.5"
+       y1="215.5"
+       x2="1334"
+       x1="1144"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line88"
+       y2="223.5"
+       y1="223.5"
+       x2="1334"
+       x1="1144"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse90"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="235.47749"
+       cx="1154" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text92"
+       y="238.1348"
+       x="1163"
+       textLength="166"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void pushTerm(LambdaTerm t)</text>
+  </a>
+  <a
+     id="a131"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.update.UnicodeTermVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.update.UnicodeTermVisitor"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="151"
+       x="22"
+       width="422"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="UnicodeTermVisitor"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse97"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="167"
+       cx="172.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path99"
+       d="m 175.2231,172.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text101"
+       y="171.5352"
+       x="192.75"
+       textLength="113"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UnicodeTermVisitor</text>
+    <line
+       id="line103"
+       y2="183"
+       y1="183"
+       x2="443"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line105"
+       y2="191"
+       y1="191"
+       x2="443"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse107"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="202.97749"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text109"
+       y="205.6348"
+       x="42"
+       textLength="250"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeTerm visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse111"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="215.9326"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text113"
+       y="218.5898"
+       x="42"
+       textLength="263"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeTerm visitNamedTerm(NamedTerm term)</text>
+    <circle
+       r="3"
+       id="ellipse115"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="228.8877"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text117"
+       y="231.54491"
+       x="42"
+       textLength="316"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeTerm visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse119"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="241.8428"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text121"
+       y="244.5"
+       x="42"
+       textLength="257"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeTerm visitFreeVariable(FreeVariable var)</text>
+    <polygon
+       id="polygon123"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="33,257.7979 29,253.7979 33,249.7979 37,253.7979 " />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text125"
+       y="257.45511"
+       x="42"
+       textLength="396"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeTerm visitBoundVariable(BoundVariable var, String resolvedName)</text>
+    <polygon
+       id="polygon127"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="33,270.7529 29,266.7529 33,262.7529 37,266.7529 " />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text129"
+       y="270.41019"
+       x="42"
+       textLength="370"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">UnicodeTerm visitAbstraction(Abstraction abs, String resolvedName)</text>
+  </a>
+  <rect
+     y="43"
+     x="376"
+     width="160"
+     style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+     id="ResolvedNamesVisitor"
+     height="48" />
+  <circle
+     r="11"
+     id="ellipse134"
+     style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+     cy="59"
+     cx="391" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path136"
+     d="m 393.9731,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+  <text
+     style="font-size:12px;font-family:sans-serif;fill:#000000"
+     id="text138"
+     y="63.535198"
+     x="405"
+     textLength="128"
+     lengthAdjust="spacingAndGlyphs"
+     font-size="12">ResolvedNamesVisitor</text>
+  <line
+     id="line140"
+     y2="75"
+     y1="75"
+     x2="535"
+     x1="377"
+     style="stroke:#a80036;stroke-width:1.5" />
+  <line
+     id="line142"
+     y2="83"
+     y1="83"
+     x2="535"
+     x1="377"
+     style="stroke:#a80036;stroke-width:1.5" />
+  <a
+     id="a159"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.update.UpdateShareURL"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.update.UpdateShareURL"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="183.5"
+       x="1594.5"
+       width="189"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="UpdateShareURL"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse145"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199.5"
+       cx="1636.95" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path147"
+       d="m 1639.9231,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text149"
+       y="204.0352"
+       x="1657.05"
+       textLength="96"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">UpdateShareURL</text>
+    <line
+       id="line151"
+       y2="215.5"
+       y1="215.5"
+       x2="1782.5"
+       x1="1595.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line153"
+       y2="223.5"
+       y1="223.5"
+       x2="1782.5"
+       x1="1595.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse155"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="235.47749"
+       cx="1605.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text157"
+       y="238.1348"
+       x="1614.5"
+       textLength="163"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void updateSerialized(String s)</text>
+  </a>
+  <a
+     id="a196"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.update.TreeTermVisitor"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.update.TreeTermVisitor"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="151"
+       x="479"
+       width="402"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgzw6igx14etx)"
+       id="TreeTermVisitor"
+       height="125.7305" />
+    <circle
+       r="11"
+       id="ellipse162"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="167"
+       cx="628.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path164"
+       d="m 631.7231,172.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text166"
+       y="171.5352"
+       x="649.25"
+       textLength="94"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">TreeTermVisitor</text>
+    <line
+       id="line168"
+       y2="183"
+       y1="183"
+       x2="880"
+       x1="480"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line170"
+       y2="191"
+       y1="191"
+       x2="880"
+       x1="480"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse172"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="202.97749"
+       cx="490" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text174"
+       y="205.6348"
+       x="499"
+       textLength="230"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeTerm visitApplication(Application app)</text>
+    <circle
+       r="3"
+       id="ellipse176"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="215.9326"
+       cx="490" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text178"
+       y="218.5898"
+       x="499"
+       textLength="243"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeTerm visitNamedTerm(NamedTerm term)</text>
+    <circle
+       r="3"
+       id="ellipse180"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="228.8877"
+       cx="490" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text182"
+       y="231.54491"
+       x="499"
+       textLength="296"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeTerm visitPartialApplication(PartialApplication app)</text>
+    <circle
+       r="3"
+       id="ellipse184"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="241.8428"
+       cx="490" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text186"
+       y="244.5"
+       x="499"
+       textLength="237"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeTerm visitFreeVariable(FreeVariable var)</text>
+    <polygon
+       id="polygon188"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="490,257.7979 486,253.7979 490,249.7979 494,253.7979 " />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text190"
+       y="257.45511"
+       x="499"
+       textLength="376"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeTerm visitBoundVariable(BoundVariable var, String resolvedName)</text>
+    <polygon
+       id="polygon192"
+       style="fill:#ffff44;stroke:#b38d22;stroke-width:1"
+       points="490,270.7529 486,266.7529 490,262.7529 494,266.7529 " />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text194"
+       y="270.41019"
+       x="499"
+       textLength="350"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">TreeTerm visitAbstraction(Abstraction abs, String resolvedName)</text>
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="SerializationObserver-UpdateURL"
+     d="m 1546.1607,107.4766 c -18.2522,23.956 -41.0063,53.8208 -57.7735,75.8276" />
+  <polygon
+     id="polygon199"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1551.9526,111.425 1540.8165,102.9404 1558.5055,91.2741 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="ExecutionObserver-UpdateUnicodeOutput"
+     d="m 1093.8854,107.4766 c -18.4152,23.956 -41.3725,53.8208 -58.2893,75.8276" />
+  <polygon
+     id="polygon202"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1099.7011,111.3967 1088.6015,102.8644 1106.3403,91.2741 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="ExecutionObserver-UpdateTreeOutput"
+     d="m 1156.1198,107.1281 c 18.6233,24.0143 41.926,54.0625 59.0753,76.1761" />
+  <polygon
+     id="polygon205"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1161.6128,102.7887 1150.5497,111.3683 1143.8248,91.2741 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="ResolvedNamesVisitor-UnicodeTermVisitor"
+     d="m 402.4095,102.3265 c -22.1633,14.6099 -48.5519,32.005 -73.8265,48.6659" />
+  <polygon
+     id="polygon208"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="406.3303,108.126 398.6251,96.4371 419.1761,91.2741 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
+     id="SerializationObserver-UpdateShareURL"
+     d="m 1607.8393,107.4766 c 18.2522,23.956 41.0063,53.8208 57.7735,75.8276" />
+  <polygon
+     id="polygon211"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="1613.1835,102.9404 1602.0474,111.425 1595.4945,91.2741 " />
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="ResolvedNamesVisitor-TreeTermVisitor"
+     d="m 509.8308,102.3265 c 22.2627,14.6099 48.7697,32.005 74.1576,48.6659" />
+  <polygon
+     id="polygon214"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="513.5506,96.3949 505.8694,108.0996 492.989,91.2741 " />
+</svg>

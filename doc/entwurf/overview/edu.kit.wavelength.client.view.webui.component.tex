@@ -1,8 +1,8 @@
 The \texttt{component} package contains different classes that make up the user interface (UI).
 
 Most of the classes implement the adapter pattern and wrap corresponding GWT-UI classes. 
-These classes are \texttt{\lnk{Checkbox}}, \texttt{\lnk{LabeledButton}}, \texttt{\lnk{OptionBox}}, 
-\texttt{\lnk{PopUpTextBox}}, \texttt{\lnk{TextField}}, \texttt{\lnk{VisualButton}} and \texttt{\lnk{WindowFocus}}.
+These classes are \texttt{\lnk{Checkbox}}, \texttt{\lnk{DisclosureButton}}, \texttt{\lnk{OptionBox}}, 
+\texttt{\lnk{PopUpWindow}}, \texttt{\lnk{TextField}}, \texttt{\lnk{TextButton}}, \texttt{\lnk{Menu}} and \texttt{\lnk{ImageButton}}.
 Adapting the classes not only achieves consistent naming and functionality for the UI components
 but also allows for easy mocking of the classes.
 
@@ -15,3 +15,8 @@ the result of a calculation to the user and also allow the user to request preci
 By wrapping the GWT-UI classes behind an adapter, all classes in the \texttt{component} package can
 be hidden behind a combination of different interfaces from the \texttt{\pkglnk{view.api}}.
 %TODO was ist so toll daran, die hinter den Interfaces zu verstecken?
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{packageDiagrams/componentsPackage}
+\end{figure}

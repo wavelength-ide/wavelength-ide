@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="284px"
+   preserveAspectRatio="none"
+   style="width:591px;height:284px;"
+   version="1.1"
+   viewBox="0 0 591 284"
+   width="591px"
+   zoomAndPan="magnify"
+   id="svg121"
+   sodipodi:docname="parsingPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata125">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview123"
+     showgrid="false"
+     inkscape:zoom="0.69712352"
+     inkscape:cx="295.5"
+     inkscape:cy="142"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg121" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="f1ajej76rzjajs"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a34"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.parsing.Tokeniser"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.parsing.Tokeniser"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="49.5"
+       x="196"
+       width="186"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ajej76rzjajs)"
+       id="Tokeniser"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="65.5"
+       cx="256.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 259.2231,71.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="70.035202"
+       x="276.75"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Tokeniser</text>
+    <line
+       id="line26"
+       y2="81.5"
+       y1="81.5"
+       x2="381"
+       x1="197"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="89.5"
+       y1="89.5"
+       x2="381"
+       x1="197"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse30"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="101.4775"
+       cx="207" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text32"
+       y="104.1348"
+       x="216"
+       textLength="160"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Token[] tokenise(String input)</text>
+  </a>
+  <a
+     id="a59"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.parsing.ParseException"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.parsing.ParseException"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="177"
+       x="22"
+       width="304"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ajej76rzjajs)"
+       id="ParseException"
+       height="86.865196" />
+    <circle
+       r="11"
+       id="ellipse37"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="193"
+       cx="125.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path39"
+       d="m 128.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text41"
+       y="197.5352"
+       x="146.25"
+       textLength="88"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">ParseException</text>
+    <line
+       id="line43"
+       y2="209"
+       y1="209"
+       x2="325"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line45"
+       y2="217"
+       y1="217"
+       x2="325"
+       x1="23"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse47"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="228.97749"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text49"
+       y="231.6348"
+       x="42"
+       textLength="278"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">ParseException(String message, int row, int column)</text>
+    <circle
+       r="3"
+       id="ellipse51"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="241.9326"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text53"
+       y="244.5898"
+       x="42"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">int getRow()</text>
+    <circle
+       r="3"
+       id="ellipse55"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="254.8877"
+       cx="33" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text57"
+       y="257.54489"
+       x="42"
+       textLength="84"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">int getColumn()</text>
+  </a>
+  <a
+     id="a72"
+     xlink:type="simple"
+     xlink:title="java:java.lang.Exception"
+     xlink:show="new"
+     xlink:href="java:java.lang.Exception"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="56"
+       x="73"
+       width="88"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ajej76rzjajs)"
+       id="Exception"
+       height="48" />
+    <circle
+       r="11"
+       id="ellipse62"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="72"
+       cx="88" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path64"
+       d="m 90.9731,77.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text66"
+       y="76.535202"
+       x="102"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Exception</text>
+    <line
+       id="line68"
+       y2="88"
+       y1="88"
+       x2="160"
+       x1="74"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line70"
+       y2="96"
+       y1="96"
+       x2="160"
+       x1="74"
+       style="stroke:#a80036;stroke-width:1.5" />
+  </a>
+  <a
+     id="a93"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.parsing.Token"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.parsing.Token"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="417.5"
+       width="143"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ajej76rzjajs)"
+       id="Token"
+       height="73.910202" />
+    <circle
+       r="11"
+       id="ellipse75"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="466.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path77"
+       d="m 469.7231,64.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text79"
+       y="63.535198"
+       x="487.25"
+       textLength="36"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Token</text>
+    <line
+       id="line81"
+       y2="75"
+       y1="75"
+       x2="559.5"
+       x1="418.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line83"
+       y2="83"
+       y1="83"
+       x2="559.5"
+       x1="418.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse85"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="94.977501"
+       cx="428.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text87"
+       y="97.634804"
+       x="437.5"
+       textLength="117"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Token(String content)</text>
+    <circle
+       r="3"
+       id="ellipse89"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="107.9326"
+       cx="428.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text91"
+       y="110.5898"
+       x="437.5"
+       textLength="103"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String getContent()</text>
+  </a>
+  <a
+     id="a114"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.model.term.parsing.Parser"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.model.term.parsing.Parser"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="183.5"
+       x="361"
+       width="200"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1ajej76rzjajs)"
+       id="Parser"
+       height="73.910202" />
+    <circle
+       r="11"
+       id="ellipse96"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       cy="199.5"
+       cx="438.25" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path98"
+       d="m 441.2231,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text100"
+       y="204.0352"
+       x="458.75"
+       textLength="37"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="12">Parser</text>
+    <line
+       id="line102"
+       y2="215.5"
+       y1="215.5"
+       x2="560"
+       x1="362"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line104"
+       y2="223.5"
+       y1="223.5"
+       x2="560"
+       x1="362"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <circle
+       r="3"
+       id="ellipse106"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="235.47749"
+       cx="372" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text108"
+       y="238.1348"
+       x="381"
+       textLength="164"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">Parser(List&lt;Library&gt; libraries)</text>
+    <circle
+       r="3"
+       id="ellipse110"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       cy="248.4326"
+       cx="372" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text112"
+       y="251.0898"
+       x="381"
+       textLength="174"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">LambdaTerm parse(String input)</text>
+  </a>
+  <path
+     inkscape:connector-curvature="0"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     id="Exception-ParseException"
+     d="m 134.3498,122.7657 c 6.9485,17.1275 14.9468,36.8427 21.9318,54.0599" />
+  <polygon
+     id="polygon117"
+     style="fill:none;stroke:#a80036;stroke-width:1"
+     points="140.8039,120.0542 127.8309,125.3173 126.7986,104.1528 " />
+</svg>

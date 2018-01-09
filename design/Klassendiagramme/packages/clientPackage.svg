@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="232px" preserveAspectRatio="none" style="width:229px;height:232px;" version="1.1" viewBox="0 0 229 232" width="229px" zoomAndPan="magnify"><defs><filter height="300%" id="fyz64gg75msj0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--cluster edu.kit.wavelength.client--><polygon fill="#FFFFFF" filter="url(#fyz64gg75msj0)" points="14,16,197,16,204,38.4883,207,38.4883,207,220,14,220,14,16" style="stroke: #000000; stroke-width: 2.0;"/><line style="stroke: #000000; stroke-width: 2.0;" x1="14" x2="204" y1="38.4883" y2="38.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="177" x="18" y="31.5352">edu.kit.wavelength.client</text><!--class Wavelength--><a target="_top" xlink:actuate="onRequest" xlink:href="java:edu.kit.wavelength.client.Wavelength" xlink:show="new" xlink:title="java:edu.kit.wavelength.client.Wavelength" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fyz64gg75msj0)" height="60.9551" id="Wavelength" style="stroke: #A80036; stroke-width: 1.5;" width="139" x="40.5" y="151"/><ellipse cx="74.4" cy="167" fill="#ADD1B2" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M77.3731,172.6431 Q76.7921,172.9419 76.1529,173.0913 Q75.5138,173.2407 74.8082,173.2407 Q72.3014,173.2407 70.9815,171.5889 Q69.6617,169.937 69.6617,166.8159 Q69.6617,163.6865 70.9815,162.0347 Q72.3014,160.3828 74.8082,160.3828 Q75.5138,160.3828 76.1612,160.5322 Q76.8087,160.6816 77.3731,160.9805 L77.3731,163.7031 Q76.7423,163.1221 76.1488,162.8523 Q75.5553,162.5825 74.9244,162.5825 Q73.5797,162.5825 72.8949,163.6492 Q72.2101,164.7158 72.2101,166.8159 Q72.2101,168.9077 72.8949,169.9744 Q73.5797,171.041 74.9244,171.041 Q75.5553,171.041 76.1488,170.7712 Q76.7423,170.5015 77.3731,169.9204 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="65" x="92.6" y="171.5352">Wavelength</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="41.5" x2="178.5" y1="183" y2="183"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="41.5" x2="178.5" y1="191" y2="191"/><ellipse cx="51.5" cy="202.9775" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="113" x="60.5" y="205.6348">void onModuleLoad()</text></a><!--class EntryPoint--><a target="_top" xlink:actuate="onRequest" xlink:href="java:com.google.gwt.core.client.EntryPoint" xlink:show="new" xlink:title="java:com.google.gwt.core.client.EntryPoint" xlink:type="simple"><rect fill="#FEFECE" filter="url(#fyz64gg75msj0)" height="48" id="EntryPoint" style="stroke: #A80036; stroke-width: 1.5;" width="89" x="65.5" y="43"/><ellipse cx="80.5" cy="59" fill="#B4A7E5" rx="11" ry="11" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M76.4277,54.7651 L76.4277,52.6069 L83.8071,52.6069 L83.8071,54.7651 L81.3418,54.7651 L81.3418,62.8418 L83.8071,62.8418 L83.8071,65 L76.4277,65 L76.4277,62.8418 L78.8931,62.8418 L78.8931,54.7651 Z "/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="57" x="94.5" y="63.5352">EntryPoint</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="66.5" x2="153.5" y1="75" y2="75"/><line style="stroke: #A80036; stroke-width: 1.5;" x1="66.5" x2="153.5" y1="83" y2="83"/></a><!--link EntryPoint to Wavelength--><path d="M110,111.2477 C110,124.5296 110,138.7972 110,150.9818 " fill="none" id="EntryPoint-Wavelength" style="stroke: #A80036; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="103.0001,111.003,110,91.003,117.0001,111.0029,103.0001,111.003" style="stroke: #A80036; stroke-width: 1.0;"/><!--
+@startuml
+package edu.kit.wavelength.client <<Folder>> {
+class Wavelength [[java:edu.kit.wavelength.client.Wavelength]] {
+	+void onModuleLoad()
+}
+interface EntryPoint [[java:com.google.gwt.core.client.EntryPoint]] {
+}
+EntryPoint <|.. Wavelength
+
+}
+
+@enduml
+
+PlantUML version 1.2017.15(Mon Jul 03 18:45:34 CEST 2017)
+(EPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Java Version: 1.8.0_112-b16
+Operating System: Mac OS X
+OS Version: 10.13.2
+Default Encoding: UTF-8
+Language: de
+Country: DE
+--></g></svg>

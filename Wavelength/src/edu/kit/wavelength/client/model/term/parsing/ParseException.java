@@ -27,7 +27,7 @@ public class ParseException extends Exception {
 	}
 	
 	/**
-	 * Gets the column in which the error causing this exception occurred
+	 * Gets the column in which the error causing this exception occurred.
 	 * @return The column in which the error occurred
 	 */
 	public int getColumn() {

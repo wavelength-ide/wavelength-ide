@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="297px"
+   preserveAspectRatio="none"
+   style="width:492px;height:297px;"
+   version="1.1"
+   viewBox="0 0 492 297"
+   width="492px"
+   zoomAndPan="magnify"
+   id="svg123"
+   sodipodi:docname="apiPackage.svg"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06">
+  <metadata
+     id="metadata127">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview125"
+     showgrid="false"
+     inkscape:zoom="0.79461279"
+     inkscape:cx="246"
+     inkscape:cy="148.5"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg123" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="fgnkqusbvrgdm"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <a
+     id="a36"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Toggleable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Toggleable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="31"
+       width="96"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgnkqusbvrgdm)"
+       id="Toggleable"
+       height="86.865196" />
+    <circle
+       r="11"
+       id="ellipse20"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="46" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path22"
+       d="m 41.9277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text24"
+       y="63.535198"
+       x="60"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Toggleable</text>
+    <line
+       id="line26"
+       y2="75"
+       y1="75"
+       x2="126"
+       x1="32"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line28"
+       y2="83"
+       y1="83"
+       x2="126"
+       x1="32"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text30"
+       y="97.634804"
+       x="37"
+       textLength="50"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void set()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text32"
+       y="110.5898"
+       x="37"
+       textLength="64"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unset()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text34"
+       y="123.5449"
+       x="37"
+       textLength="79"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isSet()</text>
+  </a>
+  <a
+     id="a51"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Writable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Writable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="56"
+       x="162.5"
+       width="135"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgnkqusbvrgdm)"
+       id="Writable"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse39"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="72"
+       cx="202.7" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path41"
+       d="m 198.6277,67.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 78 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text43"
+       y="76.535202"
+       x="222.3"
+       textLength="47"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Writable</text>
+    <line
+       id="line45"
+       y2="88"
+       y1="88"
+       x2="296.5"
+       x1="163.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line47"
+       y2="96"
+       y1="96"
+       x2="296.5"
+       x1="163.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text49"
+       y="110.6348"
+       x="168.5"
+       textLength="123"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void write(String input)</text>
+  </a>
+  <a
+     id="a70"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Hideable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Hideable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="43"
+       x="333"
+       width="110"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgnkqusbvrgdm)"
+       id="Hideable"
+       height="86.865196" />
+    <circle
+       r="11"
+       id="ellipse54"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="59"
+       cx="359.70001" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path56"
+       d="m 355.6277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text58"
+       y="63.535198"
+       x="376.29999"
+       textLength="52"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Hideable</text>
+    <line
+       id="line60"
+       y2="75"
+       y1="75"
+       x2="442"
+       x1="334"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line62"
+       y2="83"
+       y1="83"
+       x2="442"
+       x1="334"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text64"
+       y="97.634804"
+       x="339"
+       textLength="57"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void hide()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text66"
+       y="110.5898"
+       x="339"
+       textLength="62"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void show()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text68"
+       y="123.5449"
+       x="339"
+       textLength="98"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isShown()</text>
+  </a>
+  <a
+     id="a89"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Lockable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Lockable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="190"
+       x="22.5"
+       width="113"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgnkqusbvrgdm)"
+       id="Lockable"
+       height="86.865196" />
+    <circle
+       r="11"
+       id="ellipse73"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="206"
+       cx="51" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path75"
+       d="m 46.9277,201.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 212 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text77"
+       y="210.5352"
+       x="68"
+       textLength="51"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Lockable</text>
+    <line
+       id="line79"
+       y2="222"
+       y1="222"
+       x2="134.5"
+       x1="23.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line81"
+       y2="230"
+       y1="230"
+       x2="134.5"
+       x1="23.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text83"
+       y="244.6348"
+       x="28.5"
+       textLength="56"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void lock()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text85"
+       y="257.58981"
+       x="28.5"
+       textLength="70"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void unlock()</text>
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text87"
+       y="270.54489"
+       x="28.5"
+       textLength="101"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">boolean isLocked()</text>
+  </a>
+  <a
+     id="a104"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Clickable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Clickable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="203"
+       x="171"
+       width="168"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgnkqusbvrgdm)"
+       id="Clickable"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse92"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="219"
+       cx="224.75" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path94"
+       d="m 220.6777,214.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 225 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text96"
+       y="223.5352"
+       x="245.25"
+       textLength="52"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Clickable</text>
+    <line
+       id="line98"
+       y2="235"
+       y1="235"
+       x2="338"
+       x1="172"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line100"
+       y2="243"
+       y1="243"
+       x2="338"
+       x1="172"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text102"
+       y="257.6348"
+       x="177"
+       textLength="156"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">void setAction(Action action)</text>
+  </a>
+  <a
+     id="a119"
+     xlink:type="simple"
+     xlink:title="java:edu.kit.wavelength.client.view.api.Readable"
+     xlink:show="new"
+     xlink:href="java:edu.kit.wavelength.client.view.api.Readable"
+     xlink:actuate="onRequest"
+     target="_top">
+    <rect
+       y="203"
+       x="374.5"
+       width="87"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fgnkqusbvrgdm)"
+       id="Readable"
+       height="60.955101" />
+    <circle
+       r="11"
+       id="ellipse107"
+       style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+       cy="219"
+       cx="389.5" />
+    <path
+       inkscape:connector-curvature="0"
+       id="path109"
+       d="m 385.4277,214.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 225 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z" />
+    <text
+       style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+       id="text111"
+       y="223.5352"
+       x="403.5"
+       textLength="55"
+       lengthAdjust="spacingAndGlyphs"
+       font-style="italic"
+       font-size="12">Readable</text>
+    <line
+       id="line113"
+       y2="235"
+       y1="235"
+       x2="460.5"
+       x1="375.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <line
+       id="line115"
+       y2="243"
+       y1="243"
+       x2="460.5"
+       x1="375.5"
+       style="stroke:#a80036;stroke-width:1.5" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       id="text117"
+       y="257.6348"
+       x="380.5"
+       textLength="67"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="11">String read()</text>
+  </a>
+</svg>

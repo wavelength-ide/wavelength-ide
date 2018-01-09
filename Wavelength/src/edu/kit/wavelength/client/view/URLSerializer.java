@@ -13,12 +13,12 @@ public class URLSerializer {
 
 	private Map<Object, String> entities = new HashMap<>();
 	
-	private List<Serializable> serializables;
+	private Serializable serializable;
 	private List<SerializationObserver> serializationOutputs;
 	private int pollingDelayMS;
 	
-	public URLSerializer(List<Serializable> serializables, List<SerializationObserver> serializationOutputs, int pollingDelayMS) {
-		this.serializables = serializables;
+	public URLSerializer(Serializable serializable, List<SerializationObserver> serializationOutputs, int pollingDelayMS) {
+		this.serializable = serializable;
 		this.serializationOutputs = serializationOutputs;
 		this.pollingDelayMS = pollingDelayMS;
 	}
@@ -28,9 +28,7 @@ public class URLSerializer {
 	}
 	
 	public boolean serialize() {
-		// (example aggregation of serializables)
-		String aggregate = serializables.stream().map(Serializable::serialize).collect(Collectors.joining(";"));
-		// (convert aggregate to URL)
+		// (convert serializable to URL)
 		String url = null;
 		serializationOutputs.forEach(o -> o.updateSerialized(url));
 		// return true to keep going

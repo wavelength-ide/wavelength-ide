@@ -21,23 +21,45 @@ However, before actually displaying it, a blocker that prevents the user from in
 %include sequence diagram for action here
 %---------------------------
 
-\subsection{Beta reduction}
-%---------------------------
-%include text here
-%---------------------------
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{sequenceDiagrams/betaReduction}
-\end{figure}
-
 \subsection{Next term}
-%---------------------------
-%include text here
-%---------------------------
+\label{sec:nt}
+In order to retrieve the next redex to reduce from its reduction order, the
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}}
+calls the \texttt{next} method on the current reduction order. This method creates a new visitor which traverses
+the lambda term, looking for the correct redex. In order to identify redexes,
+specialized visitors that determine the type of a given lambda term are used.
+These visitors extend \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.NameAgnosticVisitor]{NameAgnosticVisitor}},
+so that for example a named redex is still recognized as a redex.
+
+In this example, we have $t = (\lambda x.x)(\lambda x.x)$ and $u = \lambda x.x$.
+
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{sequenceDiagrams/nextTerm}
+\end{figure}
+
+
+\subsection{$\beta$-reduction}
+After the next redex to reduce has been retrieved from the reduction order (see \ref{sec:nt}),
+the $\beta$-reduction of the redex can take place. Reduction is performed by the
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.BetaReducer]{BetaReducer}}
+class, which traverses the tree and reassembles it unchanged until it finds the
+redex returned by the reduction order. It then creates a
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.SustitutionVisitor]{SubstitutionVisitor}}
+which traverses the abstraction and performs the actual substitution. Both classes
+extend \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.TermTransformer]{TermTransformer}},
+so they make sure that if they encounter a \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.NamedTerm]{NamedTerm}}
+whose body changed as a result of the substitution, the name tag is removed.
+
+In this example, we have $t = \lambda a.((\lambda x.\lambda y.x)(\lambda x.x))$,
+$u = (\lambda x.\lambda y.x)(\lambda x.x)$, $v = \lambda x.\lambda y.x$,
+$w = \lambda x.x$, $x = \lambda y.x$ and $y = x$. Note that in the terms called
+$x$ and $y$, the variable $x$ is actually represented as the De Bruijn index $2$
+(and not as a free variable).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{sequenceDiagrams/betaReduction}
 \end{figure}
 

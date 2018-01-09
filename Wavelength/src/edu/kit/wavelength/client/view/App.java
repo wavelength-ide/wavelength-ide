@@ -4,16 +4,19 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 
-import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
+import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
+import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
+import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 import edu.kit.wavelength.client.view.webui.components.Checkbox;
 import edu.kit.wavelength.client.view.webui.components.Editor;
 import edu.kit.wavelength.client.view.webui.components.LabeledButton;
@@ -34,7 +37,7 @@ public class App {
 	
 	private static App instance = null;
 	
-	// protected so that App class can be mocket
+	// protected so that App class can be mocked
 	protected App() {}
 	
 	public static App get() {
@@ -73,7 +76,7 @@ public class App {
 	private TextField sharePanel;
 	private List<Checkbox> libraries;
 	private List<LabeledButton> exercises;
-	private ExecutionEngine engine;
+	private Executor executor;
 	// etc.
 	
 	public TextField sharePanel() {
@@ -152,13 +155,16 @@ public class App {
 		return exercises;
 	}
 	
-	public ExecutionEngine engine() {
-		return engine;
+	public Executor executor() {
+		return executor;
 	}
 	
 	// etc.
 	
 	public void initialize() {
+		String state = Window.Location.getPath();
+		// deserialize
+		
 		mainMenuButton = new VisualButton(new Image(), new Image());
 		editor = new Editor();
 		outputFormat = new OptionBox(OutputNames);
@@ -175,7 +181,7 @@ public class App {
 		share = new VisualButton(new Image(), new Image());
 		libraries = Libraries.all().stream().map(l -> new Checkbox(l.getName())).collect(Collectors.toList());
 		exercises = Exercises.all().stream().map(e -> new LabeledButton(e.getName())).collect(Collectors.toList());
-		// deactivation lists
+		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		runPause.setAction(new RunNewExecution());
 	}
 }

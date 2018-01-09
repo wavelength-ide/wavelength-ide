@@ -2,7 +2,6 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.URLSerializer;
-import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.webui.components.TextField;
 
 

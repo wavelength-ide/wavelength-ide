@@ -15,6 +15,10 @@ import edu.kit.wavelength.client.view.api.Writable;
  */
 public class Editor implements Readable, Writable, Deactivatable, Serializable {
 
+	public static Editor deserialize(String serialized) {
+		return null;
+	}
+	
 	@Override
 	public String read() {
 		return null;
@@ -39,11 +43,5 @@ public class Editor implements Readable, Writable, Deactivatable, Serializable {
 	public String serialize() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void deserialize(String serialized) {
-		// TODO Auto-generated method stub
-		
 	}
 }

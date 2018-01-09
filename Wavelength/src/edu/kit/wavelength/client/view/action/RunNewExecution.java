@@ -7,7 +7,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
-import edu.kit.wavelength.client.model.Observer;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -15,7 +14,6 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.update.UpdateOutput;
 import edu.kit.wavelength.client.view.webui.components.Checkbox;
 import edu.kit.wavelength.client.view.webui.components.TreeOutput;
 import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
@@ -45,21 +43,15 @@ public class RunNewExecution implements Action {
 				.filter(Checkbox::isSet)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
 				.collect(Collectors.toList());
-		List<Observer> observers = Arrays.asList(new UpdateOutput());
-		// TODO: add engine wrapper
-		engine = new ExecutionEngine(code, order, size, libraries, observers);
+		a.executor().start(code, order, size, libraries);
 		// possibly error handling, reporting back to editor etc.
 		String outputFormatName = a.outputFormatBox().read();
 		switch (outputFormatName) {
 		case App.UnicodeOutputName:
-			// TODO: reset stuff
-			unicodeOutput = new UnicodeOutput();
-			// lots of formatting stuff
+			a.unicodeOutput().show();
 			break;
 		case App.TreeOutputName:
-			// TODO: reset stuff
-			treeOutput = new TreeOutput();
-			// lots of formatting stuff
+			a.treeOutput().show();
 			break;
 		}
 	}

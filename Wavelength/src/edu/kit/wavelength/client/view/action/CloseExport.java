@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.api.Hideable;
 
 /**
  * This action causes the application to leave a state in which the user is

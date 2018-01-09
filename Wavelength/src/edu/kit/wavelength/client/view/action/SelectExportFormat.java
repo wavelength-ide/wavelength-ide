@@ -30,7 +30,7 @@ public class SelectExportFormat<T extends Writable & Hideable> implements Action
 	@Override
 	public void run() {
 		PopUpTextBox exportWindow = App.get().exportWindow();
-		exportWindow.write(exportFormat.getRepresentation(App.get().engine().getDisplayed()));
+		exportWindow.write(exportFormat.getRepresentation(App.get().executor().getDisplayed()));
 		App.get().uiBlocker().show();
 		exportWindow.show();
 	}

@@ -10,6 +10,10 @@ public class Checkbox implements Readable, Toggleable, Serializable {
 		
 	}
 	
+	public static Checkbox deserialize(String serialized) {
+		return null;
+	}
+	
 	@Override
 	public boolean isSet() {
 		return false;
@@ -17,6 +21,12 @@ public class Checkbox implements Readable, Toggleable, Serializable {
 
 	@Override
 	public String read() {
+		return null;
+	}
+
+	@Override
+	public String serialize() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

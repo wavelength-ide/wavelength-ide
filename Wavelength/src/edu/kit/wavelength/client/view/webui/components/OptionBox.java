@@ -20,6 +20,10 @@ public class OptionBox implements Deactivatable, Readable, Serializable {
 	public OptionBox(List<String> entries) {
 		
 	}
+	
+	public static OptionBox deserialize(String serialized) {
+		return null;
+	}
 
 	@Override
 	public void block() {
@@ -41,12 +45,6 @@ public class OptionBox implements Deactivatable, Readable, Serializable {
 	public String serialize() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void deserialize(String serialized) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

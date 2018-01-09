@@ -1,0 +1,71 @@
+@startuml
+participant "lEx1 : LoadExercise" as sEx1
+participant "app : App" as app
+participant "App" as sApp
+participant "exerciseField : TextField" as exerciseField
+participant "solutionField : TextField" as solutionField
+participant "alertWindow : PopUpTextBox" as alertWindow
+participant "ex1 : Exercise1" as ex1
+participant "editor : Editor" as editor
+
+[o-> sEx1: run()
+activate sEx1
+sEx1 -> sApp: get()
+activate sApp
+sEx1 <-- sApp: app
+deactivate sApp
+sEx1 -> app: alertWindow()
+activate app
+sEx1 <-- app: alertWindow
+deactivate app
+sEx1 -> app: exerciseField()
+activate app
+sEx1 <-- app: exerciseField
+deactivate app
+sEx1 -> app: solutionField()
+activate app
+sEx1 <-- app: solutionField
+deactivate app
+
+sEx1 -> alertWindow: hide()
+activate alertWindow
+sEx1 <-- alertWindow
+deactivate alertWindow
+sEx1 -> exerciseField: show()
+activate exerciseField
+sEx1 <-- exerciseField
+deactivate exerciseField
+sEx1 -> ex1: getSolution()
+activate ex1
+sEx1 <-- ex1: solution : String
+deactivate ex1
+sEx1 -> solutionField: write(String solution)
+activate solutionField
+sEx1 <-- solutionField
+deactivate solutionField
+
+sEx1 -> ex1: hasPredefinitions()
+activate ex1
+sEx1 <-- ex1: b : Boolean
+deactivate ex1
+
+alt b = true
+
+sEx1 -> app: editor()
+activate app
+sEx1 <-- app: editor
+deactivate app
+sEx1 -> ex1: getPredefinitions()
+activate ex1
+sEx1 <-- ex1: predefinitions : String
+deactivate ex1
+sEx1 -> editor: write(String predefinitions)
+activate editor
+sEx1 <-- editor
+deactivate editor
+
+end
+
+deactivate sEx1
+
+@enduml

@@ -6,6 +6,7 @@ participant "alertWindow : PopUpTextBox" as alertWindow
 participant "ex1 : Exercise1" as ex1
 participant "App" as sApp
 
+[o-> menu
 activate menu
 menu -> sEx1: run()
 activate sEx1

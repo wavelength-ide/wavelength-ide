@@ -14,6 +14,7 @@ However, before actually displaying it, a blocker that prevents the user from in
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{sequenceDiagrams/exportOutput}
+	\caption{Sequence diagram for the select export format action.}
 \end{figure}
 
 \subsection{example action: start reduction process}
@@ -31,12 +32,12 @@ specialized visitors that determine the type of a given lambda term are used.
 These visitors extend \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.NameAgnosticVisitor]{NameAgnosticVisitor}},
 so that for example a named redex is still recognized as a redex.
 
-In this example, we have $t = (\lambda x.x)(\lambda x.x)$ and $u = \lambda x.x$.
 
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{sequenceDiagrams/nextTerm}
+	\caption{Sequence diagram for choosing the next term to reduce. In this example, we have $t = (\lambda x.x)(\lambda x.x)$ and $u = \lambda x.x$.}
 \end{figure}
 
 
@@ -52,14 +53,14 @@ extend \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.TermTransform
 so they make sure that if they encounter a \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.NamedTerm]{NamedTerm}}
 whose body changed as a result of the substitution, the name tag is removed.
 
-In this example, we have $t = \lambda a.((\lambda x.\lambda y.x)(\lambda x.x))$,
-$u = (\lambda x.\lambda y.x)(\lambda x.x)$, $v = \lambda x.\lambda y.x$,
-$w = \lambda x.x$, $x = \lambda y.x$ and $y = x$. Note that in the terms called
-$x$ and $y$, the variable $x$ is actually represented as the De Bruijn index $2$
-(and not as a free variable).
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{sequenceDiagrams/betaReduction}
+	\caption{Sequence diagram for a $\beta$-reduction. In this example, we have $t = \lambda a.((\lambda x.\lambda y.x)(\lambda x.x))$,
+		$u = (\lambda x.\lambda y.x)(\lambda x.x)$, $v = \lambda x.\lambda y.x$,
+		$w = \lambda x.x$, $x = \lambda y.x$ and $y = x$. Note that in the terms called
+		$x$ and $y$, the variable $x$ is actually represented as the De Bruijn index $2$
+		(and not as a free variable).}
 \end{figure}
 

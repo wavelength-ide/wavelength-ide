@@ -47,7 +47,7 @@ the $\beta$-reduction of the redex can take place. Reduction is performed by the
 \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.BetaReducer]{BetaReducer}}
 class, which traverses the tree and reassembles it unchanged until it finds the
 redex returned by the reduction order. It then creates a
-\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.SustitutionVisitor]{SubstitutionVisitor}}
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.SubstitutionVisitor]{SubstitutionVisitor}}
 which traverses the abstraction and performs the actual substitution. Both classes
 extend \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.TermTransformer]{TermTransformer}},
 so they make sure that if they encounter a \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.NamedTerm]{NamedTerm}}

@@ -37,7 +37,7 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
  * displayed output. The initial state is the Input state and the output is
  * empty when the application is started.
  */
-public final class App implements Serializable {
+public class App implements Serializable {
 	
 	private static App instance = null;
 	

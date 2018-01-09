@@ -8,7 +8,7 @@ package edu.kit.wavelength.client.model.term.parsing;
 public class Token {
 	
 	/**
-	 * Creates a new Token containing the entered String
+	 * Creates a new Token containing the entered String.
 	 * @param content The String to be stored in the Token
 	 */
 	public Token(String content) {

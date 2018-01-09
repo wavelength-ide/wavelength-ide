@@ -20,8 +20,8 @@ public interface Library extends Serializable {
 	
 	/**
 	 * Determines whether the library contains a term with the specified name.
-	 * @param name The name to search the library for.
-	 * @return True if the library contains a term with the entered name.
+	 * @param name The name to search the library for
+	 * @return True if the library contains a term with the entered name
 	 */
 	abstract boolean containsName(String name);
 	

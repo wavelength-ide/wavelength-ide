@@ -9,7 +9,7 @@ public class Tokeniser {
 	/**
 	 * Divides a sequence of characters into Tokens.
 	 * @param input The String to divide into tokens
-	 * @return An array containing all tokens.
+	 * @return An array containing all tokens
 	 */
 	public Token[] tokenise(String input) {
 		return null;

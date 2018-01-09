@@ -26,7 +26,7 @@ public interface Library extends Serializable {
 	abstract boolean containsName(String name);
 	
 	/**
-	 * Returns the name of the library.
+	 * Returns the library's name
 	 * @return The name of the library
 	 */
 	abstract String getName();

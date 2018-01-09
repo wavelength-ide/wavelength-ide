@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.view.webui.components;
+package edu.kit.wavelength.client.view.webui.component;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.api.Deactivatable;
@@ -6,7 +6,7 @@ import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Output;
 
 
-public class UnicodeOutput implements Deactivatable, Hideable, Output {
+public class TreeOutput implements Deactivatable, Output, Hideable {
 
 	@Override
 	public void block() {		

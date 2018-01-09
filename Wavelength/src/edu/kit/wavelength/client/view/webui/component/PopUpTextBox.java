@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.view.webui.components;
+package edu.kit.wavelength.client.view.webui.component;
 
 import com.google.gwt.user.client.ui.DialogBox;
 

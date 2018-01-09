@@ -7,37 +7,37 @@ import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
-import edu.kit.wavelength.client.view.webui.components.TreeOutput;
+import edu.kit.wavelength.client.view.webui.component.TreeTerm;
 
-public class TreeOutputVisitor extends ResolvedNamesVisitor<TreeOutput> {
+public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTerm> {
 
 	@Override
-	public TreeOutput visitApplication(Application app) {
+	public TreeTerm visitApplication(Application app) {
 		return null;
 	}
 
 	@Override
-	public TreeOutput visitNamedTerm(NamedTerm term) {
+	public TreeTerm visitNamedTerm(NamedTerm term) {
 		return null;
 	}
 
 	@Override
-	public TreeOutput visitPartialApplication(PartialApplication app) {
+	public TreeTerm visitPartialApplication(PartialApplication app) {
 		return null;
 	}
 
 	@Override
-	public TreeOutput visitFreeVariable(FreeVariable var) {
+	public TreeTerm visitFreeVariable(FreeVariable var) {
 		return null;
 	}
 
 	@Override
-	protected TreeOutput visitBoundVariable(BoundVariable var, String resolvedName) {
+	protected TreeTerm visitBoundVariable(BoundVariable var, String resolvedName) {
 		return null;
 	}
 
 	@Override
-	protected TreeOutput visitAbstraction(Abstraction abs, String resolvedName) {
+	protected TreeTerm visitAbstraction(Abstraction abs, String resolvedName) {
 		return null;
 	}
 

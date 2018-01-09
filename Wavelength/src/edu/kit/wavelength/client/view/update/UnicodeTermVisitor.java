@@ -7,37 +7,37 @@ import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
-import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
+import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
 
-public class UnicodeOutputVisitor extends ResolvedNamesVisitor<UnicodeOutput> {
+public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
 
 	@Override
-	public UnicodeOutput visitApplication(Application app) {
+	public UnicodeTerm visitApplication(Application app) {
 		return null;
 	}
 
 	@Override
-	public UnicodeOutput visitNamedTerm(NamedTerm term) {
+	public UnicodeTerm visitNamedTerm(NamedTerm term) {
 		return null;
 	}
 
 	@Override
-	public UnicodeOutput visitPartialApplication(PartialApplication app) {
+	public UnicodeTerm visitPartialApplication(PartialApplication app) {
 		return null;
 	}
 
 	@Override
-	public UnicodeOutput visitFreeVariable(FreeVariable var) {
+	public UnicodeTerm visitFreeVariable(FreeVariable var) {
 		return null;
 	}
 
 	@Override
-	protected UnicodeOutput visitBoundVariable(BoundVariable var, String resolvedName) {
+	protected UnicodeTerm visitBoundVariable(BoundVariable var, String resolvedName) {
 		return null;
 	}
 
 	@Override
-	protected UnicodeOutput visitAbstraction(Abstraction abs, String resolvedName) {
+	protected UnicodeTerm visitAbstraction(Abstraction abs, String resolvedName) {
 		return null;
 	}
 

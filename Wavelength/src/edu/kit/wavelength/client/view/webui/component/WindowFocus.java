@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.view.webui.components;
+package edu.kit.wavelength.client.view.webui.component;
 
 import edu.kit.wavelength.client.view.api.Hideable;
 

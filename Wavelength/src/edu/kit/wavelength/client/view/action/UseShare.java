@@ -2,7 +2,7 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.URLSerializer;
-import edu.kit.wavelength.client.view.webui.components.TextField;
+import edu.kit.wavelength.client.view.webui.component.TextField;
 
 /**
  * This action toggles the permalink panel. The permalink encodes the current

@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.view.action;
 
-import edu.kit.wavelength.client.view.App;
-
 /**
  * This class changes the view from exercise view to standard input view.
  */

@@ -5,7 +5,7 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
 import edu.kit.wavelength.client.view.export.Export;
-import edu.kit.wavelength.client.view.webui.components.PopUpTextBox;
+import edu.kit.wavelength.client.view.webui.component.PopUpTextBox;
 
 /**
  * This action displays the currently displayed output in the selected export

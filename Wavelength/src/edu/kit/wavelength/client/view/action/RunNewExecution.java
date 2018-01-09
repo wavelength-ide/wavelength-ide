@@ -1,12 +1,10 @@
 package edu.kit.wavelength.client.view.action;
 
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -14,9 +12,7 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.webui.components.Checkbox;
-import edu.kit.wavelength.client.view.webui.components.TreeOutput;
-import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
+import edu.kit.wavelength.client.view.webui.component.Checkbox;
 
 /**
  * This class starts a new reduction process and sets the view accordingly.

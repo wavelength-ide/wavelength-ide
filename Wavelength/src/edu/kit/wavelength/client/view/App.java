@@ -20,16 +20,16 @@ import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
-import edu.kit.wavelength.client.view.webui.components.Checkbox;
-import edu.kit.wavelength.client.view.webui.components.Editor;
-import edu.kit.wavelength.client.view.webui.components.LabeledButton;
-import edu.kit.wavelength.client.view.webui.components.OptionBox;
-import edu.kit.wavelength.client.view.webui.components.PopUpTextBox;
-import edu.kit.wavelength.client.view.webui.components.TextField;
-import edu.kit.wavelength.client.view.webui.components.TreeOutput;
-import edu.kit.wavelength.client.view.webui.components.UnicodeOutput;
-import edu.kit.wavelength.client.view.webui.components.VisualButton;
-import edu.kit.wavelength.client.view.webui.components.WindowFocus;
+import edu.kit.wavelength.client.view.webui.component.Checkbox;
+import edu.kit.wavelength.client.view.webui.component.Editor;
+import edu.kit.wavelength.client.view.webui.component.LabeledButton;
+import edu.kit.wavelength.client.view.webui.component.OptionBox;
+import edu.kit.wavelength.client.view.webui.component.PopUpTextBox;
+import edu.kit.wavelength.client.view.webui.component.TextField;
+import edu.kit.wavelength.client.view.webui.component.TreeOutput;
+import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
+import edu.kit.wavelength.client.view.webui.component.VisualButton;
+import edu.kit.wavelength.client.view.webui.component.WindowFocus;
 
 /**
  * This class handles the current state of the application and the currently

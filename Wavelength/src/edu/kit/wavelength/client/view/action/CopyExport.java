@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.api.Readable;
 
 /**
  * This action class copies the generated and displayed export output to the

@@ -1,1 +1,14 @@
-Overview of \texttt{\pkg} with UML diagram.
+The \texttt{pkglnk{view}} manages general aspects of the application.
+Among these are building the GUI, managing the interaction between the Model and the View and serialization.
+
+The \lnk{URLSerializer} class manages the serialization of the application's state. 
+Hence it needs the objects that are serialized and the recipients of the serialization.
+The recipients must implement the \lnk{SerializationObserver} interface in order to update the serialization.
+Note that the \lnk{URLSerializer} needs a polling delay time in milliseconds for concurrency.
+
+The \lnk{App} class builds the GUI components and the associated Actions. 
+It also stores an instance of the \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]} class.
+Note that the \lnk{App} class works similar to a Singleton by guaranteeing that only one instance exists and is accessed using a static method.
+Hence each \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.Action]} can access the \lnk{App} 
+in order to use the Model via the \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]} class
+or get UI components by calling the respective methods.

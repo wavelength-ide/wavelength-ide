@@ -22,6 +22,6 @@ public class StepForward implements Action {
 
 	@Override
 	public void run() {
-		execution.stepForward();
+		execution.stepForward(true);
 	}
 }

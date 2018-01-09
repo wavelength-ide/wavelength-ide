@@ -8,6 +8,15 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
+/**
+ * An execution engine manages the reduction of a lambda term.
+ * It keeps the history of terms and which of these terms were
+ * displayed and is able to reduce the current term according
+ * to a reduction order or reduce a specific redex in the current
+ * term. It also keeps track of which terms should be displayed and
+ * is able to revert to the previous displayed term.
+ * 
+ */
 public class ExecutionEngine {
 
 	/**
@@ -16,7 +25,6 @@ public class ExecutionEngine {
 	 * @param order The reduction order to be used by default
 	 * @param size The output size to be used
 	 * @param libraries The libraries to be taken into consideration during parsing
-	 * @param observers The observers to be notified during state changes
 	 */
 	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
 		
@@ -24,19 +32,30 @@ public class ExecutionEngine {
 
 	/**
 	 * Executes a single reduction of the current lambda term.
-	 * @return whether this step is displayed
+	 * @param enablePartialApplication Whether partial applications
+	 * and acceleration are enabled
+	 * @return Whether this step is displayed
 	 */
-	public boolean stepForward() {
+	public boolean stepForward(boolean enablePartialApplication) {
 		return false;
 	}
 	
 	/**
 	 * Executes a single reduction of the supplied redex.
-	 * @param term The redex to be evaluated. Must be a redex, otherwise
-	 * an exception is thrown
+	 * @param term The redex to be evaluated. Must be a redex, otherwise an
+	 * exception is thrown.
 	 */
 	public void stepForward(Application redex) {
 
+	}
+	
+	/**
+	 * Determines whether the execution is finished according to the current reduction order.
+	 * @return {@code true} if the current reduction order does not provide another redex,
+	 * {@code false} otherwise.
+	 */
+	public boolean isFinished() {
+		return false;
 	}
 	
 	/**

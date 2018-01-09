@@ -29,7 +29,7 @@ public class Executor {
 	private void scheduleExecution() {
 		autoRunning = true;
 		Scheduler.get().scheduleIncremental(() -> {
-			boolean displayTerm = engine.stepForward();
+			boolean displayTerm = engine.stepForward(true);
 			if (!autoRunning) {
 				LambdaTerm current = engine.displayCurrent();
 				pushTerm(current);
@@ -65,7 +65,7 @@ public class Executor {
 	 * Executes a single reduction of the current lambda term.
 	 */
 	public void stepForward() {
-		engine.stepForward();
+		engine.stepForward(true);
 		LambdaTerm current = engine.displayCurrent();
 		pushTerm(current);
 	}

@@ -6,7 +6,7 @@ import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Output;
 
 
-public class UnicodeOutput implements Lockable, Hideable, Output {
+public class UnicodeOutput implements Lockable, Hideable {
 
 	@Override
 	public void lock() {		
@@ -14,15 +14,6 @@ public class UnicodeOutput implements Lockable, Hideable, Output {
 
 	@Override
 	public void unlock() {		
-	}
-
-	@Override
-	public void addTerm(LambdaTerm term) {	
-		// hier findet Übersetzung von LT nach Output statt 
-	}
-
-	@Override
-	public void popTerm() {		
 	}
 
 	@Override

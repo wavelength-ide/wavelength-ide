@@ -17,4 +17,6 @@ public interface Lockable {
 	 * Unlock this element, enabling actions on the element.
 	 */
 	void unlock();
+	
+	boolean isLocked();
 }

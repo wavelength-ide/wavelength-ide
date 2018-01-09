@@ -60,4 +60,9 @@ public class ImageButton implements Lockable, Hideable, Clickable {
 	public boolean isShown() {
 		return false;
 	}
+
+	@Override
+	public boolean isLocked() {
+		return false;
+	}
 }

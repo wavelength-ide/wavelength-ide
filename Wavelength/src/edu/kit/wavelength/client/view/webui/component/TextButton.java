@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.view.webui.component;
 
+import java.io.IOException;
+import java.nio.CharBuffer;
+
 import com.google.gwt.user.client.ui.Button;
 
 import edu.kit.wavelength.client.view.action.Action;
@@ -16,7 +19,7 @@ import edu.kit.wavelength.client.view.api.Writable;
  * that the name of the label and the action that is performed when clicking
  * this button can be changed.
  */
-public class TextButton implements Lockable, Hideable, Writable, Clickable {
+public class TextButton implements Lockable, Hideable, Writable, Readable, Clickable {
 
 	/**
 	 * Creates a new LabeledButton.
@@ -42,11 +45,6 @@ public class TextButton implements Lockable, Hideable, Writable, Clickable {
 	}
 
 	@Override
-	public void write(String input) {
-
-	}
-
-	@Override
 	public void hide() {
 
 	}
@@ -64,6 +62,24 @@ public class TextButton implements Lockable, Hideable, Writable, Clickable {
 	@Override
 	public void setAction(Action action) {
 
+	}
+
+	@Override
+	public int read(CharBuffer arg0) throws IOException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isLocked() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void write(String input) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

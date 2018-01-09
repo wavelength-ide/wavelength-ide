@@ -11,7 +11,7 @@ import edu.kit.wavelength.client.view.api.Writable;
  * A TextField can only be read. It provides a means to display text to the User
  * and can be hidden and shown.
  */
-public class TextField implements Hideable, Writable {
+public class TextField implements Hideable, Writable, Readable {
 
 	/**
 	 * Constructs a new and empty TextField.

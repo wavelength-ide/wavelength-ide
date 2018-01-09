@@ -1,35 +1,33 @@
 package edu.kit.wavelength.client.view.webui.component;
 
-import com.google.gwt.user.client.ui.DisclosurePanel;
-import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Panel;
 
-import edu.kit.wavelength.client.view.api.Lockable;
+import edu.kit.wavelength.client.view.api.Hideable;
 
 /**
- * This class wraps GWT's {@link DisclosurePanel}.
- * 
- * A PopUpPanel is represented by an icon that pops up a menu on click.
- * The icon depends on whether the Panel is deactivated or not according to the {@link Lockable} interface.
+ * This class wraps GWT's {@link Panel} and represents a menu.
  */
-public class Menu implements Lockable {
+public class Menu implements Hideable {
 
 	/**
-	 * Creates a new PopUpPanel.
-	 * @param panel the wrapped {@link Menu}
-	 * @param imageWhenUnblocked icon shown when this is not blocked
-	 * @param imageWhenBlocked icon shown when this is blocked
+	 * Creates a new Menu.
+	 * @param panel the wrapped {@link Panel}
 	 */
-	public Menu(final DisclosurePanel panel, final Image imageWhenUnblocked, final Image imageWhenBlocked) {
-		
-	}
-	@Override
-	public void lock() {
+	public Menu(final Panel panel) {
 		
 	}
 
 	@Override
-	public void unlock() {
-		
+	public void hide() {
+	}
+
+	@Override
+	public void show() {
+	}
+
+	@Override
+	public boolean isShown() {
+		return false;
 	}
 
 }

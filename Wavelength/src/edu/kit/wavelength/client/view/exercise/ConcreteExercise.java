@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.view.exercise;
 
-import java.util.List;
-
 /**
  * This class is a concrete implementation of the {@link Exercise} interface.
  * The needed method's return values are set in the constructor.
@@ -12,14 +10,12 @@ public class ConcreteExercise implements Exercise {
 	private String task;
 	private String solution;
 	private String predefinitions;
-	private List<String> testCases;
 	
-	public ConcreteExercise(final String name, final String task, final String solution, final String predefinitions, final List<String> testCases) {
+	public ConcreteExercise(final String name, final String task, final String solution, final String predefinitions) {
 		this.name = name;
 		this.task = task;
 		this.solution = solution;
 		this.predefinitions = predefinitions;
-		this.testCases = testCases;
 	}
 
 	@Override

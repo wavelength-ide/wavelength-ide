@@ -11,15 +11,15 @@ import edu.kit.wavelength.client.view.api.Deactivatable;
  * A PopUpPanel is represented by an icon that pops up a menu on click.
  * The icon depends on whether the Panel is deactivated or not according to the {@link Deactivatable} interface.
  */
-public class PopUpPanel implements Deactivatable {
+public class Menu implements Deactivatable {
 
 	/**
 	 * Creates a new PopUpPanel.
-	 * @param panel the wrapped {@link PopUpPanel}
+	 * @param panel the wrapped {@link Menu}
 	 * @param imageWhenUnblocked icon shown when this is not blocked
 	 * @param imageWhenBlocked icon shown when this is blocked
 	 */
-	public PopUpPanel(final DisclosurePanel panel, final Image imageWhenUnblocked, final Image imageWhenBlocked) {
+	public Menu(final DisclosurePanel panel, final Image imageWhenUnblocked, final Image imageWhenBlocked) {
 		
 	}
 	@Override

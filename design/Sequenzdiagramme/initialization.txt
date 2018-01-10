@@ -2,6 +2,9 @@
 
 participant ":Wavelength" as wl
 participant "app:App" as app
+participant "button:Button" as button
+participant "mainMenuButtonActivated:Image" as mmba
+participant "mainMenuButtonDeactivated:Image" as mmbd
 participant "mainMenuButton:ImageButton" as mmb
 participant "mainMenu:Menu" as mm
 participant "hideMainMenuAction:HideComponent" as hca
@@ -11,11 +14,20 @@ participant "root:RootPanel" as root
 activate wl
 wl -> app : initialize()
 activate app
-app -->> mmb : <<Create>> (new Button(), new Image("mainMenuButtonActivated.png"), new Image("mainMenuButtonDeactivated.png))
+app -->> button : <<create>>
+activate button
+app -->> mmba : <<create>>
+activate mmba
+app -->> mmbd : <<create>>
+activate mmbd
+app -->> mmb : <<create>>
+deactivate button
+deactivate mmba
+deactivate mmbd
 activate mmb
-app -->> mm : <<Create>>
+app -->> mm : <<create>>
 activate mm
-app -->> hca : <<Create>> (mainMenu)
+app -->> hca : <<create>> (mainMenu)
 activate hca
 deactivate mm
 app -> mmb : setAction(hideMainMenuAction)

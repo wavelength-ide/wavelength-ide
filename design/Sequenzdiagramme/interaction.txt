@@ -1,0 +1,66 @@
+@startuml
+participant "e : Executor" as exec
+participant "Scheduler" as sched
+participant "scheduledAction : RepeatingCommand" as action
+participant "engine : ExecutionEngine" as eng
+participant "order : ReductionOrder" as order
+participant "reducer : BetaReducer" as reducer
+participant "size : OutputSize" as size
+participant "currentTerm : LambdaTerm" as cterm
+participant "reducedTerm : LambdaTerm" as rterm
+participant "observer : ExecutionObserver" as observer
+participant "App" as app
+
+create eng
+exec -->> eng: <<create>>(input, order, size, libraries)
+create action
+exec -->> action: <<create>>
+exec -> sched: scheduleIncremental(action)
+activate sched
+exec <-- sched
+deactivate sched
+sched -> action: execute()
+activate sched
+activate action
+
+action -> eng: stepForward()
+activate eng
+eng -> order: next(currentTerm)
+activate order
+eng <-- order: nextRedex : Application
+deactivate order
+create reducer
+eng -->> reducer: <<create>>(currentTerm)
+eng -> cterm: acceptVisitor(reducer)
+activate cterm
+create rterm
+cterm -->> rterm: <<create>>
+eng <-- cterm: reducedTerm
+deactivate cterm
+eng -> size: displayLive(currentStep)
+activate size
+eng <-- size: shouldDisplay : boolean
+deactivate size
+action <-- eng
+deactivate eng
+
+action -> eng: getLast()
+activate eng
+action <-- eng: reducedTerm
+deactivate eng
+action -> observer: pushTerm(reducedTerm)
+activate observer
+observer -> rterm: acceptVisitor(outputFormatter)
+activate rterm
+observer <-- rterm: outputFormat
+deactivate rterm
+observer -> app: outputPanel().add(outputFormat)
+activate app
+observer <-- app
+deactivate app
+action <-- observer
+deactivate observer
+sched <-- action
+deactivate action
+deactivate sched
+@enduml

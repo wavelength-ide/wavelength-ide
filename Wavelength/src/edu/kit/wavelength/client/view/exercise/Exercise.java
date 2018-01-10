@@ -10,14 +10,14 @@ public interface Exercise {
 	/**
 	 * Gets the name of the exercise.
 	 * 
-	 * @return The name
+	 * @return The name of the exercise
 	 */
 	String getName();
 
 	/**
 	 * Returns the explanation of the exercise.
 	 * 
-	 * @return The task
+	 * @return The description of the task
 	 */
 	String getTask();
 
@@ -25,7 +25,7 @@ public interface Exercise {
 	 * Returns the sample solution. Note that this may not be the only possible
 	 * solution.
 	 * 
-	 * @return The solution
+	 * @return The solution of the exercise
 	 */
 	String getSolution();
 

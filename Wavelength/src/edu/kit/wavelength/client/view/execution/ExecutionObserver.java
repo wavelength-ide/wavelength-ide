@@ -8,7 +8,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public interface ExecutionObserver {
 	/**
 	 * Pushes the most recent displayed term.
-	 * @param t term
+	 * @param t the most recent term
 	 */
 	void pushTerm(LambdaTerm t);
 }

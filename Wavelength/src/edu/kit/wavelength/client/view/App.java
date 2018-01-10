@@ -53,7 +53,6 @@ public class App implements Serializable {
 		return instance;
 	}
 	
-	/**
 	 * Name of the unicode format.
 	 */
 	public static final String UnicodeOutputName = "Unicode";
@@ -87,7 +86,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the panel that contains the URL to play back the state of the application.
-	 * @return panel
+	 * @return panel The panel containing the share-URL
 	 */
 	public TextField sharePanel() {
 		return this.sharePanel;
@@ -95,7 +94,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the window that shows exported output.
-	 * @return window
+	 * @return window The export window
 	 */
 	public PopUpWindow exportWindow() {
 		return this.exportWindow;
@@ -103,7 +102,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that is used to open the main menu.
-	 * @return button
+	 * @return button The main menu button
 	 */
 	public ImageButton mainMenuButton() {
 		return mainMenuButton;
@@ -111,7 +110,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the editor.
-	 * @return editor
+	 * @return editor The editor
 	 */
 	public Editor editor() {
 		return editor;
@@ -119,7 +118,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the option box that allows the user to choose which output format to use.
-	 * @return box
+	 * @return box 
 	 */
 	public OptionBox outputFormatBox() {
 		return outputFormat;
@@ -127,7 +126,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the option box that allows the user to choose which reduction order to use.
-	 * @return box
+	 * @return The reduction order option box
 	 */
 	public OptionBox reductionOrderBox() {
 		return reductionOrder;
@@ -135,7 +134,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the option box that allows the user to choose which output size to use.
-	 * @return box
+	 * @return The output size option box
 	 */
 	public OptionBox outputSizeBox() {
 		return outputSize;
@@ -143,7 +142,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to play back to the previous displayed term.
-	 * @return button
+	 * @return The step backward button
 	 */
 	public ImageButton stepBackwardButton() {
 		return stepBackward;
@@ -151,7 +150,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to initiate step by step reduction before execution.
-	 * @return button
+	 * @return The step-by-step button
 	 */
 	public ImageButton stepByStepModeButton() {
 		return stepByStepMode;
@@ -159,7 +158,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to initiate the next reduction by the currently selected reduction order.
-	 * @return button
+	 * @return The step forward button
 	 */
 	public ImageButton stepForwardButton() {
 		return stepForward;
@@ -167,7 +166,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to terminate the reduction.
-	 * @return button
+	 * @return The terminate button
 	 */
 	public ImageButton terminateButton() {
 		return terminate;
@@ -175,7 +174,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to initiate the execution, automatically reducing the input with the given options
-	 * @return button
+	 * @return The run button
 	 */
 	public ImageButton runButton() {
 		return run;
@@ -183,7 +182,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to transition from the automatic execution to the step by step mode.
-	 * @return button
+	 * @return The pause button
 	 */
 	public ImageButton pauseButton() {
 		return pause;
@@ -191,7 +190,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the output that displays terms as trees.
-	 * @return output
+	 * @return The output used to display a term in tree representation
 	 */
 	public TreeOutput treeOutput() {
 		return treeOutput;
@@ -199,7 +198,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the output that displays terms with unicode text.
-	 * @return output
+	 * @return The output used to display a term in unicode
 	 */
 	public UnicodeOutput unicodeOutput() {
 		return unicodeOutput;
@@ -207,7 +206,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to open the menu that allows the user to choose an export format.
-	 * @return button
+	 * @return The export button
 	 */
 	public ImageButton exportButton() {
 		return export;
@@ -215,7 +214,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that can be used to toggle the panel that displays the serialized URL.
-	 * @return button
+	 * @return The share button
 	 */
 	public ImageButton shareButton() {
 		return share;
@@ -223,7 +222,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets all checkboxes that can be used to enable libraries.
-	 * @return library checkboxes
+	 * @return The checkboxes used to toggle libraries
 	 */
 	public List<Checkbox> libraryBoxes() {
 		return libraries;
@@ -231,7 +230,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets all buttons that can be used to load an exercise.
-	 * @return exercise buttons
+	 * @return The buttons used to load exercises
 	 */
 	public List<TextButton> exerciseButtons() {
 		return exercises;
@@ -239,7 +238,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets all buttons that can be used to load the output into the export window with the given export format specified by the button.
-	 * @return export format buttons
+	 * @return The buttons used to select an output format
 	 */
 	public List<TextButton> exportFormatButtons() {
 		return exportFormats;
@@ -247,7 +246,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the wrapper that controls the reduction of lambda terms.
-	 * @return Executor
+	 * @return The Executor instance controlling the execution
 	 */
 	public Executor executor() {
 		return executor;

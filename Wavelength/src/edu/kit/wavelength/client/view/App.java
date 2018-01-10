@@ -52,7 +52,7 @@ public class App implements Serializable {
 		}
 		return instance;
 	}
-	
+	/**
 	 * Name of the unicode format.
 	 */
 	public static final String UnicodeOutputName = "Unicode";

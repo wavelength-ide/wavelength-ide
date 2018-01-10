@@ -14,31 +14,44 @@ participant "root:RootPanel" as root
 activate wl
 wl -> app : initialize()
 activate app
+wl <-- app
+deactivate wl
+
+create button
 app -->> button : <<create>>
-activate button
+
+create mmba
 app -->> mmba : <<create>>
-activate mmba
+
+create mmbd
 app -->> mmbd : <<create>>
-activate mmbd
+
+create mmb
 app -->> mmb : <<create>>
-deactivate button
-deactivate mmba
-deactivate mmbd
-activate mmb
+
+create mm
 app -->> mm : <<create>>
-activate mm
+
+create hca
 app -->> hca : <<create>> (mainMenu)
-activate hca
-deactivate mm
+
 app -> mmb : setAction(hideMainMenuAction)
-deactivate hca
+activate mmb
+app <-- mmb 
 app -> mmb : show()
+app <-- mmb
+deactivate mmb
+
 app -> rp : get()
 activate rp
-rp --> app : root
-activate root
+app <-- rp : root
+deactivate rp
+
 app -> root : add(mainMenuButton)
+activate root
+app <-- root
 deactivate root
-deactivate mmb
+
+deactivate app
 
 @enduml

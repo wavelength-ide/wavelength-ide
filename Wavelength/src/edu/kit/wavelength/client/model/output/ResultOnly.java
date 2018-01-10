@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.output;
 import java.util.List;
 
 /**
- * Output size that displays no terms live and
+ * {@link OutputSize} that displays no terms live and
  * only displays the very last term in the end.
  *
  */

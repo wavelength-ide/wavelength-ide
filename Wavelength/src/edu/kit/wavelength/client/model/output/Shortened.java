@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.output;
 import java.util.List;
 
 /**
- * Output size that only shows a certain number of terms at the beginning
+ * {@link OutputSize} that only shows a certain number of terms at the beginning
  * and at the end.
  *
  */

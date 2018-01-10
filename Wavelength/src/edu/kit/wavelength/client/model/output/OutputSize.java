@@ -5,7 +5,7 @@ import java.util.List;
 import edu.kit.wavelength.client.model.serialization.Serializable;
 
 /**
- * Policy to decide which lambda terms should be displayed,
+ * Policy to decide which {@link LambdaTerm}s should be displayed,
  * both live and at the end of the computation.
  *
  */

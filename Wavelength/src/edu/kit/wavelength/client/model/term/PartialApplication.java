@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * Represents a term that consists of a library function that may be accelerated, as well as
+ * Represents a {@link LambdaTerm} that consists of a library function that may be accelerated, as well as
  * zero or more applications with arguments for said library function.
  *
  */
@@ -10,9 +10,9 @@ public abstract class PartialApplication implements LambdaTerm {
 	/**
 	 * Creates a new partial application that has not yet bound any parameters.
 	 * @param name The name of the library function.
-	 * @param inner The lambda term for the non-accelerated library function
+	 * @param inner The {@link LambdaTerm} for the non-accelerated library function
 	 * @param numParameters The number of parameters that the library function takes
-	 * @param checks For each parameter, a visitor that checks whether the given parameter
+	 * @param checks For each parameter, a {@link Visitor} that checks whether the given parameter
 	 * has the correct format for acceleration
 	 */
 	public PartialApplication(String name, LambdaTerm inner, int numParameters, Visitor<Boolean>[] checks) {
@@ -25,8 +25,8 @@ public abstract class PartialApplication implements LambdaTerm {
 	}
 	
 	/**
-	 * Returns the lambda term that this partial application represents.
-	 * @return The lambda term that this partial application represents
+	 * Returns the {@link LambdaTerm} that this partial application represents.
+	 * @return The {@link LambdaTerm} that this partial application represents
 	 */
 	public LambdaTerm getRepresented() {
 		return null;
@@ -51,7 +51,7 @@ public abstract class PartialApplication implements LambdaTerm {
 	 * representing the partial application including the given parameter.
 	 * 
 	 * @param nextParam The parameter to be accepted
-	 * @return A lambda term for the partial application with the new parameter as described above
+	 * @return A {@link LambdaTerm} for the partial application with the new parameter as described above
 	 */
 	public LambdaTerm accept(LambdaTerm nextParam) {
 		return null;

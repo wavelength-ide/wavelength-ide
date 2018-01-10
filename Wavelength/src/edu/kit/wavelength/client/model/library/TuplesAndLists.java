@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * A library providing operations for working with
+ * A {@link Library} providing operations for working with
  * tuples and lists.
  *
  */

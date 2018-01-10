@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A visitor that substitutes bound variables with a given De Bruijn
+ * A {@link Visitor} that substitutes {@link BoundVariable}s with a given De Bruijn
  * index with a given substituent.
  *
  */

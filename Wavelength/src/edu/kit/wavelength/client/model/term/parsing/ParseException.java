@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.term.parsing;
 import java.lang.Exception;
 
 /**
- * An exception used to indicate an error during the parsing of an entered lambda term.
+ * An exception used to indicate an error during the parsing of an entered {@link LambdaTerm}.
  *
  */
 public class ParseException extends Exception {

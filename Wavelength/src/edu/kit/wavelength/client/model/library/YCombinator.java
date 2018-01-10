@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * A library containing the Y combinator.
+ * A {@link Library} containing the Y combinator.
  *
  */
 public final class YCombinator implements Library {

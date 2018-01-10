@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * Represents a term that has a name.
+ * Represents a {@link LambdaTerm} that has a name.
  *
  */
 public final class NamedTerm implements LambdaTerm {

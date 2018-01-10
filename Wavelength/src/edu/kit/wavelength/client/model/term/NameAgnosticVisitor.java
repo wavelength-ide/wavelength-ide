@@ -1,10 +1,10 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A visitor that will treat a named term precisely like the term that
+ * A {@link Visitor} that will treat a {@link NamedTerm} precisely like the term that
  * it represents.
  *
- * @param <T> The return value of the visitor
+ * @param <T> The return value of the {@link Visitor}
  */
 public abstract class NameAgnosticVisitor<T> implements Visitor<T> {
 	@Override

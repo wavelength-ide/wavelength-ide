@@ -17,8 +17,8 @@ public interface LambdaTerm extends Serializable {
 	}
 	
 	/**
-	 * Accept a visitor by invoking the correct visit* method.
-	 * @param v The visitor whose correct visit* method should be invoked
+	 * Accept a {@link Visitor} by invoking the correct visit* method.
+	 * @param v The {@link Visitor} whose correct visit* method should be invoked
 	 * @return The return value of the invoked visit* method
 	 */
 	public <T> T acceptVisitor(Visitor<T> v);

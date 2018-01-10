@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.output;
 import java.util.List;
 
 /**
- * Output size where every term is displayed live.
+ * {@link OutputSize} where every term is displayed live.
  *
  */
 public final class Full implements OutputSize {

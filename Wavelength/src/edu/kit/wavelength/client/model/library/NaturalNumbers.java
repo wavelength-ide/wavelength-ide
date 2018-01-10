@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * A library matching integer literals to church numerals
+ * A {@link Library} matching integer literals to church numerals
  * and providing functions for basic arithmetic operations.
  *
  */

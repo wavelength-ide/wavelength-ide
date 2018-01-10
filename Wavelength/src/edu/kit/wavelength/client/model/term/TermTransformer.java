@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A visitor that performs a transformation of some kind of a lambda term,
+ * A {@link Visitor} that performs a transformation of some kind of a {@link LambdaTerm},
  * automatically removing names if their inner term has been changed by
  * the transformation.
  * 

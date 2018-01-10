@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A visitor that transforms a lambda term by beta reducing a given
+ * A {@link Visitor} that transforms a {@link LambdaTerm} by beta reducing a given
  * redex.
  *
  */

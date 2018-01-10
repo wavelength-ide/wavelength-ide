@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.term;
 /**
  * Represents a bound variable in the untyped lambda calculus.
  * 
- * It refers to its corresponding abstraction using its
+ * It refers to its corresponding {@link Abstraction} using its
  * De Bruijn index.
  *
  */

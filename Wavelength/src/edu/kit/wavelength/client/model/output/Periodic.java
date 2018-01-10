@@ -3,7 +3,7 @@ package edu.kit.wavelength.client.model.output;
 import java.util.List;
 
 /**
- * Output size where every n-th term is displayed, for some n.
+ * {@link OutputSize} where every n-th term is displayed, for some n.
  *
  */
 public final class Periodic implements OutputSize {

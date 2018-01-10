@@ -45,7 +45,7 @@
      id="namedview740"
      showgrid="true"
      inkscape:zoom="0.523507"
-     inkscape:cx="1405.6146"
+     inkscape:cx="947.16801"
      inkscape:cy="410.04511"
      inkscape:window-x="0"
      inkscape:window-y="1"
@@ -369,28 +369,6 @@
          in="SourceGraphic" />
     </filter>
   </defs>
-  <polygon
-     id="polygon13"
-     style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#fcb0bxxuu75vi)"
-     points="362,16 369,38.4883 3126,38.4883 3126,375 14,375 14,16 "
-     transform="matrix(1,0,0,2.1803539,41.6893,18.0944)" />
-  <line
-     id="line15"
-     y2="102.01249"
-     y1="102.01249"
-     x2="410.6893"
-     x1="55.689301"
-     style="stroke:#000000;stroke-width:2" />
-  <text
-     style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
-     id="text17"
-     y="31.5352"
-     x="18"
-     textLength="342"
-     lengthAdjust="spacingAndGlyphs"
-     font-weight="bold"
-     font-size="14"
-     transform="translate(41.6893,47.52421)">edu.kit.wavelength.client.view.webui.component</text>
   <a
      id="a30"
      xlink:type="simple"

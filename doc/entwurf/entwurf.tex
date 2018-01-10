@@ -48,8 +48,17 @@
 This document contains the design for "Wavelength", a web-based IDE for the untyped
 lambda calculus, as described in the \textit{Pflichtenheft}.
 
-The object-oriented architecture of the project follows the model-view-controller (MVC)
-architectural pattern. It consists of two largely independent sets of packages.
+The object-oriented architecture of the project roughly follows the model-view-controller (MVC)
+architectural pattern. It consists of two largely independent sets of packages: \texttt{model} and \texttt{view}.
+The architecture differs from MVC in the sense that there is no communication between views and models, 
+all communication between the two passes through the respective controller. 
+Additionally the controller is divided into two parts: \texttt{action} and \texttt{update}. 
+\texttt{action} handles user inputs from the view, while \texttt{update} handles concurrent updates from other sources, for instance the model.
+At the center of the architecture is the \texttt{App} class, which initializes and holds the view. 
+\texttt{action} and \texttt{update} both query \texttt{App} for the view elements it holds.
+As a result of this architecture, the entirety of the model is decoupled from the view and the rest of the application.
+
+%TODO: bild der architektur
 
 \subsection{The model}
 

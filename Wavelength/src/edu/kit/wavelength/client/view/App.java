@@ -39,7 +39,7 @@ public class App implements Serializable {
 	
 	private static App instance = null;
 	
-	protected App() {}
+	private App() {}
 	
 	/**
 	 * Gets a singleton instance of App.

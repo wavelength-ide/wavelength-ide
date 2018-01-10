@@ -8,13 +8,14 @@ import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * Concurrently reduces lambda terms.
  */
-public class Executor {
+public class Executor implements Serializable {
 
 	private List<ExecutionObserver> observers;
 	

@@ -12,7 +12,7 @@ public final class Exercises {
 	 * Returns an unmodifiable list of all available exercises.
 	 * 
 	 * @return An unmodifiable list that contains exactly one instance of every
-	 *         available exercise.
+	 *         available exercise
 	 */
 	public static List<Exercise> all() {
 		return null;

@@ -18,7 +18,7 @@ public class UseShare implements Action {
 	 * Constructs a new action handler for the permalink request.
 	 * 
 	 * @param serializer
-	 *            The instance to delegate the serialization process to.
+	 *            The instance to delegate the serialization process to
 	 */
 	public UseShare(URLSerializer serializer) {
 		this.serializer = serializer;

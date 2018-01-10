@@ -86,7 +86,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the panel that contains the URL to play back the state of the application.
-	 * @return panel The panel containing the share-URL
+	 * @return The panel containing the share-URL
 	 */
 	public TextField sharePanel() {
 		return this.sharePanel;
@@ -94,7 +94,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the window that shows exported output.
-	 * @return window The export window
+	 * @return The export window
 	 */
 	public PopUpWindow exportWindow() {
 		return this.exportWindow;
@@ -102,7 +102,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the button that is used to open the main menu.
-	 * @return button The main menu button
+	 * @return The main menu button
 	 */
 	public ImageButton mainMenuButton() {
 		return mainMenuButton;
@@ -110,7 +110,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the editor.
-	 * @return editor The editor
+	 * @return The editor
 	 */
 	public Editor editor() {
 		return editor;
@@ -118,7 +118,7 @@ public class App implements Serializable {
 	
 	/**
 	 * Gets the option box that allows the user to choose which output format to use.
-	 * @return box 
+	 * @return The output format box
 	 */
 	public OptionBox outputFormatBox() {
 		return outputFormat;

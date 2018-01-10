@@ -22,9 +22,9 @@ public class ImageButton implements Lockable, Hideable, Clickable {
 	 * @param button
 	 *            the wrapped {@link Button}
 	 * @param imageWhenActivated
-	 *            The image that is shown when the Button is active.
+	 *            The image that is shown when the Button is active
 	 * @param imageWhenDeactivated
-	 *            The image that is shown when the Button is deactivated.
+	 *            The image that is shown when the Button is deactivated
 	 * 
 	 */
 	public ImageButton(final Button button, final Image imageWhenActivated, final Image imageWhenDeactivated) {

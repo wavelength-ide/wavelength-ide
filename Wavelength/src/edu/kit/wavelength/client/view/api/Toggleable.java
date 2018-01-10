@@ -15,7 +15,7 @@ public interface Toggleable {
 	void unset();
 	/**
 	 * Checks whether the state is set.
-	 * @return whether the state is set.
+	 * @return whether the state is set
 	 */
 	boolean isSet();
 	

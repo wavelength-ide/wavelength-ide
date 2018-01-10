@@ -52,7 +52,7 @@ public class ExecutionEngine {
 	/**
 	 * Determines whether the execution is finished according to the current reduction order.
 	 * @return {@code true} if the current reduction order does not provide another redex,
-	 * {@code false} otherwise.
+	 * {@code false} otherwise
 	 */
 	public boolean isFinished() {
 		return false;

@@ -10,7 +10,7 @@ public interface Exercise {
 	/**
 	 * Gets the name of the exercise.
 	 * 
-	 * @return name
+	 * @return The name
 	 */
 	String getName();
 
@@ -25,7 +25,7 @@ public interface Exercise {
 	 * Returns the sample solution. Note that this may not be the only possible
 	 * solution.
 	 * 
-	 * @return the solution
+	 * @return The solution
 	 */
 	String getSolution();
 
@@ -40,7 +40,7 @@ public interface Exercise {
 	 * Returns initial definitions that are supposed to be of help for the User.
 	 * Note that this may be empty.
 	 * 
-	 * @return the predefined code
+	 * @return The predefined code
 	 */
 	String getPredefinitions();
 }

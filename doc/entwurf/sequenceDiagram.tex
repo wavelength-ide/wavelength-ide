@@ -1,6 +1,6 @@
 \subsection{Initialization of application}
 This sequence diagram shows how the application is initialized by way of example. The Wavelength class is called by GWT and initializes App. 
-App then initializes the view by creating all necessary components, configuring and composing them as necessary and wrapping them in adapter classes that streamline and abstract access to these GUI components.
+App then initializes the view by creating all necessary components, configuring and composing them as necessary and wrapping them in adapter classes that streamline and abstract access to these UI components.
 Finally, App initializes the components with their respective actions, initializes the Executor and adds the top level component to the GWT root panel to start rendering the UI.
 
 \begin{figure}[H]
@@ -11,8 +11,8 @@ Finally, App initializes the components with their respective actions, initializ
 \subsection{Example action: Select export format}
 This sequence diagram states as example for a simple action handler.
 In this action the user wants the currently displayed output translated into a specified format. The sequence diagram starts when the user selects the export format in the UI. 
-The SelectExportFormat poses as action handler for the selected UI element. Thus when this element is clicked, the actions run() method is called. All invoked instances are already existing, none is being created in this scenario.
-The actions run() method generates the dedicated representation by requesting the currently displayed lambda terms from the ExecutionEngine instance and generating their representation.
+The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.SelectExportFormat]{SelectExportFormat}}SelectExportFormat poses as action handler for the selected UI element. Thus when this element is clicked, the actions \texttt{run()} method is called. All invoked instances are already existing, none is being created in this scenario.
+The actions \texttt{run()} method generates the dedicated representation by requesting the currently displayed lambda terms from the \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} instance and generating their representation.
 The representation is then written into the export window that will be displayed to the user. Writing before showing this export window ensures, that at no point in time an empty window is displayed.
 However, before actually displaying it, a blocker that prevents the user from interacting with any UI element, other than the export window, is enabled.
 

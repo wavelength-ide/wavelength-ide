@@ -19,7 +19,7 @@ public class TextField implements Hideable, Writable, Readable {
 	 * Constructs a new and empty TextField.
 	 * 
 	 * @param textField
-	 *            The GWT TextArea that this class wraps.
+	 *            The GWT TextArea that this class wraps
 	 */
 	public TextField(TextArea textField) {
 

@@ -6,7 +6,7 @@ package edu.kit.wavelength.client.view;
 public interface SerializationObserver {
 	/**
 	 * Updates the observer.
-	 * @param s - serialized URL
+	 * @param url The serialized URL
 	 */
-	void updateSerialized(String s);
+	void updateSerialized(String url);
 }

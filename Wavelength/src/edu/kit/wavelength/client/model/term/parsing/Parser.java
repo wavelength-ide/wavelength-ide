@@ -25,7 +25,7 @@ public class Parser {
 	}
 
 	/**
-	 * Parses the input text representation of a {@link LambdaTerm} and turns it into a
+	 * Parses the input text representation of a lambda term and turns it into a
 	 * {@link LambdaTerm} object if successful.
 	 * 
 	 * @param input

@@ -16,7 +16,7 @@ public class SelectExportFormat implements Action {
 	 * Constructs a new action handler for the selection of an export format.
 	 * 
 	 * @param exportFormat
-	 *            The export format the user chose.
+	 *            The export format the user chose
 	 */
 	public SelectExportFormat(Export exportFormat) {
 		this.exportFormat = exportFormat;

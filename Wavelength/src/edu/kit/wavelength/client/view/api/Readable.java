@@ -11,7 +11,7 @@ public interface Readable {
 	/**
 	 * Returns the content of a View as a String.
 	 * 
-	 * @return String representation of a View's content.
+	 * @return String representation of a View's content
 	 */
 	String read();
 }

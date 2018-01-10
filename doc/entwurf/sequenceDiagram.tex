@@ -1,7 +1,12 @@
 \subsection{Initialization of application}
-%---------------------------
-%include sequence diagram for initialization here
-%---------------------------
+This sequence diagram shows how the application is initialized by way of example. The Wavelength class is called by GWT and initializes App. 
+App then initializes the view by creating all necessary components, configuring and composing them as necessary and wrapping them in adapter classes that streamline and abstract access to these GUI components.
+Finally, App initializes the components with their respective actions, initializes the Executor and adds the top level component to the GWT root panel to start rendering the UI.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{sequenceDiagrams/initialization}
+\end{figure}
 
 \subsection{Example action: Select export format}
 This sequence diagram states as example for a simple action handler.

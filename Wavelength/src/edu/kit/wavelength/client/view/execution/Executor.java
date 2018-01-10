@@ -120,7 +120,7 @@ public class Executor implements Serializable {
 
 	/**
 	 * Changes the active reduction order to the entered one.
-	 * @param The new reduction order
+	 * @param reduction The new reduction order
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
 		engine.setReductionOrder(reduction);

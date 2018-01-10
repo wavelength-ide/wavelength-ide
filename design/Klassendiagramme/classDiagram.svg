@@ -1097,9 +1097,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="2139.4655"
-     inkscape:cy="2660.7867"
+     inkscape:zoom="0.175"
+     inkscape:cx="2896.5356"
+     inkscape:cy="435.66247"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1126,8 +1126,13 @@
      id="layer1"
      transform="translate(0,544)">
     <polygon
-       transform="matrix(0.23818551,0,0,0.19846016,353.86426,-400.46313)"
-       points="1792,285 14,285 14,16 285,16 292,38.4883 1792,38.4883 "
+       transform="matrix(0.35128742,0,0,0.40251712,187.65573,-547.2099)"
+       points="285,16 292,38.4883 1792,38.4883 1792,285 14,285 14,16 "
+       style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f2oi5bli7bawq)"
+       id="polygon22403" />
+    <polygon
+       transform="matrix(0.23818551,0,0,0.19846016,311.00152,-400.9923)"
+       points="14,285 14,16 285,16 292,38.4883 1792,38.4883 1792,285 "
        style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f2oi5bli7bawq)"
        id="polygon22329" />
     <polygon
@@ -4646,12 +4651,12 @@
        transform="matrix(0.28220459,0,0,0.28220459,898.43242,166.365)" />
     <g
        id="g5180"
-       transform="matrix(0.32542274,0,0,0.32542274,0.99338403,203.32701)">
+       transform="matrix(0.32542274,0,0,0.32542274,988.72267,26.149184)">
       <!--cluster edu.kit.wavelength.client.model.term.parsing-->
       <polygon
          id="polygon5074"
          style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1ajej76rzjajs)"
-         points="14,16 339,16 346,38.4883 569,38.4883 569,272 14,272 " />
+         points="569,272 14,272 14,16 339,16 346,38.4883 569,38.4883 " />
       <line
          id="line5076"
          y2="38.4883"
@@ -5034,7 +5039,7 @@
       <polygon
          id="polygon5178"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="127.8309,125.3173 126.7986,104.1528 140.8039,120.0542 " />
+         points="126.7986,104.1528 140.8039,120.0542 127.8309,125.3173 " />
       <!--link Tokeniser to Token-->
       <!--link Tokeniser to Parser-->
       <!--
@@ -5078,12 +5083,12 @@ Country: DE
     </g>
     <g
        id="g5441"
-       transform="matrix(0.29630161,0,0,0.29630161,186.76565,168.45803)">
+       transform="matrix(0.29630161,0,0,0.29630161,50.906016,168.8749)">
       <!--cluster edu.kit.wavelength.client.model.reduction-->
       <polygon
          id="polygon5261"
          style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f2lsu3cz5l0cw)"
-         points="14,419 14,16 316,16 323,38.4883 1015,38.4883 1015,419 " />
+         points="14,16 316,16 323,38.4883 1015,38.4883 1015,419 14,419 " />
       <line
          id="line5263"
          y2="38.4883"
@@ -5697,7 +5702,7 @@ Country: DE
       <polygon
          id="polygon5427"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="353.4456,278.5129 347.8466,265.6812 368.9771,264.0985 " />
+         points="347.8466,265.6812 368.9771,264.0985 353.4456,278.5129 " />
       <!--link ReductionOrder to NormalOrder-->
       <path
          style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
@@ -5707,7 +5712,7 @@ Country: DE
       <polygon
          id="polygon5430"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="433.9308,285.3481 421.2941,279.322 436.2211,264.2825 " />
+         points="421.2941,279.322 436.2211,264.2825 433.9308,285.3481 " />
       <!--link ReductionOrder to CallByName-->
       <path
          style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
@@ -5717,7 +5722,7 @@ Country: DE
       <polygon
          id="polygon5433"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="524.0979,270.6481 515.717,281.8625 503.887,264.2825 " />
+         points="515.717,281.8625 503.887,264.2825 524.0979,270.6481 " />
       <!--link Serializable to ReductionOrder-->
       <path
          style="fill:none;stroke:#a80036;stroke-width:1"
@@ -5727,7 +5732,7 @@ Country: DE
       <polygon
          id="polygon5436"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="461.0001,130.6528 447.0001,130.6528 454,110.6528 " />
+         points="447.0001,130.6528 454,110.6528 461.0001,130.6528 " />
       <!--link ReductionOrder to ApplicativeOrder-->
       <path
          style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
@@ -5737,7 +5742,7 @@ Country: DE
       <polygon
          id="polygon5439"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="578.2562,256.8194 574.2032,270.2199 557.0862,257.7296 " />
+         points="574.2032,270.2199 557.0862,257.7296 578.2562,256.8194 " />
       <!--
 @startuml
 package edu.kit.wavelength.client.model.reduction <<Folder>> {
@@ -6336,10 +6341,10 @@ Country: DE
     </a>
     <line
        style="stroke:#000000;stroke-width:0.52916664"
-       x1="357.00403"
-       x2="423.41443"
-       y1="-392.82474"
-       y2="-392.82474"
+       x1="314.28128"
+       x2="380.69168"
+       y1="-393.36456"
+       y2="-393.36456"
        id="line7199" />
     <text
        style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
@@ -6350,7 +6355,7 @@ Country: DE
        x="18"
        y="31.5352"
        id="text7201"
-       transform="matrix(0.26458333,0,0,0.26458333,353.415,-402.12586)">edu.kit.wavelength.client.view.api</text>
+       transform="matrix(0.26458333,0,0,0.26458333,310.6923,-402.66574)">edu.kit.wavelength.client.view.api</text>
     <a
        target="_top"
        xlink:actuate="onRequest"
@@ -6359,7 +6364,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.api.Toggleable"
        xlink:type="simple"
        id="a7220"
-       transform="matrix(0.26458333,0,0,0.26458333,732.32114,-391.92051)">
+       transform="matrix(0.26458333,0,0,0.26458333,689.59844,-390.34371)">
       <rect
          height="86.865196"
          id="Toggleable"
@@ -6433,7 +6438,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.api.Writable"
        xlink:type="simple"
        id="a7235"
-       transform="matrix(0.26458333,0,0,0.26458333,393.62712,-391.32189)">
+       transform="matrix(0.26458333,0,0,0.26458333,350.90442,-391.86177)">
       <rect
          height="60.955101"
          id="Writable"
@@ -6491,7 +6496,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.api.Hideable"
        xlink:type="simple"
        id="a7254"
-       transform="matrix(0.26458333,0,0,0.26458333,540.07731,-390.16032)">
+       transform="matrix(0.26458333,0,0,0.26458333,444.8355,-389.10991)">
       <rect
          height="86.865196"
          id="Hideable"
@@ -6565,7 +6570,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.api.Lockable"
        xlink:type="simple"
        id="a7273"
-       transform="matrix(0.26458333,0,0,0.26458333,676.49453,-429.40298)">
+       transform="matrix(0.26458333,0,0,0.26458333,633.77183,-429.41369)">
       <rect
          height="86.865196"
          id="Lockable"
@@ -6639,7 +6644,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.api.Clickable"
        xlink:type="simple"
        id="a7288"
-       transform="matrix(0.26458333,0,0,0.26458333,457.94863,-430.0098)">
+       transform="matrix(0.26458333,0,0,0.26458333,415.22593,-430.54968)">
       <rect
          height="60.955101"
          id="Clickable"
@@ -6697,7 +6702,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.api.Readable"
        xlink:type="simple"
        id="a7303"
-       transform="matrix(0.26458333,0,0,0.26458333,476.53351,-430.17169)">
+       transform="matrix(0.26458333,0,0,0.26458333,492.75194,-433.11328)">
       <rect
          height="60.955101"
          id="Readable"
@@ -6747,1779 +6752,1633 @@ Country: DE
          y="257.6348"
          id="text7301">String read()</text>
     </a>
-    <g
-       id="g10970"
-       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-331.99456)">
-      <!--cluster edu.kit.wavelength.client.view.action-->
-      <polygon
-         id="polygon10527"
-         style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f17k5t6l21ayn5)"
-         points="14,16 280,16 287,38.4883 3431,38.4883 3431,272 14,272 " />
-      <line
-         id="line10529"
-         y2="38.4883"
-         y1="38.4883"
-         x2="287"
-         x1="14"
-         style="stroke:#000000;stroke-width:2" />
+    <polygon
+       points="14,16 280,16 287,38.4883 3431,38.4883 3431,272 14,272 "
+       style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f17k5t6l21ayn5)"
+       id="polygon10527"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <line
+       style="stroke:#000000;stroke-width:0.52916664"
+       x1="14.469126"
+       x2="86.700378"
+       y1="-327.10291"
+       y2="-327.10291"
+       id="line10529" />
+    <text
+       style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
+       font-size="14"
+       font-weight="bold"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="260"
+       x="18"
+       y="31.5352"
+       id="text10531"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">edu.kit.wavelength.client.view.action</text>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.Pause"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.Pause"
+       xlink:type="simple"
+       id="a10548"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="Pause"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="79"
+         x="22.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="43.349998"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10534" />
+      <path
+         inkscape:connector-curvature="0"
+         d="m 46.3231,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10536" />
       <text
-         id="text10531"
-         y="31.5352"
-         x="18"
-         textLength="260"
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
          lengthAdjust="spacingAndGlyphs"
-         font-weight="bold"
-         font-size="14"
-         style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000">edu.kit.wavelength.client.view.action</text>
-      <!--class Pause-->
-      <a
-         id="a10548"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.Pause"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.Pause"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="22.5"
-           width="79"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="Pause"
-           height="60.955101" />
-        <circle
-           id="ellipse10534"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="43.349998"
-           r="11" />
-        <path
-           id="path10536"
-           d="m 46.3231,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10538"
-           y="204.0352"
-           x="58.650002"
-           textLength="34"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">Pause</text>
-        <line
-           id="line10540"
-           y2="215.5"
-           y1="215.5"
-           x2="100.5"
-           x1="23.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10542"
-           y2="223.5"
-           y1="223.5"
-           x2="100.5"
-           x1="23.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10544"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="33.5"
-           r="3" />
-        <text
-           id="text10546"
-           y="238.1348"
-           x="42.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class Action-->
-      <a
-         id="a10563"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.Action"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.Action"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="43"
-           x="1663.5"
-           width="67"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="Action"
-           height="60.955101" />
-        <circle
-           id="ellipse10551"
-           style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
-           cy="59"
-           cx="1678.5"
-           r="11" />
-        <path
-           id="path10553"
-           d="m 1674.4277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10555"
-           y="63.535198"
-           x="1692.5"
-           textLength="35"
-           lengthAdjust="spacingAndGlyphs"
-           font-style="italic"
-           font-size="12"
-           style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000">Action</text>
-        <line
-           id="line10557"
-           y2="75"
-           y1="75"
-           x2="1729.5"
-           x1="1664.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10559"
-           y2="83"
-           y1="83"
-           x2="1729.5"
-           x1="1664.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <text
-           id="text10561"
-           y="97.634804"
-           x="1669.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class CloseExport-->
-      <a
-         id="a10580"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.CloseExport"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.CloseExport"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="136.5"
-           width="101"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="CloseExport"
-           height="60.955101" />
-        <circle
-           id="ellipse10566"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="151.5"
-           r="11" />
-        <path
-           id="path10568"
-           d="m 154.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10570"
-           y="204.0352"
-           x="165.5"
-           textLength="69"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">CloseExport</text>
-        <line
-           id="line10572"
-           y2="215.5"
-           y1="215.5"
-           x2="236.5"
-           x1="137.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10574"
-           y2="223.5"
-           y1="223.5"
-           x2="236.5"
-           x1="137.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10576"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="147.5"
-           r="3" />
-        <text
-           id="text10578"
-           y="238.1348"
-           x="156.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class HideComponent-->
-      <a
-         id="a10605"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.HideComponent"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.HideComponent"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="170.5"
-           x="272.5"
-           width="215"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="HideComponent"
-           height="86.865196" />
-        <circle
-           id="ellipse10583"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="186.5"
-           cx="329.25"
-           r="11" />
-        <path
-           id="path10585"
-           d="m 332.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10587"
-           y="191.0352"
-           x="349.75"
-           textLength="93"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">HideComponent</text>
-        <line
-           id="line10589"
-           y2="202.5"
-           y1="202.5"
-           x2="486.5"
-           x1="273.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10591"
-           y="211.47749"
-           x="280.5"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10593"
-           y="217.1348"
-           x="292.5"
-           textLength="94"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">Hideable hideable</text>
-        <line
-           id="line10595"
-           y2="223.45509"
-           y1="223.45509"
-           x2="486.5"
-           x1="273.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10597"
-           y="232.4326"
-           x="280.5"
-           width="6"
-           style="fill:#f24d5c;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10599"
-           y="238.0898"
-           x="292.5"
-           textLength="189"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">HideComponent(Hideable hideable)</text>
-        <circle
-           id="ellipse10601"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="248.3877"
-           cx="283.5"
-           r="3" />
-        <text
-           id="text10603"
-           y="251.04491"
-           x="292.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class SetReductionOrder-->
-      <a
-         id="a10622"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.SetReductionOrder"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.SetReductionOrder"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="523"
-           width="140"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="SetReductionOrder"
-           height="60.955101" />
-        <circle
-           id="ellipse10608"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="538"
-           r="11" />
-        <path
-           id="path10610"
-           d="m 540.9731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10612"
-           y="204.0352"
-           x="552"
-           textLength="108"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">SetReductionOrder</text>
-        <line
-           id="line10614"
-           y2="215.5"
-           y1="215.5"
-           x2="662"
-           x1="524"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10616"
-           y2="223.5"
-           y1="223.5"
-           x2="662"
-           x1="524"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10618"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="534"
-           r="3" />
-        <text
-           id="text10620"
-           y="238.1348"
-           x="543"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class CopyExport-->
-      <a
-         id="a10639"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.CopyExport"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.CopyExport"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="698.5"
-           width="99"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="CopyExport"
-           height="60.955101" />
-        <circle
-           id="ellipse10625"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="713.5"
-           r="11" />
-        <path
-           id="path10627"
-           d="m 716.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10629"
-           y="204.0352"
-           x="727.5"
-           textLength="67"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">CopyExport</text>
-        <line
-           id="line10631"
-           y2="215.5"
-           y1="215.5"
-           x2="796.5"
-           x1="699.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10633"
-           y2="223.5"
-           y1="223.5"
-           x2="796.5"
-           x1="699.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10635"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="709.5"
-           r="3" />
-        <text
-           id="text10637"
-           y="238.1348"
-           x="718.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class SelectExportFormat-->
-      <a
-         id="a10664"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.SelectExportFormat"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.SelectExportFormat"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="170.5"
-           x="833"
-           width="252"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="SelectExportFormat"
-           height="86.865196" />
-        <circle
-           id="ellipse10642"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="186.5"
-           cx="899.25"
-           r="11" />
-        <path
-           id="path10644"
-           d="m 902.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10646"
-           y="191.0352"
-           x="919.75"
-           textLength="111"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">SelectExportFormat</text>
-        <line
-           id="line10648"
-           y2="202.5"
-           y1="202.5"
-           x2="1084"
-           x1="834"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10650"
-           y="211.47749"
-           x="841"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10652"
-           y="217.1348"
-           x="853"
-           textLength="113"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">Export exportFormat</text>
-        <line
-           id="line10654"
-           y2="223.45509"
-           y1="223.45509"
-           x2="1084"
-           x1="834"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10656"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.4326"
-           cx="844"
-           r="3" />
-        <text
-           id="text10658"
-           y="238.0898"
-           x="853"
-           textLength="226"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">SelectExportFormat(Export exportFormat)</text>
-        <circle
-           id="ellipse10660"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="248.3877"
-           cx="844"
-           r="3" />
-        <text
-           id="text10662"
-           y="251.04491"
-           x="853"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class SelectExercise-->
-      <a
-         id="a10689"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.SelectExercise"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.SelectExercise"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="170.5"
-           x="1120.5"
-           width="203"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="SelectExercise"
-           height="86.865196" />
-        <circle
-           id="ellipse10667"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="186.5"
-           cx="1177.25"
-           r="11" />
-        <path
-           id="path10669"
-           d="m 1180.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10671"
-           y="191.0352"
-           x="1197.75"
-           textLength="81"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">SelectExercise</text>
-        <line
-           id="line10673"
-           y2="202.5"
-           y1="202.5"
-           x2="1322.5"
-           x1="1121.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10675"
-           y="211.47749"
-           x="1128.5"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10677"
-           y="217.1348"
-           x="1140.5"
-           textLength="93"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">Exercise exercise</text>
-        <line
-           id="line10679"
-           y2="223.45509"
-           y1="223.45509"
-           x2="1322.5"
-           x1="1121.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10681"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.4326"
-           cx="1131.5"
-           r="3" />
-        <text
-           id="text10683"
-           y="238.0898"
-           x="1140.5"
-           textLength="177"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">SelectExercise(Exercise exercise)</text>
-        <circle
-           id="ellipse10685"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="248.3877"
-           cx="1131.5"
-           r="3" />
-        <text
-           id="text10687"
-           y="251.04491"
-           x="1140.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class LoadExercise-->
-      <a
-         id="a10710"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.LoadExercise"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.LoadExercise"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="177"
-           x="1359"
-           width="198"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="LoadExercise"
-           height="73.910202" />
-        <circle
-           id="ellipse10692"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="193"
-           cx="1415.75"
-           r="11" />
-        <path
-           id="path10694"
-           d="m 1418.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10696"
-           y="197.5352"
-           x="1436.25"
-           textLength="76"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">LoadExercise</text>
-        <line
-           id="line10698"
-           y2="209"
-           y1="209"
-           x2="1556"
-           x1="1360"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10700"
-           y2="217"
-           y1="217"
-           x2="1556"
-           x1="1360"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10702"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="228.97749"
-           cx="1370"
-           r="3" />
-        <text
-           id="text10704"
-           y="231.6348"
-           x="1379"
-           textLength="172"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">LoadExercise(Exercise exercise)</text>
-        <circle
-           id="ellipse10706"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="241.9326"
-           cx="1370"
-           r="3" />
-        <text
-           id="text10708"
-           y="244.5898"
-           x="1379"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class Stop-->
-      <a
-         id="a10727"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.Stop"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.Stop"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="1592.5"
-           width="79"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="Stop"
-           height="60.955101" />
-        <circle
-           id="ellipse10713"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="1617.4"
-           r="11" />
-        <path
-           id="path10715"
-           d="m 1620.3731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10717"
-           y="204.0352"
-           x="1633.6"
-           textLength="25"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">Stop</text>
-        <line
-           id="line10719"
-           y2="215.5"
-           y1="215.5"
-           x2="1670.5"
-           x1="1593.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10721"
-           y2="223.5"
-           y1="223.5"
-           x2="1670.5"
-           x1="1593.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10723"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="1603.5"
-           r="3" />
-        <text
-           id="text10725"
-           y="238.1348"
-           x="1612.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class StepBackward-->
-      <a
-         id="a10744"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.StepBackward"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.StepBackward"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="1706.5"
-           width="113"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="StepBackward"
-           height="60.955101" />
-        <circle
-           id="ellipse10730"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="1721.5"
-           r="11" />
-        <path
-           id="path10732"
-           d="m 1724.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10734"
-           y="204.0352"
-           x="1735.5"
-           textLength="81"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">StepBackward</text>
-        <line
-           id="line10736"
-           y2="215.5"
-           y1="215.5"
-           x2="1818.5"
-           x1="1707.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10738"
-           y2="223.5"
-           y1="223.5"
-           x2="1818.5"
-           x1="1707.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10740"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="1717.5"
-           r="3" />
-        <text
-           id="text10742"
-           y="238.1348"
-           x="1726.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class RunNewExecution-->
-      <a
-         id="a10779"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.RunNewExecution"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.RunNewExecution"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="164"
-           x="1854.5"
-           width="313"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="RunNewExecution"
-           height="99.820297" />
-        <circle
-           id="ellipse10747"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="180"
-           cx="1955.75"
-           r="11" />
-        <path
-           id="path10749"
-           d="m 1958.7231,185.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10751"
-           y="184.5352"
-           x="1976.25"
-           textLength="102"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">RunNewExecution</text>
-        <line
-           id="line10753"
-           y2="196"
-           y1="196"
-           x2="2166.5"
-           x1="1855.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10755"
-           y="204.97749"
-           x="1862.5"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10757"
-           y="210.6348"
-           x="1874.5"
-           textLength="31"
-           text-decoration="underline"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000">App a</text>
-        <line
-           id="line10759"
-           y2="212.6348"
-           y1="212.6348"
-           x2="1905.5"
-           x1="1874.5"
-           style="stroke:#000000;stroke-width:1" />
-        <rect
-           id="rect10761"
-           y="217.9326"
-           x="1862.5"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10763"
-           y="223.5898"
-           x="1874.5"
-           textLength="146"
-           text-decoration="underline"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000">List&lt;Lockable&gt; lockOnRun</text>
-        <line
-           id="line10765"
-           y2="225.5898"
-           y1="225.5898"
-           x2="2020.5"
-           x1="1874.5"
-           style="stroke:#000000;stroke-width:1" />
-        <line
-           id="line10767"
-           y2="229.9102"
-           y1="229.9102"
-           x2="2166.5"
-           x1="1855.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10769"
-           y="238.8877"
-           x="1862.5"
-           width="6"
-           style="fill:#f24d5c;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10771"
-           y="244.54491"
-           x="1874.5"
-           textLength="287"
-           text-decoration="underline"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000">T find(Collection&lt;T&gt; list, Predicate&lt;? super T&gt; pred)</text>
-        <line
-           id="line10773"
-           y2="246.54491"
-           y1="246.54491"
-           x2="2161.5"
-           x1="1874.5"
-           style="stroke:#000000;stroke-width:1" />
-        <circle
-           id="ellipse10775"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="254.8428"
-           cx="1865.5"
-           r="3" />
-        <text
-           id="text10777"
-           y="257.5"
-           x="1874.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class ExitExerciseMode-->
-      <a
-         id="a10796"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.ExitExerciseMode"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.ExitExerciseMode"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="2202.5"
-           width="133"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="ExitExerciseMode"
-           height="60.955101" />
-        <circle
-           id="ellipse10782"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="2217.5"
-           r="11" />
-        <path
-           id="path10784"
-           d="m 2220.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10786"
-           y="204.0352"
-           x="2231.5"
-           textLength="101"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">ExitExerciseMode</text>
-        <line
-           id="line10788"
-           y2="215.5"
-           y1="215.5"
-           x2="2334.5"
-           x1="2203.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10790"
-           y2="223.5"
-           y1="223.5"
-           x2="2334.5"
-           x1="2203.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10792"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="2213.5"
-           r="3" />
-        <text
-           id="text10794"
-           y="238.1348"
-           x="2222.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class UnpauseExecution-->
-      <a
-         id="a10813"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.UnpauseExecution"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.UnpauseExecution"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="2370.5"
-           width="137"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="UnpauseExecution"
-           height="60.955101" />
-        <circle
-           id="ellipse10799"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="2385.5"
-           r="11" />
-        <path
-           id="path10801"
-           d="m 2388.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10803"
-           y="204.0352"
-           x="2399.5"
-           textLength="105"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">UnpauseExecution</text>
-        <line
-           id="line10805"
-           y2="215.5"
-           y1="215.5"
-           x2="2506.5"
-           x1="2371.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10807"
-           y2="223.5"
-           y1="223.5"
-           x2="2506.5"
-           x1="2371.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10809"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="2381.5"
-           r="3" />
-        <text
-           id="text10811"
-           y="238.1348"
-           x="2390.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class UseShare-->
-      <a
-         id="a10838"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.UseShare"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.UseShare"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="170.5"
-           x="2543"
-           width="206"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="UseShare"
-           height="86.865196" />
-        <circle
-           id="ellipse10816"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="186.5"
-           cx="2615.25"
-           r="11" />
-        <path
-           id="path10818"
-           d="m 2618.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10820"
-           y="191.0352"
-           x="2635.75"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">UseShare</text>
-        <line
-           id="line10822"
-           y2="202.5"
-           y1="202.5"
-           x2="2748"
-           x1="2544"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10824"
-           y="211.47749"
-           x="2551"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10826"
-           y="217.1348"
-           x="2563"
-           textLength="122"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">URLSerializer serializer</text>
-        <line
-           id="line10828"
-           y2="223.45509"
-           y1="223.45509"
-           x2="2748"
-           x1="2544"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10830"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.4326"
-           cx="2554"
-           r="3" />
-        <text
-           id="text10832"
-           y="238.0898"
-           x="2563"
-           textLength="180"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">UseShare(URLSerializer serializer)</text>
-        <circle
-           id="ellipse10834"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="248.3877"
-           cx="2554"
-           r="3" />
-        <text
-           id="text10836"
-           y="251.04491"
-           x="2563"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class StepManually-->
-      <a
-         id="a10863"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.StepManually"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.StepManually"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="170.5"
-           x="2784.5"
-           width="199"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="StepManually"
-           height="86.865196" />
-        <circle
-           id="ellipse10841"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="186.5"
-           cx="2842.25"
-           r="11" />
-        <path
-           id="path10843"
-           d="m 2845.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10845"
-           y="191.0352"
-           x="2862.75"
-           textLength="75"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">StepManually</text>
-        <line
-           id="line10847"
-           y2="202.5"
-           y1="202.5"
-           x2="2982.5"
-           x1="2785.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <rect
-           id="rect10849"
-           y="211.47749"
-           x="2792.5"
-           width="6"
-           style="fill:none;stroke:#c82930;stroke-width:1"
-           height="6" />
-        <text
-           id="text10851"
-           y="217.1348"
-           x="2804.5"
-           textLength="95"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">Application redex</text>
-        <line
-           id="line10853"
-           y2="223.45509"
-           y1="223.45509"
-           x2="2982.5"
-           x1="2785.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10855"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.4326"
-           cx="2795.5"
-           r="3" />
-        <text
-           id="text10857"
-           y="238.0898"
-           x="2804.5"
-           textLength="173"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">StepManually(Application redex)</text>
-        <circle
-           id="ellipse10859"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="248.3877"
-           cx="2795.5"
-           r="3" />
-        <text
-           id="text10861"
-           y="251.04491"
-           x="2804.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class EnterDefaultMode-->
-      <a
-         id="a10880"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.EnterDefaultMode"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.EnterDefaultMode"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="3018.5"
-           width="135"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="EnterDefaultMode"
-           height="60.955101" />
-        <circle
-           id="ellipse10866"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="3033.5"
-           r="11" />
-        <path
-           id="path10868"
-           d="m 3036.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10870"
-           y="204.0352"
-           x="3047.5"
-           textLength="103"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">EnterDefaultMode</text>
-        <line
-           id="line10872"
-           y2="215.5"
-           y1="215.5"
-           x2="3152.5"
-           x1="3019.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10874"
-           y2="223.5"
-           y1="223.5"
-           x2="3152.5"
-           x1="3019.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10876"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="3029.5"
-           r="3" />
-        <text
-           id="text10878"
-           y="238.1348"
-           x="3038.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class StepByStep-->
-      <a
-         id="a10897"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.StepByStep"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.StepByStep"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="3188.5"
-           width="95"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="StepByStep"
-           height="60.955101" />
-        <circle
-           id="ellipse10883"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="3203.5"
-           r="11" />
-        <path
-           id="path10885"
-           d="m 3206.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10887"
-           y="204.0352"
-           x="3217.5"
-           textLength="63"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">StepByStep</text>
-        <line
-           id="line10889"
-           y2="215.5"
-           y1="215.5"
-           x2="3282.5"
-           x1="3189.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10891"
-           y2="223.5"
-           y1="223.5"
-           x2="3282.5"
-           x1="3189.5"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10893"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="3199.5"
-           r="3" />
-        <text
-           id="text10895"
-           y="238.1348"
-           x="3208.5"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--class StepForward-->
-      <a
-         id="a10914"
-         xlink:type="simple"
-         xlink:title="java:edu.kit.wavelength.client.view.action.StepForward"
-         xlink:show="new"
-         xlink:href="java:edu.kit.wavelength.client.view.action.StepForward"
-         xlink:actuate="onRequest"
-         target="_top">
-        <rect
-           y="183.5"
-           x="3319"
-           width="104"
-           style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
-           id="StepForward"
-           height="60.955101" />
-        <circle
-           id="ellipse10900"
-           style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-           cy="199.5"
-           cx="3334"
-           r="11" />
-        <path
-           id="path10902"
-           d="m 3336.9731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
-           inkscape:connector-curvature="0" />
-        <text
-           id="text10904"
-           y="204.0352"
-           x="3348"
-           textLength="72"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="12"
-           style="font-size:12px;font-family:sans-serif;fill:#000000">StepForward</text>
-        <line
-           id="line10906"
-           y2="215.5"
-           y1="215.5"
-           x2="3422"
-           x1="3320"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <line
-           id="line10908"
-           y2="223.5"
-           y1="223.5"
-           x2="3422"
-           x1="3320"
-           style="stroke:#a80036;stroke-width:1.5" />
-        <circle
-           id="ellipse10910"
-           style="fill:#84be84;stroke:#038048;stroke-width:1"
-           cy="235.47749"
-           cx="3330"
-           r="3" />
-        <text
-           id="text10912"
-           y="238.1348"
-           x="3339"
-           textLength="53"
-           lengthAdjust="spacingAndGlyphs"
-           font-size="11"
-           style="font-size:11px;font-family:sans-serif;fill:#000000">void run()</text>
-      </a>
-      <!--link Action to Pause-->
+         textLength="34"
+         x="58.650002"
+         y="204.0352"
+         id="text10538">Pause</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="23.5"
+         x2="100.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10540" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="23.5"
+         x2="100.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10542" />
+      <circle
+         r="3"
+         cx="33.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10544" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="42.5"
+         y="238.1348"
+         id="text10546">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.Action"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.Action"
+       xlink:type="simple"
+       id="a10563"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="Action"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="67"
+         x="1663.5"
+         y="43" />
+      <circle
+         r="11"
+         cx="1678.5"
+         cy="59"
+         style="fill:#b4a7e5;stroke:#a80036;stroke-width:1"
+         id="ellipse10551" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-Pause"
-         d="M 1643.0789,74.5146 C 1382.742,79.6908 262.4948,105.2371 119,164 c -10.7199,4.3899 -20.8052,11.67 -29.4255,19.3345"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10917"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1643.1479,67.512 1663.2809,74.1198 1643.4215,81.5093 " />
-      <!--link Action to CloseExport-->
+         inkscape:connector-curvature="0"
+         d="m 1674.4277,54.7651 v -2.1582 h 7.3794 v 2.1582 h -2.4653 v 8.0767 h 2.4653 V 65 h -7.3794 v -2.1582 h 2.4654 v -8.0767 z"
+         id="path10553" />
+      <text
+         style="font-style:italic;font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         font-style="italic"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="35"
+         x="1692.5"
+         y="63.535198"
+         id="text10555">Action</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1664.5"
+         x2="1729.5"
+         y1="75"
+         y2="75"
+         id="line10557" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1664.5"
+         x2="1729.5"
+         y1="83"
+         y2="83"
+         id="line10559" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="1669.5"
+         y="97.634804"
+         id="text10561">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.CloseExport"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.CloseExport"
+       xlink:type="simple"
+       id="a10580"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="CloseExport"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="101"
+         x="136.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="151.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10566" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-CloseExport"
-         d="M 1643.2025,75.081 C 1397.3977,82.5463 387.3848,115.9231 255,164 c -12.1205,4.4017 -23.9433,11.6854 -34.2409,19.3497"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10920"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1643.1237,68.0803 1663.325,74.4762 1643.5444,82.074 " />
-      <!--link Action to HideComponent-->
+         inkscape:connector-curvature="0"
+         d="m 154.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10568" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="69"
+         x="165.5"
+         y="204.0352"
+         id="text10570">CloseExport</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="137.5"
+         x2="236.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10572" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="137.5"
+         x2="236.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10574" />
+      <circle
+         r="3"
+         cx="147.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10576" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="156.5"
+         y="238.1348"
+         id="text10578">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.HideComponent"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.HideComponent"
+       xlink:type="simple"
+       id="a10605"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="86.865196"
+         id="HideComponent"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="215"
+         x="272.5"
+         y="170.5" />
+      <circle
+         r="11"
+         cx="329.25"
+         cy="186.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10583" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-HideComponent"
-         d="M 1643.1668,75.4347 C 1440.9657,83.0353 727.1594,112.9621 506,164 c -7.7968,1.7993 -15.7451,4.0026 -23.6671,6.4709"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10923"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1643.195,68.4289 1663.4406,74.6835 1643.7135,82.4193 " />
-      <!--link Action to SetReductionOrder-->
+         inkscape:connector-curvature="0"
+         d="m 332.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10585" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="93"
+         x="349.75"
+         y="191.0352"
+         id="text10587">HideComponent</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="273.5"
+         x2="486.5"
+         y1="202.5"
+         y2="202.5"
+         id="line10589" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="280.5"
+         y="211.47749"
+         id="rect10591" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="94"
+         x="292.5"
+         y="217.1348"
+         id="text10593">Hideable hideable</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="273.5"
+         x2="486.5"
+         y1="223.45509"
+         y2="223.45509"
+         id="line10595" />
+      <rect
+         height="6"
+         style="fill:#f24d5c;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="280.5"
+         y="232.4326"
+         id="rect10597" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="189"
+         x="292.5"
+         y="238.0898"
+         id="text10599">HideComponent(Hideable hideable)</text>
+      <circle
+         r="3"
+         cx="283.5"
+         cy="248.3877"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10601" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="292.5"
+         y="251.04491"
+         id="text10603">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.SetReductionOrder"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.SetReductionOrder"
+       xlink:type="simple"
+       id="a10622"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="SetReductionOrder"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="140"
+         x="523"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="538"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10608" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-SetReductionOrder"
-         d="M 1643.0235,75.2857 C 1459.8619,81.8145 863.3272,107.0462 681,164 c -14.592,4.5581 -29.4294,11.7928 -42.6602,19.3585"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10926"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1643.024,68.2815 1663.2555,74.5814 1643.5112,82.2731 " />
-      <!--link Action to CopyExport-->
+         inkscape:connector-curvature="0"
+         d="m 540.9731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10610" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="108"
+         x="552"
+         y="204.0352"
+         id="text10612">SetReductionOrder</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="524"
+         x2="662"
+         y1="215.5"
+         y2="215.5"
+         id="line10614" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="524"
+         x2="662"
+         y1="223.5"
+         y2="223.5"
+         id="line10616" />
+      <circle
+         r="3"
+         cx="534"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10618" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="543"
+         y="238.1348"
+         id="text10620">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.CopyExport"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.CopyExport"
+       xlink:type="simple"
+       id="a10639"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="CopyExport"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="99"
+         x="698.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="713.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10625" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-CopyExport"
-         d="M 1643.2634,75.3304 C 1476.3053,81.5915 968.6385,105.1141 816,164 c -11.8941,4.5886 -23.5575,11.833 -33.7733,19.3983"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10929"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1643.1709,68.3293 1663.4122,74.5975 1643.68,82.32 " />
-      <!--link Action to SelectExportFormat-->
+         inkscape:connector-curvature="0"
+         d="m 716.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10627" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="67"
+         x="727.5"
+         y="204.0352"
+         id="text10629">CopyExport</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="699.5"
+         x2="796.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10631" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="699.5"
+         x2="796.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10633" />
+      <circle
+         r="3"
+         cx="709.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10635" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="718.5"
+         y="238.1348"
+         id="text10637">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.SelectExportFormat"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.SelectExportFormat"
+       xlink:type="simple"
+       id="a10664"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="86.865196"
+         id="SelectExportFormat"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="252"
+         x="833"
+         y="170.5" />
+      <circle
+         r="11"
+         cx="899.25"
+         cy="186.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10642" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-SelectExportFormat"
-         d="M 1643.4166,78.3447 C 1538.5059,88.5567 1299.1262,115.4438 1103,164 c -7.835,1.9398 -15.8471,4.127 -23.8829,6.4753"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10932"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1642.84,71.368 1663.4128,76.4433 1644.1653,85.3052 " />
-      <!--link Action to SelectExercise-->
+         inkscape:connector-curvature="0"
+         d="m 902.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10644" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="111"
+         x="919.75"
+         y="191.0352"
+         id="text10646">SelectExportFormat</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="834"
+         x2="1084"
+         y1="202.5"
+         y2="202.5"
+         id="line10648" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="841"
+         y="211.47749"
+         id="rect10650" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="113"
+         x="853"
+         y="217.1348"
+         id="text10652">Export exportFormat</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="834"
+         x2="1084"
+         y1="223.45509"
+         y2="223.45509"
+         id="line10654" />
+      <circle
+         r="3"
+         cx="844"
+         cy="235.4326"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10656" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="226"
+         x="853"
+         y="238.0898"
+         id="text10658">SelectExportFormat(Export exportFormat)</text>
+      <circle
+         r="3"
+         cx="844"
+         cy="248.3877"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10660" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="853"
+         y="251.04491"
+         id="text10662">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.SelectExercise"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.SelectExercise"
+       xlink:type="simple"
+       id="a10689"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="86.865196"
+         id="SelectExercise"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="203"
+         x="1120.5"
+         y="170.5" />
+      <circle
+         r="11"
+         cx="1177.25"
+         cy="186.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10667" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-SelectExercise"
-         d="M 1643.3756,84.6209 C 1573.2504,99.7411 1446.9744,128.9559 1342,164 c -5.9942,2.0011 -12.1128,4.1626 -18.2568,6.4255"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10935"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1642.2309,77.7078 1663.2501,80.3901 1645.1459,91.401 " />
-      <!--link Action to LoadExercise-->
+         inkscape:connector-curvature="0"
+         d="m 1180.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10669" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="81"
+         x="1197.75"
+         y="191.0352"
+         id="text10671">SelectExercise</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1121.5"
+         x2="1322.5"
+         y1="202.5"
+         y2="202.5"
+         id="line10673" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="1128.5"
+         y="211.47749"
+         id="rect10675" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="93"
+         x="1140.5"
+         y="217.1348"
+         id="text10677">Exercise exercise</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1121.5"
+         x2="1322.5"
+         y1="223.45509"
+         y2="223.45509"
+         id="line10679" />
+      <circle
+         r="3"
+         cx="1131.5"
+         cy="235.4326"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10681" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="177"
+         x="1140.5"
+         y="238.0898"
+         id="text10683">SelectExercise(Exercise exercise)</text>
+      <circle
+         r="3"
+         cx="1131.5"
+         cy="248.3877"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10685" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="1140.5"
+         y="251.04491"
+         id="text10687">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.LoadExercise"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.LoadExercise"
+       xlink:type="simple"
+       id="a10710"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="73.910202"
+         id="LoadExercise"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="198"
+         x="1359"
+         y="177" />
+      <circle
+         r="11"
+         cx="1415.75"
+         cy="193"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10692" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-LoadExercise"
-         d="m 1645.9823,103.4915 c -36.4899,21.4513 -85.8396,50.4623 -124.819,73.3769"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10938"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1642.4751,97.4334 1663.264,93.3322 1649.5701,109.5025 " />
-      <!--link Action to Stop-->
+         inkscape:connector-curvature="0"
+         d="m 1418.7231,198.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10694" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="76"
+         x="1436.25"
+         y="197.5352"
+         id="text10696">LoadExercise</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1360"
+         x2="1556"
+         y1="209"
+         y2="209"
+         id="line10698" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1360"
+         x2="1556"
+         y1="217"
+         y2="217"
+         id="line10700" />
+      <circle
+         r="3"
+         cx="1370"
+         cy="228.97749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10702" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="172"
+         x="1379"
+         y="231.6348"
+         id="text10704">LoadExercise(Exercise exercise)</text>
+      <circle
+         r="3"
+         cx="1370"
+         cy="241.9326"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10706" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="1379"
+         y="244.5898"
+         id="text10708">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.Stop"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.Stop"
+       xlink:type="simple"
+       id="a10727"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="Stop"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="79"
+         x="1592.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="1617.4"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10713" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-Stop"
-         d="m 1674.2713,122.629 c -9.3251,20.1565 -19.8335,42.8707 -28.04,60.6096"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10941"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1667.9848,119.5458 1682.7355,104.3333 1680.6909,125.4241 " />
-      <!--link Action to StepBackward-->
+         inkscape:connector-curvature="0"
+         d="m 1620.3731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10715" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="25"
+         x="1633.6"
+         y="204.0352"
+         id="text10717">Stop</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1593.5"
+         x2="1670.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10719" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1593.5"
+         x2="1670.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10721" />
+      <circle
+         r="3"
+         cx="1603.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10723" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="1612.5"
+         y="238.1348"
+         id="text10725">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.StepBackward"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.StepBackward"
+       xlink:type="simple"
+       id="a10744"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="StepBackward"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="113"
+         x="1706.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="1721.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10730" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-StepBackward"
-         d="m 1720.0784,122.629 c 9.4685,20.1565 20.1386,42.8707 28.4714,60.6096"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10944"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1713.6518,125.4118 1711.484,104.3333 1726.3233,119.4593 " />
-      <!--link Action to RunNewExecution-->
+         inkscape:connector-curvature="0"
+         d="m 1724.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10732" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="81"
+         x="1735.5"
+         y="204.0352"
+         id="text10734">StepBackward</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1707.5"
+         x2="1818.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10736" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1707.5"
+         x2="1818.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10738" />
+      <circle
+         r="3"
+         cx="1717.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10740" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="1726.5"
+         y="238.1348"
+         id="text10742">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.RunNewExecution"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.RunNewExecution"
+       xlink:type="simple"
+       id="a10779"
+       transform="matrix(0.26458333,0,0,0.26458333,230.1045,-337.94776)">
+      <rect
+         height="99.820297"
+         id="RunNewExecution"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="313"
+         x="1854.5"
+         y="164" />
+      <circle
+         r="11"
+         cx="1955.75"
+         cy="180"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10747" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-RunNewExecution"
-         d="m 1749.0983,96.8115 c 40.7336,18.2264 98.8343,44.2237 149.9672,67.1031"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10947"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1746.0003,103.0941 1730.6035,88.536 1751.7183,90.3151 " />
-      <!--link Action to ExitExerciseMode-->
+         inkscape:connector-curvature="0"
+         d="m 1958.7231,185.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10749" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="102"
+         x="1976.25"
+         y="184.5352"
+         id="text10751">RunNewExecution</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1855.5"
+         x2="2166.5"
+         y1="196"
+         y2="196"
+         id="line10753" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="1862.5"
+         y="204.97749"
+         id="rect10755" />
+      <text
+         style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         text-decoration="underline"
+         textLength="31"
+         x="1874.5"
+         y="210.6348"
+         id="text10757">App a</text>
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="1874.5"
+         x2="1905.5"
+         y1="212.6348"
+         y2="212.6348"
+         id="line10759" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="1862.5"
+         y="217.9326"
+         id="rect10761" />
+      <text
+         style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         text-decoration="underline"
+         textLength="146"
+         x="1874.5"
+         y="223.5898"
+         id="text10763">List&lt;Lockable&gt; lockOnRun</text>
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="1874.5"
+         x2="2020.5"
+         y1="225.5898"
+         y2="225.5898"
+         id="line10765" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="1855.5"
+         x2="2166.5"
+         y1="229.9102"
+         y2="229.9102"
+         id="line10767" />
+      <rect
+         height="6"
+         style="fill:#f24d5c;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="1862.5"
+         y="238.8877"
+         id="rect10769" />
+      <text
+         style="font-size:11px;font-family:sans-serif;text-decoration: underline;text-decoration-line: underline;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         text-decoration="underline"
+         textLength="287"
+         x="1874.5"
+         y="244.54491"
+         id="text10771">T find(Collection&lt;T&gt; list, Predicate&lt;? super T&gt; pred)</text>
+      <line
+         style="stroke:#000000;stroke-width:1"
+         x1="1874.5"
+         x2="2161.5"
+         y1="246.54491"
+         y2="246.54491"
+         id="line10773" />
+      <circle
+         r="3"
+         cx="1865.5"
+         cy="254.8428"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10775" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="1874.5"
+         y="257.5"
+         id="text10777">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.ExitExerciseMode"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.ExitExerciseMode"
+       xlink:type="simple"
+       id="a10796"
+       transform="matrix(0.26458333,0,0,0.26458333,-14.635045,-337.28626)">
+      <rect
+         height="60.955101"
+         id="ExitExerciseMode"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="133"
+         x="2202.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="2217.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10782" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-ExitExerciseMode"
-         d="m 1750.6878,77.2455 c 91.6738,7.7441 283.1377,29.828 434.3122,86.7545 13.3414,5.0238 26.9714,12.1341 39.2643,19.4206"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10950"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1750.0171,84.2143 1730.6359,75.6489 1751.1284,70.2585 " />
-      <!--link Action to UnpauseExecution-->
+         inkscape:connector-curvature="0"
+         d="m 2220.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10784" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="101"
+         x="2231.5"
+         y="204.0352"
+         id="text10786">ExitExerciseMode</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2203.5"
+         x2="2334.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10788" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2203.5"
+         x2="2334.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10790" />
+      <circle
+         r="3"
+         cx="2213.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10792" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="2222.5"
+         y="238.1348"
+         id="text10794">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.UnpauseExecution"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.UnpauseExecution"
+       xlink:type="simple"
+       id="a10813"
+       transform="matrix(0.26458333,0,0,0.26458333,-13.047544,-337.28626)">
+      <rect
+         height="60.955101"
+         id="UnpauseExecution"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="137"
+         x="2370.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="2385.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10799" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-UnpauseExecution"
-         d="M 1750.8808,78.2197 C 1886.9325,90.5692 2241.4279,125.5518 2353,164 c 13.879,4.7828 28.0226,11.9017 40.7249,19.2782"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10953"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1749.9244,85.1621 1730.6299,76.4029 1751.1755,71.2181 " />
-      <!--link Action to UseShare-->
+         inkscape:connector-curvature="0"
+         d="m 2388.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10801" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="105"
+         x="2399.5"
+         y="204.0352"
+         id="text10803">UnpauseExecution</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2371.5"
+         x2="2506.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10805" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2371.5"
+         x2="2506.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10807" />
+      <circle
+         r="3"
+         cx="2381.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10809" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="2390.5"
+         y="238.1348"
+         id="text10811">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.UseShare"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.UseShare"
+       xlink:type="simple"
+       id="a10838"
+       transform="matrix(0.26458333,0,0,0.26458333,-13.576711,-337.28626)">
+      <rect
+         height="86.865196"
+         id="UseShare"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="206"
+         x="2543"
+         y="170.5" />
+      <circle
+         r="11"
+         cx="2615.25"
+         cy="186.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10816" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-UseShare"
-         d="M 1750.894,77.3902 C 1910.2276,89.2067 2377.1463,126.19 2525,164 c 7.1569,1.8302 14.4467,4.0016 21.7205,6.3979"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10956"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1749.9509,84.3398 1730.518,75.8924 1750.9773,70.3775 " />
-      <!--link Action to StepManually-->
+         inkscape:connector-curvature="0"
+         d="m 2618.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10818" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="2635.75"
+         y="191.0352"
+         id="text10820">UseShare</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2544"
+         x2="2748"
+         y1="202.5"
+         y2="202.5"
+         id="line10822" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="2551"
+         y="211.47749"
+         id="rect10824" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="122"
+         x="2563"
+         y="217.1348"
+         id="text10826">URLSerializer serializer</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2544"
+         x2="2748"
+         y1="223.45509"
+         y2="223.45509"
+         id="line10828" />
+      <circle
+         r="3"
+         cx="2554"
+         cy="235.4326"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10830" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="180"
+         x="2563"
+         y="238.0898"
+         id="text10832">UseShare(URLSerializer serializer)</text>
+      <circle
+         r="3"
+         cx="2554"
+         cy="248.3877"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10834" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="2563"
+         y="251.04491"
+         id="text10836">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.StepManually"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.StepManually"
+       xlink:type="simple"
+       id="a10863"
+       transform="matrix(0.26458333,0,0,0.26458333,-239.57257,-338.4943)">
+      <rect
+         height="86.865196"
+         id="StepManually"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="199"
+         x="2784.5"
+         y="170.5" />
+      <circle
+         r="11"
+         cx="2842.25"
+         cy="186.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10841" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-StepManually"
-         d="M 1750.524,75.7685 C 1938.9539,84.1059 2570.813,115.1324 2767,164 c 7.1806,1.7886 14.4854,3.9653 21.759,6.3979"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10959"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1750.1986,82.7611 1730.5228,74.8956 1750.8091,68.7744 " />
-      <!--link Action to EnterDefaultMode-->
+         inkscape:connector-curvature="0"
+         d="m 2845.2231,192.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10843" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="75"
+         x="2862.75"
+         y="191.0352"
+         id="text10845">StepManually</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2785.5"
+         x2="2982.5"
+         y1="202.5"
+         y2="202.5"
+         id="line10847" />
+      <rect
+         height="6"
+         style="fill:none;stroke:#c82930;stroke-width:1"
+         width="6"
+         x="2792.5"
+         y="211.47749"
+         id="rect10849" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="95"
+         x="2804.5"
+         y="217.1348"
+         id="text10851">Application redex</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="2785.5"
+         x2="2982.5"
+         y1="223.45509"
+         y2="223.45509"
+         id="line10853" />
+      <circle
+         r="3"
+         cx="2795.5"
+         cy="235.4326"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10855" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="173"
+         x="2804.5"
+         y="238.0898"
+         id="text10857">StepManually(Application redex)</text>
+      <circle
+         r="3"
+         cx="2795.5"
+         cy="248.3877"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10859" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="2804.5"
+         y="251.04491"
+         id="text10861">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.EnterDefaultMode"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.EnterDefaultMode"
+       xlink:type="simple"
+       id="a10880"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="EnterDefaultMode"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="135"
+         x="3018.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="3033.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10866" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-EnterDefaultMode"
-         d="M 1750.6309,73.9565 C 1965.1928,76.2836 2761.7012,89.8432 3001,164 c 14.3911,4.4597 28.9322,11.7615 41.8198,19.4246"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10962"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1750.5581,80.9563 1730.6298,73.7545 1750.6995,66.957 " />
-      <!--link Action to StepByStep-->
+         inkscape:connector-curvature="0"
+         d="m 3036.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10868" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="103"
+         x="3047.5"
+         y="204.0352"
+         id="text10870">EnterDefaultMode</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="3019.5"
+         x2="3152.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10872" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="3019.5"
+         x2="3152.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10874" />
+      <circle
+         r="3"
+         cx="3029.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10876" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="3038.5"
+         y="238.1348"
+         id="text10878">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.StepByStep"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.StepByStep"
+       xlink:type="simple"
+       id="a10897"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="StepByStep"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="95"
+         x="3188.5"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="3203.5"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10883" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-StepByStep"
-         d="M 1750.826,74.9381 C 2000.1035,81.8491 3035.9814,113.4085 3171,164 c 11.7322,4.396 23.0791,11.678 32.9194,19.3424"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10965"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1750.5641,81.9337 1730.7634,74.3884 1750.9477,67.9389 " />
-      <!--link Action to StepForward-->
+         inkscape:connector-curvature="0"
+         d="m 3206.4731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10885" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="63"
+         x="3217.5"
+         y="204.0352"
+         id="text10887">StepByStep</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="3189.5"
+         x2="3282.5"
+         y1="215.5"
+         y2="215.5"
+         id="line10889" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="3189.5"
+         x2="3282.5"
+         y1="223.5"
+         y2="223.5"
+         id="line10891" />
+      <circle
+         r="3"
+         cx="3199.5"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10893" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="3208.5"
+         y="238.1348"
+         id="text10895">void run()</text>
+    </a>
+    <a
+       target="_top"
+       xlink:actuate="onRequest"
+       xlink:href="java:edu.kit.wavelength.client.view.action.StepForward"
+       xlink:show="new"
+       xlink:title="java:edu.kit.wavelength.client.view.action.StepForward"
+       xlink:type="simple"
+       id="a10914"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)">
+      <rect
+         height="60.955101"
+         id="StepForward"
+         style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f17k5t6l21ayn5)"
+         width="104"
+         x="3319"
+         y="183.5" />
+      <circle
+         r="11"
+         cx="3334"
+         cy="199.5"
+         style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+         id="ellipse10900" />
       <path
-         style="fill:none;stroke:#a80036;stroke-width:1;stroke-dasharray:7, 7"
-         id="Action-StepForward"
-         d="M 1750.8726,74.76 C 2013.4113,81.1387 3152.1715,111.6374 3301,164 c 12.3975,4.3618 24.5432,11.6331 35.1453,19.2982"
-         inkscape:connector-curvature="0" />
-      <polygon
-         id="polygon10968"
-         style="fill:none;stroke:#a80036;stroke-width:1"
-         points="1750.6758,81.7574 1730.8496,74.2793 1751.0119,67.7614 " />
-      <!--
-@startuml
-package edu.kit.wavelength.client.view.action <<Folder>> {
-class Pause [[java:edu.kit.wavelength.client.view.action.Pause]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. Pause
-class CloseExport [[java:edu.kit.wavelength.client.view.action.CloseExport]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. CloseExport
-class HideComponent [[java:edu.kit.wavelength.client.view.action.HideComponent]] {
-	-Hideable hideable
-	-HideComponent(Hideable hideable)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. HideComponent
-class SetReductionOrder [[java:edu.kit.wavelength.client.view.action.SetReductionOrder]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. SetReductionOrder
-class CopyExport [[java:edu.kit.wavelength.client.view.action.CopyExport]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. CopyExport
-class SelectExportFormat [[java:edu.kit.wavelength.client.view.action.SelectExportFormat]] {
-	-Export exportFormat
-	+SelectExportFormat(Export exportFormat)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. SelectExportFormat
-class SelectExercise [[java:edu.kit.wavelength.client.view.action.SelectExercise]] {
-	-Exercise exercise
-	+SelectExercise(Exercise exercise)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. SelectExercise
-class LoadExercise [[java:edu.kit.wavelength.client.view.action.LoadExercise]] {
-	+LoadExercise(Exercise exercise)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. LoadExercise
-class Stop [[java:edu.kit.wavelength.client.view.action.Stop]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. Stop
-class StepBackward [[java:edu.kit.wavelength.client.view.action.StepBackward]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. StepBackward
-class RunNewExecution [[java:edu.kit.wavelength.client.view.action.RunNewExecution]] {
-	-{static}App a
-	-{static}List<Lockable> lockOnRun
-	-{static}T find(Collection<T> list, Predicate<? super T> pred)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. RunNewExecution
-class ExitExerciseMode [[java:edu.kit.wavelength.client.view.action.ExitExerciseMode]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. ExitExerciseMode
-class UnpauseExecution [[java:edu.kit.wavelength.client.view.action.UnpauseExecution]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. UnpauseExecution
-class UseShare [[java:edu.kit.wavelength.client.view.action.UseShare]] {
-	-URLSerializer serializer
-	+UseShare(URLSerializer serializer)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. UseShare
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-	void run()
-}
-class StepManually [[java:edu.kit.wavelength.client.view.action.StepManually]] {
-	-Application redex
-	+StepManually(Application redex)
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. StepManually
-class EnterDefaultMode [[java:edu.kit.wavelength.client.view.action.EnterDefaultMode]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. EnterDefaultMode
-class StepByStep [[java:edu.kit.wavelength.client.view.action.StepByStep]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. StepByStep
-class StepForward [[java:edu.kit.wavelength.client.view.action.StepForward]] {
-	+void run()
-}
-interface Action [[java:edu.kit.wavelength.client.view.action.Action]] {
-}
-Action <|.. StepForward
-
-}
-
-@enduml
-
-PlantUML version 1.2017.15(Mon Jul 03 18:45:34 CEST 2017)
-(EPL source distribution)
-Java Runtime: Java(TM) SE Runtime Environment
-JVM: Java HotSpot(TM) 64-Bit Server VM
-Java Version: 1.8.0_112-b16
-Operating System: Mac OS X
-OS Version: 10.13.2
-Default Encoding: UTF-8
-Language: de
-Country: DE
--->
-    </g>
+         inkscape:connector-curvature="0"
+         d="m 3336.9731,205.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+         id="path10902" />
+      <text
+         style="font-size:12px;font-family:sans-serif;fill:#000000"
+         font-size="12"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="72"
+         x="3348"
+         y="204.0352"
+         id="text10904">StepForward</text>
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="3320"
+         x2="3422"
+         y1="215.5"
+         y2="215.5"
+         id="line10906" />
+      <line
+         style="stroke:#a80036;stroke-width:1.5"
+         x1="3320"
+         x2="3422"
+         y1="223.5"
+         y2="223.5"
+         id="line10908" />
+      <circle
+         r="3"
+         cx="3330"
+         cy="235.47749"
+         style="fill:#84be84;stroke:#038048;stroke-width:1"
+         id="ellipse10910" />
+      <text
+         style="font-size:11px;font-family:sans-serif;fill:#000000"
+         font-size="11"
+         lengthAdjust="spacingAndGlyphs"
+         textLength="53"
+         x="3339"
+         y="238.1348"
+         id="text10912">void run()</text>
+    </a>
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.49625,-317.57094 c -68.88081,1.36954 -365.279543,8.12866 -403.245875,23.67635 -2.836307,1.16149 -5.504709,3.08768 -7.785497,5.11558"
+       id="Action-Pause"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1643.1479,67.512 1663.2809,74.1198 1643.4215,81.5093 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10917"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.52895,-317.42108 c -65.03585,1.97519 -332.26843,10.80614 -367.295242,23.52649 -3.206882,1.16461 -6.334998,3.09176 -9.059571,5.1196"
+       id="Action-CloseExport"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1643.1237,68.0803 1663.325,74.4762 1643.5444,82.074 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10920"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.5195,-317.3275 c -53.49904,2.011 -242.36029,9.92913 -300.87538,23.43291 -2.0629,0.47606 -4.16589,1.05902 -6.26192,1.71209"
+       id="Action-HideComponent"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1643.195,68.4289 1663.4406,74.6835 1643.7135,82.4193 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10923"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.48159,-317.36692 c -48.46151,1.72741 -206.29465,8.4033 -254.53538,23.47233 -3.8608,1.20599 -7.78653,3.12017 -11.28718,5.12193"
+       id="Action-SetReductionOrder"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1643.024,68.2815 1663.2555,74.5814 1643.5112,82.2731 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10926"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.54506,-317.35509 c -44.17433,1.65658 -178.4945,7.88027 -218.8801,23.4605 -3.14698,1.21406 -6.23293,3.13081 -8.93586,5.13246"
+       id="Action-CopyExport"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1643.1709,68.3293 1663.4122,74.5975 1643.68,82.32 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10929"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.5856,-316.55756 c -27.75763,2.70193 -91.0935,9.81581 -142.98523,22.66297 -2.07301,0.51323 -4.19288,1.09193 -6.31902,1.71325"
+       id="Action-SelectExportFormat"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1642.84,71.368 1663.4128,76.4433 1644.1653,85.3052 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10932"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 445.57475,-314.89698 c -18.55396,4.00055 -51.96449,11.7303 -79.73896,21.00239 -1.58597,0.52945 -3.20485,1.10135 -4.83045,1.70008"
+       id="Action-SelectExercise"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1642.2309,77.7078 1663.2501,80.3901 1645.1459,91.401 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10935"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 446.26444,-309.90413 c -9.65462,5.67565 -22.71173,13.35148 -33.02503,19.4143"
+       id="Action-LoadExercise"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1642.4751,97.4334 1663.264,93.3322 1649.5701,109.5025 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10938"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 453.74923,-304.84067 c -2.46726,5.33307 -5.24761,11.34287 -7.41891,16.03629"
+       id="Action-Stop"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1667.9848,119.5458 1682.7355,104.3333 1680.6909,125.4241 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10941"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 465.86903,-304.84067 c 2.50521,5.33307 5.32834,11.34287 7.53306,16.03629"
+       id="Action-StepBackward"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1713.6518,125.4118 1711.484,104.3333 1726.3233,119.4593 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10944"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 473.54721,-311.67155 c 10.77743,4.8224 26.14991,11.70085 39.67882,17.75436"
+       id="Action-RunNewExecution"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1746.0003,103.0941 1730.6035,88.536 1751.7183,90.3151 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10947"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 473.96777,-316.84839 c 24.25536,2.04896 74.91351,7.89199 114.91177,22.9538 3.52991,1.32921 7.13618,3.21048 10.38867,5.13836"
+       id="Action-ExitExerciseMode"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1750.0171,84.2143 1730.6359,75.6489 1751.1284,70.2585 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10950"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 474.01883,-316.59063 c 35.99701,3.26747 129.79059,12.52328 159.3107,22.69604 3.67216,1.26545 7.41432,3.14899 10.77513,5.10069"
+       id="Action-UnpauseExecution"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1749.9244,85.1621 1730.6299,76.4029 1751.1755,71.2181 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10953"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 474.02232,-316.8101 c 42.15702,3.12645 165.69592,12.91161 204.81555,22.91551 1.89359,0.48424 3.82235,1.05875 5.74688,1.69277"
+       id="Action-UseShare"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1749.9509,84.3398 1730.518,75.8924 1750.9773,70.3775 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10956"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 473.92388,-317.25161 c 45.16749,1.99852 196.62694,9.43571 243.65384,21.1495 1.72123,0.42873 3.22388,1.20996 4.96739,1.79306"
+       id="Action-StepManually"
+       style="fill:none;stroke:#a80036;stroke-width:0.23970446;stroke-dasharray:1.67793132, 1.67793132"
+       sodipodi:nodetypes="ccc" />
+    <polygon
+       points="1750.1986,82.7611 1730.5228,74.8956 1750.8091,68.7744 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10959"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 473.95271,-317.7186 c 56.7695,0.61571 267.51235,4.20335 330.82682,23.82401 3.80765,1.17996 7.65498,3.11189 11.06482,5.13942"
+       id="Action-EnterDefaultMode"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1750.5581,80.9563 1730.6298,73.7545 1750.6995,66.957 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10962"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 474.00433,-317.45889 c 65.95467,1.82854 340.0307,10.17863 375.75437,23.5643 3.10414,1.1631 6.10634,3.0898 8.70992,5.11767"
+       id="Action-StepByStep"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1750.5641,81.9337 1730.7634,74.3884 1750.9477,67.9389 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10965"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 474.01666,-317.50601 c 69.46337,1.6877 370.76033,9.75715 410.13787,23.61142 3.28017,1.15406 6.49372,3.07792 9.29886,5.10598"
+       id="Action-StepForward"
+       style="fill:none;stroke:#a80036;stroke-width:0.26458332;stroke-dasharray:1.85208331, 1.85208331" />
+    <polygon
+       points="1750.6758,81.7574 1730.8496,74.2793 1751.0119,67.7614 "
+       style="fill:none;stroke:#a80036;stroke-width:1"
+       id="polygon10968"
+       transform="matrix(0.26458333,0,0,0.26458333,10.764959,-337.28626)" />
     <g
        id="g11274"
-       transform="matrix(0.26458333,0,0,0.26458333,873.93423,-536.47883)">
+       transform="matrix(0.26458333,0,0,0.26458333,853.29675,-536.47883)">
       <!--cluster edu.kit.wavelength.client-->
       <polygon
          id="polygon11235"
@@ -9135,12 +8994,12 @@ Country: DE
     </g>
     <g
        id="g12454"
-       transform="matrix(0.31583434,0,0,0.31583434,1001.0483,-3.3902093)">
+       transform="matrix(0.31583434,0,0,0.31583434,15.45513,-495.46739)">
       <!--cluster edu.kit.wavelength.client.view.exercise-->
       <polygon
          id="polygon12350"
          style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#f1glkv965lvqig)"
-         points="14,402 14,16 294,16 301,38.4883 486,38.4883 486,402 " />
+         points="294,16 301,38.4883 486,38.4883 486,402 14,402 14,16 " />
       <line
          id="line12352"
          y2="38.4883"
@@ -9520,7 +9379,7 @@ Country: DE
       <polygon
          id="polygon12452"
          style="fill:none;stroke:#a80036;stroke-width:1"
-         points="268.2618,176.7323 254.3152,175.5107 263.0338,156.1978 " />
+         points="263.0338,156.1978 268.2618,176.7323 254.3152,175.5107 " />
       <!--
 @startuml
 package edu.kit.wavelength.client.view.exercise <<Folder>> {
@@ -9568,7 +9427,7 @@ Country: DE
     </g>
     <g
        id="g12739"
-       transform="matrix(0.26726223,0,0,0.26726223,491.30632,171.29224)">
+       transform="matrix(0.26726223,0,0,0.26726223,444.21053,170.76307)">
       <!--cluster edu.kit.wavelength.client.model.output-->
       <polygon
          id="polygon12533"
@@ -11914,15 +11773,15 @@ Country: DE
     <polygon
        inkscape:transform-center-y="0.033882448"
        inkscape:transform-center-x="-0.44564322"
-       transform="matrix(0.16636895,0.50447762,-0.50447762,0.16636895,956.21719,-848.11612)"
+       transform="matrix(0.16636895,0.50447762,-0.50447762,0.16636895,973.67971,-848.11612)"
        points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
        style="fill:#a80036;stroke:#a80036;stroke-width:1"
        id="polygon17352" />
     <polygon
        id="polygon17354"
        style="fill:#a80036;stroke:#a80036;stroke-width:1"
-       points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
-       transform="matrix(0.16636895,0.50447762,-0.50447762,0.16636895,655.83001,-844.90369)"
+       points="1726.4744,1172.0165 1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 "
+       transform="matrix(0.16636895,0.50447762,-0.50447762,0.16636895,513.48418,-844.90369)"
        inkscape:transform-center-x="-0.44564322"
        inkscape:transform-center-y="0.033882448" />
     <path
@@ -11933,27 +11792,21 @@ Country: DE
        inkscape:connector-curvature="0" />
     <path
        sodipodi:nodetypes="cc"
-       d="m 652.03567,70.149408 0.1535,147.689322"
+       d="m 669.49822,70.149408 0.1535,147.689322"
        id="path17360"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
-       inkscape:connector-curvature="0" />
-    <path
-       sodipodi:nodetypes="cc"
-       d="m 651.89485,70.111336 17.49376,0.0447"
-       id="path17366"
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
        id="path17368"
-       d="m 351.65215,168.1082 0.1535,52.94296"
+       d="m 209.30621,168.1082 0.1535,52.94296"
        sodipodi:nodetypes="cc" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#a80036;stroke-width:0.61410493;stroke-miterlimit:4;stroke-dasharray:none"
        id="path17370"
-       d="m 351.65215,168.1082 279.93327,-0.71528"
+       d="m 209.30621,168.1082 422.27921,-0.71528"
        sodipodi:nodetypes="cc" />
     <path
        inkscape:connector-curvature="0"
@@ -12023,15 +11876,10 @@ Country: DE
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        inkscape:connector-curvature="0" />
     <path
-       d="m 719.20025,131.7465 c 0,27.67988 0,62.92888 0,90.49325"
-       id="path17400"
-       style="fill:none;stroke:#a80036;stroke-width:0.50676537;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
-    <path
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.55386174;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        id="path17402"
-       d="m 847.38378,131.7465 c -39.20848,0 -89.13869,0 -128.18353,0" />
+       d="m 847.38378,131.7465 c -48.11081,0 -109.37773,0 -157.28775,0" />
     <path
        sodipodi:nodetypes="cc"
        d="M 531.55333,-2.1420193 531.70627,160.7481"
@@ -12040,15 +11888,15 @@ Country: DE
        inkscape:connector-curvature="0" />
     <path
        sodipodi:nodetypes="cc"
-       d="m 343.62456,161.46615 0.15328,63.34532"
+       d="m 203.92447,161.46615 0.15328,63.34532"
        id="path17408"
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
        inkscape:connector-curvature="0" />
     <path
        sodipodi:nodetypes="cc"
-       d="M 343.62456,161.46615 531.7064,160.74819"
+       d="M 203.92447,161.46615 531.7064,160.74819"
        id="path17410"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:none;stroke:#a80036;stroke-width:0.66006857;stroke-miterlimit:4;stroke-dasharray:none"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
@@ -12088,7 +11936,7 @@ Country: DE
     <path
        d="m 642.92494,-103.18276 c -84.07379,0 -191.13788,0 -274.86079,0"
        id="path17424"
-       style="fill:none;stroke:#a80036;stroke-width:0.48940709;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
@@ -12171,9 +12019,9 @@ Country: DE
        textLength="58"
        lengthAdjust="spacingAndGlyphs"
        font-size="13"
-       transform="matrix(0.13075107,0,0,0.18916948,447.8726,22.426347)">size</text>
+       transform="matrix(0.13075107,0,0,0.18916948,475.91848,22.426347)">size</text>
     <text
-       transform="matrix(0.19066257,0,0,0.18916948,69.062801,23.900452)"
+       transform="matrix(0.19066257,0,0,0.18916948,-70.108031,23.900452)"
        font-size="13"
        lengthAdjust="spacingAndGlyphs"
        textLength="58"
@@ -12181,18 +12029,13 @@ Country: DE
        y="1012.0684"
        id="text17460"
        style="font-size:22.43122864px;font-family:sans-serif;fill:#000000">order</text>
-    <polygon
-       id="polygon13-0"
-       style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#fcb0bxxuu75vi-6)"
-       points="3126,38.4883 3126,375 14,375 14,16 362,16 369,38.4883 "
-       transform="matrix(0.26873938,0,0,0.29471128,10.7331,-541.97361)" />
     <line
        id="line15-46"
-       y2="-530.63068"
-       y1="-530.63068"
-       x2="109.89793"
-       x1="14.662541"
-       style="stroke:#000000;stroke-width:0.53283995" />
+       y2="-531.72839"
+       y1="-531.72839"
+       x2="289.84241"
+       x1="192.4689"
+       style="stroke:#000000;stroke-width:0.5387882" />
     <text
        style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
        id="text17-4"
@@ -12202,7 +12045,7 @@ Country: DE
        lengthAdjust="spacingAndGlyphs"
        font-weight="bold"
        font-size="14"
-       transform="matrix(0.26458333,0,0,0.26458333,10.79136,-540.39398)">edu.kit.wavelength.client.view.webui.component</text>
+       transform="matrix(0.26458333,0,0,0.26458333,190.09184,-543.42847)">edu.kit.wavelength.client.view.webui.component</text>
     <a
        id="a30-6"
        xlink:type="simple"
@@ -12211,7 +12054,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.TreeTerm"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,103.9998,-534.47811)">
+       transform="matrix(0.26458333,0,0,0.26458333,61.277086,-535.01799)">
       <rect
          y="43"
          x="2667"
@@ -12260,7 +12103,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.ImageButton"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,-64.350373,-532.45649)">
+       transform="matrix(0.26458333,0,0,0.26458333,-247.30216,-573.11794)">
       <rect
          y="183"
          x="2626.5"
@@ -12421,7 +12264,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.Editor"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,15.55383,-532.45649)">
+       transform="matrix(0.26458333,0,0,0.26458333,85.694806,-533.75232)">
       <rect
          y="170"
          x="494"
@@ -12618,7 +12461,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.PopUpWindow"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,15.55383,-532.45649)">
+       transform="matrix(0.26458333,0,0,0.26458333,651.72084,-526.6463)">
       <rect
          y="196"
          x="22"
@@ -12751,7 +12594,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.Menu"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,-66.202415,-534.30859)">
+       transform="matrix(0.26458333,0,0,0.26458333,27.996741,-580.8384)">
       <rect
          y="209"
          x="1042"
@@ -12856,7 +12699,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.DisclosureButton"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,-67.525347,-532.45649)">
+       transform="matrix(0.26458333,0,0,0.26458333,-99.664713,-526.64634)">
       <rect
          y="183"
          x="2056.5"
@@ -13017,7 +12860,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.UnicodeTerm"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,646.80533,-533.4673)">
+       transform="matrix(0.26458333,0,0,0.26458333,604.08263,-534.00718)">
       <rect
          y="43"
          x="464.5"
@@ -13066,7 +12909,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.OptionBox"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,15.55383,-532.45649)">
+       transform="matrix(0.26458333,0,0,0.26458333,-20.818881,-532.99637)">
       <rect
          y="163.5"
          x="1465.5"
@@ -13277,7 +13120,7 @@ Country: DE
        xlink:href="java:edu.kit.wavelength.client.view.webui.component.Checkbox"
        xlink:actuate="onRequest"
        target="_top"
-       transform="matrix(0.26458333,0,0,0.26458333,571.28006,-537.66488)">
+       transform="matrix(0.26458333,0,0,0.26458333,529.4757,-537.66488)">
       <rect
          y="151"
          x="741.5"
@@ -13516,7 +13359,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextField"
        xlink:type="simple"
        id="a2305"
-       transform="matrix(0.26458333,0,0,0.26458333,14.79213,-531.63218)">
+       transform="matrix(0.26458333,0,0,0.26458333,523.95814,-525.85256)">
       <rect
          height="125.7305"
          id="TextField-2"
@@ -13649,7 +13492,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
        xlink:type="simple"
        id="a2473"
-       transform="matrix(0.26458333,0,0,0.26458333,-210.53258,-535.10235)">
+       transform="matrix(0.26458333,0,0,0.26458333,144.28101,-577.11049)">
       <rect
          height="125.7305"
          id="TreeOutput-0"
@@ -13782,7 +13625,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextButton"
        xlink:type="simple"
        id="a2600"
-       transform="matrix(0.26458333,0,0,0.26458333,15.55383,-532.45648)">
+       transform="matrix(0.26458333,0,0,0.26458333,-27.168884,-532.99636)">
       <rect
          height="177.5508"
          id="TextButton-2"
@@ -13971,7 +13814,7 @@ Country: DE
        xlink:title="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
        xlink:type="simple"
        id="a2709"
-       transform="matrix(0.26458333,0,0,0.26458333,-209.07746,-534.04396)">
+       transform="matrix(0.26458333,0,0,0.26458333,163.06649,-577.11049)">
       <rect
          height="125.7305"
          id="UnicodeOutput-7"
@@ -14097,61 +13940,370 @@ Country: DE
          id="text2707">boolean isLocked()</text>
     </a>
     <polygon
-       transform="matrix(0.43243114,0,0,-0.43243114,245.45737,72.037105)"
-       points="1018.0001,1064.1282 1004.0001,1064.1282 1011,1044.1282 "
+       transform="matrix(0.43243114,0,0,-0.43243114,202.73467,72.026363)"
+       points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon22335" />
     <polygon
        id="polygon22339"
        style="fill:none;stroke:#a80036;stroke-width:1"
        points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
-       transform="matrix(0.43243114,0,0,-0.43243114,138.47841,74.216606)" />
+       transform="matrix(0.43243114,0,0,-0.43243114,95.755696,73.676697)" />
     <polygon
-       transform="matrix(0.43243114,0,0,-0.43243114,220.39196,72.650593)"
+       transform="matrix(0.43243114,0,0,-0.43243114,177.66926,72.110684)"
        points="1011,1044.1282 1018.0001,1064.1282 1004.0001,1064.1282 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon22341" />
     <path
-       d="m 362.27698,-440.31583 v 5.79916 9.09751"
+       d="m 319.55428,-440.85571 v 5.79916 9.09751"
        id="path22343"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
        inkscape:connector-curvature="0"
        sodipodi:nodetypes="ccc" />
     <polygon
        id="polygon22345"
        style="fill:none;stroke:#a80036;stroke-width:1"
        points="1018.0001,1064.1282 1004.0001,1064.1282 1011,1044.1282 "
-       transform="matrix(0.43243114,0,0,-0.43243114,328.95174,70.512437)" />
+       transform="matrix(0.43243114,0,0,-0.43243114,286.22904,72.089196)" />
     <polygon
        id="polygon22347"
        style="fill:none;stroke:#a80036;stroke-width:1"
-       points="1011,1044.1282 1018.0001,1064.1282 1004.0001,1064.1282 "
-       transform="matrix(0.43243114,0,0,-0.43243114,275.09071,72.037105)" />
+       points="1018.0001,1064.1282 1004.0001,1064.1282 1011,1044.1282 "
+       transform="matrix(0.43243114,0,0,-0.43243114,232.36801,72.026363)" />
     <polygon
        id="polygon22349"
        style="fill:none;stroke:#a80036;stroke-width:1"
        points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
-       transform="matrix(0.43243114,0,0,-0.43243114,191.28774,72.650593)" />
+       transform="matrix(0.43243114,0,0,-0.43243114,154.65051,72.110684)" />
     <polygon
-       transform="matrix(0.43243114,0,0,-0.43243114,161.23263,74.216606)"
-       points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
+       transform="matrix(0.43243114,0,0,-0.41640228,124.85803,57.044536)"
+       points="1011,1044.1282 1018.0001,1064.1282 1004.0001,1064.1282 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon22360" />
     <polygon
        id="polygon22362"
        style="fill:none;stroke:#a80036;stroke-width:1"
        points="1018.0001,1064.1282 1004.0001,1064.1282 1011,1044.1282 "
-       transform="matrix(0.43243114,0,0,-0.43243114,66.37207,74.756514)" />
+       transform="matrix(0.43243114,0,0,-0.43243114,23.649356,74.216605)" />
     <polygon
-       transform="matrix(0.43243114,0,0,-0.43243114,-0.56597935,75.008317)"
+       transform="matrix(0.43243114,0,0,-0.43243114,-43.288693,74.468408)"
        points="1011,1044.1282 1018.0001,1064.1282 1004.0001,1064.1282 "
        style="fill:none;stroke:#a80036;stroke-width:1"
        id="polygon22364" />
     <path
        sodipodi:nodetypes="ccc"
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.52899271;stroke-miterlimit:4;stroke-dasharray:3.70294884, 3.70294884;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.53246647;stroke-miterlimit:4;stroke-dasharray:3.72726519, 3.72726519;stroke-dashoffset:0"
        id="path22366"
-       d="M 677.81579,-425.41916 H 554.97894 362.27698" />
+       d="M 639.25083,-425.95904 H 514.7954 319.55428" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       id="path22368"
+       d="m 639.54143,-426.24023 v 14.62777 22.94751" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       id="path22372"
+       d="m 592.48415,-425.62674 v 14.62777 22.94751" />
+    <path
+       d="m 532.68825,-425.62674 v 14.62777 22.94751"
+       id="path22374"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       id="path22376"
+       d="m 460.72149,-425.62674 v 14.62777 22.94751" />
+    <path
+       d="m 394.04653,-425.62674 v 14.62777 22.94751"
+       id="path22378"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       d="m 760.8818,-440.94005 v 11.71449 18.37725"
+       id="path22380"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       d="M 760.8818,-410.84831 H 683.57107 562.28883"
+       id="path22382"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       id="path22393"
+       d="m 562.28883,-410.84831 v 8.55091 13.41434" />
+    <path
+       d="m 614.81654,-410.0382 v 8.55091 13.41434"
+       id="path22395"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       id="path22397"
+       d="m 669.3207,-410.0382 v 8.55091 13.41434" />
+    <path
+       d="m 723.29571,-410.0382 v 8.55091 13.41434"
+       id="path22399"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc" />
+    <path
+       sodipodi:nodetypes="cc"
+       d="m 919.83692,-449.68725 22.21784,0.0442"
+       id="path22401"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 690.09603,131.7465 c 0,27.33304 0,62.14035 0,89.35932"
+       id="path17400"
+       style="fill:none;stroke:#a80036;stroke-width:0.50358033;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <polygon
+       inkscape:transform-center-y="-0.44564681"
+       inkscape:transform-center-x="-0.033878083"
+       transform="matrix(0.50447762,-0.16636895,0.16636895,0.50447762,-123.90009,-753.66741)"
+       points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       id="polygon22405" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path22407"
+       d="m 919.83576,-449.719 -0.0419,116.89456"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       d="m 718.48527,-332.86625 201.30994,0.0417"
+       id="path22409"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path22411"
+       d="m 714.02745,-280.53312 4.57319,0.0452"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       d="m 718.60064,-280.48794 0.0391,-52.44808"
+       id="path22413"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="cc"
+       d="m 549.54721,-282.01766 4.57319,0.0452"
+       id="path22417"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path22419"
+       d="m 554.081,-253.8701 0.0394,-28.10236"
+       sodipodi:nodetypes="cc" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path22421"
+       d="m 461.45328,-253.89574 92.64758,-0.0241"
+       sodipodi:nodetypes="cc" />
+    <path
+       sodipodi:nodetypes="cc"
+       d="m 461.4533,-253.62654 -0.0417,375.3106"
+       id="path22423"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0" />
+    <polygon
+       id="polygon22425"
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
+       transform="matrix(0.16636895,0.50447762,-0.50447762,0.16636895,765.43596,-944.00622)"
+       inkscape:transform-center-x="-0.44564322"
+       inkscape:transform-center-y="0.033882448" />
+    <text
+       transform="matrix(0.18583996,0,0,0.2267378,186.18496,-113.14799)"
+       font-size="13"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="58"
+       x="1489"
+       y="1012.0684"
+       id="text22427"
+       style="font-size:15.55884266px;font-family:sans-serif;fill:#000000">redex</text>
+    <path
+       d="m 211.30494,-260.51839 c 0,4.46638 0,10.1541 0,14.60184"
+       id="path22429"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <polygon
+       inkscape:transform-center-y="0.033882448"
+       inkscape:transform-center-x="-0.44564322"
+       transform="matrix(0.16636895,0.50447762,-0.50447762,0.16636895,515.3293,-1311.8714)"
+       points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       id="polygon22431" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22433"
+       d="m 225.90678,-260.51839 c -4.46638,0 -10.1541,0 -14.60184,0" />
+    <path
+       d="m 225.90678,-281.07336 c 0,6.2873 0,14.29389 0,20.55496"
+       id="path22435"
+       style="fill:none;stroke:#a80036;stroke-width:0.51564556;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.46797973;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22437"
+       d="m 231.24821,-281.07336 c -1.63383,0 -3.71441,0 -5.34143,0" />
+    <text
+       style="font-size:22.43122864px;font-family:sans-serif;fill:#000000"
+       id="text22441"
+       y="1012.0684"
+       x="1489"
+       textLength="58"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="13"
+       transform="matrix(0.22805764,0,0,0.18916948,-142.75902,-444.41204)">format</text>
+    <polygon
+       id="polygon22443"
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       points="1723.8292,1167.0163 1726.4744,1172.0165 1721.4742,1174.6618 1731.2529,1173.4884 "
+       transform="matrix(-0.50447762,0.16636895,-0.16636895,-0.50447762,1194.5605,-147.69957)"
+       inkscape:transform-center-x="0.033828961"
+       inkscape:transform-center-y="0.44564684" />
+    <path
+       d="m 306.96599,-280.53312 c -1.63383,0 -3.71441,0 -5.34143,0"
+       id="path22445"
+       style="fill:none;stroke:#a80036;stroke-width:0.46797973;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.46797973;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22447"
+       d="m 370.466,-280.53312 c -1.63383,0 -3.71441,0 -5.34143,0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22449"
+       d="m 301.62456,-331.82411 c 0,15.68875 0,35.66766 0,51.29096" />
+    <path
+       d="m 365.12457,-337.97128 c 0,17.56904 0,39.94241 0,57.43816"
+       id="path22451"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 173.63849,-331.82411 c 39.14806,0 89.00133,0 127.98607,0"
+       id="path22453"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22455"
+       d="m 173.84898,-331.88958 c 0,-36.65464 0,-83.33265 0,-119.83435" />
+    <path
+       d="m 173.84898,-451.72393 c -13.83892,0 -31.46215,0 -45.24333,0"
+       id="path22457"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <polygon
+       inkscape:transform-center-y="0.44564684"
+       inkscape:transform-center-x="0.033828961"
+       transform="matrix(-0.50447762,0.16636895,-0.16636895,-0.50447762,1194.5605,-159.34126)"
+       points="1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 1721.4742,1174.6618 "
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       id="polygon22459" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22461"
+       d="m 185.56624,-463.36562 c -17.42297,0 -39.61032,0 -56.96059,0" />
+    <path
+       d="m 185.56624,-338.19377 c 0,-38.28725 0,-87.04434 0,-125.17185"
+       id="path22463"
+       style="fill:none;stroke:#a80036;stroke-width:0.51101387;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.59279865;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22465"
+       d="m 185.22213,-337.97128 c 55.02811,0 125.10389,0 179.90244,0" />
+    <text
+       transform="matrix(0.26118315,0,0,0.18916948,-256.6669,-638.08701)"
+       font-size="13"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="58"
+       x="1489"
+       y="1012.0684"
+       id="text22467"
+       style="font-size:22.43122864px;font-family:sans-serif;fill:#000000">exercise</text>
+    <text
+       style="font-size:22.43122864px;font-family:sans-serif;fill:#000000"
+       id="text22469"
+       y="1012.0684"
+       x="1489"
+       textLength="58"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="13"
+       transform="matrix(0.26118315,0,0,0.18916948,-256.6669,-656.60784)">exercise</text>
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22711"
+       d="m 145.041,-280.53312 c -1.63383,0 -3.71441,0 -5.34143,0" />
+    <path
+       d="m 145.041,-347.32111 c 0,20.42894 0,46.44427 0,66.78798"
+       id="path22713"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.49991393;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       id="path22715"
+       d="m 145.041,-347.32111 c 118.7077,0 269.87657,0 388.08905,0" />
+    <path
+       sodipodi:nodetypes="cc"
+       d="m 532.9548,-347.0411 0.0394,-5.05312"
+       id="path22717"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:connector-curvature="0" />
+    <polygon
+       id="polygon22719"
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       points="1723.8292,1167.0163 1726.4744,1172.0165 1721.4742,1174.6618 1731.2529,1173.4884 "
+       transform="matrix(-0.16636895,-0.50447762,0.50447762,-0.16636895,228.96984,713.86063)"
+       inkscape:transform-center-x="0.44563903"
+       inkscape:transform-center-y="-0.033879103" />
+    <text
+       style="font-size:22.43122864px;font-family:sans-serif;fill:#000000"
+       id="text22730"
+       y="1012.0684"
+       x="1489"
+       textLength="58"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="13"
+       transform="matrix(0.31075645,0,0,0.18916948,49.299644,-540.29321)">component</text>
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path22732"
+       d="m 900.98482,-486.99989 212.10028,0.0405"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>

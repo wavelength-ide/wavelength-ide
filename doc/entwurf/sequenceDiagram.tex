@@ -17,9 +17,29 @@ However, before actually displaying it, a blocker that prevents the user from in
 	\caption{Sequence diagram for the select export format action.}
 \end{figure}
 
-\subsection{example action: start reduction process}
+\subsection{example action: select exercise from main menu}
+The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.SelectExercise]{SelectExercise}} 
+action handles the UI elements, when the user selects an exercise from the main menu.
+
+This action only prepares the UI to display the content of the selected exercise, 
+it does not load the actual content into the UI. If the content of the editor would 
+be overridden when the selected exerciser is loaded, the action displays a warning
+message. Otherwise it just calls the \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.LoadExercise]{LoadExercise}} 
+action which will in return load the selected exercise.
+
 %---------------------------
-%include sequence diagram for action here
+%TODO include sequence diagram for action here
+%---------------------------
+\subsection{example action: load selected exercise}
+The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.LoadExercise]{LoadExercise}} 
+action loads a selected Exercise into the UI.
+
+It updates the width of the Editor and displays \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.TextField]{TextField}}s 
+that are responsible for displaying solution and explanation of the exercise.
+The action also writes the correct content into the \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.TextField]{TextField}}s and updates the content of the \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.Editor]{Editor}} if necessary.
+
+%---------------------------
+%TODO include sequence diagram for action here
 %---------------------------
 
 \subsection{Next term}

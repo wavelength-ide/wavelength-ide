@@ -49,7 +49,7 @@ This document contains the design for "Wavelength", a web-based IDE for the unty
 lambda calculus, as described in the \textit{Pflichtenheft}.
 
 The object-oriented architecture of the project follows the model-view-controller (MVC)
-architectural pattern. It consists of two largely indepentent sets of packages.
+architectural pattern. It consists of two largely independent sets of packages.
 
 \subsection{The model}
 
@@ -71,7 +71,7 @@ In addition to lambda terms and visitors and the ability to parse strings into
 lambda terms, the model provides interfaces for reduction orders,
 output sizes and libraries as well as the implementations of the concrete reductions orders,
 output sizes and libraries mentioned in the \textit{Pflichtenheft}. These three
-concepts are each fully contained in serparate packages which only use the package
+concepts are each fully contained in separate packages which only use the package
 providing lambda terms.
 
 The central interface of the model to the user interface is the
@@ -83,15 +83,47 @@ order.
 
 \subsection{The user interface}
 
-%TODO fill me
+The second set of packages (\texttt{\pkglnk{view}} and its subpackages) manages building the UI 
+and enabling UI elements to interact with the Model.
 
+In order to abstract the necessary aspects of UI elements the \texttt{\pkglnk{view.api}} package 
+defines elementary interfaces.
+For a further narrowing of aspects the \texttt{\pkglnk{view.webui.component}} package wraps some of 
+GWT's widgets using the Adapter Pattern (each in its own class).
+
+Regarding user interaction the UI elements are able to run Actions as specified in the 
+\texttt{\hyperref[type:edu.kit.wavelength.client.view.action.Action]{Action}} interface when used (on click for example).
+Actions are supposed to cover an abundance of manipulations on other UI elements or even the Model.
+
+Since providing concurrency for the reduction of LambdaTerms is crucial for maintaining responsiveness of the UI 
+the \texttt{\pkglnk{view.execution}} package provides a Wrapper class for the ExecutionEngine class and an associated
+Observer interface.
+
+The communication between the View and the Model is handled by the App class. It stores all available UI elements and
+an Executor (wrapped ExecutionEngine) and provides access to them. This feature is essential for Actions giving them
+easy access to resources.
+The general \texttt{\pkglnk{view}} package provides the App class but also a URLSerializer class for serializing a URL
+and the associated Observer class.
+
+The \texttt{\pkglnk{view.update}} package provides concrete Observers for serialization and execution along with
+Visitors for resolving Lambda-Terms according to different outputFormats.
+
+The \texttt{\pkglnk{view.export}} package provides means of transforming the output to a specific Format.
+
+Lastly there is an Exercise Mode available represented by the \texttt{\pkglnk{view.exercise}} package providing
+an interface, a concrete implementation and a static list of all exercises.
 
 \section{Packages and classes}
 \input{build/doclet/out.tex}
 
 \section{Amendments to the requirements laid out in the \textit{Pflichtenheft}}
 
-% TODO the exercise test thingy
+Regarding entry F17 in the "Pflichtenheft":
+Enabling test cases raises complexity too much to be considered at this point of time.
+According to F17 it is possible that an exercises gives predefined variables which
+are set in the test cases. This leads to the problem that in order for a substitution of
+those variables some kind of pre-parser needs to be utilized.
+Hence the decision to not implement test cases for Exercises.
 
 \section{Typical processes}
 \input{sequenceDiagram.tex}

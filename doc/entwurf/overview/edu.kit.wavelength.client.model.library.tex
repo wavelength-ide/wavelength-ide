@@ -1,5 +1,5 @@
 The \texttt{\pkglnk{model.library}} contains classes representing the different libraries provided by the application.
-Each library consists of a collection of commonly needed lambda terms and corresponding names used to reference them in input lambda terms.
+Each library consists of a collection of commonly needed \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}}s and corresponding names used to reference them.
 After enabling a library  these names can be used in place of the longer and more difficult to work with terms.
 
 The \texttt{\lnk{Boolean}} library contains the terms representing the boolean values "true" and "false".
@@ -12,8 +12,8 @@ The \texttt{\lnk{YCombinator}} library contains the Y combinator making recursiv
 
 All libraries implement the \texttt{\lnk{Library}} interface allowing the application to be expanded with more libraries provided they too implement this interface.
 
-The library classes are used by the parser to access the terms belonging to names in the input String. 
-After it has been successfully parsed each used library term is represented by a named term in the lamba term object structure.
+The library classes are used by the \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.parsing.Parser]{Parser}} to access the terms belonging to names in the input String. 
+After it has been successfully parsed each used library term is represented by a \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.NamedTerm]{NamedTerm}} in the \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}} object structure.
 
 \begin{figure}[H]
 	\centering

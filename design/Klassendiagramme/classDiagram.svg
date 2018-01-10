@@ -1097,9 +1097,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="3296.5356"
-     inkscape:cy="1271.5149"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="3929.3255"
+     inkscape:cy="2127.4967"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -1116,7 +1116,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -11651,7 +11651,8 @@ Country: DE
          textLength="128"
          lengthAdjust="spacingAndGlyphs"
          font-size="13"
-         style="font-size:13px;font-family:sans-serif;fill:#000000">serializationOutputs</text>
+         style="font-size:13px;font-family:sans-serif;fill:#000000"
+         transform="translate(0,34)">serializationOutputs</text>
       <text
          id="text13332"
          y="867.06201"
@@ -11954,24 +11955,19 @@ Country: DE
        points="1004.0001,1064.1282 1011,1044.1282 1018.0001,1064.1282 "
        transform="matrix(0.43243114,0,0,0.43243114,587.19107,-738.78761)" />
     <path
-       d="m 1024.5272,-278.62544 c 0,8.5927 0,18.57058 0,26.54809"
+       d="m 1024.5272,-278.62544 c 0,5.33851 0,11.53761 0,16.49391"
        id="path17432"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.39410794;stroke-miterlimit:4;stroke-dasharray:2.75875544, 2.75875544;stroke-dashoffset:0"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
        id="path17434"
-       d="m 1024.5272,-252.07735 c -55.81486,0 -120.62758,0 -172.44685,0" />
+       d="m 1024.5272,-262.13153 c -55.81486,0 -120.62758,0 -172.44685,0" />
     <path
-       inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
-       id="path17436"
-       d="m 917.93791,-250.73084 c 0,27.06573 0,58.49457 0,83.62254" />
-    <path
-       d="m 852.08035,-251.54818 c 0,27.06573 0,58.49457 0,83.62254"
+       d="m 852.08035,-262.13153 c 0,30.4912 0,65.8977 0,94.20589"
        id="path17438"
-       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.53069788;stroke-miterlimit:4;stroke-dasharray:3.71488509, 3.71488509;stroke-dashoffset:0"
        inkscape:connector-curvature="0" />
     <polygon
        transform="matrix(0.43243114,0,0,0.43243114,642.25396,-548.48092)"
@@ -14305,5 +14301,98 @@ Country: DE
        id="path22734"
        style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
        inkscape:connector-curvature="0" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999983,3.49999983;stroke-dashoffset:0"
+       id="path2034"
+       d="M 1112.5882,-468.61756 H 998.34453 819.12335" />
+    <polygon
+       inkscape:transform-center-y="0.44564016"
+       inkscape:transform-center-x="0.033873893"
+       transform="matrix(-0.50447762,0.16636895,-0.16636895,-0.50447762,1886.6658,-164.5932)"
+       points="1726.4744,1172.0165 1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 "
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       id="polygon3047" />
+    <text
+       transform="matrix(0.27710791,0,0,0.18916948,542.04101,-662.17885)"
+       font-size="13"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="58"
+       x="1489"
+       y="1012.0684"
+       id="text3059"
+       style="font-size:22.43122864px;line-height:3.25;font-family:sans-serif;fill:#a80036;fill-opacity:1">&lt;&lt;<tspan
+   style="font-size:24.65308189px"
+   id="tspan3061">use</tspan>
+&gt;&gt;</text>
+    <path
+       d="m 1113.0161,-327.1029 c -62.9415,0 -136.0299,0 -194.46574,0"
+       id="path3063"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999983,3.49999983;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.57392091;stroke-miterlimit:4;stroke-dasharray:4.0174462, 4.0174462;stroke-dashoffset:0"
+       id="path3065"
+       d="m 1113.1176,-341.01686 c 0,5.07601 0,10.97035 0,15.68299" />
+    <text
+       style="font-size:22.43122864px;line-height:3.25;font-family:sans-serif;fill:#a80036;fill-opacity:1"
+       id="text3077"
+       y="1012.0684"
+       x="1489"
+       textLength="58"
+       lengthAdjust="spacingAndGlyphs"
+       font-size="13"
+       transform="matrix(0.27710791,0,0,0.18916948,631.47012,-520.89139)">&lt;&lt;<tspan
+   id="tspan3075"
+   style="font-size:24.65308189px">use</tspan>
+&gt;&gt;</text>
+    <polygon
+       id="polygon3079"
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       points="1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 1721.4742,1174.6618 "
+       transform="matrix(-0.16636895,-0.50447762,0.50447762,-0.16636895,809.14567,727.59351)"
+       inkscape:transform-center-x="0.44565118"
+       inkscape:transform-center-y="-0.033881673" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.53069788;stroke-miterlimit:4;stroke-dasharray:3.71488509, 3.71488509;stroke-dashoffset:0"
+       id="path3377"
+       d="m 917.69703,-262.13153 c 0,30.4912 0,65.8977 0,94.20589" />
+    <path
+       d="m 943.66903,-252.09707 c 0,21.68287 0,46.86111 0,66.9916"
+       id="path3379"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999983,3.49999983;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 1126.6992,-252.09707 c -59.2403,0 -128.03067,0 -183.03017,0"
+       id="path3381"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999983,3.49999983;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
+    <path
+       inkscape:connector-curvature="0"
+       style="fill:none;stroke:#a80036;stroke-width:0.55736256;stroke-miterlimit:4;stroke-dasharray:3.90153782, 3.90153782;stroke-dashoffset:0"
+       id="path3383"
+       d="m 1126.6992,-335.34165 c 0,26.9434 0,58.23019 0,83.24458" />
+    <polygon
+       inkscape:transform-center-y="-0.033881673"
+       inkscape:transform-center-x="0.44565118"
+       transform="matrix(-0.16636895,-0.50447762,0.50447762,-0.16636895,822.90402,728.12268)"
+       points="1721.4742,1174.6618 1731.2529,1173.4884 1723.8292,1167.0163 1726.4744,1172.0165 "
+       style="fill:#a80036;stroke:#a80036;stroke-width:1"
+       id="polygon3385" />
+    <text
+       transform="matrix(0.27710791,0,0,0.18916948,694.54573,-445.53212)"
+       font-size="13"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="58"
+       x="1489"
+       y="1012.0684"
+       id="text3389"
+       style="font-size:22.43122864px;line-height:3.25;font-family:sans-serif;fill:#a80036;fill-opacity:1">&lt;&lt;<tspan
+   style="font-size:24.65308189px"
+   id="tspan3387">use</tspan>
+&gt;&gt;</text>
   </g>
 </svg>

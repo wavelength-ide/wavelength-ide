@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A visitor that returns a boolean that is true iff the given
+ * A visitor that returns a boolean that is true if the given
  * lambda term represents an abstraction (possibly bound to one
  * or more nested names).
  *

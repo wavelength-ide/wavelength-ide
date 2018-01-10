@@ -8,7 +8,7 @@ package edu.kit.wavelength.client.model.term;
 public abstract class PartialApplication implements LambdaTerm {
 
 	/**
-	 * Creates a new partial application that has not yet bound any parameters
+	 * Creates a new partial application that has not yet bound any parameters.
 	 * @param name The name of the library function.
 	 * @param inner The lambda term for the non-accelerated library function
 	 * @param numParameters The number of parameters that the library function takes

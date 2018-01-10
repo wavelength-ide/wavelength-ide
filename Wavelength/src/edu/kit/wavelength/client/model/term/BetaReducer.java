@@ -10,7 +10,7 @@ public final class BetaReducer extends TermTransformer {
 	private final Application toReduce;
 	
 	/**
-	 * Creates a new beta reducer that reduces the given redex
+	 * Creates a new beta reducer that reduces the given redex.
 	 * @param toReduce The application that should be reduced.
 	 * This must be a redex, otherwise an exception is thrown.
 	 */

@@ -1097,9 +1097,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="2896.5356"
-     inkscape:cy="435.66247"
+     inkscape:zoom="0.7"
+     inkscape:cx="3296.5356"
+     inkscape:cy="1271.5149"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -11980,24 +11980,19 @@ Country: DE
        id="polygon17440" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.44116828;stroke-miterlimit:4;stroke-dasharray:3.08817785, 3.08817785;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
        id="path17442"
-       d="m 1079.5901,-87.7896 c 0,6.68957 0,14.457527 0,20.66816" />
+       d="m 1079.5901,-87.789592 c 0,4.365151 0,9.433983 0,13.486612" />
     <path
-       d="m 1079.0502,-64.208858 c -73.462,0 -158.76674,0 -226.96985,0"
+       d="m 1079.5901,-74.30298 c -110.1632,0 -238.08571,0 -340.3627,0"
        id="path17444"
-       style="fill:none;stroke:#a80036;stroke-width:0.57362282;stroke-miterlimit:4;stroke-dasharray:4.01535983, 4.01535983;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
        inkscape:connector-curvature="0" />
     <path
        inkscape:connector-curvature="0"
-       style="fill:none;stroke:#a80036;stroke-width:0.51095408;stroke-miterlimit:4;stroke-dasharray:3.57667848, 3.57667848;stroke-dashoffset:0"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991,3.49999991;stroke-dashoffset:0"
        id="path17446"
-       d="m 852.08035,-151.53557 c 0,28.26464 0,61.085663 0,87.326712" />
-    <path
-       d="m 917.93791,-151.76239 c 0,28.26464 0,61.085606 0,87.326643"
-       id="path17448"
-       style="fill:none;stroke:#a80036;stroke-width:0.51095408;stroke-miterlimit:4;stroke-dasharray:3.57667848, 3.57667848;stroke-dashoffset:0"
-       inkscape:connector-curvature="0" />
+       d="m 737.17559,-151.91355 c 0,25.14502 0,54.343545 0,77.688326" />
     <text
        transform="matrix(0.2267378,0,0,0.18916948,647.27169,17.323669)"
        font-size="13"
@@ -14305,5 +14300,10 @@ Country: DE
        id="path22732"
        d="m 900.98482,-486.99989 212.10028,0.0405"
        sodipodi:nodetypes="cc" />
+    <path
+       d="m 798.55897,-151.91355 c 0,25.14502 0,54.343545 0,77.688326"
+       id="path22734"
+       style="fill:none;stroke:#a80036;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:3.49999991, 3.49999991;stroke-dashoffset:0"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

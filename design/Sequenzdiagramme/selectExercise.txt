@@ -1,9 +1,11 @@
 @startuml
+skinparam dpi 700
+
 participant "menu : PopUpPanel" as menu
 participant "sEx1 : SelectExercise" as sEx1
 participant "app : App" as app
 participant "alertWindow : PopUpTextBox" as alertWindow
-participant "ex1 : Exercise1" as ex1
+participant "ex1 : ConcreteExercise" as ex1
 participant "App" as sApp
 
 [o-> menu

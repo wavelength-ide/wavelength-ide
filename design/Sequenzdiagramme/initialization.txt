@@ -1,15 +1,16 @@
 @startuml
+skinparam dpi 700
 
 participant ":Wavelength" as wl
-participant "app:App" as app
-participant "button:Button" as button
-participant "mainMenuButtonActivated:Image" as mmba
-participant "mainMenuButtonDeactivated:Image" as mmbd
-participant "mainMenuButton:ImageButton" as mmb
-participant "mainMenu:Menu" as mm
-participant "hideMainMenuAction:HideComponent" as hca
+participant "app : App" as app
+participant "button : Button" as button
+participant "mainMenuButtonActivated : Image" as mmba
+participant "mainMenuButtonDeactivated : Image" as mmbd
+participant "mainMenuButton : ImageButton" as mmb
+participant "mainMenu : Menu" as mm
+participant "hideMainMenuAction : HideComponent" as hca
 participant "RootPanel" as rp
-participant "root:RootPanel" as root
+participant "root : RootPanel" as root
 
 activate wl
 wl -> app : initialize()
@@ -25,7 +26,7 @@ create mmbd
 app -->> mmbd : <<create>>
 
 create mmb
-app -->> mmb : <<create>>
+app -->> mmb : <<create>>(button, mainMenuButtonActivated, mainMenuButtonDeactivated)
 
 create mm
 app -->> mm : <<create>>
@@ -35,8 +36,10 @@ app -->> hca : <<create>> (mainMenu)
 
 app -> mmb : setAction(hideMainMenuAction)
 activate mmb
-app <-- mmb 
+app <-- mmb
+deactivate mmb
 app -> mmb : show()
+activate mmb
 app <-- mmb
 deactivate mmb
 

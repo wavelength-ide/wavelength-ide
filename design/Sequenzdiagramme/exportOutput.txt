@@ -1,11 +1,13 @@
 @startuml
+skinparam dpi 700
+
 participant "exportOption : LabeledButton" as exportOption
 participant "export : SelectExportFormat" as export
 participant "exportWindow : PopUpWindow" as exportWindow
 participant "app : App" as app
 participant "App" as sApp
 participant "executor : Executor" as executor
-participant "format : ExportFormat" as format
+participant "format : LatexExport" as format
 
 [o-> exportOption
 activate exportOption

@@ -1,5 +1,7 @@
 @startuml
-participant "lEx1 : LoadExercise" as sEx1
+skinparam dpi 700
+
+participant "lEx1 : ConcreteExercise" as sEx1
 participant "app : App" as app
 participant "App" as sApp
 participant "exerciseField : TextField" as exerciseField

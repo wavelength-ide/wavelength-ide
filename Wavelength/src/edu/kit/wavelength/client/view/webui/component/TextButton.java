@@ -13,9 +13,9 @@ import edu.kit.wavelength.client.view.api.Writable;
 import edu.kit.wavelength.client.view.api.Readable;
 
 /**
- * A LabeldButton is an adapter class that wraps a GWT Button.
+ * A LabeldButton is an adapter class that wraps a GWT {@link Button}.
  *
- * It is labeled by text and can be blocked and unblocked to prevent the User
+ * It is labeled by text and can be locked and unlocked to prevent the User
  * from interacting with it. In Addition its behavior can be changed. This means
  * that the name of the label and the action that is performed when clicking
  * this button can be changed.

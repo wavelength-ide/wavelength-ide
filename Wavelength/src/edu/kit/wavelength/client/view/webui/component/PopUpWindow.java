@@ -7,10 +7,10 @@ import edu.kit.wavelength.client.view.api.Readable;
 import edu.kit.wavelength.client.view.api.Writable;
 
 /**
- * The PopUpTextBox is an adapter class for the GWT DialogeBox
+ * The PopUpTextBox is an adapter class for the GWT {@link DialogBox}
  * 
  * It is represented by a PopUpWindow that holds a TextField and possibly some
- * buttons (e.g. a close Button). It can be hidden or shown. Content can be written and read from the
+ * Buttons (e.g. a close Button). It can be hidden or shown. Content can be written and read from the
  * TextField.
  */
 public class PopUpWindow implements Writable, Hideable, Readable {

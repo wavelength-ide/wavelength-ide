@@ -9,9 +9,9 @@ import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Hideable;
 
 /**
- * An ImageButton is an adapter class that wraps a GWT Button.
+ * An ImageButton is an adapter class that wraps GWT's {@link Button} class.
  *
- * It is represented by an {@link Image}. The representing image changes if the
+ * It is represented by an {@link Image}. The representing image depends on whether the
  * Button is deactivated or not. In addition it can be hidden from the UI.
  */
 public class ImageButton implements Lockable, Hideable, Clickable {

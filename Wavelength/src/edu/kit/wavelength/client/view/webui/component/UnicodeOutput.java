@@ -1,8 +1,7 @@
 package edu.kit.wavelength.client.view.webui.component;
 
-import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Hideable;
+import edu.kit.wavelength.client.view.api.Lockable;
 
 /**
  * Displays lambda terms in text format with unicode symbols.

@@ -10,10 +10,10 @@ import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Readable;
 
 /**
- * A OptionBox is an adapter class for a GWT ListBox.
+ * An OptionBox is an adapter class for a GWT {@link ListBox}.
  * 
  * It provides a means for the User to set Options for a calculation. This Box
- * can be blocked and unblocked if changing the Options must not be possible.
+ * can be locked and unlocked if changing the Options must not be possible.
  */
 public class OptionBox implements Clickable, Hideable, Lockable, Readable, Serializable {
 

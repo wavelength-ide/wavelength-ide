@@ -8,7 +8,7 @@ import edu.kit.wavelength.client.view.api.Readable;
 
 
 /**
- * A TextField is an adapter class for a GWT TextArea.
+ * A TextField is an adapter class for a GWT {@link TextArea}.
  * 
  * A TextField can only be read. It provides a means to display text to the User
  * and can be hidden and shown.

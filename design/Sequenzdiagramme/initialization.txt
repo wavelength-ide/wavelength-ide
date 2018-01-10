@@ -14,8 +14,6 @@ participant "root:RootPanel" as root
 activate wl
 wl -> app : initialize()
 activate app
-wl <-- app
-deactivate wl
 
 create button
 app -->> button : <<create>>
@@ -52,6 +50,8 @@ activate root
 app <-- root
 deactivate root
 
+wl <-- app
 deactivate app
+deactivate wl
 
 @enduml

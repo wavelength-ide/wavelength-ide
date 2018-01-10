@@ -11,16 +11,14 @@ participant "reducedTerm : LambdaTerm" as rterm
 participant "observer : ExecutionObserver" as observer
 participant "App" as app
 
+activate exec
 create eng
 exec -->> eng: <<create>>(input, order, size, libraries)
 create action
 exec -->> action: <<create>>
 exec -> sched: scheduleIncremental(action)
 activate sched
-exec <-- sched
-deactivate sched
 sched -> action: execute()
-activate sched
 activate action
 
 action -> eng: stepForward()
@@ -62,5 +60,8 @@ action <-- observer
 deactivate observer
 sched <-- action
 deactivate action
+exec <-- sched
 deactivate sched
+deactivate exec
+
 @enduml

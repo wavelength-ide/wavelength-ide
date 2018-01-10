@@ -1,13 +1,13 @@
 @startuml
 skinparam dpi 700
 
-participant "lEx1 : ConcreteExercise" as sEx1
+participant "lEx1 : LoadExercise" as sEx1
 participant "app : App" as app
 participant "App" as sApp
 participant "exerciseField : TextField" as exerciseField
 participant "solutionField : TextField" as solutionField
 participant "alertWindow : PopUpTextBox" as alertWindow
-participant "ex1 : Exercise1" as ex1
+participant "ex1 : ConcreteExercise" as ex1
 participant "editor : Editor" as editor
 
 [o-> sEx1: run()

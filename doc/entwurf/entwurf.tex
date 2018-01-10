@@ -90,28 +90,36 @@ As a result of this architecture, the entirety of the model is decoupled from th
 
 \subsection{The model}
 
-The first set of packages (\texttt{\pkglnk{model}} and its subpackages) comprises most of the model and provides means for interactively, but
+The first set of packages (\texttt{\pkglnk{model}} and its subpackages) comprises most of the model 
+and provides means for interactively, but
 synchronously, operating on lambda terms. It is designed as a library that makes few
 assumptions about how it is used.
 
 It provides a package with a very general set of classes representing
-lambda terms as a tree structure of immutable objects. For operations on these lambda
-terms, the visitor pattern is utilized. Since many operations performed on lambda terms
-fall into a few categories (for example displaying terms in some way or transforming a term
-into another term), some special abstract visitors are provided in order to make these common
-operations less cumbersome. For the most fundamental operations on lambda terms, concrete
-visitors are provided, but the visitor interface may be implemented by any entity wishing
-to operate on lambda terms (for instance reduction orders or the user interface for displaying
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}}s as a 
+tree structure of immutable objects. For operations on these
+lambda terms, the visitor pattern is utilized. Since many operations performed on 
+lambda terms fall into a few categories (for example displaying terms in some way or transforming a 
+term into another term), some special abstract visitors are provided in order to make these common
+operations less cumbersome. For the most fundamental operations on 
+lambda terms, concrete visitors are provided, but the 
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.Visitor]{Visitor}} interface may be 
+implemented by any entity wishing to operate on lambda terms (for instance reduction orders or the 
+user interface for displaying
 terms).
 
-In addition to lambda terms and visitors and the ability to parse strings into
-lambda terms, the model provides interfaces for reduction orders,
+In addition to \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}}s 
+and visitors and the ability to parse strings into
+\texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}}s, the model 
+provides interfaces for reduction orders,
 output sizes and libraries as well as the implementations of the concrete reductions orders,
 output sizes and libraries mentioned in the \textit{Pflichtenheft}. These three
 concepts are each fully contained in separate packages which only use the package
-providing lambda terms.
+providing \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}}s.
 
-The central interface of the model to the user interface is the
+%TODO besseres englisch
+The central interface of the model to the user interface is the 
+\texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} wrapping the
 \texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}}
 class, which manages the state of an interactive reduction of a lambda term. It
 keeps the current state and history of the execution and allows performing the next
@@ -120,34 +128,34 @@ order.
 
 \subsection{The user interface}
 
-The second set of packages (\texttt{\pkglnk{view}} and its subpackages) manages building the User Interface (UI) 
-and enabling UI elements to interact with the Model.
+The second set of packages (\texttt{\pkglnk{view}} and its subpackages) manages building the user 
+interface (UI) and enabling UI elements to interact with the model.
 
 In order to abstract the necessary aspects of UI elements the \texttt{\pkglnk{view.api}} package 
 defines elementary interfaces.
 For a further narrowing of aspects the \texttt{\pkglnk{view.webui.component}} package wraps some of 
-GWT's widgets using the Adapter Pattern (each in its own class).
+GWT's widgets using the adapter pattern.
 
-Regarding user interaction the UI elements are able to run Actions as specified in the 
+Regarding user interaction the UI elements are able to run actions as specified in the 
 \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.Action]{Action}} interface when used (on click for example).
-Actions are supposed to cover an abundance of manipulations on other UI elements or even the Model.
+Actions are supposed to cover an abundance of manipulations on other UI elements or even the model.
 
-Since providing concurrency for the reduction of LambdaTerms is crucial for maintaining responsiveness of the UI 
-the \texttt{\pkglnk{view.execution}} package provides a Wrapper class for the \texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}} class and an associated
-Observer interface.
+Since providing concurrency for the reduction of lambda terms is crucial for maintaining responsiveness of the UI 
+the \texttt{\pkglnk{view.execution}} package provides a wrapper class for the \texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}} class and an associated
+observer interface.
 
-The communication between the View and the Model is handled by the \texttt{App} class. It stores all available UI elements and
-an \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} (wrapped ExecutionEngine) and provides access to them. 
-This feature is essential for Actions giving them easy access to resources.
+The communication between the view and the model is handled by the \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} class. It stores all available UI elements and
+an \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} (wrapping an \texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}}) and provides access to them. 
+This feature is essential for actions giving them easy access to resources.
 The general \texttt{\pkglnk{view}} package provides the \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} class but also a 
 \texttt{\hyperref[type:edu.kit.wavelength.client.view.URLSerializer]{URLSerializer}} class for serializing a URL and the associated Observer class.
 
-The \texttt{\pkglnk{view.update}} package provides concrete Observers for serialization and execution along with
-Visitors for resolving Lambda-Terms according to different outputFormats.
+The \texttt{\pkglnk{view.update}} package provides concrete observers for serialization and execution along with
+visitors for resolving lambda terms according to different outputFormats.
 
 The \texttt{\pkglnk{view.export}} package provides means of transforming the output to a specific Format.
 
-Lastly there is an Exercise Mode available represented by the \texttt{\pkglnk{view.exercise}} package providing
+Lastly there is an exercise mode available represented by the \texttt{\pkglnk{view.exercise}} package providing
 an interface, a concrete implementation and a static list of all exercises.
 
 \pagebreak

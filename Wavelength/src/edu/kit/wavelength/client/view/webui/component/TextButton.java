@@ -1,16 +1,13 @@
 package edu.kit.wavelength.client.view.webui.component;
 
-import java.io.IOException;
-import java.nio.CharBuffer;
-
 import com.google.gwt.user.client.ui.Button;
 
 import edu.kit.wavelength.client.view.action.Action;
 import edu.kit.wavelength.client.view.api.Clickable;
-import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Hideable;
-import edu.kit.wavelength.client.view.api.Writable;
+import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Readable;
+import edu.kit.wavelength.client.view.api.Writable;
 
 /**
  * A LabeldButton is an adapter class that wraps a GWT {@link Button}.

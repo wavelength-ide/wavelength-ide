@@ -33,9 +33,7 @@ import edu.kit.wavelength.client.view.webui.component.TreeOutput;
 import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
 
 /**
- * This class handles the current state of the application and the currently
- * displayed output. The initial state is the Input state and the output is
- * empty when the application is started.
+ * App is a singleton that initializes and holds the view.
  */
 public class App implements Serializable {
 	
@@ -53,14 +51,6 @@ public class App implements Serializable {
 			instance.initialize();
 		}
 		return instance;
-	}
-	
-	/**
-	 * Sets the singleton instance of App for testing.
-	 * @param a instance to set
-	 */
-	public static void set(App a) {
-		instance = a;
 	}
 	
 	/**

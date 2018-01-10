@@ -1,130 +1,32 @@
 @startuml
 
+participant ":Wavelength" as wl
 participant "app:App" as app
-participant "mainMenuButton:ImageButton" as mm
-participant "mainMenu:Menu"
-participant "editor:Editor" as edit
-participant "outputFormatList:ListBox"
-participant "outputFormat:OptionBox" as of
-participant "reductionOrderList:ListBox"
-participant "reductionOrder:OptionBox" as ro
-participant "outputSizeList:ListBox"
-participant "outputSize:OptionBox" as os
-participant "stepBackwards:ImageButton" as sbb
-participant "stepByStepMode:ImageButton" as sbs
-participant "stepForwards:ImageButton" as sfb
-participant "terminate:ImageButton" as tb
-participant "runButton:ImageButton" as rb
-participant "pauseButton:ImageButton" as pb
-participant "treeOutput:TreeOutput" as to
-participant "unicodeOutput:UnicodeOutput" as uo
-participant "export:ImageButton" as exb
-participant "exportFormats:List<TextButton>" as efl
-participant "exportDialog:DialogBox"
-participant "exportWindow:PopUpWindow" as exw
-participant "share:ImageButton" as sb
-participant "sharePanel:TextField" as sp
-participant "libraries:List<CheckBox>" as ll
-participant "exercises:List<TextButton>" as el
-participant "executor:Executor" as exec
+participant "mainMenuButton:ImageButton" as mmb
+participant "mainMenu:Menu" as mm
+participant "hideMainMenuAction:HideComponent" as hca
+participant "RootPanel" as rp
+participant "root:RootPanel" as root
 
-
-create mm
-app -->> mm : <<create>> (new Button(), new Image("mainMenuButtonActivated.png"), new Image("mainMenuButtonDeactivated.png"))
-create "mainMenu:Menu"
-app -->> "mainMenu:Menu" : <<Create>>
-app -> mm : setAction(new HideComponent(mainMenu))
-app -> mm : show()
-
-create edit
-app -->> edit : <<Create>>
-
-create "outputFormatList:ListBox"
-app -->> "outputFormatList:ListBox" : <<Create>>
-note left of "outputFormatList:ListBox" : contains each OutputFormat
-create of
-app -->> of : <<Create>> (outputFormatList)
-app -> of : show()
-
-create "reductionOrderList:ListBox"
-app -->> "reductionOrderList:ListBox" : <<Create>>
-note left of "reductionOrderList:ListBox" : contains each ReductionOrder
-create ro
-app -->> ro : <<Create>> (reductionOrderList)
-app -> ro : show()
-
-create "outputSizeList:ListBox"
-app -->> "outputSizeList:ListBox" : <<Create>>
-note left of "outputSizeList:ListBox" : contains each OutputSize
-create os
-app -->> os : <<Create>>
-app -> os : show()
-
-create sbb
-app -->> sbb : <<Create>> (new Button(), new Image("stepBackwardButtonActivated.png"), new Image("stepBackwardButtonDeactivated.png"))
-app -> sbb : setAction(new StepBackward())
-app -> sbb : show()
-
-create sbs
-app -->> sbs : <<Create>> (new Button(), new Image("stepByStepButtonActivated.png"), new Image("stepByStepButtonDeactivated.png"))
-app -> sbs : setAction(new StepByStep())
-app -> sbs : show()
-
-create sfb
-app -->> sfb : <<Create>> (new Button(), new Image("stepForwardButtonActivated.png"), new Image("stepForwardButtonDeactivated.png"))
-app -> sfb : setAction(new StepForward())
-app -> sfb : show()
-
-create tb
-app -->> tb : <<Create>> (new Button(), new Image("terminateButtonActivated.png"), new Image("terminateButtonDeactivated.png))
-app -> tb : setAction(new Stop())
-app -> tb : show()
-
-create rb
-app -->> rb : <<Create>> (new Button(), new Image("runButtonActivated.png"), new Image("runButtonDeactivated.png"))
-app -> rb : setAction(new RunNewExecution())
-app -> rb : show()
-
-create pb
-app -->>pb : <<Create>> (new Button(), new Image("pauseButtonActivated.png"), new Image("pauseButtonDeactivated.png"))
-app -> pb : setAction(new Pause())
-app -> pb : show
-
-create to
-app -->> to : <<Create>>
-create uo
-app -->> uo : <<Create>>
-
-create exb
-app -->> exb: <<Create>> (new Button(), new Image("exportButtonActivated.png"), new Image("exportButtonDeactivated.png"))
-create efl
-app -->> efl : <<Create>>
-note left of efl : contains each available ExportFormat
-app -> exb : setAction(new HideComponent(exportFormatList))
-
-create "exportDialog:DialogBox"
-app -->> "exportDialog:DialogBox" : <<create>>
-note left of "exportDialog:DialogBox" : The dialog has a TextField, a "close" Button and a "copy" Button. \n The TextField contains the current output in the selected Format
-create exw
-app -->> exw : <<Create>> (exportDialog)
-
-create sb
-app -->> sb : <<Create>> (new Button(), new Image("shareButtonActivated.png), new Image(shareButtonDeactivated.png))
-app -> sb : setAction(new UseShare(serializer))
-note left of sb : "serializer is a URLSerializer"
-app -> sb : show()
-
-create sp
-app -->> sp : <<Create>> (new TextArea())
-
-create ll
-app -->> ll : <<Create>>
-note left of ll : contains each available Library
-
-create el
-app -->> el : <<Create>>
-note left of el : contains each available Exercise
-
-
+activate wl
+wl -> app : initialize()
+activate app
+app -->> mmb : <<Create>> (new Button(), new Image("mainMenuButtonActivated.png"), new Image("mainMenuButtonDeactivated.png))
+activate mmb
+app -->> mm : <<Create>>
+activate mm
+app -->> hca : <<Create>> (mainMenu)
+activate hca
+deactivate mm
+app -> mmb : setAction(hideMainMenuAction)
+deactivate hca
+app -> mmb : show()
+app -> rp : get()
+activate rp
+rp --> app : root
+activate root
+app -> root : add(mainMenuButton)
+deactivate root
+deactivate mmb
 
 @enduml

@@ -1,7 +1,7 @@
 package edu.kit.wavelength.client.view.api;
 
 /**
- * Expresses that a view the view has a state that can be set and unset (e.g. a checkbox)
+ * Expresses that a view has a state that can be set and unset (e.g. a checkbox)
  */
 public interface Toggleable {
 	

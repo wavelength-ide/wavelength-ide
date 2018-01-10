@@ -57,8 +57,8 @@ The architecture differs from MVC in the sense that there is no communication be
 all communication between the two passes through the respective controller. 
 Additionally the controller is divided into two parts: \texttt{action} and \texttt{update}. 
 \texttt{action} handles user inputs from the view, while \texttt{update} handles concurrent updates from other sources, for instance the model.
-At the center of the architecture is the \texttt{App} class, which initializes and holds the view. 
-\texttt{action} and \texttt{update} both query \texttt{App} for the view elements it holds.
+At the center of the architecture is the \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} class, which initializes and holds the view. 
+\texttt{action} and \texttt{update} both query \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} for the view elements it holds.
 As a result of this architecture, the entirety of the model is decoupled from the view and the rest of the application.
 
 \begin{figure}[h]
@@ -83,7 +83,8 @@ As a result of this architecture, the entirety of the model is decoupled from th
 	\end{tikzpicture}
 	\caption{Sketch of the application architecture. Actions are indirectly called by the view
 	and updates are indirectly called by the model. Actions interact with the view and control the model,
-	while updates update the view. App initializes the application and provides access to the view to
+	while updates update the view. \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} initializes 
+	the application and provides access to the view to
 		actions and updates.}
 \end{figure}
 
@@ -119,7 +120,7 @@ order.
 
 \subsection{The user interface}
 
-The second set of packages (\texttt{\pkglnk{view}} and its subpackages) manages building the UI 
+The second set of packages (\texttt{\pkglnk{view}} and its subpackages) manages building the User Interface (UI) 
 and enabling UI elements to interact with the Model.
 
 In order to abstract the necessary aspects of UI elements the \texttt{\pkglnk{view.api}} package 
@@ -132,14 +133,14 @@ Regarding user interaction the UI elements are able to run Actions as specified 
 Actions are supposed to cover an abundance of manipulations on other UI elements or even the Model.
 
 Since providing concurrency for the reduction of LambdaTerms is crucial for maintaining responsiveness of the UI 
-the \texttt{\pkglnk{view.execution}} package provides a Wrapper class for the ExecutionEngine class and an associated
+the \texttt{\pkglnk{view.execution}} package provides a Wrapper class for the \texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}} class and an associated
 Observer interface.
 
-The communication between the View and the Model is handled by the App class. It stores all available UI elements and
-an Executor (wrapped ExecutionEngine) and provides access to them. This feature is essential for Actions giving them
-easy access to resources.
-The general \texttt{\pkglnk{view}} package provides the App class but also a URLSerializer class for serializing a URL
-and the associated Observer class.
+The communication between the View and the Model is handled by the \texttt{App} class. It stores all available UI elements and
+an \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} (wrapped ExecutionEngine) and provides access to them. 
+This feature is essential for Actions giving them easy access to resources.
+The general \texttt{\pkglnk{view}} package provides the \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} class but also a 
+\texttt{\hyperref[type:edu.kit.wavelength.client.view.URLSerializer]{URLSerializer}} class for serializing a URL and the associated Observer class.
 
 The \texttt{\pkglnk{view.update}} package provides concrete Observers for serialization and execution along with
 Visitors for resolving Lambda-Terms according to different outputFormats.

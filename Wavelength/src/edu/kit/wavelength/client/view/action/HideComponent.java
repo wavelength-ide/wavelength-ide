@@ -20,7 +20,7 @@ public class HideComponent implements Action {
 	 * @param hideable
 	 *            The UI component that is supposed to be hid or shown.
 	 */
-	private HideComponent(Hideable hideable) {
+	public HideComponent(Hideable hideable) {
 		this.hideable = hideable;
 	}
 

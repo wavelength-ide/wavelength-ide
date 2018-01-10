@@ -10,6 +10,7 @@ import edu.kit.wavelength.client.view.api.Clickable;
 import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
+import edu.kit.wavelength.client.view.api.Readable;
 
 /**
  * A LabeldButton is an adapter class that wraps a GWT Button.
@@ -64,11 +65,7 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 
 	}
 
-	@Override
-	public int read(CharBuffer arg0) throws IOException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
 	public boolean isLocked() {
@@ -80,6 +77,11 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 	public void write(String input) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String read() {
+		return null;
 	}
 
 }

@@ -44,9 +44,9 @@
      inkscape:window-height="775"
      id="namedview740"
      showgrid="true"
-     inkscape:zoom="0.13087675"
-     inkscape:cx="2417.6222"
-     inkscape:cy="460.23388"
+     inkscape:zoom="0.523507"
+     inkscape:cx="1405.6146"
+     inkscape:cy="410.04511"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -340,7 +340,57 @@
          mode="normal"
          id="feBlend8" />
     </filter>
+    <filter
+       y="-1"
+       x="-1"
+       width="300%"
+       id="f1o3k4nzwf4zyh"
+       height="300%">
+      <feGaussianBlur
+         id="feGaussianBlur2156"
+         stdDeviation="2.0"
+         result="blurOut" />
+      <feColorMatrix
+         id="feColorMatrix2158"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         type="matrix"
+         result="blurOut2"
+         in="blurOut" />
+      <feOffset
+         id="feOffset2160"
+         result="blurOut3"
+         in="blurOut2"
+         dy="4.0"
+         dx="4.0" />
+      <feBlend
+         id="feBlend2162"
+         mode="normal"
+         in2="blurOut3"
+         in="SourceGraphic" />
+    </filter>
   </defs>
+  <polygon
+     id="polygon13"
+     style="fill:#ffffff;stroke:#000000;stroke-width:2;filter:url(#fcb0bxxuu75vi)"
+     points="362,16 369,38.4883 3126,38.4883 3126,375 14,375 14,16 "
+     transform="matrix(1,0,0,2.1803539,41.6893,18.0944)" />
+  <line
+     id="line15"
+     y2="102.01249"
+     y1="102.01249"
+     x2="410.6893"
+     x1="55.689301"
+     style="stroke:#000000;stroke-width:2" />
+  <text
+     style="font-weight:bold;font-size:14px;font-family:sans-serif;fill:#000000"
+     id="text17"
+     y="31.5352"
+     x="18"
+     textLength="342"
+     lengthAdjust="spacingAndGlyphs"
+     font-weight="bold"
+     font-size="14"
+     transform="translate(41.6893,47.52421)">edu.kit.wavelength.client.view.webui.component</text>
   <a
      id="a30"
      xlink:type="simple"
@@ -700,125 +750,6 @@
        x2="2162"
        x1="2080"
        style="stroke:#a80036;stroke-width:1.5" />
-  </a>
-  <a
-     id="a147"
-     xlink:type="simple"
-     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextField"
-     xlink:show="new"
-     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TextField"
-     xlink:actuate="onRequest"
-     target="_top"
-     transform="translate(39.6893,85.52421)">
-    <rect
-       y="202.5"
-       x="277.5"
-       width="181"
-       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
-       id="TextField"
-       height="112.7754" />
-    <circle
-       r="11"
-       id="ellipse117"
-       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-       cy="218.5"
-       cx="337.25" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path119"
-       d="m 340.2231,224.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
-    <text
-       style="font-size:12px;font-family:sans-serif;fill:#000000"
-       id="text121"
-       y="223.0352"
-       x="357.75"
-       textLength="53"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="12">TextField</text>
-    <line
-       id="line123"
-       y2="234.5"
-       y1="234.5"
-       x2="457.5"
-       x1="278.5"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <line
-       id="line125"
-       y2="242.5"
-       y1="242.5"
-       x2="457.5"
-       x1="278.5"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <circle
-       r="3"
-       id="ellipse127"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="254.47749"
-       cx="288.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text129"
-       y="257.1348"
-       x="297.5"
-       textLength="155"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">TextField(TextArea textField)</text>
-    <circle
-       r="3"
-       id="ellipse131"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="267.43259"
-       cx="288.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text133"
-       y="270.08981"
-       x="297.5"
-       textLength="123"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void write(String input)</text>
-    <circle
-       r="3"
-       id="ellipse135"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="280.3877"
-       cx="288.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text137"
-       y="283.04489"
-       x="297.5"
-       textLength="57"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void hide()</text>
-    <circle
-       r="3"
-       id="ellipse139"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="293.3428"
-       cx="288.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text141"
-       y="296"
-       x="297.5"
-       textLength="62"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void show()</text>
-    <circle
-       r="3"
-       id="ellipse143"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="306.29791"
-       cx="288.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text145"
-       y="308.95511"
-       x="297.5"
-       textLength="98"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">boolean isShown()</text>
   </a>
   <a
      id="a160"
@@ -1251,125 +1182,6 @@
        font-size="11">String read()</text>
   </a>
   <a
-     id="a311"
-     xlink:type="simple"
-     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
-     xlink:show="new"
-     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
-     xlink:actuate="onRequest"
-     target="_top"
-     transform="translate(39.6893,85.52421)">
-    <rect
-       y="202.5"
-       x="1738"
-       width="124"
-       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
-       id="TreeOutput"
-       height="112.7754" />
-    <circle
-       r="11"
-       id="ellipse281"
-       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-       cy="218.5"
-       cx="1764.7" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path283"
-       d="m 1767.6731,224.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
-    <text
-       style="font-size:12px;font-family:sans-serif;fill:#000000"
-       id="text285"
-       y="223.0352"
-       x="1781.3"
-       textLength="66"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="12">TreeOutput</text>
-    <line
-       id="line287"
-       y2="234.5"
-       y1="234.5"
-       x2="1861"
-       x1="1739"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <line
-       id="line289"
-       y2="242.5"
-       y1="242.5"
-       x2="1861"
-       x1="1739"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <circle
-       r="3"
-       id="ellipse291"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="254.47749"
-       cx="1749" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text293"
-       y="257.1348"
-       x="1758"
-       textLength="56"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void lock()</text>
-    <circle
-       r="3"
-       id="ellipse295"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="267.43259"
-       cx="1749" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text297"
-       y="270.08981"
-       x="1758"
-       textLength="70"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void unlock()</text>
-    <circle
-       r="3"
-       id="ellipse299"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="280.3877"
-       cx="1749" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text301"
-       y="283.04489"
-       x="1758"
-       textLength="57"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void hide()</text>
-    <circle
-       r="3"
-       id="ellipse303"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="293.3428"
-       cx="1749" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text305"
-       y="296"
-       x="1758"
-       textLength="62"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void show()</text>
-    <circle
-       r="3"
-       id="ellipse307"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="306.29791"
-       cx="1749" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text309"
-       y="308.95511"
-       x="1758"
-       textLength="98"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">boolean isShown()</text>
-  </a>
-  <a
      id="a340"
      xlink:type="simple"
      xlink:title="java:edu.kit.wavelength.client.view.webui.component.Menu"
@@ -1636,195 +1448,6 @@
        font-size="11">void setAction(Action action)</text>
   </a>
   <a
-     id="a438"
-     xlink:type="simple"
-     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextButton"
-     xlink:show="new"
-     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TextButton"
-     xlink:actuate="onRequest"
-     target="_top"
-     transform="translate(39.6893,85.52421)">
-    <rect
-       y="170"
-       x="1201.5"
-       width="229"
-       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
-       id="TextButton"
-       height="177.5508" />
-    <circle
-       r="11"
-       id="ellipse388"
-       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-       cy="186"
-       cx="1280.75" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path390"
-       d="m 1283.7231,191.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
-    <text
-       style="font-size:12px;font-family:sans-serif;fill:#000000"
-       id="text392"
-       y="190.5352"
-       x="1301.25"
-       textLength="62"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="12">TextButton</text>
-    <line
-       id="line394"
-       y2="202"
-       y1="202"
-       x2="1429.5"
-       x1="1202.5"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <line
-       id="line396"
-       y2="210"
-       y1="210"
-       x2="1429.5"
-       x1="1202.5"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <circle
-       r="3"
-       id="ellipse398"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="221.97749"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text400"
-       y="224.6348"
-       x="1221.5"
-       textLength="203"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">TextButton(Button button, String text)</text>
-    <circle
-       r="3"
-       id="ellipse402"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="234.9326"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text404"
-       y="237.5898"
-       x="1221.5"
-       textLength="56"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void lock()</text>
-    <circle
-       r="3"
-       id="ellipse406"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="247.8877"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text408"
-       y="250.54491"
-       x="1221.5"
-       textLength="70"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void unlock()</text>
-    <circle
-       r="3"
-       id="ellipse410"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="260.8428"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text412"
-       y="263.5"
-       x="1221.5"
-       textLength="57"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void hide()</text>
-    <circle
-       r="3"
-       id="ellipse414"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="273.79791"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text416"
-       y="276.45511"
-       x="1221.5"
-       textLength="62"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void show()</text>
-    <circle
-       r="3"
-       id="ellipse418"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="286.7529"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text420"
-       y="289.41019"
-       x="1221.5"
-       textLength="98"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">boolean isShown()</text>
-    <circle
-       r="3"
-       id="ellipse422"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="299.70801"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text424"
-       y="302.3652"
-       x="1221.5"
-       textLength="156"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void setAction(Action action)</text>
-    <circle
-       r="3"
-       id="ellipse426"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="312.66309"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text428"
-       y="315.32031"
-       x="1221.5"
-       textLength="135"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">int read(CharBuffer arg0)</text>
-    <circle
-       r="3"
-       id="ellipse430"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="325.61819"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text432"
-       y="328.27539"
-       x="1221.5"
-       textLength="101"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">boolean isLocked()</text>
-    <circle
-       r="3"
-       id="ellipse434"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="338.57321"
-       cx="1212.5" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text436"
-       y="341.2305"
-       x="1221.5"
-       textLength="123"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void write(String input)</text>
-  </a>
-  <a
      id="a451"
      xlink:type="simple"
      xlink:title="java:edu.kit.wavelength.client.view.webui.component.UnicodeTerm"
@@ -2083,125 +1706,6 @@
        textLength="156"
        lengthAdjust="spacingAndGlyphs"
        font-size="11">void setAction(Action action)</text>
-  </a>
-  <a
-     id="a543"
-     xlink:type="simple"
-     xlink:title="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
-     xlink:show="new"
-     xlink:href="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
-     xlink:actuate="onRequest"
-     target="_top"
-     transform="translate(39.6893,85.52421)">
-    <rect
-       y="202.5"
-       x="1897"
-       width="124"
-       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#fcb0bxxuu75vi)"
-       id="UnicodeOutput"
-       height="112.7754" />
-    <circle
-       r="11"
-       id="ellipse513"
-       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
-       cy="218.5"
-       cx="1915.15" />
-    <path
-       inkscape:connector-curvature="0"
-       id="path515"
-       d="m 1918.1231,224.1431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z" />
-    <text
-       style="font-size:12px;font-family:sans-serif;fill:#000000"
-       id="text517"
-       y="223.0352"
-       x="1929.85"
-       textLength="85"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="12">UnicodeOutput</text>
-    <line
-       id="line519"
-       y2="234.5"
-       y1="234.5"
-       x2="2020"
-       x1="1898"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <line
-       id="line521"
-       y2="242.5"
-       y1="242.5"
-       x2="2020"
-       x1="1898"
-       style="stroke:#a80036;stroke-width:1.5" />
-    <circle
-       r="3"
-       id="ellipse523"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="254.47749"
-       cx="1908" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text525"
-       y="257.1348"
-       x="1917"
-       textLength="56"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void lock()</text>
-    <circle
-       r="3"
-       id="ellipse527"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="267.43259"
-       cx="1908" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text529"
-       y="270.08981"
-       x="1917"
-       textLength="70"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void unlock()</text>
-    <circle
-       r="3"
-       id="ellipse531"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="280.3877"
-       cx="1908" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text533"
-       y="283.04489"
-       x="1917"
-       textLength="57"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void hide()</text>
-    <circle
-       r="3"
-       id="ellipse535"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="293.3428"
-       cx="1908" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text537"
-       y="296"
-       x="1917"
-       textLength="62"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">void show()</text>
-    <circle
-       r="3"
-       id="ellipse539"
-       style="fill:#84be84;stroke:#038048;stroke-width:1"
-       cy="306.29791"
-       cx="1908" />
-    <text
-       style="font-size:11px;font-family:sans-serif;fill:#000000"
-       id="text541"
-       y="308.95511"
-       x="1917"
-       textLength="98"
-       lengthAdjust="spacingAndGlyphs"
-       font-size="11">boolean isShown()</text>
   </a>
   <a
      id="a610"
@@ -2870,4 +2374,592 @@
      style="fill:none;stroke:#a80036;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:6.99999981, 6.99999981;stroke-dashoffset:0"
      id="path7231"
      d="m 1403.0655,702.79861 c 169.114,-87.9248 391.6435,-203.6212 576.2474,-299.5997" />
+  <a
+     target="_top"
+     xlink:actuate="onRequest"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TextField"
+     xlink:show="new"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextField"
+     xlink:type="simple"
+     id="a2305"
+     transform="translate(36.810442,88.639728)">
+    <rect
+       height="125.7305"
+       id="TextField-2"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1o3k4nzwf4zyh)"
+       width="181"
+       x="277.5"
+       y="196" />
+    <circle
+       r="11"
+       cx="337.25"
+       cy="212"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       id="ellipse2271" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 340.2231,217.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+       id="path2273" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       font-size="12"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="53"
+       x="357.75"
+       y="216.5352"
+       id="text2275">TextField</text>
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="278.5"
+       x2="457.5"
+       y1="228"
+       y2="228"
+       id="line2277" />
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="278.5"
+       x2="457.5"
+       y1="236"
+       y2="236"
+       id="line2279" />
+    <circle
+       r="3"
+       cx="288.5"
+       cy="247.97749"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2281" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="155"
+       x="297.5"
+       y="250.6348"
+       id="text2283">TextField(TextArea textField)</text>
+    <circle
+       r="3"
+       cx="288.5"
+       cy="260.93259"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2285" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="123"
+       x="297.5"
+       y="263.58981"
+       id="text2287">void write(String input)</text>
+    <circle
+       r="3"
+       cx="288.5"
+       cy="273.8877"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2289" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="57"
+       x="297.5"
+       y="276.54489"
+       id="text2291">void hide()</text>
+    <circle
+       r="3"
+       cx="288.5"
+       cy="286.8428"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2293" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="62"
+       x="297.5"
+       y="289.5"
+       id="text2295">void show()</text>
+    <circle
+       r="3"
+       cx="288.5"
+       cy="299.79791"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2297" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="98"
+       x="297.5"
+       y="302.45511"
+       id="text2299">boolean isShown()</text>
+    <circle
+       r="3"
+       cx="288.5"
+       cy="312.7529"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2301" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="67"
+       x="297.5"
+       y="315.41019"
+       id="text2303">String read()</text>
+  </a>
+  <a
+     target="_top"
+     xlink:actuate="onRequest"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
+     xlink:show="new"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TreeOutput"
+     xlink:type="simple"
+     id="a2473"
+     transform="translate(46.845701,80.581108)">
+    <rect
+       height="125.7305"
+       id="TreeOutput-0"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1o3k4nzwf4zyh)"
+       width="127"
+       x="1737.5"
+       y="196" />
+    <circle
+       r="11"
+       cx="1765.55"
+       cy="212"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       id="ellipse2439" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 1768.5231,217.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+       id="path2441" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       font-size="12"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="66"
+       x="1782.45"
+       y="216.5352"
+       id="text2443">TreeOutput</text>
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="1738.5"
+       x2="1863.5"
+       y1="228"
+       y2="228"
+       id="line2445" />
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="1738.5"
+       x2="1863.5"
+       y1="236"
+       y2="236"
+       id="line2447" />
+    <circle
+       r="3"
+       cx="1748.5"
+       cy="247.97749"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2449" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="56"
+       x="1757.5"
+       y="250.6348"
+       id="text2451">void lock()</text>
+    <circle
+       r="3"
+       cx="1748.5"
+       cy="260.93259"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2453" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="70"
+       x="1757.5"
+       y="263.58981"
+       id="text2455">void unlock()</text>
+    <circle
+       r="3"
+       cx="1748.5"
+       cy="273.8877"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2457" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="57"
+       x="1757.5"
+       y="276.54489"
+       id="text2459">void hide()</text>
+    <circle
+       r="3"
+       cx="1748.5"
+       cy="286.8428"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2461" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="62"
+       x="1757.5"
+       y="289.5"
+       id="text2463">void show()</text>
+    <circle
+       r="3"
+       cx="1748.5"
+       cy="299.79791"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2465" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="98"
+       x="1757.5"
+       y="302.45511"
+       id="text2467">boolean isShown()</text>
+    <circle
+       r="3"
+       cx="1748.5"
+       cy="312.7529"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2469" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="101"
+       x="1757.5"
+       y="315.41019"
+       id="text2471">boolean isLocked()</text>
+  </a>
+  <a
+     target="_top"
+     xlink:actuate="onRequest"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.TextButton"
+     xlink:show="new"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.TextButton"
+     xlink:type="simple"
+     id="a2600"
+     transform="translate(39.6893,85.524229)">
+    <rect
+       height="177.5508"
+       id="TextButton-2"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1o3k4nzwf4zyh)"
+       width="229"
+       x="1201.5"
+       y="170" />
+    <circle
+       r="11"
+       cx="1280.75"
+       cy="186"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       id="ellipse2550" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 1283.7231,191.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+       id="path2552" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       font-size="12"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="62"
+       x="1301.25"
+       y="190.5352"
+       id="text2554">TextButton</text>
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="1202.5"
+       x2="1429.5"
+       y1="202"
+       y2="202"
+       id="line2556" />
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="1202.5"
+       x2="1429.5"
+       y1="210"
+       y2="210"
+       id="line2558" />
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="221.97749"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2560" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="203"
+       x="1221.5"
+       y="224.6348"
+       id="text2562">TextButton(Button button, String text)</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="234.9326"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2564" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="56"
+       x="1221.5"
+       y="237.5898"
+       id="text2566">void lock()</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="247.8877"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2568" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="70"
+       x="1221.5"
+       y="250.54491"
+       id="text2570">void unlock()</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="260.8428"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2572" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="57"
+       x="1221.5"
+       y="263.5"
+       id="text2574">void hide()</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="273.79791"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2576" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="62"
+       x="1221.5"
+       y="276.45511"
+       id="text2578">void show()</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="286.7529"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2580" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="98"
+       x="1221.5"
+       y="289.41019"
+       id="text2582">boolean isShown()</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="299.70801"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2584" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="156"
+       x="1221.5"
+       y="302.3652"
+       id="text2586">void setAction(Action action)</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="312.66309"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2588" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="101"
+       x="1221.5"
+       y="315.32031"
+       id="text2590">boolean isLocked()</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="325.61819"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2592" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="123"
+       x="1221.5"
+       y="328.27539"
+       id="text2594">void write(String input)</text>
+    <circle
+       r="3"
+       cx="1212.5"
+       cy="338.57321"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2596" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="67"
+       x="1221.5"
+       y="341.2305"
+       id="text2598">String read()</text>
+  </a>
+  <a
+     target="_top"
+     xlink:actuate="onRequest"
+     xlink:href="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
+     xlink:show="new"
+     xlink:title="java:edu.kit.wavelength.client.view.webui.component.UnicodeOutput"
+     xlink:type="simple"
+     id="a2709"
+     transform="translate(43.6237,81.98121)">
+    <rect
+       height="125.7305"
+       id="UnicodeOutput-7"
+       style="fill:#fefece;stroke:#a80036;stroke-width:1.5;filter:url(#f1o3k4nzwf4zyh)"
+       width="127"
+       x="1899.5"
+       y="196" />
+    <circle
+       r="11"
+       cx="1919"
+       cy="212"
+       style="fill:#add1b2;stroke:#a80036;stroke-width:1"
+       id="ellipse2675" />
+    <path
+       inkscape:connector-curvature="0"
+       d="m 1921.9731,217.6431 q -0.581,0.2988 -1.2202,0.4482 -0.6391,0.1494 -1.3447,0.1494 -2.5068,0 -3.8267,-1.6518 -1.3198,-1.6519 -1.3198,-4.773 0,-3.1294 1.3198,-4.7812 1.3199,-1.6519 3.8267,-1.6519 0.7056,0 1.353,0.1494 0.6475,0.1494 1.2119,0.4483 v 2.7226 q -0.6308,-0.581 -1.2243,-0.8508 -0.5935,-0.2698 -1.2244,-0.2698 -1.3447,0 -2.0295,1.0667 -0.6848,1.0666 -0.6848,3.1667 0,2.0918 0.6848,3.1585 0.6848,1.0666 2.0295,1.0666 0.6309,0 1.2244,-0.2698 0.5935,-0.2697 1.2243,-0.8508 z"
+       id="path2677" />
+    <text
+       style="font-size:12px;font-family:sans-serif;fill:#000000"
+       font-size="12"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="85"
+       x="1934"
+       y="216.5352"
+       id="text2679">UnicodeOutput</text>
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="1900.5"
+       x2="2025.5"
+       y1="228"
+       y2="228"
+       id="line2681" />
+    <line
+       style="stroke:#a80036;stroke-width:1.5"
+       x1="1900.5"
+       x2="2025.5"
+       y1="236"
+       y2="236"
+       id="line2683" />
+    <circle
+       r="3"
+       cx="1910.5"
+       cy="247.97749"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2685" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="56"
+       x="1919.5"
+       y="250.6348"
+       id="text2687">void lock()</text>
+    <circle
+       r="3"
+       cx="1910.5"
+       cy="260.93259"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2689" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="70"
+       x="1919.5"
+       y="263.58981"
+       id="text2691">void unlock()</text>
+    <circle
+       r="3"
+       cx="1910.5"
+       cy="273.8877"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2693" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="57"
+       x="1919.5"
+       y="276.54489"
+       id="text2695">void hide()</text>
+    <circle
+       r="3"
+       cx="1910.5"
+       cy="286.8428"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2697" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="62"
+       x="1919.5"
+       y="289.5"
+       id="text2699">void show()</text>
+    <circle
+       r="3"
+       cx="1910.5"
+       cy="299.79791"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2701" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="98"
+       x="1919.5"
+       y="302.45511"
+       id="text2703">boolean isShown()</text>
+    <circle
+       r="3"
+       cx="1910.5"
+       cy="312.7529"
+       style="fill:#84be84;stroke:#038048;stroke-width:1"
+       id="ellipse2705" />
+    <text
+       style="font-size:11px;font-family:sans-serif;fill:#000000"
+       font-size="11"
+       lengthAdjust="spacingAndGlyphs"
+       textLength="101"
+       x="1919.5"
+       y="315.41019"
+       id="text2707">boolean isLocked()</text>
+  </a>
 </svg>

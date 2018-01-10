@@ -1,7 +1,7 @@
 \subsection{Initialization of application}
-This sequence diagram shows how the application is initialized by way of example. The Wavelength class is called by GWT and initializes App. 
-App then initializes the view by creating all necessary components, configuring and composing them as necessary and wrapping them in adapter classes that streamline and abstract access to these UI components.
-Finally, App initializes the components with their respective actions, initializes the Executor and adds the top level component to the GWT root panel to start rendering the UI.
+This sequence diagram shows how the application is initialized by way of example. The \texttt{\hyperref[type:edu.kit.wavelength.client.client.Wavelength]{Wavelength}} class is called by GWT and initializes \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}}. 
+\texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} then initializes the view by creating all necessary components, configuring and composing them as necessary and wrapping them in adapter classes that streamline and abstract access to these UI components.
+Finally, \texttt{\hyperref[type:edu.kit.wavelength.client.view.App]{App}} initializes the components with their respective actions, initializes the \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} and adds the top level component to the GWT root panel to start rendering the UI.
 
 \begin{figure}[H]
 	\centering
@@ -10,9 +10,9 @@ Finally, App initializes the components with their respective actions, initializ
 
 \subsection{Example action: Select export format}
 This sequence diagram states as example for a simple action handler.
-In this action the user wants the currently displayed output translated into a specified format. The sequence diagram starts when the user selects the export format in the UI. 
-The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.SelectExportFormat]{SelectExportFormat}}SelectExportFormat poses as action handler for the selected UI element. Thus when this element is clicked, the actions \texttt{run()} method is called. All invoked instances are already existing, none is being created in this scenario.
-The actions \texttt{run()} method generates the dedicated representation by requesting the currently displayed lambda terms from the \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} instance and generating their representation.
+In this action the user wants the currently displayed output translated into a specified format. The sequence diagram starts when the user selects the \texttt{\hyperref[type:edu.kit.wavelength.client.view.export.Export]{Export}} format in the UI. 
+The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.SelectExportFormat]{SelectExportFormat}} class poses as an action handler for the selected UI element. Thus when this element is clicked, the actions \texttt{run()} method is called. All invoked instances are already existing, none is being created in this scenario.
+The actions \texttt{run()} method generates the dedicated representation by requesting the currently displayed \texttt{\hyperref[type:edu.kit.wavelength.client.model.term.LambdaTerm]{LambdaTerm}}s from the \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}} instance and generating their representation.
 The representation is then written into the export window that will be displayed to the user. Writing before showing this export window ensures, that at no point in time an empty window is displayed.
 
 \begin{figure}[H]
@@ -25,8 +25,8 @@ The representation is then written into the export window that will be displayed
 The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.SelectExercise]{SelectExercise}} 
 action handles the UI elements, when the user selects an exercise from the main menu.
 
-This action only prepares the UI to display the content of the selected exercise, 
-it does not load the actual content into the UI. If the content of the editor would 
+This action only prepares the UI to display the content of the selected \texttt{\hyperref[type:edu.kit.wavelength.client.view.exercise.ConcreteExercise]{ConcreteExercise}}, 
+it does not load the actual content into the UI. If the content of the \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.Editor]{Editor}} would 
 be overridden when the selected exerciser is loaded, the action displays a warning
 message. Otherwise it just calls the \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.LoadExercise]{LoadExercise}} 
 action which will in return load the selected exercise.
@@ -39,9 +39,9 @@ action which will in return load the selected exercise.
 
 \subsection{Example action: Load selected exercise}
 The \texttt{\hyperref[type:edu.kit.wavelength.client.view.action.LoadExercise]{LoadExercise}} 
-action loads a selected Exercise into the UI.
+action loads a selected \texttt{\hyperref[type:edu.kit.wavelength.client.view.exercise.ConcreteExercise]{ConcreteExercise}} into the UI.
 
-It updates the width of the Editor and displays \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.TextField]{TextField}}s 
+It updates the width of the \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.Editor]{Editor}} and displays \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.TextField]{TextField}}s 
 that are responsible for displaying solution and explanation of the exercise.
 The action also writes the correct content into the \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.TextField]{TextField}}s and updates the content of the \texttt{\hyperref[type:edu.kit.wavelength.client.view.webui.component.Editor]{Editor}} if necessary.
 
@@ -94,7 +94,7 @@ whose body changed as a result of the substitution, the name tag is removed.
 \end{figure}
 
 \subsection{Interaction between model and view for a reduction}
-This diagram shows how model and view interact when a reduction is performed. 
+This diagram shows how \texttt{\pkglnk{model}} and \texttt{\pkglnk{view}} interact when a reduction is performed. 
 Upon calling \texttt{start()} on \texttt{\hyperref[type:edu.kit.wavelength.client.view.execution.Executor]{Executor}}, 
 a new \texttt{\hyperref[type:edu.kit.wavelength.client.model.ExecutionEngine]{ExecutionEngine}} is created with the given options.
 It then schedules an action on the GWT scheduler to run at the end of every event loop iteration.

@@ -21,6 +21,9 @@
 \usepackage{bm}
 \graphicspath{./entwurf/}
 
+\usepackage{tikz}
+\usetikzlibrary{arrows, arrows.meta}
+
 \usepackage[hidelinks]{hyperref}
 
 \lstset{basicstyle=\ttfamily}
@@ -58,7 +61,31 @@ At the center of the architecture is the \texttt{App} class, which initializes a
 \texttt{action} and \texttt{update} both query \texttt{App} for the view elements it holds.
 As a result of this architecture, the entirety of the model is decoupled from the view and the rest of the application.
 
-%TODO: bild der architektur
+\begin{figure}[h]
+	\centering
+	\begin{tikzpicture}
+		\node[rectangle, draw] (app) at (0, 0) {App};
+		\node[rectangle, draw] (model) at (2.5, 0) {Model};
+		\node[rectangle, draw] (view) at (-2.5, 0) {View};
+		\node[rectangle, draw] (action) at (0, 2.5) {Action};
+		\node[rectangle, draw] (update) at (0, -2.5) {Update};
+
+		\draw[-{open diamond}] (app) -- (view);
+		\draw[-{open diamond}] (app) -- (model);
+		\draw[-{open diamond}] (app) -- (action);
+		\draw[-{open diamond}] (app) -- (update);
+
+		\draw[->] (action.east) to[bend left=40] (model.north);
+		\draw[->,dashed] (model.south) to[bend left=40] (update.east);
+		\draw[->] (update.west) to[bend left=40] (view.south);
+		\draw[->,dashed] ([xshift=0.1cm]view.north) to[bend left=40] ([yshift=-0.1cm]action.west);
+		\draw[->] ([yshift=0.1cm]action.west) to[bend right=40] ([xshift=-0.1cm]view.north);
+	\end{tikzpicture}
+	\caption{Sketch of the application architecture. Actions are indirectly called by the view
+	and updates are indirectly called by the model. Actions interact with the view and control the model,
+	while updates update the view. App initializes the application and provides access to the view to
+		actions and updates.}
+\end{figure}
 
 \subsection{The model}
 

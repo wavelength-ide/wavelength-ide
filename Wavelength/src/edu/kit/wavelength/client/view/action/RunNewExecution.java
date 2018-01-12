@@ -22,19 +22,20 @@ import edu.kit.wavelength.client.view.webui.component.Checkbox;
 public class RunNewExecution implements Action {
 
 	// for brevity
-	private static App a = App.get();
+	private static App app = App.get();
 	
+	// list of UI components to lock 
 	private static List<Lockable> lockOnRun = Arrays.asList(
-			a.outputFormatBox(), 
-			a.reductionOrderBox(), 
-			a.outputSizeBox(),
-			a.stepBackwardButton(),
-			a.stepByStepModeButton(),
-			a.stepForwardButton());
+			app.outputFormatBox(), 
+			app.reductionOrderBox(), 
+			app.outputSizeBox(),
+			app.stepBackwardButton(),
+			app.stepByStepModeButton(),
+			app.stepForwardButton());
 	static {
-		lockOnRun.addAll(a.exerciseButtons());
-		lockOnRun.addAll(a.libraryBoxes());
-		lockOnRun.addAll(a.exportFormatButtons());
+		lockOnRun.addAll(app.exerciseButtons());
+		lockOnRun.addAll(app.libraryBoxes());
+		lockOnRun.addAll(app.exportFormatButtons());
 	}
 	
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
@@ -48,28 +49,45 @@ public class RunNewExecution implements Action {
 	 */
 	@Override
 	public void run() {
-		// example code for starting the execution
-		String code = a.editor().read();
-		String orderName = a.reductionOrderBox().read();
+		// read the users input
+		String code = app.editor().read();
+		
+		// determine the selected reduction order
+		String orderName = app.reductionOrderBox().read();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
-		String sizeName = a.outputSizeBox().read();
+		
+		// determine the selected output size
+		String sizeName = app.outputSizeBox().read();
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
-		List<Library> libraries = a.libraryBoxes().stream().filter(Checkbox::isSet)
+		
+		// determine the selected libraries
+		List<Library> libraries = app.libraryBoxes().stream().filter(Checkbox::isSet)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
 				.collect(Collectors.toList());
-		a.executor().start(code, order, size, libraries);
-		// possibly error handling, reporting back to editor etc.
-		String outputFormatName = a.outputFormatBox().read();
+		
+		// start the execution with the selected options
+		app.executor().start(code, order, size, libraries);
+		
+		//TODO: possibly error handling, reporting back to editor etc.
+		
+		// lock the view components
+		lockOnRun.forEach(Lockable::lock);
+		
+		// runButton -> pauseButton
+		app.runButton().hide();
+		app.pauseButton().show();
+		
+		// determine the selected output format, then display and lock it 
+		String outputFormatName = app.outputFormatBox().read();
 		switch (outputFormatName) {
 		case App.UnicodeOutputName:
-			a.unicodeOutput().show();
+			app.unicodeOutput().show();
+			app.unicodeOutput().lock();
 			break;
 		case App.TreeOutputName:
-			a.treeOutput().show();
+			app.treeOutput().show();
+			app.treeOutput().lock();
 			break;
 		}
-		lockOnRun.forEach(Lockable::lock);
-		a.runButton().hide();
-		a.pauseButton().show();
 	}
 }

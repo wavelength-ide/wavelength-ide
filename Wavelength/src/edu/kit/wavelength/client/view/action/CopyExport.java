@@ -2,6 +2,10 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
 
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+
 /**
  * This action class copies the generated and displayed export output to the
  * users clipboard.
@@ -14,7 +18,8 @@ public class CopyExport implements Action {
 	 */
 	@Override
 	public void run() {
-		App.get().exportWindow().read();
-		// copy to clipboard
+		StringSelection export = new StringSelection(App.get().exportWindow().read());
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+	    clipboard.setContents(export, export);	
 	}
 }

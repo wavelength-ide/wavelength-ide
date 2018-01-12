@@ -11,6 +11,7 @@ import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
 public class SelectExportFormat implements Action {
 
 	private Export exportFormat;
+	private static App app = App.get();
 
 	/**
 	 * Constructs a new action handler for the selection of an export format.
@@ -29,8 +30,8 @@ public class SelectExportFormat implements Action {
 	 */
 	@Override
 	public void run() {
-		PopUpWindow exportWindow = App.get().exportWindow();
-		exportWindow.write(exportFormat.getRepresentation(App.get().executor().getDisplayed()));
+		PopUpWindow exportWindow = app.exportWindow();
+		exportWindow.write(exportFormat.getRepresentation(app.executor().getDisplayed()));
 		exportWindow.show();
 	}
 }

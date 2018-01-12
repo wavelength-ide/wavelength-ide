@@ -7,6 +7,8 @@ import edu.kit.wavelength.client.view.exercise.Exercise;
  * the selected exercise.
  */
 public class LoadExercise implements Action {
+	
+	private Exercise exercise;
 
 	/**
 	 * Constructs a new action for changing the UI from standard input view to
@@ -16,7 +18,7 @@ public class LoadExercise implements Action {
 	 *            The selected Exercise that should be displayed to the user
 	 */
 	public LoadExercise(final Exercise exercise) {
-
+		this.exercise = exercise;
 	}
 
 	/**

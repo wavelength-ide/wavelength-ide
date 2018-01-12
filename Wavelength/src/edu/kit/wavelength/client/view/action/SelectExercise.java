@@ -17,7 +17,7 @@ public class SelectExercise implements Action {
 	 *            the selected Exercise that should be loaded
 	 */
 	public SelectExercise(final Exercise exercise) {
-
+		this.exercise = exercise;
 	}
 
 	/**

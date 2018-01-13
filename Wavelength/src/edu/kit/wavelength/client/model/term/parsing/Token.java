@@ -9,6 +9,8 @@ package edu.kit.wavelength.client.model.term.parsing;
  */
 public class Token {
 
+	private final String content;
+	
 	/**
 	 * Creates a new Token containing the entered String.
 	 * 
@@ -16,7 +18,7 @@ public class Token {
 	 *            The String to be stored in the Token
 	 */
 	public Token(String content) {
-
+		this.content = content;
 	}
 
 	/**
@@ -25,6 +27,6 @@ public class Token {
 	 * @return The String making up the token
 	 */
 	public String getContent() {
-		return null;
+		return content;
 	}
 }

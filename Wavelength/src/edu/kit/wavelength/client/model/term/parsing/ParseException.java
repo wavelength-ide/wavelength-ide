@@ -8,6 +8,10 @@ import java.lang.Exception;
  */
 public class ParseException extends Exception {
 
+	private final String message;
+	private final int row;
+	private final int column; 
+	
 	/**
 	 * Creates a new ParseException with the entered parameters.
 	 * @param message A message to the user describing the error causing the exception
@@ -15,7 +19,9 @@ public class ParseException extends Exception {
 	 * @param column The row containing the source of this exception
 	 */
 	public ParseException(String message, int row, int column) {
-		
+		this.message = message;
+		this.row = row;
+		this.column = column;
 	}
 	
 	/**
@@ -23,7 +29,7 @@ public class ParseException extends Exception {
 	 * @return The row in which the error occurred
 	 */
 	public int getRow() {
-		return 0;
+		return row;
 	}
 	
 	/**
@@ -31,7 +37,12 @@ public class ParseException extends Exception {
 	 * @return The column in which the error occurred
 	 */
 	public int getColumn() {
-		return 0;
+		return row;
+	}
+	
+	@Override
+	public String getMessage() {
+		return message;
 	}
 	
 }

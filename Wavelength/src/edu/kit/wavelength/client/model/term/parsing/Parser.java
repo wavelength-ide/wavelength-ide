@@ -14,6 +14,8 @@ import java.util.List;
  */
 public class Parser {
 
+	private final List<Library> loadedLibraries;
+	
 	/**
 	 * Initializes a new parser.
 	 * 
@@ -21,7 +23,7 @@ public class Parser {
 	 *            The {@link Libraries} to be taken into consideration during parsing
 	 */
 	public Parser(List<Library> libraries) {
-
+		this.loadedLibraries = libraries;
 	}
 
 	/**

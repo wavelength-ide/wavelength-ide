@@ -16,6 +16,8 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
+import edu.kit.wavelength.client.view.action.Action;
+import edu.kit.wavelength.client.view.action.Pause;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
@@ -82,6 +84,15 @@ public class App implements Serializable {
 	private List<TextButton> exercises;
 	private List<TextButton> exportFormats;
 	private Executor executor;
+	
+	private TextButton showSolution;
+	private TextButton hideSolution;
+	private TextButton exitExerciseModeButton;
+	private PopUpWindow enterExerciseMode;
+	private PopUpWindow leaveExerciseMode;
+	private TextField solutionPanel;
+	private TextField taskPanel;
+	
 	// etc.
 	
 	/**
@@ -250,6 +261,62 @@ public class App implements Serializable {
 	 */
 	public Executor executor() {
 		return executor;
+	}
+	
+	/**
+	 * Gets the Button that can be used for showing the solution of the current {@link Exercise}.
+	 * @return The Button used for showing the current {@link Exercise}'s solution
+	 */
+	public TextButton showSolutionButton() {
+		return this.showSolution;
+	}
+	
+	/**
+	 * Gets the Button that can be used for hiding the solution of the current {@link Exercise}.
+	 * @return The Button used for hiding the current {@link Exercise}'s solution
+	 */
+	public TextButton hideSolutionButton() {
+		return this.hideSolution;
+	}
+	
+	/**
+	 * Gets the Button that can be used for exiting the exercise mode.
+	 * @return The Button used for exiting the exercise mode
+	 */
+	public TextButton exitExerciseModeButton() {
+		return this.exitExerciseModeButton;
+	}
+	
+	/**
+	 * Gets the Dialog that is shown when entering exercise mode.
+	 * @return The Dialog shown when entering exercise mode
+	 */
+	public PopUpWindow enterExerciseMode() {
+		return this.enterExerciseMode;
+	}
+	
+	/**
+	 * Gets the Dialog that is shown when leaving exercise mode.
+	 * @return The Dialog shown when leaving exercise mode
+	 */
+	public PopUpWindow leaveExerciseMode() {
+		return this.leaveExerciseMode;
+	}
+	
+	/**
+	 * Gets the TextArea that can be used to show the current {@link Exercise}'s solution.
+	 * @return The TextArea showing the current {@link Exercise}'s solution
+	 */
+	public TextField solutionPanel() {
+		return this.solutionPanel;
+	}
+	
+	/**
+	 * Gets the TextArea that can be used to show the current {@link Exercise}'s task.
+	 * @return The TextArea showing the current {@link Exercise}'s task
+	 */
+	public TextField taskPanel() {
+		return this.taskPanel;
 	}
 	
 	// etc.

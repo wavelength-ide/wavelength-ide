@@ -15,8 +15,8 @@ public class EnterDefaultMode implements Action {
 
 	private static App app = App.get();
 
-	// TODO: exitButton, solutionButton, solutionPanel, exercisePanel
-	private static List<Hideable> componentsToHide = Arrays.asList();
+	private static List<Hideable> componentsToHide = Arrays.asList(app.exitExerciseModeButton(),
+			app.hideSolutionButton(), app.showSolutionButton(), app.solutionPanel(), app.taskPanel());
 
 	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
 			app.outputSizeBox(), app.reductionOrderBox());
@@ -27,7 +27,7 @@ public class EnterDefaultMode implements Action {
 	}
 
 	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.terminateButton());
+			app.stepForwardButton(), app.terminateButton(), app.treeOutput(), app.unicodeOutput());
 
 	/**
 	 * Resizes the editor window to full width, hides the solution and task windows
@@ -44,19 +44,6 @@ public class EnterDefaultMode implements Action {
 		componentsToLock.forEach(Lockable::lock);
 		app.pauseButton().hide();
 		app.runButton().show();
-
-		// determine the selected output format, then display and lock it
-		String outputFormatName = app.outputFormatBox().read();
-		switch (outputFormatName) {
-		case App.UnicodeOutputName:
-			app.unicodeOutput().show();
-			app.unicodeOutput().lock();
-			break;
-		case App.TreeOutputName:
-			app.treeOutput().show();
-			app.treeOutput().lock();
-			break;
-		}
 	}
 
 }

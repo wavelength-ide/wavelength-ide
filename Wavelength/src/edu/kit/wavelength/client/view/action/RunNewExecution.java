@@ -23,68 +23,65 @@ public class RunNewExecution implements Action {
 
 	// for brevity
 	private static App app = App.get();
-	
-	// list of UI components to lock 
-	private static List<Lockable> lockOnRun = Arrays.asList(
-			app.outputFormatBox(), 
-			app.reductionOrderBox(), 
-			app.outputSizeBox(),
-			app.stepBackwardButton(),
-			app.stepByStepModeButton(),
-			app.stepForwardButton());
+
+	// list of UI components to lock
+	private static List<Lockable> lockOnRun = Arrays.asList(app.outputFormatBox(), app.reductionOrderBox(),
+			app.outputSizeBox(), app.stepBackwardButton(), app.stepByStepModeButton(), app.stepForwardButton());
 	static {
 		lockOnRun.addAll(app.exerciseButtons());
 		lockOnRun.addAll(app.libraryBoxes());
 		lockOnRun.addAll(app.exportFormatButtons());
 	}
-	
+
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
 	}
 
 	/**
 	 * Reads the users input and all required options from the option menus and
-	 * delegates the reduction process to the Executor.
-	 * Disables the editor and option menus and toggles the play button.
+	 * delegates the reduction process to the Executor. Disables the editor and
+	 * option menus and toggles the play button.
 	 */
 	@Override
 	public void run() {
 		// read the users input
 		String code = app.editor().read();
-		
+
 		// determine the selected reduction order
 		String orderName = app.reductionOrderBox().read();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
-		
+
 		// determine the selected output size
 		String sizeName = app.outputSizeBox().read();
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
-		
+
 		// determine the selected libraries
 		List<Library> libraries = app.libraryBoxes().stream().filter(Checkbox::isSet)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
 				.collect(Collectors.toList());
-		
+
 		// start the execution with the selected options
 		app.executor().start(code, order, size, libraries);
-		
-		//TODO: possibly error handling, reporting back to editor etc.
-		
+
+		// TODO: possibly error handling, reporting back to editor etc.
+
 		// lock the view components
 		lockOnRun.forEach(Lockable::lock);
-		
+
 		// runButton -> pauseButton
 		app.runButton().hide();
 		app.pauseButton().show();
-		
-		// determine the selected output format, then display and lock it 
+
+		// determine the selected output format, display and lock it, hide the other
 		String outputFormatName = app.outputFormatBox().read();
 		switch (outputFormatName) {
 		case App.UnicodeOutputName:
+			app.treeOutput().hide();
 			app.unicodeOutput().show();
 			app.unicodeOutput().lock();
 			break;
 		case App.TreeOutputName:
+			app.unicodeOutput().hide();
 			app.treeOutput().show();
 			app.treeOutput().lock();
 			break;

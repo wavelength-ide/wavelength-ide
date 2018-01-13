@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.view.App;
 
 /**
  * Action that initiates a manual step on a particular redex in an output view.
@@ -26,7 +27,7 @@ public class StepManually implements Action {
 	 */
 	@Override
 	public void run() {
-
+		App.get().executor().stepForward(redex);
 	}
 
 }

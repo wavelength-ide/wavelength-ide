@@ -1,14 +1,37 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.Arrays;
+import java.util.List;
+
+import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.exercise.Exercise;
+import edu.kit.wavelength.client.view.api.Hideable;
+import edu.kit.wavelength.client.view.api.Lockable;
 
 /**
  * This class changes the view from standard input to exercise view to display
  * the selected exercise.
  */
 public class LoadExercise implements Action {
-	
+
 	private Exercise exercise;
+
+	private static App app = App.get();
+
+	private static List<Hideable> componentsToShow = Arrays.asList(app.exitExerciseModeButton(),
+			app.showSolutionButton(), app.solutionPanel(), app.taskPanel());
+
+	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
+			app.outputSizeBox(), app.reductionOrderBox());
+
+	static {
+		componentsToUnlock.addAll(app.libraryBoxes());
+		componentsToUnlock.addAll(app.exerciseButtons());
+		componentsToUnlock.addAll(app.exportFormatButtons());
+	}
+
+	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
+			app.stepForwardButton(), app.terminateButton(), app.treeOutput(), app.unicodeOutput());
 
 	/**
 	 * Constructs a new action for changing the UI from standard input view to
@@ -28,7 +51,16 @@ public class LoadExercise implements Action {
 	 */
 	@Override
 	public void run() {
+		// TODO: resize editor width
+		// terminate running execution
+		app.executor().terminate();
 
+		componentsToShow.forEach(Hideable::show);
+		componentsToLock.forEach(Lockable::lock);
+		componentsToUnlock.forEach(Lockable::unlock);
+
+		app.pauseButton().hide();
+		app.runButton().show();
 	}
 
 }

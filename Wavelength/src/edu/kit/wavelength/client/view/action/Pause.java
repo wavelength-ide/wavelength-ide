@@ -14,12 +14,11 @@ public class Pause implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> unlockOnPause = Arrays.asList(app.reductionOrderBox(), app.stepBackwardButton(),
+	private static List<Lockable> componentsToUnlock = Arrays.asList(app.reductionOrderBox(), app.stepBackwardButton(),
 			app.stepByStepModeButton(), app.stepForwardButton(), app.treeOutput(), app.unicodeOutput());
 	static {
-		unlockOnPause.addAll(app.exerciseButtons());
-		unlockOnPause.addAll(app.libraryBoxes());
-		unlockOnPause.addAll(app.exportFormatButtons());
+		componentsToUnlock.addAll(app.exerciseButtons());
+		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 
 	/**
@@ -32,7 +31,7 @@ public class Pause implements Action {
 		app.executor().pause();
 
 		// unlock the needed view components
-		unlockOnPause.forEach(Lockable::unlock);
+		componentsToUnlock.forEach(Lockable::unlock);
 		// pauseButton -> runButton
 		app.runButton().show();
 		app.pauseButton().hide();

@@ -7,6 +7,11 @@ package edu.kit.wavelength.client.model.term;
  */
 public abstract class PartialApplication implements LambdaTerm {
 
+	private String name;
+	private LambdaTerm inner;
+	private int numParameters;
+	private Visitor<Boolean>[] checks;
+	
 	/**
 	 * Creates a new partial application that has not yet bound any parameters.
 	 * @param name The name of the library function.
@@ -16,12 +21,15 @@ public abstract class PartialApplication implements LambdaTerm {
 	 * has the correct format for acceleration
 	 */
 	public PartialApplication(String name, LambdaTerm inner, int numParameters, Visitor<Boolean>[] checks) {
-		
+		this.name = name;
+		this.inner = inner;
+		this.numParameters = numParameters;
+		this.checks = checks;
 	}
 	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
-		return null;
+		return v.visitPartialApplication(this);
 	}
 	
 	/**
@@ -37,7 +45,7 @@ public abstract class PartialApplication implements LambdaTerm {
 	 * @return The name of the library function for the partial application
 	 */
 	public String getName() {
-		return null;
+		return name;
 	}
 
 	/**

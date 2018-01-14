@@ -6,18 +6,22 @@ package edu.kit.wavelength.client.model.term;
  */
 public final class NamedTerm implements LambdaTerm {
 
+	private String name;
+	private LambdaTerm inner;
+	
 	/**
 	 * Creates a new named term.
 	 * @param name The name of the term
 	 * @param inner The actual term that is being named
 	 */
 	public NamedTerm(String name, LambdaTerm inner) {
-		
+		this.name = name;
+		this.inner = inner;
 	}
 	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
-		return null;
+		return v.visitNamedTerm(this);
 	}
 
 	/**
@@ -25,7 +29,7 @@ public final class NamedTerm implements LambdaTerm {
 	 * @return The term that the named term represents
 	 */
 	public LambdaTerm getInner() {
-		return null;
+		return inner;
 	}
 	
 	/**
@@ -33,7 +37,7 @@ public final class NamedTerm implements LambdaTerm {
 	 * @return The name of the term
 	 */
 	public String getName() {
-		return null;
+		return name;
 	}
 	
 	@Override

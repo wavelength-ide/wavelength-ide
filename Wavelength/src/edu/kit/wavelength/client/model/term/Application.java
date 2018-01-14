@@ -9,18 +9,22 @@ package edu.kit.wavelength.client.model.term;
  */
 public final class Application implements LambdaTerm {
 
+	private LambdaTerm leftHandSide;
+	private LambdaTerm rightHandSide;
+	
 	/**
 	 * Creates a new application.
 	 * @param leftHandSide The left hand side of the application
 	 * @param rightHandSide The right hand side of the application
 	 */
 	public Application(LambdaTerm leftHandSide, LambdaTerm rightHandSide) {
-		
+		this.leftHandSide = leftHandSide;
+		this.rightHandSide = rightHandSide;
 	}
 	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
-		return null;
+		return v.visitApplication(this);
 	}
 	
 	/**
@@ -28,7 +32,7 @@ public final class Application implements LambdaTerm {
 	 * @return The left hand side of the application
 	 */
 	public LambdaTerm getLeftHandSide() {
-		return null;
+		return leftHandSide;
 	}
 	
 	/**
@@ -36,7 +40,7 @@ public final class Application implements LambdaTerm {
 	 * @return The right hand side of the application
 	 */
 	public LambdaTerm getRightHandSide() {
-		return null;
+		return rightHandSide;
 	}
 	
 	@Override

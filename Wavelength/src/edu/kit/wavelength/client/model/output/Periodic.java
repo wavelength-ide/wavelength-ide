@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.output;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,27 +9,37 @@ import java.util.List;
  */
 public final class Periodic implements OutputSize {
 
+	private final int period;
+	
 	/**
 	 * Creates a periodic output size with the given period.
 	 * @param period The period of terms to be displayed
 	 */
 	public Periodic(int period) {
-		
+		this.period = period;
 	}
 	
 	@Override
 	public boolean displayLive(int step) {
-		return false;
+		if ((step % period) == 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
-		return null;
+		ArrayList<Integer> displaySteps = new ArrayList<Integer>();
+		if ((totalSteps % period) != 0) {
+			displaySteps.add(totalSteps);
+		}
+		return displaySteps;
 	}
 
 	@Override
 	public String getName() {
-		return null;
+		return "Periodic";
 	}
 
 	@Override

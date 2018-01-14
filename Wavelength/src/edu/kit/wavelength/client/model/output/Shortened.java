@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.output;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,28 +9,40 @@ import java.util.List;
  *
  */
 public final class Shortened implements OutputSize {
+
+	private final int cutoff;
 	
 	/**
 	 * Creates a shortened output size policy with the given cutoff.
 	 * @param cutoff How many terms are to be shown at the beginning and the end
 	 */
 	public Shortened(int cutoff) {
-		
+		this.cutoff = cutoff;
 	}
 
 	@Override
 	public boolean displayLive(int step) {
-		return false;
+		if (step < cutoff) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
-		return null;
+		ArrayList<Integer> displaySteps = new ArrayList<Integer>();
+		for (int i = totalSteps - cutoff; i <= totalSteps; i++) {
+			if (i >= cutoff) {
+				displaySteps.add(i);
+			}
+		}	
+		return displaySteps;
 	}
 
 	@Override
 	public String getName() {
-		return null;
+		return "Shortened";
 	}
 
 	@Override

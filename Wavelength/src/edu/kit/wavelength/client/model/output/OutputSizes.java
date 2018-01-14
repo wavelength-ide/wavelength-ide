@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.output;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**

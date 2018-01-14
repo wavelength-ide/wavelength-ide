@@ -31,6 +31,8 @@ public class StepByStep implements Action {
 		componentsToLock.addAll(app.libraryBoxes());
 		componentsToLock.addAll(app.exerciseButtons());
 	}
+	
+	private static List<Lockable> componentsToUnlock = Arrays.asList(app.stepForwardButton());
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
@@ -61,14 +63,20 @@ public class StepByStep implements Action {
 
 		app.executor().stepByStep(code, order, size, libraries);
 
-		// determine the selected output format, then display and lock it
+		// set the view
+		componentsToLock.forEach(Lockable::lock);
+		componentsToUnlock.forEach(Lockable::unlock);
+
+		// determine the selected output format, then display and unlock it
 		String outputFormatName = app.outputFormatBox().read();
 		switch (outputFormatName) {
 		case App.UnicodeOutputName:
 			app.unicodeOutput().show();
+			app.unicodeOutput().unlock();
 			break;
 		case App.TreeOutputName:
 			app.treeOutput().show();
+			app.treeOutput().unlock();
 			break;
 		}
 	}

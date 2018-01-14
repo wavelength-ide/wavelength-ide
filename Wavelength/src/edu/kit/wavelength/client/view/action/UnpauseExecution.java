@@ -13,8 +13,8 @@ public class UnpauseExecution implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.reductionOrderBox(), app.treeOutput(), app.unicodeOutput());
+	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepForwardButton(),
+			app.reductionOrderBox(), app.treeOutput(), app.unicodeOutput());
 	static {
 		componentsToLock.addAll(app.exerciseButtons());
 		componentsToLock.addAll(app.exportFormatButtons());

@@ -7,12 +7,15 @@ import edu.kit.wavelength.client.view.App;
  * execution.
  */
 public class StepForward implements Action {
+	
+	private static App app = App.get();
 
 	/**
 	 * Requests and displays the next reduction step.
 	 */
 	@Override
 	public void run() {
-		App.get().executor().stepForward();
+		app.executor().stepForward();
+		app.stepBackwardButton().unlock();
 	}
 }

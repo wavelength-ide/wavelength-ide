@@ -14,8 +14,8 @@ public class Stop implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.terminateButton());
+	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepForwardButton(),
+			app.terminateButton());
 
 	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
 			app.outputSizeBox(), app.reductionOrderBox());
@@ -34,17 +34,16 @@ public class Stop implements Action {
 	public void run() {
 		// terminate running execution
 		app.executor().terminate();
-		
+
 		// set view components
 		componentsToLock.forEach(Lockable::lock);
 		componentsToUnlock.forEach(Lockable::unlock);
-		
+
 		app.pauseButton().hide();
 		app.runButton().show();
-		
+
 		app.treeOutput().lock();
 		app.unicodeOutput().lock();
-		
 
 	}
 }

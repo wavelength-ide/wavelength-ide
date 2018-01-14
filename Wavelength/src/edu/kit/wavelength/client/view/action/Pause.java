@@ -15,9 +15,8 @@ public class Pause implements Action {
 	private static App app = App.get();
 
 	private static List<Lockable> componentsToUnlock = Arrays.asList(app.reductionOrderBox(), app.stepBackwardButton(),
-			app.stepByStepModeButton(), app.stepForwardButton(), app.treeOutput(), app.unicodeOutput());
+			app.stepForwardButton(), app.treeOutput(), app.unicodeOutput());
 	static {
-		componentsToUnlock.addAll(app.exerciseButtons());
 		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 

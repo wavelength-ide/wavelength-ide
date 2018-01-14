@@ -15,19 +15,33 @@ public class EnterDefaultMode implements Action {
 
 	private static App app = App.get();
 
-	private static List<Hideable> componentsToHide = Arrays.asList(app.exitExerciseModeButton(),
-			app.hideSolutionButton(), app.showSolutionButton(), app.solutionPanel(), app.taskPanel());
+	private static List<Hideable> componentsToHide = Arrays.asList(
+			app.exitExerciseModeButton(),
+			app.hideSolutionButton(), 
+			app.showSolutionButton(), 
+			app.solutionPanel(), 
+			app.taskPanel()
+			);
 
-	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
-			app.outputSizeBox(), app.reductionOrderBox());
+	private static List<Lockable> componentsToUnlock = Arrays.asList(
+			app.editor(), 
+			app.outputFormatBox(),
+			app.outputSizeBox(), 
+			app.reductionOrderBox()
+			);
 	static {
 		componentsToUnlock.addAll(app.libraryBoxes());
 		componentsToUnlock.addAll(app.exerciseButtons());
 		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.terminateButton(), app.treeOutput(), app.unicodeOutput());
+	private static List<Lockable> componentsToLock = Arrays.asList(
+			app.stepBackwardButton(), 
+			app.stepForwardButton(),
+			app.terminateButton(), 
+			app.treeOutput(), 
+			app.unicodeOutput()
+			);
 
 	/**
 	 * Resizes the editor window to full width, hides the solution and task windows
@@ -44,6 +58,8 @@ public class EnterDefaultMode implements Action {
 		componentsToLock.forEach(Lockable::lock);
 		app.pauseButton().hide();
 		app.runButton().show();
+
+		// TODO: clear input and output
 	}
 
 }

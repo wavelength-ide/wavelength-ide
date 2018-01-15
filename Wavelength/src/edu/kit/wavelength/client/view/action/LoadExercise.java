@@ -18,11 +18,18 @@ public class LoadExercise implements Action {
 
 	private static App app = App.get();
 
-	private static List<Hideable> componentsToShow = Arrays.asList(app.exitExerciseModeButton(),
-			app.showSolutionButton(), app.solutionPanel(), app.taskPanel());
+	private static List<Hideable> componentsToShow = Arrays.asList(
+			app.exitExerciseModeButton(),
+			app.showSolutionButton(), 
+			app.taskPanel()
+			);
 
-	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
-			app.outputSizeBox(), app.reductionOrderBox());
+	private static List<Lockable> componentsToUnlock = Arrays.asList(
+			app.editor(), 
+			app.outputFormatBox(),
+			app.outputSizeBox(), 
+			app.reductionOrderBox()
+			);
 
 	static {
 		componentsToUnlock.addAll(app.libraryBoxes());
@@ -30,8 +37,14 @@ public class LoadExercise implements Action {
 		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.terminateButton(), app.treeOutput(), app.unicodeOutput());
+	private static List<Lockable> componentsToLock = Arrays.asList(
+			app.stepBackwardButton(), 
+			app.stepByStepModeButton(),
+			app.stepForwardButton(), 
+			app.terminateButton(), 
+			app.treeOutput(), 
+			app.unicodeOutput()
+			);
 
 	/**
 	 * Constructs a new action for changing the UI from standard input view to
@@ -52,15 +65,22 @@ public class LoadExercise implements Action {
 	@Override
 	public void run() {
 		// TODO: clear input and output -> leerer String
-		// TODO: write task etc. in panels
 		
 		// terminate running execution
 		app.executor().terminate();
-
+		
 		componentsToShow.forEach(Hideable::show);
 		componentsToLock.forEach(Lockable::lock);
 		componentsToUnlock.forEach(Lockable::unlock);
-
+		
+		// hide solution as default
+		app.solutionPanel().hide();
+		
+		// set task and solution to the dedicated panel
+		app.taskPanel().write(exercise.getTask());
+		app.solutionPanel().write(exercise.getSolution());
+		
+		// toggle play/pause button
 		app.pauseButton().hide();
 		app.runButton().show();
 	}

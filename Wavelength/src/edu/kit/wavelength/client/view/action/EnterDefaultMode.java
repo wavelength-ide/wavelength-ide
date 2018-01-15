@@ -56,10 +56,14 @@ public class EnterDefaultMode implements Action {
 		componentsToHide.forEach(Hideable::hide);
 		componentsToUnlock.forEach(Lockable::unlock);
 		componentsToLock.forEach(Lockable::lock);
+		
+		// toggle play/pause button
 		app.pauseButton().hide();
 		app.runButton().show();
 
-		// TODO: clear exercise panels
+		// clear exercise panels
+		app.solutionPanel().write("");
+		app.taskPanel().write("");
 		// TODO: clear input and output -> leerer String
 	}
 

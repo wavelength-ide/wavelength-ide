@@ -25,8 +25,15 @@ public class RunNewExecution implements Action {
 	private static App app = App.get();
 
 	// list of UI components to lock
-	private static List<Lockable> lockOnRun = Arrays.asList(app.outputFormatBox(), app.reductionOrderBox(),
-			app.outputSizeBox(), app.stepBackwardButton(), app.stepByStepModeButton(), app.stepForwardButton());
+	private static List<Lockable> lockOnRun = Arrays.asList(
+			app.outputFormatBox(), 
+			app.reductionOrderBox(),
+			app.outputSizeBox(), 
+			app.stepBackwardButton(), 
+			app.stepByStepModeButton(), 
+			app.stepForwardButton()
+			);
+	
 	static {
 		lockOnRun.addAll(app.exerciseButtons());
 		lockOnRun.addAll(app.libraryBoxes());

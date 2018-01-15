@@ -51,8 +51,8 @@ public class LoadExercise implements Action {
 	 */
 	@Override
 	public void run() {
-		// TODO: resize editor width
-		// TODO: clear input and output
+		// TODO: clear input and output -> leerer String
+		// TODO: write task etc. in panels
 		
 		// terminate running execution
 		app.executor().terminate();

@@ -14,7 +14,7 @@ public class StepBackward implements Action {
 	 */
 	@Override
 	public void run() {
-		// TODO: remove step from output? 
+		// TODO: remove step from output? -> Methode von component
 		app.executor().stepBackward();
 		if (app.executor().getDisplayed().isEmpty()) {
 			app.stepBackwardButton().lock();

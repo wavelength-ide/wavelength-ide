@@ -59,7 +59,8 @@ public class EnterDefaultMode implements Action {
 		app.pauseButton().hide();
 		app.runButton().show();
 
-		// TODO: clear input and output
+		// TODO: clear exercise panels
+		// TODO: clear input and output -> leerer String
 	}
 
 }

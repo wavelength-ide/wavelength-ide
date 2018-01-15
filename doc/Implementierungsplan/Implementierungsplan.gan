@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Wavelength-Ide" company="Wavelength" webLink="https://github.com/wavelength-ide" view-date="2018-01-08" view-index="1" gantt-divider-location="373" resource-divider-location="300" version="2.8.5" locale="de">
+<?xml version="1.0" encoding="UTF-8"?><project name="Wavelength-Ide" company="Wavelength" webLink="https://github.com/wavelength-ide" view-date="2018-01-08" view-index="0" gantt-divider-location="404" resource-divider-location="300" version="2.8.5" locale="de">
     <description><![CDATA[Wavelength is THE IDE for the world's most awesome programming language : the untyped lambda calculus
 
 "We can only see a short distance ahead, but we can see plenty there that needs to be done."
    Alan Turing
 ]]></description>
-    <view zooming-state="default:5" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="125" order="0"/>
-        <field id="tpd4" name="Anfang" width="66" order="1"/>
-        <field id="tpd5" name="Ende" width="60" order="2"/>
-        <field id="tpd8" name="Verantwortlich" width="101" order="3"/>
+    <view zooming-state="default:4" id="gantt-chart">
+        <field id="tpd3" name="Vorgang" width="133" order="0"/>
+        <field id="tpd4" name="Anfang" width="74" order="1"/>
+        <field id="tpd5" name="Ende" width="68" order="2"/>
+        <field id="tpd8" name="Verantwortlich" width="108" order="3"/>
         <option id="taskLabelUp" value="name"/>
         <option id="taskLabelDown" value="coordinator"/>
         <option id="taskLabelLeft" value=""/>
@@ -42,28 +42,32 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="14" name="model" color="#8cb6ce" meeting="false" start="2018-01-13" duration="30" complete="0" expand="true"/>
-        <task id="5" name="model.term" color="#8cb6ce" meeting="false" start="2018-01-13" duration="30" complete="0" expand="true"/>
-        <task id="16" name="model.term.parsing" color="#8cb6ce" meeting="false" start="2018-01-22" duration="21" complete="0" expand="true"/>
+        <task id="14" name="model" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true"/>
+        <task id="5" name="model.term" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true"/>
+        <task id="16" name="model.term.parsing" color="#8cb6ce" meeting="false" start="2018-01-13" duration="21" complete="0" expand="true"/>
         <task id="19" name="model.output" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-        <task id="2" name="model.reduction" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-        <task id="18" name="model.library" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-        <task id="8" name="view" meeting="false" start="2018-01-13" duration="16" complete="0" expand="true">
-            <task id="28" name="App" color="#8cb6ce" meeting="false" start="2018-01-13" duration="16" complete="0" expand="true"/>
+        <task id="2" name="model.reduction" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true">
+            <task id="40" name="normale Reduktionsordnung" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
+            <task id="41" name="restliche Reduktionsordnungen" color="#8cb6ce" meeting="false" start="2018-02-03" duration="4" complete="0" expand="true"/>
+        </task>
+        <task id="18" name="model.library" color="#8cb6ce" meeting="false" start="2018-02-03" duration="4" complete="0" expand="true"/>
+        <task id="8" name="view" meeting="false" start="2018-01-13" duration="23" complete="0" expand="true">
+            <task id="28" name="App" color="#8cb6ce" meeting="false" start="2018-01-13" duration="23" complete="0" expand="true"/>
         </task>
         <task id="4" name="view.webui.component" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true">
             <task id="23" name="Editor" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
             <task id="25" name="Wrapper-Klassen" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
         </task>
-        <task id="7" name="view.exercise" color="#8cb6ce" meeting="false" start="2018-02-03" duration="9" complete="0" expand="true"/>
+        <task id="7" name="view.exercise" color="#8cb6ce" meeting="false" start="2018-02-03" duration="4" complete="0" expand="true"/>
         <task id="9" name="view.execution" color="#8cb6ce" meeting="false" start="2018-01-22" duration="7" complete="0" expand="true"/>
-        <task id="11" name="view.action" color="#8cb6ce" meeting="false" start="2018-01-13" duration="16" complete="0" expand="true"/>
-        <task id="12" name="view.export" color="#8cb6ce" meeting="false" start="2018-01-29" duration="14" complete="0" expand="true"/>
-        <task id="13" name="view.update + Output in view.webui.component" color="#8cb6ce" meeting="false" start="2018-01-29" duration="14" complete="0" expand="true"/>
+        <task id="11" name="view.action" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
+        <task id="12" name="view.export" color="#8cb6ce" meeting="false" start="2018-01-22" duration="12" complete="0" expand="true"/>
+        <task id="13" name="view.update + Output in view.webui.component" color="#8cb6ce" meeting="false" start="2018-01-22" duration="14" complete="0" expand="true"/>
+        <task id="33" name="Serialisierung" color="#8cb6ce" meeting="false" start="2018-01-29" duration="9" complete="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="1" name="Markus" function="SoftwareDevelopment:2" contacts="" phone=""/>
-        <resource id="4" name="Philipp" function="SoftwareDevelopment:2" contacts="" phone=""/>
+        <resource id="4" name="Philip" function="SoftwareDevelopment:2" contacts="" phone=""/>
         <resource id="2" name="Marc" function="SoftwareDevelopment:2" contacts="" phone=""/>
         <resource id="0" name="Muhammet" function="SoftwareDevelopment:2" contacts="" phone=""/>
         <resource id="3" name="Jean-Pierre" function="SoftwareDevelopment:2" contacts="" phone=""/>
@@ -74,23 +78,25 @@
         <allocation task-id="5" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="75.0"/>
         <allocation task-id="16" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="19" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
-        <allocation task-id="2" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
         <allocation task-id="18" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
+        <allocation task-id="40" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="41" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="23" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
         <allocation task-id="9" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
-        <allocation task-id="7" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
+        <allocation task-id="7" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="13" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="28" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
         <allocation task-id="28" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="7" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
+        <allocation task-id="7" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="12" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="25" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
-        <allocation task-id="7" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
-        <allocation task-id="11" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="25" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="7" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="12" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="33" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="11" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="7" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
+        <allocation task-id="7" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="33" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
     <previous/>

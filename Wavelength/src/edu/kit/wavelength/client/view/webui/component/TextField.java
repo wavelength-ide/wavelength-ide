@@ -6,7 +6,6 @@ import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Writable;
 import edu.kit.wavelength.client.view.api.Readable;
 
-
 /**
  * A TextField is an adapter class for a GWT {@link TextArea}.
  * 
@@ -15,6 +14,8 @@ import edu.kit.wavelength.client.view.api.Readable;
  */
 public class TextField implements Hideable, Writable, Readable {
 
+	private TextArea wrappedTextArea;
+
 	/**
 	 * Constructs a new and empty TextField.
 	 * 
@@ -22,32 +23,31 @@ public class TextField implements Hideable, Writable, Readable {
 	 *            The GWT TextArea that this class wraps
 	 */
 	public TextField(TextArea textField) {
-
+		wrappedTextArea = textField;
 	}
 
 	@Override
 	public void write(String input) {
-
+		wrappedTextArea.setText(input);
 	}
 
 	@Override
 	public void hide() {
-
+		wrappedTextArea.setVisible(false);
 	}
 
 	@Override
 	public void show() {
-
+		wrappedTextArea.setVisible(true);
 	}
 
 	@Override
 	public boolean isShown() {
-		return false;
+		return wrappedTextArea.isVisible();
 	}
 
 	@Override
 	public String read() {
-		return null;
+		return wrappedTextArea.getText();
 	}
-
 }

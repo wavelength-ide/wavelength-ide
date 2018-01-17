@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.PushButton;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -328,7 +329,7 @@ public class App implements Serializable {
 		String state = Window.Location.getPath();
 		// deserialize
 		
-		mainMenuButton = new ImageButton(new Button(), new Image(), new Image());
+		mainMenuButton = new ImageButton(new PushButton(), new Image(), new Image());
 		editor = new Editor();
 		//create ListBox for outputFormats
 		outputFormat = new OptionBox(new ListBox());
@@ -338,14 +339,14 @@ public class App implements Serializable {
 		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
 		//create ListBox for outputSizes
 		outputSize = new OptionBox(new ListBox());
-		stepBackward = new ImageButton(new Button(), new Image(), new Image());
-		stepByStepMode = new ImageButton(new Button(), new Image(), new Image());
-		stepForward = new ImageButton(new Button(), new Image(), new Image());
-		terminate = new ImageButton(new Button(), new Image(), new Image());
-		run = new ImageButton(new Button(), new Image(), new Image());
-		pause = new ImageButton(new Button(), new Image(), new Image());
-		export = new ImageButton(new Button(), new Image(), new Image());
-		share = new ImageButton(new Button(), new Image(), new Image());
+		stepBackward = new ImageButton(new PushButton(), new Image(), new Image());
+		stepByStepMode = new ImageButton(new PushButton(), new Image(), new Image());
+		stepForward = new ImageButton(new PushButton(), new Image(), new Image());
+		terminate = new ImageButton(new PushButton(), new Image(), new Image());
+		run = new ImageButton(new PushButton(), new Image(), new Image());
+		pause = new ImageButton(new PushButton(), new Image(), new Image());
+		export = new ImageButton(new PushButton(), new Image(), new Image());
+		share = new ImageButton(new PushButton(), new Image(), new Image());
 		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
 		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());

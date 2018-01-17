@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
+// TODO: Klasse fällt evtl. weg 
 /**
  * This action class copies the generated and displayed export output to the
  * users clipboard.

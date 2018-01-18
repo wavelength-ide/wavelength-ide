@@ -55,6 +55,7 @@ public class RunNewExecution implements Action {
 		// read the users input
 		String code = app.editor().read();
 
+		// TODO: find() Sachen in components, Rückgabetyp von read() ist generisch
 		// determine the selected reduction order
 		String orderName = app.reductionOrderBox().read();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));

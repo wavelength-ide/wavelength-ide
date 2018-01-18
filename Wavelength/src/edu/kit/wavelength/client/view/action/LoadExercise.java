@@ -18,17 +18,20 @@ public class LoadExercise implements Action {
 
 	private static App app = App.get();
 
+	// UI components to show the user
 	private static List<Hideable> componentsToShow = Arrays.asList(
 			app.exitExerciseModeButton(),
 			app.showSolutionButton(), 
 			app.taskPanel()
 			);
 
+	// UI components that can now be interacted with
 	private static List<Lockable> componentsToUnlock = Arrays.asList(
 			app.editor(), 
 			app.outputFormatBox(),
 			app.outputSizeBox(), 
-			app.reductionOrderBox()
+			app.reductionOrderBox(),
+			app.stepByStepModeButton()
 			);
 
 	static {
@@ -37,9 +40,9 @@ public class LoadExercise implements Action {
 		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 
+	// UI components that can no longer be interacted with
 	private static List<Lockable> componentsToLock = Arrays.asList(
 			app.stepBackwardButton(), 
-			app.stepByStepModeButton(),
 			app.stepForwardButton(), 
 			app.terminateButton(), 
 			app.treeOutput(), 
@@ -83,7 +86,7 @@ public class LoadExercise implements Action {
 		app.taskPanel().write(exercise.getTask());
 		app.solutionPanel().write(exercise.getSolution());
 		
-		// toggle play/pause button
+		// toggle run/pause button
 		app.pauseButton().hide();
 		app.runButton().show();
 	}

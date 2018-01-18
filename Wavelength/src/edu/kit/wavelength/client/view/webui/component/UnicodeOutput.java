@@ -41,4 +41,8 @@ public class UnicodeOutput implements Lockable, Hideable, Writable {
 	public void write(String input) {
 		
 	}
+	
+	public void removeLastTerm() {
+		
+	}
 }

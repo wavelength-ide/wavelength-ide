@@ -7,7 +7,7 @@ import edu.kit.wavelength.client.view.App;
  * execution.
  */
 public class StepForward implements Action {
-	
+
 	private static App app = App.get();
 
 	/**
@@ -16,6 +16,9 @@ public class StepForward implements Action {
 	@Override
 	public void run() {
 		app.executor().stepForward();
-		app.stepBackwardButton().unlock();
+		// unlock the step backwards button if stepping back is possible
+		if (!app.executor().getDisplayed().isEmpty()) {
+			app.stepBackwardButton().unlock();
+		}
 	}
 }

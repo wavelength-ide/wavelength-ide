@@ -10,21 +10,21 @@ import edu.kit.wavelength.client.view.api.Writable;
 public class TreeOutput implements Lockable, Hideable, Writable {
 
 	@Override
-	public void lock() {		
+	public void lock() {
 	}
 
 	@Override
-	public void unlock() {		
+	public void unlock() {
 	}
 
 	@Override
 	public void hide() {
-		
+
 	}
 
 	@Override
 	public void show() {
-		
+
 	}
 
 	@Override
@@ -39,6 +39,10 @@ public class TreeOutput implements Lockable, Hideable, Writable {
 
 	@Override
 	public void write(String input) {
-		
+
+	}
+
+	public void removeLastTerm() {
+
 	}
 }

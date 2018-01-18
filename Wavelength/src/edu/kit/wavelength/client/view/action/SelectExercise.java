@@ -29,6 +29,5 @@ public class SelectExercise implements Action {
 	@Override
 	public void run() {
 		App.get().enterExerciseMode();
-		// TODO: action for okay button -> how pass the selected exercise
 	}
 }

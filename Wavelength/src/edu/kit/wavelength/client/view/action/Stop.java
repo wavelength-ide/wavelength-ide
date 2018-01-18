@@ -14,11 +14,23 @@ public class Stop implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepForwardButton(),
-			app.terminateButton());
+	// UI components that can no longer be interacted with
+	private static List<Lockable> componentsToLock = Arrays.asList(
+			app.stepBackwardButton(), 
+			app.stepForwardButton(),
+			app.terminateButton(),
+			app.treeOutput(),
+			app.unicodeOutput()
+			);
 
-	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
-			app.outputSizeBox(), app.reductionOrderBox());
+	// UI components that can now be interacted with
+	private static List<Lockable> componentsToUnlock = Arrays.asList(
+			app.editor(), 
+			app.outputFormatBox(),
+			app.outputSizeBox(), 
+			app.reductionOrderBox(),
+			app.stepByStepModeButton()
+			);
 
 	static {
 		componentsToUnlock.addAll(app.libraryBoxes());
@@ -39,11 +51,8 @@ public class Stop implements Action {
 		componentsToLock.forEach(Lockable::lock);
 		componentsToUnlock.forEach(Lockable::unlock);
 
+		// toggle run/pause button
 		app.pauseButton().hide();
 		app.runButton().show();
-
-		app.treeOutput().lock();
-		app.unicodeOutput().lock();
-
 	}
 }

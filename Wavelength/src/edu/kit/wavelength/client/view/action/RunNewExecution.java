@@ -23,11 +23,10 @@ import edu.kit.wavelength.client.view.webui.component.Checkbox;
  */
 public class RunNewExecution implements Action {
 
-	// for brevity
 	private static App app = App.get();
 
-	// list of UI components to lock
-	private static List<Lockable> lockOnRun = Arrays.asList(
+	// UI components that can no longer be interacted with
+	private static List<Lockable> componentsToLock = Arrays.asList(
 			app.outputFormatBox(), 
 			app.reductionOrderBox(),
 			app.outputSizeBox(), 
@@ -37,9 +36,9 @@ public class RunNewExecution implements Action {
 			);
 
 	static {
-		lockOnRun.addAll(app.exerciseButtons());
-		lockOnRun.addAll(app.libraryBoxes());
-		lockOnRun.addAll(app.exportFormatButtons());
+		componentsToLock.addAll(app.exerciseButtons());
+		componentsToLock.addAll(app.libraryBoxes());
+		componentsToLock.addAll(app.exportFormatButtons());
 	}
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
@@ -71,7 +70,7 @@ public class RunNewExecution implements Action {
 
 		// TODO: possibly error handling, reporting back to editor etc.
 		Parser testParser = new Parser(libraries);
-
+		
 		try {
 			testParser.parse(code);
 		} catch (ParseException e) {
@@ -79,7 +78,7 @@ public class RunNewExecution implements Action {
 			int row = e.getRow();
 			int column = e.getColumn();
 			// TODO: set text in output; we definitely need an interface, its insane to
-			// always check the outputformat
+			// always check the output format
 			return;
 		}
 
@@ -87,9 +86,9 @@ public class RunNewExecution implements Action {
 		app.executor().start(code, order, size, libraries);
 
 		// lock the view components
-		lockOnRun.forEach(Lockable::lock);
+		componentsToLock.forEach(Lockable::lock);
 
-		// runButton -> pauseButton
+		// toggle run/pause button
 		app.runButton().hide();
 		app.pauseButton().show();
 

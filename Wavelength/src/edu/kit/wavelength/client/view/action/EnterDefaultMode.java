@@ -61,7 +61,7 @@ public class EnterDefaultMode implements Action {
 		componentsToUnlock.forEach(Lockable::unlock);
 		componentsToLock.forEach(Lockable::lock);
 		
-		// toggle play/pause button
+		// toggle run/pause button
 		app.pauseButton().hide();
 		app.runButton().show();
 
@@ -72,6 +72,9 @@ public class EnterDefaultMode implements Action {
 		app.editor().write("");
 		app.unicodeOutput().write("");
 		app.treeOutput().write("");
+		
+		// set unicode output as default
+		app.unicodeOutput().show();
 	}
 
 }

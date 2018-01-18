@@ -24,6 +24,7 @@ public class StepByStep implements Action {
 
 	private static App app = App.get();
 
+	// UI components that can no longer be interacted with
 	private static List<Lockable> componentsToLock = Arrays.asList(
 			app.editor(), 
 			app.outputSizeBox(),
@@ -36,6 +37,7 @@ public class StepByStep implements Action {
 		componentsToLock.addAll(app.exerciseButtons());
 	}
 	
+	// UI components that can now be interacted with
 	private static List<Lockable> componentsToUnlock = Arrays.asList(app.stepForwardButton());
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {

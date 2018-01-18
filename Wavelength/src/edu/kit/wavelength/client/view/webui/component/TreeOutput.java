@@ -1,13 +1,11 @@
 package edu.kit.wavelength.client.view.webui.component;
 
-import edu.kit.wavelength.client.view.api.Hideable;
-import edu.kit.wavelength.client.view.api.Lockable;
-import edu.kit.wavelength.client.view.api.Writable;
+import edu.kit.wavelength.client.view.api.Output;
 
 /**
  * Displays lambda terms in tree format.
  */
-public class TreeOutput implements Lockable, Hideable, Writable {
+public class TreeOutput implements Output {
 
 	@Override
 	public void lock() {
@@ -41,8 +39,13 @@ public class TreeOutput implements Lockable, Hideable, Writable {
 	public void write(String input) {
 
 	}
-
+	
+	@Override
 	public void removeLastTerm() {
 
+	}
+	
+	public void setTerm(TreeTerm term) {
+		
 	}
 }

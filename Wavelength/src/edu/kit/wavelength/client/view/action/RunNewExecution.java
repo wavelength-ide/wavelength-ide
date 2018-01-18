@@ -35,7 +35,7 @@ public class RunNewExecution implements Action {
 			app.stepByStepModeButton(), 
 			app.stepForwardButton()
 			);
-	
+
 	static {
 		lockOnRun.addAll(app.exerciseButtons());
 		lockOnRun.addAll(app.libraryBoxes());
@@ -68,25 +68,23 @@ public class RunNewExecution implements Action {
 		List<Library> libraries = app.libraryBoxes().stream().filter(Checkbox::isSet)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
 				.collect(Collectors.toList());
-		
+
 		// TODO: possibly error handling, reporting back to editor etc.
 		Parser testParser = new Parser(libraries);
-		
+
 		try {
 			testParser.parse(code);
-		} 
-		catch (ParseException e) {
+		} catch (ParseException e) {
 			String message = e.getMessage();
 			int row = e.getRow();
 			int column = e.getColumn();
-			// TODO: set text in output
+			// TODO: set text in output; we definitely need an interface, its insane to
+			// always check the outputformat
 			return;
 		}
-		
-		
+
 		// start the execution with the selected options
 		app.executor().start(code, order, size, libraries);
-
 
 		// lock the view components
 		lockOnRun.forEach(Lockable::lock);

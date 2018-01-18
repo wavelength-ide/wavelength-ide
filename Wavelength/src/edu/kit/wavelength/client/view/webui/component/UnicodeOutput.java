@@ -2,11 +2,12 @@ package edu.kit.wavelength.client.view.webui.component;
 
 import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Lockable;
+import edu.kit.wavelength.client.view.api.Writable;
 
 /**
  * Displays lambda terms in text format with unicode symbols.
  */
-public class UnicodeOutput implements Lockable, Hideable {
+public class UnicodeOutput implements Lockable, Hideable, Writable {
 
 	@Override
 	public void lock() {		
@@ -34,5 +35,10 @@ public class UnicodeOutput implements Lockable, Hideable {
 	@Override
 	public boolean isLocked() {
 		return false;
+	}
+
+	@Override
+	public void write(String input) {
+		
 	}
 }

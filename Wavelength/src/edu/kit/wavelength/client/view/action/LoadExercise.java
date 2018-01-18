@@ -64,10 +64,13 @@ public class LoadExercise implements Action {
 	 */
 	@Override
 	public void run() {
-		// TODO: clear input and output -> leerer String
-		
 		// terminate running execution
 		app.executor().terminate();
+		
+		// TODO: clear input and output -> leerer String
+		app.editor().write("");
+		app.unicodeOutput().write("");
+		app.treeOutput().write("");
 		
 		componentsToShow.forEach(Hideable::show);
 		componentsToLock.forEach(Lockable::lock);

@@ -24,8 +24,12 @@ public class StepByStep implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.editor(), app.outputSizeBox(),
-			app.outputFormatBox(), app.stepByStepModeButton());
+	private static List<Lockable> componentsToLock = Arrays.asList(
+			app.editor(), 
+			app.outputSizeBox(),
+			app.outputFormatBox(), 
+			app.stepByStepModeButton()
+			);
 
 	static {
 		componentsToLock.addAll(app.libraryBoxes());

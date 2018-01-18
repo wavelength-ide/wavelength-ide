@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
+import edu.kit.wavelength.client.view.App;
+
 /**
  * This action will try to exit the exercise mode and alerts the user when
  * contents of the editor would be overwritten. Otherwise it changes the view
@@ -13,6 +15,8 @@ public class ExitExerciseMode implements Action {
 	 */
 	@Override
 	public void run() {
+		App.get().leaveExerciseMode().show();
+		// TODO: action for okay button
 	}
 
 }

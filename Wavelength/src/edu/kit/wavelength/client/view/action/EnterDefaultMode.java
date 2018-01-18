@@ -15,6 +15,7 @@ public class EnterDefaultMode implements Action {
 
 	private static App app = App.get();
 
+	// UI components to hide from the user
 	private static List<Hideable> componentsToHide = Arrays.asList(
 			app.exitExerciseModeButton(),
 			app.hideSolutionButton(), 
@@ -22,19 +23,22 @@ public class EnterDefaultMode implements Action {
 			app.solutionPanel(), 
 			app.taskPanel()
 			);
-
+	
+	// UI components that can now be interacted with
 	private static List<Lockable> componentsToUnlock = Arrays.asList(
 			app.editor(), 
 			app.outputFormatBox(),
 			app.outputSizeBox(), 
 			app.reductionOrderBox()
 			);
+	
 	static {
 		componentsToUnlock.addAll(app.libraryBoxes());
 		componentsToUnlock.addAll(app.exerciseButtons());
 		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 
+	// UI components that can no longer be interacted with
 	private static List<Lockable> componentsToLock = Arrays.asList(
 			app.stepBackwardButton(), 
 			app.stepForwardButton(),
@@ -65,6 +69,9 @@ public class EnterDefaultMode implements Action {
 		app.solutionPanel().write("");
 		app.taskPanel().write("");
 		// TODO: clear input and output -> leerer String
+		app.editor().write("");
+		app.unicodeOutput().write("");
+		app.treeOutput().write("");
 	}
 
 }

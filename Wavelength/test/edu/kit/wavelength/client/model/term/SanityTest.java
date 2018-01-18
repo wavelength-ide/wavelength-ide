@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.term;
+package test.edu.kit.wavelength.client.model.term;
 
 import static org.junit.Assert.*;
 

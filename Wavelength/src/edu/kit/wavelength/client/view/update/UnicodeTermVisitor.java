@@ -23,7 +23,8 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
 
 	@Override
 	public UnicodeTerm visitNamedTerm(NamedTerm term) {
-		return null;
+		String name = term.getName();
+		return new UnicodeTerm(name);
 	}
 
 	@Override

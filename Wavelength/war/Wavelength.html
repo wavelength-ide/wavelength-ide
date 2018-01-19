@@ -3,9 +3,14 @@
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<link type="text/css" rel="stylesheet" href="Wavelength.css">
+	<link rel="stylesheet" data-name="vs/editor/editor.main" href="monaco-editor/min/vs/editor/editor.main.css">
 	<title>Wavelength</title>
-	<script type="text/javascript" src="wavelength/wavelength.nocache.js"></script>
 </head>
 <body>
+	<script>var require = { paths: { 'vs': 'monaco-editor/min/vs' } };</script>
+	<script src="monaco-editor/min/vs/loader.js"></script>
+	<script src="monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+	<script src="monaco-editor/min/vs/editor/editor.main.js"></script>
+	<script type="text/javascript" src="wavelength/wavelength.nocache.js"></script>
 </body>
 </html>

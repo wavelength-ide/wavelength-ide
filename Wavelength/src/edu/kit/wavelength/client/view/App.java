@@ -4,12 +4,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.PushButton;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -17,10 +20,9 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-import edu.kit.wavelength.client.view.action.Action;
-import edu.kit.wavelength.client.view.action.Pause;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.execution.Executor;
+import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
@@ -34,6 +36,7 @@ import edu.kit.wavelength.client.view.webui.component.TextButton;
 import edu.kit.wavelength.client.view.webui.component.TextField;
 import edu.kit.wavelength.client.view.webui.component.TreeOutput;
 import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
+import edu.kit.wavelength.client.view.webui.gwtbinding.MonacoEditor;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -55,6 +58,7 @@ public class App implements Serializable {
 		}
 		return instance;
 	}
+	
 	/**
 	 * Name of the unicode format.
 	 */
@@ -326,9 +330,16 @@ public class App implements Serializable {
 	 * Initializes App.
 	 */
 	private void initialize() {
+		DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.EM);
+		// id needed because MonacoEditor adds to panel div by id
+		mainPanel.getElement().setId("editor");
+		
+		// ui needs to be created BEFORE loading the editor for the ids to exist
+		RootLayoutPanel.get().add(mainPanel);
+		MonacoEditor.load(mainPanel);
+		
 		String state = Window.Location.getPath();
 		// deserialize
-		
 		mainMenuButton = new ImageButton(new PushButton(), new Image(), new Image());
 		editor = new Editor();
 		//create ListBox for outputFormats

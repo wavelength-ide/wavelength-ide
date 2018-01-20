@@ -336,12 +336,12 @@ public class App implements Serializable {
 		
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
-		MonacoEditor.load(mainPanel);
+		MonacoEditor me = MonacoEditor.load(mainPanel);
 		
 		String state = Window.Location.getPath();
 		// deserialize
 		mainMenuButton = new ImageButton(new PushButton(), new Image(), new Image());
-		editor = new Editor();
+		editor = new Editor(me);
 		//create ListBox for outputFormats
 		outputFormat = new OptionBox(new ListBox());
 		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName).collect(Collectors.toList());

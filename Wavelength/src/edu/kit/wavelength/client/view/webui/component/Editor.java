@@ -1,10 +1,10 @@
 package edu.kit.wavelength.client.view.webui.component;
 
 import edu.kit.wavelength.client.model.serialization.Serializable;
-import edu.kit.wavelength.client.view.api.Hideable;
 import edu.kit.wavelength.client.view.api.Lockable;
 import edu.kit.wavelength.client.view.api.Readable;
 import edu.kit.wavelength.client.view.api.Writable;
+import edu.kit.wavelength.client.view.webui.gwtbinding.MonacoEditor;
 
 /**
  * This Editor is the main means for the user to input content into the
@@ -14,8 +14,14 @@ import edu.kit.wavelength.client.view.api.Writable;
  * written into the Editor to communicate with the User. The Editor can be
  * blocked too to prevent the User from changing its content.
  */
-public class Editor implements Readable, Writable, Hideable, Lockable, Serializable {
+public class Editor implements Readable, Writable, Lockable, Serializable {
 
+	private MonacoEditor e;
+	
+	public Editor(MonacoEditor e) {
+		this.e = e;
+	}
+	
 	/**
 	 * Creates a new Editor from the specified serialized string.
 	 * @param serialized serialized string, as created in serialize
@@ -27,42 +33,31 @@ public class Editor implements Readable, Writable, Hideable, Lockable, Serializa
 	
 	@Override
 	public String read() {
-		return null;
+		return e.read();
 	}
 
 	@Override
 	public void write(String input) {
-
+		e.write(input);
 	}
 
 	@Override
 	public void lock() {
-
+		e.lock();
 	}
 
 	@Override
 	public void unlock() {
-
+		e.unlock();
 	}
 
+	@Override
+	public boolean isLocked() {
+		return e.isLocked();
+	}
+	
 	@Override
 	public String serialize() {
 		return null;
-	}
-	@Override
-	public boolean isLocked() {
-		return false;
-	}
-	@Override
-	public void hide() {
-		
-	}
-	@Override
-	public void show() {
-		
-	}
-	@Override
-	public boolean isShown() {
-		return false;
 	}
 }

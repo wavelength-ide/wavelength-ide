@@ -45,7 +45,26 @@ public final class Application implements LambdaTerm {
 	
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (this == other)
+			return true;
+		
+		if (!(other instanceof Application))
+			return false;
+		
+		Application app = (Application)other;
+		
+		return app.getLeftHandSide().equals(this.getLeftHandSide()) &&
+				app.getRightHandSide().equals(this.getRightHandSide());
+	}
+	
+	@Override
+	public LambdaTerm clone() throws CloneNotSupportedException {
+		Application cloned = (Application)super.clone();
+		
+		cloned.leftHandSide = leftHandSide.clone();
+		cloned.rightHandSide = rightHandSide.clone();
+		
+		return cloned;
 	}
 
 	@Override

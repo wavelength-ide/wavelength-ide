@@ -34,7 +34,20 @@ public final class BoundVariable implements LambdaTerm {
 	
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (this == other)
+			return true;
+		
+		if (!(other instanceof BoundVariable))
+			return false;
+		
+		BoundVariable var = (BoundVariable)other;
+		
+		return var.getDeBruijnIndex() == this.getDeBruijnIndex();
+	}
+	
+	@Override
+	public LambdaTerm clone() throws CloneNotSupportedException {
+		return (BoundVariable)super.clone();
 	}
 
 	@Override

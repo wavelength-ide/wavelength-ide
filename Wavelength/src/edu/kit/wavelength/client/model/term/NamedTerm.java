@@ -42,7 +42,25 @@ public final class NamedTerm implements LambdaTerm {
 	
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (this == other)
+			return true;
+		
+		if (!(other instanceof NamedTerm))
+			return false;
+		
+		NamedTerm term = (NamedTerm)other;
+		
+		return term.getName().equals(this.getName()) &&
+			term.getInner().equals(this.getInner());
+	}
+	
+	@Override
+	public LambdaTerm clone() throws CloneNotSupportedException {
+		NamedTerm cloned = (NamedTerm)super.clone();
+		
+		cloned.inner = inner.clone();
+		
+		return cloned;
 	}
 
 	@Override

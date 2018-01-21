@@ -75,4 +75,7 @@ public abstract class PartialApplication implements LambdaTerm {
 	@Override
 	public abstract boolean equals(Object other);
 	
+	@Override
+	public abstract LambdaTerm clone() throws CloneNotSupportedException;
+	
 }

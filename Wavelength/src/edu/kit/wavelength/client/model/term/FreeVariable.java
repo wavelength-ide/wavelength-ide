@@ -37,7 +37,20 @@ public final class FreeVariable implements LambdaTerm {
 	
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (this == other)
+			return true;
+		
+		if (!(other instanceof FreeVariable))
+			return false;
+		
+		FreeVariable var = (FreeVariable)other;
+		
+		return var.getName().equals(this.getName());
+	}
+	
+	@Override
+	public LambdaTerm clone() throws CloneNotSupportedException {
+		return (FreeVariable)super.clone();
 	}
 
 	@Override

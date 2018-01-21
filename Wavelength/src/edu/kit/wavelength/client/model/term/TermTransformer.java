@@ -10,7 +10,10 @@ public abstract class TermTransformer implements Visitor<LambdaTerm> {
 	@Override
 	public LambdaTerm visitNamedTerm(NamedTerm term)
 	{
-		return null;
+		LambdaTerm oldTerm = term.getInner();
+		LambdaTerm newTerm = term.getInner().acceptVisitor(this);
+		
+		return oldTerm.equals(newTerm) ? term : newTerm;
 	}
 	
 	@Override

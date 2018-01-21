@@ -48,7 +48,23 @@ public final class Abstraction implements LambdaTerm {
 	
 	@Override
 	public boolean equals(Object other) {
-		return false;
+		if (this == other)
+			return true;
+		
+		if (!(other instanceof Abstraction))
+			return false;
+		
+		Abstraction abs = (Abstraction)other;
+		
+		return abs.getPreferredName().equals(this.getPreferredName()) && abs.getInner().equals(this.getInner());
+	}
+	
+	@Override
+	public LambdaTerm clone() throws CloneNotSupportedException {
+		Abstraction cloned = (Abstraction)super.clone();
+		
+		cloned.inner = inner.clone();
+		return cloned;
 	}
 
 	@Override

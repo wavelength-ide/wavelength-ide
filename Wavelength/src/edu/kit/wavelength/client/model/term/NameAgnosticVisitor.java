@@ -10,7 +10,7 @@ public abstract class NameAgnosticVisitor<T> implements Visitor<T> {
 	@Override
 	public T visitNamedTerm(NamedTerm term)
 	{
-		return null;
+		return term.getInner().acceptVisitor(this);
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -16,21 +17,21 @@ public class EnterDefaultMode implements Action {
 	private static App app = App.get();
 
 	// UI components to hide from the user
-	private static List<Hideable> componentsToHide = Arrays.asList(
+	private static List<Hideable> componentsToHide = new ArrayList<Hideable>(Arrays.asList(
 			app.exitExerciseModeButton(),
 			app.hideSolutionButton(), 
 			app.showSolutionButton(), 
 			app.solutionPanel(), 
 			app.taskPanel()
-			);
+			));
 	
 	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = Arrays.asList(
+	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
 			app.editor(), 
 			app.outputFormatBox(),
 			app.outputSizeBox(), 
 			app.reductionOrderBox()
-			);
+			));
 	
 	static {
 		componentsToUnlock.addAll(app.libraryBoxes());
@@ -39,13 +40,13 @@ public class EnterDefaultMode implements Action {
 	}
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = Arrays.asList(
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
 			app.stepBackwardButton(), 
 			app.stepForwardButton(),
 			app.terminateButton(), 
 			app.treeOutput(), 
 			app.unicodeOutput()
-			);
+			));
 
 	/**
 	 * Resizes the editor window to full width, hides the solution and task windows

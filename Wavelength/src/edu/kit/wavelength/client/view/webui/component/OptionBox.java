@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.view.webui.component;
 
+import com.google.gwt.event.dom.client.ChangeEvent;
+import com.google.gwt.event.dom.client.ChangeHandler;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.ListBox;
 
 import edu.kit.wavelength.client.model.serialization.Serializable;
@@ -15,12 +18,10 @@ import edu.kit.wavelength.client.view.api.Readable;
  * It provides a means for the User to set Options for a calculation. This Box
  * can be locked and unlocked if changing the Options must not be possible.
  */
-public class OptionBox implements Hideable, Lockable, Readable, Serializable {
-	/*
-	 * TODO OptionBox implementiert vorerst nicht mehr clickable
-	 */
-	
+public class OptionBox implements Hideable, Lockable, Readable, Serializable, Clickable {
+
 	private ListBox wrappedListBox;
+	private HandlerRegistration currentEvent;
 
 	/**
 	 * Constructs a new and empty OptionBox.
@@ -83,5 +84,18 @@ public class OptionBox implements Hideable, Lockable, Readable, Serializable {
 	@Override
 	public boolean isShown() {
 		return wrappedListBox.isVisible();
+	}
+
+	@Override
+	public void setAction(Action action) {
+		if (currentEvent != null) {
+			currentEvent.removeHandler();
+		}
+		currentEvent = wrappedListBox.addChangeHandler(new ChangeHandler() {
+			@Override
+			public void onChange(ChangeEvent event) {
+				action.run();
+			}
+		});
 	}
 }

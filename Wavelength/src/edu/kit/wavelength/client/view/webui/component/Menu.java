@@ -4,6 +4,9 @@ import com.google.gwt.user.client.ui.Panel;
 
 import edu.kit.wavelength.client.view.api.Hideable;
 
+/*
+ * Ich bin der Festen überzeugung, dass wir diese Klasse nicht wrappen müssen.
+ */
 /**
  * This class wraps GWT's {@link Panel} and represents a menu.
  */

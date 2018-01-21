@@ -13,56 +13,60 @@ import edu.kit.wavelength.client.view.api.Lockable;
  */
 public class DisclosureButton implements Clickable, Hideable, Lockable {
 
+	private DisclosurePanel wrappedPanel;
+
 	/**
 	 * 
-	 * @param panel Panel to adapt (this is the "Button" with the sliding mechanism itself - not the panel within it)
-	 * @param imageWhenLocked Image to display when button is locked
-	 * @param imageWhenUnlocked Image to display when button is unlocked
+	 * @param panel
+	 *            Panel to adapt (this is the "Button" with the sliding
+	 *            mechanism itself - not the panel within it)
 	 */
-	public DisclosureButton(DisclosurePanel panel, Image imageWhenLocked, Image imageWhenUnlocked) {
-		
+	public DisclosureButton(DisclosurePanel panel) {
+		/*
+		 * Wir sollten die Bilder nicht im Konstruktor des Adapters übergeben,
+		 * das sie nur sehr umständlich geändert werden können
+		 */
+		wrappedPanel = panel;
 	}
 
 	@Override
 	public void lock() {
-		// TODO Auto-generated method stub
-		
+		// TODO im geschlossenen Zustand kann das Panel eh nicht verwendet
+		// werden. Soll also die möglichkeit unterbunden werden, das Panel zu
+		// öffnen oder Elemente im Panel zu verwenden?
 	}
 
 	@Override
 	public void unlock() {
-		// TODO Auto-generated method stub
-		
+		// TODO siehe oben
 	}
 
 	@Override
 	public boolean isLocked() {
-		// TODO Auto-generated method stub
+		// TODO siehe oben
 		return false;
 	}
 
 	@Override
 	public void hide() {
-		// TODO Auto-generated method stub
-		
+		wrappedPanel.setOpen(false);
 	}
 
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-		
+		wrappedPanel.setOpen(true);
 	}
 
 	@Override
 	public boolean isShown() {
-		// TODO Auto-generated method stub
-		return false;
+		return wrappedPanel.isOpen();
 	}
 
 	@Override
 	public void setAction(Action action) {
-		// TODO Auto-generated method stub
-		
+		/*
+		 * TODO muss implementiert werden. Aber was soll setAction überhaupt
+		 * bewirken?
+		 */
 	}
-	
 }

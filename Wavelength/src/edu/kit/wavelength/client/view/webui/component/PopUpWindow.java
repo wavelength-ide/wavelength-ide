@@ -27,6 +27,32 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 	private Button actionButton;
 	private Button closeButton;
 	private HandlerRegistration currentEvent;
+	private HandlerRegistration closeEvent;
+
+	/**
+	 * Creates a new and empty {@link DialogBox}. It consists of a
+	 * {@link TextArea} and one {@link Button}. This Button will always close
+	 * the PopUpWindow. Setting an Action on this DialogBox will have no effect.
+	 * 
+	 * @param dialogBox
+	 *            the wrapped {@link DialogBox}
+	 * @param textArea
+	 *            the {@link TextArea} of the DialogBox
+	 * @param closeButton
+	 *            the Button that will close the DialogBox
+	 */
+	public PopUpWindow(final DialogBox dialogBox, final TextArea textArea, final Button closeButton) {
+		wrappedDialogBox = dialogBox;
+		this.textArea = textArea;
+		this.closeButton = closeButton;
+
+		closeEvent = this.closeButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				wrappedDialogBox.hide();
+			}
+		});
+	}
 
 	/**
 	 * Creates a new and empty {@link DialogBox}. It consists of a
@@ -47,24 +73,10 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 	 */
 	public PopUpWindow(final DialogBox dialogBox, final TextArea textArea, final Button actionButton,
 			final Button closeButton) {
-		wrappedDialogBox = dialogBox;
-		this.textArea = textArea;
+		this(dialogBox, textArea, closeButton);
 		this.actionButton = actionButton;
-		this.closeButton = closeButton;
-		/*
-		 * TODO wie viel Einfluss will die App Initialisierung auf die
-		 * Gestaltung des PopUpWindow haben Soll die die DialogBox
-		 * zusammengesetzt werden? Dann muss auch weniger im Konstruktor
-		 * übergeben werden.
-		 */
 	}
 
-	/*
-	 * TODO was soll man machen, wenn man nicht nur das Textfeld, sondern auch
-	 * die Bezechnung des anderen Knopfes ändern will? Der Fall tritt momentan
-	 * nicht auf und es kann alles über die Initialisierung in der App Klasse
-	 * geregelt werden.
-	 */
 	@Override
 	public void write(String input) {
 		textArea.setText(input);
@@ -93,6 +105,13 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 
 	@Override
 	public void setAction(Action action) {
+
+		// actionButton should only be null if PopUpWindow wasn't constructed
+		// with one.
+		if (actionButton == null) {
+			return;
+		}
+
 		if (currentEvent != null) {
 			currentEvent.removeHandler();
 		}

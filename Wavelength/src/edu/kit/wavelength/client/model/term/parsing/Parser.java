@@ -15,6 +15,7 @@ import java.util.List;
 public class Parser {
 
 	private final List<Library> loadedLibraries;
+	private Library inputLibrary;
 	
 	/**
 	 * Initializes a new parser.
@@ -38,5 +39,13 @@ public class Parser {
 	 */
 	public LambdaTerm parse(String input) throws ParseException {
 		return null;
+	}
+	
+	/**
+	 * Gets a library containing the lambda terms and corresponding names defined in the the last invocation of {@link #parse(String)}}'s input String.
+	 * @return A {@link Library} containing the terms entered by the user with their assigned names
+	 */
+	public Library getInputLibary() {
+		return inputLibrary;
 	}
 }

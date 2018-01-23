@@ -55,8 +55,14 @@ public final class NamedTerm implements LambdaTerm {
 	}
 	
 	@Override
-	public LambdaTerm clone() throws CloneNotSupportedException {
-		NamedTerm cloned = (NamedTerm)super.clone();
+	public LambdaTerm clone() {
+		NamedTerm cloned;
+		try {
+			cloned = (NamedTerm)super.clone();
+		} catch (CloneNotSupportedException ex) {
+			// Guaranteed not to occur by the Java standard
+			throw new RuntimeException();
+		}
 		
 		cloned.inner = inner.clone();
 		

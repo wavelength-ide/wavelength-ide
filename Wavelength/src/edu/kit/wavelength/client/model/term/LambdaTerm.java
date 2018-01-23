@@ -16,7 +16,7 @@ public interface LambdaTerm extends Serializable, Cloneable {
 		return null;
 	}
 	
-	public LambdaTerm clone() throws CloneNotSupportedException;
+	public LambdaTerm clone();
 	
 	/**
 	 * Accept a {@link Visitor} by invoking the correct visit* method.

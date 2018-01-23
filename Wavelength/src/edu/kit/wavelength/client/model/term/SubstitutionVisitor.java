@@ -7,7 +7,7 @@ package edu.kit.wavelength.client.model.term;
  */
 public final class SubstitutionVisitor extends TermTransformer {
 	
-	private final int depth;
+	private int depth;
 	private final LambdaTerm substituent;
 	
 	/**
@@ -15,8 +15,8 @@ public final class SubstitutionVisitor extends TermTransformer {
 	 * @param depth The De Bruijn index that should be substituted
 	 * @param substituent The term that should be substituted with
 	 */
-	public SubstitutionVisitor(int depth, LambdaTerm substituent) {
-		this.depth = depth;
+	public SubstitutionVisitor(LambdaTerm substituent) {
+		depth = 0;
 		this.substituent = substituent;
 	}
 	
@@ -27,22 +27,28 @@ public final class SubstitutionVisitor extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitAbstraction(Abstraction abs) {
-		return null;
+		++depth;
+		LambdaTerm res = abs.getInner().acceptVisitor(this);
+		--depth;
+		return depth == 0 ? res : new Abstraction(abs.getPreferredName(), res);
 	}
 
 	@Override
 	public LambdaTerm visitApplication(Application app) {
-		return null;
+		return new Application(app.getLeftHandSide().acceptVisitor(this),
+				app.getRightHandSide().acceptVisitor(this));
 	}
 
 	@Override
 	public LambdaTerm visitBoundVariable(BoundVariable var) {
-		return null;
+		if (var.getDeBruijnIndex() != depth)
+			return var;
+		return substituent.clone().acceptVisitor(new IndexAdjustmentVisitor(depth));
 	}
 
 	@Override
 	public LambdaTerm visitFreeVariable(FreeVariable var) {
-		return null;
+		return var;
 	}
 
 }

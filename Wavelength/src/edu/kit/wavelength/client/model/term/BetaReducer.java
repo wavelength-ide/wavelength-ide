@@ -37,11 +37,14 @@ public final class BetaReducer extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitApplication(Application app) {
+		// This check MUST use object identity and not equals()
 		if (app != toReduce)
 			return new Application(app.getLeftHandSide().acceptVisitor(this),
 				app.getRightHandSide().acceptVisitor(this));
 			
-		return app.getLeftHandSide().acceptVisitor(new SubstitutionVisitor(-1, app.getRightHandSide()));
+		return app.getLeftHandSide()
+				.acceptVisitor(new SubstitutionVisitor(app.getRightHandSide()))
+				.acceptVisitor(new IndexAdjustmentVisitor(-1));
 	}
 
 	@Override

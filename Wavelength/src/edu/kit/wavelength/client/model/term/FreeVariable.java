@@ -49,8 +49,13 @@ public final class FreeVariable implements LambdaTerm {
 	}
 	
 	@Override
-	public LambdaTerm clone() throws CloneNotSupportedException {
-		return (FreeVariable)super.clone();
+	public LambdaTerm clone() {
+		try {
+			return (FreeVariable)super.clone();
+		} catch (CloneNotSupportedException ex) {
+			// Guaranteed not to occur by the Java standard
+			throw new RuntimeException();
+		}
 	}
 
 	@Override

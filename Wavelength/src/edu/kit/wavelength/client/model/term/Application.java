@@ -58,8 +58,14 @@ public final class Application implements LambdaTerm {
 	}
 	
 	@Override
-	public LambdaTerm clone() throws CloneNotSupportedException {
-		Application cloned = (Application)super.clone();
+	public LambdaTerm clone(){
+		Application cloned;
+		try {
+			cloned = (Application)super.clone();
+		} catch (CloneNotSupportedException ex) {
+			// Guaranteed not to occur by the Java standard
+			throw new RuntimeException();
+		}
 		
 		cloned.leftHandSide = leftHandSide.clone();
 		cloned.rightHandSide = rightHandSide.clone();

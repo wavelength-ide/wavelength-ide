@@ -27,7 +27,6 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 	private Button actionButton;
 	private Button closeButton;
 	private HandlerRegistration currentEvent;
-	private HandlerRegistration closeEvent;
 
 	/**
 	 * Creates a new and empty {@link DialogBox}. It consists of a
@@ -46,7 +45,7 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 		this.textArea = textArea;
 		this.closeButton = closeButton;
 
-		closeEvent = this.closeButton.addClickHandler(new ClickHandler() {
+		this.closeButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
 				wrappedDialogBox.hide();

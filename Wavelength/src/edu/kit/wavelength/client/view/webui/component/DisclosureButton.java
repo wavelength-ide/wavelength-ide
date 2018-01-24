@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.view.webui.component;
 
 import com.google.gwt.user.client.ui.DisclosurePanel;
-import com.google.gwt.user.client.ui.Image;
 
 import edu.kit.wavelength.client.view.action.Action;
 import edu.kit.wavelength.client.view.api.Clickable;

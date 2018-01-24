@@ -4,15 +4,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.MenuBar;
+import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -21,6 +26,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
+import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
@@ -28,6 +34,7 @@ import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 import edu.kit.wavelength.client.view.webui.component.Checkbox;
+import edu.kit.wavelength.client.view.webui.component.DisclosureButton;
 import edu.kit.wavelength.client.view.webui.component.Editor;
 import edu.kit.wavelength.client.view.webui.component.ImageButton;
 import edu.kit.wavelength.client.view.webui.component.OptionBox;
@@ -68,7 +75,7 @@ public class App implements Serializable {
 	 */
 	public static final String TreeOutputName = "Tree";
 	
-	private ImageButton mainMenuButton;
+	private DisclosureButton mainMenuButton;
 	private Editor editor;
 	private OptionBox outputFormat;
 	private OptionBox reductionOrder;
@@ -120,7 +127,7 @@ public class App implements Serializable {
 	 * Gets the button that is used to open the main menu.
 	 * @return The main menu button
 	 */
-	public ImageButton mainMenuButton() {
+	public DisclosureButton mainMenuButton() {
 		return mainMenuButton;
 	}
 	
@@ -330,18 +337,44 @@ public class App implements Serializable {
 	 * Initializes App.
 	 */
 	private void initialize() {
-		DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.EM);
-		// id needed because MonacoEditor adds to panel div by id
-		mainPanel.getElement().setId("editor");
-		
-		// ui needs to be created BEFORE loading the editor for the ids to exist
-		RootLayoutPanel.get().add(mainPanel);
-		MonacoEditor me = MonacoEditor.load(mainPanel);
 		
 		String state = Window.Location.getPath();
 		// deserialize
-		mainMenuButton = new ImageButton(new PushButton(), new Image(), new Image());
-		editor = new Editor(me);
+		
+		DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.EM);
+		SimplePanel editorPanel = new SimplePanel();
+		
+		// id needed because MonacoEditor adds to panel div by id
+		editorPanel.getElement().setId("editor");
+		
+		DisclosurePanel mainMenu = new DisclosurePanel("");
+		mainMenu.setHeader(new SimplePanel()); // panel is just used to hide the arrow of the DisclosurePanel
+		mainMenu.getHeader().addStyleName("mainMenuButtonStyle");
+		
+		mainPanel.addNorth(mainMenu, 10);
+		mainPanel.addNorth(editorPanel, 15);
+		
+		
+				
+		//libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
+		//exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
+		
+		MenuBar menuBar = new MenuBar(true);
+		for (Exercise exercise : Exercises.all()) {
+			MenuItem menuItem = new MenuItem(exercise.getName(), new ScheduledCommand() {
+				@Override
+				public void execute() {
+					new SelectExercise(exercise).run();
+				}
+			});
+			menuBar.addItem(menuItem);
+		}
+		mainMenu.setContent(menuBar);
+				
+		// ui needs to be created BEFORE loading the editor for the ids to exist
+		RootLayoutPanel.get().add(mainPanel);
+		MonacoEditor me = MonacoEditor.load(editorPanel);
+		
 		//create ListBox for outputFormats
 		outputFormat = new OptionBox(new ListBox());
 		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName).collect(Collectors.toList());
@@ -358,8 +391,6 @@ public class App implements Serializable {
 		pause = new ImageButton(new PushButton(), new Image(), new Image());
 		export = new ImageButton(new PushButton(), new Image(), new Image());
 		share = new ImageButton(new PushButton(), new Image(), new Image());
-		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
-		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		run.setAction(new RunNewExecution());

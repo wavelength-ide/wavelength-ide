@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.exercise;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +16,17 @@ public final class Exercises {
 	 *         available exercise
 	 */
 	public static List<Exercise> all() {
-		return null;
+		String firstName = "Exercise 01";
+		String firstTask = "Dummy Exercise";
+		String firstSolution = "Dummy Solution";
+		String firstpredefinition = "";
+		
+		Exercise firstExercise = new ConcreteExercise(firstName, firstTask, firstSolution, firstpredefinition);
+		
+		ArrayList<Exercise> exerciseList= new ArrayList<Exercise>();
+		exerciseList.add(firstExercise);
+		
+		return exerciseList;
 	}
 	
 }

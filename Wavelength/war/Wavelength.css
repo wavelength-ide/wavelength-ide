@@ -1,0 +1,5 @@
+.mainMenuButtonStyle::after {font-size:3em ;font-family: "Glyphicons Halflings"; content:"\e019";}
+.gwt-PushButton-up {width: 4em; height:4em;}
+.gwt-PushButton-down {width: 4em; height: 4em;}
+.gwt-PushButton-up-hovering {width: 4em; height: 4em;}
+.gwt-PushButton-down-hovering {width: 4em; height: 4em;}

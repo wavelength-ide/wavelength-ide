@@ -32,6 +32,7 @@ public class SelectExportFormat implements Action {
 	public void run() {
 		PopUpWindow exportWindow = app.exportWindow();
 		exportWindow.write(exportFormat.getRepresentation(app.executor().getDisplayed()));
+		// TODO: markiere gesamte Ausgabe
 		exportWindow.show();
 	}
 }

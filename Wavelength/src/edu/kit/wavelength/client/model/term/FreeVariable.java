@@ -11,18 +11,20 @@ package edu.kit.wavelength.client.model.term;
  *
  */
 public final class FreeVariable implements LambdaTerm {
+	
+	private String name;
 
 	/**
 	 * Creates a new free variable term.
 	 * @param name The name of the free variable being referenced
 	 */
 	public FreeVariable(String name) {
-		
+		this.name = name;
 	}
 	
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
-		return null;
+		return v.visitFreeVariable(this);
 	}
 	
 	/**
@@ -30,7 +32,7 @@ public final class FreeVariable implements LambdaTerm {
 	 * @return The name of the free variable
 	 */
 	public String getName() {
-		return null;
+		return name;
 	}
 	
 	@Override

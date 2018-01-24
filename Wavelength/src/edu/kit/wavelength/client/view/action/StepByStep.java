@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -24,13 +25,22 @@ public class StepByStep implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.editor(), app.outputSizeBox(),
-			app.outputFormatBox(), app.stepByStepModeButton());
+	// UI components that can no longer be interacted with
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
+			app.editor(), 
+			app.outputSizeBox(),
+			app.outputFormatBox(), 
+			app.stepByStepModeButton()
+			));
 
 	static {
 		componentsToLock.addAll(app.libraryBoxes());
 		componentsToLock.addAll(app.exerciseButtons());
 	}
+	
+	// UI components that can now be interacted with
+	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(
+			Arrays.asList(app.stepForwardButton()));
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
@@ -61,14 +71,20 @@ public class StepByStep implements Action {
 
 		app.executor().stepByStep(code, order, size, libraries);
 
-		// determine the selected output format, then display and lock it
+		// set the view
+		componentsToLock.forEach(Lockable::lock);
+		componentsToUnlock.forEach(Lockable::unlock);
+
+		// determine the selected output format, then display and unlock it
 		String outputFormatName = app.outputFormatBox().read();
 		switch (outputFormatName) {
 		case App.UnicodeOutputName:
 			app.unicodeOutput().show();
+			app.unicodeOutput().unlock();
 			break;
 		case App.TreeOutputName:
 			app.treeOutput().show();
+			app.treeOutput().unlock();
 			break;
 		}
 	}

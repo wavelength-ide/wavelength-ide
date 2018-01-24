@@ -7,7 +7,6 @@ import edu.kit.wavelength.client.view.webui.component.TextField;
 /**
  * This action toggles the permalink panel. The permalink encodes the current
  * input, output and settings.
- *
  */
 
 public class UseShare implements Action {

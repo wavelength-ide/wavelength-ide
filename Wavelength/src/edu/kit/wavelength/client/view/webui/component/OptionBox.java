@@ -15,7 +15,12 @@ import edu.kit.wavelength.client.view.api.Readable;
  * It provides a means for the User to set Options for a calculation. This Box
  * can be locked and unlocked if changing the Options must not be possible.
  */
-public class OptionBox implements Clickable, Hideable, Lockable, Readable, Serializable {
+public class OptionBox implements Hideable, Lockable, Readable, Serializable {
+	/*
+	 * TODO OptionBox implementiert vorerst nicht mehr clickable
+	 */
+	
+	private ListBox wrappedListBox;
 
 	/**
 	 * Constructs a new and empty OptionBox.
@@ -24,61 +29,59 @@ public class OptionBox implements Clickable, Hideable, Lockable, Readable, Seria
 	 *            the wrapped {@link ListBox}
 	 */
 	public OptionBox(final ListBox listBox) {
-
+		wrappedListBox = listBox;
 	}
 
 	/**
 	 * Creates a new OptionBox from the specified serialized string.
-	 * @param serialized serialized string, as created in serialize
+	 * 
+	 * @param serialized
+	 *            serialized string, as created in serialize
 	 * @return new OptionBox
 	 */
 	public static OptionBox deserialize(String serialized) {
+		// TODO implement method
 		return null;
 	}
 
 	@Override
 	public void lock() {
-
+		wrappedListBox.setEnabled(false);
 	}
 
 	@Override
 	public void unlock() {
-
+		wrappedListBox.setEnabled(true);
 	}
 
 	@Override
 	public String read() {
-		return null;
+		return wrappedListBox.getSelectedItemText();
 	}
 
 	@Override
 	public String serialize() {
+		// TODO Methode implementieren
 		return null;
 	}
 
 	@Override
 	public boolean isLocked() {
-		return false;
+		return wrappedListBox.isEnabled();
 	}
 
 	@Override
 	public void hide() {
-		
+		wrappedListBox.setVisible(false);
 	}
 
 	@Override
 	public void show() {
-		
+		wrappedListBox.setVisible(true);
 	}
 
 	@Override
 	public boolean isShown() {
-		return false;
+		return wrappedListBox.isVisible();
 	}
-
-	@Override
-	public void setAction(Action action) {
-		
-	}
-
 }

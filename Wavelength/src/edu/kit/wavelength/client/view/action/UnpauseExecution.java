@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,16 +14,22 @@ public class UnpauseExecution implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.reductionOrderBox(), app.treeOutput(), app.unicodeOutput());
+	// UI components that can no longer be interacted with
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
+			app.stepBackwardButton(), 
+			app.stepForwardButton(),
+			app.reductionOrderBox(), 
+			app.treeOutput(), 
+			app.unicodeOutput()
+			));
+	
 	static {
-		componentsToLock.addAll(app.exerciseButtons());
 		componentsToLock.addAll(app.exportFormatButtons());
 	}
 
 	/**
 	 * Continues the paused reduction process, disables the step-by-step buttons and
-	 * the option menus.
+	 * the option menu.
 	 */
 	@Override
 	public void run() {
@@ -32,6 +39,7 @@ public class UnpauseExecution implements Action {
 		// set view components
 		componentsToLock.forEach(Lockable::lock);
 
+		// toggle run/pause button
 		app.runButton().hide();
 		app.pauseButton().show();
 	}

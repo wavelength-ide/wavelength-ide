@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,11 +15,23 @@ public class Stop implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToLock = Arrays.asList(app.stepBackwardButton(), app.stepByStepModeButton(),
-			app.stepForwardButton(), app.terminateButton());
+	// UI components that can no longer be interacted with
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
+			app.stepBackwardButton(), 
+			app.stepForwardButton(),
+			app.terminateButton(),
+			app.treeOutput(),
+			app.unicodeOutput()
+			));
 
-	private static List<Lockable> componentsToUnlock = Arrays.asList(app.editor(), app.outputFormatBox(),
-			app.outputSizeBox(), app.reductionOrderBox());
+	// UI components that can now be interacted with
+	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
+			app.editor(), 
+			app.outputFormatBox(),
+			app.outputSizeBox(), 
+			app.reductionOrderBox(),
+			app.stepByStepModeButton()
+			));
 
 	static {
 		componentsToUnlock.addAll(app.libraryBoxes());
@@ -34,17 +47,13 @@ public class Stop implements Action {
 	public void run() {
 		// terminate running execution
 		app.executor().terminate();
-		
+
 		// set view components
 		componentsToLock.forEach(Lockable::lock);
 		componentsToUnlock.forEach(Lockable::unlock);
-		
+
+		// toggle run/pause button
 		app.pauseButton().hide();
 		app.runButton().show();
-		
-		app.treeOutput().lock();
-		app.unicodeOutput().lock();
-		
-
 	}
 }

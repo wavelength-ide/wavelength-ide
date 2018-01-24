@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 
 /**
@@ -27,5 +28,6 @@ public class SelectExercise implements Action {
 	 */
 	@Override
 	public void run() {
+		App.get().enterExerciseMode();
 	}
 }

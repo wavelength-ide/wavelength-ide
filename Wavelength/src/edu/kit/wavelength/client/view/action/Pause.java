@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,10 +15,15 @@ public class Pause implements Action {
 
 	private static App app = App.get();
 
-	private static List<Lockable> componentsToUnlock = Arrays.asList(app.reductionOrderBox(), app.stepBackwardButton(),
-			app.stepByStepModeButton(), app.stepForwardButton(), app.treeOutput(), app.unicodeOutput());
+	// UI components that can now be interacted with
+	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
+			app.reductionOrderBox(), 
+			app.stepForwardButton(), 
+			app.treeOutput(), 
+			app.unicodeOutput()
+			));
+	
 	static {
-		componentsToUnlock.addAll(app.exerciseButtons());
 		componentsToUnlock.addAll(app.exportFormatButtons());
 	}
 
@@ -29,10 +35,20 @@ public class Pause implements Action {
 	public void run() {
 		// pause the running execution
 		app.executor().pause();
+		
+		if (!app.executor().getDisplayed().isEmpty()) {
+			componentsToUnlock.add(app.stepBackwardButton());
+		}
 
 		// unlock the needed view components
+		// only unlock the step backward button if stepping back is possible
+		if (!app.executor().getDisplayed().isEmpty()) {
+			componentsToUnlock.add(app.stepBackwardButton());
+		}
+		
 		componentsToUnlock.forEach(Lockable::unlock);
-		// pauseButton -> runButton
+		
+		// toggle run/pause button
 		app.runButton().show();
 		app.pauseButton().hide();
 	}

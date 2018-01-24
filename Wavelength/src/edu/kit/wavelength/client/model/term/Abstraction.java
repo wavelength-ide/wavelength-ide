@@ -11,18 +11,22 @@ package edu.kit.wavelength.client.model.term;
  */
 public final class Abstraction implements LambdaTerm {
 	
+	private String preferredName;
+	private LambdaTerm inner;
+	
 	/**
 	 * Creates a new abstraction.
 	 * @param preferredName The preferred name for the variable that is abstracted
 	 * @param inner The lambda term that the abstraction encloses
 	 */
 	public Abstraction(String preferredName, LambdaTerm inner) {
-		
+		this.preferredName = preferredName;
+		this.inner = inner;
 	}
 
 	@Override
 	public <T> T acceptVisitor(Visitor<T> v) {
-		return null;
+		return v.visitAbstraction(this);
 	}
 	
 	/**
@@ -31,7 +35,7 @@ public final class Abstraction implements LambdaTerm {
 	 */
 	public String getPreferredName()
 	{
-		return null;
+		return preferredName;
 	}
 	
 	/**
@@ -39,7 +43,7 @@ public final class Abstraction implements LambdaTerm {
 	 * @return The term that this abstraction encloses
 	 */
 	public LambdaTerm getInner() {
-		return null;
+		return inner;
 	}
 	
 	@Override

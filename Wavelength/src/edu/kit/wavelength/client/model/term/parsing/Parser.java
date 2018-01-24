@@ -38,6 +38,8 @@ public class Parser {
 	 *             if the input String can not be parsed successfully
 	 */
 	public LambdaTerm parse(String input) throws ParseException {
+		Token[] tokenised = tokeniseLibrary(input);
+		String term = tokenised[tokenised.length-1].getContent();
 		return null;
 	}
 	

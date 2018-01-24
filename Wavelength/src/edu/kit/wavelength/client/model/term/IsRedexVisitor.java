@@ -10,26 +10,26 @@ public final class IsRedexVisitor extends NameAgnosticVisitor<Boolean> {
 
 	@Override
 	public Boolean visitAbstraction(Abstraction abs) {
-		return null;
+		return false;
 	}
 
 	@Override
 	public Boolean visitApplication(Application app) {
-		return null;
+		return app.acceptVisitor(new IsAbstractionVisitor());
 	}
 
 	@Override
 	public Boolean visitBoundVariable(BoundVariable var) {
-		return null;
+		return false;
 	}
 
 	@Override
 	public Boolean visitFreeVariable(FreeVariable var) {
-		return null;
+		return false;
 	}
 
 	@Override
 	public Boolean visitPartialApplication(PartialApplication app) {
-		return null;
+		return false;
 	}
 }

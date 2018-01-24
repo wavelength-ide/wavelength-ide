@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.view.update;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
@@ -15,6 +18,11 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
  * Visitor for generating the output of a {@link LambdaTerm} for the {@link UnicodeOutput} view.
  */
 public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
+
+	public UnicodeTermVisitor(List<Library> libraries) {
+		super(libraries);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public UnicodeTerm visitApplication(Application app) {

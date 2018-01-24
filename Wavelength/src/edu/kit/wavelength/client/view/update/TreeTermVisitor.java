@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.view.update;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
@@ -15,6 +18,11 @@ import edu.kit.wavelength.client.view.webui.component.TreeTerm;
  * Visitor for generating the output of a {@link LambdaTerm} for the {@link TreeOutput} view.
  */
 public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTerm> {
+
+	public TreeTermVisitor(List<Library> libraries) {
+		super(libraries);
+		// TODO Auto-generated constructor stub
+	}
 
 	@Override
 	public TreeTerm visitApplication(Application app) {

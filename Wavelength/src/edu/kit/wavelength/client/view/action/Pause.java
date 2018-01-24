@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,12 +16,12 @@ public class Pause implements Action {
 	private static App app = App.get();
 
 	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = Arrays.asList(
+	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
 			app.reductionOrderBox(), 
 			app.stepForwardButton(), 
 			app.treeOutput(), 
 			app.unicodeOutput()
-			);
+			));
 	
 	static {
 		componentsToUnlock.addAll(app.exportFormatButtons());

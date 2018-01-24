@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -25,12 +26,12 @@ public class StepByStep implements Action {
 	private static App app = App.get();
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = Arrays.asList(
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
 			app.editor(), 
 			app.outputSizeBox(),
 			app.outputFormatBox(), 
 			app.stepByStepModeButton()
-			);
+			));
 
 	static {
 		componentsToLock.addAll(app.libraryBoxes());
@@ -38,7 +39,8 @@ public class StepByStep implements Action {
 	}
 	
 	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = Arrays.asList(app.stepForwardButton());
+	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(
+			Arrays.asList(app.stepForwardButton()));
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();

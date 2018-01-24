@@ -1,8 +1,6 @@
 package edu.kit.wavelength.client.model.term;
 
-import static org.junit.Assert.*;
-
-import java.util.Collections;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 

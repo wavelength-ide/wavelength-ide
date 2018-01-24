@@ -1,25 +1,26 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A {@link Visitor} that substitutes {@link BoundVariable}s with a given De Bruijn
- * index with a given substituent.
+ * A {@link Visitor} that substitutes {@link BoundVariable}s with a given De
+ * Bruijn index with a given substituent.
  *
  */
 public final class SubstitutionVisitor extends TermTransformer {
-	
+
 	private int depth;
 	private final LambdaTerm substituent;
-	
+
 	/**
 	 * Creates a new substitution visitor.
-	 * @param depth The De Bruijn index that should be substituted
-	 * @param substituent The term that should be substituted with
+	 * 
+	 * @param substituent
+	 *            The term that should be substituted with
 	 */
 	public SubstitutionVisitor(LambdaTerm substituent) {
 		depth = 0;
 		this.substituent = substituent;
 	}
-	
+
 	@Override
 	public LambdaTerm visitPartialApplication(PartialApplication app) {
 		return null;
@@ -35,8 +36,7 @@ public final class SubstitutionVisitor extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitApplication(Application app) {
-		return new Application(app.getLeftHandSide().acceptVisitor(this),
-				app.getRightHandSide().acceptVisitor(this));
+		return new Application(app.getLeftHandSide().acceptVisitor(this), app.getRightHandSide().acceptVisitor(this));
 	}
 
 	@Override

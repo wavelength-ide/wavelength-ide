@@ -1,10 +1,10 @@
 package edu.kit.wavelength.client.model.term;
 
 final class IndexAdjustmentVisitor extends TermTransformer {
-	
+
 	private int minimumConsidered;
 	private final int delta;
-	
+
 	public IndexAdjustmentVisitor(int delta) {
 		minimumConsidered = 1;
 		this.delta = delta;
@@ -26,8 +26,7 @@ final class IndexAdjustmentVisitor extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitApplication(Application app) {
-		return new Application(app.getLeftHandSide().acceptVisitor(this),
-				app.getRightHandSide().acceptVisitor(this));
+		return new Application(app.getLeftHandSide().acceptVisitor(this), app.getRightHandSide().acceptVisitor(this));
 	}
 
 	@Override

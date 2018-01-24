@@ -1,9 +1,5 @@
 package edu.kit.wavelength.client.model.term;
 
-import java.util.List;
-
-import edu.kit.wavelength.client.model.library.Library;
-
 final class ToStringVisitor implements Visitor<String> {
 
 	public ToStringVisitor() {
@@ -11,7 +7,8 @@ final class ToStringVisitor implements Visitor<String> {
 
 	@Override
 	public String visitApplication(Application app) {
-		return String.format("(%s)(%s)", app.getLeftHandSide().acceptVisitor(this), app.getRightHandSide().acceptVisitor(this));
+		return String.format("(%s)(%s)", app.getLeftHandSide().acceptVisitor(this),
+				app.getRightHandSide().acceptVisitor(this));
 	}
 
 	@Override

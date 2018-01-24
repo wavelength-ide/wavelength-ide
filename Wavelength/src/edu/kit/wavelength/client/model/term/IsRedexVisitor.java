@@ -2,8 +2,8 @@ package edu.kit.wavelength.client.model.term;
 
 /**
  * A {@link Visitor} that returns a boolean that is true if the given
- * {@link LambdaTerm} represents a redex (possibly bound to one
- * or more nested names).
+ * {@link LambdaTerm} represents a redex (possibly bound to one or more nested
+ * names).
  *
  */
 public final class IsRedexVisitor extends NameAgnosticVisitor<Boolean> {

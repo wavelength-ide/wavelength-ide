@@ -180,5 +180,115 @@ public class BetaReductionTest {
 		LambdaTerm reduced2 = reduced.acceptVisitor(new BetaReducer(next));	
 		assertEquals(want2, reduced2);
 	}
+	
+	@Test
+	public void namedTermErased1Test() {
+		Application a = new Application(
+				new NamedTerm("Hi",
+						new Abstraction("x",
+								new BoundVariable(1))),
+				new FreeVariable("y"));
+		
+		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new FreeVariable("y"), reduced);
+	}
+	
+	@Test
+	public void namedTermErased2Test() {
+		// Not really a valid lambda term
+		Application a = new Application(
+				new Abstraction("x",
+						new NamedTerm("Hi",
+								new BoundVariable(1))),
+				new FreeVariable("y"));
+		
+		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new FreeVariable("y"), reduced);
+	}
+	
+	@Test
+	public void namedTermErased3Test() {
+		Application a = new Application(
+				new NamedTerm("Hi",
+						new Abstraction("x",
+								new FreeVariable("y"))),
+				new FreeVariable("z"));
+		
+		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new FreeVariable("y"), reduced);
+	}
+	
+	@Test
+	public void namedTermErased4Test() {
+		Application a = new Application(
+				new Abstraction("x",
+						new BoundVariable(1)),
+				new FreeVariable("y"));
+		
+		NamedTerm n = new NamedTerm("Hi", a);
+		
+		LambdaTerm reduced = n.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new FreeVariable("y"), reduced);
+	}
+	
+	@Test
+	public void namedTermErased5Test() {
+		Application a = new Application(
+				new Abstraction("x",
+						new BoundVariable(1)),
+				new Abstraction("x",
+						new BoundVariable(1)));
+		
+		NamedTerm n = new NamedTerm("Hi", a);
+		
+		LambdaTerm reduced = n.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new Abstraction("x", new BoundVariable(1)), reduced);
+	}
+	
+	@Test
+	public void namedTermPreserved1Test() {
+		Application a = new Application(
+				new NamedTerm("Hi",
+						new Abstraction("x",
+								new BoundVariable(1))),
+				new Abstraction("x",
+						new BoundVariable(1)));
+		
+		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new NamedTerm("Hi", new Abstraction("x", new BoundVariable(1))), reduced);
+	}
+	
+	@Test
+	public void namedTermPreserved2Test() {
+		Application a = new Application(
+				new Abstraction("x",
+						new NamedTerm("Hi",
+								new FreeVariable("y"))),
+				new FreeVariable("z"));
+		
+		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new NamedTerm("Hi", new FreeVariable("y")), reduced);
+	}
+	
+	@Test
+	public void namedTermPreserved3Test() {
+		Application a = new Application(
+				new Abstraction("x",
+						new BoundVariable(1)),
+				new NamedTerm("Hi",
+						new FreeVariable("y")));
+		
+		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
+		
+		assertEquals(new NamedTerm("Hi", new FreeVariable("y")), reduced);
+	}
+
 
 }

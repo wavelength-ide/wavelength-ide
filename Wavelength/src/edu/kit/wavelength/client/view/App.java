@@ -4,14 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.google.gwt.dom.client.Style.Display;
-import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
-import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -368,6 +367,7 @@ public class App implements Serializable {
 		mainMenu.getHeader().addStyleName("mainMenuButtonStyle");
 	    
 		Panel mainMenuPanel = new VerticalPanel();
+		mainMenuPanel.addDomHandler(handler -> mainMenu.setOpen(false), MouseOutEvent.getType());
 		mainMenuPanel.addStyleName("mainMenuPanelStyle");
 		
 		//add libraries
@@ -386,10 +386,12 @@ public class App implements Serializable {
 		for (Exercise exercise : Exercises.all()) {
 			Button button = new Button(exercise.getName());
 			button.addClickHandler(event -> new SelectExercise(exercise).run());
+			button.setTitle(exercise.getTask());
 			mainMenuPanel.add(button);
 			//exercises.add(new TextButton(button, exercise.getName())); //TODO enabling this line leads to a blank page in super dev mode!
 		}
-		mainMenu.setContent(mainMenuPanel);	
+		mainMenu.setContent(mainMenuPanel);
+		
 		headerPanel.add(mainMenu);
 		
 		editorPanel.getElement().getStyle().setHeight(20, Unit.EM);

@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
@@ -12,14 +13,16 @@ import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.MenuBar;
-import com.google.gwt.user.client.ui.MenuItem;
+import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 import edu.kit.wavelength.client.model.library.Libraries;
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -341,35 +344,64 @@ public class App implements Serializable {
 		String state = Window.Location.getPath();
 		// deserialize
 		
-		DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.EM);
-		SimplePanel editorPanel = new SimplePanel();
+		Panel mainPanel = new VerticalPanel();
+		Panel headerPanel = new SimplePanel();
+		Panel editorPanel = new SimplePanel();
+		Panel controlPanel = new SimplePanel();
+		Panel outputPanel = new SimplePanel();
+		Panel footerPanel = new SimplePanel();
+		
+		headerPanel.addStyleName("headerStyle");
+		editorPanel.addStyleName("editorStyle");
+		controlPanel.addStyleName("controlStyle");
+		outputPanel.addStyleName("outputStyle");
+		footerPanel.addStyleName("footerStyle");
 		
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
 		
 		DisclosurePanel mainMenu = new DisclosurePanel("");
-		mainMenu.setHeader(new SimplePanel()); // panel is just used to hide the arrow of the DisclosurePanel
+		mainMenu.setAnimationEnabled(true);
+		mainMenu.addStyleName("mainMenuStyle");
+		
+		mainMenu.setHeader(new Label()); // label is just used to hide the arrow of the DisclosurePanel
 		mainMenu.getHeader().addStyleName("mainMenuButtonStyle");
+	    
+		Panel mainMenuPanel = new VerticalPanel();
+		mainMenuPanel.addStyleName("mainMenuPanelStyle");
 		
-		mainPanel.addNorth(mainMenu, 10);
-		mainPanel.addNorth(editorPanel, 15);
-		
-		
-				
-		//libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
-		//exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
-		
-		MenuBar menuBar = new MenuBar(true);
-		for (Exercise exercise : Exercises.all()) {
-			MenuItem menuItem = new MenuItem(exercise.getName(), new ScheduledCommand() {
-				@Override
-				public void execute() {
-					new SelectExercise(exercise).run();
-				}
-			});
-			menuBar.addItem(menuItem);
+		//add libraries
+		if (Libraries.all() != null) {
+			for (Library library : Libraries.all()) {
+				CheckBox checkBox = new CheckBox(library.getName());
+				mainMenuPanel.add(checkBox);
+				libraries.add(new Checkbox(checkBox, library.getName()));
+			}
+		} else {
+			Label label = new Label("no libraries available");
+			label.addStyleName("noLibraryLabelStyle");
+			mainMenuPanel.add(label);
 		}
-		mainMenu.setContent(menuBar);
+		//add exercises
+		for (Exercise exercise : Exercises.all()) {
+			Button button = new Button(exercise.getName());
+			button.addClickHandler(event -> new SelectExercise(exercise).run());
+			mainMenuPanel.add(button);
+			//exercises.add(new TextButton(button, exercise.getName())); //TODO enabling this line leads to a blank page in super dev mode!
+		}
+		mainMenu.setContent(mainMenuPanel);	
+		headerPanel.add(mainMenu);
+		
+		editorPanel.getElement().getStyle().setHeight(20, Unit.EM);
+		editorPanel.getElement().getStyle().setWidth(100, Unit.EM);
+		
+		
+		mainPanel.add(headerPanel);
+		mainPanel.add(editorPanel);
+		mainPanel.add(controlPanel);
+		mainPanel.add(outputPanel);
+		mainPanel.add(footerPanel);
+		
 				
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);

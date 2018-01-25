@@ -19,12 +19,19 @@ public final class Exercises {
 		String firstName = "Exercise 01";
 		String firstTask = "Dummy Exercise";
 		String firstSolution = "Dummy Solution";
-		String firstpredefinition = "";
+		String firstPredefinition = "";
 		
-		Exercise firstExercise = new ConcreteExercise(firstName, firstTask, firstSolution, firstpredefinition);
+		String secondName = "Exercise 02";
+		String secondTask = "Another Dummy";
+		String secondSolution = "Another missing solution";
+		String secondPredefinition = "";
+		
+		Exercise firstExercise = new ConcreteExercise(firstName, firstTask, firstSolution, firstPredefinition);
+		Exercise secondExercise = new ConcreteExercise(secondName, secondTask, secondSolution, secondPredefinition);
 		
 		ArrayList<Exercise> exerciseList= new ArrayList<Exercise>();
 		exerciseList.add(firstExercise);
+		exerciseList.add(secondExercise);
 		
 		return exerciseList;
 	}

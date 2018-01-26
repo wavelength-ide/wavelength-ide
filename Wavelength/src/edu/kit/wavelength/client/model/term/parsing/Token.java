@@ -9,16 +9,27 @@ package edu.kit.wavelength.client.model.term.parsing;
  */
 public class Token {
 
+	public static final int LBRACKET = 0; 
+	public static final int RBRACKET = 1;
+	public static final int NAME = 2;
+	public static final int VARIABLE = 3;
+	public static final int LAMBDA = 4;
+	public static final int DOT = 5;
+	
 	private final String content;
+	
+	private int type;
 	
 	/**
 	 * Creates a new Token containing the entered String.
 	 * 
 	 * @param content
 	 *            The String to be stored in the Token
+	 * @param type The Token's type
 	 */
-	public Token(String content) {
+	public Token(String content, int type) {
 		this.content = content;
+		this.type = type;
 	}
 
 	/**
@@ -28,5 +39,9 @@ public class Token {
 	 */
 	public String getContent() {
 		return content;
+	}
+	
+	public int getType() {
+		return type;
 	}
 }

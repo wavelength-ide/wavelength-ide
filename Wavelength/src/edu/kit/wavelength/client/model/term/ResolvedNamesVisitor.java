@@ -1,24 +1,61 @@
 package edu.kit.wavelength.client.model.term;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+
+import edu.kit.wavelength.client.model.library.Library;
+
 /**
  * A {@link Visitor} that gives non-colliding names for bound variables.
  *
  * @param <T> The return value of the visitor
  */
 public abstract class ResolvedNamesVisitor<T> implements Visitor<T> {
+	private DeBruijnList<String> assignedNames;
+	private HashSet<String> allAssigned;
+	private List<Library> libraries;
+	
+	public ResolvedNamesVisitor(List<Library> libraries) {
+		Objects.requireNonNull(libraries);
+		
+		this.assignedNames = new DeBruijnList<>();
+		this.allAssigned = new HashSet<>();
+		this.libraries = libraries;
+	}
+	
+	private boolean collides(Set<String> frees, String name) {
+		return allAssigned.contains(name) || frees.contains(name) || libraries.stream().anyMatch(l -> l.containsName(name));
+	}
+	
 	@Override
-	public T visitAbstraction(Abstraction abs)
+	public final T visitAbstraction(Abstraction abs)
 	{
-		return null;
+		String assignedName = abs.getPreferredName();
+		Set<String> frees = abs.acceptVisitor(new BlockedNamesVisitor());
+		if (collides(frees, assignedName)) {
+			int i = 0;
+			do {
+				++i;
+				assignedName = abs.getPreferredName() + String.valueOf(i);
+			} while (collides(frees, assignedName));
+		}
+		assignedNames.push(assignedName);
+		allAssigned.add(assignedName);
+		T result = this.visitAbstraction(abs, assignedName);
+		assignedNames.pop();
+		allAssigned.remove(assignedName);
+		return result;
 	}
 	
 	@Override
 	public abstract T visitApplication(Application app);
 	
 	@Override
-	public T visitBoundVariable(BoundVariable var)
+	public final T visitBoundVariable(BoundVariable var)
 	{
-		return null;
+		return this.visitBoundVariable(var, assignedNames.get(var.getDeBruijnIndex()));
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -26,14 +27,14 @@ public class RunNewExecution implements Action {
 	private static App app = App.get();
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = Arrays.asList(
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
 			app.outputFormatBox(), 
 			app.reductionOrderBox(),
 			app.outputSizeBox(), 
 			app.stepBackwardButton(), 
 			app.stepByStepModeButton(), 
 			app.stepForwardButton()
-			);
+			));
 
 	static {
 		componentsToLock.addAll(app.exerciseButtons());
@@ -55,6 +56,7 @@ public class RunNewExecution implements Action {
 		// read the users input
 		String code = app.editor().read();
 
+		// TODO: find() Sachen in components, Rückgabetyp von read() ist generisch
 		// determine the selected reduction order
 		String orderName = app.reductionOrderBox().read();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));

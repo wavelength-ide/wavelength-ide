@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,13 +15,13 @@ public class UnpauseExecution implements Action {
 	private static App app = App.get();
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = Arrays.asList(
+	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
 			app.stepBackwardButton(), 
 			app.stepForwardButton(),
 			app.reductionOrderBox(), 
 			app.treeOutput(), 
 			app.unicodeOutput()
-			);
+			));
 	
 	static {
 		componentsToLock.addAll(app.exportFormatButtons());

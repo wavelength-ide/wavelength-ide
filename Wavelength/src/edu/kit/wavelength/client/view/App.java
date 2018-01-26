@@ -1,16 +1,16 @@
 package edu.kit.wavelength.client.view;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -18,6 +18,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.PushButton;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 import edu.kit.wavelength.client.model.library.Libraries;
@@ -94,9 +95,9 @@ public class App implements Serializable {
 	private PopUpWindow exportWindow;
 	private ImageButton share;
 	private TextField sharePanel;
-	private List<Checkbox> libraries;
-	private List<TextButton> exercises;
-	private List<TextButton> exportFormats;
+	private List<Checkbox> libraries = new ArrayList<Checkbox>();
+	private List<TextButton> exercises = new ArrayList<TextButton>();
+	private List<TextButton> exportFormats = new ArrayList<TextButton>();
 	private Executor executor;
 	
 	private TextButton showSolution;
@@ -346,15 +347,16 @@ public class App implements Serializable {
 		Panel mainPanel = new VerticalPanel();
 		Panel headerPanel = new SimplePanel();
 		Panel editorPanel = new SimplePanel();
-		Panel controlPanel = new SimplePanel();
+		Panel controlPanel = new HorizontalPanel();
 		Panel outputPanel = new SimplePanel();
-		Panel footerPanel = new SimplePanel();
+		Panel footerPanel = new HorizontalPanel();
 		
 		headerPanel.addStyleName("headerStyle");
 		editorPanel.addStyleName("editorStyle");
 		controlPanel.addStyleName("controlStyle");
 		outputPanel.addStyleName("outputStyle");
 		footerPanel.addStyleName("footerStyle");
+		
 		
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
@@ -383,19 +385,85 @@ public class App implements Serializable {
 			mainMenuPanel.add(label);
 		}
 		//add exercises
-		for (Exercise exercise : Exercises.all()) {
-			Button button = new Button(exercise.getName());
-			button.addClickHandler(event -> new SelectExercise(exercise).run());
-			button.setTitle(exercise.getTask());
-			mainMenuPanel.add(button);
-			//exercises.add(new TextButton(button, exercise.getName())); //TODO enabling this line leads to a blank page in super dev mode!
+		if (Exercises.all() != null) {
+			for (Exercise exercise : Exercises.all()) {
+				Button button = new Button(exercise.getName());
+				button.addClickHandler(event -> new SelectExercise(exercise).run());
+				button.setTitle(exercise.getTask());
+				mainMenuPanel.add(button);
+				exercises.add(new TextButton(button, exercise.getName()));
+			}
+		} else {
+			Label label = new Label("no exercises available");
+			label.addStyleName("noExerciseLabelStyle");
+			mainMenuPanel.add(label);
 		}
-		mainMenu.setContent(mainMenuPanel);
 		
+		mainMenu.setContent(mainMenuPanel);
 		headerPanel.add(mainMenu);
 		
-		editorPanel.getElement().getStyle().setHeight(20, Unit.EM);
-		editorPanel.getElement().getStyle().setWidth(100, Unit.EM);
+		//create ListBox for outputFormats
+		ListBox outputBox = new ListBox();
+		outputBox.addItem("Unicode Output");
+		outputBox.addItem("Tree Output");
+		controlPanel.add(outputBox);
+		outputFormat = new OptionBox(outputBox);
+		
+		//create ListBox for reductionOrders
+		ListBox reductionBox = new ListBox();
+		if (ReductionOrders.all() != null) {
+			ReductionOrders.all().stream().map(ReductionOrder::getName).forEach(reductionBox::addItem);
+		} else {
+			reductionBox.addItem("no reduction order available");
+		}
+		controlPanel.add(reductionBox);
+		reductionOrder = new OptionBox(reductionBox);
+		
+		//create ListBox for outputSizes
+		ListBox outputSizeBox = new ListBox();
+		if (OutputSizes.all() != null) {
+			OutputSizes.all().stream().map(OutputSize::getName).forEach(outputSizeBox::addItem);
+		} else {
+			outputSizeBox.addItem("no output size available");
+		}
+		controlPanel.add(outputSizeBox);
+		outputSize = new OptionBox(outputSizeBox);
+		
+		PushButton stepBackwardButton = new PushButton();
+		stepBackwardButton.addStyleName("stepBackwardStyle");
+		controlPanel.add(stepBackwardButton);
+		
+		PushButton stepByStepButton = new PushButton();
+		stepByStepButton.addStyleName("stepByStepStyle");
+		controlPanel.add(stepByStepButton);
+		
+		PushButton stepForwardButton = new PushButton();
+		stepForwardButton.addStyleName("stepForwardStyle");
+		controlPanel.add(stepForwardButton);
+		
+		PushButton terminateButton = new PushButton();
+		terminateButton.addStyleName("terminateStyle");
+		controlPanel.add(terminateButton);
+		
+		PushButton runButton = new PushButton();
+		runButton.addStyleName("runStyle");
+		controlPanel.add(runButton);
+		
+		PushButton pauseButton = new PushButton();
+		pauseButton.addStyleName("pauseStyle");
+		controlPanel.add(pauseButton);
+		
+		TextArea textArea = new TextArea();
+		textArea.addStyleName("unicodeOutputStyle");
+		outputPanel.add(textArea);
+		
+		PushButton exportButton = new PushButton();
+		exportButton.addStyleName("exportStyle");
+		footerPanel.add(exportButton);
+		
+		PushButton shareButton = new PushButton();
+		shareButton.addStyleName("shareStyle");
+		footerPanel.add(shareButton);
 		
 		
 		mainPanel.add(headerPanel);
@@ -403,20 +471,13 @@ public class App implements Serializable {
 		mainPanel.add(controlPanel);
 		mainPanel.add(outputPanel);
 		mainPanel.add(footerPanel);
-		
 				
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		MonacoEditor me = MonacoEditor.load(editorPanel);
 		
-		//create ListBox for outputFormats
-		outputFormat = new OptionBox(new ListBox());
-		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName).collect(Collectors.toList());
-		//create ListBox for reductionOrders
-		reductionOrder = new OptionBox(new ListBox());
-		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
-		//create ListBox for outputSizes
-		outputSize = new OptionBox(new ListBox());
+		
+		
 		stepBackward = new ImageButton(new PushButton(), new Image(), new Image());
 		stepByStepMode = new ImageButton(new PushButton(), new Image(), new Image());
 		stepForward = new ImageButton(new PushButton(), new Image(), new Image());

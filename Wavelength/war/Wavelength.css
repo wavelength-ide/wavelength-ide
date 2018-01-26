@@ -1,11 +1,26 @@
 .headerStyle  {border-style: solid; border-color: lightgrey; position: relative; max-height: 5em; z-index: 1; }
-.editorStyle  {border-style: solid; border-color: lightgrey; position: relative; z-index: 0;}
-.controlStyle {border-style: solid; border-color: lightgrey; position: relative; }
-.outputStyle  {border-style: solid; border-color: lightgrey; position: relative; }
+.editorStyle  {height: 20em; width: 90pc; border-style: solid; border-color: lightgrey; position: relative; z-index: 0;}
+.controlStyle {width: 90pc; border-style: solid; border-color: lightgrey; position: relative; }
+.controlStyle .gwt-ListBox {margin: 1em;}
+
+.outputStyle  {height: 25em; width: 90pc; border-style: solid; border-color: lightgrey; position: relative; }
 .footerStyle  {border-style: solid; border-color: lightgrey; position: relative; }
 
 .mainMenuStyle { }
 .mainMenuButtonStyle {padding-left: 0.5em; padding-top: 0.5em; }
-.mainMenuButtonStyle::after {color: blue; font-size:3em; font-family: "Glyphicons Halflings"; content:"\e019"; }
+.mainMenuButtonStyle::after {color: blue; font-size:3em; font-family: "Glyphicons Halflings"; content:"\e019" }
 .mainMenuPanelStyle {border-style: solid; border-color: lightgrey; background-color: lightgrey; max-height: 10em, overflow : scroll;}
-.noLibraryLabelStyle {color: red; background-color: lightgrey; }
+.noLibraryLabelStyle {border-style: inset; background-color: lightgrey; }
+.noExerciseLabelStyle {border-style: inset; background-color: lightgrey; }
+
+.stepBackwardStyle::after {font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e069"; }
+.stepByStepStyle::after   {color: pink; font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e178"; }
+.stepForwardStyle::after  {font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e077"; }
+.terminateStyle::after    {color: red; font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e074"; }
+.runStyle::after          {color: green; font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e072"; }
+.pauseStyle::after        {font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e073"; }
+
+.unicodeOutputStyle {}
+
+.exportStyle::after {font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e170"; }
+.shareStyle::after  {font-size: 2em; font-family: "Glyphicons Halflings"; content:"\e066"; }

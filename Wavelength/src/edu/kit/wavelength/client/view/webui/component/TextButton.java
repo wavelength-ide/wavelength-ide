@@ -35,6 +35,10 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 	 * 
 	 */
 	public TextButton(final Button button, final String text) {
+		if (button == null){
+			throw new IllegalArgumentException("button must not be null");
+		}
+		
 		wrappedButton = button;
 		wrappedButton.setText(text);
 		currentEvent = null;
@@ -67,6 +71,10 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 
 	@Override
 	public void setAction(Action action) {
+		if (action == null){
+			throw new IllegalArgumentException("action must not be null");
+		}
+		
 		if(currentEvent != null){
 			currentEvent.removeHandler();
 		}

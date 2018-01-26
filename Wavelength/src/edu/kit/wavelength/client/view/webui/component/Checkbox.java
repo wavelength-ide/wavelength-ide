@@ -24,6 +24,9 @@ public class Checkbox implements Readable, Hideable, Toggleable, Serializable, L
 	 *            the text shown next to the check box
 	 */
 	public Checkbox(final CheckBox checkBox, final String name) {
+		if (checkBox == null){
+			throw new IllegalArgumentException("checkBox must not be null");
+		}
 		wrappedCheckBox = checkBox;
 		wrappedCheckBox.setName(name);
 	}

@@ -22,9 +22,10 @@ public class DisclosureMenu implements Hideable, Lockable {
 	private Boolean isLocked;
 
 	/**
-	 * Constructs a new DisclosurePanel.
+	 * Constructs a new DisclosureMenu. The content of the menu should already
+	 * be added to it.
 	 * 
-	 * @param panel
+	 * @param disclosurePanel
 	 *            Panel to adapt (this is the "Button" with the sliding
 	 *            mechanism itself - not the panel within it)
 	 * @param content
@@ -32,6 +33,13 @@ public class DisclosureMenu implements Hideable, Lockable {
 	 *            is opened
 	 */
 	public DisclosureMenu(DisclosurePanel disclosurePanel, Panel content) {
+		if (disclosurePanel == null){
+			throw new IllegalArgumentException("disclosurePanel must not be null");
+		}
+		if (content == null){
+			throw new IllegalArgumentException("contentPanel must not be null");
+		}
+		
 		wrappedDisclosurePanel = disclosurePanel;
 		contentPanel = content;
 		isLocked = false;
@@ -84,6 +92,8 @@ public class DisclosureMenu implements Hideable, Lockable {
 	 *            the widget to disable its children
 	 */
 	private void enableAllChildren(boolean enable, Widget widget) {
+		assert(widget != null);
+		
 		if (widget instanceof HasWidgets) {
 
 			Iterator<Widget> iter = ((HasWidgets) widget).iterator();

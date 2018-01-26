@@ -30,6 +30,10 @@ public class OptionBox implements Hideable, Lockable, Readable, Serializable, Cl
 	 *            the wrapped {@link ListBox}
 	 */
 	public OptionBox(final ListBox listBox) {
+		if (listBox == null) {
+			throw new IllegalArgumentException("listBox must not be null");
+		}
+
 		wrappedListBox = listBox;
 	}
 
@@ -88,6 +92,10 @@ public class OptionBox implements Hideable, Lockable, Readable, Serializable, Cl
 
 	@Override
 	public void setAction(Action action) {
+		if (action == null) {
+			throw new IllegalArgumentException("action must not be null");
+		}
+
 		if (currentEvent != null) {
 			currentEvent.removeHandler();
 		}

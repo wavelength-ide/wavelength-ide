@@ -23,6 +23,10 @@ public class TextField implements Hideable, Writable, Readable {
 	 *            The GWT TextArea that this class wraps
 	 */
 	public TextField(TextArea textField) {
+		if (textField == null){
+			throw new IllegalArgumentException("textField must not be null");
+		}
+		
 		wrappedTextArea = textField;
 	}
 

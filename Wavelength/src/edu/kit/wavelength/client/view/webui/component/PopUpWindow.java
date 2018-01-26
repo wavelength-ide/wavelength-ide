@@ -41,6 +41,16 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 	 *            the Button that will close the DialogBox
 	 */
 	public PopUpWindow(final DialogBox dialogBox, final TextArea textArea, final Button closeButton) {
+		if (dialogBox == null){
+			throw new IllegalArgumentException("dialogBox must not be null");
+		}
+		if (textArea == null){
+			throw new IllegalArgumentException("textArea must not be null");
+		}
+		if (closeButton == null){
+			throw new IllegalArgumentException("closeButton must not be null");
+		}
+		
 		wrappedDialogBox = dialogBox;
 		this.textArea = textArea;
 		this.closeButton = closeButton;
@@ -73,6 +83,10 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 	public PopUpWindow(final DialogBox dialogBox, final TextArea textArea, final Button actionButton,
 			final Button closeButton) {
 		this(dialogBox, textArea, closeButton);
+		if (actionButton == null){
+			throw new IllegalArgumentException("actionButton must not be null");
+		}
+		
 		this.actionButton = actionButton;
 	}
 
@@ -104,11 +118,11 @@ public class PopUpWindow implements Writable, Hideable, Readable, Clickable {
 
 	@Override
 	public void setAction(Action action) {
-
-		// actionButton should only be null if PopUpWindow wasn't constructed
-		// with one.
 		if (actionButton == null) {
-			return;
+			throw new IllegalStateException("popupWindow has no actionButton to set an action");
+		}
+		if (action == null){
+			throw new IllegalArgumentException("action must not be null");
 		}
 
 		if (currentEvent != null) {

@@ -32,19 +32,13 @@ public class ImageButton implements Lockable, Hideable, Clickable {
 	 *
 	 * @param Custombutton
 	 *            the wrapped {@link CustomButton}
-	 * @param imageWhenActivated
-	 *            The image that is shown when the Button is active
-	 * @param imageWhenDeactivated
-	 *            The image that is shown when the Button is deactivated
-	 * 
 	 */
-	public ImageButton(final CustomButton button, final Image imageWhenActivated, final Image imageWhenDeactivated) {
+	public ImageButton(final CustomButton button) {
+		if (button == null) {
+			throw new IllegalArgumentException("button must not be null");
+		}
+
 		wrappedButton = button;
-		/*
-		 * TODO Bilder sollten über den Konstruktor in der AppKlasse übergeben
-		 * werden. Ich habe nur umständliche wege gefunden das Bild des Knopfes
-		 * nach seiner erstellung zu ändern.
-		 */
 	}
 
 	@Override
@@ -69,6 +63,10 @@ public class ImageButton implements Lockable, Hideable, Clickable {
 
 	@Override
 	public void setAction(Action action) {
+		if (action == null) {
+			throw new IllegalArgumentException("action must not be null");
+		}
+
 		if (currentEvent != null) {
 			currentEvent.removeHandler();
 		}

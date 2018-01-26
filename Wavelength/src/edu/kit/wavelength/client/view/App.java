@@ -39,13 +39,15 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
  * App is a singleton that initializes and holds the view.
  */
 public class App implements Serializable {
-	
+
 	private static App instance = null;
-	
-	private App() {}
-	
+
+	private App() {
+	}
+
 	/**
 	 * Gets a singleton instance of App.
+	 * 
 	 * @return instance
 	 */
 	public static App get() {
@@ -55,6 +57,7 @@ public class App implements Serializable {
 		}
 		return instance;
 	}
+
 	/**
 	 * Name of the unicode format.
 	 */
@@ -63,7 +66,7 @@ public class App implements Serializable {
 	 * Name of the tree format.
 	 */
 	public static final String TreeOutputName = "Tree";
-	
+
 	private ImageButton mainMenuButton;
 	private Editor editor;
 	private OptionBox outputFormat;
@@ -85,7 +88,7 @@ public class App implements Serializable {
 	private List<TextButton> exercises;
 	private List<TextButton> exportFormats;
 	private Executor executor;
-	
+
 	private TextButton showSolution;
 	private TextButton hideSolution;
 	private TextButton exitExerciseModeButton;
@@ -93,263 +96,313 @@ public class App implements Serializable {
 	private PopUpWindow leaveExerciseMode;
 	private TextField solutionPanel;
 	private TextField taskPanel;
-	
+
 	// etc.
-	
+
 	/**
-	 * Gets the panel that contains the URL to play back the state of the application.
+	 * Gets the panel that contains the URL to play back the state of the
+	 * application.
+	 * 
 	 * @return The panel containing the share-URL
 	 */
 	public TextField sharePanel() {
 		return this.sharePanel;
 	}
-	
+
 	/**
 	 * Gets the window that shows exported output.
+	 * 
 	 * @return The export window
 	 */
 	public PopUpWindow exportWindow() {
 		return this.exportWindow;
 	}
-	
+
 	/**
 	 * Gets the button that is used to open the main menu.
+	 * 
 	 * @return The main menu button
 	 */
 	public ImageButton mainMenuButton() {
 		return mainMenuButton;
 	}
-	
+
 	/**
 	 * Gets the editor.
+	 * 
 	 * @return The editor
 	 */
 	public Editor editor() {
 		return editor;
 	}
-	
+
 	/**
-	 * Gets the option box that allows the user to choose which output format to use.
+	 * Gets the option box that allows the user to choose which output format to
+	 * use.
+	 * 
 	 * @return The output format box
 	 */
 	public OptionBox outputFormatBox() {
 		return outputFormat;
 	}
-	
+
 	/**
-	 * Gets the option box that allows the user to choose which reduction order to use.
+	 * Gets the option box that allows the user to choose which reduction order
+	 * to use.
+	 * 
 	 * @return The reduction order option box
 	 */
 	public OptionBox reductionOrderBox() {
 		return reductionOrder;
 	}
-	
+
 	/**
-	 * Gets the option box that allows the user to choose which output size to use.
+	 * Gets the option box that allows the user to choose which output size to
+	 * use.
+	 * 
 	 * @return The output size option box
 	 */
 	public OptionBox outputSizeBox() {
 		return outputSize;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to play back to the previous displayed term.
+	 * Gets the button that can be used to play back to the previous displayed
+	 * term.
+	 * 
 	 * @return The step backward button
 	 */
 	public ImageButton stepBackwardButton() {
 		return stepBackward;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to initiate step by step reduction before execution.
+	 * Gets the button that can be used to initiate step by step reduction
+	 * before execution.
+	 * 
 	 * @return The step-by-step button
 	 */
 	public ImageButton stepByStepModeButton() {
 		return stepByStepMode;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to initiate the next reduction by the currently selected reduction order.
+	 * Gets the button that can be used to initiate the next reduction by the
+	 * currently selected reduction order.
+	 * 
 	 * @return The step forward button
 	 */
 	public ImageButton stepForwardButton() {
 		return stepForward;
 	}
-	
+
 	/**
 	 * Gets the button that can be used to terminate the reduction.
+	 * 
 	 * @return The terminate button
 	 */
 	public ImageButton terminateButton() {
 		return terminate;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to initiate the execution, automatically reducing the input with the given options
+	 * Gets the button that can be used to initiate the execution, automatically
+	 * reducing the input with the given options.
+	 * 
 	 * @return The run button
 	 */
 	public ImageButton runButton() {
 		return run;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to transition from the automatic execution to the step by step mode.
+	 * Gets the button that can be used to transition from the automatic
+	 * execution to the step by step mode.
+	 * 
 	 * @return The pause button
 	 */
 	public ImageButton pauseButton() {
 		return pause;
 	}
-	
+
 	/**
 	 * Gets the output that displays terms as trees.
+	 * 
 	 * @return The output used to display a term in tree representation
 	 */
 	public TreeOutput treeOutput() {
 		return treeOutput;
 	}
-	
+
 	/**
 	 * Gets the output that displays terms with unicode text.
+	 * 
 	 * @return The output used to display a term in unicode
 	 */
 	public UnicodeOutput unicodeOutput() {
 		return unicodeOutput;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to open the menu that allows the user to choose an export format.
+	 * Gets the button that can be used to open the menu that allows the user to
+	 * choose an export format.
+	 * 
 	 * @return The export button
 	 */
 	public ImageButton exportButton() {
 		return export;
 	}
-	
+
 	/**
-	 * Gets the button that can be used to toggle the panel that displays the serialized URL.
+	 * Gets the button that can be used to toggle the panel that displays the
+	 * serialized URL.
+	 * 
 	 * @return The share button
 	 */
 	public ImageButton shareButton() {
 		return share;
 	}
-	
+
 	/**
 	 * Gets all checkboxes that can be used to enable libraries.
+	 * 
 	 * @return The checkboxes used to toggle libraries
 	 */
 	public List<Checkbox> libraryBoxes() {
 		return libraries;
 	}
-	
+
 	/**
 	 * Gets all buttons that can be used to load an exercise.
+	 * 
 	 * @return The buttons used to load exercises
 	 */
 	public List<TextButton> exerciseButtons() {
 		return exercises;
 	}
-	
+
 	/**
-	 * Gets all buttons that can be used to load the output into the export window with the given export format specified by the button.
+	 * Gets all buttons that can be used to load the output into the export
+	 * window with the given export format specified by the button.
+	 * 
 	 * @return The buttons used to select an output format
 	 */
 	public List<TextButton> exportFormatButtons() {
 		return exportFormats;
 	}
-	
+
 	/**
 	 * Gets the wrapper that controls the reduction of lambda terms.
+	 * 
 	 * @return The Executor instance controlling the execution
 	 */
 	public Executor executor() {
 		return executor;
 	}
-	
+
 	/**
-	 * Gets the Button that can be used for showing the solution of the current {@link Exercise}.
-	 * @return The Button used for showing the current {@link Exercise}'s solution
+	 * Gets the Button that can be used for showing the solution of the current
+	 * {@link Exercise}.
+	 * 
+	 * @return The Button used for showing the current {@link Exercise}'s
+	 *         solution
 	 */
 	public TextButton showSolutionButton() {
 		return this.showSolution;
 	}
-	
+
 	/**
-	 * Gets the Button that can be used for hiding the solution of the current {@link Exercise}.
-	 * @return The Button used for hiding the current {@link Exercise}'s solution
+	 * Gets the Button that can be used for hiding the solution of the current
+	 * {@link Exercise}.
+	 * 
+	 * @return The Button used for hiding the current {@link Exercise}'s
+	 *         solution
 	 */
 	public TextButton hideSolutionButton() {
 		return this.hideSolution;
 	}
-	
+
 	/**
 	 * Gets the Button that can be used for exiting the exercise mode.
+	 * 
 	 * @return The Button used for exiting the exercise mode
 	 */
 	public TextButton exitExerciseModeButton() {
 		return this.exitExerciseModeButton;
 	}
-	
+
 	/**
 	 * Gets the Dialog that is shown when entering exercise mode.
+	 * 
 	 * @return The Dialog shown when entering exercise mode
 	 */
 	public PopUpWindow enterExerciseMode() {
 		return this.enterExerciseMode;
 	}
-	
+
 	/**
 	 * Gets the Dialog that is shown when leaving exercise mode.
+	 * 
 	 * @return The Dialog shown when leaving exercise mode
 	 */
 	public PopUpWindow leaveExerciseMode() {
 		return this.leaveExerciseMode;
 	}
-	
+
 	/**
-	 * Gets the TextArea that can be used to show the current {@link Exercise}'s solution.
+	 * Gets the TextArea that can be used to show the current {@link Exercise}'s
+	 * solution.
+	 * 
 	 * @return The TextArea showing the current {@link Exercise}'s solution
 	 */
 	public TextField solutionPanel() {
 		return this.solutionPanel;
 	}
-	
+
 	/**
-	 * Gets the TextArea that can be used to show the current {@link Exercise}'s task.
+	 * Gets the TextArea that can be used to show the current {@link Exercise}'s
+	 * task.
+	 * 
 	 * @return The TextArea showing the current {@link Exercise}'s task
 	 */
 	public TextField taskPanel() {
 		return this.taskPanel;
 	}
-	
+
 	// etc.
-	
+
 	/**
 	 * Initializes App.
 	 */
 	private void initialize() {
 		String state = Window.Location.getPath();
 		// deserialize
-		
-		mainMenuButton = new ImageButton(new PushButton(), new Image(), new Image());
+
+		mainMenuButton = new ImageButton(new PushButton());
 		editor = new Editor();
-		//create ListBox for outputFormats
+		// create ListBox for outputFormats
 		outputFormat = new OptionBox(new ListBox());
-		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName).collect(Collectors.toList());
-		//create ListBox for reductionOrders
+		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName)
+				.collect(Collectors.toList());
+		// create ListBox for reductionOrders
 		reductionOrder = new OptionBox(new ListBox());
 		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
-		//create ListBox for outputSizes
+		// create ListBox for outputSizes
 		outputSize = new OptionBox(new ListBox());
-		stepBackward = new ImageButton(new PushButton(), new Image(), new Image());
-		stepByStepMode = new ImageButton(new PushButton(), new Image(), new Image());
-		stepForward = new ImageButton(new PushButton(), new Image(), new Image());
-		terminate = new ImageButton(new PushButton(), new Image(), new Image());
-		run = new ImageButton(new PushButton(), new Image(), new Image());
-		pause = new ImageButton(new PushButton(), new Image(), new Image());
-		export = new ImageButton(new PushButton(), new Image(), new Image());
-		share = new ImageButton(new PushButton(), new Image(), new Image());
-		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
-		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
-		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
+		stepBackward = new ImageButton(new PushButton());
+		stepByStepMode = new ImageButton(new PushButton());
+		stepForward = new ImageButton(new PushButton());
+		terminate = new ImageButton(new PushButton());
+		run = new ImageButton(new PushButton());
+		pause = new ImageButton(new PushButton());
+		export = new ImageButton(new PushButton());
+		share = new ImageButton(new PushButton());
+		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName()))
+				.collect(Collectors.toList());
+		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName()))
+				.collect(Collectors.toList());
+		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName()))
+				.collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		run.setAction(new RunNewExecution());
 	}

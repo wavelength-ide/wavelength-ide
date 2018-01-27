@@ -33,13 +33,13 @@ public class DisclosureMenu implements Hideable, Lockable {
 	 *            is opened
 	 */
 	public DisclosureMenu(DisclosurePanel disclosurePanel, Panel content) {
-		if (disclosurePanel == null){
+		if (disclosurePanel == null) {
 			throw new IllegalArgumentException("disclosurePanel must not be null");
 		}
-		if (content == null){
+		if (content == null) {
 			throw new IllegalArgumentException("contentPanel must not be null");
 		}
-		
+
 		wrappedDisclosurePanel = disclosurePanel;
 		contentPanel = content;
 		isLocked = false;
@@ -92,8 +92,8 @@ public class DisclosureMenu implements Hideable, Lockable {
 	 *            the widget to disable its children
 	 */
 	private void enableAllChildren(boolean enable, Widget widget) {
-		assert(widget != null);
-		
+		assert (widget != null);
+
 		if (widget instanceof HasWidgets) {
 
 			Iterator<Widget> iter = ((HasWidgets) widget).iterator();

@@ -16,7 +16,7 @@ public class Checkbox implements Readable, Hideable, Toggleable, Serializable, L
 	private CheckBox wrappedCheckBox;
 
 	/**
-	 * Creates a new check box
+	 * Creates a new check box.
 	 * 
 	 * @param checkBox
 	 *            the wrapped {@link CheckBox}
@@ -24,7 +24,7 @@ public class Checkbox implements Readable, Hideable, Toggleable, Serializable, L
 	 *            the text shown next to the check box
 	 */
 	public Checkbox(final CheckBox checkBox, final String name) {
-		if (checkBox == null){
+		if (checkBox == null) {
 			throw new IllegalArgumentException("checkBox must not be null");
 		}
 		wrappedCheckBox = checkBox;
@@ -103,5 +103,4 @@ public class Checkbox implements Readable, Hideable, Toggleable, Serializable, L
 	public boolean isShown() {
 		return wrappedCheckBox.isVisible();
 	}
-
 }

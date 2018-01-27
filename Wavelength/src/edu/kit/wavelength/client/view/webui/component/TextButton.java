@@ -15,16 +15,16 @@ import edu.kit.wavelength.client.view.api.Writable;
 /**
  * A LabeldButton is an adapter class that wraps a GWT {@link Button}.
  *
- * It is labeled by text and can be locked and unlocked to prevent the User
- * from interacting with it. In Addition its behavior can be changed. This means
- * that the name of the label and the action that is performed when clicking
- * this button can be changed.
+ * It is labeled by text and can be locked and unlocked to prevent the User from
+ * interacting with it. In Addition its behavior can be changed. This means that
+ * the name of the label and the action that is performed when clicking this
+ * button can be changed.
  */
 public class TextButton implements Lockable, Hideable, Writable, Readable, Clickable {
 
 	private Button wrappedButton;
 	private HandlerRegistration currentEvent;
-	
+
 	/**
 	 * Creates a new LabeledButton.
 	 *
@@ -35,10 +35,10 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 	 * 
 	 */
 	public TextButton(final Button button, final String text) {
-		if (button == null){
+		if (button == null) {
 			throw new IllegalArgumentException("button must not be null");
 		}
-		
+
 		wrappedButton = button;
 		wrappedButton.setText(text);
 		currentEvent = null;
@@ -71,11 +71,11 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 
 	@Override
 	public void setAction(Action action) {
-		if (action == null){
+		if (action == null) {
 			throw new IllegalArgumentException("action must not be null");
 		}
-		
-		if(currentEvent != null){
+
+		if (currentEvent != null) {
 			currentEvent.removeHandler();
 		}
 		currentEvent = wrappedButton.addClickHandler(new ClickHandler() {
@@ -93,7 +93,7 @@ public class TextButton implements Lockable, Hideable, Writable, Readable, Click
 
 	@Override
 	public void write(String input) {
-		wrappedButton.setText(input);		
+		wrappedButton.setText(input);
 	}
 
 	@Override

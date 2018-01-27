@@ -30,7 +30,7 @@ public class ImageButton implements Lockable, Hideable, Clickable {
 	/**
 	 * Creates a new VisualButton.
 	 *
-	 * @param Custombutton
+	 * @param button
 	 *            the wrapped {@link CustomButton}
 	 */
 	public ImageButton(final CustomButton button) {

@@ -1,9 +1,28 @@
+/* overwrite bootstrap label style */
 label { font-weight: normal !important; vertical-align: middle !important; }
-.gwt-CheckBox > input { margin-right: 2px !important; }
+
+/* add margin between box and label of box */
+.gwt-CheckBox > input { margin-right: 4px !important; }
+
+/* add slight margin so menu button isn't in the corner of the screen */
 .mainMenuButton { margin-left: 0.1em; margin-top: 0.1em; }
+
+/* add inner padding so components don't touch the edge of the panel and a bunch of other stylistic changes */
 .mainMenuPanel { padding: 4px !important; border-style: solid; border-color: lightgrey; border-width: 1px; background-color: white; }
-.mainMenuPanel > * { display: block; }
-.optionBarPanel .gwt-ListBox { margin-left: 2px; margin-right: 2px; vertical-align: middle; }
+
+/* stretch menu contents and make them flow vertically */
+.mainMenuPanel > * { width: 100%; display: block !important; }
+
+/* align list boxes to the bottom */
+.optionBarPanel { display: flex; align-items: bottom; }
+
+/* align flowpanels with buttons to the right */
 .controlPanel { text-align: right; }
-.controlPanel .gwt-Button { margin-left: 2px; margin-right: 2px; vertical-align: middle; }
+
+/* prevent flowpanels from filling the entire width of the control panel */
+.controlPanel > * { display: inline-block; }
+
+/* space step by step controls and run controls */
+.stepByStepControlPanel { margin-right: 30px; }
+
 .menuTitle { font-weight: bold }

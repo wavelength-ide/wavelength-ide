@@ -422,6 +422,7 @@ public class App implements Serializable {
 			String n = excs.getName();
 			Button exerciseButton = new Button(n);
 			exerciseButton.addClickHandler(event -> new SelectExercise(excs).run());
+			exerciseButton.addStyleName("btn btn-default");
 			exerciseButton.setTitle(excs.getTask());
 			mainMenuPanel.add(exerciseButton);
 			this.exercises.add(new TextButton(exerciseButton, n));
@@ -446,7 +447,7 @@ public class App implements Serializable {
 		ioPanel.add(outputArea);
 
 		DockLayoutPanel inputControlPanel = new DockLayoutPanel(Unit.PCT);
-		inputPanel.addSouth(inputControlPanel, 1.85);
+		inputPanel.addSouth(inputControlPanel, 2);
 
 		SimplePanel editorPanel = new SimplePanel();
 		// id needed because MonacoEditor adds to panel div by id
@@ -456,7 +457,7 @@ public class App implements Serializable {
 		FlowPanel optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
 		inputControlPanel.addWest(optionBarPanel, 50);
-
+		
 		ListBox outputFormatBox = new ListBox();
 		outputFormatBox.addItem("Unicode Output");
 		outputFormatBox.addItem("Tree Output");
@@ -476,32 +477,52 @@ public class App implements Serializable {
 		controlPanel.addStyleName("controlPanel");
 		inputControlPanel.addEast(controlPanel, 50);
 
+		FlowPanel stepByStepControlPanel = new FlowPanel();
+		stepByStepControlPanel.addStyleName("stepByStepControlPanel");
+		controlPanel.add(stepByStepControlPanel);
+		
 		Button backwardsButton = new Button();
 		backwardsButton.addStyleName("fa fa-chevron-left");
-		controlPanel.add(backwardsButton);
+		backwardsButton.addStyleName("btn btn-default");
+		stepByStepControlPanel.add(backwardsButton);
 
 		Button stepByStepButton = new Button();
 		stepByStepButton.addStyleName("fa fa-exchange");
-		controlPanel.add(stepByStepButton);
+		stepByStepButton.addStyleName("btn btn-default");
+		stepByStepControlPanel.add(stepByStepButton);
 
 		Button forwardButton = new Button();
 		forwardButton.addStyleName("fa fa-chevron-right");
-		controlPanel.add(forwardButton);
+		forwardButton.addStyleName("btn btn-default");
+		stepByStepControlPanel.add(forwardButton);
 
+		FlowPanel runControlPanel = new FlowPanel();
+		runControlPanel.addStyleName("runControlPanel");
+		controlPanel.add(runControlPanel);
+		
 		Button cancelButton = new Button();
 		cancelButton.addStyleName("fa fa-stop");
-		controlPanel.add(cancelButton);
-
+		cancelButton.addStyleName("btn btn-default");
+		runControlPanel.add(cancelButton);
+		
 		Button runButton = new Button();
 		runButton.addStyleName("fa fa-play");
-		controlPanel.add(runButton);
+		runButton.addStyleName("btn btn-default");
+		runControlPanel.add(runButton);
+		
+		Button pauseButton = new Button();
+		pauseButton.addStyleName("fa fa-pause");
+		pauseButton.addStyleName("btn btn-default");
+		runControlPanel.add(pauseButton);
 
 		Button exportButton = new Button();
 		exportButton.addStyleName("fa fa-level-up");
+		exportButton.addStyleName("btn btn-default");
 		footerPanel.add(exportButton);
 
 		Button shareButton = new Button();
 		shareButton.addStyleName("fa fa-share-alt");
+		shareButton.addStyleName("btn btn-default");
 		footerPanel.add(shareButton);
 
 		// ui needs to be created BEFORE loading the editor for the ids to exist

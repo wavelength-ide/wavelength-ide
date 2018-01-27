@@ -15,7 +15,8 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
 import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
 
 /**
- * Visitor for generating the output of a {@link LambdaTerm} for the {@link UnicodeOutput} view.
+ * Visitor for generating the output of a {@link LambdaTerm} for the
+ * {@link UnicodeOutput} view.
  */
 public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
 
@@ -26,7 +27,9 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
 
 	@Override
 	public UnicodeTerm visitApplication(Application app) {
-		return null;
+		UnicodeTerm left = app.getLeftHandSide().acceptVisitor(this);
+		UnicodeTerm right = app.getRightHandSide().acceptVisitor(this);
+		return new UnicodeTerm("(" + left.getRepresentation() + ") (" + right.getRepresentation() + ")");
 	}
 
 	@Override
@@ -37,12 +40,13 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
 
 	@Override
 	public UnicodeTerm visitPartialApplication(PartialApplication app) {
-		return null;
+		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
 	public UnicodeTerm visitFreeVariable(FreeVariable var) {
-		return null;
+		String name = var.getName();
+		return new UnicodeTerm(name);
 	}
 
 	@Override
@@ -52,7 +56,8 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
 
 	@Override
 	protected UnicodeTerm visitAbstraction(Abstraction abs, String resolvedName) {
-		return null;
+		UnicodeTerm inner = abs.getInner().acceptVisitor(this);
+		return new UnicodeTerm("U+03BB" + resolvedName + "." + inner.getRepresentation());
 	}
 
 }

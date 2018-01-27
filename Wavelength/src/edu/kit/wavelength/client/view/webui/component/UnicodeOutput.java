@@ -46,6 +46,7 @@ public class UnicodeOutput implements Output {
 	}
 	
 	public void setTerm(UnicodeTerm term) {
-		
+		write(term.getRepresentation());
 	}
+
 }

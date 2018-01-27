@@ -12,7 +12,8 @@ public class MonacoEditor {
 			"value": "hello word",
 			"automaticLayout": true,
 			"minimap": {"enabled": false},
-			"mouseWheelZoom": true
+			"mouseWheelZoom": true,
+			"lineNumbersMinChars": 3
 		};
 		return c;
 	}-*/;

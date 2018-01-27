@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.reduction;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public final class ReductionOrders {
 	 * {@link ReductionOrder}s known to the model
 	 */
 	public static List<ReductionOrder> all() {
-		return null;
+		return Arrays.asList(new NormalOrder(), new CallByName(), new CallByValue(), new ApplicativeOrder());
 	}
 	
 	/**

@@ -29,7 +29,7 @@ public final class Shortened implements OutputSize {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Shortened";
 	}
 
 	@Override

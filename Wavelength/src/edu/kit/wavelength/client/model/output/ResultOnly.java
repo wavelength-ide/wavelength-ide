@@ -21,7 +21,7 @@ public final class ResultOnly implements OutputSize {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Result only";
 	}
 
 	@Override

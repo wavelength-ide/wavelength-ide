@@ -24,7 +24,7 @@ public final class NaturalNumbers implements Library {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Natural numbers";
 	}
 
 	@Override

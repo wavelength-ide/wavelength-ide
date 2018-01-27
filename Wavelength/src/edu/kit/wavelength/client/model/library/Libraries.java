@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.library;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public final class Libraries {
 	 *         {@link Library} known to the model
 	 */
 	public static List<Library> all() {
-		return null;
+		return Arrays.asList(new NaturalNumbers(), new TuplesAndLists(), new YCombinator());
 	}
 
 	/**

@@ -1,13 +1,6 @@
 package edu.kit.wavelength.client.view.update;
 
-import com.apple.eawt.Application;
-
-import edu.kit.wavelength.client.model.term.Abstraction;
-import edu.kit.wavelength.client.model.term.BoundVariable;
-import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.model.term.NamedTerm;
-import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
 import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
@@ -18,15 +11,17 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
  * displayed.
  */
 public class UpdateUnicodeOutput implements ExecutionObserver {
+	
+	private App app = App.get();
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
-		if (!App.get().unicodeOutput().isShown()) {
+		if (!app.unicodeOutput().isShown()) {
 			return;
 		}
 		// TODO: libraries?
 		UnicodeTerm term = t.acceptVisitor(new UnicodeTermVisitor(null));
-		App.get().unicodeOutput().setTerm(term);
+		app.unicodeOutput().setTerm(term);
 	}
 
 

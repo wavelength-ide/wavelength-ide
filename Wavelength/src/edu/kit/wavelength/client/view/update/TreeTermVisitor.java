@@ -2,6 +2,7 @@ package edu.kit.wavelength.client.view.update;
 
 import java.util.List;
 
+
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
@@ -26,22 +27,28 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTerm> {
 
 	@Override
 	public TreeTerm visitApplication(Application app) {
-		return null;
+		TreeTerm left = app.getLeftHandSide().acceptVisitor(this);
+		TreeTerm right = app.getRightHandSide().acceptVisitor(this);
+		TreeTerm application = new TreeTerm("App", left, right);
+		application.setAction(app);
+		return application;
 	}
 
 	@Override
 	public TreeTerm visitNamedTerm(NamedTerm term) {
-		return null;
+		String name = term.getName();
+		return new TreeTerm(name, null, null);
 	}
 
 	@Override
 	public TreeTerm visitPartialApplication(PartialApplication app) {
-		return null;
+		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
 	public TreeTerm visitFreeVariable(FreeVariable var) {
-		return null;
+		String name = var.getName();
+		return new TreeTerm(name, null, null);
 	}
 
 	@Override
@@ -51,7 +58,8 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTerm> {
 
 	@Override
 	protected TreeTerm visitAbstraction(Abstraction abs, String resolvedName) {
-		return null;
+		TreeTerm inner = abs.getInner().acceptVisitor(this);
+		return new TreeTerm("U+03BB" + resolvedName, inner, null);		
 	}
 
 }

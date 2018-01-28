@@ -20,7 +20,7 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
  */
 public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
-	private final String lambda;
+	protected final String lambda;
 
 	/**
 	 * Creates a new Visitor for {@link LambdaTerm}s.

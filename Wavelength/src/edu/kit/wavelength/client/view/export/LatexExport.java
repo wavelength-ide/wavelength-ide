@@ -30,7 +30,7 @@ public class LatexExport implements Export {
 			return "";
 		}
 		
-		BasicExportVisitor visitor = new BasicExportVisitor(Libraries.all(), LAMBDA);
+		LaTeXExportVisitor visitor = new LaTeXExportVisitor(Libraries.all(), LAMBDA);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
 			result.append("$");

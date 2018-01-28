@@ -1,6 +1,5 @@
 package edu.kit.wavelength.client.model.term.parsing;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,13 +22,13 @@ public class Tokeniser {
 	 * @return An array containing all tokens
 	 */
 	public Token[] tokenise(String input) throws ParseException {
-		TokenType leftBracket = new TokenType("\\s*(\\s*", Token.LBRACKET);
-		TokenType rigthBracket = new TokenType("\\s*)\\s*", Token.RBRACKET);
-		TokenType name = new TokenType("\\s*[a-zA-Z0-9]*\\s*", Token.NAME);
-		TokenType variable = new TokenType("\\s*[a-z]\\s*", Token.VARIABLE);
-		TokenType lambda = new TokenType("\\s*[λ\\]\\s*", Token.LAMBDA);
-		TokenType dot = new TokenType("\\s*\\.\\s*", Token.DOT);
-		TokenType[] types = {leftBracket, rigthBracket, name, variable, lambda, dot};	// variable after name!
+		TokenType leftBracket = new TokenType("\\(", Token.LBRACKET);
+		TokenType rigthBracket = new TokenType("\\)", Token.RBRACKET);
+		TokenType name = new TokenType("[a-zA-Z0-9]++", Token.NAME);
+		TokenType lambda = new TokenType("[λ\\\\]", Token.LAMBDA);
+		TokenType dot = new TokenType("\\.", Token.DOT);
+		TokenType space = new TokenType("\\s++", Token.SPACE);
+		TokenType[] types = {leftBracket, rigthBracket, name, lambda, dot, space};	// variable after name!
 		String remainingInput = input;
 		ArrayList<Token> tokens = new ArrayList<Token>();
 		boolean foundMatch;
@@ -47,44 +46,18 @@ public class Tokeniser {
 			}
 			
 		} while (foundMatch);
-		if (remainingInput.length() != 0) {
-			int column = input.length() - remainingInput.length();
-			throw new ParseException("Term could not be parsed, found unknow symbol.", -1, column);
-		} else {
-			return tokens.toArray(new Token[tokens.size()]);
-		}
-	}
-	
-	/**
-	 * Divides an input String into individual tokens for each term name declaration and a single token
-	 * containing the remaining part of the input.
-	 * @param input The input String containing the name declarations to tokenise
-	 * @return An array containing the tokenised input String
-	 */
-	public Token[] tokeniseLibrary(String input) {
-		TokenType declarationToken = new TokenType("[a-zA-Z0-9]*\\s*=\\s**\\s*" + newLine, 0);	// declaration		
-		TokenType blankLineToken = new TokenType("\\s*" + newLine, 1);
-		ArrayList<Token> tokenList = new ArrayList<Token>();
-		String remainingInput = input;
-		boolean foundMatch = false;
-		do {
-			foundMatch = false;
-			Matcher typeMatcher = declarationToken.getPattern().matcher(remainingInput);
-			if (typeMatcher.find()) {
-				foundMatch = true;
-				String newContent = typeMatcher.group().trim();
-				tokenList.add(new Token(newContent, -1));
-				remainingInput = typeMatcher.replaceFirst("");
-			} else {
-				typeMatcher = blankLineToken.getPattern().matcher(remainingInput);
-				if (typeMatcher.find()) {
-					foundMatch = true;
-					remainingInput = typeMatcher.replaceFirst("");
+		if (remainingInput.length() == 0) {
+			for (int i = 0; i < tokens.size(); i++) {
+				if (tokens.get(i).getType() == Token.SPACE) {
+					tokens.remove(i);
 				}
 			}
-		} while (foundMatch);
-		tokenList.add(new Token(remainingInput, -1));
-		return tokenList.toArray(new Token[tokenList.size()]);
+			return tokens.toArray(new Token[tokens.size()]);
+		} else {
+			int column = input.length() - remainingInput.length();
+			throw new ParseException("Term could not be parsed, found unknow symbol.", -1, column);
+			
+		}
 	}
 	
 	/**
@@ -96,9 +69,9 @@ public class Tokeniser {
 	public Token[] tokeniseNameAssignment(String input) {
 		Token[] result = new Token[3];
 		TokenType[] types = new TokenType[3];
-		types[0] = new TokenType("[a-zA-Z]*", 0);
-		types[1] = new TokenType("\\s*=\\s*", 1);
-		types[2] = new TokenType("**[^" + newLine + "]", 2);
+		types[0] = new TokenType("[a-zA-Z]*", Token.NAME);
+		types[1] = new TokenType("\\s*=\\s*", Token.EQUALS);
+		types[2] = new TokenType("**[^" + newLine + "]", Token.NEWLINE);
 		for (int i = 0; i < 3; i++) {
 			Matcher currentMatcher = types[i].getPattern().matcher(input);
 			result[i] = new Token(currentMatcher.group().trim(), types[i].getID());

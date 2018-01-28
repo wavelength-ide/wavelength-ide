@@ -12,19 +12,19 @@ public class Token {
 	public static final int LBRACKET = 0; 
 	public static final int RBRACKET = 1;
 	public static final int NAME = 2;
-	public static final int VARIABLE = 3;
 	public static final int LAMBDA = 4;
 	public static final int DOT = 5;
+	public static final int EQUALS = 6;
+	public static final int NEWLINE = 7;
+	public static final int SPACE = 8;
 	
 	private final String content;
 	
 	private int type;
 	
 	/**
-	 * Creates a new Token containing the entered String.
-	 * 
-	 * @param content
-	 *            The String to be stored in the Token
+	 * Creates a new Token containing the entered String and type.
+	 * @param content The String to be stored in the Token
 	 * @param type The Token's type
 	 */
 	public Token(String content, int type) {

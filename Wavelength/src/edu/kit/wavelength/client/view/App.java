@@ -10,16 +10,19 @@ import org.gwtbootstrap3.client.ui.ButtonGroup;
 import org.gwtbootstrap3.client.ui.DropDownMenu;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.dom.client.Style.VerticalAlign;
+import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -401,8 +404,13 @@ public class App implements Serializable {
 		mainPanel.addStyleName("mainPanel");
 
 		DisclosurePanel mainMenu = new DisclosurePanel("Options");
-
 		mainMenu.setAnimationEnabled(true);
+		mainPanel.addDomHandler(event -> {
+			if (mainMenu.isOpen()) {
+				mainMenu.setOpen(false);
+			}
+		}, MouseDownEvent.getType());
+		mainMenu.addDomHandler(event -> event.stopPropagation(), MouseDownEvent.getType());
 		mainMenu.addStyleName("mainMenu");
 
 		mainMenu.setHeader(new Label()); // label is just used to hide the arrow of the DisclosurePanel
@@ -432,6 +440,7 @@ public class App implements Serializable {
 			String n = excs.getName();
 			Button exerciseButton = new Button(n);
 			exerciseButton.addClickHandler(event -> new SelectExercise(excs).run());
+			exerciseButton.addStyleName("exerciseButton");
 			exerciseButton.addStyleName("btn btn-default");
 			exerciseButton.setTitle(excs.getTask());
 			mainMenuPanel.add(exerciseButton);
@@ -460,12 +469,52 @@ public class App implements Serializable {
 		ioPanel.add(outputArea);
 
 		DockLayoutPanel inputControlPanel = new DockLayoutPanel(Unit.PCT);
-		inputPanel.addSouth(inputControlPanel, 2);
+		inputPanel.addSouth(inputControlPanel, 1.85);
 
+		SplitLayoutPanel editorTaskPanel = new SplitLayoutPanel(3);
+		editorTaskPanel.addStyleName("editorTaskPanel");
+		inputPanel.add(editorTaskPanel);
+		
+		FlowPanel taskPanel = new FlowPanel();
+		taskPanel.addStyleName("taskPanel");
+		editorTaskPanel.addEast(taskPanel, 400);
+		
+		FlowPanel taskHeaderPanel = new FlowPanel();
+		taskPanel.add(taskHeaderPanel);
+		
+		FlowPanel taskControlPanel = new FlowPanel();
+		taskControlPanel.addStyleName("taskControlPanel");
+		taskHeaderPanel.add(taskControlPanel);
+		
+		Label taskDescriptionLabel = new HTML("hello world<br>hello world<br>hello world<br>");
+		taskDescriptionLabel.addStyleName("taskDescriptionLabel");
+		taskHeaderPanel.add(taskDescriptionLabel);
+		
+		Button toggleSolutionButton = new Button();
+		toggleSolutionButton.addStyleName("fa fa-lightbulb-o");
+		toggleSolutionButton.addStyleName("btn btn-default");
+		taskControlPanel.add(toggleSolutionButton);
+		
+		Button closeTaskButton = new Button();
+		closeTaskButton.addStyleName("fa fa-times-circle-o");
+		closeTaskButton.addStyleName("btn btn-default");
+		taskControlPanel.add(closeTaskButton);
+		
+		TextArea solutionArea = new TextArea();
+		solutionArea.addStyleName("solutionArea");
+		solutionArea.addStyleName("form-control");
+		solutionArea.setVisible(false);
+		solutionArea.setReadOnly(true);
+		solutionArea.setText("hello\n\tworld\n\t\teveryone");
+		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
+		taskPanel.add(solutionArea);
+		
+		//editorTaskPanel.setWidgetHidden(taskPanel, true);
+		
 		SimplePanel editorPanel = new SimplePanel();
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
-		inputPanel.add(editorPanel);
+		editorTaskPanel.add(editorPanel);
 
 		FlowPanel optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
@@ -562,7 +611,7 @@ public class App implements Serializable {
 		
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
-		MonacoEditor me = MonacoEditor.load(editorPanel);
+		MonacoEditor editor = MonacoEditor.load(editorPanel);
 
 		stepBackward = new ImageButton(new PushButton(), new Image(), new Image());
 		stepByStepMode = new ImageButton(new PushButton(), new Image(), new Image());

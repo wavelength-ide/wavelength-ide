@@ -1,6 +1,12 @@
 /* overwrite bootstrap label style */
 label { font-weight: normal !important; vertical-align: middle !important; }
 
+/* prevent borders for buttons */
+.btn-default { border-style: none !important; }
+
+/* remove blue outline when clicked from listboxes and buttons */
+.gwt-ListBox:focus, .gwt-ListBox:active, .btn:focus, .btn:active { outline: none !important; box-shadow: none; }
+
 /* add margin between box and label of box */
 .gwt-CheckBox > input { margin-right: 4px !important; }
 
@@ -12,6 +18,24 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 
 /* stretch menu contents and make them flow vertically */
 .mainMenuPanel > * { width: 100%; display: block !important; }
+
+/* align text on exercises left */
+.exerciseButton { text-align: left !important; }
+
+/* add borders to separate editor from control */
+.editorTaskPanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }
+
+/* fix solutionArea overflowing its parent */
+.taskPanel { display: flex; flex-direction: column; }
+
+/* flow text around right floating taskControlPanel */
+.taskDescriptionLabel { display: inline; }
+
+/* float taskControlPanel to the top right */
+.taskControlPanel { float: right; }
+
+/* separate solution from description, fill rest of parent and fix overflowing */
+.solutionArea { margin-top: 20px; height: 100% !important; box-sizing: border-box; resize: none; background-color: white !important; }
 
 /* align list boxes to the bottom */
 .optionBarPanel { display: flex; align-items: bottom; }
@@ -31,4 +55,5 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 /* align buttons in footer panel */
 .footerPanel > .btn-group { display: flex; align-items: bottom; }
 
+/* emphasize menu title */
 .menuTitle { font-weight: bold }

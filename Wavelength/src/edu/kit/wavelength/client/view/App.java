@@ -5,8 +5,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.gwtbootstrap3.client.ui.AnchorListItem;
+import org.gwtbootstrap3.client.ui.ButtonGroup;
+import org.gwtbootstrap3.client.ui.DropDownMenu;
+import org.gwtbootstrap3.client.ui.constants.Toggle;
+
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.dom.client.Style.VerticalAlign;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -33,6 +40,7 @@ import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
+import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
@@ -389,6 +397,7 @@ public class App implements Serializable {
 		// deserialize
 
 		DockLayoutPanel mainPanel = new DockLayoutPanel(Unit.EM);
+		mainPanel.addStyleName("mainPanel");
 
 		DisclosurePanel mainMenu = new DisclosurePanel("Options");
 
@@ -435,6 +444,8 @@ public class App implements Serializable {
 
 		FlowPanel footerPanel = new FlowPanel();
 		mainPanel.addSouth(footerPanel, 2);
+		// hack to display dropup on top of rest of ui
+		footerPanel.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		SplitLayoutPanel ioPanel = new SplitLayoutPanel(3);
 		mainPanel.add(ioPanel);
@@ -515,15 +526,30 @@ public class App implements Serializable {
 		pauseButton.addStyleName("btn btn-default");
 		runControlPanel.add(pauseButton);
 
-		Button exportButton = new Button();
+		ButtonGroup exportDropupGroup = new ButtonGroup();
+		exportDropupGroup.setDropUp(true);
+		footerPanel.add(exportDropupGroup);
+		
+		org.gwtbootstrap3.client.ui.Button exportButton = new org.gwtbootstrap3.client.ui.Button();
+		exportButton.setDataToggle(Toggle.DROPDOWN);
+		exportButton.setToggleCaret(false);
 		exportButton.addStyleName("fa fa-level-up");
-		exportButton.addStyleName("btn btn-default");
-		footerPanel.add(exportButton);
-
+		exportDropupGroup.add(exportButton);
+		
+		DropDownMenu exportMenu = new DropDownMenu();
+		Exports.all().forEach(e -> {
+			exportMenu.add(new AnchorListItem(e.getName()));
+		});
+		exportDropupGroup.add(exportMenu);
+		
+		// this only exists for style consistency with exportButton
+		ButtonGroup shareGroup = new ButtonGroup();
+		footerPanel.add(shareGroup);
+		
 		Button shareButton = new Button();
 		shareButton.addStyleName("fa fa-share-alt");
 		shareButton.addStyleName("btn btn-default");
-		footerPanel.add(shareButton);
+		shareGroup.add(shareButton);
 
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
@@ -537,8 +563,8 @@ public class App implements Serializable {
 		pause = new ImageButton(new PushButton(), new Image(), new Image());
 		export = new ImageButton(new PushButton(), new Image(), new Image());
 		share = new ImageButton(new PushButton(), new Image(), new Image());
-		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName()))
-				.collect(Collectors.toList());
+		//exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName()))
+		//		.collect(Collectors.toList());
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		run.setAction(new RunNewExecution());
 	}

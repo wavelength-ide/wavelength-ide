@@ -28,6 +28,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextArea;
+import com.google.gwt.user.client.ui.TextBox;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -443,6 +444,7 @@ public class App implements Serializable {
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		FlowPanel footerPanel = new FlowPanel();
+		footerPanel.addStyleName("footerPanel");
 		mainPanel.addSouth(footerPanel, 2);
 		// hack to display dropup on top of rest of ui
 		footerPanel.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
@@ -546,11 +548,18 @@ public class App implements Serializable {
 		ButtonGroup shareGroup = new ButtonGroup();
 		footerPanel.add(shareGroup);
 		
+		TextBox sharePanel = new TextBox();
+		sharePanel.setText("hello world");
+		sharePanel.setReadOnly(true);
+		sharePanel.setVisible(false);
+		footerPanel.add(sharePanel);
+		
 		Button shareButton = new Button();
+		shareButton.addClickHandler(event -> sharePanel.setVisible(!sharePanel.isVisible()));
 		shareButton.addStyleName("fa fa-share-alt");
 		shareButton.addStyleName("btn btn-default");
 		shareGroup.add(shareButton);
-
+		
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		MonacoEditor me = MonacoEditor.load(editorPanel);

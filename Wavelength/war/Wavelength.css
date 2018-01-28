@@ -25,4 +25,9 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 /* space step by step controls and run controls */
 .stepByStepControlPanel { margin-right: 30px; }
 
+/* align footer panel children */
+.footerPanel { display: flex; align-items: bottom; }
+
+.footerPanel > .btn-group { display: flex; align-items: bottom; }
+
 .menuTitle { font-weight: bold }

@@ -28,6 +28,7 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 /* align footer panel children */
 .footerPanel { display: flex; align-items: bottom; }
 
+/* align buttons in footer panel */
 .footerPanel > .btn-group { display: flex; align-items: bottom; }
 
 .menuTitle { font-weight: bold }

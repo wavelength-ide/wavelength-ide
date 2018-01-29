@@ -151,7 +151,7 @@
             <property name="lineWrappingIndentation" value="4"/>
             <property name="arrayInitIndent" value="2"/>
         </module>
-        <module name="VariableDeclarationUsageDistance"/>
+        <!--<module name="VariableDeclarationUsageDistance"/>-->
         <!--<module name="CustomImportOrder">
             <property name="specialImportsRegExp" value="com.google"/>
             <property name="sortImportsInGroupAlphabetically" value="true"/>

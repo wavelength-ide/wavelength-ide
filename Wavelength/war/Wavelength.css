@@ -47,11 +47,11 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 /* separate solution from description, fill rest of parent and fix overflowing */
 .solutionArea { margin-top: 20px; height: 100% !important; box-sizing: border-box; resize: none; background-color: white !important; }
 
+/* align list boxes to the left and control buttons to the right */
+.inputControlPanel { display: flex; justify-content: space-between; }
+
 /* align list boxes to the bottom */
 .optionBarPanel { display: flex; align-items: bottom; }
-
-/* align flowpanels with buttons to the right */
-.controlPanel { text-align: right; }
 
 /* prevent flowpanels from filling the entire width of the control panel */
 .controlPanel > * { display: inline-block; }

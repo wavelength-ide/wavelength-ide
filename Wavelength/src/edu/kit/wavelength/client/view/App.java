@@ -90,7 +90,7 @@ public class App implements Serializable {
 	public final SplitLayoutPanel ioPanel;
 	public final DockLayoutPanel inputPanel;
 	public final TextArea outputArea;
-	public final DockLayoutPanel inputControlPanel;
+	public final FlowPanel inputControlPanel;
 	public final SplitLayoutPanel editorTaskPanel;
 	public final FlowPanel taskPanel;
 	public final FlowPanel taskHeaderPanel;
@@ -219,13 +219,14 @@ public class App implements Serializable {
 		mainPanel.add(ioPanel);
 
 		inputPanel = new DockLayoutPanel(Unit.EM);
-		ioPanel.addNorth(inputPanel, 400);
+		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
 		outputArea = new TextArea();
 		outputArea.setWidth("100%");
 		ioPanel.add(outputArea);
 
-		inputControlPanel = new DockLayoutPanel(Unit.PCT);
+		inputControlPanel = new FlowPanel();
+		inputControlPanel.addStyleName("inputControlPanel");
 		inputPanel.addSouth(inputControlPanel, 1.85);
 
 		editorTaskPanel = new SplitLayoutPanel(3);
@@ -234,7 +235,7 @@ public class App implements Serializable {
 		
 		taskPanel = new FlowPanel();
 		taskPanel.addStyleName("taskPanel");
-		editorTaskPanel.addEast(taskPanel, 400);
+		editorTaskPanel.addEast(taskPanel, 0.3 * Window.getClientWidth());
 		
 		taskHeaderPanel = new FlowPanel();
 		taskPanel.add(taskHeaderPanel);
@@ -270,7 +271,7 @@ public class App implements Serializable {
 
 		optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
-		inputControlPanel.addWest(optionBarPanel, 50);
+		inputControlPanel.add(optionBarPanel);
 		
 		outputFormatBox = new ListBox();
 		outputFormatBox.addItem("Unicode Output");
@@ -289,7 +290,7 @@ public class App implements Serializable {
 
 		controlPanel = new FlowPanel();
 		controlPanel.addStyleName("controlPanel");
-		inputControlPanel.addEast(controlPanel, 50);
+		inputControlPanel.add(controlPanel);
 
 		stepByStepControlPanel = new FlowPanel();
 		stepByStepControlPanel.addStyleName("stepByStepControlPanel");

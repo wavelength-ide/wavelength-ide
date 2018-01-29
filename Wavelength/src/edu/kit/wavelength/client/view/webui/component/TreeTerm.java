@@ -32,6 +32,10 @@ public class TreeTerm {
 	public TreeTerm getRight() {
 		return right;
 	}
+	
+	public Label getNode() {
+		return node;
+	}
 
 }
 

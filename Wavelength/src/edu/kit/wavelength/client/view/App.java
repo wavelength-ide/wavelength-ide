@@ -1,39 +1,18 @@
 package edu.kit.wavelength.client.view;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.PushButton;
+import com.google.gwt.user.client.ui.Panel;
+import com.google.gwt.user.client.ui.TextArea;
 
-import edu.kit.wavelength.client.model.library.Libraries;
-import edu.kit.wavelength.client.model.output.OutputSize;
-import edu.kit.wavelength.client.model.output.OutputSizes;
-import edu.kit.wavelength.client.model.reduction.ReductionOrder;
-import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-import edu.kit.wavelength.client.view.action.Action;
-import edu.kit.wavelength.client.view.action.Pause;
-import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.execution.Executor;
-import edu.kit.wavelength.client.view.exercise.Exercises;
-import edu.kit.wavelength.client.view.export.Exports;
-import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
-import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
-import edu.kit.wavelength.client.view.webui.component.Checkbox;
-import edu.kit.wavelength.client.view.webui.component.Editor;
-import edu.kit.wavelength.client.view.webui.component.ImageButton;
-import edu.kit.wavelength.client.view.webui.component.OptionBox;
-import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
-import edu.kit.wavelength.client.view.webui.component.TextButton;
-import edu.kit.wavelength.client.view.webui.component.TextField;
-import edu.kit.wavelength.client.view.webui.component.TreeOutput;
-import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
+import edu.kit.wavelength.client.view.exercise.Exercise;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -67,35 +46,36 @@ public class App implements Serializable {
 	 */
 	public static final String TreeOutputName = "Tree";
 
-	private ImageButton mainMenuButton;
-	private Editor editor;
-	private OptionBox outputFormat;
-	private OptionBox reductionOrder;
-	private OptionBox outputSize;
-	private ImageButton stepBackward;
-	private ImageButton stepByStepMode;
-	private ImageButton stepForward;
-	private ImageButton terminate;
-	private ImageButton run;
-	private ImageButton pause;
-	private TreeOutput treeOutput;
-	private UnicodeOutput unicodeOutput;
-	private ImageButton export;
-	private PopUpWindow exportWindow;
-	private ImageButton share;
-	private TextField sharePanel;
-	private List<Checkbox> libraries;
-	private List<TextButton> exercises;
-	private List<TextButton> exportFormats;
+	private Button mainMenuButton;
+	private Panel editor;
+	
+	private ListBox outputFormat;
+	private ListBox reductionOrder;
+	private ListBox outputSize;
+	private Button stepBackward;
+	private Button stepByStepMode;
+	private Button stepForward;
+	private Button terminate;
+	private Button run;
+	private Button pause;
+	private Panel treeOutput;
+	private Panel unicodeOutput;
+	private Button export;
+	private Panel exportWindow;
+	private Button share;
+	private TextArea sharePanel;
+	private List<CheckBox> libraries;
+	private List<Button> exercises;
+	private List<Button> exportFormats;
 	private Executor executor;
 
-	private TextButton showSolution;
-	private TextButton hideSolution;
-	private TextButton exitExerciseModeButton;
-	private PopUpWindow enterExerciseMode;
-	private PopUpWindow leaveExerciseMode;
-	private TextField solutionPanel;
-	private TextField taskPanel;
+	private Button showSolution;
+	private Button hideSolution;
+	private Button exitExerciseModeButton;
+	private Panel enterExerciseMode;
+	private Panel leaveExerciseMode;
+	private TextArea solutionPanel;
+	private Label taskPanel;
 
 	// etc.
 
@@ -105,7 +85,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The panel containing the share-URL
 	 */
-	public TextField sharePanel() {
+	public TextArea sharePanel() {
 		return this.sharePanel;
 	}
 
@@ -114,7 +94,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The export window
 	 */
-	public PopUpWindow exportWindow() {
+	public Panel exportWindow() {
 		return this.exportWindow;
 	}
 
@@ -123,7 +103,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The main menu button
 	 */
-	public ImageButton mainMenuButton() {
+	public Button mainMenuButton() {
 		return mainMenuButton;
 	}
 
@@ -132,7 +112,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The editor
 	 */
-	public Editor editor() {
+	public Panel editor() {
 		return editor;
 	}
 
@@ -142,7 +122,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The output format box
 	 */
-	public OptionBox outputFormatBox() {
+	public ListBox outputFormatBox() {
 		return outputFormat;
 	}
 
@@ -152,7 +132,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The reduction order option box
 	 */
-	public OptionBox reductionOrderBox() {
+	public ListBox reductionOrderBox() {
 		return reductionOrder;
 	}
 
@@ -162,7 +142,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The output size option box
 	 */
-	public OptionBox outputSizeBox() {
+	public ListBox outputSizeBox() {
 		return outputSize;
 	}
 
@@ -172,7 +152,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The step backward button
 	 */
-	public ImageButton stepBackwardButton() {
+	public Button stepBackwardButton() {
 		return stepBackward;
 	}
 
@@ -182,7 +162,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The step-by-step button
 	 */
-	public ImageButton stepByStepModeButton() {
+	public Button stepByStepModeButton() {
 		return stepByStepMode;
 	}
 
@@ -192,7 +172,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The step forward button
 	 */
-	public ImageButton stepForwardButton() {
+	public Button stepForwardButton() {
 		return stepForward;
 	}
 
@@ -201,7 +181,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The terminate button
 	 */
-	public ImageButton terminateButton() {
+	public Button terminateButton() {
 		return terminate;
 	}
 
@@ -211,7 +191,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The run button
 	 */
-	public ImageButton runButton() {
+	public Button runButton() {
 		return run;
 	}
 
@@ -221,7 +201,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The pause button
 	 */
-	public ImageButton pauseButton() {
+	public Button pauseButton() {
 		return pause;
 	}
 
@@ -230,7 +210,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The output used to display a term in tree representation
 	 */
-	public TreeOutput treeOutput() {
+	public Panel treeOutput() {
 		return treeOutput;
 	}
 
@@ -239,7 +219,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The output used to display a term in unicode
 	 */
-	public UnicodeOutput unicodeOutput() {
+	public Panel unicodeOutput() {
 		return unicodeOutput;
 	}
 
@@ -249,7 +229,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The export button
 	 */
-	public ImageButton exportButton() {
+	public Button exportButton() {
 		return export;
 	}
 
@@ -259,7 +239,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The share button
 	 */
-	public ImageButton shareButton() {
+	public Button shareButton() {
 		return share;
 	}
 
@@ -268,7 +248,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The checkboxes used to toggle libraries
 	 */
-	public List<Checkbox> libraryBoxes() {
+	public List<CheckBox> libraryBoxes() {
 		return libraries;
 	}
 
@@ -277,7 +257,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The buttons used to load exercises
 	 */
-	public List<TextButton> exerciseButtons() {
+	public List<Button> exerciseButtons() {
 		return exercises;
 	}
 
@@ -287,7 +267,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The buttons used to select an output format
 	 */
-	public List<TextButton> exportFormatButtons() {
+	public List<Button> exportFormatButtons() {
 		return exportFormats;
 	}
 
@@ -307,7 +287,7 @@ public class App implements Serializable {
 	 * @return The Button used for showing the current {@link Exercise}'s
 	 *         solution
 	 */
-	public TextButton showSolutionButton() {
+	public Button showSolutionButton() {
 		return this.showSolution;
 	}
 
@@ -318,7 +298,7 @@ public class App implements Serializable {
 	 * @return The Button used for hiding the current {@link Exercise}'s
 	 *         solution
 	 */
-	public TextButton hideSolutionButton() {
+	public Button hideSolutionButton() {
 		return this.hideSolution;
 	}
 
@@ -327,7 +307,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The Button used for exiting the exercise mode
 	 */
-	public TextButton exitExerciseModeButton() {
+	public Button exitExerciseModeButton() {
 		return this.exitExerciseModeButton;
 	}
 
@@ -336,7 +316,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The Dialog shown when entering exercise mode
 	 */
-	public PopUpWindow enterExerciseMode() {
+	public Panel enterExerciseMode() {
 		return this.enterExerciseMode;
 	}
 
@@ -345,7 +325,7 @@ public class App implements Serializable {
 	 * 
 	 * @return The Dialog shown when leaving exercise mode
 	 */
-	public PopUpWindow leaveExerciseMode() {
+	public Panel leaveExerciseMode() {
 		return this.leaveExerciseMode;
 	}
 
@@ -355,17 +335,17 @@ public class App implements Serializable {
 	 * 
 	 * @return The TextArea showing the current {@link Exercise}'s solution
 	 */
-	public TextField solutionPanel() {
+	public TextArea solutionPanel() {
 		return this.solutionPanel;
 	}
 
 	/**
-	 * Gets the TextArea that can be used to show the current {@link Exercise}'s
+	 * Gets the Label that can be used to show the current {@link Exercise}'s
 	 * task.
 	 * 
-	 * @return The TextArea showing the current {@link Exercise}'s task
+	 * @return The Label showing the current {@link Exercise}'s task
 	 */
-	public TextField taskPanel() {
+	public Label taskPanel() {
 		return this.taskPanel;
 	}
 
@@ -378,33 +358,7 @@ public class App implements Serializable {
 		String state = Window.Location.getPath();
 		// deserialize
 
-		mainMenuButton = new ImageButton(new PushButton());
-		editor = new Editor();
-		// create ListBox for outputFormats
-		outputFormat = new OptionBox(new ListBox());
-		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName)
-				.collect(Collectors.toList());
-		// create ListBox for reductionOrders
-		reductionOrder = new OptionBox(new ListBox());
-		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
-		// create ListBox for outputSizes
-		outputSize = new OptionBox(new ListBox());
-		stepBackward = new ImageButton(new PushButton());
-		stepByStepMode = new ImageButton(new PushButton());
-		stepForward = new ImageButton(new PushButton());
-		terminate = new ImageButton(new PushButton());
-		run = new ImageButton(new PushButton());
-		pause = new ImageButton(new PushButton());
-		export = new ImageButton(new PushButton());
-		share = new ImageButton(new PushButton());
-		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName()))
-				.collect(Collectors.toList());
-		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName()))
-				.collect(Collectors.toList());
-		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName()))
-				.collect(Collectors.toList());
-		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
-		run.setAction(new RunNewExecution());
+
 	}
 
 	@Override

@@ -14,16 +14,14 @@ import org.gwtbootstrap3.client.ui.DropDownMenu;
 import org.gwtbootstrap3.client.ui.Modal;
 import org.gwtbootstrap3.client.ui.ModalBody;
 import org.gwtbootstrap3.client.ui.ModalFooter;
+import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.MouseDownEvent;
-import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -32,7 +30,6 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
-import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 
 import edu.kit.wavelength.client.model.library.Libraries;
@@ -45,7 +42,6 @@ import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwtbinding.MonacoEditor;
-import javafx.scene.input.MouseButton;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -121,6 +117,11 @@ public class App implements Serializable {
 	public final Button openExportMenuButton;
 	public final DropDownMenu exportMenu;
 	public final List<AnchorListItem> exportButtons;
+	public final Modal exportPopup;
+	public final ModalBody exportPopupBody;
+	public final TextArea exportArea;
+	public final ModalFooter exportPopupFooter;
+	public final Button exportPopupBodyOkButton;
 	public final ButtonGroup shareGroup;
 	public final TextBox sharePanel;
 	public final Button shareButton;
@@ -153,6 +154,7 @@ public class App implements Serializable {
 		mainMenu.add(openMainMenuButton);
 		
 		mainMenuPanel = new DropDownMenu();
+		// prevent dropdown from closing when clicking inside
 		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);
 		
@@ -185,7 +187,6 @@ public class App implements Serializable {
 
 		infoPopup = new Modal();
 		infoPopup.setClosable(false);
-		infoPopup.setFade(true);
 		infoPopup.setDataBackdrop(ModalBackdrop.STATIC);
 		
 		infoPopupBody = new ModalBody();
@@ -203,6 +204,7 @@ public class App implements Serializable {
 		
 		infoPopupCancelButton = new Button();
 		infoPopupCancelButton.addStyleName("fa fa-check");
+		infoPopupCancelButton.addClickHandler(e -> infoPopup.hide());
 		infoPopupFooter.add(infoPopupCancelButton);
 		
 		// infoPopup.show();
@@ -255,7 +257,6 @@ public class App implements Serializable {
 		
 		solutionArea = new TextArea();
 		solutionArea.addStyleName("solutionArea");
-		solutionArea.addStyleName("form-control");
 		solutionArea.setVisible(false);
 		solutionArea.setReadOnly(true);
 		solutionArea.setText("hello\n\tworld\n\t\teveryone");
@@ -340,6 +341,31 @@ public class App implements Serializable {
 			exportButtons.add(exportButton);
 		});
 		exportDropupGroup.add(exportMenu);
+		
+		exportPopup = new Modal();
+		exportPopup.setDataKeyboard(true);
+		exportPopup.setClosable(false);
+		exportPopup.setDataBackdrop(ModalBackdrop.STATIC);
+		
+		exportPopupBody = new ModalBody();
+		exportPopup.add(exportPopupBody);
+		
+		exportArea = new TextArea();
+		exportArea.addStyleName("exportArea");
+		exportArea.setVisibleLines(10);
+		exportArea.setReadOnly(true);
+		exportArea.setText("hello\n\tworld\n\t\teveryone");
+		exportPopupBody.add(exportArea);
+		
+		exportPopupFooter = new ModalFooter();
+		exportPopup.add(exportPopupFooter);
+		
+		exportPopupBodyOkButton = new Button();
+		exportPopupBodyOkButton.addClickHandler(event -> exportPopup.hide());
+		exportPopupBodyOkButton.addStyleName("fa fa-check");
+		exportPopupFooter.add(exportPopupBodyOkButton);
+		
+		// exportPopup.show();
 		
 		// this only exists for style consistency with exportButton
 		shareGroup = new ButtonGroup();

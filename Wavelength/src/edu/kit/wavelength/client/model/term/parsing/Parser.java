@@ -76,8 +76,7 @@ public class Parser {
 		String lastLine = rows.get((rows.size() - 1));
 		return parseTerm(lastLine);
 	}
-	
-	
+
 	private void readLibraryTerm(String input) throws ParseException {
 		Matcher formatMatcher = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*").matcher(input);
 		if (formatMatcher.matches() == false) {
@@ -86,7 +85,8 @@ public class Parser {
 	}
 
 	/**
-	 * Returns the topmost token on the stack without removing it. 
+	 * Returns the topmost token on the stack without removing it.
+	 * 
 	 * @return The topmost token on the stack
 	 */
 	private Token peekToken() {
@@ -95,10 +95,27 @@ public class Parser {
 
 	/**
 	 * Pops a token from the token Stack.
+	 * 
 	 * @return The topmost token on the stack
 	 */
 	private Token popToken() {
 		return tokens.pop();
+	}
+
+	private void pushToken(Token newToken) {
+		tokens.push(newToken);
+	}
+	
+	/**
+	 * Returns the number of symbols not yet removed from the stack
+	 * @return The number of remaining symbols
+	 */
+	private int numberOfRemainingSymbols() {
+		int count = 0;
+		while (tokens.isEmpty() == false) {
+			count = count + popToken().getContent().length();
+		}
+		return count;
 	}
 
 	/**
@@ -138,17 +155,37 @@ public class Parser {
 			tokens.add(tokenisedInput[i]);
 		}
 		ASTNode root = new ASTTerm().parse();
-		System.out.println(root.toString());
+		System.out.println(">>>>>>>>>  " + root.toString());
+		if (tokens.isEmpty() == false) {
+			throw new ParseException("", -1, -1);
+		}
 		return root.convert(new ArrayList<String>(), new ArrayList<Integer>());
 	}
 
+	/**
+	 * The abstract superclass of all classes representing nodes of a syntax tree.
+	 *
+	 */
 	private abstract class ASTNode {
 
+		/**
+		 * Attempts to parse the remaining tokens on the token stack to a syntax tree.
+		 * @return The root of the generated tree
+		 * @throws ParseException If the remaining tokens can not be parsed.
+		 */
 		public abstract ASTNode parse() throws ParseException;
-		
+
 		@Override
 		public abstract String toString();
-		
+
+		/**
+		 * Converts the syntax subtree rooted at this node into
+		 * the corresponding LambdaTerm object structure
+		 * @param names A List containing the names of all bound variables 
+		 * @param indices A List containing the indices corresponding to the bound variables' names
+		 * @return The LambdaTerm created from this node's subtree.
+		 * @throws ParseException If the syntax subtree could not be converted.
+		 */
 		public abstract LambdaTerm convert(List<String> names, List<Integer> indices) throws ParseException;
 	}
 
@@ -157,35 +194,45 @@ public class Parser {
 		public ASTNode parse() throws ParseException {
 			Token activeToken = popToken();
 			switch (activeToken.getType()) {
-			case Token.LBRACKET:
+			case LBRACKET:
 				ASTNode result;
-				int nextType = peekToken().getType();
-				if (nextType == Token.LAMBDA) {
+				Token nextToken = peekToken();
+				TokenType nextType = nextToken.getType();
+				if (nextType == TokenType.LAMBDA) {
 					result = new ASTAbstraction().parse();
-				} else if (nextType == Token.NAME) {
+				} else if (nextType == TokenType.NAME) {
 					result = new ASTApplication().parse();
-				} else if (nextType == Token.LBRACKET) {
+				} else if (nextType == TokenType.LBRACKET) {
 					result = new ASTApplication().parse();
 				} else {
-					throw new ParseException("Unexpected token, wrong syntax, expected term", -1, -1);
+					throw new ParseException("Unexpected token, " + nextType + " is not a valid term beginning" , -1, -1);
 				}
 				activeToken = popToken();
-				if (activeToken.getType() == Token.RBRACKET) {
+				if (activeToken.getType() == TokenType.RBRACKET) {
 					return result;
 				} else {
 					throw new ParseException("", -1, -1);
 				}
-			case Token.RBRACKET:
+			case RBRACKET:
 				throw new ParseException("", -1, -1);
-			case Token.NAME:
+			case NAME:
 				return new ASTName(activeToken.getContent());
-			case Token.LAMBDA:
-				throw new ParseException("Unexpected token LAMBDA, expected LBRACKET, VARIABLE, NAME", -1, -1);
-			case Token.DOT:
+			case LAMBDA:
+				tokens.push(activeToken);
+				return new ASTAbstraction().parse();
+			case DOT:
 				throw new ParseException("Unexpected token DOT, expected LBRACKET, VARIABLE, NAME", -1, -1);
 			default:
 				throw new ParseException("Unknow token, expected LBRACKET, VARIABLE, NAME", -1, -1);
 			}
+		}
+
+		public ASTNode parseFromAbstraction() throws ParseException {
+			return parse();
+		}
+
+		public ASTNode parseFromApplication() throws ParseException {
+			return parse();
 		}
 	}
 
@@ -193,20 +240,16 @@ public class Parser {
 
 		private ASTName variable;
 		private ASTNode term;
-
-		public ASTAbstraction() {
-
-		}
-
+		
 		@Override
 		public ASTNode parse() throws ParseException {
 			System.out.println("ABS parse");
-			if (popToken().getType() == Token.LAMBDA) {
+			if (popToken().getType() == TokenType.LAMBDA) {
 				Token activeToken = popToken();
-				if (activeToken.getType() == Token.NAME) {
-					this.variable =  new ASTName(activeToken.getContent());
-					if (popToken().getType() == Token.DOT) {
-						this.term = new ASTTerm().parse();
+				if (activeToken.getType() == TokenType.NAME) {
+					this.variable = new ASTName(activeToken.getContent());
+					if (popToken().getType() == TokenType.DOT) {
+						this.term = new ASTTerm().parseFromAbstraction();
 						System.out.println("ABS return");
 						return this;
 					} else {
@@ -219,7 +262,7 @@ public class Parser {
 				throw new ParseException("Unexpected token, expected LAMBDA", -1, -1);
 			}
 		}
-		
+
 		@Override
 		public String toString() {
 			return "(λ" + variable.toString() + "." + term.toString() + ")";
@@ -243,7 +286,7 @@ public class Parser {
 		}
 	}
 
-	private class ASTApplication extends ASTNode { 
+	private class ASTApplication extends ASTNode {
 
 		private ASTNode left;
 		private ASTNode right;
@@ -251,15 +294,15 @@ public class Parser {
 		@Override
 		public ASTNode parse() throws ParseException {
 			System.out.println("APP parse");
-			this.left = new ASTTerm().parse();
-			this.right = new ASTTerm().parse();
+			this.left = new ASTTerm().parseFromApplication();
+			this.right = new ASTTerm().parseFromApplication();
 			System.out.println("APP return");
 			return this;
 		}
-		
+
 		@Override
 		public String toString() {
-			return "("  + left.toString() + " " + right.toString() + ")";
+			return "(" + left.toString() + " " + right.toString() + ")";
 		}
 
 		@Override
@@ -281,21 +324,23 @@ public class Parser {
 		public ASTNode parse() throws ParseException {
 			System.out.println("NAME parse");
 			Token activeToken = popToken();
-			if (activeToken.getType() == Token.NAME) {
+			if (activeToken.getType() == TokenType.NAME) {
 				return new ASTName(activeToken.getContent());
 			} else {
 				throw new ParseException("", -1, -1);
 			}
 		}
-		
+
 		@Override
 		public String toString() {
 			return name;
 		}
-		
+
 		/**
-		 * Determines whether this {@link ASTName} should be converted to a variable or
-		 * to a {@link edu.kit.wavelength.client.model.term.NamedTerm NamedTerm}.
+		 * Determines whether this {@link ASTName} should be converted to a
+		 * variable or to a
+		 * {@link edu.kit.wavelength.client.model.term.NamedTerm NamedTerm}.
+		 * 
 		 * @return true if this is a variable, false if it is a NamedTerm
 		 */
 		public boolean isVariable() {

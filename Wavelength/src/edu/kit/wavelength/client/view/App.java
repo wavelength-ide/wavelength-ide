@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 import org.gwtbootstrap3.client.ui.AnchorListItem;
 import org.gwtbootstrap3.client.ui.ButtonGroup;
 import org.gwtbootstrap3.client.ui.DropDownMenu;
+import org.gwtbootstrap3.client.ui.Modal;
+import org.gwtbootstrap3.client.ui.ModalBody;
+import org.gwtbootstrap3.client.ui.ModalFooter;
+import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
 import com.google.gwt.dom.client.Element;
@@ -19,6 +23,7 @@ import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
+import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -436,6 +441,32 @@ public class App implements Serializable {
 		exerciseTitle.addStyleName("menuTitle");
 		mainMenuPanel.add(exerciseTitle);
 
+		Modal infoPopup = new Modal();
+		infoPopup.setClosable(false);
+		infoPopup.setFade(true);
+		infoPopup.setDataBackdrop(ModalBackdrop.STATIC);
+		
+		ModalBody infoPopupBody = new ModalBody();
+		infoPopup.add(infoPopupBody);
+		
+		Label infoPopupText = new Label("hello world");
+		infoPopupBody.add(infoPopupText);
+		
+		ModalFooter infoPopupFooter = new ModalFooter();
+		infoPopup.add(infoPopupFooter);
+		
+		Button infoPopupOkButton = new Button();
+		infoPopupOkButton.addStyleName("btn btn-default");
+		infoPopupOkButton.addStyleName("fa fa-times");
+		infoPopupFooter.add(infoPopupOkButton);
+		
+		Button infoPopupCancelButton = new Button();
+		infoPopupCancelButton.addStyleName("btn btn-default");
+		infoPopupCancelButton.addStyleName("fa fa-check");
+		infoPopupFooter.add(infoPopupCancelButton);
+		
+		// infoPopup.show();
+		
 		Exercises.all().forEach(excs -> {
 			String n = excs.getName();
 			Button exerciseButton = new Button(n);
@@ -446,7 +477,7 @@ public class App implements Serializable {
 			mainMenuPanel.add(exerciseButton);
 			this.exercises.add(new TextButton(exerciseButton, n));
 		});
-
+		
 		mainMenu.setContent(mainMenuPanel);
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui

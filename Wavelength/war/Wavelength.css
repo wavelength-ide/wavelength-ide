@@ -10,6 +10,16 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 /* add margin between box and label of box */
 .gwt-CheckBox > input { margin-right: 4px !important; }
 
+/* centers modals */
+.modal { display: flex !important; }
+.modal .modal-dialog { margin: auto; }
+
+/* get rid of modal header */
+.modal .modal-header { display: none; }
+
+/* get rid around ridiculous padding in footer */
+.modal .modal-footer { padding: 0px; }
+
 /* add slight margin so menu button isn't in the corner of the screen */
 .mainMenuButton { margin-left: 0.1em; margin-top: 0.1em; }
 

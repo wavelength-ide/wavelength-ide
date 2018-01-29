@@ -10,8 +10,8 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  */
 public class UnicodeExport implements Export {
 
-	private static final String LAMBDA = "\u03BB";
-	private static final String ARROW = "\u21D2 ";
+	private static final String LAMBDA = "λ";
+	private static final String ARROW = "➳ ";
 	
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms) {

@@ -79,7 +79,13 @@ public class Parser {
 
 	private void readLibraryTerm(String input) throws ParseException {
 		Matcher formatMatcher = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*").matcher(input);
-		if (formatMatcher.matches() == false) {
+		if (formatMatcher.matches()) {
+			String[] split = input.split("=");
+			String name = split[0].trim();
+			String termString = split[1].trim();
+			LambdaTerm term = parseTerm(termString);
+			inputLibrary.addTerm(term, name);
+		} else {
 			throw new ParseException("Not a valid name assignment", -1, -1);
 		}
 	}
@@ -155,11 +161,10 @@ public class Parser {
 			tokens.add(tokenisedInput[i]);
 		}
 		ASTNode root = new ASTTerm().parse();
-		System.out.println(">>>>>>>>>  " + root.toString());
 		if (tokens.isEmpty() == false) {
 			throw new ParseException("", -1, -1);
 		}
-		return root.convert(new ArrayList<String>(), new ArrayList<Integer>());
+		return root.convert(new ArrayList<String>());
 	}
 
 	/**
@@ -182,11 +187,10 @@ public class Parser {
 		 * Converts the syntax subtree rooted at this node into
 		 * the corresponding LambdaTerm object structure
 		 * @param names A List containing the names of all bound variables 
-		 * @param indices A List containing the indices corresponding to the bound variables' names
 		 * @return The LambdaTerm created from this node's subtree.
 		 * @throws ParseException If the syntax subtree could not be converted.
 		 */
-		public abstract LambdaTerm convert(List<String> names, List<Integer> indices) throws ParseException;
+		public abstract LambdaTerm convert(List<String> names) throws ParseException;
 	}
 
 	private class ASTTerm {
@@ -243,14 +247,12 @@ public class Parser {
 		
 		@Override
 		public ASTNode parse() throws ParseException {
-			System.out.println("ABS parse");
 			if (popToken().getType() == TokenType.LAMBDA) {
 				Token activeToken = popToken();
 				if (activeToken.getType() == TokenType.NAME) {
 					this.variable = new ASTName(activeToken.getContent());
 					if (popToken().getType() == TokenType.DOT) {
 						this.term = new ASTTerm().parseFromAbstraction();
-						System.out.println("ABS return");
 						return this;
 					} else {
 						throw new ParseException("Unexpected token, expected DOT", -1, -1);
@@ -262,27 +264,22 @@ public class Parser {
 				throw new ParseException("Unexpected token, expected LAMBDA", -1, -1);
 			}
 		}
-
+		
 		@Override
 		public String toString() {
-			return "(λ" + variable.toString() + "." + term.toString() + ")";
+			return "(" + "λ" + variable.toString() + "." + term.toString() +  ")"; 
 		}
 
 		@Override
-		public LambdaTerm convert(List<String> names, List<Integer> indices) throws ParseException {
-			if (variable.isVariable() == false) {
-				throw new ParseException("", -1, -1);
+		public LambdaTerm convert(List<String> names) throws ParseException {
+			ArrayList<String> newNames = new ArrayList<String>(names);
+			if (variable.isVariable()) {
+				String varName = variable.toString();
+				newNames.add(0, varName);;
+				return new Abstraction(varName, term.convert(newNames));
+			} else {
+				throw new ParseException("Syntax violation, λ may not be followed by a name", -1, -1);
 			}
-			ArrayList<String> localNames = new ArrayList<String>(names);
-			ArrayList<Integer> localIndices = new ArrayList<Integer>(indices);
-			if (localIndices.isEmpty()) {
-				localIndices.add(1);
-				localNames.add(variable.toString());
-			}
-			int lastIndex = localIndices.get(localIndices.size() - 1);
-			localIndices.add((lastIndex + 1));
-			localNames.add(variable.toString());
-			return new Abstraction(variable.toString(), term.convert(localNames, localIndices));
 		}
 	}
 
@@ -293,10 +290,8 @@ public class Parser {
 
 		@Override
 		public ASTNode parse() throws ParseException {
-			System.out.println("APP parse");
 			this.left = new ASTTerm().parseFromApplication();
 			this.right = new ASTTerm().parseFromApplication();
-			System.out.println("APP return");
 			return this;
 		}
 
@@ -306,8 +301,10 @@ public class Parser {
 		}
 
 		@Override
-		public LambdaTerm convert(List<String> names, List<Integer> indices) throws ParseException {
-			return new Application(left.convert(names, indices), right.convert(names, indices));
+		public LambdaTerm convert(List<String> names) throws ParseException {
+			ArrayList<String> leftNames = new ArrayList<String>(names);
+			ArrayList<String> rightNames = new ArrayList<String>(names);
+			return new Application(left.convert(leftNames), right.convert(rightNames));
 		}
 	}
 
@@ -316,13 +313,11 @@ public class Parser {
 		private String name;
 
 		public ASTName(String name) {
-			System.out.println("Creating name/var: " + name);
 			this.name = name;
 		}
 
 		@Override
 		public ASTNode parse() throws ParseException {
-			System.out.println("NAME parse");
 			Token activeToken = popToken();
 			if (activeToken.getType() == TokenType.NAME) {
 				return new ASTName(activeToken.getContent());
@@ -352,17 +347,16 @@ public class Parser {
 		}
 
 		@Override
-		public LambdaTerm convert(List<String> names, List<Integer> indices) {
-			LambdaTerm possibleInner = retrieveTerm(name);
-			if (possibleInner != null) {
-				return new NamedTerm(name, possibleInner);
-			} else {
-				for (int i = 0; i < names.size(); i++) {
-					if (this.name == names.get(i)) {
-						return new BoundVariable(indices.get(i));
-					}
+		public LambdaTerm convert(List<String> names) {
+			if (this.isVariable()) {
+				if (names.contains(name)) {
+					int index = names.indexOf(name) + 1;
+					return new BoundVariable(index);
+				} else {
+					return new FreeVariable(name);
 				}
-				return new FreeVariable(name);
+			} else {
+				return new NamedTerm(name, retrieveTerm(name));
 			}
 		}
 	}

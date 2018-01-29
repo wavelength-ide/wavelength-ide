@@ -21,16 +21,13 @@ label { font-weight: normal !important; vertical-align: middle !important; }
 .modal .modal-footer { padding: 0px; }
 
 /* add slight margin so menu button isn't in the corner of the screen */
-.mainMenuButton { margin-left: 0.1em; margin-top: 0.1em; }
+.mainMenu { margin-left: 2px; margin-top: 2px; }
 
-/* add inner padding so components don't touch the edge of the panel and a bunch of other stylistic changes */
-.mainMenuPanel { padding: 4px !important; border-style: solid; border-color: lightgrey; border-width: 1px; background-color: white; }
+/* prevent checkbox from touching the left side of the menu (default margin-left is -20px) */
+.libraryCheckBox input { margin-left: -16px !important; }
 
-/* stretch menu contents and make them flow vertically */
-.mainMenuPanel > * { width: 100%; display: block !important; }
-
-/* align text on exercises left */
-.exerciseButton { text-align: left !important; }
+/* remove margin to title for consistency with exercise buttons */
+.libraryCheckBox:first-of-type { margin-top: 0px; }
 
 /* add borders to separate editor from control */
 .editorTaskPanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }

@@ -6,6 +6,10 @@ import java.util.List;
 import org.gwtbootstrap3.client.ui.AnchorListItem;
 import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.ButtonGroup;
+import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.Divider;
+import org.gwtbootstrap3.client.ui.DropDown;
+import org.gwtbootstrap3.client.ui.DropDownHeader;
 import org.gwtbootstrap3.client.ui.DropDownMenu;
 import org.gwtbootstrap3.client.ui.Modal;
 import org.gwtbootstrap3.client.ui.ModalBody;
@@ -15,9 +19,10 @@ import org.gwtbootstrap3.client.ui.constants.Toggle;
 
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.MouseDownEvent;
+import com.google.gwt.event.dom.client.MouseDownHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -40,6 +45,7 @@ import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwtbinding.MonacoEditor;
+import javafx.scene.input.MouseButton;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -70,18 +76,20 @@ public class App implements Serializable {
 	public static final String TreeOutputName = "Tree";
 
 	public final DockLayoutPanel mainPanel;
-	public final DisclosurePanel mainMenu;
-	public final FlowPanel mainMenuPanel;
-	public final Label libraryTitle;
+	public final DropDown mainMenu;
+	public final Button openMainMenuButton;
+	public final DropDownMenu mainMenuPanel;
+	public final DropDownHeader mainMenuLibraryTitle;
 	public final List<CheckBox> libraryCheckBoxes;
-	public final Label exerciseTitle;
+	public final Divider mainMenuDivider;
+	public final DropDownHeader mainMenuExerciseTitle;
+	public final List<AnchorListItem> exerciseButtons;
 	public final Modal infoPopup;
 	public final ModalBody infoPopupBody;
 	public final Label infoPopupText;
 	public final ModalFooter infoPopupFooter;
 	public final Button infoPopupOkButton;
 	public final Button infoPopupCancelButton;
-	public final List<Button> exerciseButtons;
 	public final FlowPanel footerPanel;
 	public final SplitLayoutPanel ioPanel;
 	public final DockLayoutPanel inputPanel;
@@ -132,38 +140,48 @@ public class App implements Serializable {
 		mainPanel = new DockLayoutPanel(Unit.EM);
 		mainPanel.addStyleName("mainPanel");
 
-		mainMenu = new DisclosurePanel("Options");
-		mainMenu.setAnimationEnabled(true);
-		mainPanel.addDomHandler(event -> {
-			if (mainMenu.isOpen()) {
-				mainMenu.setOpen(false);
-			}
-		}, MouseDownEvent.getType());
-		mainMenu.addDomHandler(event -> event.stopPropagation(), MouseDownEvent.getType());
+		mainMenu = new DropDown();
 		mainMenu.addStyleName("mainMenu");
-
-		mainMenu.setHeader(new Label()); // label is just used to hide the arrow of the DisclosurePanel
-		mainMenu.getElement().getStyle().setZIndex(Integer.MAX_VALUE);
-		mainMenu.getHeader().addStyleName("fa fa-cog fa-2x");
-		mainMenu.getHeader().addStyleName("mainMenuButton");
-
-		mainMenuPanel = new FlowPanel();
-		mainMenuPanel.addStyleName("mainMenuPanel");
-
-		libraryTitle = new Label("Libraries");
-		libraryTitle.addStyleName("menuTitle");
-		mainMenuPanel.add(libraryTitle);
+		mainPanel.addNorth(mainMenu, 2.1);
+		// hack to display menu on top of rest of ui
+		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
+		
+		openMainMenuButton = new Button();
+		openMainMenuButton.addStyleName("fa fa-cog");
+		openMainMenuButton.setToggleCaret(false);
+		openMainMenuButton.setDataToggle(Toggle.DROPDOWN);
+		mainMenu.add(openMainMenuButton);
+		
+		mainMenuPanel = new DropDownMenu();
+		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
+		mainMenu.add(mainMenuPanel);
+		
+		mainMenuLibraryTitle = new DropDownHeader("Libraries");
+		mainMenuPanel.add(mainMenuLibraryTitle);
+		
 		libraryCheckBoxes = new ArrayList<>();
 		Libraries.all().forEach(lib -> {
-			CheckBox libraryBox = new CheckBox(lib.getName());
-			libraryBox.addStyleName("libraryCheckBox");
-			mainMenuPanel.add(libraryBox);
-			libraryCheckBoxes.add(libraryBox);
+			CheckBox libraryCheckBox = new CheckBox(lib.getName());
+			libraryCheckBox.addStyleName("libraryCheckBox");
+			mainMenuPanel.add(libraryCheckBox);
+			libraryCheckBoxes.add(libraryCheckBox);
 		});
-
-		exerciseTitle = new Label("Exercises");
-		exerciseTitle.addStyleName("menuTitle");
-		mainMenuPanel.add(exerciseTitle);
+		
+		mainMenuDivider = new Divider();
+		mainMenuPanel.add(mainMenuDivider);
+		
+		mainMenuExerciseTitle = new DropDownHeader("Exercises");
+		mainMenuPanel.add(mainMenuExerciseTitle);
+		
+		exerciseButtons = new ArrayList<>();
+		Exercises.all().forEach(excs -> {
+			AnchorListItem exerciseButton = new AnchorListItem(excs.getName());
+			// exerciseButton.addClickHandler(event -> new SelectExercise(excs).run());
+			// exerciseButton.addStyleName("exerciseButton");
+			exerciseButton.setTitle(excs.getTask());
+			mainMenuPanel.add(exerciseButton);
+			exerciseButtons.add(exerciseButton);
+		});
 
 		infoPopup = new Modal();
 		infoPopup.setClosable(false);
@@ -188,21 +206,6 @@ public class App implements Serializable {
 		infoPopupFooter.add(infoPopupCancelButton);
 		
 		// infoPopup.show();
-		
-		exerciseButtons = new ArrayList<>();
-		Exercises.all().forEach(excs -> {
-			Button exerciseButton = new Button(excs.getName());
-			// exerciseButton.addClickHandler(event -> new SelectExercise(excs).run());
-			exerciseButton.addStyleName("exerciseButton");
-			exerciseButton.setTitle(excs.getTask());
-			mainMenuPanel.add(exerciseButton);
-			exerciseButtons.add(exerciseButton);
-		});
-		
-		mainMenu.setContent(mainMenuPanel);
-		mainPanel.addNorth(mainMenu, 2.1);
-		// hack to display menu on top of rest of ui
-		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		footerPanel = new FlowPanel();
 		footerPanel.addStyleName("footerPanel");

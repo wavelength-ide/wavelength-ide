@@ -61,3 +61,6 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 /* prevent export area resize and set background */
 .exportArea { resize: none; background-color: white !important;}
+
+/* limit height to footer height, fix width instead of filling rest of footer, set background */
+.sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }

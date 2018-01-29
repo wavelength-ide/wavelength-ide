@@ -16,6 +16,7 @@ import org.gwtbootstrap3.client.ui.Modal;
 import org.gwtbootstrap3.client.ui.ModalBody;
 import org.gwtbootstrap3.client.ui.ModalFooter;
 import org.gwtbootstrap3.client.ui.TextArea;
+import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 
@@ -30,7 +31,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
-import com.google.gwt.user.client.ui.TextBox;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -373,6 +373,7 @@ public class App implements Serializable {
 		footerPanel.add(shareGroup);
 		
 		sharePanel = new TextBox();
+		sharePanel.addStyleName("sharePanel");
 		sharePanel.setText("hello world");
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);

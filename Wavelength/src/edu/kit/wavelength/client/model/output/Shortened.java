@@ -37,4 +37,10 @@ public final class Shortened implements OutputSize {
 		return null;
 	}
 
+	@Override
+	public int numToPreserve() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -36,4 +36,10 @@ public final class Periodic implements OutputSize {
 		return null;
 	}
 
+	@Override
+	public int numToPreserve() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

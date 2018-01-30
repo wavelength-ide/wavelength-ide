@@ -3,5 +3,6 @@
 <module rename-to="wavelength">
 	<inherits name='com.google.gwt.user.User'/>
 	<inherits name='com.google.gwt.user.theme.clean.Clean'/>
+	<inherits name="org.gwtbootstrap3.GwtBootstrap3"/>
 	<entry-point class='edu.kit.wavelength.client.Wavelength'/>
 </module>

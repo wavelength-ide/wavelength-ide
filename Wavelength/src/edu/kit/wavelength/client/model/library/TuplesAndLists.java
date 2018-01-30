@@ -21,7 +21,7 @@ public final class TuplesAndLists implements Library {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Tuples and Lists";
 	}
 
 	@Override

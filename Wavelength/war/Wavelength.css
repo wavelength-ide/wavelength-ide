@@ -1,0 +1,66 @@
+/* prevent borders for buttons */
+.btn-default { border-style: none !important; }
+
+/* slightly increase list box width while removing inner spacing */
+select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26px;  }
+
+/* centers modals */
+.modal.in { display: flex !important; }
+.modal .modal-dialog { margin: auto; }
+
+/* get rid of modal header */
+.modal .modal-header { display: none; }
+
+/* get rid of ridiculous padding in footer */
+.modal .modal-footer { padding: 0px; }
+
+/* fix stupid bug in chrome rendering engine where scrolls are displayed for 15px and 16px padding (not for 14px and 17px!) */
+.modal .modal-body { padding: 14px; }
+
+/* add slight margin so menu button isn't in the corner of the screen */
+.mainMenu { margin-left: 2px; margin-top: 2px; }
+
+/* prevent checkbox from touching the left side of the menu (default margin-left is -20px) */
+.libraryCheckBox input { margin-left: -16px !important; }
+
+/* remove margin to title for consistency with exercise buttons */
+.libraryCheckBox:first-of-type { margin-top: 0px; }
+
+/* add borders to separate editor from control */
+.editorTaskPanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }
+
+/* fix solutionArea overflowing its parent */
+.taskPanel { display: flex; flex-direction: column; }
+
+/* flow text around right floating taskControlPanel */
+.taskDescriptionLabel { display: inline; }
+
+/* float taskControlPanel to the top right */
+.taskControlPanel { float: right; }
+
+/* separate solution from description, fill rest of parent and fix overflowing */
+.solutionArea { margin-top: 20px; height: 100% !important; box-sizing: border-box; resize: none; background-color: white !important; }
+
+/* align list boxes to the left and control buttons to the right */
+.inputControlPanel { display: flex; justify-content: space-between; }
+
+/* fix listboxes flowing below option bar */
+.optionBarPanel { display: flex; }
+
+/* prevent flowpanels from filling the entire width of the control panel */
+.controlPanel > * { display: inline-block; }
+
+/* space step by step controls and run controls */
+.stepByStepControlPanel { margin-right: 30px; }
+
+/* align footer panel children */
+.footerPanel { display: flex; align-items: bottom; }
+
+/* align buttons in footer panel */
+.footerPanel > .btn-group { display: flex; align-items: bottom; }
+
+/* prevent export area resize and set background */
+.exportArea { resize: none; background-color: white !important;}
+
+/* limit height to footer height, fix width instead of filling rest of footer, set background */
+.sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }

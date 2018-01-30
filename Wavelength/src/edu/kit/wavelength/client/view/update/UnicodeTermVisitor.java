@@ -15,7 +15,6 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 import edu.kit.wavelength.client.view.action.StepManually;
-import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
 
 /**
  * Visitor for generating the output of a {@link LambdaTerm} for the

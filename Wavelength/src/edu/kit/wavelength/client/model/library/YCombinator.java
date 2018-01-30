@@ -20,7 +20,7 @@ public final class YCombinator implements Library {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Y-Combinator";
 	}
 
 	@Override

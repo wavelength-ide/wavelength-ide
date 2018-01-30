@@ -20,7 +20,7 @@ public final class Full implements OutputSize {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Full";
 	}
 
 	@Override

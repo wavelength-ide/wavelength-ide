@@ -11,14 +11,13 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public final class ApplicativeOrder implements ReductionOrder {
 	
 	@Override
-	public Application next(LambdaTerm term)
-	{
+	public Application next(LambdaTerm term) {
 		return null;
 	}
 	
 	@Override
 	public String getName() {
-		return null;
+		return "Applicative Order";
 	}
 
 	@Override

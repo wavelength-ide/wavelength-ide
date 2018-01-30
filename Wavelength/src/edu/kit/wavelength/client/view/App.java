@@ -1,15 +1,36 @@
 package edu.kit.wavelength.client.view;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import org.gwtbootstrap3.client.ui.AnchorListItem;
+import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.client.ui.ButtonGroup;
+import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.Divider;
+import org.gwtbootstrap3.client.ui.DropDown;
+import org.gwtbootstrap3.client.ui.DropDownHeader;
+import org.gwtbootstrap3.client.ui.DropDownMenu;
+import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Modal;
+import org.gwtbootstrap3.client.ui.ModalBody;
+import org.gwtbootstrap3.client.ui.ModalFooter;
+import org.gwtbootstrap3.client.ui.TextArea;
+import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
+import org.gwtbootstrap3.client.ui.constants.Toggle;
+
+import com.google.gwt.dom.client.Style.Overflow;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.ListBox;
-import com.google.gwt.user.client.ui.PushButton;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -17,44 +38,30 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-import edu.kit.wavelength.client.view.action.Action;
-import edu.kit.wavelength.client.view.action.Pause;
-import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Exports;
-import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
-import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
-import edu.kit.wavelength.client.view.webui.component.Checkbox;
-import edu.kit.wavelength.client.view.webui.component.Editor;
-import edu.kit.wavelength.client.view.webui.component.ImageButton;
-import edu.kit.wavelength.client.view.webui.component.OptionBox;
-import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
-import edu.kit.wavelength.client.view.webui.component.TextButton;
-import edu.kit.wavelength.client.view.webui.component.TextField;
-import edu.kit.wavelength.client.view.webui.component.TreeOutput;
-import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
+import edu.kit.wavelength.client.view.gwtbinding.MonacoEditor;
 
 /**
  * App is a singleton that initializes and holds the view.
  */
 public class App implements Serializable {
-	
+
 	private static App instance = null;
-	
-	private App() {}
-	
+
 	/**
 	 * Gets a singleton instance of App.
+	 * 
 	 * @return instance
 	 */
 	public static App get() {
 		if (instance == null) {
 			instance = new App();
-			instance.initialize();
 		}
 		return instance;
 	}
+
 	/**
 	 * Name of the unicode format.
 	 */
@@ -63,295 +70,328 @@ public class App implements Serializable {
 	 * Name of the tree format.
 	 */
 	public static final String TreeOutputName = "Tree";
+
+	public final DockLayoutPanel mainPanel;
+	public final DropDown mainMenu;
+	public final Button openMainMenuButton;
+	public final DropDownMenu mainMenuPanel;
+	public final DropDownHeader mainMenuLibraryTitle;
+	public final List<CheckBox> libraryCheckBoxes;
+	public final Divider mainMenuDivider;
+	public final DropDownHeader mainMenuExerciseTitle;
+	public final List<AnchorListItem> exerciseButtons;
+	public final Modal infoPopup;
+	public final ModalBody infoPopupBody;
+	public final Label infoPopupText;
+	public final ModalFooter infoPopupFooter;
+	public final Button infoPopupOkButton;
+	public final Button infoPopupCancelButton;
+	public final FlowPanel footerPanel;
+	public final SplitLayoutPanel ioPanel;
+	public final DockLayoutPanel inputPanel;
+	public final TextArea outputArea;
+	public final FlowPanel inputControlPanel;
+	public final SplitLayoutPanel editorTaskPanel;
+	public final FlowPanel taskPanel;
+	public final FlowPanel taskHeaderPanel;
+	public final FlowPanel taskControlPanel;
+	public final Label taskDescriptionLabel;
+	public final Button toggleSolutionButton;
+	public final Button closeTaskButton;
+	public final TextArea solutionArea;
+	public final SimplePanel editorPanel;
+	public final FlowPanel optionBarPanel;
+	public final ListBox outputFormatBox;
+	public final ListBox reductionOrderBox;
+	public final ListBox outputSizeBox;
+	public final FlowPanel controlPanel;
+	public final FlowPanel stepByStepControlPanel;
+	public final Button backwardsButton;
+	public final Button stepByStepButton;
+	public final Button forwardButton;
+	public final FlowPanel runControlPanel;
+	public final Button cancelButton;
+	public final Button runButton;
+	public final Button pauseButton;
+	public final ButtonGroup exportDropupGroup;
+	public final Button openExportMenuButton;
+	public final DropDownMenu exportMenu;
+	public final List<AnchorListItem> exportButtons;
+	public final Modal exportPopup;
+	public final ModalBody exportPopupBody;
+	public final TextArea exportArea;
+	public final ModalFooter exportPopupFooter;
+	public final Button exportPopupBodyOkButton;
+	public final ButtonGroup shareGroup;
+	public final TextBox sharePanel;
+	public final Button shareButton;
 	
-	private ImageButton mainMenuButton;
-	private Editor editor;
-	private OptionBox outputFormat;
-	private OptionBox reductionOrder;
-	private OptionBox outputSize;
-	private ImageButton stepBackward;
-	private ImageButton stepByStepMode;
-	private ImageButton stepForward;
-	private ImageButton terminate;
-	private ImageButton run;
-	private ImageButton pause;
-	private TreeOutput treeOutput;
-	private UnicodeOutput unicodeOutput;
-	private ImageButton export;
-	private PopUpWindow exportWindow;
-	private ImageButton share;
-	private TextField sharePanel;
-	private List<Checkbox> libraries;
-	private List<TextButton> exercises;
-	private List<TextButton> exportFormats;
-	private Executor executor;
+	public final MonacoEditor editor;
 	
-	private TextButton showSolution;
-	private TextButton hideSolution;
-	private TextButton exitExerciseModeButton;
-	private PopUpWindow enterExerciseMode;
-	private PopUpWindow leaveExerciseMode;
-	private TextField solutionPanel;
-	private TextField taskPanel;
-	
-	// etc.
-	
-	/**
-	 * Gets the panel that contains the URL to play back the state of the application.
-	 * @return The panel containing the share-URL
-	 */
-	public TextField sharePanel() {
-		return this.sharePanel;
-	}
-	
-	/**
-	 * Gets the window that shows exported output.
-	 * @return The export window
-	 */
-	public PopUpWindow exportWindow() {
-		return this.exportWindow;
-	}
-	
-	/**
-	 * Gets the button that is used to open the main menu.
-	 * @return The main menu button
-	 */
-	public ImageButton mainMenuButton() {
-		return mainMenuButton;
-	}
-	
-	/**
-	 * Gets the editor.
-	 * @return The editor
-	 */
-	public Editor editor() {
-		return editor;
-	}
-	
-	/**
-	 * Gets the option box that allows the user to choose which output format to use.
-	 * @return The output format box
-	 */
-	public OptionBox outputFormatBox() {
-		return outputFormat;
-	}
-	
-	/**
-	 * Gets the option box that allows the user to choose which reduction order to use.
-	 * @return The reduction order option box
-	 */
-	public OptionBox reductionOrderBox() {
-		return reductionOrder;
-	}
-	
-	/**
-	 * Gets the option box that allows the user to choose which output size to use.
-	 * @return The output size option box
-	 */
-	public OptionBox outputSizeBox() {
-		return outputSize;
-	}
-	
-	/**
-	 * Gets the button that can be used to play back to the previous displayed term.
-	 * @return The step backward button
-	 */
-	public ImageButton stepBackwardButton() {
-		return stepBackward;
-	}
-	
-	/**
-	 * Gets the button that can be used to initiate step by step reduction before execution.
-	 * @return The step-by-step button
-	 */
-	public ImageButton stepByStepModeButton() {
-		return stepByStepMode;
-	}
-	
-	/**
-	 * Gets the button that can be used to initiate the next reduction by the currently selected reduction order.
-	 * @return The step forward button
-	 */
-	public ImageButton stepForwardButton() {
-		return stepForward;
-	}
-	
-	/**
-	 * Gets the button that can be used to terminate the reduction.
-	 * @return The terminate button
-	 */
-	public ImageButton terminateButton() {
-		return terminate;
-	}
-	
-	/**
-	 * Gets the button that can be used to initiate the execution, automatically reducing the input with the given options
-	 * @return The run button
-	 */
-	public ImageButton runButton() {
-		return run;
-	}
-	
-	/**
-	 * Gets the button that can be used to transition from the automatic execution to the step by step mode.
-	 * @return The pause button
-	 */
-	public ImageButton pauseButton() {
-		return pause;
-	}
-	
-	/**
-	 * Gets the output that displays terms as trees.
-	 * @return The output used to display a term in tree representation
-	 */
-	public TreeOutput treeOutput() {
-		return treeOutput;
-	}
-	
-	/**
-	 * Gets the output that displays terms with unicode text.
-	 * @return The output used to display a term in unicode
-	 */
-	public UnicodeOutput unicodeOutput() {
-		return unicodeOutput;
-	}
-	
-	/**
-	 * Gets the button that can be used to open the menu that allows the user to choose an export format.
-	 * @return The export button
-	 */
-	public ImageButton exportButton() {
-		return export;
-	}
-	
-	/**
-	 * Gets the button that can be used to toggle the panel that displays the serialized URL.
-	 * @return The share button
-	 */
-	public ImageButton shareButton() {
-		return share;
-	}
-	
-	/**
-	 * Gets all checkboxes that can be used to enable libraries.
-	 * @return The checkboxes used to toggle libraries
-	 */
-	public List<Checkbox> libraryBoxes() {
-		return libraries;
-	}
-	
-	/**
-	 * Gets all buttons that can be used to load an exercise.
-	 * @return The buttons used to load exercises
-	 */
-	public List<TextButton> exerciseButtons() {
-		return exercises;
-	}
-	
-	/**
-	 * Gets all buttons that can be used to load the output into the export window with the given export format specified by the button.
-	 * @return The buttons used to select an output format
-	 */
-	public List<TextButton> exportFormatButtons() {
-		return exportFormats;
-	}
-	
-	/**
-	 * Gets the wrapper that controls the reduction of lambda terms.
-	 * @return The Executor instance controlling the execution
-	 */
-	public Executor executor() {
-		return executor;
-	}
-	
-	/**
-	 * Gets the Button that can be used for showing the solution of the current {@link Exercise}.
-	 * @return The Button used for showing the current {@link Exercise}'s solution
-	 */
-	public TextButton showSolutionButton() {
-		return this.showSolution;
-	}
-	
-	/**
-	 * Gets the Button that can be used for hiding the solution of the current {@link Exercise}.
-	 * @return The Button used for hiding the current {@link Exercise}'s solution
-	 */
-	public TextButton hideSolutionButton() {
-		return this.hideSolution;
-	}
-	
-	/**
-	 * Gets the Button that can be used for exiting the exercise mode.
-	 * @return The Button used for exiting the exercise mode
-	 */
-	public TextButton exitExerciseModeButton() {
-		return this.exitExerciseModeButton;
-	}
-	
-	/**
-	 * Gets the Dialog that is shown when entering exercise mode.
-	 * @return The Dialog shown when entering exercise mode
-	 */
-	public PopUpWindow enterExerciseMode() {
-		return this.enterExerciseMode;
-	}
-	
-	/**
-	 * Gets the Dialog that is shown when leaving exercise mode.
-	 * @return The Dialog shown when leaving exercise mode
-	 */
-	public PopUpWindow leaveExerciseMode() {
-		return this.leaveExerciseMode;
-	}
-	
-	/**
-	 * Gets the TextArea that can be used to show the current {@link Exercise}'s solution.
-	 * @return The TextArea showing the current {@link Exercise}'s solution
-	 */
-	public TextField solutionPanel() {
-		return this.solutionPanel;
-	}
-	
-	/**
-	 * Gets the TextArea that can be used to show the current {@link Exercise}'s task.
-	 * @return The TextArea showing the current {@link Exercise}'s task
-	 */
-	public TextField taskPanel() {
-		return this.taskPanel;
-	}
-	
-	// etc.
+	public final Executor executor = null;
 	
 	/**
 	 * Initializes App.
 	 */
-	private void initialize() {
+	private App() {
+
 		String state = Window.Location.getPath();
 		// deserialize
+
+		mainPanel = new DockLayoutPanel(Unit.EM);
+		mainPanel.addStyleName("mainPanel");
+
+		mainMenu = new DropDown();
+		mainMenu.addStyleName("mainMenu");
+		mainPanel.addNorth(mainMenu, 2.1);
+		// hack to display menu on top of rest of ui
+		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 		
-		mainMenuButton = new ImageButton(new PushButton(), new Image(), new Image());
-		editor = new Editor();
-		//create ListBox for outputFormats
-		outputFormat = new OptionBox(new ListBox());
-		List<String> reductionOrders = ReductionOrders.all().stream().map(ReductionOrder::getName).collect(Collectors.toList());
-		//create ListBox for reductionOrders
-		reductionOrder = new OptionBox(new ListBox());
-		List<String> outputSizes = OutputSizes.all().stream().map(OutputSize::getName).collect(Collectors.toList());
-		//create ListBox for outputSizes
-		outputSize = new OptionBox(new ListBox());
-		stepBackward = new ImageButton(new PushButton(), new Image(), new Image());
-		stepByStepMode = new ImageButton(new PushButton(), new Image(), new Image());
-		stepForward = new ImageButton(new PushButton(), new Image(), new Image());
-		terminate = new ImageButton(new PushButton(), new Image(), new Image());
-		run = new ImageButton(new PushButton(), new Image(), new Image());
-		pause = new ImageButton(new PushButton(), new Image(), new Image());
-		export = new ImageButton(new PushButton(), new Image(), new Image());
-		share = new ImageButton(new PushButton(), new Image(), new Image());
-		libraries = Libraries.all().stream().map(l -> new Checkbox(new CheckBox(), l.getName())).collect(Collectors.toList());
-		exercises = Exercises.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
-		exportFormats = Exports.all().stream().map(e -> new TextButton(new Button(), e.getName())).collect(Collectors.toList());
-		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
-		run.setAction(new RunNewExecution());
+		openMainMenuButton = new Button();
+		openMainMenuButton.addStyleName("fa fa-cog");
+		openMainMenuButton.setToggleCaret(false);
+		openMainMenuButton.setDataToggle(Toggle.DROPDOWN);
+		mainMenu.add(openMainMenuButton);
+		
+		mainMenuPanel = new DropDownMenu();
+		// prevent dropdown from closing when clicking inside
+		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
+		mainMenu.add(mainMenuPanel);
+		
+		mainMenuLibraryTitle = new DropDownHeader("Libraries");
+		mainMenuPanel.add(mainMenuLibraryTitle);
+		
+		libraryCheckBoxes = new ArrayList<>();
+		Libraries.all().forEach(lib -> {
+			CheckBox libraryCheckBox = new CheckBox(lib.getName());
+			libraryCheckBox.addStyleName("libraryCheckBox");
+			mainMenuPanel.add(libraryCheckBox);
+			libraryCheckBoxes.add(libraryCheckBox);
+		});
+		
+		mainMenuDivider = new Divider();
+		mainMenuPanel.add(mainMenuDivider);
+		
+		mainMenuExerciseTitle = new DropDownHeader("Exercises");
+		mainMenuPanel.add(mainMenuExerciseTitle);
+		
+		exerciseButtons = new ArrayList<>();
+		Exercises.all().forEach(excs -> {
+			AnchorListItem exerciseButton = new AnchorListItem(excs.getName());
+			// exerciseButton.addClickHandler(event -> new SelectExercise(excs).run());
+			// exerciseButton.addStyleName("exerciseButton");
+			exerciseButton.setTitle(excs.getTask());
+			mainMenuPanel.add(exerciseButton);
+			exerciseButtons.add(exerciseButton);
+		});
+
+		infoPopup = new Modal();
+		infoPopup.setClosable(false);
+		infoPopup.setDataBackdrop(ModalBackdrop.STATIC);
+		
+		infoPopupBody = new ModalBody();
+		infoPopup.add(infoPopupBody);
+		
+		infoPopupText = new Label("hello world");
+		infoPopupBody.add(infoPopupText);
+		
+		infoPopupFooter = new ModalFooter();
+		infoPopup.add(infoPopupFooter);
+		
+		infoPopupOkButton = new Button();
+		infoPopupOkButton.addStyleName("fa fa-times");
+		infoPopupFooter.add(infoPopupOkButton);
+		
+		infoPopupCancelButton = new Button();
+		infoPopupCancelButton.addStyleName("fa fa-check");
+		infoPopupCancelButton.addClickHandler(e -> infoPopup.hide());
+		infoPopupFooter.add(infoPopupCancelButton);
+		
+		// infoPopup.show();
+
+		footerPanel = new FlowPanel();
+		footerPanel.addStyleName("footerPanel");
+		mainPanel.addSouth(footerPanel, 2);
+		// hack to display dropup on top of rest of ui
+		footerPanel.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
+
+		ioPanel = new SplitLayoutPanel(3);
+		mainPanel.add(ioPanel);
+
+		inputPanel = new DockLayoutPanel(Unit.EM);
+		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
+
+		outputArea = new TextArea();
+		outputArea.setWidth("100%");
+		ioPanel.add(outputArea);
+
+		inputControlPanel = new FlowPanel();
+		inputControlPanel.addStyleName("inputControlPanel");
+		inputPanel.addSouth(inputControlPanel, 1.85);
+
+		editorTaskPanel = new SplitLayoutPanel(3);
+		editorTaskPanel.addStyleName("editorTaskPanel");
+		inputPanel.add(editorTaskPanel);
+		
+		taskPanel = new FlowPanel();
+		taskPanel.addStyleName("taskPanel");
+		editorTaskPanel.addEast(taskPanel, 0.3 * Window.getClientWidth());
+		
+		taskHeaderPanel = new FlowPanel();
+		taskPanel.add(taskHeaderPanel);
+		
+		taskControlPanel = new FlowPanel();
+		taskControlPanel.addStyleName("taskControlPanel");
+		taskHeaderPanel.add(taskControlPanel);
+		
+		taskDescriptionLabel = new HTML("hello world<br>hello world<br>hello world<br>");
+		taskDescriptionLabel.addStyleName("taskDescriptionLabel");
+		taskHeaderPanel.add(taskDescriptionLabel);
+		
+		toggleSolutionButton = new Button();
+		toggleSolutionButton.addStyleName("fa fa-lightbulb-o");
+		taskControlPanel.add(toggleSolutionButton);
+		
+		closeTaskButton = new Button();
+		closeTaskButton.addStyleName("fa fa-times-circle-o");
+		taskControlPanel.add(closeTaskButton);
+		
+		solutionArea = new TextArea();
+		solutionArea.addStyleName("solutionArea");
+		solutionArea.setVisible(false);
+		solutionArea.setReadOnly(true);
+		solutionArea.setText("hello\n\tworld\n\t\teveryone");
+		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
+		taskPanel.add(solutionArea);
+		
+		editorPanel = new SimplePanel();
+		// id needed because MonacoEditor adds to panel div by id
+		editorPanel.getElement().setId("editor");
+		editorTaskPanel.add(editorPanel);
+
+		optionBarPanel = new FlowPanel();
+		optionBarPanel.addStyleName("optionBarPanel");
+		inputControlPanel.add(optionBarPanel);
+		
+		outputFormatBox = new ListBox();
+		outputFormatBox.addItem("Unicode Output");
+		outputFormatBox.addItem("Tree Output");
+		optionBarPanel.add(outputFormatBox);
+
+		reductionOrderBox = new ListBox();
+		reductionOrderBox.setName("Reduction Order");
+		ReductionOrders.all().stream().map(ReductionOrder::getName).forEach(reductionOrderBox::addItem);
+		optionBarPanel.add(reductionOrderBox);
+
+		outputSizeBox = new ListBox();
+		outputSizeBox.setName("Output Size");
+		OutputSizes.all().stream().map(OutputSize::getName).forEach(outputSizeBox::addItem);
+		optionBarPanel.add(outputSizeBox);
+
+		controlPanel = new FlowPanel();
+		controlPanel.addStyleName("controlPanel");
+		inputControlPanel.add(controlPanel);
+
+		stepByStepControlPanel = new FlowPanel();
+		stepByStepControlPanel.addStyleName("stepByStepControlPanel");
+		controlPanel.add(stepByStepControlPanel);
+		
+		backwardsButton = new Button();
+		backwardsButton.addStyleName("fa fa-chevron-left");
+		stepByStepControlPanel.add(backwardsButton);
+
+		stepByStepButton = new Button();
+		stepByStepButton.addStyleName("fa fa-exchange");
+		stepByStepControlPanel.add(stepByStepButton);
+
+		forwardButton = new Button();
+		forwardButton.addStyleName("fa fa-chevron-right");
+		stepByStepControlPanel.add(forwardButton);
+
+		runControlPanel = new FlowPanel();
+		runControlPanel.addStyleName("runControlPanel");
+		controlPanel.add(runControlPanel);
+		
+		cancelButton = new Button();
+		cancelButton.addStyleName("fa fa-stop");
+		runControlPanel.add(cancelButton);
+		
+		runButton = new Button();
+		runButton.addStyleName("fa fa-play");
+		runControlPanel.add(runButton);
+		
+		pauseButton = new Button();
+		pauseButton.addStyleName("fa fa-pause");
+		runControlPanel.add(pauseButton);
+
+		exportDropupGroup = new ButtonGroup();
+		exportDropupGroup.setDropUp(true);
+		footerPanel.add(exportDropupGroup);
+		
+		openExportMenuButton = new Button();
+		openExportMenuButton.setDataToggle(Toggle.DROPDOWN);
+		openExportMenuButton.setToggleCaret(false);
+		openExportMenuButton.addStyleName("fa fa-level-up");
+		exportDropupGroup.add(openExportMenuButton);
+		
+		exportMenu = new DropDownMenu();
+		exportButtons = new ArrayList<>();
+		Exports.all().forEach(e -> {
+			AnchorListItem exportButton = new AnchorListItem(e.getName());
+			exportMenu.add(exportButton);
+			exportButtons.add(exportButton);
+		});
+		exportDropupGroup.add(exportMenu);
+		
+		exportPopup = new Modal();
+		exportPopup.setDataKeyboard(true);
+		exportPopup.setClosable(false);
+		exportPopup.setDataBackdrop(ModalBackdrop.STATIC);
+		
+		exportPopupBody = new ModalBody();
+		exportPopup.add(exportPopupBody);
+		
+		exportArea = new TextArea();
+		exportArea.addStyleName("exportArea");
+		exportArea.setVisibleLines(10);
+		exportArea.setReadOnly(true);
+		exportArea.setText("hello\n\tworld\n\t\teveryone");
+		exportPopupBody.add(exportArea);
+		
+		exportPopupFooter = new ModalFooter();
+		exportPopup.add(exportPopupFooter);
+		
+		exportPopupBodyOkButton = new Button();
+		exportPopupBodyOkButton.addClickHandler(event -> exportPopup.hide());
+		exportPopupBodyOkButton.addStyleName("fa fa-check");
+		exportPopupFooter.add(exportPopupBodyOkButton);
+		
+		// exportPopup.show();
+		
+		// this only exists for style consistency with exportButton
+		shareGroup = new ButtonGroup();
+		footerPanel.add(shareGroup);
+		
+		sharePanel = new TextBox();
+		sharePanel.addStyleName("sharePanel");
+		sharePanel.setText("hello world");
+		sharePanel.setReadOnly(true);
+		sharePanel.setVisible(false);
+		footerPanel.add(sharePanel);
+		
+		shareButton = new Button();
+		shareButton.addClickHandler(event -> sharePanel.setVisible(!sharePanel.isVisible()));
+		shareButton.addStyleName("fa fa-share-alt");
+		shareGroup.add(shareButton);
+		
+		// ui needs to be created BEFORE loading the editor for the ids to exist
+		RootLayoutPanel.get().add(mainPanel);
+		editor = MonacoEditor.load(editorPanel);
+		
+		// set actions
+		// ...
+		
+		// executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 	}
 
 	@Override

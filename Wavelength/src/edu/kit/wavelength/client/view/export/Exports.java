@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.export;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,7 +16,8 @@ public final class Exports {
 	 *         export format
 	 */
 	public static List<Export> all() {
-		return null;
+		return Arrays.asList(new PlaintextExport(), new UnicodeExport(), new LatexExport(), new LispExport(),
+				new HaskellExport());
 	}
 
 }

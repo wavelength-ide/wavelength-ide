@@ -14,14 +14,13 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public final class CallByValue implements ReductionOrder {
 	
 	@Override
-	public Application next(LambdaTerm term)
-	{
+	public Application next(LambdaTerm term) {
 		return null;
 	}
 	
 	@Override
 	public String getName() {
-		return null;
+		return "Call by Value";
 	}
 
 	@Override

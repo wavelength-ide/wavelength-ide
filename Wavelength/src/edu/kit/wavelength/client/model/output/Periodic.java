@@ -28,7 +28,7 @@ public final class Periodic implements OutputSize {
 
 	@Override
 	public String getName() {
-		return null;
+		return "Periodically";
 	}
 
 	@Override

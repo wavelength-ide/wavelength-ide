@@ -15,12 +15,18 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 /*
  * TODO:
  * 1. StringBuilder zu ressourcen intensiv?
- * 2. Nicht Obligatorische Klammern weglassen? Habe ich (glaube ich) geschafft
- * 3. Unicode aus vom Benutzer angegebenen Definitionen enfernen?
  */
 public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
 	protected final String lambda;
+
+	/*
+	 * A flag that determines if an abstraction or application should be
+	 * surrounded by brackets. All flags should be false at the end of a
+	 * visit method.
+	 */
+	protected boolean bracketsForApp;
+	protected boolean bracketsForAbs;
 
 	/**
 	 * Creates a new Visitor for {@link LambdaTerm}s.
@@ -35,43 +41,63 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	 */
 	public BasicExportVisitor(List<Library> libraries, String lambdaRepresentation) {
 		super(libraries);
+		Objects.requireNonNull(lambdaRepresentation);
+
 		lambda = lambdaRepresentation;
+		bracketsForApp = false;
+		bracketsForAbs = false;
 	}
 
 	@Override
 	public StringBuilder visitApplication(Application app) {
 		Objects.requireNonNull(app);
 
+		// Store bracketsFlag for later use.
+		final boolean brackets = bracketsForApp;
+		resetFlags();
+
+		// An abstraction inside a application should get brackets.
+		bracketsForAbs = true;
 		StringBuilder leftSide = app.getLeftHandSide().acceptVisitor(this);
+
+		bracketsForAbs = true;
+		// If the right term of an application is an application it should get
+		// brackets because implicit brackets bind from left to right.
+		bracketsForApp = true;
 		StringBuilder rightSide = app.getRightHandSide().acceptVisitor(this);
-		if (app.getLeftHandSide() instanceof Abstraction) {
-			leftSide.insert(0, "(").append(")");
-		}
-		if (app.getRightHandSide() instanceof Abstraction || app.getRightHandSide() instanceof Application) {
-			rightSide.insert(0, "(").append(")");
-		}
+
 		StringBuilder result = new StringBuilder();
-		return result.append(leftSide).append(" ").append(rightSide);
+		result.append(leftSide).append(" ").append(rightSide);
+		if (brackets) {
+			result.insert(0, "(").append(")");
+		}
+		return result;
 	}
 
 	@Override
 	public StringBuilder visitNamedTerm(NamedTerm term) {
 		Objects.requireNonNull(term);
 
-		return new StringBuilder(term.getName());
+		resetFlags();
+		return formatText(new StringBuilder(term.getName()));
 	}
 
+	/*
+	 * TODO: Markus fragen, was hier los ist.
+	 */
 	@Override
 	public StringBuilder visitPartialApplication(PartialApplication app) {
 		Objects.requireNonNull(app);
 
-		return new StringBuilder(app.getName());
+		resetFlags();
+		return formatText(new StringBuilder(app.getName()));
 	}
 
 	@Override
 	public StringBuilder visitFreeVariable(FreeVariable var) {
 		Objects.requireNonNull(var);
 
+		resetFlags();
 		return new StringBuilder(var.getName());
 	}
 
@@ -80,6 +106,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		Objects.requireNonNull(var);
 		Objects.requireNonNull(resolvedName);
 
+		resetFlags();
 		return new StringBuilder(resolvedName);
 	}
 
@@ -88,11 +115,43 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		Objects.requireNonNull(abs);
 		Objects.requireNonNull(resolvedName);
 
+		// Store bracketsFlag for later use and reset flags.
+		final boolean brackets = bracketsForAbs;
+		resetFlags();
+
+		StringBuilder absVariable = new StringBuilder(resolvedName);
+
+		// An application inside an abstraction should get brackets.
+		bracketsForApp = true;
 		StringBuilder innerTerm = new StringBuilder(abs.getInner().acceptVisitor(this));
-		if (abs.getInner() instanceof Abstraction) {
-			innerTerm.insert(0, "(").append(")");
-		}
+
 		StringBuilder result = new StringBuilder();
-		return result.append(lambda).append(resolvedName).append(".").append(innerTerm);
+		result.append(formatLambda(absVariable)).append(innerTerm);
+
+		if (brackets) {
+			result.insert(0, "(").append(")");
+		}
+		return result;
+	}
+
+	/**
+	 * Resets all Flags for brackets. Flags should be false at the end of each
+	 * visit method.
+	 */
+	protected final void resetFlags() {
+		bracketsForAbs = false;
+		bracketsForApp = false;
+	}
+
+	protected StringBuilder formatText(StringBuilder text) {
+		assert (text != null);
+
+		return text;
+	}
+
+	protected StringBuilder formatLambda(StringBuilder absVariable) {
+		assert (absVariable != null);
+
+		return absVariable.insert(0, lambda).append(".");
 	}
 }

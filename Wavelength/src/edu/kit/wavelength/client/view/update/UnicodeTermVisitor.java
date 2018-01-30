@@ -2,6 +2,9 @@ package edu.kit.wavelength.client.view.update;
 
 import java.util.List;
 
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.HTML;
+
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
@@ -11,6 +14,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
+import edu.kit.wavelength.client.view.action.StepManually;
 import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
 import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
 
@@ -18,46 +22,55 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
  * Visitor for generating the output of a {@link LambdaTerm} for the
  * {@link UnicodeOutput} view.
  */
-public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
-
+public class UnicodeTermVisitor extends ResolvedNamesVisitor<HTML> {
+	
 	public UnicodeTermVisitor(List<Library> libraries) {
 		super(libraries);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	@Override
-	public UnicodeTerm visitApplication(Application app) {
-		UnicodeTerm left = app.getLeftHandSide().acceptVisitor(this);
-		UnicodeTerm right = app.getRightHandSide().acceptVisitor(this);
-		return new UnicodeTerm("(" + left.getRepresentation() + ") (" + right.getRepresentation() + ")");
+	public HTML visitApplication(Application app) {
+		HTML left = app.getLeftHandSide().acceptVisitor(this);
+		HTML right = app.getRightHandSide().acceptVisitor(this);
+		// TODO: instanceof umgehen
+		if (app.getLeftHandSide() instanceof Abstraction) {
+			// get anchor from left abs
+
+			Anchor a = new Anchor("");
+			a.addClickHandler(event -> new StepManually(app).run());
+		}	
+			
+		String value =  "(" + left + ") (" + right  + ")";
+		return new HTML(value);
 	}
 
 	@Override
-	public UnicodeTerm visitNamedTerm(NamedTerm term) {
-		String name = term.getName();
-		return new UnicodeTerm(name);
+	public HTML visitNamedTerm(NamedTerm term) {
+		return new HTML(term.getName());
 	}
 
 	@Override
-	public UnicodeTerm visitPartialApplication(PartialApplication app) {
+	public HTML visitPartialApplication(PartialApplication app) {
 		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
-	public UnicodeTerm visitFreeVariable(FreeVariable var) {
-		String name = var.getName();
-		return new UnicodeTerm(name);
+	public HTML visitFreeVariable(FreeVariable var) {
+		return new HTML(var.getName());
 	}
 
 	@Override
-	protected UnicodeTerm visitBoundVariable(BoundVariable var, String resolvedName) {
-		return null;
+	protected HTML visitBoundVariable(BoundVariable var, String resolvedName) {
+		return new HTML(resolvedName);
 	}
 
 	@Override
-	protected UnicodeTerm visitAbstraction(Abstraction abs, String resolvedName) {
-		UnicodeTerm inner = abs.getInner().acceptVisitor(this);
-		return new UnicodeTerm("U+03BB" + resolvedName + "." + inner.getRepresentation());
+	protected HTML visitAbstraction(Abstraction abs, String resolvedName) {
+		HTML inner = abs.getInner().acceptVisitor(this);
+		Anchor a = new Anchor("U+03BB" + resolvedName);
+		return  new HTML(a + "." + inner);
 	}
 
 }

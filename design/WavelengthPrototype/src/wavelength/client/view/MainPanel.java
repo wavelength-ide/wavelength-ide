@@ -80,7 +80,7 @@ public class MainPanel extends Composite {
 		Anchor a = new Anchor("a");
 		a.addClickHandler(event -> TestAction.run(inputArea));
 		outputArea.add(a, "test");
-		String test = "<span id='test'>" + "mehr Text" + "</span>";
+		String test = "<span id='test'></span>";
 		outputArea = new HTMLPanel(test);
 		outputArea.setWidth("100%");
 		ioPanel.add(outputArea);

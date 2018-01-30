@@ -2,7 +2,9 @@ package edu.kit.wavelength.client.model.term;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class BetaReductionTest {
 
@@ -288,6 +290,18 @@ public class BetaReductionTest {
 		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
 		
 		assertEquals(new NamedTerm("Hi", new FreeVariable("y")), reduced);
+	}
+	
+	@Rule
+	public ExpectedException expect = ExpectedException.none();
+	
+	@Test
+	public void notARegexTest() {
+		Application a = new Application(new FreeVariable("y"), new FreeVariable("z"));
+		Application app = new Application(a, new FreeVariable("y"));
+		
+		expect.expect(IllegalArgumentException.class);
+		app.acceptVisitor(new BetaReducer(a));
 	}
 
 

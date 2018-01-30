@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
+import java.util.Objects;
+
 /**
  * A {@link Visitor} that substitutes {@link BoundVariable}s with a given De
  * Bruijn index with a given substituent.
@@ -17,6 +19,8 @@ public final class SubstitutionVisitor extends TermTransformer {
 	 *            The term that should be substituted with
 	 */
 	public SubstitutionVisitor(LambdaTerm substituent) {
+		Objects.requireNonNull(substituent);
+		
 		depth = 0;
 		this.substituent = substituent;
 	}

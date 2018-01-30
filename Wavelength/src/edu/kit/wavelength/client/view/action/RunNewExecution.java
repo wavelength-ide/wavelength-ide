@@ -72,7 +72,7 @@ public class RunNewExecution implements Action {
 				.collect(Collectors.toList());
 		
 		// TODO: executor needs to throw exception
-		try {
+		/* try {
 			// start the execution with the selected options
 			app.executor.start(code, order, size, libraries);
 		} catch (ParseException e) {
@@ -82,7 +82,7 @@ public class RunNewExecution implements Action {
 			// TODO: set text in output; we definitely need an interface, its insane to
 			// always check the output format
 			return;
-		}
+		} */
 
 		
 		// lock the view components

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.UIObject;
 
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
@@ -20,7 +21,7 @@ import edu.kit.wavelength.client.view.action.StepManually;
  * Visitor for generating the output of a {@link LambdaTerm} for the
  * {@link UnicodeOutput} view.
  */
-public class UnicodeTermVisitor extends ResolvedNamesVisitor<HTML> {
+public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	
 	public UnicodeTermVisitor(List<Library> libraries) {
 		super(libraries);
@@ -29,46 +30,44 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<HTML> {
 	
 
 	@Override
-	public HTML visitApplication(Application app) {
-		HTML left = app.getLeftHandSide().acceptVisitor(this);
-		HTML right = app.getRightHandSide().acceptVisitor(this);
+	public Tuple visitApplication(Application app) {
+		Tuple left = app.getLeftHandSide().acceptVisitor(this);
+		Tuple right = app.getRightHandSide().acceptVisitor(this);
 		// TODO: instanceof umgehen
 		if (app.getLeftHandSide() instanceof Abstraction) {
 			// get anchor from left abs
-
-			Anchor a = new Anchor("");
-			a.addClickHandler(event -> new StepManually(app).run());
+			left.a.addClickHandler(event -> new StepManually(app).run());
 		}	
 			
 		String value =  "(" + left + ") (" + right  + ")";
-		return new HTML(value);
+		return new Tuple(new HTML(value), null);
 	}
 
 	@Override
-	public HTML visitNamedTerm(NamedTerm term) {
-		return new HTML(term.getName());
+	public Tuple visitNamedTerm(NamedTerm term) {
+		return new Tuple(new HTML(term.getName()), null);
 	}
 
 	@Override
-	public HTML visitPartialApplication(PartialApplication app) {
+	public Tuple visitPartialApplication(PartialApplication app) {
 		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
-	public HTML visitFreeVariable(FreeVariable var) {
-		return new HTML(var.getName());
+	public Tuple visitFreeVariable(FreeVariable var) {
+		return new Tuple(new HTML(var.getName()), null);
 	}
 
 	@Override
-	protected HTML visitBoundVariable(BoundVariable var, String resolvedName) {
-		return new HTML(resolvedName);
+	protected Tuple visitBoundVariable(BoundVariable var, String resolvedName) {
+		return new Tuple(new HTML(resolvedName), null);
 	}
 
 	@Override
-	protected HTML visitAbstraction(Abstraction abs, String resolvedName) {
-		HTML inner = abs.getInner().acceptVisitor(this);
+	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
+		Tuple inner = abs.getInner().acceptVisitor(this);
 		Anchor a = new Anchor("U+03BB" + resolvedName);
-		return  new HTML(a + "." + inner);
+		return  new Tuple(new HTML(a + "." + inner), a);
 	}
 
 }

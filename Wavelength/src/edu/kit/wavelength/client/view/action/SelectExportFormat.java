@@ -2,7 +2,6 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.export.Export;
-import edu.kit.wavelength.client.view.webui.component.PopUpWindow;
 
 /**
  * This action displays the currently displayed output in the selected export
@@ -30,9 +29,9 @@ public class SelectExportFormat implements Action {
 	 */
 	@Override
 	public void run() {
-		PopUpWindow exportWindow = app.exportWindow();
-		exportWindow.write(exportFormat.getRepresentation(app.executor().getDisplayed()));
+		
+		app.exportArea.setText(exportFormat.getRepresentation(app.executor.getDisplayed()));
 		// TODO: markiere gesamte Ausgabe
-		exportWindow.show();
+		app.exportPopup.show();;
 	}
 }

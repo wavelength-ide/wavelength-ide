@@ -14,7 +14,7 @@ public class ExitExerciseMode implements Action {
 	 */
 	@Override
 	public void run() {
-		App.get().leaveExerciseMode().show();
+		App.get().infoPopup.show();
 	}
 
 }

@@ -5,9 +5,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import edu.kit.wavelength.client.view.App;
+import com.google.gwt.user.client.ui.ListBox;
+
 import edu.kit.wavelength.client.view.exercise.Exercise;
-import edu.kit.wavelength.client.view.api.Hideable;
-import edu.kit.wavelength.client.view.api.Lockable;
+import com.google.gwt.user.client.ui.Widget;
+import org.gwtbootstrap3.client.ui.Button;
+
 
 /**
  * This class changes the view from standard input to exercise view to display
@@ -20,34 +23,25 @@ public class LoadExercise implements Action {
 	private static App app = App.get();
 
 	// UI components to show the user
-	private static List<Hideable> componentsToShow = new ArrayList<Hideable>(Arrays.asList(
-			app.exitExerciseModeButton(),
-			app.showSolutionButton(), 
-			app.taskPanel()
+	private static List<Widget> componentsToShow = new ArrayList<Widget>(Arrays.asList(
+			app.closeTaskButton,
+			app.toggleSolutionButton,
+			app.editorTaskPanel
 			));
 
 	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
-			app.editor(), 
-			app.outputFormatBox(),
-			app.outputSizeBox(), 
-			app.reductionOrderBox(),
-			app.stepByStepModeButton()
+	private static List<ListBox> componentsToUnlock = new ArrayList<ListBox>(Arrays.asList(
+			app.outputFormatBox,
+			app.outputSizeBox, 
+			app.reductionOrderBox
 			));
 
-	static {
-		componentsToUnlock.addAll(app.libraryBoxes());
-		componentsToUnlock.addAll(app.exerciseButtons());
-		componentsToUnlock.addAll(app.exportFormatButtons());
-	}
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
-			app.stepBackwardButton(), 
-			app.stepForwardButton(), 
-			app.terminateButton(), 
-			app.treeOutput(), 
-			app.unicodeOutput()
+	private static List<Button> componentsToLock = new ArrayList<Button>(Arrays.asList(
+			app.backwardsButton, 
+			app.forwardButton, 
+			app.cancelButton 
 			));
 
 	/**
@@ -69,27 +63,38 @@ public class LoadExercise implements Action {
 	@Override
 	public void run() {
 		// terminate running execution
-		app.executor().terminate();
+		app.executor.terminate();
 		
 		// TODO: clear input and output -> leerer String
-		app.editor().write("");
-		app.unicodeOutput().write("");
-		app.treeOutput().write("");
+		app.editor.write("");
+		// app.unicodeOutput().write("");
+		// app.treeOutput().write("");
 		
-		componentsToShow.forEach(Hideable::show);
-		componentsToLock.forEach(Lockable::lock);
-		componentsToUnlock.forEach(Lockable::unlock);
+		
+		componentsToShow.forEach(w -> w.setVisible(true));
+		
+		app.editor.unlock();
+		app.stepByStepButton.setEnabled(true);	
+		app.libraryCheckBoxes.forEach(c -> c.setEnabled(true));
+		app.exerciseButtons.forEach(b -> b.setEnabled(true));
+		app.exportButtons.forEach(b -> b.setEnabled(true));
+		componentsToUnlock.forEach(w -> w.setEnabled(true));
+
+		
+		componentsToLock.forEach(b -> b.setEnabled(false));
+		// TODO: lock outputs
+			
 		
 		// hide solution as default
-		app.solutionPanel().hide();
+		app.solutionArea.setVisible(false);
 		
 		// set task and solution to the dedicated panel
-		app.taskPanel().write(exercise.getTask());
-		app.solutionPanel().write(exercise.getSolution());
+		app.taskDescriptionLabel.setText(exercise.getTask());
+		app.solutionArea.setText(exercise.getSolution());
 		
 		// toggle run/pause button
-		app.pauseButton().hide();
-		app.runButton().show();
+		app.pauseButton.setVisible(false);
+		app.runButton.setVisible(true);
 	}
 
 }

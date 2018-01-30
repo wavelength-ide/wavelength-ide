@@ -1,8 +1,9 @@
 package edu.kit.wavelength.client.view.action;
 
+import org.gwtbootstrap3.client.ui.TextBox;
+
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.URLSerializer;
-import edu.kit.wavelength.client.view.webui.component.TextField;
 
 /**
  * This action toggles the permalink panel. The permalink encodes the current
@@ -29,12 +30,12 @@ public class UseShare implements Action {
 	 */
 	@Override
 	public void run() {
-		TextField sharePanel = App.get().sharePanel();
-		if (sharePanel.isShown()) {
-			sharePanel.hide();
+		TextBox sharePanel = App.get().sharePanel;
+		if (sharePanel.isVisible()) {
+			sharePanel.setVisible(false);
 		} else {
 			serializer.serialize();
-			sharePanel.show();
+			sharePanel.setVisible(true);
 		}
 	}
 

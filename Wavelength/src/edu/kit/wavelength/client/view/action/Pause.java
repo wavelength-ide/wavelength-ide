@@ -1,11 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.api.Lockable;
 
 /**
  * This class pauses the currently running execution process and allows the user
@@ -14,19 +9,7 @@ import edu.kit.wavelength.client.view.api.Lockable;
 public class Pause implements Action {
 
 	private static App app = App.get();
-
-	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
-			app.reductionOrderBox(), 
-			app.stepForwardButton(), 
-			app.treeOutput(), 
-			app.unicodeOutput()
-			));
 	
-	static {
-		componentsToUnlock.addAll(app.exportFormatButtons());
-	}
-
 	/**
 	 * Pause the running execution and enable the step-by-step buttons. Also allow
 	 * output window interactions and enable the reduction order option.
@@ -34,22 +17,22 @@ public class Pause implements Action {
 	@Override
 	public void run() {
 		// pause the running execution
-		app.executor().pause();
+		app.executor.pause();
 		
-		if (!app.executor().getDisplayed().isEmpty()) {
-			componentsToUnlock.add(app.stepBackwardButton());
-		}
-
-		// unlock the needed view components
 		// only unlock the step backward button if stepping back is possible
-		if (!app.executor().getDisplayed().isEmpty()) {
-			componentsToUnlock.add(app.stepBackwardButton());
+		if (!app.executor.getDisplayed().isEmpty()) {
+			app.backwardsButton.setEnabled(true);
 		}
 		
-		componentsToUnlock.forEach(Lockable::unlock);
-		
+		// unlock the needed view components
+		app.reductionOrderBox.setEnabled(true);
+		app.forwardButton.setEnabled(true);
+		// TODO: unlock outputs
+		app.exerciseButtons.forEach(b -> b.setEnabled(true));
+
+			
 		// toggle run/pause button
-		app.runButton().show();
-		app.pauseButton().hide();
+		app.runButton.setVisible(true);
+		app.pauseButton.setVisible(false);
 	}
 }

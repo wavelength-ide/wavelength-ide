@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.client.ui.ListBox;
+
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.api.Lockable;
 
 /**
  * This action stops the currently running reduction process and re-enables all
@@ -16,28 +18,19 @@ public class Stop implements Action {
 	private static App app = App.get();
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
-			app.stepBackwardButton(), 
-			app.stepForwardButton(),
-			app.terminateButton(),
-			app.treeOutput(),
-			app.unicodeOutput()
+	private static List<Button> componentsToLock = new ArrayList<Button>(Arrays.asList(
+			app.backwardsButton, 
+			app.forwardButton,
+			app.cancelButton
 			));
 
 	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(Arrays.asList(
-			app.editor(), 
-			app.outputFormatBox(),
-			app.outputSizeBox(), 
-			app.reductionOrderBox(),
-			app.stepByStepModeButton()
+	private static List<ListBox> componentsToUnlock = new ArrayList<ListBox>(Arrays.asList(
+			app.outputFormatBox,
+			app.outputSizeBox, 
+			app.reductionOrderBox
 			));
 
-	static {
-		componentsToUnlock.addAll(app.libraryBoxes());
-		componentsToUnlock.addAll(app.exerciseButtons());
-		componentsToUnlock.addAll(app.exportFormatButtons());
-	}
 
 	/**
 	 * Re-enables the editor and all option menus and blocks all buttons except the
@@ -46,14 +39,20 @@ public class Stop implements Action {
 	@Override
 	public void run() {
 		// terminate running execution
-		app.executor().terminate();
+		app.executor.terminate();
 
 		// set view components
-		componentsToLock.forEach(Lockable::lock);
-		componentsToUnlock.forEach(Lockable::unlock);
+		componentsToLock.forEach(b -> b.setEnabled(false));
+		// TODO: lock outputs
+		app.editor.unlock();
+		app.stepByStepButton.setEnabled(true);
+		componentsToUnlock.forEach(b -> b.setEnabled(true));
+		app.libraryCheckBoxes.forEach(b -> b.setEnabled(true));
+		app.exerciseButtons.forEach(b -> b.setEnabled(true));
+		app.exportButtons.forEach(b -> b.setEnabled(true));
 
 		// toggle run/pause button
-		app.pauseButton().hide();
-		app.runButton().show();
+		app.pauseButton.setVisible(false);
+		app.runButton.setVisible(true);;
 	}
 }

@@ -27,7 +27,7 @@ public final class SubstitutionVisitor extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitPartialApplication(PartialApplication app) {
-		return null;
+		return app;
 	}
 
 	@Override

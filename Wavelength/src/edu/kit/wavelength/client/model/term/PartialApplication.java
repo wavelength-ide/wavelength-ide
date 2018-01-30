@@ -12,6 +12,8 @@ public abstract class PartialApplication implements LambdaTerm {
 	private LambdaTerm inner;
 	private int numParameters;
 	private Visitor<Boolean>[] checks;
+	private LambdaTerm[] received;
+	private int numReceived;
 
 	/**
 	 * Creates a new partial application that has not yet bound any parameters.
@@ -31,6 +33,8 @@ public abstract class PartialApplication implements LambdaTerm {
 		this.inner = inner;
 		this.numParameters = numParameters;
 		this.checks = checks;
+		this.received = new LambdaTerm[numParameters];
+		this.numReceived = 0;
 	}
 
 	@Override
@@ -44,7 +48,13 @@ public abstract class PartialApplication implements LambdaTerm {
 	 * @return The {@link LambdaTerm} that this partial application represents
 	 */
 	public LambdaTerm getRepresented() {
-		return null;
+		LambdaTerm current = inner.clone();
+
+		for (int i = 0; i < numReceived; ++i) {
+			current = new Application(current, received[i]);
+		}
+		
+		return current;
 	}
 
 	/**
@@ -73,7 +83,14 @@ public abstract class PartialApplication implements LambdaTerm {
 	 *         parameter as described above
 	 */
 	public LambdaTerm accept(LambdaTerm nextParam) {
-		return null;
+		received[numReceived] = nextParam;
+		++numReceived;
+
+		if (!nextParam.acceptVisitor(checks[numReceived - 1]))
+			return getRepresented();
+		if (numReceived == numParameters)
+			return this.accelerate(received);
+		return this;
 	}
 
 	/**

@@ -29,7 +29,7 @@ public final class BetaReducer extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitPartialApplication(PartialApplication app) {
-		return null;
+		return app;
 	}
 
 	@Override
@@ -44,8 +44,7 @@ public final class BetaReducer extends TermTransformer {
 			return new Application(app.getLeftHandSide().acceptVisitor(this),
 					app.getRightHandSide().acceptVisitor(this));
 
-		return app.getLeftHandSide().acceptVisitor(new SubstitutionVisitor(app.getRightHandSide()))
-				.acceptVisitor(new IndexAdjustmentVisitor(-1));
+		return app.getLeftHandSide().acceptVisitor(new RedexResolutionVisitor(app.getRightHandSide()));
 	}
 
 	@Override

@@ -12,8 +12,7 @@ final class IndexAdjustmentVisitor extends TermTransformer {
 
 	@Override
 	public LambdaTerm visitPartialApplication(PartialApplication app) {
-		// TODO Auto-generated method stub
-		return null;
+		return app;
 	}
 
 	@Override

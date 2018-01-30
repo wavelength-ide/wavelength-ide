@@ -15,10 +15,10 @@ public class StepForward implements Action {
 	 */
 	@Override
 	public void run() {
-		app.executor().stepForward();
+		app.executor.stepForward();
 		// unlock the step backwards button if stepping back is possible
-		if (!app.executor().getDisplayed().isEmpty()) {
-			app.stepBackwardButton().unlock();
+		if (!app.executor.getDisplayed().isEmpty()) {
+			app.backwardsButton.setEnabled(true);
 		}
 	}
 }

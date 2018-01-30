@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.ListBox;
+
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -14,8 +17,6 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.api.Lockable;
-import edu.kit.wavelength.client.view.webui.component.Checkbox;
 
 /**
  * This class starts a new reduction process by requesting only the first
@@ -26,21 +27,11 @@ public class StepByStep implements Action {
 	private static App app = App.get();
 
 	// UI components that can no longer be interacted with
-	private static List<Lockable> componentsToLock = new ArrayList<Lockable>(Arrays.asList(
-			app.editor(), 
-			app.outputSizeBox(),
-			app.outputFormatBox(), 
-			app.stepByStepModeButton()
+	private static List<ListBox> componentsToLock = new ArrayList<ListBox>(Arrays.asList(
+			app.outputSizeBox,
+			app.outputFormatBox
 			));
 
-	static {
-		componentsToLock.addAll(app.libraryBoxes());
-		componentsToLock.addAll(app.exerciseButtons());
-	}
-	
-	// UI components that can now be interacted with
-	private static List<Lockable> componentsToUnlock = new ArrayList<Lockable>(
-			Arrays.asList(app.stepForwardButton()));
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
@@ -54,38 +45,34 @@ public class StepByStep implements Action {
 	@Override
 	public void run() {
 		// read the users input
-		String code = app.editor().read();
+		String code = app.editor.read();
 
 		// determine the selected reduction order
-		String orderName = app.reductionOrderBox().read();
+		String orderName = app.reductionOrderBox.getSelectedItemText();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
 
 		// determine the selected output size
-		String sizeName = app.outputSizeBox().read();
+		String sizeName = app.outputSizeBox.getSelectedItemText();
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
 
 		// determine the selected libraries
-		List<Library> libraries = app.libraryBoxes().stream().filter(Checkbox::isSet)
-				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.read().equals(l.getName())))
+		// TODO: find isSet in doc
+		List<Library> libraries = app.libraryCheckBoxes.stream().filter(CheckBox::getValue)
+				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 
-		app.executor().stepByStep(code, order, size, libraries);
+		app.executor.stepByStep(code, order, size, libraries);
 
 		// set the view
-		componentsToLock.forEach(Lockable::lock);
-		componentsToUnlock.forEach(Lockable::unlock);
+		componentsToLock.forEach(b -> b.setEnabled(false));
+		app.editor.lock();
+		app.stepByStepButton.setEnabled(false);
+		app.libraryCheckBoxes.forEach(b -> b.setEnabled(false));
+		app.exerciseButtons.forEach(b -> b.setEnabled(false));
+		
+		app.forwardButton.setEnabled(true);
 
-		// determine the selected output format, then display and unlock it
-		String outputFormatName = app.outputFormatBox().read();
-		switch (outputFormatName) {
-		case App.UnicodeOutputName:
-			app.unicodeOutput().show();
-			app.unicodeOutput().unlock();
-			break;
-		case App.TreeOutputName:
-			app.treeOutput().show();
-			app.treeOutput().unlock();
-			break;
-		}
+		// TODO: determine the selected output format, then display and unlock it
+		
 	}
 }

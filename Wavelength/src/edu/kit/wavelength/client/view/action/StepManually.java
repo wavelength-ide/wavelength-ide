@@ -27,7 +27,7 @@ public class StepManually implements Action {
 	 */
 	@Override
 	public void run() {
-		App.get().executor().stepForward(redex);
+		App.get().executor.stepForward(redex);
 	}
 
 }

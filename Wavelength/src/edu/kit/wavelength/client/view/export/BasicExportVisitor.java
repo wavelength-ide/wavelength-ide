@@ -16,14 +16,22 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
  * TODO:
  * 1. StringBuilder zu ressourcen intensiv?
  */
+/**
+ * A basic Visitor to create a string representing a given lambda term. The
+ * Visitor tries to set a minimal number of brackets to correctly describe the
+ * lambda term.
+ * 
+ * It also provides some means to vary the representation of a lambda term by
+ * overwriting strategy methods.
+ */
 public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
 	protected final String lambda;
 
 	/*
 	 * A flag that determines if an abstraction or application should be
-	 * surrounded by brackets. All flags should be false at the end of a
-	 * visit method.
+	 * surrounded by brackets. All flags should be false at the end of a visit
+	 * method.
 	 */
 	protected boolean bracketsForApp;
 	protected boolean bracketsForAbs;
@@ -37,7 +45,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	 * @param libraries
 	 *            the libraries of the application that are used in this term
 	 * @param lambdaRepresentation
-	 *            the string representation of the lambda-letter
+	 *            the string representation of the lambda letter
 	 */
 	public BasicExportVisitor(List<Library> libraries, String lambdaRepresentation) {
 		super(libraries);
@@ -143,12 +151,30 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		bracketsForApp = false;
 	}
 
+	/**
+	 * A strategy method to allow inheriting classes to define the
+	 * representation of text in the constructed String.
+	 * 
+	 * @param text
+	 *            the text of the lambda term
+	 * @return the text as it should be represented in the final string
+	 */
 	protected StringBuilder formatText(StringBuilder text) {
 		assert (text != null);
 
 		return text;
 	}
 
+	/**
+	 * A strategy method to allow inheriting classes to define the
+	 * representation of the left part from an abstraction in the constructed
+	 * String.
+	 * 
+	 * @param absVariable
+	 *            the variable of the abstraction of the lambda term
+	 * @return the left part of an abstraction as it should be represented in
+	 *         the final string
+	 */
 	protected StringBuilder formatLambda(StringBuilder absVariable) {
 		assert (absVariable != null);
 

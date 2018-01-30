@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * Static class giving access to all available export formats.
- *
  */
 public final class Exports {
 
@@ -17,5 +16,4 @@ public final class Exports {
 	public static List<Export> all() {
 		return null;
 	}
-
 }

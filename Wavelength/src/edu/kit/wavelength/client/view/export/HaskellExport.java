@@ -2,7 +2,7 @@ package edu.kit.wavelength.client.view.export;
 
 import java.util.List;
 
-import edu.kit.wavelength.client.model.library.Libraries;
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.export.Export;
 
@@ -12,9 +12,9 @@ import edu.kit.wavelength.client.view.export.Export;
  * representation is executable Haskell code.
  */
 public class HaskellExport implements Export {
-
+	
 	@Override
-	public String getRepresentation(List<LambdaTerm> displayedTerms) {
+	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		if (displayedTerms.size() == Integer.MAX_VALUE) {
 			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
 		}
@@ -24,7 +24,7 @@ public class HaskellExport implements Export {
 			return "";
 		}
 		
-		HaskellExportVisitor visitor = new HaskellExportVisitor(Libraries.all());
+		HaskellExportVisitor visitor = new HaskellExportVisitor(libraries);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
 			result.append(displayedTerms.get(i).acceptVisitor(visitor));

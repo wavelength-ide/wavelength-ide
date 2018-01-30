@@ -2,7 +2,7 @@ package edu.kit.wavelength.client.view.export;
 
 import java.util.List;
 
-import edu.kit.wavelength.client.model.library.Libraries;
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
@@ -13,17 +13,17 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public class LispExport implements Export {
 
 	@Override
-	public String getRepresentation(List<LambdaTerm> displayedTerms) {
+	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		if (displayedTerms.size() == Integer.MAX_VALUE) {
 			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
 		}
 
-		//no terms
+		// no terms
 		if (displayedTerms.size() == 0) {
 			return "";
 		}
-		
-		LispExportVisitor visitor = new LispExportVisitor(Libraries.all());
+
+		LispExportVisitor visitor = new LispExportVisitor(libraries);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
 			result.append(displayedTerms.get(i).acceptVisitor(visitor));

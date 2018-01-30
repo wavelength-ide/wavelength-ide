@@ -2,7 +2,7 @@ package edu.kit.wavelength.client.view.export;
 
 import java.util.List;
 
-import edu.kit.wavelength.client.model.library.Libraries;
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /*
@@ -16,11 +16,10 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public class LatexExport implements Export {
 
 	private static final String ARROW = "\\Rightarrow\\ ";
-	private static final String MATHMODE = "$";
 	private static final String LINEBREAK = "\\\\";
 	
 	@Override
-	public String getRepresentation(List<LambdaTerm> displayedTerms) {
+	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		if (displayedTerms.size() == Integer.MAX_VALUE) {
 			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
 		}
@@ -30,13 +29,11 @@ public class LatexExport implements Export {
 			return "";
 		}
 		
-		LaTeXExportVisitor visitor = new LaTeXExportVisitor(Libraries.all());
+		LaTeXExportVisitor visitor = new LaTeXExportVisitor(libraries);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
-			result.append(MATHMODE);
 			result.append(ARROW);
 			result.append(displayedTerms.get(i).acceptVisitor(visitor));
-			result.append(MATHMODE);
 			//append a LaTeX line break
 			result.append(LINEBREAK);
 			//append a Java line break
@@ -45,10 +42,8 @@ public class LatexExport implements Export {
 
 		// No line break for last lambda term
 		assert (displayedTerms.size() >= 1);
-		result.append(MATHMODE);
 		result.append(ARROW);
 		result.append(displayedTerms.get(displayedTerms.size() - 1).acceptVisitor(visitor));
-		result.append(MATHMODE);
 		return result.toString();
 	}
 

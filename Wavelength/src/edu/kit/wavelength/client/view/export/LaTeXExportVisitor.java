@@ -5,6 +5,10 @@ import java.util.Objects;
 
 import edu.kit.wavelength.client.model.library.Library;
 
+/**
+ * This class is a visitor to translate a lambda term into a string using
+ * LaTeX syntax.
+ */
 public class LaTeXExportVisitor extends BasicExportVisitor {
 
 	private static final String TEXTSTART = "\\text{";

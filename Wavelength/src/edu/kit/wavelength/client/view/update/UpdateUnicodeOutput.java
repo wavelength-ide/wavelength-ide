@@ -18,25 +18,27 @@ import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
 public class UpdateUnicodeOutput implements ExecutionObserver {
 	
 	private List<LambdaTerm> terms;
-	private App app = App.get();
+	// private App app = App.get();
 	private HTMLPanel output;
 	
 	public UpdateUnicodeOutput() {
 		terms = new ArrayList<>();
-		output = new HTMLPanel("");
+		// output = new HTMLPanel("");
 	}
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
-		if (!app.unicodeOutput().isShown()) {
-			return;
-		}
+		output = new HTMLPanel("");
+		// if (!app.unicodeOutput().isShown()) {
+		// 	return;
+		// }
 		
 		terms.add(t);
 		// TODO: libraries?
-		UnicodeTermVisitor visitor = new UnicodeTermVisitor(null);
-		HTML term = t.acceptVisitor(visitor);
-		output.add(term);
+		UnicodeTermVisitor visitor = new UnicodeTermVisitor(new ArrayList<>());
+		System.out.println(t.acceptVisitor(visitor).toString());
+		// HTML term = t.acceptVisitor(visitor);
+		// output.add(term);
 	}
 	
 	public void removeLastTerm() {

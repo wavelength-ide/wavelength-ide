@@ -18,7 +18,7 @@ final class ToStringVisitor implements Visitor<String> {
 
 	@Override
 	public String visitPartialApplication(PartialApplication app) {
-		return "<partial>";
+		return String.format("<partial: %s>", app.getRepresented().acceptVisitor(this));
 	}
 
 	@Override

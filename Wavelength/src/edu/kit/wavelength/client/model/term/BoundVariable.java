@@ -49,12 +49,7 @@ public final class BoundVariable implements LambdaTerm {
 
 	@Override
 	public LambdaTerm clone() {
-		try {
-			return (BoundVariable) super.clone();
-		} catch (CloneNotSupportedException ex) {
-			// Guaranteed not to occur by the Java standard
-			throw new RuntimeException();
-		}
+		return new BoundVariable(deBruijnIndex);
 	}
 
 	@Override

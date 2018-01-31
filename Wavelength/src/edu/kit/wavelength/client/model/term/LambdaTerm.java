@@ -5,7 +5,7 @@ import edu.kit.wavelength.client.model.serialization.Serializable;
 /**
  * Represents a term in the untyped lambda calculus.
  */
-public interface LambdaTerm extends Serializable, Cloneable {
+public interface LambdaTerm extends Serializable {
 
 	/**
 	 * Creates a lambda term from its serialization.

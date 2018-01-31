@@ -65,16 +65,7 @@ public final class Abstraction implements LambdaTerm {
 
 	@Override
 	public LambdaTerm clone() {
-		Abstraction cloned;
-		try {
-			cloned = (Abstraction) super.clone();
-		} catch (CloneNotSupportedException ex) {
-			// Guaranteed not to occur by the Java standard
-			throw new RuntimeException();
-		}
-
-		cloned.inner = inner.clone();
-		return cloned;
+		return new Abstraction(preferredName, inner.clone());
 	}
 
 	@Override

@@ -2,6 +2,9 @@ package edu.kit.wavelength.client.model.term;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -303,6 +306,127 @@ public class BetaReductionTest {
 		expect.expect(IllegalArgumentException.class);
 		app.acceptVisitor(new BetaReducer(a));
 	}
+	
+	private class MockPartial extends PartialApplication {
 
+		private LambdaTerm onAccel;
+		
+		public MockPartial(LambdaTerm inner, int numParameters, List<Visitor<Boolean>> checks, LambdaTerm onAccel) {
+			super("Nothing", inner, numParameters, checks);
+			this.onAccel = onAccel;
+		}
+		
+		private MockPartial() {
+			super();
+		}
+
+		@Override
+		public String serialize() {
+			return null;
+		}
+
+		@Override
+		protected LambdaTerm accelerate(LambdaTerm[] parameters) {
+			return onAccel;
+		}
+
+		@Override
+		public boolean equals(Object other) {
+			if (!super.equals(other))
+				return false;
+			
+			if (!(other instanceof MockPartial))
+				return false;
+			
+			MockPartial otherMP = (MockPartial)other;
+			
+			return onAccel.equals(otherMP.onAccel);
+		}
+
+		@Override
+		public PartialApplication clone() {
+			MockPartial cloned = new MockPartial();
+			cloned.absorbClone(this);
+			cloned.onAccel = onAccel.clone();
+			return cloned;
+		}
+		
+	}
+	
+	private class ConstantVisitor<T> extends NameAgnosticVisitor<T> {
+		T result;
+		
+		public ConstantVisitor(T value) {
+			this.result = value;
+		}
+
+		@Override
+		public T visitPartialApplication(PartialApplication app) {
+			return result;
+		}
+
+		@Override
+		public T visitAbstraction(Abstraction abs) {
+			return result;
+		}
+
+		@Override
+		public T visitApplication(Application app) {
+			return result;
+		}
+
+		@Override
+		public T visitBoundVariable(BoundVariable var) {
+			return result;
+		}
+
+		@Override
+		public T visitFreeVariable(FreeVariable var) {
+			return result;
+		}
+	}
+	
+	@Test
+	public void partialApplication1Test() {
+		LambdaTerm namedId = new NamedTerm("named", new Abstraction("x", new Abstraction("y", new BoundVariable(1))));
+		LambdaTerm accelId = new NamedTerm("accel", new Abstraction("x", new BoundVariable(1)));
+		
+		MockPartial part = new MockPartial(namedId, 2,
+				Arrays.asList(new ConstantVisitor<>(true), new ConstantVisitor<>(false)), accelId);
+		Application a = new Application(part, new FreeVariable("a"));
+		Application b = new Application(a, new FreeVariable("b"));
+		
+		LambdaTerm reduced1 = b.acceptVisitor(new BetaReducer(a));
+		
+		LambdaTerm want1 = new Application(part.accept(new FreeVariable("a")), new FreeVariable("b"));
+		assertEquals(want1, reduced1);
+		
+		LambdaTerm reduced2 = reduced1.acceptVisitor(new BetaReducer((Application)reduced1));
+		LambdaTerm want2 = new Application(
+				new Application(namedId, new FreeVariable("a")),
+				new FreeVariable("b"));
+		
+		assertEquals(want2, reduced2);
+	}
+	
+	@Test
+	public void partialApplication2Test() {
+		LambdaTerm namedId = new NamedTerm("named", new Abstraction("x", new Abstraction("y", new BoundVariable(1))));
+		LambdaTerm accelId = new NamedTerm("accel", new Abstraction("x", new BoundVariable(1)));
+		
+		MockPartial part = new MockPartial(namedId, 2,
+				Arrays.asList(new ConstantVisitor<>(true), new ConstantVisitor<>(true)), accelId);
+		Application a = new Application(part, new FreeVariable("a"));
+		Application b = new Application(a, new FreeVariable("b"));
+		
+		LambdaTerm reduced1 = b.acceptVisitor(new BetaReducer(a));
+		
+		LambdaTerm want1 = new Application(part.accept(new FreeVariable("a")), new FreeVariable("b"));
+		assertEquals(want1, reduced1);
+		
+		LambdaTerm reduced2 = reduced1.acceptVisitor(new BetaReducer((Application)reduced1));
+		
+		assertEquals(accelId, reduced2);
+	}
 
 }

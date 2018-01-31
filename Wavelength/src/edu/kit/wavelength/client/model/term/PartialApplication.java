@@ -1,5 +1,10 @@
 package edu.kit.wavelength.client.model.term;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * Represents a {@link LambdaTerm} that consists of a library function that may
  * be accelerated, as well as zero or more applications with arguments for said
@@ -11,7 +16,7 @@ public abstract class PartialApplication implements LambdaTerm {
 	private String name;
 	private LambdaTerm inner;
 	private int numParameters;
-	private Visitor<Boolean>[] checks;
+	private List<Visitor<Boolean>> checks;
 	private LambdaTerm[] received;
 	private int numReceived;
 
@@ -28,13 +33,24 @@ public abstract class PartialApplication implements LambdaTerm {
 	 *            For each parameter, a {@link Visitor} that checks whether the
 	 *            given parameter has the correct format for acceleration
 	 */
-	public PartialApplication(String name, LambdaTerm inner, int numParameters, Visitor<Boolean>[] checks) {
+	protected PartialApplication(String name, LambdaTerm inner, int numParameters, List<Visitor<Boolean>> checks) {
+		Objects.requireNonNull(name);
+		Objects.requireNonNull(inner);
+		Objects.requireNonNull(checks);
+		
+		if (checks.size() != numParameters)
+			throw new IllegalArgumentException("Need exactly as many checks as parameters.");
+		
 		this.name = name;
 		this.inner = inner;
 		this.numParameters = numParameters;
 		this.checks = checks;
 		this.received = new LambdaTerm[numParameters];
 		this.numReceived = 0;
+	}
+	
+	protected PartialApplication() {
+		// This constructor may only be called if absorbClone is used.
 	}
 
 	@Override
@@ -83,14 +99,15 @@ public abstract class PartialApplication implements LambdaTerm {
 	 *         parameter as described above
 	 */
 	public LambdaTerm accept(LambdaTerm nextParam) {
-		received[numReceived] = nextParam;
-		++numReceived;
+		PartialApplication cloned = this.clone();
+		cloned.received[numReceived] = nextParam;
+		++cloned.numReceived;
 
-		if (!nextParam.acceptVisitor(checks[numReceived - 1]))
-			return getRepresented();
-		if (numReceived == numParameters)
-			return this.accelerate(received);
-		return this;
+		if (!nextParam.acceptVisitor(checks.get(cloned.numReceived - 1)))
+			return cloned.getRepresented();
+		if (cloned.numReceived == numParameters)
+			return cloned.accelerate(received);
+		return cloned;
 	}
 
 	/**
@@ -103,9 +120,45 @@ public abstract class PartialApplication implements LambdaTerm {
 	protected abstract LambdaTerm accelerate(LambdaTerm[] parameters);
 
 	@Override
-	public abstract boolean equals(Object other);
+	public boolean equals(Object other) {
+		if (this == other)
+			return true;
+		
+		if (!(other instanceof PartialApplication))
+			return false;
+		
+		PartialApplication otherPA = (PartialApplication)other;
+		
+		if (numReceived != otherPA.numReceived)
+			return false;
+		
+		for (int i = 0; i < numReceived; ++i) {
+			if (!(received[i].equals(otherPA.received[i])))
+				return false;
+		}
+		
+		return true;
+	}
+	
+	// This is a workaround to make up for the lack of Object#clone in GWT.
+	// Subclasses of PartialApplication have to call this method in their
+	// clone method, so that the received parameters are cloned as well.
+	// Also, this method needs a different name.
+	protected void absorbClone(PartialApplication other) {
+		numParameters = other.numParameters;
+		received = new LambdaTerm[numParameters];
+		name = other.name;
+		inner = other.inner.clone();
+		checks = new ArrayList<>(other.checks);
+		
+		numReceived = other.numReceived;
+		
+		for (int i = 0; i < numReceived; ++i) {
+			received[i] = other.received[i].clone();
+		}
+	}
 
 	@Override
-	public abstract LambdaTerm clone();
+	public abstract PartialApplication clone();
 
 }

@@ -40,5 +40,5 @@ final class BlockedNamesVisitor implements Visitor<Set<String>> {
 		t.addAll(term.getInner().acceptVisitor(this));
 		return t;
 	}
-
+	
 }

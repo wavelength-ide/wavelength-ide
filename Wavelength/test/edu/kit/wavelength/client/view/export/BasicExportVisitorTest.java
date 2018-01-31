@@ -2,17 +2,13 @@ package edu.kit.wavelength.client.view.export;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
-import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
-import edu.kit.wavelength.client.model.term.BetaReducer;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
@@ -21,249 +17,130 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
 public class BasicExportVisitorTest {
 
 	@Test
-	public void basicTest() {
+	public void printFreeVariableTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
+
+		LambdaTerm var1 = new FreeVariable("a");
+		LambdaTerm var2 = new FreeVariable("abcdefghijklmnopqrstuvwxyz");
+		LambdaTerm var3 = new FreeVariable("");
+
+		assertEquals("a", var1.acceptVisitor(visitor).toString());
+		assertEquals("abcdefghijklmnopqrstuvwxyz", var2.acceptVisitor(visitor).toString());
+		assertEquals("", var3.acceptVisitor(visitor).toString());
+	}
+
+	/*
+	 * TODO: was sagt das terms package hier?
+	 */
+	@Ignore
+	@Test(expected = NullPointerException.class)
+	public void printFreeVariableNullTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
+
+		LambdaTerm var = new FreeVariable(null);
+		var.acceptVisitor(visitor);
+	}
+
+	@Test
+	public void printNamedTermTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
+
+		LambdaTerm id = new Abstraction("x", new BoundVariable(1));
+		LambdaTerm named1 = new NamedTerm("named", id);
+		LambdaTerm named2 = new NamedTerm("abcdefghijklmnopqrstuvwxyz", id);
+
+		assertEquals("named", named1.acceptVisitor(visitor).toString());
+		assertEquals("abcdefghijklmnopqrstuvwxyz", named2.acceptVisitor(visitor).toString());
+	}
+
+	@Test
+	public void printAbstractionTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
+
 		LambdaTerm id1 = new Abstraction("x", new BoundVariable(1));
-		LambdaTerm id2 = new Abstraction("x", new BoundVariable(1));
-		Application triv = new Application(id1, id2);
+		LambdaTerm id2 = new Abstraction("y", new BoundVariable(1));
+		LambdaTerm abs = new Abstraction("x", new Abstraction("y", new BoundVariable(2)));
 
-		StringBuilder repr = triv.acceptVisitor(new BasicExportVisitor(Collections.emptyList(), "\\"));
-
-		assertEquals("(\\x.x) (\\x.x)", repr.toString());
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	@Test
-	public void indexAdjustment1Test() {
-		BoundVariable one = new BoundVariable(1);
-		BoundVariable two = new BoundVariable(2);
-		Abstraction z = new Abstraction("z", two);
-		Abstraction x = new Abstraction("x", z);
-		Application app = new Application(x, one);
-		Abstraction y = new Abstraction("y", app);
-
-		LambdaTerm reduced = y.acceptVisitor(new BetaReducer(app));
-
-		assertEquals(new Abstraction("y", new Abstraction("z", new BoundVariable(2))), reduced);
+		assertEquals("\\x.x", id1.acceptVisitor(visitor).toString());
+		assertEquals("\\y.y", id2.acceptVisitor(visitor).toString());
+		assertEquals("\\x.\\y.x", abs.acceptVisitor(visitor).toString());
 	}
 
 	@Test
-	public void indexAdjustment2Test() {
-		// right side
-		BoundVariable one = new BoundVariable(1);
-		BoundVariable two = new BoundVariable(2);
-		Application a1 = new Application(one, two);
-		Abstraction x = new Abstraction("x", a1);
+	public void unicodeLambdaTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "λ");
 
-		// left side
-		BoundVariable one1 = new BoundVariable(1);
-		BoundVariable four = new BoundVariable(4);
-		Application a2 = new Application(one1, four);
-		BoundVariable three = new BoundVariable(3);
-		Application a3 = new Application(a2, three);
-		Abstraction w = new Abstraction("w", a3);
-		Abstraction z = new Abstraction("z", w);
-		Abstraction x2 = new Abstraction("x", z);
+		LambdaTerm id1 = new Abstraction("x", new BoundVariable(1));
+		LambdaTerm id2 = new Abstraction("y", new BoundVariable(1));
+		LambdaTerm abs = new Abstraction("x", new Abstraction("y", new BoundVariable(2)));
 
-		Application app = new Application(x2, x);
-		Abstraction y = new Abstraction("y", app);
-
-		LambdaTerm reduced = y.acceptVisitor(new BetaReducer(app));
-
-		BoundVariable _one = new BoundVariable(1);
-		BoundVariable _three = new BoundVariable(3);
-		BoundVariable _one1 = new BoundVariable(1);
-		BoundVariable _four = new BoundVariable(4);
-
-		Application _a1 = new Application(_one, _three);
-		Application _a2 = new Application(_one1, _four);
-		Abstraction _x = new Abstraction("x", _a2);
-		Application _a3 = new Application(_a1, _x);
-		Abstraction _y = new Abstraction("y", new Abstraction("z", new Abstraction("w", _a3)));
-
-		assertEquals(_y, reduced);
+		assertEquals("λx.x", id1.acceptVisitor(visitor).toString());
+		assertEquals("λy.y", id2.acceptVisitor(visitor).toString());
+		assertEquals("λx.λy.x", abs.acceptVisitor(visitor).toString());
 	}
 
 	@Test
-	public void indexAdjustment3Test() {
-		Application a1 = new Application(new Abstraction("x", new BoundVariable(1)), new BoundVariable(1));
-		Abstraction a2 = new Abstraction("x", a1);
+	public void printApplicationTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
 
-		LambdaTerm reduced = a2.acceptVisitor(new BetaReducer(a1));
+		LambdaTerm var1 = new FreeVariable("x");
+		LambdaTerm var2 = new FreeVariable("y");
+		LambdaTerm var3 = new FreeVariable("z");
+		LambdaTerm app1 = new Application(var1, var2);
+		LambdaTerm app2 = new Application(var2, var3);
+		LambdaTerm app3 = new Application(app1, var3);
 
-		assertEquals(new Abstraction("x", new BoundVariable(1)), reduced);
+		assertEquals("x y", app1.acceptVisitor(visitor).toString());
+		assertEquals("y z", app2.acceptVisitor(visitor).toString());
+		assertEquals("x y z", app3.acceptVisitor(visitor).toString());
+	}
+
+	/*
+	 * TODO test PartialApplication
+	 */
+	@Ignore
+	@Test
+	public void printPartialApplication() {
+		
+	}
+	
+	@Test
+	public void simpleBracketsTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
+
+		LambdaTerm app1 = new Application(new FreeVariable("a"), new FreeVariable("b"));
+		LambdaTerm id1 = new Abstraction("x", new BoundVariable(1));
+		LambdaTerm id2 = new Abstraction("y", new BoundVariable(1));
+		LambdaTerm term1 = new Abstraction("x", new Application(new BoundVariable(1), new FreeVariable("y")));
+		LambdaTerm term2 = new Application(app1, new FreeVariable("c"));
+		LambdaTerm term3 = new Application(new FreeVariable("c"), app1);
+		LambdaTerm term4 = new Application(id1, new FreeVariable("c"));
+		LambdaTerm term5 = new Application(new FreeVariable("c"), id1);
+		LambdaTerm term6 = new Application(id1, id2);
+
+		assertEquals("\\x.(x y)", term1.acceptVisitor(visitor).toString());
+		assertEquals("a b c", term2.acceptVisitor(visitor).toString());
+		assertEquals("c (a b)", term3.acceptVisitor(visitor).toString());
+		assertEquals("(\\x.x) c", term4.acceptVisitor(visitor).toString());
+		assertEquals("c (\\x.x)", term5.acceptVisitor(visitor).toString());
+		assertEquals("(\\x.x) (\\y.y)", term6.acceptVisitor(visitor).toString());
 	}
 
 	@Test
-	public void indexAdjustment4Test() {
-		Application a1 = new Application(new Abstraction("x", new BoundVariable(2)), new FreeVariable("y"));
-		Abstraction a2 = new Abstraction("z", a1);
+	public void complexBracketTest() {
+		BasicExportVisitor visitor = new BasicExportVisitor(Collections.emptyList(), "\\");
 
-		LambdaTerm reduced = a2.acceptVisitor(new BetaReducer(a1));
+		LambdaTerm term1 = new Abstraction("x", new Application(new FreeVariable("a"), new Abstraction("y",
+				new Abstraction("z", new Application(new FreeVariable("c"), new FreeVariable("d"))))));
+		LambdaTerm term2 = new Application(new Abstraction("x", new Abstraction("y", new BoundVariable(2))),
+				new FreeVariable("c"));
+		LambdaTerm term3 = new Application(new FreeVariable("a"), new Application(new FreeVariable("b"),
+				new Application(new FreeVariable("c"), new Application(new FreeVariable("d"), new FreeVariable("e")))));
+		LambdaTerm term4 = new Abstraction("p", new Application(new FreeVariable("a"), term2));
 
-		assertEquals(new Abstraction("z", new BoundVariable(1)), reduced);
+		assertEquals("\\x.(a (\\y.\\z.(c d)))", term1.acceptVisitor(visitor).toString());
+		assertEquals("(\\x.\\y.x) c", term2.acceptVisitor(visitor).toString());
+		assertEquals("a (b (c (d e)))", term3.acceptVisitor(visitor).toString());
+		assertEquals("\\p.(a ((\\x.\\y.x) c))", term4.acceptVisitor(visitor).toString());
 	}
-
-	@Test
-	public void aliasing1Test() {
-		BoundVariable o1 = new BoundVariable(1);
-		Abstraction x1 = new Abstraction("x", o1);
-		FreeVariable fv1 = new FreeVariable("x");
-		Application a1 = new Application(x1, fv1);
-
-		BoundVariable o2 = new BoundVariable(1);
-		Abstraction x2 = new Abstraction("x", o2);
-		FreeVariable fv2 = new FreeVariable("x");
-		Application a2 = new Application(x2, fv2);
-
-		Application a3 = new Application(a1, a2);
-
-		LambdaTerm reducedLeft = a3.acceptVisitor(new BetaReducer(a1));
-
-		LambdaTerm exLeft = new Application(new FreeVariable("x"),
-				new Application(new Abstraction("x", new BoundVariable(1)), new FreeVariable("x")));
-
-		assertEquals(exLeft, reducedLeft);
-
-		LambdaTerm reducedRight = a3.acceptVisitor(new BetaReducer(a2));
-
-		LambdaTerm exRight = new Application(
-				new Application(new Abstraction("x", new BoundVariable(1)), new FreeVariable("x")),
-				new FreeVariable("x"));
-
-		assertEquals(exRight, reducedRight);
-	}
-
-	@Test
-	public void fixpointTest() {
-		Application a = new Application(
-				new Abstraction("x", new Application(new BoundVariable(1), new BoundVariable(1))),
-				new Abstraction("x", new Application(new BoundVariable(1), new BoundVariable(1))));
-
-		assertEquals(a, a.acceptVisitor(new BetaReducer(a)));
-	}
-
-	@Test
-	public void growthTest() {
-		Application a = new Application(
-				new Abstraction("x",
-						new Application(new Application(new BoundVariable(1), new BoundVariable(1)),
-								new BoundVariable(1))),
-				new Abstraction("x", new Application(new Application(new BoundVariable(1), new BoundVariable(1)),
-						new BoundVariable(1))));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		Abstraction e = new Abstraction("x",
-				new Application(new Application(new BoundVariable(1), new BoundVariable(1)), new BoundVariable(1)));
-
-		// Not technically valid, but it works here
-		Application want1 = new Application(new Application(e, e), e);
-		Application want2 = new Application(want1, e);
-
-		assertEquals(want1, reduced);
-		Application next = (Application) ((Application) reduced).getLeftHandSide();
-		LambdaTerm reduced2 = reduced.acceptVisitor(new BetaReducer(next));
-		assertEquals(want2, reduced2);
-	}
-
-	@Test
-	public void namedTermErased1Test() {
-		Application a = new Application(new NamedTerm("Hi", new Abstraction("x", new BoundVariable(1))),
-				new FreeVariable("y"));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new FreeVariable("y"), reduced);
-	}
-
-	@Test
-	public void namedTermErased2Test() {
-		// Not really a valid lambda term
-		Application a = new Application(new Abstraction("x", new NamedTerm("Hi", new BoundVariable(1))),
-				new FreeVariable("y"));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new FreeVariable("y"), reduced);
-	}
-
-	@Test
-	public void namedTermErased3Test() {
-		Application a = new Application(new NamedTerm("Hi", new Abstraction("x", new FreeVariable("y"))),
-				new FreeVariable("z"));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new FreeVariable("y"), reduced);
-	}
-
-	@Test
-	public void namedTermErased4Test() {
-		Application a = new Application(new Abstraction("x", new BoundVariable(1)), new FreeVariable("y"));
-
-		NamedTerm n = new NamedTerm("Hi", a);
-
-		LambdaTerm reduced = n.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new FreeVariable("y"), reduced);
-	}
-
-	@Test
-	public void namedTermErased5Test() {
-		Application a = new Application(new Abstraction("x", new BoundVariable(1)),
-				new Abstraction("x", new BoundVariable(1)));
-
-		NamedTerm n = new NamedTerm("Hi", a);
-
-		LambdaTerm reduced = n.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new Abstraction("x", new BoundVariable(1)), reduced);
-	}
-
-	@Test
-	public void namedTermPreserved1Test() {
-		Application a = new Application(new NamedTerm("Hi", new Abstraction("x", new BoundVariable(1))),
-				new Abstraction("x", new BoundVariable(1)));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new NamedTerm("Hi", new Abstraction("x", new BoundVariable(1))), reduced);
-	}
-
-	@Test
-	public void namedTermPreserved2Test() {
-		Application a = new Application(new Abstraction("x", new NamedTerm("Hi", new FreeVariable("y"))),
-				new FreeVariable("z"));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new NamedTerm("Hi", new FreeVariable("y")), reduced);
-	}
-
-	@Test
-	public void namedTermPreserved3Test() {
-		Application a = new Application(new Abstraction("x", new BoundVariable(1)),
-				new NamedTerm("Hi", new FreeVariable("y")));
-
-		LambdaTerm reduced = a.acceptVisitor(new BetaReducer(a));
-
-		assertEquals(new NamedTerm("Hi", new FreeVariable("y")), reduced);
-	}
-
 }

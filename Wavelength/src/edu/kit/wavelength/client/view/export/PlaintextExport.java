@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.view.export;
 
 import java.util.List;
+import java.util.Objects;
 
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
@@ -17,6 +18,9 @@ public class PlaintextExport implements Export {
 
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
+		Objects.requireNonNull(displayedTerms);
+		Objects.requireNonNull(libraries);
+		
 		if (displayedTerms.size() == Integer.MAX_VALUE) {
 			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
 		}

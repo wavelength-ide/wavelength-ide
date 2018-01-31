@@ -13,8 +13,7 @@ import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 
 /*
- * TODO:
- * 1. StringBuilder zu ressourcen intensiv?
+ * TODO: StringBuilder zu ressourcen intensiv?
  */
 /**
  * A basic Visitor to create a string representing a given lambda term. The

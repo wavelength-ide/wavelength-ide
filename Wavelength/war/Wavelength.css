@@ -66,3 +66,5 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 .sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }
 
 .output { display: inline; overflow: scroll; }
+
+.application:hover {background-color: yellow;}

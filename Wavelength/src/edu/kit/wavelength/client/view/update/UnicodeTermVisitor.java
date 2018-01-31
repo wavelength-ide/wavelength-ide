@@ -35,13 +35,14 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	public Tuple visitApplication(Application app) {
 		Tuple left = app.getLeftHandSide().acceptVisitor(this);
 		Tuple right = app.getRightHandSide().acceptVisitor(this);
+		FlowPanel panel = new FlowPanel("span");
 		if (left.a != null) {
+			panel.addStyleName("application");
 			left.a.addClickHandler(event -> new StepManually(app).run());
 			//TODO: only for testing 
 			// left.a.addClickHandler(event -> App.get().editor.write("yay"));
 		}
 			
-		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text("("));
 		panel.add(left.panel);
 		panel.add(new Text(") ("));

@@ -32,7 +32,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// TODO: libraries?
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(new ArrayList<>());
 		Tuple term = t.acceptVisitor(visitor);
-		// terms.add(term.panel);
+		terms.add(term.panel);
 		FlowPanel output = new FlowPanel("div");
 		output.add(term.panel);
 		app.outputArea.add(output);
@@ -41,8 +41,12 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	public void removeLastTerm() {
 		terms.remove(terms.size() - 1);
 		// TODO: probably not fast enough
-		// app.outputArea.clear();
-		// terms.forEach(t -> app.outputArea.add(t));
+		app.outputArea.clear();
+		for (FlowPanel term : terms) {
+			FlowPanel wrap = new FlowPanel("div");
+			wrap.add(term);
+			app.outputArea.add(wrap);
+		}
 		
 	}
 	

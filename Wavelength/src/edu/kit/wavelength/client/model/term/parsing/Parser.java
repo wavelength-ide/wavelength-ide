@@ -26,6 +26,9 @@ public class Parser {
 	private final List<Library> loadedLibraries;
 	private CustomLibrary inputLibrary;
 	private Stack<Token> tokens;
+	private Pattern assignmentPattern = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*");
+	private int rowPos = 0;
+	private int columnPos = 0;
 
 	/**
 	 * Initializes a new parser.
@@ -71,14 +74,16 @@ public class Parser {
 			}
 		}
 		for (int i = 0; i < (rows.size() - 1); i++) {
+			rowPos = i;
 			readLibraryTerm(rows.get(i));
 		}
+		rowPos = rows.size() - 1;
 		String lastLine = rows.get((rows.size() - 1));
 		return parseTerm(lastLine);
 	}
 
 	private void readLibraryTerm(String input) throws ParseException {
-		Matcher formatMatcher = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*").matcher(input);
+		Matcher formatMatcher = assignmentPattern.matcher(input);
 		if (formatMatcher.matches()) {
 			String[] split = input.split("=");
 			String name = split[0].trim();
@@ -86,7 +91,7 @@ public class Parser {
 			LambdaTerm term = parseTerm(termString);
 			inputLibrary.addTerm(term, name);
 		} else {
-			throw new ParseException("Not a valid name assignment", -1, -1);
+			throw new ParseException("Not a valid name assignment", rowPos, columnPos);
 		}
 	}
 
@@ -104,19 +109,22 @@ public class Parser {
 	 * 
 	 * @return The topmost token on the stack
 	 */
-	private Token popToken() {
-		return tokens.pop();
+	private Token popToken() {#
+		Token pop = tokens.pop();
+		columnPos = columnPos + pop.getContent().length();
+		return pop;
 	}
 
 	private void pushToken(Token newToken) {
 		tokens.push(newToken);
 	}
-	
+
 	/**
 	 * Returns the number of symbols not yet removed from the stack
+	 * 
 	 * @return The number of remaining symbols
 	 */
-	private int numberOfRemainingSymbols() {
+	private int getNumRemainingSym() {
 		int count = 0;
 		while (tokens.isEmpty() == false) {
 			count = count + popToken().getContent().length();
@@ -156,6 +164,7 @@ public class Parser {
 	 */
 	private LambdaTerm parseTerm(String input) throws ParseException {
 		Token[] tokenisedInput = new Tokeniser().tokenise(input);
+		columnPos = 0;
 		tokens = new Stack<Token>();
 		for (int i = (tokenisedInput.length - 1); i >= 0; i--) {
 			tokens.add(tokenisedInput[i]);
@@ -168,15 +177,19 @@ public class Parser {
 	}
 
 	/**
-	 * The abstract superclass of all classes representing nodes of a syntax tree.
+	 * The abstract superclass of all classes representing nodes of a syntax
+	 * tree.
 	 *
 	 */
 	private abstract class ASTNode {
 
 		/**
-		 * Attempts to parse the remaining tokens on the token stack to a syntax tree.
+		 * Attempts to parse the remaining tokens on the token stack to a syntax
+		 * tree.
+		 * 
 		 * @return The root of the generated tree
-		 * @throws ParseException If the remaining tokens can not be parsed.
+		 * @throws ParseException
+		 *             If the remaining tokens can not be parsed.
 		 */
 		public abstract ASTNode parse() throws ParseException;
 
@@ -184,11 +197,14 @@ public class Parser {
 		public abstract String toString();
 
 		/**
-		 * Converts the syntax subtree rooted at this node into
-		 * the corresponding LambdaTerm object structure
-		 * @param names A List containing the names of all bound variables 
+		 * Converts the syntax subtree rooted at this node into the
+		 * corresponding LambdaTerm object structure
+		 * 
+		 * @param names
+		 *            A List containing the names of all bound variables
 		 * @return The LambdaTerm created from this node's subtree.
-		 * @throws ParseException If the syntax subtree could not be converted.
+		 * @throws ParseException
+		 *             If the syntax subtree could not be converted.
 		 */
 		public abstract LambdaTerm convert(List<String> names) throws ParseException;
 	}
@@ -209,7 +225,7 @@ public class Parser {
 				} else if (nextType == TokenType.LBRACKET) {
 					result = new ASTApplication().parse();
 				} else {
-					throw new ParseException("Unexpected token, " + nextType + " is not a valid term beginning" , -1, -1);
+					throw new ParseException("Unexpected token, " + nextType + " is not a valid first token", rowPos, columnPos);
 				}
 				activeToken = popToken();
 				if (activeToken.getType() == TokenType.RBRACKET) {
@@ -225,9 +241,9 @@ public class Parser {
 				tokens.push(activeToken);
 				return new ASTAbstraction().parse();
 			case DOT:
-				throw new ParseException("Unexpected token DOT, expected LBRACKET, VARIABLE, NAME", -1, -1);
+				throw new ParseException("Unexpected token DOT, expected LBRACKET, VARIABLE, NAME", rowPos, columnPos);
 			default:
-				throw new ParseException("Unknow token, expected LBRACKET, VARIABLE, NAME", -1, -1);
+				throw new ParseException("Unknow token, expected LBRACKET, VARIABLE, NAME", rowPos, columnPos);
 			}
 		}
 	}
@@ -236,7 +252,7 @@ public class Parser {
 
 		private ASTName variable;
 		private ASTNode term;
-		
+
 		@Override
 		public ASTNode parse() throws ParseException {
 			if (popToken().getType() == TokenType.LAMBDA) {
@@ -247,19 +263,19 @@ public class Parser {
 						this.term = new ASTTerm().parse();
 						return this;
 					} else {
-						throw new ParseException("Unexpected token, expected DOT", -1, -1);
+						throw new ParseException("Unexpected token, expected DOT", rowPos, columnPos);
 					}
 				} else {
-					throw new ParseException("Unexpected token, expected VARIABLE", -1, -1);
+					throw new ParseException("Unexpected token, expected VARIABLE", rowPos, columnPos);
 				}
 			} else {
-				throw new ParseException("Unexpected token, expected LAMBDA", -1, -1);
+				throw new ParseException("Unexpected token, expected LAMBDA", rowPos, columnPos);
 			}
 		}
-		
+
 		@Override
 		public String toString() {
-			return "(" + "λ" + variable.toString() + "." + term.toString() +  ")"; 
+			return "(" + "λ" + variable.toString() + "." + term.toString() + ")";
 		}
 
 		@Override
@@ -267,10 +283,11 @@ public class Parser {
 			ArrayList<String> newNames = new ArrayList<String>(names);
 			if (variable.isVariable()) {
 				String varName = variable.toString();
-				newNames.add(0, varName);;
+				newNames.add(0, varName);
+				;
 				return new Abstraction(varName, term.convert(newNames));
 			} else {
-				throw new ParseException("Syntax violation, λ may not be followed by a name", -1, -1);
+				throw new ParseException("Syntax violation, λ may not be followed by a name", rowPos, columnPos);
 			}
 		}
 	}

@@ -36,8 +36,9 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		Tuple left = app.getLeftHandSide().acceptVisitor(this);
 		Tuple right = app.getRightHandSide().acceptVisitor(this);
 		if (left.a != null) {
-			// get anchor from left abs
-			// left.a.addClickHandler(event -> new StepManually(app).run());
+			left.a.addClickHandler(event -> new StepManually(app).run());
+			//TODO: only for testing 
+			// left.a.addClickHandler(event -> App.get().editor.write("yay"));
 		}
 			
 		FlowPanel panel = new FlowPanel("span");

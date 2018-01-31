@@ -2,9 +2,10 @@ package edu.kit.wavelength.client.view.update;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.html.Text;
+
 import com.google.gwt.user.client.ui.Anchor;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.UIObject;
+import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
@@ -15,6 +16,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
+import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.action.StepManually;
 
 /**
@@ -33,19 +35,25 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	public Tuple visitApplication(Application app) {
 		Tuple left = app.getLeftHandSide().acceptVisitor(this);
 		Tuple right = app.getRightHandSide().acceptVisitor(this);
-		// TODO: instanceof umgehen
-		if (app.getLeftHandSide() instanceof Abstraction) {
+		if (left.a != null) {
 			// get anchor from left abs
-			left.a.addClickHandler(event -> new StepManually(app).run());
-		}	
+			// left.a.addClickHandler(event -> new StepManually(app).run());
+		}
 			
-		String value =  "(" + left + ") (" + right  + ")";
-		return new Tuple(new HTML(value), null);
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text("("));
+		panel.add(left.panel);
+		panel.add(new Text(") ("));
+		panel.add(right.panel);
+		panel.add(new Text(")"));
+		return new Tuple(panel, null);
 	}
 
 	@Override
 	public Tuple visitNamedTerm(NamedTerm term) {
-		return new Tuple(new HTML(term.getName()), null);
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text(term.getName()));
+		return new Tuple(panel, null);
 	}
 
 	@Override
@@ -55,19 +63,27 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 	@Override
 	public Tuple visitFreeVariable(FreeVariable var) {
-		return new Tuple(new HTML(var.getName()), null);
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text(var.getName()));
+		return new Tuple(panel, null);
 	}
 
 	@Override
 	protected Tuple visitBoundVariable(BoundVariable var, String resolvedName) {
-		return new Tuple(new HTML(resolvedName), null);
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text(resolvedName));
+		return new Tuple(panel, null);
 	}
 
 	@Override
 	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
 		Tuple inner = abs.getInner().acceptVisitor(this);
-		Anchor a = new Anchor("U+03BB" + resolvedName);
-		return  new Tuple(new HTML(a + "." + inner), a);
+		Anchor a = new Anchor("λ" + resolvedName);
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(a);
+		panel.add(new Text("."));
+		panel.add(inner.panel);
+		return  new Tuple(panel, a);
 	}
 
 }

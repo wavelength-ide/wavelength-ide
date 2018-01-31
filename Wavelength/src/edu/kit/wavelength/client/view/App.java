@@ -27,6 +27,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -38,10 +39,16 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
+import edu.kit.wavelength.client.model.term.Abstraction;
+import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.BoundVariable;
+import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwtbinding.MonacoEditor;
+import edu.kit.wavelength.client.view.update.UpdatePlainUnicodeOutput;
+import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -89,7 +96,7 @@ public class App implements Serializable {
 	public final FlowPanel footerPanel;
 	public final SplitLayoutPanel ioPanel;
 	public final DockLayoutPanel inputPanel;
-	public final TextArea outputArea;
+	public final FlowPanel outputArea;
 	public final FlowPanel inputControlPanel;
 	public final SplitLayoutPanel editorTaskPanel;
 	public final FlowPanel taskPanel;
@@ -221,8 +228,9 @@ public class App implements Serializable {
 		inputPanel = new DockLayoutPanel(Unit.EM);
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
-		outputArea = new TextArea();
+		outputArea = new FlowPanel("div");
 		outputArea.setWidth("100%");
+		outputArea.addStyleName("output");
 		ioPanel.add(outputArea);
 
 		inputControlPanel = new FlowPanel();
@@ -392,10 +400,29 @@ public class App implements Serializable {
 		// ...
 		
 		// executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
+		
+		// TODO: TestCode
+		runButton.addClickHandler(event -> outputArea.add(new HTML("test")));
+		cancelButton.addClickHandler(event -> outputArea.clear());
+		
+		UpdateUnicodeOutput out = new UpdateUnicodeOutput();
+		// UpdatePlainUnicodeOutput out = new UpdatePlainUnicodeOutput();
+
+		FreeVariable var2 = new FreeVariable("z");
+		BoundVariable var = new BoundVariable(1);
+		Abstraction abs = new Abstraction("x", var);
+		Application app = new Application(abs, var2);
+		Application app2 = new Application(app, app);
+		
+		forwardButton.addClickHandler(event -> out.pushTerm(app));
+		backwardsButton.addClickHandler(event -> out.removeLastTerm());
 	}
 
 	@Override
 	public String serialize() {
 		return null;
 	}
+	
+	
+	
 }

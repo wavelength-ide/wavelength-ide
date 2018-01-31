@@ -3,8 +3,8 @@ package edu.kit.wavelength.client.view.update;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
+
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
@@ -16,33 +16,34 @@ import edu.kit.wavelength.client.view.execution.ExecutionObserver;
  */
 public class UpdateUnicodeOutput implements ExecutionObserver {
 	
-	private List<LambdaTerm> terms;
-	// private App app = App.get();
-	private HTMLPanel output;
+	private List<FlowPanel> terms;
+	private static App app = App.get();
 	
 	public UpdateUnicodeOutput() {
 		terms = new ArrayList<>();
-		// output = new HTMLPanel("");
 	}
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
-		output = new HTMLPanel("");
 		// if (!app.unicodeOutput().isShown()) {
 		// 	return;
 		// }
 		
-		terms.add(t);
 		// TODO: libraries?
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(new ArrayList<>());
-		System.out.println(t.acceptVisitor(visitor).toString());
-		// HTML term = t.acceptVisitor(visitor);
-		// output.add(term);
+		Tuple term = t.acceptVisitor(visitor);
+		// terms.add(term.panel);
+		FlowPanel output = new FlowPanel("div");
+		output.add(term.panel);
+		app.outputArea.add(output);
 	}
 	
 	public void removeLastTerm() {
 		terms.remove(terms.size() - 1);
-		// TODO: remove from output
+		// TODO: probably not fast enough
+		// app.outputArea.clear();
+		// terms.forEach(t -> app.outputArea.add(t));
+		
 	}
 	
 	

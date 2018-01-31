@@ -1,16 +1,20 @@
 package edu.kit.wavelength.client.view.update;
 
+
 import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 
 public class Tuple {
 	
-	public final HTML html;
+	public final FlowPanel panel;
 	public final Anchor a;
 	
-	public Tuple(HTML html, Anchor a) {
-		this.html = html;
+	public Tuple(FlowPanel panel, Anchor a) {
+		this.panel = panel;
 		this.a = a;
 	}
+	
+	
 
 }

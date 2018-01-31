@@ -20,14 +20,14 @@ public class UnpauseExecution implements Action {
 		app.executor.unpause();
 
 		// set view components
-		app.backwardsButton.setEnabled(false);
-		app.forwardButton.setEnabled(false);
-		app.reductionOrderBox.setEnabled(false);
-		app.exportButtons.forEach(b -> b.setEnabled(false));
+		app.backwardsButton().setEnabled(false);
+		app.forwardButton().setEnabled(false);
+		app.reductionOrderBox().setEnabled(false);
+		app.exportButtons().forEach(b -> b.setEnabled(false));
 		// TODO: lock outputs
 
 		// toggle run/pause button
-		app.runButton.setVisible(false);
-		app.pauseButton.setVisible(true);
+		app.unpauseButton().setVisible(false);
+		app.pauseButton().setVisible(true);
 	}
 }

@@ -21,7 +21,7 @@ public class StepBackward implements Action {
 	
 		// lock stepping backwards if stepping back is not possible anymore
 		if (app.executor.getDisplayed().isEmpty()) {
-			app.backwardsButton.setEnabled(false);
+			app.backwardsButton().setEnabled(false);
 		}
 	}
 

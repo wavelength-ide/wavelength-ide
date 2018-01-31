@@ -31,15 +31,15 @@ public class RunNewExecution implements Action {
 
 	// UI components that can no longer be interacted with
 	private static List<ListBox> optionBoxesToLock = new ArrayList<ListBox>(Arrays.asList(
-			app.outputFormatBox, 
-			app.reductionOrderBox,
-			app.outputSizeBox	
+			app.outputFormatBox(), 
+			app.reductionOrderBox(),
+			app.outputSizeBox()	
 			));
 	
 	private static List<Button> buttonsToLock = new ArrayList<Button>(Arrays.asList(
-			app.backwardsButton, 
-			app.stepByStepButton, 
-			app.forwardButton
+			app.backwardsButton(), 
+			app.stepByStepButton(), 
+			app.forwardButton()
 			));
 
 
@@ -58,21 +58,23 @@ public class RunNewExecution implements Action {
 		String code = app.editor.read();
 
 		// determine the selected reduction order
-		String orderName = app.reductionOrderBox.getSelectedItemText();
+		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
 
 		// determine the selected output size
-		String sizeName = app.outputSizeBox.getSelectedItemText();
+		String sizeName = app.outputSizeBox().getSelectedItemText();
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
 
 		// determine the selected libraries
 		// TODO: find isSet in doc
-		List<Library> libraries = app.libraryCheckBoxes.stream().filter(CheckBox::getValue)
+		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 		
 		// TODO: executor needs to throw exception
-		try {
+		app.executor.start(code, order, size, libraries);
+		
+		/* try {
 			// start the execution with the selected options
 			app.executor.start(code, order, size, libraries);
 		} catch (ParseException e) {
@@ -82,20 +84,20 @@ public class RunNewExecution implements Action {
 			// TODO: set text in output; we definitely need an interface, its insane to
 			// always check the output format
 			return;
-		}
+		} */
 
 		
 		// lock the view components
 		optionBoxesToLock.forEach(b -> b.setEnabled(false));
 		buttonsToLock.forEach(b -> b.setEnabled(false));
-		app.exerciseButtons.forEach(b -> b.setEnabled(false));
-		app.libraryCheckBoxes.forEach(b -> b.setEnabled(false));
-		app.exportButtons.forEach(b -> b.setEnabled(false));
+		app.exerciseButtons().forEach(b -> b.setEnabled(false));
+		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
+		app.exportButtons().forEach(b -> b.setEnabled(false));
 
 
 		// toggle run/pause button
-		app.runButton.setVisible(false);
-		app.pauseButton.setVisible(true);
+		app.runButton().setVisible(false);
+		app.pauseButton().setVisible(true);
 
 		// TODO: determine the selected output format, display and lock it, hide the other
 	}

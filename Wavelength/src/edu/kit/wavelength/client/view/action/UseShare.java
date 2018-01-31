@@ -30,11 +30,11 @@ public class UseShare implements Action {
 	 */
 	@Override
 	public void run() {
-		TextBox sharePanel = App.get().sharePanel;
+		TextBox sharePanel = App.get().sharePanel();
 		if (sharePanel.isVisible()) {
 			sharePanel.setVisible(false);
 		} else {
-			serializer.serialize();
+			// serializer.serialize();
 			sharePanel.setVisible(true);
 		}
 	}

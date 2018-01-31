@@ -38,10 +38,24 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
+import edu.kit.wavelength.client.view.action.EnterDefaultMode;
+import edu.kit.wavelength.client.view.action.LoadExercise;
+import edu.kit.wavelength.client.view.action.RunNewExecution;
+import edu.kit.wavelength.client.view.action.SelectExercise;
+import edu.kit.wavelength.client.view.action.SelectExportFormat;
+import edu.kit.wavelength.client.view.action.SetReductionOrder;
+import edu.kit.wavelength.client.view.action.StepBackward;
+import edu.kit.wavelength.client.view.action.StepByStep;
+import edu.kit.wavelength.client.view.action.StepForward;
+import edu.kit.wavelength.client.view.action.Stop;
+import edu.kit.wavelength.client.view.action.UnpauseExecution;
+import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
+import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
+import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
-import edu.kit.wavelength.client.view.gwtbinding.MonacoEditor;
+import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -58,6 +72,7 @@ public class App implements Serializable {
 	public static App get() {
 		if (instance == null) {
 			instance = new App();
+			instance.initialize();
 		}
 		return instance;
 	}
@@ -71,70 +86,80 @@ public class App implements Serializable {
 	 */
 	public static final String TreeOutputName = "Tree";
 
-	public final DockLayoutPanel mainPanel;
-	public final DropDown mainMenu;
-	public final Button openMainMenuButton;
-	public final DropDownMenu mainMenuPanel;
-	public final DropDownHeader mainMenuLibraryTitle;
-	public final List<CheckBox> libraryCheckBoxes;
-	public final Divider mainMenuDivider;
-	public final DropDownHeader mainMenuExerciseTitle;
-	public final List<AnchorListItem> exerciseButtons;
-	public final Modal infoPopup;
-	public final ModalBody infoPopupBody;
-	public final Label infoPopupText;
-	public final ModalFooter infoPopupFooter;
-	public final Button infoPopupOkButton;
-	public final Button infoPopupCancelButton;
-	public final FlowPanel footerPanel;
-	public final SplitLayoutPanel ioPanel;
-	public final DockLayoutPanel inputPanel;
-	public final TextArea outputArea;
-	public final FlowPanel inputControlPanel;
-	public final SplitLayoutPanel editorTaskPanel;
-	public final FlowPanel taskPanel;
-	public final FlowPanel taskHeaderPanel;
-	public final FlowPanel taskControlPanel;
-	public final Label taskDescriptionLabel;
-	public final Button toggleSolutionButton;
-	public final Button closeTaskButton;
-	public final TextArea solutionArea;
-	public final SimplePanel editorPanel;
-	public final FlowPanel optionBarPanel;
-	public final ListBox outputFormatBox;
-	public final ListBox reductionOrderBox;
-	public final ListBox outputSizeBox;
-	public final FlowPanel controlPanel;
-	public final FlowPanel stepByStepControlPanel;
-	public final Button backwardsButton;
-	public final Button stepByStepButton;
-	public final Button forwardButton;
-	public final FlowPanel runControlPanel;
-	public final Button cancelButton;
-	public final Button runButton;
-	public final Button pauseButton;
-	public final ButtonGroup exportDropupGroup;
-	public final Button openExportMenuButton;
-	public final DropDownMenu exportMenu;
-	public final List<AnchorListItem> exportButtons;
-	public final Modal exportPopup;
-	public final ModalBody exportPopupBody;
-	public final TextArea exportArea;
-	public final ModalFooter exportPopupFooter;
-	public final Button exportPopupBodyOkButton;
-	public final ButtonGroup shareGroup;
-	public final TextBox sharePanel;
-	public final Button shareButton;
-	
-	public final MonacoEditor editor;
-	
-	public final Executor executor = null;
+	private DockLayoutPanel mainPanel;
+	private DropDown mainMenu;
+	private Button openMainMenuButton;
+	private DropDownMenu mainMenuPanel;
+	private DropDownHeader mainMenuLibraryTitle;
+	private List<CheckBox> libraryCheckBoxes;
+	private Divider mainMenuDivider;
+	private DropDownHeader mainMenuExerciseTitle;
+	private List<AnchorListItem> exerciseButtons;
+	private Modal loadExercisePopup;
+	private ModalBody loadExercisePopupBody;
+	private Label loadExercisePopupText;
+	private ModalFooter loadExercisePopupFooter;
+	private Button loadExercisePopupOkButton;
+	private Button loadExercisePopupCancelButton;
+	private Modal closeExercisePopup;
+	private ModalBody closeExercisePopupBody;
+	private Label closeExercisePopupText;
+	private ModalFooter closeExercisePopupFooter;
+	private Button closeExercisePopupOkButton;
+	private Button closeExercisePopupCancelButton;
+	private FlowPanel footerPanel;
+	private SplitLayoutPanel ioPanel;
+	private DockLayoutPanel inputPanel;
+	private TextArea outputArea;
+	private FlowPanel inputControlPanel;
+	private SplitLayoutPanel editorExercisePanel;
+	private FlowPanel exercisePanel;
+	private FlowPanel exerciseHeaderPanel;
+	private FlowPanel exerciseControlPanel;
+	private Label exerciseDescriptionLabel;
+	private Button toggleSolutionButton;
+	private Button closeExerciseButton;
+	private TextArea solutionArea;
+	private SimplePanel editorPanel;
+	private FlowPanel optionBarPanel;
+	private ListBox outputFormatBox;
+	private ListBox reductionOrderBox;
+	private ListBox outputSizeBox;
+	private FlowPanel controlPanel;
+	private FlowPanel stepByStepControlPanel;
+	private Button backwardsButton;
+	private Button stepByStepButton;
+	private Button forwardButton;
+	private FlowPanel runControlPanel;
+	private Button cancelButton;
+	private Button runButton;
+	private Button pauseButton;
+	private Button unpauseButton;
+	private ButtonGroup exportDropupGroup;
+	private Button openExportMenuButton;
+	private DropDownMenu exportMenu;
+	private List<AnchorListItem> exportButtons;
+	private Modal exportPopup;
+	private ModalBody exportPopupBody;
+	private TextArea exportArea;
+	private ModalFooter exportPopupFooter;
+	private Button exportPopupBodyOkButton;
+	private ButtonGroup shareGroup;
+	private TextBox sharePanel;
+	private Button shareButton;
+
+	public MonacoEditor editor;
+
+	public Executor executor;
+
+	private App() {
+		
+	}
 	
 	/**
 	 * Initializes App.
 	 */
-	private App() {
-
+	private void initialize() {
 		String state = Window.Location.getPath();
 		// deserialize
 
@@ -177,38 +202,54 @@ public class App implements Serializable {
 		
 		exerciseButtons = new ArrayList<>();
 		Exercises.all().forEach(excs -> {
-			AnchorListItem exerciseButton = new AnchorListItem(excs.getName());
-			// exerciseButton.addClickHandler(event -> new SelectExercise(excs).run());
-			// exerciseButton.addStyleName("exerciseButton");
-			exerciseButton.setTitle(excs.getTask());
+			AnchorListItem exerciseButton = new AnchorListItem();
+			exerciseButton.setText(excs.getName());
 			mainMenuPanel.add(exerciseButton);
 			exerciseButtons.add(exerciseButton);
 		});
 
-		infoPopup = new Modal();
-		infoPopup.setClosable(false);
-		infoPopup.setDataBackdrop(ModalBackdrop.STATIC);
+		loadExercisePopup = new Modal();
+		loadExercisePopup.setClosable(false);
+		loadExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
 		
-		infoPopupBody = new ModalBody();
-		infoPopup.add(infoPopupBody);
+		loadExercisePopupBody = new ModalBody();
+		loadExercisePopup.add(loadExercisePopupBody);
 		
-		infoPopupText = new Label("hello world");
-		infoPopupBody.add(infoPopupText);
+		loadExercisePopupText = new Label("hello world");
+		loadExercisePopupBody.add(loadExercisePopupText);
 		
-		infoPopupFooter = new ModalFooter();
-		infoPopup.add(infoPopupFooter);
+		loadExercisePopupFooter = new ModalFooter();
+		loadExercisePopup.add(loadExercisePopupFooter);
 		
-		infoPopupOkButton = new Button();
-		infoPopupOkButton.addStyleName("fa fa-times");
-		infoPopupFooter.add(infoPopupOkButton);
+		loadExercisePopupCancelButton = new Button();
+		loadExercisePopupCancelButton.addStyleName("fa fa-times");
+		loadExercisePopupFooter.add(loadExercisePopupCancelButton);
 		
-		infoPopupCancelButton = new Button();
-		infoPopupCancelButton.addStyleName("fa fa-check");
-		infoPopupCancelButton.addClickHandler(e -> infoPopup.hide());
-		infoPopupFooter.add(infoPopupCancelButton);
+		loadExercisePopupOkButton = new Button();
+		loadExercisePopupOkButton.addStyleName("fa fa-check");
+		loadExercisePopupFooter.add(loadExercisePopupOkButton);
 		
-		// infoPopup.show();
-
+		closeExercisePopup = new Modal();
+		closeExercisePopup.setClosable(false);
+		closeExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
+		
+		closeExercisePopupBody = new ModalBody();
+		closeExercisePopup.add(closeExercisePopupBody);
+		
+		closeExercisePopupText = new Label("hello world2");
+		closeExercisePopupBody.add(closeExercisePopupText);
+		
+		closeExercisePopupFooter = new ModalFooter();
+		closeExercisePopup.add(closeExercisePopupFooter);
+		
+		closeExercisePopupCancelButton = new Button();
+		closeExercisePopupCancelButton.addStyleName("fa fa-times");
+		closeExercisePopupFooter.add(closeExercisePopupCancelButton);
+		
+		closeExercisePopupOkButton = new Button();
+		closeExercisePopupOkButton.addStyleName("fa fa-check");
+		closeExercisePopupFooter.add(closeExercisePopupOkButton);
+		
 		footerPanel = new FlowPanel();
 		footerPanel.addStyleName("footerPanel");
 		mainPanel.addSouth(footerPanel, 2);
@@ -229,45 +270,44 @@ public class App implements Serializable {
 		inputControlPanel.addStyleName("inputControlPanel");
 		inputPanel.addSouth(inputControlPanel, 1.85);
 
-		editorTaskPanel = new SplitLayoutPanel(3);
-		editorTaskPanel.addStyleName("editorTaskPanel");
-		inputPanel.add(editorTaskPanel);
+		editorExercisePanel = new SplitLayoutPanel(3);
+		editorExercisePanel.addStyleName("editorExercisePanel");
+		inputPanel.add(editorExercisePanel);
 		
-		taskPanel = new FlowPanel();
-		taskPanel.addStyleName("taskPanel");
-		editorTaskPanel.addEast(taskPanel, 0.3 * Window.getClientWidth());
+		exercisePanel = new FlowPanel();
+		exercisePanel.addStyleName("exercisePanel");
+		editorExercisePanel.addEast(exercisePanel, 0.3 * Window.getClientWidth());
 		
-		taskHeaderPanel = new FlowPanel();
-		taskPanel.add(taskHeaderPanel);
+		exerciseHeaderPanel = new FlowPanel();
+		exercisePanel.add(exerciseHeaderPanel);
 		
-		taskControlPanel = new FlowPanel();
-		taskControlPanel.addStyleName("taskControlPanel");
-		taskHeaderPanel.add(taskControlPanel);
+		exerciseControlPanel = new FlowPanel();
+		exerciseControlPanel.addStyleName("exerciseControlPanel");
+		exerciseHeaderPanel.add(exerciseControlPanel);
 		
-		taskDescriptionLabel = new HTML("hello world<br>hello world<br>hello world<br>");
-		taskDescriptionLabel.addStyleName("taskDescriptionLabel");
-		taskHeaderPanel.add(taskDescriptionLabel);
+		exerciseDescriptionLabel = new HTML("hello world<br>hello world<br>hello world<br>");
+		exerciseDescriptionLabel.addStyleName("exerciseDescriptionLabel");
+		exerciseHeaderPanel.add(exerciseDescriptionLabel);
 		
 		toggleSolutionButton = new Button();
 		toggleSolutionButton.addStyleName("fa fa-lightbulb-o");
-		taskControlPanel.add(toggleSolutionButton);
+		exerciseControlPanel.add(toggleSolutionButton);
 		
-		closeTaskButton = new Button();
-		closeTaskButton.addStyleName("fa fa-times-circle-o");
-		taskControlPanel.add(closeTaskButton);
+		closeExerciseButton = new Button();
+		closeExerciseButton.addStyleName("fa fa-times-circle-o");
+		exerciseControlPanel.add(closeExerciseButton);
 		
 		solutionArea = new TextArea();
 		solutionArea.addStyleName("solutionArea");
 		solutionArea.setVisible(false);
 		solutionArea.setReadOnly(true);
 		solutionArea.setText("hello\n\tworld\n\t\teveryone");
-		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
-		taskPanel.add(solutionArea);
+		exercisePanel.add(solutionArea);
 		
 		editorPanel = new SimplePanel();
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
-		editorTaskPanel.add(editorPanel);
+		editorExercisePanel.add(editorPanel);
 
 		optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
@@ -323,6 +363,10 @@ public class App implements Serializable {
 		pauseButton = new Button();
 		pauseButton.addStyleName("fa fa-pause");
 		runControlPanel.add(pauseButton);
+		
+		unpauseButton = new Button();
+		unpauseButton.addStyleName("fa fa-play");
+		runControlPanel.add(unpauseButton);
 
 		exportDropupGroup = new ButtonGroup();
 		exportDropupGroup.setDropUp(true);
@@ -337,7 +381,8 @@ public class App implements Serializable {
 		exportMenu = new DropDownMenu();
 		exportButtons = new ArrayList<>();
 		Exports.all().forEach(e -> {
-			AnchorListItem exportButton = new AnchorListItem(e.getName());
+			AnchorListItem exportButton = new AnchorListItem();
+			exportButton.setText(e.getName());
 			exportMenu.add(exportButton);
 			exportButtons.add(exportButton);
 		});
@@ -362,7 +407,6 @@ public class App implements Serializable {
 		exportPopup.add(exportPopupFooter);
 		
 		exportPopupBodyOkButton = new Button();
-		exportPopupBodyOkButton.addClickHandler(event -> exportPopup.hide());
 		exportPopupBodyOkButton.addStyleName("fa fa-check");
 		exportPopupFooter.add(exportPopupBodyOkButton);
 		
@@ -380,22 +424,305 @@ public class App implements Serializable {
 		footerPanel.add(sharePanel);
 		
 		shareButton = new Button();
-		shareButton.addClickHandler(event -> sharePanel.setVisible(!sharePanel.isVisible()));
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
 		
+		
+		LoadExercise loadExerciseAction = new LoadExercise();
+		loadExercisePopupOkButton.addClickHandler(e -> loadExerciseAction.run());
+		
+		loadExercisePopupCancelButton.addClickHandler(e -> loadExercisePopup.hide());
+		
+		closeExercisePopupOkButton.addClickHandler(e -> new EnterDefaultMode());
+		closeExercisePopupCancelButton.addClickHandler(e -> closeExercisePopup.hide());
+		
+		exportPopupBodyOkButton.addClickHandler(e -> exportPopup.hide());
+		
+		List<Exercise> exercises = Exercises.all();
+		for (int i = 0; i < exercises.size(); i++) {
+			SelectExercise action = new SelectExercise(loadExerciseAction, exercises.get(i));
+			exerciseButtons.get(i).addClickHandler(e -> action.run());
+		}
+		
+		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
+		closeExerciseButton.addClickHandler(e -> closeExercisePopup.show());
+		
+		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
+		
+		backwardsButton.addClickHandler(e -> new StepBackward().run());
+		stepByStepButton.addClickHandler(e -> new StepByStep().run());
+		forwardButton.addClickHandler(e -> new StepForward().run());
+		cancelButton.addClickHandler(e -> new Stop().run());
+		runButton.addClickHandler(e -> new RunNewExecution().run());
+		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
+		
+		List<Export> exports = Exports.all();
+		for (int i = 0; i < exports.size(); i++) {
+			SelectExportFormat action = new SelectExportFormat(exports.get(i));
+			exportButtons.get(i).addClickHandler(e -> action.run());
+		}
+		
+		shareButton.addClickHandler(e -> new UseShare(null).run());
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
-		
-		// set actions
-		// ...
-		
 		// executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 	}
 
 	@Override
 	public String serialize() {
 		return null;
+	}
+
+	public DockLayoutPanel mainPanel() {
+		return mainPanel;
+	}
+
+	public DropDown mainMenu() {
+		return mainMenu;
+	}
+
+	public Button openMainMenuButton() {
+		return openMainMenuButton;
+	}
+
+	public DropDownMenu mainMenuPanel() {
+		return mainMenuPanel;
+	}
+
+	public DropDownHeader mainMenuLibraryTitle() {
+		return mainMenuLibraryTitle;
+	}
+
+	public List<CheckBox> libraryCheckBoxes() {
+		return libraryCheckBoxes;
+	}
+
+	public Divider mainMenuDivider() {
+		return mainMenuDivider;
+	}
+
+	public DropDownHeader mainMenuExerciseTitle() {
+		return mainMenuExerciseTitle;
+	}
+
+	public List<AnchorListItem> exerciseButtons() {
+		return exerciseButtons;
+	}
+
+	public Modal loadExercisePopup() {
+		return loadExercisePopup;
+	}
+
+	public ModalBody loadExercisePopupBody() {
+		return loadExercisePopupBody;
+	}
+
+	public Label loadExercisePopupText() {
+		return loadExercisePopupText;
+	}
+
+	public ModalFooter loadExercisePopupFooter() {
+		return loadExercisePopupFooter;
+	}
+
+	public Button loadExercisePopupOkButton() {
+		return loadExercisePopupOkButton;
+	}
+
+	public Button loadExercisePopupCancelButton() {
+		return loadExercisePopupCancelButton;
+	}
+
+	public Modal closeExercisePopup() {
+		return closeExercisePopup;
+	}
+
+	public ModalBody closeExercisePopupBody() {
+		return closeExercisePopupBody;
+	}
+
+	public Label closeExercisePopupText() {
+		return closeExercisePopupText;
+	}
+
+	public ModalFooter closeExercisePopupFooter() {
+		return closeExercisePopupFooter;
+	}
+
+	public Button closeExercisePopupOkButton() {
+		return closeExercisePopupOkButton;
+	}
+
+	public Button closeExercisePopupCancelButton() {
+		return closeExercisePopupCancelButton;
+	}
+
+	public FlowPanel footerPanel() {
+		return footerPanel;
+	}
+
+	public SplitLayoutPanel ioPanel() {
+		return ioPanel;
+	}
+
+	public DockLayoutPanel inputPanel() {
+		return inputPanel;
+	}
+
+	public TextArea outputArea() {
+		return outputArea;
+	}
+
+	public FlowPanel inputControlPanel() {
+		return inputControlPanel;
+	}
+
+	public SplitLayoutPanel editorExercisePanel() {
+		return editorExercisePanel;
+	}
+
+	public FlowPanel exercisePanel() {
+		return exercisePanel;
+	}
+
+	public FlowPanel exerciseHeaderPanel() {
+		return exerciseHeaderPanel;
+	}
+
+	public FlowPanel exerciseControlPanel() {
+		return exerciseControlPanel;
+	}
+
+	public Label exerciseDescriptionLabel() {
+		return exerciseDescriptionLabel;
+	}
+
+	public Button toggleSolutionButton() {
+		return toggleSolutionButton;
+	}
+
+	public Button closeExerciseButton() {
+		return closeExerciseButton;
+	}
+
+	public TextArea solutionArea() {
+		return solutionArea;
+	}
+
+	public SimplePanel editorPanel() {
+		return editorPanel;
+	}
+
+	public FlowPanel optionBarPanel() {
+		return optionBarPanel;
+	}
+
+	public ListBox outputFormatBox() {
+		return outputFormatBox;
+	}
+
+	public ListBox reductionOrderBox() {
+		return reductionOrderBox;
+	}
+
+	public ListBox outputSizeBox() {
+		return outputSizeBox;
+	}
+
+	public FlowPanel controlPanel() {
+		return controlPanel;
+	}
+
+	public FlowPanel stepByStepControlPanel() {
+		return stepByStepControlPanel;
+	}
+
+	public Button backwardsButton() {
+		return backwardsButton;
+	}
+
+	public Button stepByStepButton() {
+		return stepByStepButton;
+	}
+
+	public Button forwardButton() {
+		return forwardButton;
+	}
+
+	public FlowPanel runControlPanel() {
+		return runControlPanel;
+	}
+
+	public Button cancelButton() {
+		return cancelButton;
+	}
+
+	public Button runButton() {
+		return runButton;
+	}
+
+	public Button pauseButton() {
+		return pauseButton;
+	}
+
+	public Button unpauseButton() {
+		return unpauseButton;
+	}
+
+	public ButtonGroup exportDropupGroup() {
+		return exportDropupGroup;
+	}
+
+	public Button openExportMenuButton() {
+		return openExportMenuButton;
+	}
+
+	public DropDownMenu exportMenu() {
+		return exportMenu;
+	}
+
+	public List<AnchorListItem> exportButtons() {
+		return exportButtons;
+	}
+
+	public Modal exportPopup() {
+		return exportPopup;
+	}
+
+	public ModalBody exportPopupBody() {
+		return exportPopupBody;
+	}
+
+	public TextArea exportArea() {
+		return exportArea;
+	}
+
+	public ModalFooter exportPopupFooter() {
+		return exportPopupFooter;
+	}
+
+	public Button exportPopupBodyOkButton() {
+		return exportPopupBodyOkButton;
+	}
+
+	public ButtonGroup shareGroup() {
+		return shareGroup;
+	}
+
+	public TextBox sharePanel() {
+		return sharePanel;
+	}
+
+	public Button shareButton() {
+		return shareButton;
+	}
+
+	public MonacoEditor editor() {
+		return editor;
+	}
+
+	public Executor executor() {
+		return executor;
 	}
 }

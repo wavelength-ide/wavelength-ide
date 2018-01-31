@@ -18,7 +18,7 @@ public class StepForward implements Action {
 		app.executor.stepForward();
 		// unlock the step backwards button if stepping back is possible
 		if (!app.executor.getDisplayed().isEmpty()) {
-			app.backwardsButton.setEnabled(true);
+			app.backwardsButton().setEnabled(true);
 		}
 	}
 }

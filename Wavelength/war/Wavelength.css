@@ -27,16 +27,16 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 .libraryCheckBox:first-of-type { margin-top: 0px; }
 
 /* add borders to separate editor from control */
-.editorTaskPanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }
+.editorExercisePanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }
 
 /* fix solutionArea overflowing its parent */
-.taskPanel { display: flex; flex-direction: column; }
+.exercisePanel { display: flex; flex-direction: column; }
 
-/* flow text around right floating taskControlPanel */
-.taskDescriptionLabel { display: inline; }
+/* flow text around right floating exerciseControlPanel */
+.exerciseDescriptionLabel { display: inline; }
 
-/* float taskControlPanel to the top right */
-.taskControlPanel { float: right; }
+/* float exerciseControlPanel to the top right */
+.exerciseControlPanel { float: right; }
 
 /* separate solution from description, fill rest of parent and fix overflowing */
 .solutionArea { margin-top: 20px; height: 100% !important; box-sizing: border-box; resize: none; background-color: white !important; }

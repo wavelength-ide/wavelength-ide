@@ -21,24 +21,24 @@ public class EnterDefaultMode implements Action {
 
 	// UI components to hide from the user
 	private static List<Widget> componentsToHide = new ArrayList<Widget>(Arrays.asList(
-			app.closeTaskButton,
-			app.toggleSolutionButton,
-			app.solutionArea, 
-			app.editorTaskPanel
+			app.closeExerciseButton(),
+			app.toggleSolutionButton(),
+			app.solutionArea(), 
+			app.editorExercisePanel()
 			));
 	
 	// UI components that can now be interacted with
 	private static List<ListBox> componentsToUnlock = new ArrayList<ListBox>(Arrays.asList(
-			app.outputFormatBox,
-			app.outputSizeBox, 
-			app.reductionOrderBox
+			app.outputFormatBox(),
+			app.outputSizeBox(), 
+			app.reductionOrderBox()
 			));
 
 	// UI components that can no longer be interacted with
 	private static List<Button> componentsToLock = new ArrayList<Button>(Arrays.asList(
-			app.backwardsButton, 
-			app.forwardButton,
-			app.cancelButton 
+			app.backwardsButton(), 
+			app.forwardButton(),
+			app.cancelButton() 
 			));
 
 	/**
@@ -47,6 +47,8 @@ public class EnterDefaultMode implements Action {
 	 */
 	@Override
 	public void run() {
+		App app = App.get();
+		
 		// terminate the running execution
 		app.executor.terminate();
 
@@ -54,21 +56,22 @@ public class EnterDefaultMode implements Action {
 		componentsToHide.forEach(w -> w.setVisible(false));
 		app.editor.unlock();
 		componentsToUnlock.forEach(w -> w.setEnabled(true));
-		app.libraryCheckBoxes.forEach(c -> c.setEnabled(true));
-		app.exerciseButtons.forEach(b -> b.setEnabled(true));
-		app.exportButtons.forEach(b -> b.setEnabled(true));
+		app.libraryCheckBoxes().forEach(c -> c.setEnabled(true));
+		app.exerciseButtons().forEach(b -> b.setEnabled(true));
+		app.exportButtons().forEach(b -> b.setEnabled(true));
 			
 		componentsToLock.forEach(w -> w.setEnabled(false));
 		// TODO: lock output
 		
 		
 		// toggle run/pause button
-		app.pauseButton.setVisible(false);
-		app.runButton.setVisible(true);
+		app.pauseButton().setVisible(false);
+		app.unpauseButton().setVisible(false);
+		app.runButton().setVisible(true);
 
 		// clear exercise panels
-		app.solutionArea.clear();
-		app.taskDescriptionLabel.setText("");
+		app.solutionArea().clear();
+		app.exerciseDescriptionLabel().setText("");
 		// TODO: clear input and output -> leerer String
 		app.editor.write("");
 		

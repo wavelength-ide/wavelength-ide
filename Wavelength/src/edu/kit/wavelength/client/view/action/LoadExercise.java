@@ -24,37 +24,23 @@ public class LoadExercise implements Action {
 
 	// UI components to show the user
 	private static List<Widget> componentsToShow = new ArrayList<Widget>(Arrays.asList(
-			app.closeTaskButton,
-			app.toggleSolutionButton,
-			app.editorTaskPanel
-			));
+			app.closeExerciseButton(),
+			app.toggleSolutionButton(),
+			app.editorExercisePanel()));
 
 	// UI components that can now be interacted with
 	private static List<ListBox> componentsToUnlock = new ArrayList<ListBox>(Arrays.asList(
-			app.outputFormatBox,
-			app.outputSizeBox, 
-			app.reductionOrderBox
-			));
+			app.outputFormatBox(),
+			app.outputSizeBox(), 
+			app.reductionOrderBox()));
 
 
 	// UI components that can no longer be interacted with
 	private static List<Button> componentsToLock = new ArrayList<Button>(Arrays.asList(
-			app.backwardsButton, 
-			app.forwardButton, 
-			app.cancelButton 
-			));
-
-	/**
-	 * Constructs a new action for changing the UI from standard input view to
-	 * exercise view.
-	 *
-	 * @param exercise
-	 *            The selected Exercise that should be displayed to the user
-	 */
-	public LoadExercise(final Exercise exercise) {
-		this.exercise = exercise;
-	}
-
+			app.backwardsButton(), 
+			app.forwardButton(), 
+			app.cancelButton() ));
+	
 	/**
 	 * Reduces the editors width and displays the task in the enabled task view
 	 * window. Also shows buttons for exiting this exercise view and for displaying
@@ -65,36 +51,42 @@ public class LoadExercise implements Action {
 		// terminate running execution
 		app.executor.terminate();
 		
-		// TODO: clear input and output -> leerer String
 		app.editor.write("");
-		// app.unicodeOutput().write("");
-		// app.treeOutput().write("");
-		
+		// a.unicodeOutput().write("");
+		// a.treeOutput().write("");
 		
 		componentsToShow.forEach(w -> w.setVisible(true));
 		
 		app.editor.unlock();
-		app.stepByStepButton.setEnabled(true);	
-		app.libraryCheckBoxes.forEach(c -> c.setEnabled(true));
-		app.exerciseButtons.forEach(b -> b.setEnabled(true));
-		app.exportButtons.forEach(b -> b.setEnabled(true));
+		app.stepByStepButton().setEnabled(true);	
+		app.libraryCheckBoxes().forEach(c -> c.setEnabled(true));
+		app.exerciseButtons().forEach(b -> b.setEnabled(true));
+		app.exportButtons().forEach(b -> b.setEnabled(true));
 		componentsToUnlock.forEach(w -> w.setEnabled(true));
-
 		
 		componentsToLock.forEach(b -> b.setEnabled(false));
 		// TODO: lock outputs
 			
 		
 		// hide solution as default
-		app.solutionArea.setVisible(false);
+		app.solutionArea().setVisible(false);
 		
 		// set task and solution to the dedicated panel
-		app.taskDescriptionLabel.setText(exercise.getTask());
-		app.solutionArea.setText(exercise.getSolution());
+		app.exerciseDescriptionLabel().setText(exercise.getTask());
+		app.solutionArea().setText(exercise.getSolution());
 		
 		// toggle run/pause button
-		app.pauseButton.setVisible(false);
-		app.runButton.setVisible(true);
+		app.pauseButton().setVisible(false);
+		app.unpauseButton().setVisible(false);
+		app.runButton().setVisible(true);
 	}
 
+	public Exercise getExercise() {
+		return exercise;
+	}
+
+	public void setExercise(Exercise exercise) {
+		this.exercise = exercise;
+	}
+	
 }

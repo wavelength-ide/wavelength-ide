@@ -21,18 +21,18 @@ public class Pause implements Action {
 		
 		// only unlock the step backward button if stepping back is possible
 		if (!app.executor.getDisplayed().isEmpty()) {
-			app.backwardsButton.setEnabled(true);
+			app.backwardsButton().setEnabled(true);
 		}
 		
 		// unlock the needed view components
-		app.reductionOrderBox.setEnabled(true);
-		app.forwardButton.setEnabled(true);
+		app.reductionOrderBox().setEnabled(true);
+		app.forwardButton().setEnabled(true);
 		// TODO: unlock outputs
-		app.exerciseButtons.forEach(b -> b.setEnabled(true));
+		app.exerciseButtons().forEach(b -> b.setEnabled(true));
 
 			
 		// toggle run/pause button
-		app.runButton.setVisible(true);
-		app.pauseButton.setVisible(false);
+		app.unpauseButton().setVisible(true);
+		app.pauseButton().setVisible(false);
 	}
 }

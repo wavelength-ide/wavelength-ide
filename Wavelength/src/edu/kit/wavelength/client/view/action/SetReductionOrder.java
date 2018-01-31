@@ -16,7 +16,7 @@ public class SetReductionOrder implements Action {
 	 */
 	@Override
 	public void run() {
-		String orderName = app.reductionOrderBox.getSelectedItemText();
+		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder newOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName)).findFirst()
 				.get();
 		app.executor.setReductionOrder(newOrder);

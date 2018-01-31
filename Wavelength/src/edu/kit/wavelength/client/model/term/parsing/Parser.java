@@ -230,14 +230,6 @@ public class Parser {
 				throw new ParseException("Unknow token, expected LBRACKET, VARIABLE, NAME", -1, -1);
 			}
 		}
-
-		public ASTNode parseFromAbstraction() throws ParseException {
-			return parse();
-		}
-
-		public ASTNode parseFromApplication() throws ParseException {
-			return parse();
-		}
 	}
 
 	private class ASTAbstraction extends ASTNode {
@@ -252,7 +244,7 @@ public class Parser {
 				if (activeToken.getType() == TokenType.NAME) {
 					this.variable = new ASTName(activeToken.getContent());
 					if (popToken().getType() == TokenType.DOT) {
-						this.term = new ASTTerm().parseFromAbstraction();
+						this.term = new ASTTerm().parse();
 						return this;
 					} else {
 						throw new ParseException("Unexpected token, expected DOT", -1, -1);
@@ -290,8 +282,8 @@ public class Parser {
 
 		@Override
 		public ASTNode parse() throws ParseException {
-			this.left = new ASTTerm().parseFromApplication();
-			this.right = new ASTTerm().parseFromApplication();
+			this.left = new ASTTerm().parse();
+			this.right = new ASTTerm().parse();
 			return this;
 		}
 

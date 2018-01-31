@@ -1,5 +1,11 @@
 package edu.kit.wavelength.client.model.library;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import edu.kit.wavelength.client.model.term.Abstraction;
+import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
@@ -12,19 +18,30 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  */
 public final class NaturalNumbers implements Library {
 
+	private final Pattern decimalPattern = Pattern.compile("[1-9][0-9]*|0");
+	
 	@Override
 	public LambdaTerm getTerm(String name) {
-		return null;
+		if (name == "0") {
+			return new Abstraction("s", new Abstraction("z", new BoundVariable(1)));
+		}
+		LambdaTerm prev = new Application(new BoundVariable(2), new BoundVariable(1));
+		
 	}
 
 	@Override
 	public boolean containsName(String name) {
-		return false;
+		Matcher numberMatcher = decimalPattern.matcher(name);
+		if (numberMatcher.matches()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public String getName() {
-		return null;
+		return "Natural Numbers";
 	}
 
 	@Override

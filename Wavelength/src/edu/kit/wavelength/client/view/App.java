@@ -439,7 +439,7 @@ public class App implements Serializable {
 		
 		loadExercisePopupCancelButton.addClickHandler(e -> loadExercisePopup.hide());
 		
-		closeExercisePopupOkButton.addClickHandler(e -> new EnterDefaultMode());
+		closeExercisePopupOkButton.addClickHandler(e -> new EnterDefaultMode().run());
 		closeExercisePopupCancelButton.addClickHandler(e -> closeExercisePopup.hide());
 		
 		exportPopupBodyOkButton.addClickHandler(e -> exportPopup.hide());

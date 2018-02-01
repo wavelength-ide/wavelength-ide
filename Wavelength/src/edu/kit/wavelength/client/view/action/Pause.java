@@ -26,6 +26,8 @@ public class Pause implements Action {
 			app.reductionOrderBox().setEnabled(true);
 		}
 		
+		app.exportButtons().forEach(b -> b.setEnabled(true));
+		
 		app.unpauseButton().setVisible(true);
 		app.pauseButton().setVisible(false);
 	}

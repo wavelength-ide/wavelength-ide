@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.output;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,12 +11,12 @@ public final class Full implements OutputSize {
 
 	@Override
 	public boolean displayLive(int step) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
-		return null;
+		return new ArrayList<Integer>();
 	}
 
 	@Override
@@ -30,8 +31,7 @@ public final class Full implements OutputSize {
 
 	@Override
 	public int numToPreserve() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 
 }

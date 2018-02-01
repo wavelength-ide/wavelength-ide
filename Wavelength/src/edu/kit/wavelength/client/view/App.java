@@ -19,7 +19,10 @@ import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
+import org.gwtbootstrap3.client.ui.html.Text;
 
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -60,6 +63,7 @@ import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+import edu.kit.wavelength.client.view.gwt.VisJs;
 
 
 /**
@@ -125,7 +129,8 @@ public class App implements Serializable {
 	private Button toggleSolutionButton;
 	private Button closeExerciseButton;
 	private TextArea solutionArea;
-	private SimplePanel editorPanel;
+	// TODO
+	private FlowPanel editorPanel;
 	private FlowPanel optionBarPanel;
 	private ListBox outputFormatBox;
 	private ListBox reductionOrderBox;
@@ -156,6 +161,10 @@ public class App implements Serializable {
 	public MonacoEditor editor;
 
 	public Executor executor;
+	
+	// TODO: test
+	private VisJs tree;
+	private SplitLayoutPanel treeOutput;
 
 	private App() {
 		
@@ -312,9 +321,13 @@ public class App implements Serializable {
 		solutionArea.setText("hello\n\tworld\n\t\teveryone");
 		exercisePanel.add(solutionArea);
 		
-		editorPanel = new SimplePanel();
+		editorPanel = new FlowPanel("div");
+		editorPanel.add(new Label("test"));
 		// id needed because MonacoEditor adds to panel div by id
-		editorPanel.getElement().setId("editor");
+		// TODO: testcode
+		 editorPanel.getElement().setId("network");
+		// editorPanel.addStyleName("network");
+		// editorPanel.setClassName("network");
 		editorExercisePanel.add(editorPanel);
 
 		optionBarPanel = new FlowPanel();
@@ -463,7 +476,7 @@ public class App implements Serializable {
 		stepByStepButton.addClickHandler(e -> new StepByStep().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
 		cancelButton.addClickHandler(e -> new Stop().run());
-		runButton.addClickHandler(e -> new RunNewExecution().run());
+		// runButton.addClickHandler(e -> new RunNewExecution().run());
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
 		
 		List<Export> exports = Exports.all();
@@ -475,8 +488,29 @@ public class App implements Serializable {
 		shareButton.addClickHandler(e -> new UseShare(null).run());
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
-		editor = MonacoEditor.load(editorPanel);
+		// editor = MonacoEditor.load(editorPanel);
 		// executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
+		
+		//TODO: test code
+		String strNodes = new StringBuilder("[")
+				.append("{id: 1, label: 'Node 1'},")
+				.append("{id: 2, label: 'Node 2'},")
+				.append("{id: 3, label: 'Node 3'},")
+				.append("{id: 4, label: 'Node 4'},")
+				.append("{id: 5, label: 'Node 5'}")
+				.append("]").toString();
+
+		String strEdges = new StringBuilder("[")
+			.append("{from: 1, to: 3},")
+			.append("{from: 1, to: 2},")
+			.append("{from: 5, to: 4},")
+			.append("{from: 2, to: 5},")
+			.append("]").toString();
+		
+		tree = VisJs.load(editorPanel);
+		runButton.addClickHandler(event -> tree.loadNetwork(strNodes, strEdges));
+	
+		
 	}
 
 	@Override
@@ -620,9 +654,9 @@ public class App implements Serializable {
 		return solutionArea;
 	}
 
-	public SimplePanel editorPanel() {
+	/*public SimplePanel editorPanel() {
 		return editorPanel;
-	}
+	}*/
 
 	public FlowPanel optionBarPanel() {
 		return optionBarPanel;

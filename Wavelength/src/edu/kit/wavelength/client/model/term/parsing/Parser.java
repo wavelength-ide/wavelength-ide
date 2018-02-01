@@ -12,8 +12,8 @@ import edu.kit.wavelength.client.model.library.Library;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+// import java.util.regex.Matcher;
+// import java.util.regex.Pattern;
 
 /**
  * This class is used to convert an input String into a {@link LambdaTerm}
@@ -26,7 +26,7 @@ public class Parser {
 	private final List<Library> loadedLibraries;
 	private CustomLibrary inputLibrary;
 	private Stack<Token> tokens;
-	private Pattern assignmentPattern = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*");
+	// private Pattern assignmentPattern = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*");
 	private int rowPos = 0;
 	private int columnPos = 0;
 
@@ -65,7 +65,8 @@ public class Parser {
 	 *             if the input String can not be parsed successfully
 	 */
 	public LambdaTerm parse(String input) throws ParseException {
-		String[] possibleRows = input.split(System.getProperty("line.separator"));
+		return null;
+		/* String[] possibleRows = input.split(System.getProperty("line.separator"));
 		ArrayList<String> rows = new ArrayList<String>();
 		for (int i = 0; i < possibleRows.length; i++) {
 			if (possibleRows[i].matches("\\s*") == false && possibleRows[i].matches("\\s*--.*") == false) {
@@ -78,10 +79,10 @@ public class Parser {
 		}
 		rowPos = rows.size() - 1;
 		String lastLine = rows.get((rows.size() - 1));
-		return parseTerm(lastLine);
+		return parseTerm(lastLine); */
 	}
 
-	private void readLibraryTerm(String input) throws ParseException {
+	/*private void readLibraryTerm(String input) throws ParseException {
 		Matcher formatMatcher = assignmentPattern.matcher(input);
 		if (formatMatcher.matches()) {
 			String[] split = input.split("=");
@@ -94,20 +95,20 @@ public class Parser {
 		}
 	}
 
-	/**
+	*//**
 	 * Returns the topmost token on the stack without removing it.
 	 * 
 	 * @return The topmost token on the stack
-	 */
+	 *//*
 	private Token peekToken() {
 		return tokens.peek();
 	}
 
-	/**
+	*//**
 	 * Pops a token from the token Stack.
 	 * 
 	 * @return The topmost token on the stack
-	 */
+	 *//*
 	private Token popToken() {
 		Token pop = tokens.pop();
 		columnPos = columnPos + pop.getContent().length();
@@ -118,7 +119,7 @@ public class Parser {
 		tokens.push(newToken);
 	}
 
-	/**
+	*//**
 	 * Retrieves the term with the specified name from the loaded libraries or
 	 * the library containing the user's named terms.
 	 * 
@@ -126,7 +127,7 @@ public class Parser {
 	 *            The desired term's name
 	 * @return The term with the assigned name, null if no library contains a
 	 *         term with this name.
-	 */
+	 *//*
 	private LambdaTerm retrieveTerm(String name) {
 		if (inputLibrary != null && inputLibrary.containsName(name)) {
 			return inputLibrary.getTerm(name);
@@ -139,7 +140,7 @@ public class Parser {
 		return null;
 	}
 
-	/**
+	*//**
 	 * Parses the entered String to a {@link LambdaTerm}.
 	 * 
 	 * @param input
@@ -147,7 +148,7 @@ public class Parser {
 	 * @return The parsed LambdaTerm
 	 * @throws ParseException
 	 *             if the String can not be parsed
-	 */
+	 *//*
 	private LambdaTerm parseTerm(String input) throws ParseException {
 		Token[] tokenisedInput = new Tokeniser().tokenise(input);
 		columnPos = 0;
@@ -162,27 +163,27 @@ public class Parser {
 		return root.convert(new ArrayList<String>());
 	}
 
-	/**
+	*//**
 	 * The abstract superclass of all classes representing nodes of a syntax
 	 * tree.
 	 *
-	 */
+	 *//*
 	private abstract class ASTNode {
 
-		/**
+		*//**
 		 * Attempts to parse the remaining tokens on the token stack to a syntax
 		 * tree.
 		 * 
 		 * @return The root of the generated tree
 		 * @throws ParseException
 		 *             If the remaining tokens can not be parsed.
-		 */
+		 *//*
 		public abstract ASTNode parse() throws ParseException;
 
 		@Override
 		public abstract String toString();
 
-		/**
+		*//**
 		 * Converts the syntax subtree rooted at this node into the
 		 * corresponding LambdaTerm object structure
 		 * 
@@ -191,7 +192,7 @@ public class Parser {
 		 * @return The LambdaTerm created from this node's subtree.
 		 * @throws ParseException
 		 *             If the syntax subtree could not be converted.
-		 */
+		 *//*
 		public abstract LambdaTerm convert(List<String> names) throws ParseException;
 	}
 
@@ -326,13 +327,13 @@ public class Parser {
 			return name;
 		}
 
-		/**
+		*//**
 		 * Determines whether this {@link ASTName} should be converted to a
 		 * variable or to a
 		 * {@link edu.kit.wavelength.client.model.term.NamedTerm NamedTerm}.
 		 * 
 		 * @return true if this is a variable, false if it is a NamedTerm
-		 */
+		 *//*
 		public boolean isVariable() {
 			if (retrieveTerm(name) == null) {
 				return true;
@@ -354,5 +355,5 @@ public class Parser {
 				return new NamedTerm(name, retrieveTerm(name));
 			}
 		}
-	}
+	} */
 }

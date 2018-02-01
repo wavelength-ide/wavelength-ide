@@ -2,6 +2,7 @@ package edu.kit.wavelength.client.view.export;
 
 import java.util.List;
 
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
@@ -15,12 +16,14 @@ public interface Export {
 	 * 
 	 * @param displayedTerms
 	 *            the terms that should be translated
+	 * @param libraries
+	 *            the libraries of the application that are used in this term
 	 * @return the String representation of the given terms
 	 */
-	public String getRepresentation(List<LambdaTerm> displayedTerms);
+	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries);
 
 	/**
-	 * This method returns the name of the export format
+	 * This method returns the name of the export format.
 	 * 
 	 * @return the name of the export format
 	 */

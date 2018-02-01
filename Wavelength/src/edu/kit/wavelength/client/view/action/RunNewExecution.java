@@ -73,7 +73,7 @@ public class RunNewExecution implements Action {
 		
 		// TODO: executor needs to throw exception
 		app.executor.start(code, order, size, libraries);
-		
+
 		/* try {
 			// start the execution with the selected options
 			app.executor.start(code, order, size, libraries);

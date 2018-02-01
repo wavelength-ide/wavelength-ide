@@ -1,12 +1,16 @@
 package wavelength.client.view;
 
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.PreElement;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.ListBox;
@@ -69,15 +73,22 @@ public class MainPanel extends Composite {
 
 		DockLayoutPanel inputPanel = new DockLayoutPanel(Unit.EM);
 		ioPanel.addNorth(inputPanel, 200);
+		
+		TextArea inputArea = new TextArea();
 
-		TextArea outputArea = new TextArea();
+		HTMLPanel outputArea = new HTMLPanel("");
+		Anchor a = new Anchor("a");
+		a.addClickHandler(event -> TestAction.run(inputArea));
+		outputArea.add(a, "test");
+		String test = "<span id='test'></span>";
+		outputArea = new HTMLPanel(test);
 		outputArea.setWidth("100%");
 		ioPanel.add(outputArea);
 
 		DockLayoutPanel inputControlPanel = new DockLayoutPanel(Unit.PCT);
 		inputPanel.addSouth(inputControlPanel, 1.7);
 
-		TextArea inputArea = new TextArea();
+		// TextArea inputArea = new TextArea();
 		inputArea.setWidth("100%");
 		inputArea.setHeight("100%");
 		inputPanel.add(inputArea);

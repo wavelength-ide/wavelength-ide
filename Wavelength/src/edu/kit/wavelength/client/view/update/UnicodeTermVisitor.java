@@ -2,6 +2,11 @@ package edu.kit.wavelength.client.view.update;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.html.Text;
+
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.FlowPanel;
+
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
@@ -11,47 +16,79 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
-import edu.kit.wavelength.client.view.webui.component.UnicodeOutput;
-import edu.kit.wavelength.client.view.webui.component.UnicodeTerm;
+import edu.kit.wavelength.client.view.App;
+import edu.kit.wavelength.client.view.action.StepManually;
 
 /**
- * Visitor for generating the output of a {@link LambdaTerm} for the {@link UnicodeOutput} view.
+ * Visitor for generating the output of a {@link LambdaTerm} for the
+ * {@link UnicodeOutput} view.
  */
-public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTerm> {
-
+public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
+	
 	public UnicodeTermVisitor(List<Library> libraries) {
 		super(libraries);
 		// TODO Auto-generated constructor stub
 	}
+	
 
 	@Override
-	public UnicodeTerm visitApplication(Application app) {
-		return null;
+	public Tuple visitApplication(Application app) {
+		Tuple left = app.getLeftHandSide().acceptVisitor(this);
+		Tuple right = app.getRightHandSide().acceptVisitor(this);
+		FlowPanel panel = new FlowPanel("span");
+		Anchor a = left.a;
+		if (a != null) {
+			panel.addStyleName("application");
+			a.addStyleName("clickable");
+			a.addClickHandler(event -> new StepManually(app).run());
+			//TODO: only for testing 
+			// left.a.addClickHandler(event -> App.get().editor.write("yay"));
+		}
+			
+		panel.add(new Text("("));
+		panel.add(left.panel);
+		panel.add(new Text(") ("));
+		panel.add(right.panel);
+		panel.add(new Text(")"));
+		return new Tuple(panel, null);
 	}
 
 	@Override
-	public UnicodeTerm visitNamedTerm(NamedTerm term) {
-		return null;
+	public Tuple visitNamedTerm(NamedTerm term) {
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text(term.getName()));
+		return new Tuple(panel, null);
 	}
 
 	@Override
-	public UnicodeTerm visitPartialApplication(PartialApplication app) {
-		return null;
+	public Tuple visitPartialApplication(PartialApplication app) {
+		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
-	public UnicodeTerm visitFreeVariable(FreeVariable var) {
-		return null;
+	public Tuple visitFreeVariable(FreeVariable var) {
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text(var.getName()));
+		return new Tuple(panel, null);
 	}
 
 	@Override
-	protected UnicodeTerm visitBoundVariable(BoundVariable var, String resolvedName) {
-		return null;
+	protected Tuple visitBoundVariable(BoundVariable var, String resolvedName) {
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(new Text(resolvedName));
+		return new Tuple(panel, null);
 	}
 
 	@Override
-	protected UnicodeTerm visitAbstraction(Abstraction abs, String resolvedName) {
-		return null;
+	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
+		Tuple inner = abs.getInner().acceptVisitor(this);
+		Anchor a = new Anchor("λ" + resolvedName);
+		a.addStyleName("abstraction");
+		FlowPanel panel = new FlowPanel("span");
+		panel.add(a);
+		panel.add(new Text("."));
+		panel.add(inner.panel);
+		return  new Tuple(panel, a);
 	}
 
 }

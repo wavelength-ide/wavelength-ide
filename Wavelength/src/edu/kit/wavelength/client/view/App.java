@@ -27,6 +27,7 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -38,6 +39,7 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
+
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
@@ -50,12 +52,15 @@ import edu.kit.wavelength.client.view.action.StepForward;
 import edu.kit.wavelength.client.view.action.Stop;
 import edu.kit.wavelength.client.view.action.UnpauseExecution;
 import edu.kit.wavelength.client.view.action.UseShare;
+
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
+
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -110,7 +115,7 @@ public class App implements Serializable {
 	private FlowPanel footerPanel;
 	private SplitLayoutPanel ioPanel;
 	private DockLayoutPanel inputPanel;
-	private TextArea outputArea;
+	private FlowPanel outputArea;
 	private FlowPanel inputControlPanel;
 	private SplitLayoutPanel editorExercisePanel;
 	private FlowPanel exercisePanel;
@@ -155,6 +160,7 @@ public class App implements Serializable {
 	private App() {
 		
 	}
+
 	
 	/**
 	 * Initializes App.
@@ -262,8 +268,9 @@ public class App implements Serializable {
 		inputPanel = new DockLayoutPanel(Unit.EM);
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
-		outputArea = new TextArea();
+		outputArea = new FlowPanel("div");
 		outputArea.setWidth("100%");
+		outputArea.addStyleName("output");
 		ioPanel.add(outputArea);
 
 		inputControlPanel = new FlowPanel();
@@ -570,7 +577,7 @@ public class App implements Serializable {
 		return inputPanel;
 	}
 
-	public TextArea outputArea() {
+	public FlowPanel outputArea() {
 		return outputArea;
 	}
 
@@ -725,4 +732,5 @@ public class App implements Serializable {
 	public Executor executor() {
 		return executor;
 	}
+
 }

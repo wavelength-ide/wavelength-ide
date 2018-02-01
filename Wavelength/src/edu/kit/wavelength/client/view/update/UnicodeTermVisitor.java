@@ -40,6 +40,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		if (a != null) {
 			panel.addStyleName("application");
 			a.addStyleName("clickable");
+			a.getElement().setId("application");
 			a.addClickHandler(event -> new StepManually(app).run());
 			//TODO: only for testing 
 			// left.a.addClickHandler(event -> App.get().editor.write("yay"));
@@ -83,7 +84,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
 		Tuple inner = abs.getInner().acceptVisitor(this);
 		Anchor a = new Anchor("λ" + resolvedName);
-		a.addStyleName("abstraction");
+		a.addStyleName("notclickable");
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(a);
 		panel.add(new Text("."));

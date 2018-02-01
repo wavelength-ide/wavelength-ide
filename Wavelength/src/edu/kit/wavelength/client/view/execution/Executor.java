@@ -125,6 +125,8 @@ public class Executor implements Serializable {
 	 */
 	public void stepBackward() {
 		engine.stepBackward();
+		observers.forEach(o -> o.removeLastTerm());
+		
 	}
 
 	/**

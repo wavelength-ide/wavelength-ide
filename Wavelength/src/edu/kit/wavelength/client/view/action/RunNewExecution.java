@@ -92,6 +92,7 @@ public class RunNewExecution implements Action {
 		app.exerciseButtons().forEach(b -> b.setEnabled(false));
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
 		app.exportButtons().forEach(b -> b.setEnabled(false));
+		app.cancelButton().setEnabled(true);
 
 
 		// toggle run/pause button

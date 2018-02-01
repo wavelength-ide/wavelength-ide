@@ -12,19 +12,17 @@ import edu.kit.wavelength.client.model.term.PartialApplication;
 /**
  * The call by value reduction order for the untyped lambda calculus.
  * 
- * The leftmost outermost redex that is not enclosed by an abstraction
- * and whose argument is a value (i.e. an abstraction) is selected for
- * reduction.
+ * The leftmost outermost redex that is not enclosed by an abstraction and whose
+ * argument is a value (i.e. an abstraction) is selected for reduction.
  *
  */
 public final class CallByValue implements ReductionOrder {
-	
+
 	@Override
-	public Application next(LambdaTerm term)
-	{
-		return null;
+	public Application next(LambdaTerm term) {
+		return (Application) term.acceptVisitor(new CallByValueVisitor());
 	}
-	
+
 	@Override
 	public String getName() {
 		return "Call-by-value";
@@ -34,12 +32,12 @@ public final class CallByValue implements ReductionOrder {
 	public String serialize() {
 		return null;
 	}
-	
+
 	private class CallByValueVisitor extends NameAgnosticVisitor<Application> {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return app.getRepresented().acceptVisitor(this);
+			return (Application) app.getRepresented().acceptVisitor(this);
 		}
 
 		@Override
@@ -52,11 +50,11 @@ public final class CallByValue implements ReductionOrder {
 			if (app.acceptVisitor(new IsRedexVisitor()) && new NormalOrder().next(app) == null) {
 				return app;
 			} else {
-				Application possibleRedex = app.getLeftHandSide().acceptVisitor(this);
+				Application possibleRedex = (Application) app.getLeftHandSide().acceptVisitor(this);
 				if (possibleRedex != null) {
 					return possibleRedex;
 				} else {
-					return app.getRightHandSide().acceptVisitor(this);
+					return (Application) app.getRightHandSide().acceptVisitor(this);
 				}
 			}
 		}
@@ -70,6 +68,5 @@ public final class CallByValue implements ReductionOrder {
 		public Application visitFreeVariable(FreeVariable var) {
 			return null;
 		}
-		
 	}
 }

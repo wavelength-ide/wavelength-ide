@@ -4,8 +4,6 @@ import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
-import edu.kit.wavelength.client.model.term.IsAbstractionVisitor;
-import edu.kit.wavelength.client.model.term.IsApplicationVisitor;
 import edu.kit.wavelength.client.model.term.IsRedexVisitor;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NameAgnosticVisitor;
@@ -21,7 +19,7 @@ public final class NormalOrder implements ReductionOrder {
 
 	@Override
 	public Application next(LambdaTerm term) {
-		return term.acceptVisitor(new NormalOrderVisitor());
+		return (Application) term.acceptVisitor(new NormalOrderVisitor());
 	}
 
 	@Override
@@ -38,12 +36,12 @@ public final class NormalOrder implements ReductionOrder {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return app.getRepresented().acceptVisitor(this);
+			return (Application) app.getRepresented().acceptVisitor(this);
 		}
 
 		@Override
 		public Application visitAbstraction(Abstraction abs) {
-			return abs.getInner().acceptVisitor(this);
+			return (Application) abs.getInner().acceptVisitor(this);
 		}
 
 		@Override
@@ -51,11 +49,11 @@ public final class NormalOrder implements ReductionOrder {
 			if (app.acceptVisitor(new IsRedexVisitor())) {
 				return app;
 			} else {
-				Application leftResult = app.getLeftHandSide().acceptVisitor(this);
+				Application leftResult = (Application) app.getLeftHandSide().acceptVisitor(this);
 				if (leftResult != null) {
 					return leftResult;
 				} else {
-					return app.getRightHandSide().acceptVisitor(this);
+					return (Application) app.getRightHandSide().acceptVisitor(this);
 				}
 			}
 		}

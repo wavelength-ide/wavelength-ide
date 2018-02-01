@@ -26,10 +26,10 @@ public class Tokeniser {
 	public Token[] tokenise(String input) throws ParseException {
 		TokenPattern leftBracket = new TokenPattern("\\(", TokenType.LBRACKET);
 		TokenPattern rigthBracket = new TokenPattern("\\)", TokenType.RBRACKET);
-		TokenPattern name = new TokenPattern("[a-zA-Z0-9]++", TokenType.NAME);
+		TokenPattern name = new TokenPattern("[a-zA-Z0-9]+", TokenType.NAME);
 		TokenPattern lambda = new TokenPattern("[λ\\\\]", TokenType.LAMBDA);
 		TokenPattern dot = new TokenPattern("\\.", TokenType.DOT);
-		TokenPattern space = new TokenPattern("\\s++", TokenType.SPACE);
+		TokenPattern space = new TokenPattern("\\s+", TokenType.SPACE);
 		TokenPattern[] types = { leftBracket, rigthBracket, name, lambda, dot, space };
 		String remainingInput = input;
 		ArrayList<Token> tokens = new ArrayList<Token>();

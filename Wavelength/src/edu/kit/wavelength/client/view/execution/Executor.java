@@ -100,6 +100,9 @@ public class Executor implements Serializable {
 	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		engine = new ExecutionEngine(input, order, size, libraries);
+		if (engine != null && !engine.getDisplayed().isEmpty()) {
+			pushTerm(engine.getDisplayed().get(0));
+		}
 	}
 	
 	/**
@@ -125,6 +128,8 @@ public class Executor implements Serializable {
 	 */
 	public void stepBackward() {
 		engine.stepBackward();
+		observers.forEach(o -> o.removeLastTerm());
+		
 	}
 
 	/**
@@ -157,6 +162,13 @@ public class Executor implements Serializable {
 	 */
 	public List<LambdaTerm> getDisplayed() {
 		return engine.getDisplayed();
+	}
+	
+	public List<Library> getLibraries() {
+		if (engine == null)
+			throw new IllegalStateException("There is no engine");
+		
+		return engine.getLibraries();
 	}
 	
 	/**

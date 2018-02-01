@@ -37,14 +37,16 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		Tuple right = app.getRightHandSide().acceptVisitor(this);
 		FlowPanel panel = new FlowPanel("span");
 		Anchor a = left.a;
+		// this is only true if left is an application
 		if (a != null) {
+			// make applications clickable and highlight it on mouse over
 			panel.addStyleName("application");
 			a.addStyleName("clickable");
+			// when clicked reduce the current application
 			a.addClickHandler(event -> new StepManually(app).run());
-			//TODO: only for testing 
-			// left.a.addClickHandler(event -> App.get().editor.write("yay"));
 		}
 			
+		// TODO: style the application
 		panel.add(new Text("("));
 		panel.add(left.panel);
 		panel.add(new Text(") ("));
@@ -83,7 +85,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
 		Tuple inner = abs.getInner().acceptVisitor(this);
 		Anchor a = new Anchor("λ" + resolvedName);
-		a.addStyleName("abstraction");
+		a.addStyleName("notclickable");
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(a);
 		panel.add(new Text("."));

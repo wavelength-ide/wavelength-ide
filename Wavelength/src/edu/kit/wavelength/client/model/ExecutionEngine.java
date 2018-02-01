@@ -30,6 +30,7 @@ public class ExecutionEngine {
 	private ArrayList<NumberedTerm> shown;
 	private RingBuffer<LambdaTerm> current;
 	private int currentNum, lastDisplayedNum;
+	private ArrayList<Library> libraries;
 
 	/**
 	 * Creates a new execution engine.
@@ -46,15 +47,23 @@ public class ExecutionEngine {
 	 */
 	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		Parser p = new Parser(libraries);
+		
+		this.libraries = new ArrayList<>(libraries);
+		this.libraries.add(p.getInputLibary());
 
 		this.current = new RingBuffer<LambdaTerm>(size.numToPreserve());
 		this.current.set(0, p.parse(input));
 		this.size = size;
 		this.order = order;
 		this.shown = new ArrayList<>();
+		shown.add(new NumberedTerm(current.get(0), 0));
 
 		this.currentNum = 0;
 		this.lastDisplayedNum = 0;
+	}
+	
+	public List<Library> getLibraries() {
+		return Collections.unmodifiableList(libraries);
 	}
 
 	private List<LambdaTerm> pushTerm(Application redex, boolean displayOverride) {

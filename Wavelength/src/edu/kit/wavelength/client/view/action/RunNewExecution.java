@@ -81,7 +81,7 @@ public class RunNewExecution implements Action {
 			String message = e.getMessage();
 			int row = e.getRow();
 			int column = e.getColumn();
-			app.outputArea().add(new Text("Error in input: row " + row + " column " + column));
+			app.outputArea().add(new Text(message + ":" + row + ":" + column));
 			return;
 		}
 

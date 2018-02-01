@@ -27,7 +27,7 @@ public class Parser {
 	private final List<Library> loadedLibraries;
 	private CustomLibrary inputLibrary;
 	private Stack<Token> tokens;
-	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*");
+	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]+\\s*=\\s*.+\\s*");
 	private int rowPos = 0;
 	private int columnPos = 0;
 

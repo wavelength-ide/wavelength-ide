@@ -1,8 +1,9 @@
 package edu.kit.wavelength.client.model.term.parsing;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 
 /**
  * The Tokeniser class is used during the first step of the parsing process to
@@ -10,8 +11,8 @@ import java.util.regex.Pattern;
  *
  */
 public class Tokeniser {
-
-	private String newLine = System.getProperty("line.seperator");
+	
+	private String newLine = "\n";
 
 	/**
 	 * Divides a sequence of characters into Tokens.
@@ -36,12 +37,13 @@ public class Tokeniser {
 		do {
 			foundMatch = false;
 			for (int i = 0; i < types.length; i++) {
-				Matcher currentMatcher = types[i].getPattern().matcher(remainingInput);
-				if (currentMatcher.find()) {
+				RegExp cRegex = types[i].getRegExp();
+				MatchResult mresult = cRegex.exec(remainingInput);
+				if (mresult != null && mresult.getGroupCount() > 0) {
 					foundMatch = true;
-					String newContent = currentMatcher.group().trim();
+					String newContent = mresult.getGroup(0).trim();
+					remainingInput = cRegex.replace(remainingInput, "");
 					tokens.add(new Token(newContent, types[i].getType()));
-					remainingInput = currentMatcher.replaceFirst("");
 					break;
 				}
 			}
@@ -56,7 +58,8 @@ public class Tokeniser {
 			return tokens.toArray(new Token[tokens.size()]);
 		} else {
 			int column = input.length() - remainingInput.length();
-			throw new ParseException("Term could not be parsed, found unknow symbol.", -1, column);
+			System.out.println(remainingInput.length());
+			throw new ParseException("Term could not be parsed, found unknown symbol.", -1, column);
 
 		}
 	}
@@ -76,9 +79,13 @@ public class Tokeniser {
 		types[1] = new TokenPattern("\\s*=\\s*", TokenType.EQUALS);
 		types[2] = new TokenPattern("**[^" + newLine + "]", TokenType.NEWLINE);
 		for (int i = 0; i < 3; i++) {
-			Matcher currentMatcher = types[i].getPattern().matcher(input);
-			result[i] = new Token(currentMatcher.group().trim(), types[i].getType());
-			input = currentMatcher.replaceFirst("");
+			RegExp cRegex = types[i].getRegExp();
+			MatchResult mresult = cRegex.exec(input);
+			if (mresult.getGroupCount() > 1) {
+				mresult.getGroup(1);
+				result[i] = new Token(mresult.getGroup(1).trim(), types[i].getType());
+				input = cRegex.replace(input, "");
+			}
 		}
 		return result;
 	}
@@ -90,7 +97,7 @@ public class Tokeniser {
 	 */
 	private class TokenPattern {
 
-		private final Pattern pattern;
+		private final RegExp pattern;
 		private final TokenType type;
 
 		/**
@@ -103,17 +110,18 @@ public class Tokeniser {
 		 *            The TokenPattern to assign to this TokenPattern
 		 */
 		public TokenPattern(String regex, TokenType type) {
-			this.pattern = Pattern.compile("^(" + regex + ")");
+			this.pattern = RegExp.compile("^" + regex);
+			//this.pattern = RegExp.compile("^" + regex + ")");
 			this.type = type;
 		}
 
 		/**
-		 * Return a Pattern object compiled from the regex the
+		 * Return a RegExp object compiled from the regex the
 		 * {@link TokenPattern} was initialized with.
 		 * 
-		 * @return The TokenPattern's Pattern
+		 * @return The TokenPattern's RegExp
 		 */
-		public Pattern getPattern() {
+		public RegExp getRegExp() {
 			return pattern;
 		}
 

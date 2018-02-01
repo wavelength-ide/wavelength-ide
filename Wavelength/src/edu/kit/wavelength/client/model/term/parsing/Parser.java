@@ -115,6 +115,7 @@ public class Parser {
 	}
 
 	private void pushToken(Token newToken) {
+		columnPos = columnPos - newToken.getContent().length();
 		tokens.push(newToken);
 	}
 
@@ -217,17 +218,17 @@ public class Parser {
 				if (activeToken.getType() == TokenType.RBRACKET) {
 					return result;
 				} else {
-					throw new ParseException("", -1, -1);
+					throw new ParseException("Mismatching parantheses, expected )", rowPos, columnPos);
 				}
 			case RBRACKET:
-				throw new ParseException("", -1, -1);
+				throw new ParseException("Unexpected token, " + activeToken.getType() + " is not a valid first token", rowPos, columnPos);
 			case NAME:
 				return new ASTName(activeToken.getContent());
 			case LAMBDA:
-				tokens.push(activeToken);
+				pushToken(activeToken);
 				return new ASTAbstraction().parse();
 			case DOT:
-				throw new ParseException("Unexpected token DOT, expected LBRACKET, VARIABLE, NAME", rowPos, columnPos);
+				throw new ParseException("Unexpected token, found " + activeToken.getType() + " expected: ), variable or name", rowPos, columnPos);
 			default:
 				throw new ParseException("Unknow token, expected LBRACKET, VARIABLE, NAME", rowPos, columnPos);
 			}

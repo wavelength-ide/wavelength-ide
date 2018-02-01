@@ -25,6 +25,7 @@ public class ParserTest {
 
 	Parser testParser;
 
+	String triple = "x y z";
 	String stringA = "λy.(y y)";
 	String stringB = "((λx.(λy. (y  y))) v)";
 	String stringC = "(λx. ((x  x) x))";

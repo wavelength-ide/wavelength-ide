@@ -143,6 +143,13 @@ public class Executor implements Serializable {
 		return engine.getDisplayed();
 	}
 	
+	public List<Library> getLibraries() {
+		if (engine == null)
+			throw new IllegalStateException("There is no engine");
+		
+		return engine.getLibraries();
+	}
+	
 	/**
 	 * Serializes the Executor by serializing its ExecutionEngine.
 	 * @return The Executor serialized String representation

@@ -53,7 +53,7 @@ public class EnterDefaultMode implements Action {
 
 		// set the view components
 		componentsToHide.forEach(w -> w.setVisible(false));
-		app.editorExercisePanel().setWidgetHidden(app.editorExercisePanel(), true);
+		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), true);
 		app.editor.unlock();
 		componentsToUnlock.forEach(w -> w.setEnabled(true));
 		app.libraryCheckBoxes().forEach(c -> c.setEnabled(true));

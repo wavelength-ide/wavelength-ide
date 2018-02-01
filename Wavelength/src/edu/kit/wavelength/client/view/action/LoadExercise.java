@@ -48,14 +48,14 @@ public class LoadExercise implements Action {
 	@Override
 	public void run() {
 		// terminate running execution
-		app.executor.terminate();
+		//app.executor.terminate();
 		
 		app.editor.write("");
 		// a.unicodeOutput().write("");
 		// a.treeOutput().write("");
 		
 		componentsToShow.forEach(w -> w.setVisible(true));
-		app.editorExercisePanel().setWidgetHidden(app.editorExercisePanel(), false);
+		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), false);
 		
 		app.editor.unlock();
 		app.stepByStepButton().setEnabled(true);	

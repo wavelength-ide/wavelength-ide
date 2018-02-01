@@ -20,6 +20,7 @@ public class SelectExercise implements Action {
 	 * @param selected - exercise that is selected when this action fires
 	 */
 	public SelectExercise(LoadExercise loadExerciseAction, Exercise selected) {
+		this.loadExerciseAction = loadExerciseAction;
 		this.selected = selected;
 	}
 	

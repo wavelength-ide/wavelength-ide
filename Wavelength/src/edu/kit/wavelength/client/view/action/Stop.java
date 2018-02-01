@@ -38,20 +38,23 @@ public class Stop implements Action {
 	 */
 	@Override
 	public void run() {
-		// terminate running execution
-		app.executor.terminate();
+		app.executor().terminate();
 
-		// set view components
-		componentsToLock.forEach(b -> b.setEnabled(false));
-		// TODO: lock outputs
-		app.editor.unlock();
+		app.backwardsButton().setEnabled(false);
 		app.stepByStepButton().setEnabled(true);
-		componentsToUnlock.forEach(b -> b.setEnabled(true));
+		app.forwardButton().setEnabled(false);
+		app.cancelButton().setEnabled(false);
+		
+		app.outputFormatBox().setEnabled(true);
+		app.outputSizeBox().setEnabled(true);
+		app.reductionOrderBox().setEnabled(true);
+		
+		app.editor().unlock();
+		
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(true));
 		app.exerciseButtons().forEach(b -> b.setEnabled(true));
 		app.exportButtons().forEach(b -> b.setEnabled(true));
-
-		// toggle run/pause button
+		
 		app.pauseButton().setVisible(false);
 		app.unpauseButton().setVisible(false);
 		app.runButton().setVisible(true);

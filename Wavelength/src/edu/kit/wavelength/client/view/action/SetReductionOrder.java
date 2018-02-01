@@ -20,6 +20,7 @@ public class SetReductionOrder implements Action {
 		ReductionOrder newOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName)).findFirst()
 				.get();
 		app.executor().setReductionOrder(newOrder);
+		// TODO: update output with new indicators
 	}
 
 }

@@ -15,10 +15,9 @@ public class StepBackward implements Action {
 	@Override
 	public void run() {
 		app.executor().stepBackward();
-		// TODO: determine the selected output format and remove the last displayed term
-	
-		// lock stepping backwards if stepping back is not possible anymore
-		if (app.executor.getDisplayed().isEmpty()) {
+
+		app.reductionOrderBox().setEnabled(true);
+		if (!app.executor().canStepBackward()) {
 			app.backwardsButton().setEnabled(false);
 		}
 	}

@@ -28,7 +28,6 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -40,7 +39,6 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
@@ -53,13 +51,11 @@ import edu.kit.wavelength.client.view.action.StepForward;
 import edu.kit.wavelength.client.view.action.Stop;
 import edu.kit.wavelength.client.view.action.UnpauseExecution;
 import edu.kit.wavelength.client.view.action.UseShare;
-
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
-
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
@@ -154,10 +150,10 @@ public class App implements Serializable {
 	private ButtonGroup shareGroup;
 	private TextBox sharePanel;
 	private Button shareButton;
+	
+	private MonacoEditor editor;
 
-	public MonacoEditor editor;
-
-	public Executor executor;
+	private Executor executor;
 
 	private App() {
 		
@@ -173,7 +169,6 @@ public class App implements Serializable {
 
 		mainPanel = new DockLayoutPanel(Unit.EM);
 		mainPanel.addStyleName("mainPanel");
-
 		mainMenu = new DropDown();
 		mainMenu.addStyleName("mainMenu");
 		mainPanel.addNorth(mainMenu, 2.1);
@@ -438,8 +433,7 @@ public class App implements Serializable {
 		shareButton = new Button();
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
-		
-		
+
 		LoadExercise loadExerciseAction = new LoadExercise();
 		loadExercisePopupOkButton.addClickHandler(e -> loadExerciseAction.run());
 		

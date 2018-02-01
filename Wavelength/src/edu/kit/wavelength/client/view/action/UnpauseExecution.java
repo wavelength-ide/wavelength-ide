@@ -16,17 +16,12 @@ public class UnpauseExecution implements Action {
 	 */
 	@Override
 	public void run() {
-		// continue execution
-		app.executor.unpause();
+		app.executor().unpause();
 
-		// set view components
 		app.backwardsButton().setEnabled(false);
 		app.forwardButton().setEnabled(false);
 		app.reductionOrderBox().setEnabled(false);
-		app.exportButtons().forEach(b -> b.setEnabled(false));
-		// TODO: lock outputs
 
-		// toggle run/pause button
 		app.unpauseButton().setVisible(false);
 		app.pauseButton().setVisible(true);
 	}

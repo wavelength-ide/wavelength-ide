@@ -8,6 +8,8 @@ import edu.kit.wavelength.client.view.App;
  */
 public class StepManually implements Action {
 
+	private static App app = App.get();
+	
 	private Application redex;
 
 	/**
@@ -27,7 +29,12 @@ public class StepManually implements Action {
 	 */
 	@Override
 	public void run() {
-		App.get().executor().stepForward(redex);
+		app.executor().stepForward(redex);
+		
+		if (!app.executor().canStepForward()) {
+			app.forwardButton().setEnabled(false);
+			app.reductionOrderBox().setEnabled(false);
+		}
 	}
 
 }

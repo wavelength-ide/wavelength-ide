@@ -136,8 +136,24 @@ public class Executor implements Serializable {
 	}
 	
 	/**
-	 * Returns a list of all lambda terms that have been displayed.
-	 * @return A list of all lambda terms that have been displayed
+	 * Checks whether stepBackward is possible.
+	 * @return whether stepBackward is possible
+	 */
+	public boolean canStepBackward() {
+		return engine.canStepBackward();
+	}
+	
+	/**
+	 * Checks whether stepForward is possible.
+	 * @return whether stepForward is possible
+	 */
+	public boolean canStepForward() {
+		return !engine.isFinished();
+	}
+	
+	/**
+	 * Returns the currently displayed lambda terms.
+	 * @return lt
 	 */
 	public List<LambdaTerm> getDisplayed() {
 		return engine.getDisplayed();

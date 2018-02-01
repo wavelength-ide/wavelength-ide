@@ -46,44 +46,51 @@ public class StepByStep implements Action {
 	 */
 	@Override
 	public void run() {
-		// read the users input
-		String code = app.editor.read();
+		String code = app.editor().read();
 
-		// determine the selected reduction order
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder order = find(ReductionOrders.all(), o -> o.getName().equals(orderName));
 
-		// determine the selected output size
 		String sizeName = app.outputSizeBox().getSelectedItemText();
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
 
-		// determine the selected libraries
-		// TODO: find isSet in doc
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 
 		try {
-		app.executor.stepByStep(code, order, size, libraries);
-		}
-		catch (ParseException e) {
+			app.executor().stepByStep(code, order, size, libraries);
+		} catch (ParseException e) {
 			String message = e.getMessage();
 			int row = e.getRow();
 			int column = e.getColumn();
 			app.outputArea().add(new Text(message + ":" + row + ":" + column));
 			return;
 		}
-		
-		// set the view
-		componentsToLock.forEach(b -> b.setEnabled(false));
-		app.editor.lock();
-		app.stepByStepButton().setEnabled(false);
-		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
-		app.exerciseButtons().forEach(b -> b.setEnabled(false));
-		
-		app.forwardButton().setEnabled(true);
 
-		// TODO: determine the selected output format, then display and unlock it
+		app.outputFormatBox().setEnabled(false);
+		app.outputSizeBox().setEnabled(false);
+		
+		
+		if (app.executor().canStepBackward()) {
+			app.backwardsButton().setEnabled(true);
+		}
+		app.stepByStepButton().setEnabled(false);
+		if (app.executor().canStepForward()) {
+			app.forwardButton().setEnabled(true);
+		} else {
+			app.reductionOrderBox().setEnabled(false);
+		}
+		app.cancelButton().setEnabled(true);
+		
+		app.exerciseButtons().forEach(b -> b.setEnabled(false));
+		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
+		app.exportButtons().forEach(b -> b.setEnabled(false));
+		
+		app.unpauseButton().setVisible(true);
+		app.runButton().setVisible(false);
+
+		// TODO: determine the selected output format, display and lock it, hide the other
 		
 	}
 }

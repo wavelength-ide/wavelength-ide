@@ -32,10 +32,6 @@ public class SelectExercise implements Action {
 	@Override
 	public void run() {
 		loadExerciseAction.setExercise(selected);
-		if (selected.hasPredefinitions()) {
-			app.loadExercisePopup().show();
-		} else {
-			loadExerciseAction.run();
-		}
+		app.loadExercisePopup().show();
 	}
 }

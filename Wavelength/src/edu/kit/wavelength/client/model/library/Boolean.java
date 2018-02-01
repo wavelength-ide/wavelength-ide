@@ -7,9 +7,6 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  *
  */
 public final class Boolean implements Library {
-
-	String[] 
-	
 	@Override
 	public LambdaTerm getTerm(String name) {
 		return null;

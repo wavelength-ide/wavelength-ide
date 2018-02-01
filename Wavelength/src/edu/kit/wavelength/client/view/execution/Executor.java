@@ -100,6 +100,9 @@ public class Executor implements Serializable {
 	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		engine = new ExecutionEngine(input, order, size, libraries);
+		if (engine != null && !engine.getDisplayed().isEmpty()) {
+			pushTerm(engine.getDisplayed().get(0));
+		}
 	}
 	
 	/**

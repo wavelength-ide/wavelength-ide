@@ -147,7 +147,7 @@ public class Executor implements Serializable {
 	 * Serializes the Executor by serializing its ExecutionEngine.
 	 * @return The Executor serialized String representation
 	 */
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

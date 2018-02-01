@@ -46,7 +46,7 @@ public final class Shortened implements OutputSize {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

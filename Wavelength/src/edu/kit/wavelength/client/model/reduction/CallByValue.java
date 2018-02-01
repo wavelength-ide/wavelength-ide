@@ -29,7 +29,7 @@ public final class CallByValue implements ReductionOrder {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

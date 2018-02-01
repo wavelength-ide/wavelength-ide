@@ -68,7 +68,7 @@ public final class Application implements LambdaTerm {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

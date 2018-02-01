@@ -43,7 +43,7 @@ public final class Periodic implements OutputSize {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

@@ -28,7 +28,7 @@ public final class NormalOrder implements ReductionOrder {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

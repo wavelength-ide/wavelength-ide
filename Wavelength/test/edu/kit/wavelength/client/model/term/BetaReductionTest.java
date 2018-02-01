@@ -321,7 +321,7 @@ public class BetaReductionTest {
 		}
 
 		@Override
-		public String serialize() {
+		public StringBuilder serialize() {
 			return null;
 		}
 

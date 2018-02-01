@@ -17,7 +17,7 @@ public class CustomLibrary implements Library {
 	}
 	
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		// TODO Auto-generated method stub
 		return null;
 	}

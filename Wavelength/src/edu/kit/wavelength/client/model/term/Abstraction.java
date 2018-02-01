@@ -69,7 +69,7 @@ public final class Abstraction implements LambdaTerm {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

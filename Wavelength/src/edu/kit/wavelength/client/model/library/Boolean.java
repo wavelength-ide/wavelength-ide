@@ -23,7 +23,7 @@ public final class Boolean implements Library {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

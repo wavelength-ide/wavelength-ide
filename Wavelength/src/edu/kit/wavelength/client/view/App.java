@@ -482,7 +482,7 @@ public class App implements Serializable {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

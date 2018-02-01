@@ -64,7 +64,7 @@ public final class NamedTerm implements LambdaTerm {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 }

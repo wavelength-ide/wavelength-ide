@@ -113,7 +113,7 @@ public class ResolvedNamesVisitorTest {
 	public void libraryTest() {
 		Library l = new Library() {
 			@Override
-			public String serialize() {
+			public StringBuilder serialize() {
 				return null;
 			}
 

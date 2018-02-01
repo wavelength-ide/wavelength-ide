@@ -68,7 +68,7 @@ public final class NaturalNumbers implements Library {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 

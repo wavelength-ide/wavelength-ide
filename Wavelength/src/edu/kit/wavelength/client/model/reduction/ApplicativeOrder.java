@@ -28,7 +28,7 @@ public final class ApplicativeOrder implements ReductionOrder {
 	}
 
 	@Override
-	public String serialize() {
+	public StringBuilder serialize() {
 		return null;
 	}
 	

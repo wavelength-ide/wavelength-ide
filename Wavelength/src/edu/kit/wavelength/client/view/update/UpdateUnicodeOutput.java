@@ -29,7 +29,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	public void pushTerm(LambdaTerm t) {		
 		// TODO: libraries?
 		// create a new visitor and visit the term
-		UnicodeTermVisitor visitor = new UnicodeTermVisitor(new ArrayList<>());
+		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries());
 		Tuple term = t.acceptVisitor(visitor);
 		
 		// clear the output

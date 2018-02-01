@@ -12,8 +12,9 @@ import edu.kit.wavelength.client.model.library.Library;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
 
 /**
  * This class is used to convert an input String into a {@link LambdaTerm}
@@ -26,7 +27,7 @@ public class Parser {
 	private final List<Library> loadedLibraries;
 	private CustomLibrary inputLibrary;
 	private Stack<Token> tokens;
-	private Pattern assignmentPattern = Pattern.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*");
+	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]++\\s*=\\s*.++\\s*");
 	private int rowPos = 0;
 	private int columnPos = 0;
 
@@ -43,12 +44,11 @@ public class Parser {
 	}
 
 	/**
-	 * Gets a library containing the lambda terms and corresponding names
-	 * defined in the the last invocation of {@link #parse(String)}}'s input
-	 * String.
+	 * Gets a library containing the lambda terms and corresponding names defined in
+	 * the the last invocation of {@link #parse(String)}}'s input String.
 	 * 
-	 * @return A {@link Library} containing the terms entered by the user with
-	 *         their assigned names
+	 * @return A {@link Library} containing the terms entered by the user with their
+	 *         assigned names
 	 */
 	public Library getInputLibary() {
 		return inputLibrary;
@@ -65,10 +65,25 @@ public class Parser {
 	 *             if the input String can not be parsed successfully
 	 */
 	public LambdaTerm parse(String input) throws ParseException {
-		String[] possibleRows = input.split(System.getProperty("line.separator"));
+		String[] possibleRows = input.split("\n");
 		ArrayList<String> rows = new ArrayList<String>();
 		for (int i = 0; i < possibleRows.length; i++) {
-			if (possibleRows[i].matches("\\s*") == false && possibleRows[i].matches("\\s*--.*") == false) {
+			if (possibleRows[i] == "") {
+				break;
+			}
+			RegExp blankEx = RegExp.compile("\\s*");
+			RegExp comEx = RegExp.compile("\\s*--.*");
+			MatchResult blankResult = RegExp.compile("^\\s+^[.]").exec(possibleRows[i]);
+			MatchResult commentResult = RegExp.compile("^\\s*--.*").exec(possibleRows[i]);
+			// System.out.println("blank " + blankResult);
+			// System.out.println("com " + commentResult);
+
+			if (blankResult != null) {
+				System.out.println("blankFound_" + possibleRows[i]);
+				System.out.println(blankResult.getGroupCount());
+			}
+			if (blankResult == null && commentResult == null) {
+				// System.out.println("Adding: " + possibleRows[i]);
 				rows.add(possibleRows[i]);
 			}
 		}
@@ -82,8 +97,8 @@ public class Parser {
 	}
 
 	private void readLibraryTerm(String input) throws ParseException {
-		Matcher formatMatcher = assignmentPattern.matcher(input);
-		if (formatMatcher.matches()) {
+		MatchResult assign = assignmentRegExp.exec(input);
+		if (assign.getGroupCount() < 1) {
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1].trim();
@@ -120,13 +135,13 @@ public class Parser {
 	}
 
 	/**
-	 * Retrieves the term with the specified name from the loaded libraries or
-	 * the library containing the user's named terms.
+	 * Retrieves the term with the specified name from the loaded libraries or the
+	 * library containing the user's named terms.
 	 * 
 	 * @param name
 	 *            The desired term's name
-	 * @return The term with the assigned name, null if no library contains a
-	 *         term with this name.
+	 * @return The term with the assigned name, null if no library contains a term
+	 *         with this name.
 	 */
 	private LambdaTerm retrieveTerm(String name) {
 		if (inputLibrary != null && inputLibrary.containsName(name)) {
@@ -164,15 +179,13 @@ public class Parser {
 	}
 
 	/**
-	 * The abstract superclass of all classes representing nodes of a syntax
-	 * tree.
+	 * The abstract superclass of all classes representing nodes of a syntax tree.
 	 *
 	 */
 	private abstract class ASTNode {
 
 		/**
-		 * Attempts to parse the remaining tokens on the token stack to a syntax
-		 * tree.
+		 * Attempts to parse the remaining tokens on the token stack to a syntax tree.
 		 * 
 		 * @return The root of the generated tree
 		 * @throws ParseException
@@ -184,8 +197,8 @@ public class Parser {
 		public abstract String toString();
 
 		/**
-		 * Converts the syntax subtree rooted at this node into the
-		 * corresponding LambdaTerm object structure
+		 * Converts the syntax subtree rooted at this node into the corresponding
+		 * LambdaTerm object structure
 		 * 
 		 * @param names
 		 *            A List containing the names of all bound variables
@@ -212,7 +225,8 @@ public class Parser {
 				} else if (nextType == TokenType.LBRACKET) {
 					result = new ASTApplication().parse();
 				} else {
-					throw new ParseException("Unexpected token, " + nextType + " is not a valid first token", rowPos, columnPos);
+					throw new ParseException("Unexpected token, " + nextType + " is not a valid first token", rowPos,
+							columnPos);
 				}
 				activeToken = popToken();
 				if (activeToken.getType() == TokenType.RBRACKET) {
@@ -221,14 +235,17 @@ public class Parser {
 					throw new ParseException("Mismatching parantheses, expected )", rowPos, columnPos);
 				}
 			case RBRACKET:
-				throw new ParseException("Unexpected token, " + activeToken.getType() + " is not a valid first token", rowPos, columnPos);
+				throw new ParseException("Unexpected token, " + activeToken.getType() + " is not a valid first token",
+						rowPos, columnPos);
 			case NAME:
 				return new ASTName(activeToken.getContent());
 			case LAMBDA:
 				pushToken(activeToken);
 				return new ASTAbstraction().parse();
 			case DOT:
-				throw new ParseException("Unexpected token, found " + activeToken.getType() + " expected: ), variable or name", rowPos, columnPos);
+				throw new ParseException(
+						"Unexpected token, found " + activeToken.getType() + " expected: ), variable or name", rowPos,
+						columnPos);
 			default:
 				throw new ParseException("Unknow token, expected LBRACKET, VARIABLE, NAME", rowPos, columnPos);
 			}
@@ -328,9 +345,8 @@ public class Parser {
 		}
 
 		/**
-		 * Determines whether this {@link ASTName} should be converted to a
-		 * variable or to a
-		 * {@link edu.kit.wavelength.client.model.term.NamedTerm NamedTerm}.
+		 * Determines whether this {@link ASTName} should be converted to a variable or
+		 * to a {@link edu.kit.wavelength.client.model.term.NamedTerm NamedTerm}.
 		 * 
 		 * @return true if this is a variable, false if it is a NamedTerm
 		 */

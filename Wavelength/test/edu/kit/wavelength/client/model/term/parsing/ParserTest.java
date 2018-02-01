@@ -144,7 +144,7 @@ public class ParserTest {
 
 	@Test
 	public void libraryTest() throws ParseException {
-		String testString = "lib = λx.x" + System.getProperty("line.separator") + " λv.(lib lib)";
+		String testString = "lib = λx.x" + "\n" + "λv.(lib lib)";
 		LambdaTerm libTerm = new NamedTerm("lib", new Abstraction("x", new BoundVariable(1)));
 		LambdaTerm expectedTerm = new Abstraction("v", new Application(libTerm, libTerm));
 		LambdaTerm term = null;

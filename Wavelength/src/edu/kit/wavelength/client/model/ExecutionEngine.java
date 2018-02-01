@@ -114,6 +114,10 @@ public class ExecutionEngine {
 	public boolean isFinished() {
 		return order.next(current.get(currentNum)) == null;
 	}
+	
+	public boolean canStepBackward() {
+		return shown.size() >= 2;
+	}
 
 	/**
 	 * Reverts to the previously output {@link LambdaTerm}.
@@ -121,7 +125,7 @@ public class ExecutionEngine {
 	public void stepBackward() {
 		// This code is buggy. Can you spot it?
 		
-		if (shown.size() <= 1)
+		if (!canStepBackward())
 			throw new IllegalStateException("Not enough terms have been shown to step backwards");
 		
 		shown.remove(shown.size() - 1);
@@ -148,6 +152,10 @@ public class ExecutionEngine {
 	public LambdaTerm getLast() {
 		return shown.get(shown.size() - 1).getTerm();
 	}
+	
+	public boolean isCurrentDisplayed() {
+		return lastDisplayedNum == currentNum;
+	}
 
 	/**
 	 * Displays the currently reduced {@link LambdaTerm}, adding it to the list of
@@ -156,6 +164,9 @@ public class ExecutionEngine {
 	 * @return the current {@link LambdaTerm}
 	 */
 	public LambdaTerm displayCurrent() {
+		if (isCurrentDisplayed())
+			throw new IllegalStateException("No term to show");
+
 		shown.add(new NumberedTerm(current.get(currentNum), currentNum));
 		lastDisplayedNum = currentNum;
 		return getLast();

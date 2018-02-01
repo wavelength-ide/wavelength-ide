@@ -56,6 +56,7 @@ public class ParserTest {
 		try {
 			term = testParser.parse(stringA);
 		} catch (ParseException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 			fail();
 		}
@@ -68,6 +69,7 @@ public class ParserTest {
 		try {
 			term = testParser.parse(stringB);
 		} catch (ParseException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 			fail();
 		}
@@ -79,6 +81,7 @@ public class ParserTest {
 		try {
 			term = testParser.parse(stringB + "     ");
 		} catch (ParseException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 			fail();
 		}
@@ -91,6 +94,7 @@ public class ParserTest {
 		try {
 			term = testParser.parse(stringC);
 		} catch (ParseException e) {
+			System.out.println(e.getMessage());
 			e.printStackTrace();
 			fail();
 		}
@@ -121,15 +125,9 @@ public class ParserTest {
 		assertEquals(term, termF);
 	}
 
-	@Test
-	public void failureTestCaseA() {
-		LambdaTerm term = null;
-		try {
-			term = testParser.parse(errorA);
-			fail();
-		} catch (ParseException e) {
-			assertEquals(e.getMessage(), "Unexpected token, expected VARIABLE");
-		}
+	@Test(expected=ParseException.class)
+	public void failureTestCaseA() throws ParseException {
+			LambdaTerm term = testParser.parse(errorA);
 	}
 
 	@Test

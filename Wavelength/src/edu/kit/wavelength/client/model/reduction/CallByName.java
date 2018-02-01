@@ -20,7 +20,7 @@ public final class CallByName implements ReductionOrder {
 
 	@Override
 	public Application next(LambdaTerm term) {
-		return term.acceptVisitor(new CallByNameVisitor());
+		return (Application) term.acceptVisitor(new CallByNameVisitor());
 	}
 
 	@Override
@@ -33,11 +33,11 @@ public final class CallByName implements ReductionOrder {
 		return null;
 	}
 
-	private class CallByNameVisitor extends NormalOrderVisitor {
+	private class CallByNameVisitor extends NameAgnosticVisitor<Application> {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return app.getRepresented().acceptVisitor(this);
+			return (Application) app.getRepresented().acceptVisitor(this);
 		}
 
 		@Override
@@ -50,11 +50,11 @@ public final class CallByName implements ReductionOrder {
 			if (app.acceptVisitor(new IsRedexVisitor())) {
 				return app;
 			} else {
-				Application possibleRedex = app.getLeftHandSide().acceptVisitor(this);
+				Application possibleRedex = (Application) app.getLeftHandSide().acceptVisitor(this);
 				if (possibleRedex != null) {
 					return possibleRedex;
 				} else {
-					return app.getRightHandSide().acceptVisitor(this);
+					return (Application) app.getRightHandSide().acceptVisitor(this);
 				}
 			}
 		}

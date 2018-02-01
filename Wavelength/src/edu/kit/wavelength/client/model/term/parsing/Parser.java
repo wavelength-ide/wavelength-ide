@@ -68,8 +68,7 @@ public class Parser {
 		String[] possibleRows = input.split(System.getProperty("line.separator"));
 		ArrayList<String> rows = new ArrayList<String>();
 		for (int i = 0; i < possibleRows.length; i++) {
-			Matcher rowMatcher = Pattern.compile("\\s*").matcher(possibleRows[i]);
-			if (rowMatcher.matches() == false) {
+			if (possibleRows[i].matches("\\s*") == false && possibleRows[i].matches("\\s*--.*") == false) {
 				rows.add(possibleRows[i]);
 			}
 		}
@@ -117,19 +116,6 @@ public class Parser {
 
 	private void pushToken(Token newToken) {
 		tokens.push(newToken);
-	}
-
-	/**
-	 * Returns the number of symbols not yet removed from the stack
-	 * 
-	 * @return The number of remaining symbols
-	 */
-	private int getNumRemainingSym() {
-		int count = 0;
-		while (tokens.isEmpty() == false) {
-			count = count + popToken().getContent().length();
-		}
-		return count;
 	}
 
 	/**

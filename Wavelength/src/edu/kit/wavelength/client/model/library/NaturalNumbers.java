@@ -1,8 +1,6 @@
 package edu.kit.wavelength.client.model.library;
 
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
@@ -25,23 +23,24 @@ public final class NaturalNumbers implements Library {
 	public NaturalNumbers() {
 		operationNames = new ArrayList<String>();
 		operationTerms = new ArrayList<LambdaTerm>();
-		
+
 	}
-	
+
 	@Override
 	public LambdaTerm getTerm(String name) {
 		if (name == null) {
 			return null;
 		}
 		if (name.matches(decimalRegex)) {
-			
-			
 			if (name == "0") {
 				return new Abstraction("s", new Abstraction("z", new BoundVariable(1)));
 			}
+			int number = Integer.parseInt(name);
 			LambdaTerm prev = new Application(new BoundVariable(2), new BoundVariable(1));
-			
-			
+			while (number > 1) {
+				prev = new Application(new BoundVariable(2), prev);
+			}
+			return new Abstraction("s", new Abstraction("z", new Application(new BoundVariable(1), prev)));
 		} else {
 			int index = operationNames.indexOf(name);
 			if (index != -1) {

@@ -97,7 +97,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		Objects.requireNonNull(app);
 
 		resetFlags();
-		return formatText(new StringBuilder(app.getName()));
+		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override

@@ -109,7 +109,7 @@ public class Parser {
 	 * 
 	 * @return The topmost token on the stack
 	 */
-	private Token popToken() {#
+	private Token popToken() {
 		Token pop = tokens.pop();
 		columnPos = columnPos + pop.getContent().length();
 		return pop;

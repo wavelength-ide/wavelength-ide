@@ -40,7 +40,7 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
@@ -480,24 +480,24 @@ public class App implements Serializable {
 
 	@Override
 	public StringBuilder serialize() {
-		
+
 		// serializes the executor. An empty string signalizes, that the
 		// execution engine is null.
 		// if the execution engine is null the application should start in
 		// editing mode, if the execution engine holds terms the application
 		// should start in step by step mode.
 		StringBuilder executionEngineString = executor.serialize();
-		
+
 		// returns the content of the editor.
 		StringBuilder editorString = new StringBuilder(editor.read());
-		
+
 		// setting the index of an option box does not activate the change
 		// handler
 		StringBuilder outputFormatBoxString = new StringBuilder(Integer.toString(outputFormatBox.getSelectedIndex()));
 		StringBuilder reductionOrderBoxString = new StringBuilder(
 				Integer.toString(reductionOrderBox.getSelectedIndex()));
 		StringBuilder outputSizeString = new StringBuilder(Integer.toString(outputSizeBox.getSelectedIndex()));
-		
+
 		// has one character for each library. a 'c' for a selected library and
 		// a 'u' for an unselected library
 		StringBuilder libraryCheckBoxesString = new StringBuilder();
@@ -509,7 +509,40 @@ public class App implements Serializable {
 			}
 		}
 
-		return null;
+		return SerializationUtilities.enclose(executionEngineString, editorString, outputFormatBoxString,
+				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString);
+	}
+
+	public void deserialize(String content) {
+		List<String> val = SerializationUtilities.extract(content);
+		assert (val.size() == 6);
+
+		// writes Editor with given content
+		editor.write(val.get(1));
+
+		// TODO set reductionOrder of Executor
+		// Selects the correct content of the optionBoxes
+		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(2)));
+		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(3)));
+		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(4)));
+
+		//check and uncheck the checkBoxes correctly
+		assert (val.get(5).length() == libraryCheckBoxes.size());
+		for (int i = 0; i < val.get(5).length(); i++) {
+			assert (val.get(5).charAt(i) == 'c' || val.get(5).charAt(i) == 'u');
+			if (val.get(5).charAt(i) == 'c') {
+				libraryCheckBoxes.get(i).setValue(true);
+			} else {
+				libraryCheckBoxes.get(i).setValue(false);
+			}
+		}
+		
+		if(val.get(0) == "") {
+			//TODO: gehe in den edit Modus
+		}
+		else {
+			//TODO: gehe in den stepByStep Modus (mit richtigem outputFformat, -size und reduction order)
+		}
 	}
 
 	public DockLayoutPanel mainPanel() {

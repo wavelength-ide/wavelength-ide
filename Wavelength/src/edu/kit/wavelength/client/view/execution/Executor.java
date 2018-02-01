@@ -11,6 +11,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.parsing.ParseException;
 
 /**
  * Concurrently reduces lambda terms.
@@ -34,15 +35,18 @@ public class Executor implements Serializable {
 		observers.forEach(o -> o.pushTerm(t));
 	}
 	
+	private void pushTerms(Iterable<LambdaTerm> ts) {
+		ts.forEach(this::pushTerm);
+	}
+	
 	private void scheduleExecution() {
 		autoRunning = true;
 		Scheduler.get().scheduleIncremental(() -> {
-			boolean displayTerm = engine.stepForward(true);
-			if (!autoRunning) {
+			List<LambdaTerm> displayedTerms = engine.stepForward();
+			pushTerms(displayedTerms);
+			if (!autoRunning && !engine.isCurrentDisplayed()) {
 				LambdaTerm current = engine.displayCurrent();
 				pushTerm(current);
-			} else if (displayTerm) {
-				pushTerm(engine.getLast());
 			}
 			return autoRunning;
 		});
@@ -54,8 +58,9 @@ public class Executor implements Serializable {
 	 * @param order order with which to reduce
 	 * @param size which terms to push to observers
 	 * @param libraries libraries to consider when parsing
+	 * @throws ParseException thrown when input cannot be parsed
 	 */
-	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
+	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		engine = new ExecutionEngine(input, order, size, libraries);
 		scheduleExecution();
 	}
@@ -87,8 +92,9 @@ public class Executor implements Serializable {
 	 * @param order order with which to reduce
 	 * @param size which terms to push to observers
 	 * @param libraries libraries to consider when parsing
+	 * @throws ParseException thrown when input cannot be parsed
 	 */
-	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
+	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		engine = new ExecutionEngine(input, order, size, libraries);
 	}
 	
@@ -96,9 +102,8 @@ public class Executor implements Serializable {
 	 * Executes a single reduction of the current lambda term.
 	 */
 	public void stepForward() {
-		engine.stepForward(true);
-		LambdaTerm current = engine.displayCurrent();
-		pushTerm(current);
+		List<LambdaTerm> displayedTerms = engine.stepForward();
+		pushTerms(displayedTerms);
 	}
 	
 	/**
@@ -107,8 +112,8 @@ public class Executor implements Serializable {
 	 * an exception is thrown
 	 */
 	public void stepForward(Application redex) {
-		engine.stepForward(redex);
-		pushTerm(engine.getLast());
+		List<LambdaTerm> displayedTerms = engine.stepForward(redex);
+		pushTerms(displayedTerms);
 	}
 	
 	/**
@@ -132,14 +137,6 @@ public class Executor implements Serializable {
 	 */
 	public List<LambdaTerm> getDisplayed() {
 		return engine.getDisplayed();
-	}
-	
-	/**
-	 * Returns the last lambda term that has been displayed.
-	 * @return The last lambda term that has been displayed
-	 */
-	public LambdaTerm getLast() {
-		return engine.getLast();
 	}
 	
 	/**

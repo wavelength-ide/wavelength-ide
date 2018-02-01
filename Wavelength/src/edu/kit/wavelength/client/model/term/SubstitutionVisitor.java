@@ -1,48 +1,58 @@
 package edu.kit.wavelength.client.model.term;
 
+import java.util.Objects;
+
 /**
- * A {@link Visitor} that substitutes {@link BoundVariable}s with a given De Bruijn
- * index with a given substituent.
+ * A {@link Visitor} that substitutes {@link BoundVariable}s with a given De
+ * Bruijn index with a given substituent.
  *
  */
 public final class SubstitutionVisitor extends TermTransformer {
-	
-	private final int depth;
+
+	private int depth;
 	private final LambdaTerm substituent;
-	
+
 	/**
 	 * Creates a new substitution visitor.
-	 * @param depth The De Bruijn index that should be substituted
-	 * @param substituent The term that should be substituted with
+	 * 
+	 * @param substituent
+	 *            The term that should be substituted with
 	 */
-	public SubstitutionVisitor(int depth, LambdaTerm substituent) {
-		this.depth = depth;
+	public SubstitutionVisitor(LambdaTerm substituent) {
+		Objects.requireNonNull(substituent);
+		
+		depth = 0;
 		this.substituent = substituent;
 	}
-	
+
 	@Override
 	public LambdaTerm visitPartialApplication(PartialApplication app) {
-		return null;
+		return app;
 	}
 
 	@Override
 	public LambdaTerm visitAbstraction(Abstraction abs) {
-		return null;
+		++depth;
+		LambdaTerm res = abs.getInner().acceptVisitor(this);
+		--depth;
+		return depth == 0 ? res : new Abstraction(abs.getPreferredName(), res);
 	}
 
 	@Override
 	public LambdaTerm visitApplication(Application app) {
-		return null;
+		return new Application(app.getLeftHandSide().acceptVisitor(this), app.getRightHandSide().acceptVisitor(this));
 	}
 
 	@Override
 	public LambdaTerm visitBoundVariable(BoundVariable var) {
-		return null;
+		if (var.getDeBruijnIndex() != depth)
+			return var;
+		return substituent.clone().acceptVisitor(new IndexAdjustmentVisitor(depth));
 	}
 
 	@Override
 	public LambdaTerm visitFreeVariable(FreeVariable var) {
-		return null;
+		return var;
 	}
 
 }

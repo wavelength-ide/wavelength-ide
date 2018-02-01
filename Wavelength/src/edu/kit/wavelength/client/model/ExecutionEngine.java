@@ -1,22 +1,35 @@
 package edu.kit.wavelength.client.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.BetaReducer;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.parsing.ParseException;
+import edu.kit.wavelength.client.model.term.parsing.Parser;
 
 /**
- * An execution engine manages the reduction of a {@link LambdaTerm}. It keeps the
- * history of terms and which of these terms were displayed and is able to
- * reduce the current term according to a {@link ReductionOrder} or reduce a specific
- * redex in the current term. It also keeps track of which terms should be
- * displayed and is able to revert to the previous displayed term.
+ * An execution engine manages the reduction of a {@link LambdaTerm}. It keeps
+ * the history of terms and which of these terms were displayed and is able to
+ * reduce the current term according to a {@link ReductionOrder} or reduce a
+ * specific redex in the current term. It also keeps track of which terms should
+ * be displayed and is able to revert to the previous displayed term.
  * 
  */
 public class ExecutionEngine {
+
+	private ReductionOrder order;
+	private OutputSize size;
+
+	private ArrayList<NumberedTerm> shown;
+	private RingBuffer<LambdaTerm> current;
+	private int currentNum, lastDisplayedNum;
 
 	/**
 	 * Creates a new execution engine.
@@ -31,19 +44,53 @@ public class ExecutionEngine {
 	 *            The {@link Libraries} to be taken into consideration during
 	 *            parsing
 	 */
-	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) {
+	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
+		Parser p = new Parser(libraries);
 
+		this.current = new RingBuffer<LambdaTerm>(size.numToPreserve());
+		this.current.set(0, p.parse(input));
+		this.size = size;
+		this.order = order;
+		this.shown = new ArrayList<>();
+
+		this.currentNum = 0;
+		this.lastDisplayedNum = 0;
+	}
+
+	private List<LambdaTerm> pushTerm(Application redex, boolean displayOverride) {
+
+		LambdaTerm newTerm = current.get(currentNum).acceptVisitor(new BetaReducer(redex));
+		++currentNum;
+
+		current.set(currentNum, newTerm);
+
+		List<NumberedTerm> result = new ArrayList<NumberedTerm>();
+
+		if (displayOverride || size.displayLive(currentNum)) {
+			result.add(new NumberedTerm(current.get(currentNum), currentNum));
+		}
+
+		if (isFinished()) {
+			result.addAll(size.displayAtEnd(currentNum, lastDisplayedNum).stream()
+					.map(i -> new NumberedTerm(current.get(i), i)).collect(Collectors.toList()));
+		}
+
+		shown.addAll(result);
+
+		return result.stream().map(t -> t.getTerm()).collect(Collectors.toList());
 	}
 
 	/**
 	 * Executes a single reduction of the current {@link LambdaTerm}.
 	 * 
-	 * @param enablePartialApplication
-	 *            Whether {@link PartialApplication}s and acceleration are enabled
-	 * @return Whether this step is displayed
+	 * @return The lambda terms that should be displayed as a result of this step
 	 */
-	public boolean stepForward(boolean enablePartialApplication) {
-		return false;
+	public List<LambdaTerm> stepForward() {
+		if (isFinished())
+			throw new IllegalStateException("The reduction order does not provide any more terms.");
+
+		Application nextTerm = order.next(current.get(currentNum));
+		return pushTerm(nextTerm, false);
 	}
 
 	/**
@@ -53,8 +100,8 @@ public class ExecutionEngine {
 	 *            The {@link Application} to be evaluated. Must be a redex,
 	 *            otherwise an exception is thrown
 	 */
-	public void stepForward(Application redex) {
-
+	public List<LambdaTerm> stepForward(Application redex) {
+		return pushTerm(redex, true);
 	}
 
 	/**
@@ -65,14 +112,23 @@ public class ExecutionEngine {
 	 *         another redex, {@code false} otherwise
 	 */
 	public boolean isFinished() {
-		return false;
+		return order.next(current.get(currentNum)) == null;
 	}
 
 	/**
 	 * Reverts to the previously output {@link LambdaTerm}.
 	 */
 	public void stepBackward() {
-
+		// This code is buggy. Can you spot it?
+		
+		if (shown.size() <= 1)
+			throw new IllegalStateException("Not enough terms have been shown to step backwards");
+		
+		shown.remove(shown.size() - 1);
+		NumberedTerm target = shown.get(shown.size() - 1);
+		currentNum = target.getNumber();
+		lastDisplayedNum = currentNum;
+		current.set(currentNum, target.getTerm());
 	}
 
 	/**
@@ -81,7 +137,7 @@ public class ExecutionEngine {
 	 * @return A list of all {@link LambdaTerm}s that have been displayed
 	 */
 	public List<LambdaTerm> getDisplayed() {
-		return null;
+		return Collections.unmodifiableList(shown.stream().map(NumberedTerm::getTerm).collect(Collectors.toList()));
 	}
 
 	/**
@@ -90,7 +146,7 @@ public class ExecutionEngine {
 	 * @return The last {@link LambdaTerm} that has been displayed
 	 */
 	public LambdaTerm getLast() {
-		return null;
+		return shown.get(shown.size() - 1).getTerm();
 	}
 
 	/**
@@ -100,7 +156,9 @@ public class ExecutionEngine {
 	 * @return the current {@link LambdaTerm}
 	 */
 	public LambdaTerm displayCurrent() {
-		return null;
+		shown.add(new NumberedTerm(current.get(currentNum), currentNum));
+		lastDisplayedNum = currentNum;
+		return getLast();
 	}
 
 	/**
@@ -110,7 +168,7 @@ public class ExecutionEngine {
 	 *            The new {@link ReductionOrder}
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
-
+		this.order = reduction;
 	}
 
 	/**

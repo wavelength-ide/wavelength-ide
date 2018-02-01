@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.model.output;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,7 +16,12 @@ public final class OutputSizes {
 	 * model
 	 */
 	public static List<OutputSize> all() {
-		return Arrays.asList(new ResultOnly(), new Shortened(20), new Periodic(100), new Full());
+		ArrayList<OutputSize> allOutputs = new ArrayList<OutputSize>();
+		allOutputs.add(new Full());
+		allOutputs.add(new Periodic(10));
+		allOutputs.add(new Shortened(10));
+		allOutputs.add(new ResultOnly());
+		return Collections.unmodifiableList(allOutputs);
 	}
 	
 	/**

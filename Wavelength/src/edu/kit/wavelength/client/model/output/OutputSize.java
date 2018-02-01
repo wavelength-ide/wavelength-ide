@@ -23,8 +23,16 @@ public interface OutputSize extends Serializable {
 	 * @param lastDisplayed The last step that has been displayed, either
 	 * according to a policy or through manual step by step execution
 	 * @return A list of step numbers, in the order in which they should be displayed
+	 * The step numbers may not be smaller than (totalSteps - numToPreserve + 1.)
 	 */
 	List<Integer> displayAtEnd(int totalSteps, int lastDisplayed);
+	
+	/**
+	 * Returns the number of terms that should be preserved even if displayLive()
+	 * returns false.
+	 * @return
+	 */
+	int numToPreserve();
 	
 	/**
 	 * Returns the name of the output size.

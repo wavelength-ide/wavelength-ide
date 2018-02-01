@@ -28,4 +28,10 @@ public final class Full implements OutputSize {
 		return null;
 	}
 
+	@Override
+	public int numToPreserve() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

@@ -149,7 +149,7 @@ public class ExecutionEngine {
 	 * 
 	 * @return The last {@link LambdaTerm} that has been displayed
 	 */
-	public LambdaTerm getLast() {
+	private LambdaTerm getLast() {
 		return shown.get(shown.size() - 1).getTerm();
 	}
 	

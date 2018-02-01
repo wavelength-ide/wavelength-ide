@@ -42,6 +42,10 @@ public class Executor implements Serializable {
 	private void scheduleExecution() {
 		autoRunning = true;
 		Scheduler.get().scheduleIncremental(() -> {
+			if (engine.isFinished()) {
+				autoRunning = false;
+				return autoRunning;
+			}
 			List<LambdaTerm> displayedTerms = engine.stepForward();
 			pushTerms(displayedTerms);
 			if (!autoRunning && !engine.isCurrentDisplayed()) {

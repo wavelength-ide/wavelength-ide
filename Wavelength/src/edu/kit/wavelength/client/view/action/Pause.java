@@ -17,7 +17,7 @@ public class Pause implements Action {
 	@Override
 	public void run() {
 		// pause the running execution
-		app.executor.pause();
+		app.executor().pause();
 		
 		// only unlock the step backward button if stepping back is possible
 		if (!app.executor.getDisplayed().isEmpty()) {

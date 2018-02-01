@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.CheckBox;
-
+import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.user.client.ui.ListBox;
 
@@ -72,19 +72,18 @@ public class RunNewExecution implements Action {
 				.collect(Collectors.toList());
 		
 		// TODO: executor needs to throw exception
-		app.executor.start(code, order, size, libraries);
+		// app.executor.start(code, order, size, libraries);
 
-		/* try {
+		try {
 			// start the execution with the selected options
-			app.executor.start(code, order, size, libraries);
+			app.executor().start(code, order, size, libraries);
 		} catch (ParseException e) {
 			String message = e.getMessage();
 			int row = e.getRow();
 			int column = e.getColumn();
-			// TODO: set text in output; we definitely need an interface, its insane to
-			// always check the output format
+			app.outputArea().add(new Text("Error in input: row " + row + " column " + column));
 			return;
-		} */
+		}
 
 		
 		// lock the view components

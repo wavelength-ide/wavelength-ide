@@ -34,7 +34,7 @@ public class UseShare implements Action {
 		if (sharePanel.isVisible()) {
 			sharePanel.setVisible(false);
 		} else {
-			// serializer.serialize();
+			serializer.serialize();
 			sharePanel.setVisible(true);
 		}
 	}

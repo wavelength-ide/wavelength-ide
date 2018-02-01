@@ -48,10 +48,10 @@ public class LoadExercise implements Action {
 	@Override
 	public void run() {
 		// terminate running execution
-		//app.executor.terminate();
+		app.executor.terminate();
 		
-		app.editor.write("");
-		// a.unicodeOutput().write("");
+		app.editor().write("");
+		app.outputArea().clear();
 		// a.treeOutput().write("");
 		
 		componentsToShow.forEach(w -> w.setVisible(true));
@@ -65,8 +65,9 @@ public class LoadExercise implements Action {
 		componentsToUnlock.forEach(w -> w.setEnabled(true));
 		
 		componentsToLock.forEach(b -> b.setEnabled(false));
+		
 		// TODO: lock outputs
-			
+
 		
 		// hide solution as default
 		app.solutionArea().setVisible(false);

@@ -49,7 +49,7 @@ public class EnterDefaultMode implements Action {
 		App app = App.get();
 		
 		// terminate the running execution
-		app.executor.terminate();
+		app.executor().terminate();
 
 		// set the view components
 		componentsToHide.forEach(w -> w.setVisible(false));
@@ -73,10 +73,10 @@ public class EnterDefaultMode implements Action {
 		app.solutionArea().clear();
 		app.exerciseDescriptionLabel().setText("");
 		// TODO: clear input and output -> leerer String
-		app.editor.write("");
+		app.editor().write("");
 		
 		// TODO: clear outputs
-		// app.unicodeOutput().write("");
+		app.outputArea().clear();
 		// app.treeOutput().write("");
 		
 		// TODO: set unicode output as default

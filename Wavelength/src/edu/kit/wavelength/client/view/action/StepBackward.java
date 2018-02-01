@@ -14,9 +14,7 @@ public class StepBackward implements Action {
 	 */
 	@Override
 	public void run() {
-		// TODO: remove step from output? -> Methode von component
-		app.executor.stepBackward();
-
+		app.executor().stepBackward();
 		// TODO: determine the selected output format and remove the last displayed term
 	
 		// lock stepping backwards if stepping back is not possible anymore

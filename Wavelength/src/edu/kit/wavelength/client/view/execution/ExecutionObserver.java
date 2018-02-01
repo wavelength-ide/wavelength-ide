@@ -11,4 +11,5 @@ public interface ExecutionObserver {
 	 * @param t the most recent term
 	 */
 	void pushTerm(LambdaTerm t);
+	void removeLastTerm();
 }

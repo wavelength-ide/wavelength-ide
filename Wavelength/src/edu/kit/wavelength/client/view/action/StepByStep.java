@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.html.Text;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
@@ -16,6 +17,7 @@ import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
+import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.view.App;
 
 /**
@@ -61,8 +63,17 @@ public class StepByStep implements Action {
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 
+		try {
 		app.executor.stepByStep(code, order, size, libraries);
-
+		}
+		catch (ParseException e) {
+			String message = e.getMessage();
+			int row = e.getRow();
+			int column = e.getColumn();
+			app.outputArea().add(new Text("Error in input: row " + row + " column " + column));
+			return;
+		}
+		
 		// set the view
 		componentsToLock.forEach(b -> b.setEnabled(false));
 		app.editor.lock();

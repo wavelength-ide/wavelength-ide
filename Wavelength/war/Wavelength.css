@@ -68,3 +68,7 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 .output { display: inline; overflow: scroll; }
 
 .application:hover {background-color: yellow;}
+
+.abstraction { color: black; text-decoration: none;}
+
+.clickable { color: #0066cc; text-decoration: underline;}

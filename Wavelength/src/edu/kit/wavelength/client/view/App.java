@@ -414,7 +414,7 @@ public class App implements Serializable {
 		Application app = new Application(abs, var2);
 		Application app2 = new Application(app, app);
 		
-		forwardButton.addClickHandler(event -> out.pushTerm(app));
+		forwardButton.addClickHandler(event -> out.pushTerm(app2));
 		backwardsButton.addClickHandler(event -> out.removeLastTerm());
 	}
 

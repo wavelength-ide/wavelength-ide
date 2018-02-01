@@ -29,9 +29,10 @@ public class SelectExportFormat implements Action {
 	 */
 	@Override
 	public void run() {
-		
 		app.exportArea().setText(exportFormat.getRepresentation(app.executor().getDisplayed(), app.executor().getLibraries()));
-		// TODO: markiere gesamte Ausgabe
-		app.exportPopup().show();;
+		app.exportPopup().show();
+		app.exportArea().setFocus(true);
+		app.exportArea().selectAll();
+
 	}
 }

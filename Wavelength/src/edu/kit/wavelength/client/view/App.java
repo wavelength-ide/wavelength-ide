@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.view;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.gwtbootstrap3.client.ui.AnchorListItem;
@@ -60,6 +61,7 @@ import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 
 /**
@@ -476,7 +478,7 @@ public class App implements Serializable {
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
-		// executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
+		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput()));
 	}
 
 	@Override

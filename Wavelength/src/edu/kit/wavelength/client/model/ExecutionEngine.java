@@ -56,6 +56,7 @@ public class ExecutionEngine {
 		this.size = size;
 		this.order = order;
 		this.shown = new ArrayList<>();
+		shown.add(new NumberedTerm(current.get(0), 0));
 
 		this.currentNum = 0;
 		this.lastDisplayedNum = 0;

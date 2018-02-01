@@ -12,7 +12,18 @@ import java.util.List;
  * passed to the Parser through its constructor.
  *
  */
-public interface Parser {
+public class Parser {
+
+	/**
+	 * Initializes a new parser.
+	 * 
+	 * @param libraries
+	 *            The {@link Libraries} to be taken into consideration during parsing
+	 */
+	public Parser(List<Library> libraries) {
+
+	}
+
 	/**
 	 * Parses the input text representation of a lambda term and turns it into a
 	 * {@link LambdaTerm} object if successful.
@@ -23,5 +34,7 @@ public interface Parser {
 	 * @throws ParseException
 	 *             if the input String can not be parsed successfully
 	 */
-	public LambdaTerm parse(String input) throws ParseException;
+	public LambdaTerm parse(String input) throws ParseException {
+		return null;
+	}
 }

@@ -27,8 +27,6 @@ public class ExecutionEngine {
 	private ReductionOrder order;
 	private OutputSize size;
 
-	private boolean enablePartialApplication;
-
 	private ArrayList<NumberedTerm> shown;
 	private RingBuffer<LambdaTerm> current;
 	private int currentNum, lastDisplayedNum;
@@ -46,15 +44,14 @@ public class ExecutionEngine {
 	 *            The {@link Libraries} to be taken into consideration during
 	 *            parsing
 	 */
-	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries,
-			boolean enablePartialApplication) throws ParseException {
+	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		Parser p = new Parser(libraries);
 
 		this.current = new RingBuffer<LambdaTerm>(size.numToPreserve());
 		this.current.set(0, p.parse(input));
 		this.size = size;
 		this.order = order;
-		this.enablePartialApplication = enablePartialApplication;
+		this.shown = new ArrayList<>();
 
 		this.currentNum = 0;
 		this.lastDisplayedNum = 0;

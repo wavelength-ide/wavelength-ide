@@ -284,6 +284,7 @@ public class App implements Serializable {
 		exercisePanel = new FlowPanel();
 		exercisePanel.addStyleName("exercisePanel");
 		editorExercisePanel.addEast(exercisePanel, 0.3 * Window.getClientWidth());
+		editorExercisePanel.setWidgetHidden(exercisePanel, true);
 		
 		exerciseHeaderPanel = new FlowPanel();
 		exercisePanel.add(exerciseHeaderPanel);
@@ -369,10 +370,12 @@ public class App implements Serializable {
 		
 		pauseButton = new Button();
 		pauseButton.addStyleName("fa fa-pause");
+		pauseButton.setVisible(false);
 		runControlPanel.add(pauseButton);
 		
 		unpauseButton = new Button();
 		unpauseButton.addStyleName("fa fa-play");
+		unpauseButton.setVisible(false);
 		runControlPanel.add(unpauseButton);
 
 		exportDropupGroup = new ButtonGroup();

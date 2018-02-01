@@ -25,8 +25,7 @@ public class LoadExercise implements Action {
 	// UI components to show the user
 	private static List<Widget> componentsToShow = new ArrayList<Widget>(Arrays.asList(
 			app.closeExerciseButton(),
-			app.toggleSolutionButton(),
-			app.editorExercisePanel()));
+			app.toggleSolutionButton()));
 
 	// UI components that can now be interacted with
 	private static List<ListBox> componentsToUnlock = new ArrayList<ListBox>(Arrays.asList(
@@ -56,6 +55,7 @@ public class LoadExercise implements Action {
 		// a.treeOutput().write("");
 		
 		componentsToShow.forEach(w -> w.setVisible(true));
+		app.editorExercisePanel().setWidgetHidden(app.editorExercisePanel(), false);
 		
 		app.editor.unlock();
 		app.stepByStepButton().setEnabled(true);	

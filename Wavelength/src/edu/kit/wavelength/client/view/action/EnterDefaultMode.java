@@ -23,8 +23,7 @@ public class EnterDefaultMode implements Action {
 	private static List<Widget> componentsToHide = new ArrayList<Widget>(Arrays.asList(
 			app.closeExerciseButton(),
 			app.toggleSolutionButton(),
-			app.solutionArea(), 
-			app.editorExercisePanel()
+			app.solutionArea()
 			));
 	
 	// UI components that can now be interacted with
@@ -54,6 +53,7 @@ public class EnterDefaultMode implements Action {
 
 		// set the view components
 		componentsToHide.forEach(w -> w.setVisible(false));
+		app.editorExercisePanel().setWidgetHidden(app.editorExercisePanel(), true);
 		app.editor.unlock();
 		componentsToUnlock.forEach(w -> w.setEnabled(true));
 		app.libraryCheckBoxes().forEach(c -> c.setEnabled(true));

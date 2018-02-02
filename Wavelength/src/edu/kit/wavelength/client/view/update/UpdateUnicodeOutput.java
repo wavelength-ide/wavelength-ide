@@ -58,6 +58,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// TODO: probably not fast enough
 		// clear the output and reset all terms
 		app.outputArea().clear();
+		
 		// make all terms, except the last not clickable and display them
 		for (int i = 0; i < terms.size() - 1; i++) {
 			FlowPanel wrap = new FlowPanel("div");

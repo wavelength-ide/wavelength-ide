@@ -42,6 +42,8 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 			// make applications clickable and highlight it on mouse over
 			panel.addStyleName("application");
 			a.addStyleName("clickable");
+			a.addMouseOverHandler(event -> panel.addStyleName("hover"));
+			a.addMouseOutHandler(event -> panel.removeStyleName("hover"));
 			// when clicked reduce the clicked application
 			a.addClickHandler(event -> new StepManually(app).run());
 		}

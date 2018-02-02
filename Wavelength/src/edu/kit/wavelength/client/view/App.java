@@ -220,7 +220,7 @@ public class App implements Serializable {
 		loadExercisePopupBody = new ModalBody();
 		loadExercisePopup.add(loadExercisePopupBody);
 		
-		loadExercisePopupText = new Label("hello world");
+		loadExercisePopupText = new Label("Opening the exercise will empty your editor content. Continue?");
 		loadExercisePopupBody.add(loadExercisePopupText);
 		
 		loadExercisePopupFooter = new ModalFooter();
@@ -241,7 +241,7 @@ public class App implements Serializable {
 		closeExercisePopupBody = new ModalBody();
 		closeExercisePopup.add(closeExercisePopupBody);
 		
-		closeExercisePopupText = new Label("hello world2");
+		closeExercisePopupText = new Label("Closing the exercise will empty your editor content. Continue?");
 		closeExercisePopupBody.add(closeExercisePopupText);
 		
 		closeExercisePopupFooter = new ModalFooter();
@@ -411,9 +411,7 @@ public class App implements Serializable {
 		
 		exportArea = new TextArea();
 		exportArea.addStyleName("exportArea");
-		exportArea.setVisibleLines(10);
 		exportArea.setReadOnly(true);
-		exportArea.setText("hello\n\tworld\n\t\teveryone");
 		exportPopupBody.add(exportArea);
 		
 		exportPopupFooter = new ModalFooter();
@@ -422,8 +420,6 @@ public class App implements Serializable {
 		exportPopupBodyOkButton = new Button();
 		exportPopupBodyOkButton.addStyleName("fa fa-check");
 		exportPopupFooter.add(exportPopupBodyOkButton);
-		
-		// exportPopup.show();
 		
 		// this only exists for style consistency with exportButton
 		shareGroup = new ButtonGroup();

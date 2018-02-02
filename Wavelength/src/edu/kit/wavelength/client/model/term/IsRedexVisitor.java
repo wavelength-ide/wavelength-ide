@@ -1,4 +1,4 @@
- package edu.kit.wavelength.client.model.term;
+package edu.kit.wavelength.client.model.term;
 
 /**
  * A {@link Visitor} that returns a boolean that is true if the given

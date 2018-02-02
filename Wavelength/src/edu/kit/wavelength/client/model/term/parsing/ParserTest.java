@@ -25,17 +25,20 @@ public class ParserTest {
 
 	Parser testParser;
 
-	String triple = "x y z";
-	String stringA = "λy.(y y)";
-	String stringB = "((λx.(λy. (y  y))) v)";
-	String stringC = "(λx. ((x  x) x))";
-	String stringD = "((λx.λy.λz. z) (λx. ((x  x) x)))";
-	String stringE = "((λx. x (λy. y (λz.x z))) (x λx.v))";
-	String stringF = "((\\x. (v x)) v)";
-	String errorA = "λλx.(x y)";
-	String errorB = "something";
-	String errorC = "((x) v)";
-	String errorD = "\\v. x )";
+	private String triple = "x y z";
+	private String stringA = "λy.(y y)";
+	private String stringB = "((λx.(λy. (y  y))) v)";
+	private String stringC = "(λx. ((x  x) x))";
+	private String stringD = "((λx.λy.λz. z) (λx. ((x  x) x)))";
+	private String stringE = "((λx. x (λy. y (λz.x z))) (x λx.v))";
+	private String stringF = "((\\x. (v x)) v)";
+	private String errorA = "λλx.(x y)";
+	private String uselessBrackets = "((x) v)";
+	private String mismatchedBrackets = "\\v. x )";
+	private String id = "(λx.x)";
+	private String app2 = id + id;
+	private String app3 = id + id + id;
+	private String app4 = id + id + id + id;
 
 	LambdaTerm termA = new Abstraction("y", new Application(new BoundVariable(1), new BoundVariable(1)));
 	LambdaTerm termB = new Application(new Abstraction("x", termA), new FreeVariable("v"));
@@ -45,10 +48,58 @@ public class ParserTest {
 			new Abstraction("x", new Abstraction("y", new Abstraction("z", new BoundVariable(1)))), termC);
 	LambdaTerm termF = new Application(
 			new Abstraction("x", new Application(new FreeVariable("v"), new BoundVariable(1))), new FreeVariable("v"));
+	LambdaTerm idTerm = new Abstraction("x", new BoundVariable(1));
+	LambdaTerm app2Term = new Application(idTerm, idTerm);
+	LambdaTerm app3Term = new Application(new Application(idTerm, idTerm), idTerm);
+	LambdaTerm app4Term = new Application(new Application(new Application(idTerm, idTerm), idTerm), idTerm);
 
 	@Before
 	public void setUp() {
 		testParser = new Parser(new ArrayList<Library>());
+	}
+	
+	@Test
+	public void testidentity() {
+		try {
+			LambdaTerm term = testParser.parse(id);
+			assertEquals(term, idTerm);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+	
+	@Test
+	public void test2App() {
+		try {
+			LambdaTerm term = testParser.parse(app2);
+			assertEquals(term, app2Term);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+	
+	@Test 
+	public void test3App() {
+		try {
+			LambdaTerm term = testParser.parse(app3);
+			assertEquals(term, app3Term);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+	
+	@Test
+	public void test4App() {
+		try {
+			LambdaTerm term = testParser.parse(app4);
+			assertEquals(term, app4Term);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
@@ -77,6 +128,7 @@ public class ParserTest {
 		assertEquals(term, termB);
 	}
 
+	@Test
 	public void testCaseBwSpaces() {
 		LambdaTerm term = null;
 		try {
@@ -126,13 +178,13 @@ public class ParserTest {
 		assertEquals(term, termF);
 	}
 
-	@Test(expected=ParseException.class)
+	@Test(expected = ParseException.class)
 	public void failureTestCaseA() throws ParseException {
-			LambdaTerm term = testParser.parse(errorA);
+		testParser.parse(errorA);
 	}
 
 	@Test
-	public void failiureTestCaseB() {
+	public void failureTestCaseB() {
 		LambdaTerm term = null;
 		try {
 			term = testParser.parse(errorA);
@@ -141,9 +193,19 @@ public class ParserTest {
 			assertEquals(e.getMessage(), "Unexpected token, expected VARIABLE");
 		}
 	}
+	
+	@Test(expected=ParseException.class)
+	public void failureBrackets() throws ParseException {
+		testParser.parse(uselessBrackets);
+	}
+	
+	@Test(expected=ParseException.class)
+	public void failureMismatch() throws ParseException {
+		testParser.parse(mismatchedBrackets);
+	}
 
 	@Test
-	public void libraryTest() throws ParseException {
+	public void firstLibraryTest() throws ParseException {
 		String testString = "lib = λx.x" + "\n" + "λv.(lib lib)";
 		LambdaTerm libTerm = new NamedTerm("lib", new Abstraction("x", new BoundVariable(1)));
 		LambdaTerm expectedTerm = new Abstraction("v", new Application(libTerm, libTerm));
@@ -151,8 +213,14 @@ public class ParserTest {
 		try {
 			term = testParser.parse(testString);
 		} catch (ParseException e) {
+			System.out.println(e.getMessage());
 			fail();
 		}
 		assertEquals(term, expectedTerm);
+	}
+	
+	@Test
+	public void multipleLibTermTest() {
+		
 	}
 }

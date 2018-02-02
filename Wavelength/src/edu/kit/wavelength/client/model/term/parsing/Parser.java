@@ -77,15 +77,7 @@ public class Parser {
 			RegExp comEx = RegExp.compile("\\s*--.*");
 			MatchResult blankResult = RegExp.compile("^\\s+^[.]").exec(possibleRows[i]);
 			MatchResult commentResult = RegExp.compile("^\\s*--.*").exec(possibleRows[i]);
-			// System.out.println("blank " + blankResult);
-			// System.out.println("com " + commentResult);
-
-			if (blankResult != null) {
-				System.out.println("blankFound_" + possibleRows[i]);
-				System.out.println(blankResult.getGroupCount());
-			}
 			if (blankResult == null && commentResult == null) {
-				// System.out.println("Adding: " + possibleRows[i]);
 				rows.add(possibleRows[i]);
 			}
 		}
@@ -100,8 +92,7 @@ public class Parser {
 
 	private void readLibraryTerm(String input) throws ParseException {
 		MatchResult assign = assignmentRegExp.exec(input);
-		if (assign.getGroupCount() < 1) {
-
+		if (assign != null) {
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1].trim();

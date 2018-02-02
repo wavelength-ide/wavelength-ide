@@ -18,13 +18,7 @@ public class Pause implements Action {
 	public void run() {
 		app.executor().pause();
 		
-		if (app.executor().canStepBackward()) {
-			app.backwardsButton().setEnabled(true);
-		}
-		if (app.executor().canStepForward()) {
-			app.forwardButton().setEnabled(true);
-			app.reductionOrderBox().setEnabled(true);
-		}
+		Control.updateStepControls();
 		
 		app.exportButtons().forEach(b -> b.setEnabled(true));
 		

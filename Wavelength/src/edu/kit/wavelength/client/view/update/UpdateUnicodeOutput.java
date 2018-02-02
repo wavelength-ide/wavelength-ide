@@ -38,7 +38,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// disable clicking on all currently displayed terms
 		for(int i = 0; i < terms.size(); i++) {
 			FlowPanel wrapper = new FlowPanel();
-			wrapper.addStyleName("nonclickable");
+			wrapper.addStyleName("notclickable");
 			wrapper.add(terms.get(i));
 			app.outputArea().add(wrapper);
 		}
@@ -61,13 +61,13 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// make all terms, except the last not clickable and display them
 		for (int i = 0; i < terms.size() - 1; i++) {
 			FlowPanel wrap = new FlowPanel("div");
-			wrap.addStyleName("nonclickable");
+			wrap.setStyleName("notclickable");
 			wrap.add(terms.get(i));
 			app.outputArea().add(wrap);
 		}
 		// make the last term clickable and display it
 		FlowPanel wrap = new FlowPanel("div");
-		wrap.addStyleName("againClickable");
+		wrap.addStyleName("clickable");
 		wrap.add(terms.get(terms.size()-1));
 		app.outputArea().add(wrap);		
 	}

@@ -18,7 +18,8 @@ import edu.kit.wavelength.client.model.term.parsing.ParseException;
  */
 public class Executor implements Serializable {
 
-	private List<ExecutionObserver> observers;
+	private List<ExecutionObserver> executionObservers;
+	private List<ControlObserver> controlObservers;
 	
 	private boolean terminated = true;
 	private boolean paused = true;
@@ -26,14 +27,15 @@ public class Executor implements Serializable {
 	
 	/**
 	 * Creates a new Executor.
-	 * @param observers Observers to update with reduced lambda terms
+	 * @param executionObservers Observers to update with reduced lambda terms
 	 */
-	public Executor(List<ExecutionObserver> observers) {
-		this.observers = observers;
+	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers) {
+		this.executionObservers = executionObservers;
+		this.controlObservers = controlObservers;
 	}
 	
 	private void pushTerm(LambdaTerm t) {
-		observers.forEach(o -> o.pushTerm(t));
+		executionObservers.forEach(o -> o.pushTerm(t));
 	}
 	
 	private void pushTerms(Iterable<LambdaTerm> ts) {
@@ -45,6 +47,7 @@ public class Executor implements Serializable {
 		Scheduler.get().scheduleIncremental(() -> {
 			if (engine.isFinished()) {
 				paused = true;
+				controlObservers.forEach(ControlObserver::finish);
 				return !paused;
 			}
 			List<LambdaTerm> displayedTerms = engine.stepForward();
@@ -70,6 +73,9 @@ public class Executor implements Serializable {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
 		engine = new ExecutionEngine(input, order, size, libraries);
+		if (!engine.getDisplayed().isEmpty()) {
+			pushTerm(engine.getDisplayed().get(0));
+		}
 		scheduleExecution();
 		terminated = false;
 	}
@@ -156,7 +162,7 @@ public class Executor implements Serializable {
 			throw new IllegalStateException("trying to step while execution is terminated");
 		}
 		engine.stepBackward();
-		observers.forEach(o -> o.removeLastTerm());
+		executionObservers.forEach(o -> o.removeLastTerm());
 		
 	}
 

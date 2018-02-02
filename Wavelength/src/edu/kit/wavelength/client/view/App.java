@@ -58,6 +58,7 @@ import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 
@@ -478,7 +479,7 @@ public class App implements Serializable {
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
-		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput()));
+		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput()), Arrays.asList(new FinishExecution()));
 	}
 
 	@Override

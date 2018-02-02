@@ -1,17 +1,14 @@
 package edu.kit.wavelength.client.view.action;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.html.Text;
 
-import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.Window;
 
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
@@ -52,6 +49,8 @@ public class RunNewExecution implements Action {
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 
+		app.outputArea().clear();
+		
 		try {
 			app.executor().start(code, order, size, libraries);
 		} catch (ParseException e) {
@@ -75,6 +74,7 @@ public class RunNewExecution implements Action {
 		
 		app.exerciseButtons().forEach(b -> b.setEnabled(false));
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
+		app.exportButtons().forEach(b -> b.setEnabled(false));
 		
 		app.runButton().setVisible(false);
 		app.pauseButton().setVisible(true);

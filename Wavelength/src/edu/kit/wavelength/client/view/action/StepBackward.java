@@ -16,10 +16,13 @@ public class StepBackward implements Action {
 	public void run() {
 		app.executor().stepBackward();
 
-		app.reductionOrderBox().setEnabled(true);
-		if (!app.executor().canStepBackward()) {
-			app.backwardsButton().setEnabled(false);
-		}
+		boolean canStepForward = app.executor().canStepForward();
+		app.forwardButton().setEnabled(canStepForward);
+		app.unpauseButton().setEnabled(canStepForward);
+		app.reductionOrderBox().setEnabled(canStepForward);
+		
+		boolean canStepBackward = app.executor().canStepBackward();
+		app.backwardsButton().setEnabled(canStepBackward);
 	}
 
 }

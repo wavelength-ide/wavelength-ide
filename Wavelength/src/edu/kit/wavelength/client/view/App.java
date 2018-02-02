@@ -41,6 +41,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
+import edu.kit.wavelength.client.view.action.Pause;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
@@ -342,6 +343,7 @@ public class App implements Serializable {
 		controlPanel.add(stepByStepControlPanel);
 		
 		backwardsButton = new Button();
+		backwardsButton.setEnabled(false);
 		backwardsButton.addStyleName("fa fa-chevron-left");
 		stepByStepControlPanel.add(backwardsButton);
 
@@ -350,6 +352,7 @@ public class App implements Serializable {
 		stepByStepControlPanel.add(stepByStepButton);
 
 		forwardButton = new Button();
+		forwardButton.setEnabled(false);
 		forwardButton.addStyleName("fa fa-chevron-right");
 		stepByStepControlPanel.add(forwardButton);
 
@@ -358,6 +361,7 @@ public class App implements Serializable {
 		controlPanel.add(runControlPanel);
 		
 		cancelButton = new Button();
+		cancelButton.setEnabled(false);
 		cancelButton.addStyleName("fa fa-stop");
 		runControlPanel.add(cancelButton);
 		
@@ -390,6 +394,7 @@ public class App implements Serializable {
 		Exports.all().forEach(e -> {
 			AnchorListItem exportButton = new AnchorListItem();
 			exportButton.setText(e.getName());
+			exportButton.setEnabled(false);
 			exportMenu.add(exportButton);
 			exportButtons.add(exportButton);
 		});
@@ -460,6 +465,7 @@ public class App implements Serializable {
 		forwardButton.addClickHandler(e -> new StepForward().run());
 		cancelButton.addClickHandler(e -> new Stop().run());
 		runButton.addClickHandler(e -> new RunNewExecution().run());
+		pauseButton.addClickHandler(e -> new Pause().run());
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
 		
 		List<Export> exports = Exports.all();

@@ -20,7 +20,8 @@ public class Executor implements Serializable {
 
 	private List<ExecutionObserver> observers;
 	
-	private boolean autoRunning = false;
+	private boolean terminated = true;
+	private boolean paused = true;
 	private ExecutionEngine engine;
 	
 	/**
@@ -40,19 +41,19 @@ public class Executor implements Serializable {
 	}
 	
 	private void scheduleExecution() {
-		autoRunning = true;
+		paused = false;
 		Scheduler.get().scheduleIncremental(() -> {
 			if (engine.isFinished()) {
-				autoRunning = false;
-				return autoRunning;
+				paused = true;
+				return !paused;
 			}
 			List<LambdaTerm> displayedTerms = engine.stepForward();
 			pushTerms(displayedTerms);
-			if (!autoRunning && !engine.isCurrentDisplayed()) {
+			if (paused && !engine.isCurrentDisplayed()) {
 				LambdaTerm current = engine.displayCurrent();
 				pushTerm(current);
 			}
-			return autoRunning;
+			return !paused;
 		});
 	}
 	
@@ -65,21 +66,31 @@ public class Executor implements Serializable {
 	 * @throws ParseException thrown when input cannot be parsed
 	 */
 	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
+		if (!terminated) {
+			throw new IllegalStateException("trying to start execution while execution is not terminated");
+		}
 		engine = new ExecutionEngine(input, order, size, libraries);
 		scheduleExecution();
+		terminated = false;
 	}
 	
 	/**
 	 * Pauses the automatic execution, transitioning into the step by step mode.
 	 */
 	public void pause() {
-		autoRunning = false;
+		if (terminated) {
+			throw new IllegalStateException("trying to pause execution while execution is terminated");
+		}
+		paused = true;
 	}
 
 	/**
 	 * Unpauses the automatic execution, transitioning from step by step mode into automatic execution.
 	 */
 	public void unpause() {
+		if (terminated) {
+			throw new IllegalStateException("trying to unpause execution while execution is terminated");
+		}
 		scheduleExecution();
 	}
 	
@@ -87,7 +98,11 @@ public class Executor implements Serializable {
 	 * Terminates the step by step- and automatic execution.
 	 */
 	public void terminate() {
+		if (terminated) {
+			throw new IllegalStateException("trying to terminate a terminated execution");
+		}
 		pause();
+		terminated = true;
 	}
 
 	/**
@@ -99,8 +114,12 @@ public class Executor implements Serializable {
 	 * @throws ParseException thrown when input cannot be parsed
 	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
+		if (!terminated) {
+			throw new IllegalStateException("trying to start execution while execution is not terminated");
+		}
 		engine = new ExecutionEngine(input, order, size, libraries);
-		if (engine != null && !engine.getDisplayed().isEmpty()) {
+		terminated = false;
+		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}
 	}
@@ -109,6 +128,9 @@ public class Executor implements Serializable {
 	 * Executes a single reduction of the current lambda term.
 	 */
 	public void stepForward() {
+		if (terminated) {
+			throw new IllegalStateException("trying to step while execution is terminated");
+		}
 		List<LambdaTerm> displayedTerms = engine.stepForward();
 		pushTerms(displayedTerms);
 	}
@@ -119,6 +141,9 @@ public class Executor implements Serializable {
 	 * an exception is thrown
 	 */
 	public void stepForward(Application redex) {
+		if (terminated) {
+			throw new IllegalStateException("trying to step while execution is terminated");
+		}
 		List<LambdaTerm> displayedTerms = engine.stepForward(redex);
 		pushTerms(displayedTerms);
 	}
@@ -127,6 +152,9 @@ public class Executor implements Serializable {
 	 * Reverts to the previously output lambda term.
 	 */
 	public void stepBackward() {
+		if (terminated) {
+			throw new IllegalStateException("trying to step while execution is terminated");
+		}
 		engine.stepBackward();
 		observers.forEach(o -> o.removeLastTerm());
 		
@@ -137,6 +165,9 @@ public class Executor implements Serializable {
 	 * @param reduction The new reduction order
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
+		if (terminated) {
+			throw new IllegalStateException("trying to set option while execution is terminated");
+		}
 		engine.setReductionOrder(reduction);
 	}
 	
@@ -145,7 +176,7 @@ public class Executor implements Serializable {
 	 * @return whether stepBackward is possible
 	 */
 	public boolean canStepBackward() {
-		return engine.canStepBackward();
+		return isPaused() && engine.canStepBackward();
 	}
 	
 	/**
@@ -153,7 +184,33 @@ public class Executor implements Serializable {
 	 * @return whether stepForward is possible
 	 */
 	public boolean canStepForward() {
-		return !engine.isFinished();
+		return isPaused() && !engine.isFinished();
+	}
+	
+	/**
+	 * Checks whether the engine is paused.
+	 * @return whether the engine is paused
+	 */
+	public boolean isPaused() {
+		return !terminated && paused;
+	}
+	
+	/**
+	 * Checks whether the engine is terminated.
+	 * @return whether the engine is terminated
+	 */
+	public boolean isTerminated() {
+		return terminated;
+	}
+	
+	/**
+	 * Wipes the memory of the last execution.
+	 */
+	public void wipe() {
+		if (!terminated) {
+			throw new IllegalStateException("trying to wipe the executor while executor is not terminated");
+		}
+		engine = null;
 	}
 	
 	/**
@@ -161,13 +218,16 @@ public class Executor implements Serializable {
 	 * @return lt
 	 */
 	public List<LambdaTerm> getDisplayed() {
+		if (engine == null) {
+			throw new IllegalStateException("trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
+		}
 		return engine.getDisplayed();
 	}
 	
 	public List<Library> getLibraries() {
-		if (engine == null)
-			throw new IllegalStateException("There is no engine");
-		
+		if (engine == null) {
+			throw new IllegalStateException("trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
+		}
 		return engine.getLibraries();
 	}
 	

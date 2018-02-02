@@ -56,7 +56,10 @@ public class Stop implements Action {
 		app.exportButtons().forEach(b -> b.setEnabled(true));
 		
 		app.pauseButton().setVisible(false);
+		app.pauseButton().setEnabled(true);
 		app.unpauseButton().setVisible(false);
+		app.unpauseButton().setEnabled(true);
 		app.runButton().setVisible(true);
+		app.runButton().setEnabled(true);
 	}
 }

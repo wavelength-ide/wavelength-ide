@@ -17,9 +17,6 @@ public class StepForward implements Action {
 	public void run() {
 		app.executor().stepForward();
 
-		if (!app.executor().canStepForward()) {
-			app.forwardButton().setEnabled(false);
-			app.reductionOrderBox().setEnabled(false);
-		}
+		Control.updateStepControls();
 	}
 }

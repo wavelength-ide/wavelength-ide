@@ -18,6 +18,8 @@ public class EnterDefaultMode implements Action {
 		app.editor().write("");
 		app.outputArea().clear();
 		
+		app.exportButtons().forEach(b -> b.setEnabled(false));
+		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), true);
 		app.solutionArea().setVisible(false);
 		app.closeExercisePopup().hide();

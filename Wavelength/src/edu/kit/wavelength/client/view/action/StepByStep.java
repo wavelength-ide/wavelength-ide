@@ -57,7 +57,9 @@ public class StepByStep implements Action {
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
-
+		
+		app.outputArea().clear();
+		
 		try {
 			app.executor().stepByStep(code, order, size, libraries);
 		} catch (ParseException e) {
@@ -71,20 +73,13 @@ public class StepByStep implements Action {
 		app.outputFormatBox().setEnabled(false);
 		app.outputSizeBox().setEnabled(false);
 		
-		
-		if (app.executor().canStepBackward()) {
-			app.backwardsButton().setEnabled(true);
-		}
+		Control.updateStepControls();
 		app.stepByStepButton().setEnabled(false);
-		if (app.executor().canStepForward()) {
-			app.forwardButton().setEnabled(true);
-		} else {
-			app.reductionOrderBox().setEnabled(false);
-		}
 		app.cancelButton().setEnabled(true);
 		
 		app.exerciseButtons().forEach(b -> b.setEnabled(false));
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
+		app.exportButtons().forEach(b -> b.setEnabled(true));
 		
 		app.unpauseButton().setVisible(true);
 		app.runButton().setVisible(false);

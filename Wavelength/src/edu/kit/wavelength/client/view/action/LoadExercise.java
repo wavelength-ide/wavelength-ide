@@ -24,6 +24,8 @@ public class LoadExercise implements Action {
 		app.editor().write("");
 		app.outputArea().clear();
 		
+		app.exportButtons().forEach(b -> b.setEnabled(false));
+		
 		app.exerciseDescriptionLabel().setText(exercise.getTask());
 		app.solutionArea().setText(exercise.getSolution());
 		

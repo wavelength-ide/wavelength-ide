@@ -1,4 +1,4 @@
-package edu.kit.wavelength.server.serialization;
+package edu.kit.wavelength.server.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,7 +10,7 @@ import java.util.UUID;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-import edu.kit.wavelength.client.serialization.DatabaseService;
+import edu.kit.wavelength.client.database.DatabaseService;
 
 /**
  * Implementation of {@link DatabaseService} running on server.

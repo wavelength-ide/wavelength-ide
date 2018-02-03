@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.serialization;
+package edu.kit.wavelength.client.database;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 

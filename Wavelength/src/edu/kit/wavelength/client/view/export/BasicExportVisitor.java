@@ -61,7 +61,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
 		// Store bracketsFlag for later use.
 		final boolean brackets = bracketsForApp;
-		resetFlags();
+		setFlags(false);
 
 		// An abstraction inside a application should get brackets.
 		bracketsForAbs = true;
@@ -85,18 +85,15 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	public StringBuilder visitNamedTerm(NamedTerm term) {
 		Objects.requireNonNull(term);
 
-		resetFlags();
+		setFlags(false);
 		return formatText(new StringBuilder(term.getName()));
 	}
 
-	/*
-	 * TODO: Markus fragen, was hier los ist.
-	 */
 	@Override
 	public StringBuilder visitPartialApplication(PartialApplication app) {
 		Objects.requireNonNull(app);
 
-		resetFlags();
+		setFlags(false);
 		return app.getRepresented().acceptVisitor(this);
 	}
 
@@ -104,7 +101,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	public StringBuilder visitFreeVariable(FreeVariable var) {
 		Objects.requireNonNull(var);
 
-		resetFlags();
+		setFlags(false);
 		return new StringBuilder(var.getName());
 	}
 
@@ -113,7 +110,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		Objects.requireNonNull(var);
 		Objects.requireNonNull(resolvedName);
 
-		resetFlags();
+		setFlags(false);
 		return new StringBuilder(resolvedName);
 	}
 
@@ -124,7 +121,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
 		// Store bracketsFlag for later use and reset flags.
 		final boolean brackets = bracketsForAbs;
-		resetFlags();
+		setFlags(false);
 
 		StringBuilder absVariable = new StringBuilder(resolvedName);
 
@@ -142,12 +139,16 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	}
 
 	/**
-	 * Resets all Flags for brackets. Flags should be false at the end of each
+	 * Sets all Flags for brackets. Flags should be false at the end of each
 	 * visit method.
+	 * 
+	 * @param set
+	 *            {@link true} if the Flags should be set and {@link false}
+	 *            otherwise
 	 */
-	protected final void resetFlags() {
-		bracketsForAbs = false;
-		bracketsForApp = false;
+	protected final void setFlags(Boolean set) {
+		bracketsForAbs = set;
+		bracketsForApp = set;
 	}
 
 	/**

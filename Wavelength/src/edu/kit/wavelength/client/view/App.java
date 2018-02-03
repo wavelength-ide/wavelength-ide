@@ -20,20 +20,25 @@ import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
+import org.gwtbootstrap3.client.ui.html.Text;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
+import edu.kit.wavelength.client.database.DatabaseService;
+import edu.kit.wavelength.client.database.DatabaseServiceAsync;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
@@ -53,13 +58,11 @@ import edu.kit.wavelength.client.view.action.StepForward;
 import edu.kit.wavelength.client.view.action.Stop;
 import edu.kit.wavelength.client.view.action.UnpauseExecution;
 import edu.kit.wavelength.client.view.action.UseShare;
-
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
 import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
-
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
@@ -166,8 +169,6 @@ public class App implements Serializable {
 	 * Initializes App.
 	 */
 	private void initialize() {
-		String state = Window.Location.getPath();
-		// deserialize
 
 		mainPanel = new DockLayoutPanel(Unit.EM);
 		mainPanel.addStyleName("mainPanel");
@@ -476,6 +477,27 @@ public class App implements Serializable {
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput()));
+
+		// deserialization if possible
+		String state = History.getToken();
+		if (state != null) {
+			// deserialize
+			DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);
+			AsyncCallback<String> callback = new AsyncCallback<String>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					App.get().outputArea().add(new Text(caught.getMessage()));
+				}
+
+				@Override
+				public void onSuccess(String result) {
+					if (result != null) {
+						deserialize(result);
+					}
+				}
+			};
+			databaseService.getSerialization(state, callback);
+		}
 	}
 
 	@Override
@@ -526,7 +548,7 @@ public class App implements Serializable {
 		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(3)));
 		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(4)));
 
-		//check and uncheck the checkBoxes correctly
+		// check and uncheck the checkBoxes correctly
 		assert (val.get(5).length() == libraryCheckBoxes.size());
 		for (int i = 0; i < val.get(5).length(); i++) {
 			assert (val.get(5).charAt(i) == 'c' || val.get(5).charAt(i) == 'u');
@@ -536,12 +558,12 @@ public class App implements Serializable {
 				libraryCheckBoxes.get(i).setValue(false);
 			}
 		}
-		
-		if(val.get(0) == "") {
-			//TODO: gehe in den edit Modus
-		}
-		else {
-			//TODO: gehe in den stepByStep Modus (mit richtigem outputFformat, -size und reduction order)
+
+		if (val.get(0) == "") {
+			// TODO: gehe in den edit Modus
+		} else {
+			// TODO: gehe in den stepByStep Modus (mit richtigem outputFformat, -size und
+			// reduction order)
 		}
 	}
 

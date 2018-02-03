@@ -64,6 +64,8 @@ import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+import edu.kit.wavelength.client.view.update.UpdateShareURL;
+import edu.kit.wavelength.client.view.update.UpdateURL;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 /**
@@ -472,7 +474,8 @@ public class App implements Serializable {
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
 
-		shareButton.addClickHandler(e -> new UseShare(null).run());
+		int pollingDelayMS = 5;
+		shareButton.addClickHandler(e -> new UseShare(new URLSerializer(Arrays.asList(new UpdateURL(), new UpdateShareURL()), pollingDelayMS)).run());
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
@@ -498,8 +501,6 @@ public class App implements Serializable {
 			};
 			databaseService.getSerialization(state, callback);
 		}
-		
-		
 	}
 
 	@Override

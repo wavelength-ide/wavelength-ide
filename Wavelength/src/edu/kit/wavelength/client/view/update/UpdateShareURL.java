@@ -13,7 +13,7 @@ public class UpdateShareURL implements SerializationObserver {
 
 	@Override
 	public void updateSerialized(String id) {
-		App.get().sharePanel().setText(Window.Location.getHref() + History.encodeHistoryToken(id) );
+		App.get().sharePanel().setText(Window.Location.getHref() + History.encodeHistoryToken(id));
 	}
 
 }

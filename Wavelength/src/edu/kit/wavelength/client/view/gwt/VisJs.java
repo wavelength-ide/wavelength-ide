@@ -20,8 +20,16 @@ public class VisJs {
 				color: {
 					border: '#333333',
 					background: 'white'
+				},
+				chosen: {
+					node: false
 				}
 			},
+			edges: {
+				chosen: {
+					edge: false
+				}
+			}, 
 			width: '100%',
 			clickToUse: false,
   			interaction: {

@@ -289,7 +289,6 @@ public class App implements Serializable {
 		outputBlocker.add(outputArea);
 		ioPanel.add(outputBlocker);
 
-
 		inputControlPanel = new FlowPanel();
 		inputControlPanel.addStyleName("inputControlPanel");
 		inputPanel.addSouth(inputControlPanel, 1.85);

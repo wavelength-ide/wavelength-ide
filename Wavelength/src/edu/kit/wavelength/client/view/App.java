@@ -483,7 +483,7 @@ public class App implements Serializable {
 
 		// deserialization if possible
 		String state = History.getToken();
-		if (state != null) {
+		if (state.length() > 0) {
 			// deserialize
 			DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);
 			AsyncCallback<String> callback = new AsyncCallback<String>() {

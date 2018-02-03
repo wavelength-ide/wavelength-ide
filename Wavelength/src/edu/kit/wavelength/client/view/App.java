@@ -20,7 +20,10 @@ import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
+import org.gwtbootstrap3.client.ui.html.Text;
 
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -39,6 +42,7 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
+
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.Pause;
@@ -60,6 +64,7 @@ import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
+
 
 
 /**
@@ -125,6 +130,7 @@ public class App implements Serializable {
 	private Button toggleSolutionButton;
 	private Button closeExerciseButton;
 	private TextArea solutionArea;
+	// TODO
 	private SimplePanel editorPanel;
 	private FlowPanel optionBarPanel;
 	private ListBox outputFormatBox;
@@ -156,6 +162,7 @@ public class App implements Serializable {
 	private MonacoEditor editor;
 
 	private Executor executor;
+
 
 	private App() {
 		
@@ -267,10 +274,13 @@ public class App implements Serializable {
 		inputPanel = new DockLayoutPanel(Unit.EM);
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
+		// TODO: test
 		outputArea = new FlowPanel("div");
+		outputArea.getElement().setId("network");
 		outputArea.setWidth("100%");
 		outputArea.addStyleName("output");
 		ioPanel.add(outputArea);
+
 
 		inputControlPanel = new FlowPanel();
 		inputControlPanel.addStyleName("inputControlPanel");
@@ -463,6 +473,7 @@ public class App implements Serializable {
 		cancelButton.addClickHandler(e -> new Stop().run());
 		runButton.addClickHandler(e -> new RunNewExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
+
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
 		
 		List<Export> exports = Exports.all();
@@ -476,6 +487,7 @@ public class App implements Serializable {
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput()), Arrays.asList(new FinishExecution()));
+
 	}
 
 	@Override
@@ -619,9 +631,9 @@ public class App implements Serializable {
 		return solutionArea;
 	}
 
-	public SimplePanel editorPanel() {
+	/*public SimplePanel editorPanel() {
 		return editorPanel;
-	}
+	}*/
 
 	public FlowPanel optionBarPanel() {
 		return optionBarPanel;

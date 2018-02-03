@@ -28,6 +28,7 @@ public class Parser {
 	private CustomLibrary inputLibrary;
 	private Stack<Token> tokens;
 	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]+\\s*=\\s*.+\\s*");
+
 	private int rowPos = 0;
 	private int columnPos = 0;
 
@@ -66,6 +67,7 @@ public class Parser {
 	 */
 	public LambdaTerm parse(String input) throws ParseException {
 		String[] possibleRows = input.split("\n");
+
 		ArrayList<String> rows = new ArrayList<String>();
 		for (int i = 0; i < possibleRows.length; i++) {
 			if (possibleRows[i] == "") {
@@ -93,12 +95,13 @@ public class Parser {
 		}
 		rowPos = rows.size() - 1;
 		String lastLine = rows.get((rows.size() - 1));
-		return parseTerm(lastLine);
+		return parseTerm(lastLine); 
 	}
 
 	private void readLibraryTerm(String input) throws ParseException {
 		MatchResult assign = assignmentRegExp.exec(input);
 		if (assign.getGroupCount() < 1) {
+
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1].trim();
@@ -371,5 +374,5 @@ public class Parser {
 				return new NamedTerm(name, retrieveTerm(name));
 			}
 		}
-	}
+	} 
 }

@@ -1,29 +1,54 @@
-/*package edu.kit.wavelength.client.view.update;
+package edu.kit.wavelength.client.view.update;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
-import edu.kit.wavelength.client.view.webui.component.TreeOutput;
-import edu.kit.wavelength.client.view.webui.component.TreeTerm;
+import edu.kit.wavelength.client.view.gwt.VisJs;
 
-*//**
+/**
  * Observer that updates the {@link TreeOutput} with a new term if it is
  * displayed.
- *//*
+ */
 public class UpdateTreeOutput implements ExecutionObserver {
 	
-	private App app = App.get();
+	private static App app = App.get();
+	private List<TreeTuple> terms;
+	private List<FlowPanel> panels;
+	private int id;
+	public int nodeId;
+	
+	public UpdateTreeOutput() {
+		terms = new ArrayList<>();
+		panels = new ArrayList<>();
+		id = 0;
+		nodeId = 0;
+	}
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
-		if (!app.treeOutput().isShown()) {
-			return;
-		}
+		id += 1;
+		TreeTuple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this));
+		terms.add(term);
+		
+		String nodes = "[" + term.nodes + "]";
+		String edges = "[" + term.edges + "]";
+		
+		FlowPanel treePanel = new FlowPanel("div");
+		treePanel.getElement().setId("" + id);
+		panels.add(treePanel);
+		app.outputArea().add(treePanel);
+		VisJs.loadNetwork(nodes, edges, treePanel);
+	}
 
-		// TODO: libraries?
-		TreeTerm term = t.acceptVisitor(new TreeTermVisitor(null));
-		app.treeOutput().setTerm(term);
+	@Override
+	public void removeLastTerm() {
+		id -= 1;
+		app.outputArea().remove(id);	
 	}
 
 }
-*/

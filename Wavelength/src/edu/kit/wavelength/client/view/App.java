@@ -280,15 +280,13 @@ public class App implements Serializable {
 		inputPanel = new DockLayoutPanel(Unit.EM);
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
-		// TODO: test
 		outputBlocker = new FlowPanel("div");
+		outputBlocker.addStyleName("output");
 
 		outputArea = new FlowPanel("div");
 		outputArea.getElement().setId("network");
 		outputArea.setWidth("100%");
-		outputArea.addStyleName("output");
 		outputBlocker.add(outputArea);
-		outputBlocker.addStyleName("unblocked");
 		ioPanel.add(outputBlocker);
 
 

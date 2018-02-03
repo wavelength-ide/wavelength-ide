@@ -42,7 +42,10 @@ import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-
+import edu.kit.wavelength.client.model.term.Abstraction;
+import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.BoundVariable;
+import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
@@ -64,6 +67,7 @@ import edu.kit.wavelength.client.view.export.Exports;
 
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.gwt.VisJs;
+import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 
 
 /**
@@ -130,7 +134,7 @@ public class App implements Serializable {
 	private Button closeExerciseButton;
 	private TextArea solutionArea;
 	// TODO
-	private FlowPanel editorPanel;
+	private SimplePanel editorPanel;
 	private FlowPanel optionBarPanel;
 	private ListBox outputFormatBox;
 	private ListBox reductionOrderBox;
@@ -164,7 +168,6 @@ public class App implements Serializable {
 	
 	// TODO: test
 	private VisJs tree;
-	private SplitLayoutPanel treeOutput;
 
 	private App() {
 		
@@ -277,10 +280,13 @@ public class App implements Serializable {
 		inputPanel = new DockLayoutPanel(Unit.EM);
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
+		// TODO: test
 		outputArea = new FlowPanel("div");
+		outputArea.getElement().setId("network");
 		outputArea.setWidth("100%");
 		outputArea.addStyleName("output");
 		ioPanel.add(outputArea);
+
 
 		inputControlPanel = new FlowPanel();
 		inputControlPanel.addStyleName("inputControlPanel");
@@ -321,13 +327,9 @@ public class App implements Serializable {
 		solutionArea.setText("hello\n\tworld\n\t\teveryone");
 		exercisePanel.add(solutionArea);
 		
-		editorPanel = new FlowPanel("div");
-		editorPanel.add(new Label("test"));
+		editorPanel = new SimplePanel();
 		// id needed because MonacoEditor adds to panel div by id
-		// TODO: testcode
-		 editorPanel.getElement().setId("network");
-		// editorPanel.addStyleName("network");
-		// editorPanel.setClassName("network");
+		editorPanel.getElement().setId("editor");
 		editorExercisePanel.add(editorPanel);
 
 		optionBarPanel = new FlowPanel();
@@ -473,9 +475,9 @@ public class App implements Serializable {
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
 		
 		backwardsButton.addClickHandler(e -> new StepBackward().run());
-		stepByStepButton.addClickHandler(e -> new StepByStep().run());
+		// stepByStepButton.addClickHandler(e -> new StepByStep().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
-		cancelButton.addClickHandler(e -> new Stop().run());
+		// cancelButton.addClickHandler(e -> new Stop().run());
 		// runButton.addClickHandler(e -> new RunNewExecution().run());
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
 		
@@ -493,22 +495,41 @@ public class App implements Serializable {
 		
 		//TODO: test code
 		String strNodes = new StringBuilder("[")
-				.append("{id: 1, label: 'Node 1'},")
-				.append("{id: 2, label: 'Node 2'},")
-				.append("{id: 3, label: 'Node 3'},")
-				.append("{id: 4, label: 'Node 4'},")
-				.append("{id: 5, label: 'Node 5'}")
+				.append("{id: 1, label: 'λx'},")
+				.append("{id: 2, label: 'λy'},")
+				.append("{id: 3, label: 'x'},")
+				.append("{id: 4, label: 'y'},")
+				//.append("{id: 5, label: 'Node 5'}")
 				.append("]").toString();
 
 		String strEdges = new StringBuilder("[")
-			.append("{from: 1, to: 3},")
 			.append("{from: 1, to: 2},")
-			.append("{from: 5, to: 4},")
-			.append("{from: 2, to: 5},")
+			.append("{from: 1, to: 3},")
+			.append("{from: 2, to: 4},")
+			//.append("{from: 2, to: 5},")
 			.append("]").toString();
 		
-		tree = VisJs.load(editorPanel);
-		runButton.addClickHandler(event -> tree.loadNetwork(strNodes, strEdges));
+		// tree = VisJs.load();
+		FlowPanel panel1 = new FlowPanel("div");
+		panel1.getElement().setId("1");
+		outputArea.add(panel1);
+		runButton.addClickHandler(event -> tree.loadNetwork(strNodes, strEdges, panel1));
+		
+		FlowPanel panel2 = new FlowPanel("div");
+		panel2.getElement().setId("2");
+		outputArea.add(panel2);
+		cancelButton.addClickHandler(event -> tree.loadNetwork(strNodes, strEdges, panel2));
+		
+		
+		UpdateTreeOutput treeOutput = new UpdateTreeOutput();
+		
+		FreeVariable var2 = new FreeVariable("z");
+		BoundVariable var = new BoundVariable(1);
+		Abstraction abs = new Abstraction("x", var);
+		Application app = new Application(abs, var2);
+		Application app2 = new Application(app, app);
+		
+		stepByStepButton.addClickHandler(event -> treeOutput.pushTerm(var));
 	
 		
 	}

@@ -40,7 +40,8 @@ public enum TokenType {
 	NEWLINE {
 		@Override
 		public String toString() {
-			return System.getProperty("line.separator");
+			return null;
+			//return System.getProperty("line.separator");
 		}
 	},
 	SPACE {

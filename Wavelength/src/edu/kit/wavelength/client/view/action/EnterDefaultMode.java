@@ -16,6 +16,7 @@ public class EnterDefaultMode implements Action {
 	@Override
 	public void run() {
 		app.editor().write("");
+		app.editor().unlock();
 		app.outputArea().clear();
 		
 		app.exportButtons().forEach(b -> b.setEnabled(false));

@@ -72,12 +72,14 @@ public class Executor implements Serializable {
 		if (!terminated) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
+		executionObservers.forEach(o -> o.clear());
 		engine = new ExecutionEngine(input, order, size, libraries);
 		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}
 		scheduleExecution();
 		terminated = false;
+		
 	}
 	
 	/**
@@ -123,6 +125,7 @@ public class Executor implements Serializable {
 		if (!terminated) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
+		executionObservers.forEach(o -> o.clear());
 		engine = new ExecutionEngine(input, order, size, libraries);
 		terminated = false;
 		if (!engine.getDisplayed().isEmpty()) {

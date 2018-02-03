@@ -17,7 +17,7 @@ import edu.kit.wavelength.client.view.gwt.VisJs;
 public class UpdateTreeOutput implements ExecutionObserver {
 	
 	private static App app = App.get();
-	private List<TreeTuple> terms;
+	private List<TreeTriple> terms;
 	private List<FlowPanel> panels;
 	private int id;
 	public int nodeId;
@@ -31,8 +31,12 @@ public class UpdateTreeOutput implements ExecutionObserver {
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
+		if (!app.treeIsSet()) {
+			return;
+		}
+		
 		id += 1;
-		TreeTuple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this));
+		TreeTriple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this));
 		terms.add(term);
 		
 		String nodes = "[" + term.nodes + "]";
@@ -47,8 +51,23 @@ public class UpdateTreeOutput implements ExecutionObserver {
 
 	@Override
 	public void removeLastTerm() {
+		if (!app.treeIsSet()) {
+			return;
+		}
+		
 		id -= 1;
 		app.outputArea().remove(id);	
 	}
+
+	@Override
+	public void clear() {
+		terms.clear();
+		panels.clear();;
+		id = 0;
+		nodeId = 0;
+		
+	}
+	
+	
 
 }

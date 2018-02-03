@@ -26,8 +26,11 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	}
 
 	@Override
-	public void pushTerm(LambdaTerm t) {		
-		// TODO: libraries?
+	public void pushTerm(LambdaTerm t) {	
+		if (!app.unicodeIsSet()) {
+			return;
+		}
+
 		// create a new visitor and visit the term
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries());
 		Tuple term = t.acceptVisitor(visitor);
@@ -49,7 +52,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	}
 	
 	public void removeLastTerm() {
-		if(terms.isEmpty()) {
+		if(!app.unicodeIsSet() || terms.isEmpty()) {
 			// no term to remove
 			return;
 		}
@@ -71,6 +74,11 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		wrap.addStyleName("clickable");
 		wrap.add(terms.get(terms.size()-1));
 		app.outputArea().add(wrap);		
+	}
+
+	@Override
+	public void clear() {
+		terms.clear();
 	}
 	
 	

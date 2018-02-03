@@ -32,7 +32,7 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 /**
  * Visitor for generating the output of a {@link LambdaTerm} for the {@link TreeOutput} view.
  */
-public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTuple> {
+public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 	
 	//private int id;
 	private UpdateTreeOutput output;
@@ -44,56 +44,56 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTuple> {
 	}
 
 	@Override
-	public TreeTuple visitApplication(Application app) {
+	public TreeTriple visitApplication(Application app) {
 		int id = output.nodeId;
 		output.nodeId += 1;
-		TreeTuple left = app.getLeftHandSide().acceptVisitor(this);
-		TreeTuple right = app.getRightHandSide().acceptVisitor(this);
+		TreeTriple left = app.getLeftHandSide().acceptVisitor(this);
+		TreeTriple right = app.getRightHandSide().acceptVisitor(this);
 		String node = "{id: " + id + ", label: 'App'},";
 		String edge1 = "{from: " + id + ", to: " + left.idFirst + "},";
 		String edge2 = "{from: " + id + ", to: " + right.idFirst + "},";
-		return new TreeTuple(left.nodes + right.nodes + node, left.edges + right.edges + edge1 + edge2, id);
+		return new TreeTriple(left.nodes + right.nodes + node, left.edges + right.edges + edge1 + edge2, id);
 	}
 
 	@Override
-	public TreeTuple visitNamedTerm(NamedTerm term) {
+	public TreeTriple visitNamedTerm(NamedTerm term) {
 		int id = output.nodeId;
 		String node = "{id: " + this.output.nodeId + ", label: '" + term.getName() + "'},";
 		output.nodeId += 1;
-		return new TreeTuple(node, "", id);
+		return new TreeTriple(node, "", id);
 	}
 
 	@Override
-	public TreeTuple visitPartialApplication(PartialApplication app) {
+	public TreeTriple visitPartialApplication(PartialApplication app) {
 		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
-	public TreeTuple visitFreeVariable(FreeVariable var) {
+	public TreeTriple visitFreeVariable(FreeVariable var) {
 		int id = output.nodeId;
 		String node = "{id: " + this.output.nodeId + ", label: '" + var.getName() + "'},";
 		output.nodeId += 1;
-		return new TreeTuple(node, "", id);
+		return new TreeTriple(node, "", id);
 	}
 
 	@Override
-	protected TreeTuple visitBoundVariable(BoundVariable var, String resolvedName) {
+	protected TreeTriple visitBoundVariable(BoundVariable var, String resolvedName) {
 		int id = output.nodeId;
 		String node = "{id: " + output.nodeId + ", label: '" + resolvedName + "'},";
 		output.nodeId += 1;
-		return new TreeTuple(node, "", id);
+		return new TreeTriple(node, "", id);
 	}
 
 	@Override
-	protected TreeTuple visitAbstraction(Abstraction abs, String resolvedName) {
+	protected TreeTriple visitAbstraction(Abstraction abs, String resolvedName) {
 		int idAbs = 	output.nodeId;
 		int idInner = idAbs + 1;
 		output.nodeId += 1;
-		TreeTuple inner = abs.getInner().acceptVisitor(this);
+		TreeTriple inner = abs.getInner().acceptVisitor(this);
 		String label = "'λ" + resolvedName + "'";
 		String nodes = "{id: " + idAbs + ", label: " + label + "}," + inner.nodes;
 		String edges = "{from: " + idAbs + ", to: " + idInner + "},";
-		return new TreeTuple(nodes, edges, idAbs);		
+		return new TreeTriple(nodes, edges, idAbs);		
 	}
 
 }

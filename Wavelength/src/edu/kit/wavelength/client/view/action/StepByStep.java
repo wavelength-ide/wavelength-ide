@@ -1,14 +1,11 @@
 package edu.kit.wavelength.client.view.action;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.gwtbootstrap3.client.ui.CheckBox;
-import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import edu.kit.wavelength.client.model.library.Libraries;
@@ -27,13 +24,6 @@ import edu.kit.wavelength.client.view.App;
 public class StepByStep implements Action {
 
 	private static App app = App.get();
-
-	// UI components that can no longer be interacted with
-	private static List<ListBox> componentsToLock = new ArrayList<ListBox>(Arrays.asList(
-			app.outputSizeBox(),
-			app.outputFormatBox()
-			));
-
 
 	private static <T> T find(Collection<T> list, Predicate<? super T> pred) {
 		return list.stream().filter(pred).findFirst().get();
@@ -58,7 +48,23 @@ public class StepByStep implements Action {
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 		
+
 		app.outputArea().clear();
+		
+		// TODO: determine the selected output format, display and lock it, hide the other
+		
+		String format = app.outputFormatBox().getSelectedItemText();
+		switch(format) {
+		case "Unicode Output":
+			app.setUnicode(true);
+			app.setTree(false);
+			break;
+		case "Tree Output":
+			app.setUnicode(false);
+			app.setTree(true);
+			break;
+		default: break;
+		}
 		
 		try {
 			app.executor().stepByStep(code, order, size, libraries);

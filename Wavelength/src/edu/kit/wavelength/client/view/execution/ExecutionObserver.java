@@ -12,4 +12,5 @@ public interface ExecutionObserver {
 	 */
 	void pushTerm(LambdaTerm t);
 	void removeLastTerm();
+	void clear();
 }

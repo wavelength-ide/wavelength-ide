@@ -8,8 +8,6 @@ import java.util.stream.Collectors;
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.html.Text;
 
-import com.google.gwt.user.client.Window;
-
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -18,7 +16,6 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.view.App;
-
 /**
  * This class starts a new reduction process and sets the view accordingly.
  */
@@ -51,6 +48,22 @@ public class RunNewExecution implements Action {
 
 		app.outputArea().clear();
 		
+		// TODO: determine the selected output format, display and lock it, hide the other
+		
+		String format = app.outputFormatBox().getSelectedItemText();
+		switch(format) {
+		case "Unicode Output":
+			app.setUnicode(true);
+			app.setTree(false);
+			break;
+		case "Tree Output":
+			app.setUnicode(false);
+			app.setTree(true);
+			break;
+		default: break;
+		}
+		
+		
 		try {
 			app.executor().start(code, order, size, libraries);
 		} catch (ParseException e) {
@@ -79,6 +92,5 @@ public class RunNewExecution implements Action {
 		app.runButton().setVisible(false);
 		app.pauseButton().setVisible(true);
 
-		// TODO: determine the selected output format, display and lock it, hide the other
 	}
 }

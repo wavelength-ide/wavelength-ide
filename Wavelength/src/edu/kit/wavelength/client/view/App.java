@@ -63,6 +63,7 @@ import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.FinishExecution;
+import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 
@@ -162,6 +163,9 @@ public class App implements Serializable {
 	private MonacoEditor editor;
 
 	private Executor executor;
+
+	private boolean unicodeIsSet;
+	private boolean treeIsSet;
 
 
 	private App() {
@@ -486,8 +490,9 @@ public class App implements Serializable {
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
-		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput()), Arrays.asList(new FinishExecution()));
-
+		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(),  new UpdateTreeOutput()), Arrays.asList(new FinishExecution()));
+		unicodeIsSet = true;
+		treeIsSet = false;
 	}
 
 	@Override
@@ -745,6 +750,22 @@ public class App implements Serializable {
 
 	public Executor executor() {
 		return executor;
+	}
+	
+	public boolean unicodeIsSet() {
+		return this.unicodeIsSet;
+	}
+	
+	public void setUnicode(boolean value) {
+		this.unicodeIsSet = value;
+	}
+	
+	public boolean treeIsSet() {
+		return this.treeIsSet;
+	}
+	
+	public void setTree(boolean value) {
+		this.treeIsSet = value;
 	}
 
 }

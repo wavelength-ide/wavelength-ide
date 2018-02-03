@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
+
 /**
  * Represents a bound variable in the untyped lambda calculus.
  * 
@@ -54,7 +56,15 @@ public final class BoundVariable implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("b" + String.valueOf(deBruijnIndex));
+	}
+	
+	public static BoundVariable fromSerialized(String serialized) {
+		try {
+			return new BoundVariable(Integer.valueOf(serialized));
+		} catch (NumberFormatException ex) {
+			throw new IllegalArgumentException();
+		}
 	}
 
 }

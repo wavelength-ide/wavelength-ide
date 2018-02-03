@@ -57,7 +57,11 @@ public final class FreeVariable implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("f" + name);
+	}
+	
+	public static FreeVariable fromSerialized(String serialized) {
+		return new FreeVariable(serialized);
 	}
 
 }

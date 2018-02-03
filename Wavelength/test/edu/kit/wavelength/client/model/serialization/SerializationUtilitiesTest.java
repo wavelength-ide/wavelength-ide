@@ -21,10 +21,30 @@ public class SerializationUtilitiesTest {
 	}
 	
 	@Test
-	public void enclose2Test() {
+	public void extract2Test() {
+		String input = "11a1011b";
+		
+		List<String> ans = SerializationUtilities.extract(input);
+		
+		assertNotNull(ans);
+		assertEquals(3, ans.size());
+		assertEquals("a", ans.get(0));
+		assertEquals("", ans.get(1));
+		assertEquals("b", ans.get(2));
+	}
+	
+	@Test
+	public void enclose1Test() {
 		String ans = SerializationUtilities.enclose(new StringBuilder("ab"), new StringBuilder("abcdefghij")).toString();
 		
 		assertEquals(ans, "12ab210abcdefghij");
+	}
+	
+	@Test
+	public void enclose2Test() {
+		String ans = SerializationUtilities.enclose(new StringBuilder("a"), new StringBuilder(""), new StringBuilder("b")).toString();
+		
+		assertEquals(ans, "11a1011b");
 	}
 
 }

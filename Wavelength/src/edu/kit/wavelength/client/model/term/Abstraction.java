@@ -1,5 +1,9 @@
 package edu.kit.wavelength.client.model.term;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
+
 /**
  * Represents an abstraction in the untyped lambda calculus.
  * 
@@ -70,7 +74,13 @@ public final class Abstraction implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("A").append(SerializationUtilities.enclose(new StringBuilder(preferredName), inner.serialize()));
+	}
+	
+	public static Abstraction fromSerialized(String serialized) {
+		List<String> extracted = SerializationUtilities.extract(serialized);
+		assert extracted.size() == 2;
+		return new Abstraction(extracted.get(0), LambdaTerm.deserialize(extracted.get(1)));
 	}
 
 }

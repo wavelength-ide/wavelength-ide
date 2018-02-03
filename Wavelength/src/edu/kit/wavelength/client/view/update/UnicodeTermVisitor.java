@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.view.update;
 
 import java.util.List;
+import java.util.Objects;
 
 import org.gwtbootstrap3.client.ui.html.Text;
 
@@ -16,7 +17,6 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
-import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.action.StepManually;
 
 /**
@@ -24,17 +24,32 @@ import edu.kit.wavelength.client.view.action.StepManually;
  * {@link UnicodeOutput} view.
  */
 public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
-	
+
+	private boolean bracketsForAbs;
+	private boolean bracketsForApp;
+
 	public UnicodeTermVisitor(List<Library> libraries) {
 		super(libraries);
-		// TODO Auto-generated constructor stub
+		bracketsForAbs = false;
+		bracketsForApp = false;
 	}
-	
 
 	@Override
 	public Tuple visitApplication(Application app) {
+		Objects.requireNonNull(app);
+		
+		final boolean brackets = bracketsForApp;
+		resetFlags();
+
+		// An abstraction inside a application should get brackets.
+		bracketsForAbs = true;
 		Tuple left = app.getLeftHandSide().acceptVisitor(this);
+
+		// If the right term of an application is an application it should get
+		// brackets because implicit brackets bind from left to right.
+		bracketsForApp = true;
 		Tuple right = app.getRightHandSide().acceptVisitor(this);
+
 		FlowPanel panel = new FlowPanel("span");
 		Anchor a = left.a;
 		// this is only true if left is an application
@@ -47,18 +62,25 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 			// when clicked reduce the clicked application
 			a.addClickHandler(event -> new StepManually(app).run());
 		}
-			
-		// TODO: style the application
-		panel.add(new Text("("));
+
+		if (brackets) {
+			panel.add(new Text("("));
+		}
 		panel.add(left.panel);
-		panel.add(new Text(") ("));
+		panel.add(new Text(" "));
 		panel.add(right.panel);
-		panel.add(new Text(")"));
+		if (brackets) {
+			panel.add(new Text(")"));
+		}
 		return new Tuple(panel, null);
 	}
 
 	@Override
-	public Tuple visitNamedTerm(NamedTerm term) {
+	public Tuple visitNamedTerm(NamedTerm term) {	
+		Objects.requireNonNull(term);
+
+		resetFlags();
+		
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(term.getName()));
 		return new Tuple(panel, null);
@@ -66,11 +88,19 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 	@Override
 	public Tuple visitPartialApplication(PartialApplication app) {
+		Objects.requireNonNull(app);
+		
+		resetFlags();
+		
 		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
 	public Tuple visitFreeVariable(FreeVariable var) {
+		Objects.requireNonNull(var);
+		
+		resetFlags();
+		
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(var.getName()));
 		return new Tuple(panel, null);
@@ -78,6 +108,11 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 	@Override
 	protected Tuple visitBoundVariable(BoundVariable var, String resolvedName) {
+		Objects.requireNonNull(var);
+		Objects.requireNonNull(resolvedName);
+		
+		resetFlags();
+
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(resolvedName));
 		return new Tuple(panel, null);
@@ -85,14 +120,39 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 	@Override
 	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
+		Objects.requireNonNull(abs);
+		Objects.requireNonNull(resolvedName);
+
+		// Store bracketsFlag for later use and reset flags.
+		final boolean brackets = bracketsForAbs;
+		resetFlags();
+
+		// An application inside an abstraction should get brackets.
+		bracketsForApp = true;
+		
 		Tuple inner = abs.getInner().acceptVisitor(this);
+		
 		Anchor a = new Anchor("λ" + resolvedName);
 		a.addStyleName("notclickable");
+		
 		FlowPanel panel = new FlowPanel("span");
+		
+		if(brackets) {
+			panel.add(new Text("("));
+		}
 		panel.add(a);
 		panel.add(new Text("."));
 		panel.add(inner.panel);
-		return  new Tuple(panel, a);
+		if(brackets) {
+			panel.add(new Text(")"));
+		}
+		
+		return new Tuple(panel, a);
+	}
+
+	protected final void resetFlags() {
+		bracketsForAbs = false;
+		bracketsForApp = false;
 	}
 
 }

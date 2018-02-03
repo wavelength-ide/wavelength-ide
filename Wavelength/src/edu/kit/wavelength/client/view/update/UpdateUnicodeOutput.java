@@ -7,7 +7,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NodeList;
 import com.google.gwt.user.client.ui.FlowPanel;
 
-
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
@@ -17,16 +18,16 @@ import edu.kit.wavelength.client.view.execution.ExecutionObserver;
  * displayed.
  */
 public class UpdateUnicodeOutput implements ExecutionObserver {
-	
+
 	private List<FlowPanel> terms;
 	private static App app = App.get();
-	
+
 	public UpdateUnicodeOutput() {
 		terms = new ArrayList<>();
 	}
 
 	@Override
-	public void pushTerm(LambdaTerm t) {	
+	public void pushTerm(LambdaTerm t) {
 		if (!app.unicodeIsSet()) {
 			return;
 		}
@@ -34,25 +35,25 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// create a new visitor and visit the term
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries());
 		Tuple term = t.acceptVisitor(visitor);
-		
+
 		// clear the output
 		app.outputArea().clear();
-		
+
 		// disable clicking on all currently displayed terms
-		for(int i = 0; i < terms.size(); i++) {
+		for (int i = 0; i < terms.size(); i++) {
 			FlowPanel wrapper = new FlowPanel();
 			wrapper.addStyleName("notclickable");
 			wrapper.add(terms.get(i));
 			app.outputArea().add(wrapper);
 		}
-		
+
 		terms.add(term.panel);
 		// display the new term
 		app.outputArea().add(term.panel);
 	}
-	
+
 	public void removeLastTerm() {
-		if(!app.unicodeIsSet() || terms.isEmpty()) {
+		if (!app.unicodeIsSet() || terms.isEmpty()) {
 			// no term to remove
 			return;
 		}
@@ -61,7 +62,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// TODO: probably not fast enough
 		// clear the output and reset all terms
 		app.outputArea().clear();
-		
+
 		// make all terms, except the last not clickable and display them
 		for (int i = 0; i < terms.size() - 1; i++) {
 			FlowPanel wrap = new FlowPanel("div");
@@ -72,16 +73,13 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		// make the last term clickable and display it
 		FlowPanel wrap = new FlowPanel("div");
 		wrap.addStyleName("clickable");
-		wrap.add(terms.get(terms.size()-1));
-		app.outputArea().add(wrap);		
+		wrap.add(terms.get(terms.size() - 1));
+		app.outputArea().add(wrap);
 	}
 
 	@Override
 	public void clear() {
 		terms.clear();
 	}
-	
-	
-
 
 }

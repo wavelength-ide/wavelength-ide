@@ -2,8 +2,6 @@ package edu.kit.wavelength.client.view.update;
 
 import java.util.List;
 
-import org.gwtbootstrap3.client.ui.html.Text;
-
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
@@ -13,7 +11,6 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
-import edu.kit.wavelength.client.view.App;
 
 /*
  * String strNodes = new StringBuilder("[")

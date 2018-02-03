@@ -474,9 +474,9 @@ public class App implements Serializable {
 		
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
 		
-		backwardsButton.addClickHandler(e -> new StepBackward().run());
+		// backwardsButton.addClickHandler(e -> new StepBackward().run());
 		// stepByStepButton.addClickHandler(e -> new StepByStep().run());
-		forwardButton.addClickHandler(e -> new StepForward().run());
+		// forwardButton.addClickHandler(e -> new StepForward().run());
 		// cancelButton.addClickHandler(e -> new Stop().run());
 		// runButton.addClickHandler(e -> new RunNewExecution().run());
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
@@ -494,32 +494,6 @@ public class App implements Serializable {
 		// executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()));
 		
 		//TODO: test code
-		String strNodes = new StringBuilder("[")
-				.append("{id: 1, label: 'λx'},")
-				.append("{id: 2, label: 'λy'},")
-				.append("{id: 3, label: 'x'},")
-				.append("{id: 4, label: 'y'},")
-				//.append("{id: 5, label: 'Node 5'}")
-				.append("]").toString();
-
-		String strEdges = new StringBuilder("[")
-			.append("{from: 1, to: 2},")
-			.append("{from: 1, to: 3},")
-			.append("{from: 2, to: 4},")
-			//.append("{from: 2, to: 5},")
-			.append("]").toString();
-		
-		// tree = VisJs.load();
-		FlowPanel panel1 = new FlowPanel("div");
-		panel1.getElement().setId("1");
-		outputArea.add(panel1);
-		runButton.addClickHandler(event -> tree.loadNetwork(strNodes, strEdges, panel1));
-		
-		FlowPanel panel2 = new FlowPanel("div");
-		panel2.getElement().setId("2");
-		outputArea.add(panel2);
-		cancelButton.addClickHandler(event -> tree.loadNetwork(strNodes, strEdges, panel2));
-		
 		
 		UpdateTreeOutput treeOutput = new UpdateTreeOutput();
 		
@@ -529,8 +503,8 @@ public class App implements Serializable {
 		Application app = new Application(abs, var2);
 		Application app2 = new Application(app, app);
 		
-		stepByStepButton.addClickHandler(event -> treeOutput.pushTerm(var));
-	
+		forwardButton.addClickHandler(event -> treeOutput.pushTerm(app));
+		backwardsButton.addClickHandler(event -> treeOutput.removeLastTerm());
 		
 	}
 

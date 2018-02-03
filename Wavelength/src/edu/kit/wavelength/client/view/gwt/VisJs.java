@@ -16,18 +16,26 @@ public class VisJs {
 			edges : eval(edges)
 		};
 		var options = {
+			nodes: {
+				color: {
+					border: '#333333',
+					background: 'white'
+				}
+			},
 			width: '100%',
 			clickToUse: false,
   			interaction: {
     					dragNodes: false,
     					dragView: false,
     					zoomView: false
-    					},
+    			},
     			layout: {
     				hierarchical: {
     					enabled: true,
     					sortMethod: 'directed',
-    					levelSeparation: 70}}
+    					levelSeparation: 70
+    				}
+    			}
 			};
 
 		var network = new $wnd.vis.Network(parent, data, options);

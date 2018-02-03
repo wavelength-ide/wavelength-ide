@@ -73,7 +73,7 @@ public class RunNewExecution implements Action {
 			app.outputArea().add(new Text(message + ":" + row + ":" + column));
 			return;
 		}
-
+		
 		app.outputFormatBox().setEnabled(false);
 		app.reductionOrderBox().setEnabled(false);
 		app.outputSizeBox().setEnabled(false);
@@ -91,6 +91,8 @@ public class RunNewExecution implements Action {
 		
 		app.runButton().setVisible(false);
 		app.pauseButton().setVisible(true);
+		
+		app.outputBlocker().addStyleName("notclickable");
 
 	}
 }

@@ -12,6 +12,7 @@ import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
+import edu.kit.wavelength.client.view.App;
 
 /**
  * Concurrently reduces lambda terms.

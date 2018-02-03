@@ -166,6 +166,8 @@ public class App implements Serializable {
 
 	private boolean unicodeIsSet;
 	private boolean treeIsSet;
+	
+	private FlowPanel outputBlocker;
 
 
 	private App() {
@@ -279,11 +281,15 @@ public class App implements Serializable {
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
 		// TODO: test
+		outputBlocker = new FlowPanel("div");
+
 		outputArea = new FlowPanel("div");
 		outputArea.getElement().setId("network");
 		outputArea.setWidth("100%");
 		outputArea.addStyleName("output");
-		ioPanel.add(outputArea);
+		outputBlocker.add(outputArea);
+		outputBlocker.addStyleName("unblocked");
+		ioPanel.add(outputBlocker);
 
 
 		inputControlPanel = new FlowPanel();
@@ -766,6 +772,10 @@ public class App implements Serializable {
 	
 	public void setTree(boolean value) {
 		this.treeIsSet = value;
+	}
+	
+	public FlowPanel outputBlocker() {
+		return this.outputBlocker;
 	}
 
 }

@@ -89,6 +89,8 @@ public class StepByStep implements Action {
 		
 		app.unpauseButton().setVisible(true);
 		app.runButton().setVisible(false);
+		
+		app.outputBlocker().removeStyleName("notclickable");
 
 		// TODO: determine the selected output format, display and lock it, hide the other
 		

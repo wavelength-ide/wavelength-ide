@@ -26,5 +26,7 @@ public class UnpauseExecution implements Action {
 		
 		app.unpauseButton().setVisible(false);
 		app.pauseButton().setVisible(true);
+		
+		app.outputBlocker().addStyleName("notclickable");
 	}
 }

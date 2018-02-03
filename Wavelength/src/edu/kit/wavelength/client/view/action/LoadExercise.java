@@ -31,6 +31,8 @@ public class LoadExercise implements Action {
 		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), false);
 		app.loadExercisePopup().hide();
+		
+		app.outputBlocker().removeStyleName("notclickable");
 	}
 
 	public Exercise getExercise() {

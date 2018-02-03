@@ -24,5 +24,7 @@ public class Pause implements Action {
 		
 		app.unpauseButton().setVisible(true);
 		app.pauseButton().setVisible(false);
+		
+		app.outputBlocker().removeStyleName("notclickable");
 	}
 }

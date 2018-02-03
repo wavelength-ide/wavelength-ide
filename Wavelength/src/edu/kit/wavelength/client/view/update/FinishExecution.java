@@ -16,6 +16,8 @@ public class FinishExecution implements ControlObserver {
 		
 		app.unpauseButton().setVisible(true);
 		app.pauseButton().setVisible(false);
+		
+		app.outputBlocker().removeStyleName("notclickable");
 	}
 
 }

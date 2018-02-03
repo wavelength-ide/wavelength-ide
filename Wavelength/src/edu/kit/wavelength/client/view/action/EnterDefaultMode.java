@@ -24,6 +24,8 @@ public class EnterDefaultMode implements Action {
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), true);
 		app.solutionArea().setVisible(false);
 		app.closeExercisePopup().hide();
+		
+		app.outputBlocker().removeStyleName("notclickable");
 	}
 
 }

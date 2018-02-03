@@ -10,36 +10,48 @@ import java.util.UUID;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
+import edu.kit.wavelength.client.serialization.DatabaseService;
+
+/**
+ * Implementation of {@link DatabaseService} running on server.
+ * 
+ * This implementation uses {@link UUID} objects as identifiers for serializations.
+ */
 public class DatabaseServiceImpl extends RemoteServiceServlet implements DatabaseService {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-
-	private static final String databasePath = "jdbc:sqlite:/lib/database.db";
+	
+	//SQL-Commands
+	private static final String databasePath = "jdbc:sqlite:database/database.db";
 	private static final String createDatabase = "CREATE TABLE IF NOT EXISTS map (\n id text PRIMARY KEY, \n serialization text);";
 	private static final String selectSerialization = "SELECT serialization FROM map WHERE id = ?";
 	private static final String selectID = "SELECT id FROM map WHERE serialization = ?";
 	private static final String insertEntry = "INSERT INTO map(id, serialization) VALUES (?,?)";
+	
 	private Connection connection;
 
+	/**
+	 * Initialize connection to database located at url given by {@value #databasePath}.
+	 */
 	public DatabaseServiceImpl() {
 		this.connection = null;
 		this.initializeDatabase();
 	}
 
+	/**
+	 * Initialize the database and create a table (if it does not already exist) mapping ids(as Strings) to serialization Strings.
+	 */
 	private void initializeDatabase() {
 		try {
 			connection = DriverManager.getConnection(databasePath);
 		} catch (SQLException exception) {
-			throw new IllegalArgumentException("ERROR!!!");
+			//do nothing
 		}
 		try {
 			Statement statement = connection.createStatement();
 			statement.execute(createDatabase);
 		} catch (SQLException exception) {
-			throw new IllegalArgumentException("ERROR!!!");
+			//do nothing
 		}
 	}
 
@@ -56,13 +68,18 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 					return null;
 				}
 			} catch (SQLException exception) {
-				throw new IllegalArgumentException("Error!!");
+				return null;
 			}
 		} else {
 			return null;
 		}
 	}
 	
+	/**
+	 * Returns the id for a given serialization if it exists.
+	 * @param serialization a serialization String
+	 * @return id mapped to given serialization
+	 */
 	private String getID(final String serialization) {
 		if (connection != null) {
 			try {
@@ -75,7 +92,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 					return null;
 				}
 			} catch (SQLException exception) {
-				throw new IllegalArgumentException("Error!!");
+				return null;
 			}
 		} else {
 			return null;
@@ -83,9 +100,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 	}
 
 	@Override
-	public void addEntry(final String serialization) {
+	public String addEntry(final String serialization) {
 		if (connection != null) {
-			if (this.getID(serialization) == null) {
+			String assignedID = this.getID(serialization);
+			if (assignedID == null) {
 				//hopefully this is not already used
 				String id = UUID.randomUUID().toString();
 				try {
@@ -93,13 +111,16 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 					statement.setString(1, id);
 					statement.setString(2, serialization);
 					statement.executeUpdate();
+					return id.toString();
 				} catch (SQLException exception) {
-					throw new IllegalArgumentException("Error!!");
+					return null;
 				}
-			} 
-			//do nothing if entry already exists
+			} else {
+				//return id if it already exists
+				return assignedID;
+			}
 		} else {
-			throw new IllegalArgumentException("Database not initialized!");
+			return null;
 		}
 	}
 

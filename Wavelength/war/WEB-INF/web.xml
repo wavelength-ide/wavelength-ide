@@ -11,7 +11,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>DatabaseServiceImpl</servlet-name>
-    <servlet-class>edu.kit.wavelength.server.serialization.DatabaseServiceImpl</servlet-class>
+    <servlet-class>edu.kit.wavelength.server.database.DatabaseServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>

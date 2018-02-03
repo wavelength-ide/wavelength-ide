@@ -180,7 +180,7 @@ public class App implements Serializable {
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		openMainMenuButton = new Button();
-		openMainMenuButton.addStyleName("fa fa-cog");
+		openMainMenuButton.addStyleName("fa fa-bars");
 		openMainMenuButton.setToggleCaret(false);
 		openMainMenuButton.setDataToggle(Toggle.DROPDOWN);
 		mainMenu.add(openMainMenuButton);
@@ -498,6 +498,8 @@ public class App implements Serializable {
 			};
 			databaseService.getSerialization(state, callback);
 		}
+		
+		
 	}
 
 	@Override

@@ -75,7 +75,7 @@ public class ExecutionEngine {
 		this.current = new RingBuffer(extracted.get(3));
 		this.currentNum = Integer.valueOf(extracted.get(4));
 		this.lastDisplayedNum = Integer.valueOf(extracted.get(5));
-		this.libraries = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(5), Libraries::deserialize));
+		this.libraries = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(6), Libraries::deserialize));
 	}
 	
 	public List<Library> getLibraries() {

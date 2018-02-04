@@ -209,7 +209,7 @@ public class ExecutionEngine {
 
 	/**
 	 * Serializes the ExecutionEngine by serializing its current {@link OutputSize},
-	 * {@link ReductionOrder} and the terms it holds.
+	 * {@link ReductionOrder}, {@link Libraries} and the terms it holds.
 	 * 
 	 * @return The ExecutionEngine's serialized String representation
 	 */

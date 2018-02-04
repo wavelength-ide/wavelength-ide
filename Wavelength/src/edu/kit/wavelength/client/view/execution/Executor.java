@@ -166,5 +166,12 @@ public class Executor implements Serializable {
 		this.engine = new ExecutionEngine(serialization);
 		this.pushTerms(engine.getDisplayed());
 	}
-
+	
+	/**
+	 * Deserializes the Executor and loads the given content into the OutputArea.
+	 * @param content the given content to deserialize
+	 */
+	public void deserialize(String content) {
+		//TODO implement
+	}
 }

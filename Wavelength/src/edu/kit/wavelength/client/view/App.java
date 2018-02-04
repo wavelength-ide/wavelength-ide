@@ -77,7 +77,7 @@ public class App implements Serializable {
 
 	/**
 	 * Gets a singleton instance of App.
-	 * 
+	 *
 	 * @return instance
 	 */
 	public static App get() {
@@ -480,7 +480,7 @@ public class App implements Serializable {
 		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), pollingDelayMS);
 		urlSerializer.startPolling();
 		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
-		
+
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
@@ -508,27 +508,29 @@ public class App implements Serializable {
 		}
 	}
 
+	/**
+	 * Serializes the Application by returning a String from which the state of
+	 * the application can be recreated.
+	 *
+	 * The String holds information about the {@link Executor}, the
+	 * {@link Editor}, the {@link OptionBox}es and the selected {@link Library}s
+	 * in this order.
+	 *
+	 * @return the string representation of the application
+	 */
 	@Override
 	public StringBuilder serialize() {
 
-		// serializes the executor. An empty string signalizes, that the
-		// execution engine is null.
-		// if the execution engine is null the application should start in
-		// editing mode, if the execution engine holds terms the application
-		// should start in step by step mode.
 		StringBuilder executionEngineString = executor.serialize();
 
-		// returns the content of the editor.
 		StringBuilder editorString = new StringBuilder(editor.read());
 
-		// setting the index of an option box does not activate the change
-		// handler
 		StringBuilder outputFormatBoxString = new StringBuilder(Integer.toString(outputFormatBox.getSelectedIndex()));
 		StringBuilder reductionOrderBoxString = new StringBuilder(
 				Integer.toString(reductionOrderBox.getSelectedIndex()));
 		StringBuilder outputSizeString = new StringBuilder(Integer.toString(outputSizeBox.getSelectedIndex()));
 
-		// has one character for each library. a 'c' for a selected library and
+		// has one character for each library. A 'c' for a selected library and
 		// a 'u' for an unselected library
 		StringBuilder libraryCheckBoxesString = new StringBuilder();
 		for (int i = 0; i < libraryCheckBoxes.size(); i++) {
@@ -543,20 +545,36 @@ public class App implements Serializable {
 				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString);
 	}
 
+	/**
+	 * Deserializes the Application with the given String.
+	 *
+	 * This includes {@link Executor}, the {@link Editor}, the
+	 * {@link OptionBox}es and the selected {@link Library}s. It sets the
+	 * application into step by step mode if the Executor holds terms and leaves
+	 * the application in its initial state else.
+	 *
+	 * @param content
+	 *            the string representing the state of the application
+	 */
 	public void deserialize(String content) {
 		List<String> val = SerializationUtilities.extract(content);
-		assert (val.size() == 6);
+		assert (val
+				.size() == 6) : "SerializationUtilities extracted a list of strings that doesn't contain 6 arguments";
+
+		// deserializes the executor with the correct string
+		executor.deserialize(val.get(0));
 
 		// writes Editor with given content
 		editor.write(val.get(1));
 
-		// TODO set reductionOrder of Executor
-		// Selects the correct content of the optionBoxes
+		// Selects the correct option of the optionBoxes
+		// assert that the given strings are representations of decimal integers
+		// and that the idex fits the optionBox
 		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(2)));
 		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(3)));
 		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(4)));
 
-		// check and uncheck the checkBoxes correctly
+		// checks and unchecks the Library Check Boxes
 		assert (val.get(5).length() == libraryCheckBoxes.size());
 		for (int i = 0; i < val.get(5).length(); i++) {
 			assert (val.get(5).charAt(i) == 'c' || val.get(5).charAt(i) == 'u');
@@ -568,10 +586,23 @@ public class App implements Serializable {
 		}
 
 		if (val.get(0) == "") {
-			// TODO: gehe in den edit Modus
+			// no terms in the OutputArea
+			// nothing to do application is already in initial state
 		} else {
-			// TODO: gehe in den stepByStep Modus (mit richtigem outputFformat, -size und
-			// reduction order)
+			// terms in OutputArea
+			// change UI to transition from initialized state to step by step
+			// state
+			editor.lock();
+			stepByStepButton.setEnabled(false);
+			outputSizeBox.setEnabled(false);
+			outputFormatBox.setEnabled(false);
+			libraryCheckBoxes.forEach(b -> b.setEnabled(false));
+			exerciseButtons.forEach(b -> b.setEnabled(false));
+
+			// enable backwardsButton because at least one term should be in the
+			// outputArea
+			backwardsButton.setEnabled(true);
+			forwardButton.setEnabled(true);
 		}
 	}
 

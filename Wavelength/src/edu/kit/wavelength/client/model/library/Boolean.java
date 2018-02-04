@@ -24,7 +24,7 @@ public final class Boolean implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("b");
 	}
 
 }

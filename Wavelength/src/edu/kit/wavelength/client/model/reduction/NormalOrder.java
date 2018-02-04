@@ -29,7 +29,7 @@ public final class NormalOrder implements ReductionOrder {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("n");
 	}
 
 	private class NormalOrderVisitor extends NameAgnosticVisitor<Application> {

@@ -1,8 +1,11 @@
 package edu.kit.wavelength.client.model.library;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.NamedTerm;
 
 public class CustomLibrary implements Library {
 
@@ -18,8 +21,26 @@ public class CustomLibrary implements Library {
 	
 	@Override
 	public StringBuilder serialize() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder res = new StringBuilder("c");
+		ArrayList<StringBuilder> comp = new ArrayList<>();
+		comp.add(new StringBuilder(name));
+		int size = names.size();
+		for (int i = 0; i < size; ++i) {
+			comp.add(new NamedTerm(names.get(i), terms.get(i)).serialize());
+		}
+		return res.append(SerializationUtilities.enclose(comp.toArray(new StringBuilder[0])));
+	}
+	
+	public static CustomLibrary fromSerialized(String serialized) {
+		List<String> extracted = SerializationUtilities.extract(serialized);
+		assert extracted.size() > 0;
+		CustomLibrary res = new CustomLibrary(extracted.get(0));
+		for (int i = 1; i < extracted.size(); ++i) {
+			assert !extracted.get(i).isEmpty() && extracted.get(i).charAt(0) == 'n';
+			NamedTerm parsed = NamedTerm.fromSerialized(extracted.get(i).substring(1));
+			res.addTerm(parsed.getInner(), parsed.getName());
+		}
+		return res;
 	}
 
 	@Override

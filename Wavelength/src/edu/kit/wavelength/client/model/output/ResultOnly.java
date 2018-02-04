@@ -29,7 +29,7 @@ public final class ResultOnly implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("r");
 	}
 
 	@Override

@@ -69,7 +69,7 @@ public final class NaturalNumbers implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("n");
 	}
 
 }

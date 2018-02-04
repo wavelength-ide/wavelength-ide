@@ -30,7 +30,7 @@ public final class CallByValue implements ReductionOrder {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("V");
 	}
 
 	private class CallByValueVisitor extends NameAgnosticVisitor<Application> {

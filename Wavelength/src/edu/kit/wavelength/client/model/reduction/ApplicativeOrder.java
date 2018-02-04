@@ -29,7 +29,7 @@ public final class ApplicativeOrder implements ReductionOrder {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("a");
 	}
 	
 	private class ApplicativeVisitor extends NameAgnosticVisitor<Application> {

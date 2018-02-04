@@ -26,7 +26,7 @@ public final class TuplesAndLists implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("t");
 	}
 
 }

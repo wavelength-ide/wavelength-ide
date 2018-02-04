@@ -44,7 +44,11 @@ public final class Periodic implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return null;
+		return new StringBuilder("p" + String.valueOf(period));
+	}
+	
+	public static Periodic fromSerialized(String serialized) {
+		return new Periodic(Integer.valueOf(serialized));
 	}
 
 	@Override

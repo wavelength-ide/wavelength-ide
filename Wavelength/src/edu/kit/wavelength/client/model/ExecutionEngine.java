@@ -28,7 +28,7 @@ public class ExecutionEngine {
 	private OutputSize size;
 
 	private ArrayList<NumberedTerm> shown;
-	private RingBuffer<LambdaTerm> current;
+	private RingBuffer current;
 	private int currentNum, lastDisplayedNum;
 
 	/**
@@ -47,7 +47,7 @@ public class ExecutionEngine {
 	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		Parser p = new Parser(libraries);
 
-		this.current = new RingBuffer<LambdaTerm>(size.numToPreserve());
+		this.current = new RingBuffer(size.numToPreserve());
 		this.current.set(0, p.parse(input));
 		this.size = size;
 		this.order = order;

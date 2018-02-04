@@ -3,6 +3,8 @@ package edu.kit.wavelength.client.view.update;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.html.Text;
+
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.term.LambdaTerm;

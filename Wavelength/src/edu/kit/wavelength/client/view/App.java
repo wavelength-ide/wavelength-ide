@@ -286,6 +286,7 @@ public class App implements Serializable {
 		outputArea = new FlowPanel("div");
 		outputArea.getElement().setId("network");
 		outputArea.setWidth("100%");
+		outputArea.addStyleName("output");
 		outputBlocker.add(outputArea);
 		ioPanel.add(outputBlocker);
 
@@ -482,7 +483,7 @@ public class App implements Serializable {
 		pauseButton.addClickHandler(e -> new Pause().run());
 
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
-		
+				
 		List<Export> exports = Exports.all();
 		for (int i = 0; i < exports.size(); i++) {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));

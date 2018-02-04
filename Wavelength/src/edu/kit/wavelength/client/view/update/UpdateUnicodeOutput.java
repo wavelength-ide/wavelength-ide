@@ -3,12 +3,13 @@ package edu.kit.wavelength.client.view.update;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NodeList;
+import org.gwtbootstrap3.client.ui.html.Text;
+
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
+import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
@@ -32,13 +33,18 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 			return;
 		}
 
+		String orderName = app.reductionOrderBox().getSelectedItemText();
+		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
+				.findFirst().get();
+		Application nextRedex = currentOrder.next(t);
+
 		// create a new visitor and visit the term
-		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries());
+		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, orderName);
 		Tuple term = t.acceptVisitor(visitor);
 
 		// clear the output
 		app.outputArea().clear();
-
+		
 		// disable clicking on all currently displayed terms
 		for (int i = 0; i < terms.size(); i++) {
 			FlowPanel wrapper = new FlowPanel();

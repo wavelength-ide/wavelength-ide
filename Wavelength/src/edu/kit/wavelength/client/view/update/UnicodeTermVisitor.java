@@ -9,6 +9,7 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.library.Library;
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
@@ -24,14 +25,19 @@ import edu.kit.wavelength.client.view.action.StepManually;
  * {@link UnicodeOutput} view.
  */
 public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
-
+	
 	private boolean bracketsForAbs;
 	private boolean bracketsForApp;
+	private Application nextRedex;
+	private String orderName;
+	
 
-	public UnicodeTermVisitor(List<Library> libraries) {
+	public UnicodeTermVisitor(List<Library> libraries, Application nextRedex, String orderName) {
 		super(libraries);
-		bracketsForAbs = false;
-		bracketsForApp = false;
+		this.bracketsForAbs = false;
+		this.bracketsForApp = false;
+		this.nextRedex = nextRedex;
+		this.orderName = orderName;
 	}
 
 	@Override
@@ -52,6 +58,11 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 		FlowPanel panel = new FlowPanel("span");
 		Anchor a = left.a;
+		
+		/*if (app.equals(this.nextRedex)) {
+			panel.addStyleName(orderName.replaceAll("\\s+",""));
+		}*/
+		
 		// this is only true if left is an application
 		if (a != null) {
 			// make applications clickable and highlight it on mouse over

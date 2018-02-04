@@ -155,7 +155,16 @@ public class Executor implements Serializable {
 	 * @return The Executor serialized String representation
 	 */
 	public StringBuilder serialize() {
-		return null;
+		return engine.serialize();
+	}
+	
+	/**
+	 * Deserializes the Executor by deserializing its ExecutionEngine.
+	 * @param serialization serialized Executor
+	 */
+	public void deserialize(String serialization) {
+		this.engine = new ExecutionEngine(serialization);
+		this.pushTerms(engine.getDisplayed());
 	}
 
 }

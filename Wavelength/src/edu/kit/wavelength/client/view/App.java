@@ -474,8 +474,13 @@ public class App implements Serializable {
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
 
-		int pollingDelayMS = 5;
-		shareButton.addClickHandler(e -> new UseShare(new URLSerializer(Arrays.asList(new UpdateURL(), new UpdateShareURL()), pollingDelayMS)).run());
+		int pollingDelayMS = 10000;
+		UpdateURL updateURL = new UpdateURL();
+		UpdateShareURL updateShareURL = new UpdateShareURL();
+		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), pollingDelayMS);
+		urlSerializer.startPolling();
+		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
+		
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);

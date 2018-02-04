@@ -5,9 +5,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
+import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.reduction.ReductionOrders;
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BetaReducer;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
@@ -59,6 +63,19 @@ public class ExecutionEngine {
 
 		this.currentNum = 0;
 		this.lastDisplayedNum = 0;
+	}
+	
+	public ExecutionEngine(String serialized) {
+		List<String> extracted = SerializationUtilities.extract(serialized);
+		assert extracted.size() == 7;
+		
+		this.order = ReductionOrders.deserialize(extracted.get(0));
+		this.size = OutputSizes.deserialize(extracted.get(1));
+		this.shown = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(2), NumberedTerm::new));
+		this.current = new RingBuffer(extracted.get(3));
+		this.currentNum = Integer.valueOf(extracted.get(4));
+		this.lastDisplayedNum = Integer.valueOf(extracted.get(5));
+		this.libraries = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(5), Libraries::deserialize));
 	}
 	
 	public List<Library> getLibraries() {
@@ -196,7 +213,14 @@ public class ExecutionEngine {
 	 * 
 	 * @return The ExecutionEngine's serialized String representation
 	 */
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return SerializationUtilities.enclose(
+				order.serialize(),
+				size.serialize(),
+				SerializationUtilities.serializeList(shown, NumberedTerm::serialize),
+				current.serialize(),
+				new StringBuilder(String.valueOf(currentNum)),
+				new StringBuilder(String.valueOf(lastDisplayedNum)),
+				SerializationUtilities.serializeList(libraries, Library::serialize));
 	}
 }

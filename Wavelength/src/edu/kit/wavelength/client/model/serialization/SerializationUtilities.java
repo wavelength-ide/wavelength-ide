@@ -2,6 +2,8 @@ package edu.kit.wavelength.client.model.serialization;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class SerializationUtilities {
 	private SerializationUtilities() {
@@ -56,5 +58,13 @@ public class SerializationUtilities {
 			result.append(content[i]);
 		}
 		return result;
+	}
+	
+	public static <T> List<T> deserializeList(String serialized, Function<String, T> deserialize) {
+		return SerializationUtilities.extract(serialized).stream().map(deserialize).collect(Collectors.toList());
+	}
+	
+	public static <T> StringBuilder serializeList(List<T> list, Function<T, StringBuilder> serialize) {
+		return SerializationUtilities.enclose(list.stream().map(serialize).toArray(StringBuilder[]::new));
 	}
 }

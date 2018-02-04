@@ -4,37 +4,37 @@ public enum TokenType {
 	LBRACKET {
 		@Override
 		public String toString() {
-			return "(";
+			return "\"(\"";
 		}
 	},
 	RBRACKET {
 		@Override
 		public String toString() {
-			return ")";
+			return "\")\"";
 		}
 	},
 	NAME {
 		@Override
 		public String toString() {
-			return "variable";
+			return "a variable";
 		}
 	},
 	LAMBDA {
 		@Override
 		public String toString() {
-			return "λ";
+			return "\"λ\"";
 		}
 	},
 	DOT {
 		@Override
 		public String toString() {
-			return ".";
+			return "\".\"";
 		}
 	},
 	EQUALS {
 		@Override
 		public String toString() {
-			return "=";
+			return "\"=\"";
 		}
 	},
 	NEWLINE {
@@ -46,7 +46,7 @@ public enum TokenType {
 	SPACE {
 		@Override
 		public String toString() {
-			return "whitespace";
+			return "a whitespace";
 		}
 	}
 }

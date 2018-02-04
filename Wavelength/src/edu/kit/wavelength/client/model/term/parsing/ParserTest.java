@@ -22,9 +22,8 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
  *
  */
 public class ParserTest {
-
+	
 	Parser testParser;
-
 	private String triple = "x y z";
 	private String stringA = "λy.(y y)";
 	private String stringB = "((λx.(λy. (y  y))) v)";
@@ -35,10 +34,12 @@ public class ParserTest {
 	private String errorA = "λλx.(x y)";
 	private String uselessBrackets = "((x) v)";
 	private String mismatchedBrackets = "\\v. x )";
+	private String shortAbs = "λxyz.x z";
 	private String id = "(λx.x)";
 	private String app2 = id + id;
 	private String app3 = id + id + id;
 	private String app4 = id + id + id + id;
+	private String app5 = id + id + id + id + id;
 
 	LambdaTerm termA = new Abstraction("y", new Application(new BoundVariable(1), new BoundVariable(1)));
 	LambdaTerm termB = new Application(new Abstraction("x", termA), new FreeVariable("v"));
@@ -48,16 +49,31 @@ public class ParserTest {
 			new Abstraction("x", new Abstraction("y", new Abstraction("z", new BoundVariable(1)))), termC);
 	LambdaTerm termF = new Application(
 			new Abstraction("x", new Application(new FreeVariable("v"), new BoundVariable(1))), new FreeVariable("v"));
+	LambdaTerm shortAbsTerm = new Abstraction("x",
+			new Abstraction("y", new Abstraction("z", new Application(new BoundVariable(3), new BoundVariable(1)))));
 	LambdaTerm idTerm = new Abstraction("x", new BoundVariable(1));
 	LambdaTerm app2Term = new Application(idTerm, idTerm);
-	LambdaTerm app3Term = new Application(new Application(idTerm, idTerm), idTerm);
-	LambdaTerm app4Term = new Application(new Application(new Application(idTerm, idTerm), idTerm), idTerm);
+	LambdaTerm app3Term = new Application(app2Term, idTerm);
+	LambdaTerm app4Term = new Application(app3Term, idTerm);
+	LambdaTerm app5Term = new Application(app4Term, idTerm);
 
 	@Before
 	public void setUp() {
 		testParser = new Parser(new ArrayList<Library>());
 	}
-	
+
+	@Test
+	public void shortAbsTest() {
+		try {
+			LambdaTerm term = testParser.parse(shortAbs);
+			assertEquals(term, shortAbsTerm);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			fail();
+		}
+
+	}
+
 	@Test
 	public void testidentity() {
 		try {
@@ -68,7 +84,7 @@ public class ParserTest {
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test2App() {
 		try {
@@ -79,23 +95,35 @@ public class ParserTest {
 			fail();
 		}
 	}
-	
-	@Test 
+
+	@Test
 	public void test3App() {
 		try {
 			LambdaTerm term = testParser.parse(app3);
+			System.out.println("--");
 			assertEquals(term, app3Term);
 		} catch (ParseException e) {
 			e.printStackTrace();
 			fail();
 		}
 	}
-	
+
 	@Test
 	public void test4App() {
 		try {
 			LambdaTerm term = testParser.parse(app4);
 			assertEquals(term, app4Term);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+
+	@Test
+	public void test5App() {
+		try {
+			LambdaTerm term = testParser.parse(app5);
+			assertEquals(term, app5Term);
 		} catch (ParseException e) {
 			e.printStackTrace();
 			fail();
@@ -183,23 +211,18 @@ public class ParserTest {
 		testParser.parse(errorA);
 	}
 
-	@Test
-	public void failureTestCaseB() {
-		LambdaTerm term = null;
-		try {
-			term = testParser.parse(errorA);
-			fail();
-		} catch (ParseException e) {
-			assertEquals(e.getMessage(), "Unexpected token, expected VARIABLE");
-		}
+	@Test(expected = ParseException.class)
+	public void failureTestCaseB() throws ParseException {
+		testParser.parse(errorA);
+		fail();
 	}
-	
-	@Test(expected=ParseException.class)
+
+	@Test(expected = ParseException.class)
 	public void failureBrackets() throws ParseException {
 		testParser.parse(uselessBrackets);
 	}
-	
-	@Test(expected=ParseException.class)
+
+	@Test(expected = ParseException.class)
 	public void failureMismatch() throws ParseException {
 		testParser.parse(mismatchedBrackets);
 	}
@@ -218,9 +241,9 @@ public class ParserTest {
 		}
 		assertEquals(term, expectedTerm);
 	}
-	
-	@Test
+
+	@Ignore
 	public void multipleLibTermTest() {
-		
+
 	}
 }

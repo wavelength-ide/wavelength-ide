@@ -69,8 +69,6 @@ public class Parser {
 			if (possibleRows[i] == "") {
 				break;
 			}
-			RegExp blankEx = RegExp.compile("\\s*");
-			RegExp comEx = RegExp.compile("\\s*--.*");
 			MatchResult blankResult = RegExp.compile("^\\s+^[.]").exec(possibleRows[i]);
 			MatchResult commentResult = RegExp.compile("^\\s*--.*").exec(possibleRows[i]);
 			if (blankResult == null && commentResult == null) {
@@ -81,9 +79,10 @@ public class Parser {
 			rowPos = i;
 			readLibraryTerm(rows.get(i));
 		}
+		columnPos = 0;
 		rowPos = rows.size() - 1;
 		String lastLine = rows.get((rows.size() - 1));
-		return parseTerm(lastLine); 
+		return parseTerm(lastLine);
 	}
 
 	private void readLibraryTerm(String input) throws ParseException {
@@ -165,96 +164,124 @@ public class Parser {
 		for (int i = (tokenisedInput.length - 1); i >= 0; i--) {
 			tokens.add(tokenisedInput[i]);
 		}
-		ASTCollector root = new ASTCollector();
-		FormattedASTNode formattedRoot = root.format();
+		if (peekToken() != null) {
+			columnPos = -(peekToken().getContent().length());
+		} else {
+			return null;
+		}
+		TermCollector root = new TermCollector();
+		FormattedTTNode formattedRoot = root.format();
 		if (tokens.isEmpty() == false) {
 			throw new ParseException("Unable to parse all tokens", rowPos, columnPos);
+		} else {
+			return formattedRoot.convert(new ArrayList<String>());
 		}
-		return formattedRoot.convert(new ArrayList<String>());
 	}
 
 	/**
-	 * The abstract superclass of all classes representing nodes of a syntax
-	 * tree.
+	 * This interface defines the methods all nodes in the tree object structure
+	 * from which the final LambdaTerm will be build have to support.
 	 *
 	 */
-	private interface ASTNode {
+	private interface TTNode {
 
 		/**
-		 * Attempts to parse the remaining tokens on the token stack to a syntax
-		 * tree.
+		 * Attempts to parse the remaining tokens on the token stack.
 		 * 
-		 * @return The root of the generated tree
 		 * @throws ParseException
 		 *             If the remaining tokens can not be parsed.
 		 */
 		public abstract void parse() throws ParseException;
 
-		public abstract FormattedASTNode format() throws ParseException;
+		/**
+		 * Formats the {@link TTNode} and all its child nodes.
+		 * 
+		 * @return A {@link FormattedTTNode} object with this object's child
+		 *         nodes.
+		 * @throws ParseException
+		 *             If the node can not be formatted
+		 */
+		public abstract FormattedTTNode format() throws ParseException;
 	}
 
-	private interface FormattedASTNode extends ASTNode {
+	/**
+	 * This interface is implemented by the formatted tree nodes produced by the
+	 * format method. From these nodes the LambdaTerm is build by invoking
+	 * {@link convert}.
+	 *
+	 */
+	private interface FormattedTTNode extends TTNode {
 		@Override
 		public abstract String toString();
 
 		/**
-		 * Converts the syntax subtree rooted at this node into the
-		 * corresponding LambdaTerm object structure
+		 * Converts the subtree rooted at this node into the corresponding
+		 * LambdaTerm object structure
 		 * 
 		 * @param names
 		 *            A List containing the names of all bound variables
 		 * @return The LambdaTerm created from this node's subtree.
 		 * @throws ParseException
-		 *             If the syntax subtree could not be converted.
+		 *             If the subtree could not be converted.
 		 */
 		public abstract LambdaTerm convert(List<String> names) throws ParseException;
 	}
 
-	private class ASTCollector implements ASTNode {
+	/**
+	 * When instanced a {@link TermCollector} object will attempt to parse as
+	 * many tokens as possible until either the end of the input or a closing
+	 * bracket is reached. Invoking the format method will generally result in a
+	 * TTApplication object, except for if the collector has only collected a
+	 * single child node. In this case invoking format will yield the child
+	 * node's formatting result.
+	 *
+	 */
+	private class TermCollector implements TTNode {
 
-		private List<ASTNode> childNodes;
+		private List<TTNode> childNodes;
 
-		public ASTCollector() throws ParseException {
-			childNodes = new ArrayList<ASTNode>();
+		public TermCollector() throws ParseException {
+			childNodes = new ArrayList<TTNode>();
 			parse();
 		}
 
 		@Override
 		public void parse() throws ParseException {
-			Token activeToken = popToken();
 			boolean expectBracket = false;
-			if (activeToken.getType() == TokenType.LBRACKET) {
+			if (peekToken().getType() == TokenType.LBRACKET) {
 				expectBracket = true;
 			}
-			// ( check TODO
-			pushToken(activeToken);
 			int loop = 0;
 			boolean foundEnd = false;
 			while (tokens.isEmpty() == false && foundEnd == false) {
-				activeToken = popToken();					
+				loop++;
+				Token activeToken = popToken();
 				switch (activeToken.getType()) {
 				case LBRACKET:
 					TokenType peekType = peekToken().getType();
 					switch (peekType) {
 					case LBRACKET:
-						this.childNodes.add(new ASTCollector());
+						this.childNodes.add(new TermCollector());
 						break;
 					case RBRACKET:
-						throw new ParseException("", rowPos, columnPos);
+						throw new ParseException("\"()\" is not a valid λ-term", rowPos, columnPos);
 					case LAMBDA:
-						if (loop < 1) {
+						if (loop == 1) {
 							expectBracket = false;
 						}
 						pushToken(activeToken);
-						this.childNodes.add(new ASTProtoAbstraction());
+						this.childNodes.add(new TTBoundCollector());
 						break;
 					case NAME:
-						this.childNodes.add(new ASTName());
+						this.childNodes.add(new TTName());
 						break;
 					case DOT:
-						throw new ParseException("", rowPos, columnPos);
+						popToken();
+						throw new ParseException("λ-terms may not begin with a \".\"", rowPos, columnPos);
 					default:
-						throw new ParseException("", rowPos, columnPos);
+						Token errToken = popToken();
+						throw new ParseException("\"" + errToken.getContent() + "\" is not a valid first token", rowPos,
+								columnPos);
 					}
 					break;
 				case RBRACKET:
@@ -267,45 +294,46 @@ public class Parser {
 					}
 				case LAMBDA:
 					pushToken(activeToken);
-					this.childNodes.add(new ASTProtoAbstraction());
+					this.childNodes.add(new TTBoundCollector());
 					break;
 				case NAME:
 					pushToken(activeToken);
-					this.childNodes.add(new ASTName());
+					this.childNodes.add(new TTName());
 					break;
 				case DOT:
-					throw new ParseException("", rowPos, columnPos);
+					throw new ParseException("λ-terms may not begin with a \".\"", rowPos, columnPos);
 				default:
-					throw new ParseException("", rowPos, columnPos);
+					throw new ParseException("\"" + activeToken.getContent() + "\" is not a valid first token", rowPos,
+							columnPos);
 				}
 			}
 
 		}
 
 		@Override
-		public FormattedASTNode format() throws ParseException {
-			if (childNodes == null || childNodes.isEmpty()) {
-				throw new ParseException("", rowPos, columnPos);
+		public FormattedTTNode format() throws ParseException {
+			if (childNodes.isEmpty()) {
+				throw new ParseException("ParseException: childless Collector", rowPos, columnPos);
 			}
-			FormattedASTNode result;
+			FormattedTTNode result;
 			if (childNodes.size() == 1) {
 				result = childNodes.get(0).format();
 			} else {
-				result = new ASTApplication(childNodes.remove(0).format(), childNodes.remove(0).format());
+				result = new TTApplication(childNodes.remove(0).format(), childNodes.remove(0).format());
 				while (childNodes.isEmpty() == false) {
-					result = new ASTApplication(result, childNodes.remove(0).format());
+					result = new TTApplication(result, childNodes.remove(0).format());
 				}
 			}
 			return result;
 		}
 	}
 
-	private class ASTProtoAbstraction implements ASTNode {
+	private class TTBoundCollector implements TTNode {
 
-		private ASTName variable;
-		private ASTCollector termCollector;
+		private TTName variable;
+		private TermCollector termCollector;
 
-		public ASTProtoAbstraction() throws ParseException {
+		public TTBoundCollector() throws ParseException {
 			parse();
 		}
 
@@ -320,39 +348,47 @@ public class Parser {
 			if (activeToken.getType() == TokenType.LAMBDA) {
 				activeToken = popToken();
 				if (activeToken.getType() == TokenType.NAME) {
-					this.variable = new ASTName(activeToken.getContent());
+					this.variable = new TTName(activeToken.getContent());
 					activeToken = popToken();
 					if (activeToken.getType() == TokenType.DOT) {
-						this.termCollector = new ASTCollector();
+						this.termCollector = new TermCollector();
 						if (expectBracket && popToken().getType() != TokenType.RBRACKET) {
-							throw new ParseException("", rowPos, columnPos);
+							throw new ParseException("Mismating brackets, expected closing bracket", rowPos, columnPos);
 						}
 						return;
+					} else {
+						throw new ParseException("Expected \".\", but found \"" + activeToken.getContent() + "\"",
+								rowPos, columnPos);
 					}
+				} else {
+					throw new ParseException("Expected variable but found \"" + activeToken.getContent() + "\"", rowPos,
+							columnPos);
 				}
+			} else {
+				throw new ParseException("Expected \"λ\" or \"\\\" but found \"" + activeToken.getContent() + "\"",
+						rowPos, columnPos);
 			}
-			throw new ParseException("", rowPos, columnPos);
 		}
 
 		@Override
-		public FormattedASTNode format() throws ParseException {
-			return new ASTAbstraction(variable, termCollector.format());
+		public FormattedTTNode format() throws ParseException {
+			return new TTAbstraction(variable, termCollector.format());
 		}
 
 	}
 
-	private class ASTApplication implements FormattedASTNode {
+	private class TTApplication implements FormattedTTNode {
 
-		private FormattedASTNode left;
-		private FormattedASTNode right;
+		private FormattedTTNode left;
+		private FormattedTTNode right;
 
-		public ASTApplication(FormattedASTNode left, FormattedASTNode right) {
+		public TTApplication(FormattedTTNode left, FormattedTTNode right) {
 			this.left = left;
 			this.right = right;
 		}
 
 		@Override
-		public void parse() throws ParseException {
+		public void parse() {
 			return;
 		}
 
@@ -367,18 +403,18 @@ public class Parser {
 		}
 
 		@Override
-		public FormattedASTNode format() throws ParseException {
+		public FormattedTTNode format() throws ParseException {
 			return this;
 		}
 
 	}
 
-	private class ASTAbstraction implements FormattedASTNode {
+	private class TTAbstraction implements FormattedTTNode {
 
-		private ASTName variable;
-		private FormattedASTNode term;
+		private TTName variable;
+		private FormattedTTNode term;
 
-		public ASTAbstraction(ASTName variable, FormattedASTNode term) {
+		public TTAbstraction(TTName variable, FormattedTTNode term) {
 			this.variable = variable;
 			this.term = term;
 		}
@@ -389,12 +425,12 @@ public class Parser {
 		}
 
 		@Override
-		public void parse() throws ParseException {
+		public void parse() {
 			return;
 		}
 
 		@Override
-		public FormattedASTNode format() throws ParseException {
+		public FormattedTTNode format() {
 			return this;
 		}
 
@@ -403,7 +439,12 @@ public class Parser {
 			ArrayList<String> newNames = new ArrayList<String>(names);
 			String varString = variable.toString();
 			for (int i = 0; i < varString.length(); i++) {
-				newNames.add(0,Character.toString(varString.charAt(i)));
+				String currentChar = Character.toString(varString.charAt(i));
+				if (Character.isDigit(varString.charAt(i))) {
+					throw new ParseException("\"" + currentChar + "\" is not a valid variable", rowPos, columnPos);
+				} else {
+					newNames.add(0, currentChar);
+				}
 			}
 			String lastChar = Character.toString(varString.charAt(varString.length() - 1));
 			Abstraction abs = new Abstraction(lastChar, term.convert(newNames));
@@ -415,15 +456,15 @@ public class Parser {
 
 	}
 
-	private class ASTName implements FormattedASTNode {
+	private class TTName implements FormattedTTNode {
 
 		private String name;
-		
-		public ASTName() throws ParseException {
+
+		public TTName() throws ParseException {
 			parse();
 		}
-		
-		public ASTName(String name) {
+
+		public TTName(String name) {
 			this.name = name;
 		}
 
@@ -433,7 +474,8 @@ public class Parser {
 			if (activeToken.getType() == TokenType.NAME) {
 				this.name = activeToken.getContent();
 			} else {
-				throw new ParseException("", -1, -1);
+				throw new ParseException("Expected variable or name, found \"" + activeToken.getContent() + "\"", -1,
+						-1);
 			}
 
 		}
@@ -457,8 +499,12 @@ public class Parser {
 				return new NamedTerm(name, retrieveTerm(name));
 			} else {
 				if (name.length() > 1) {
-					throw new ParseException("", rowPos, columnPos);
+					throw new ParseException("\"" + name + "\" exceeds the maximal allowed length for variables",
+							rowPos, columnPos);
 				} else {
+					if (Character.isDigit(name.charAt(0))) {
+						throw new ParseException("Variables may not be digits.", rowPos, columnPos);
+					}
 					if (names.contains(name)) {
 						return new BoundVariable(names.indexOf(name) + 1);
 					} else {
@@ -469,7 +515,7 @@ public class Parser {
 		}
 
 		@Override
-		public FormattedASTNode format() throws ParseException {
+		public FormattedTTNode format() throws ParseException {
 			return this;
 		}
 

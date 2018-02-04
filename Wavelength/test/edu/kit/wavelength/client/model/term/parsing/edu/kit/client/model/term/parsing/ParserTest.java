@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.term.parsing;
+package edu.kit.wavelength.client.model.term.parsing.edu.kit.client.model.term.parsing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -12,6 +12,8 @@ import org.junit.Test;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
+import edu.kit.wavelength.client.model.term.parsing.ParseException;
+import edu.kit.wavelength.client.model.term.parsing.Parser;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.FreeVariable;
@@ -40,7 +42,10 @@ public class ParserTest {
 	private String app3 = id + id + id;
 	private String app4 = id + id + id + id;
 	private String app5 = id + id + id + id + id;
-
+	private String firstDecl = "term = \\x.x y";
+	private String secondDecl = "longTerm = " + stringE;
+	private String twoLibTerms = "";
+ 
 	LambdaTerm termA = new Abstraction("y", new Application(new BoundVariable(1), new BoundVariable(1)));
 	LambdaTerm termB = new Application(new Abstraction("x", termA), new FreeVariable("v"));
 	LambdaTerm termC = new Abstraction("x",
@@ -56,6 +61,8 @@ public class ParserTest {
 	LambdaTerm app3Term = new Application(app2Term, idTerm);
 	LambdaTerm app4Term = new Application(app3Term, idTerm);
 	LambdaTerm app5Term = new Application(app4Term, idTerm);
+	
+	LambdaTerm uslessBracketsTerm = new Application(new FreeVariable("x"), new FreeVariable("v"));
 
 	@Before
 	public void setUp() {
@@ -217,9 +224,10 @@ public class ParserTest {
 		fail();
 	}
 
-	@Test(expected = ParseException.class)
+	@Test
 	public void failureBrackets() throws ParseException {
-		testParser.parse(uselessBrackets);
+		LambdaTerm term = testParser.parse(uselessBrackets);
+		assertEquals(term, uslessBracketsTerm);
 	}
 
 	@Test(expected = ParseException.class)
@@ -244,6 +252,6 @@ public class ParserTest {
 
 	@Ignore
 	public void multipleLibTermTest() {
-
+		
 	}
 }

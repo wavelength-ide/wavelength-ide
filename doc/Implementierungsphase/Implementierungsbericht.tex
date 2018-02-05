@@ -107,6 +107,21 @@ Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Kla
 In Ermangelung von Zeit wurde der Einfachheit halber der Übungsmodus bei der Serialisierung der Applikation ignoriert, d.h. 
  weder die aktuell ausgewählte Übungsaufgabe noch die Fenster mit der Aufgabenstellung und der Lösung werden beim 
  Deserialisieren wiederhergestellt.
+ 
+\textbf{Neue Pakete: edu.kit.wavelength.client.database und edu.kit.wavelength.server.database} \\
+Die \emph{database-Pakete} stellen Schnittstellen für den Zugriff auf die SQLite-Datenbank bzw für deren Manipulation bereit ebenso wie eine konkrete Implementierung.
+Auf der Client-Seite stehen die Interfaces \emph{DatabaseService} und \emph{DatabaseServiceAsync}.
+
+\emph{DatabaseService} definiert die Schnittstelle für die Datenbank: \\
+Erstens eine Methode, die zu einer gegebenen Identifikationsnummer(als String) einen Serialisierungsstring zurückgibt,
+falls ein solcher Eintrag in der Datenbank existiert. \\
+Zweitens eine Methode die für einen gegebenen Serialisierungsstring einen neuen Eintrag in der Datenbank erstellt und den entsprechenden Identifikationsstring zurückgibt.
+
+\emph{DatabaseServiceAsync} repräsentiert die Schnittstelle für asynchrone Zugriffe auf die Datenbank.
+Die Funktionsweise kann unter \href{http://www.gwtproject.org/doc/latest/tutorial/RPC.html}{http://www.gwtproject.org/doc/latest/tutorial/RPC.html} nachvollzogen werden.
+
+Auf der Server-Seite steht \emph{DatabaseServiceImpl}.\\
+\emph{DatabaseServiceImpl} realisiert die Schnittstelle zur persistenten SQLite-Datenbank auf dem Server.
 
 \section{Implementierte Funktionalitäten}
 Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
@@ -130,14 +145,21 @@ Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss
 \textbf{K10} & Permalinks & \checkmark\\ 
 \textbf{K11} & komfortabler $\lambda$-Code & \checkmark \\
 \hline
-\textbf{Gesamt} &15 &12.5
+\textbf{Gesamt} &\textbf{15} & \textbf{12.5}
 \end{tabular}
 
 \section{Implementierungsplan}
 \hspace*{-2cm}
-\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.7, page=4]{Implementierungsplan\Implementierungsplan.pdf}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.7, page=4]{Implementierungsplan/Implementierungsplan.pdf}
 
 \section{Komponententests}
+\subsection{Paket edu.kit.wavelength.client.model.serialization}
+
+\subsection{Paket edu.kit.wavelength.client.model.term}
+
+\subsection{Paket edu.kit.wavelength.client.model.term.parsing}
+
+\subsection{Paket edu.kit.wavelength.client.view.export}
 
 
 \end{document}

@@ -1,5 +1,6 @@
 *.pdf
 !Implementierungsplan.pdf
+!Implementierungsbericht.pdf
 
 # Created by https://www.gitignore.io/api/vim,tex,java,latex,linux,eclipse,windows,java-web
 

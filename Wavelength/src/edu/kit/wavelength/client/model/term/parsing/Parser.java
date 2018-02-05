@@ -46,12 +46,11 @@ public class Parser {
 	}
 
 	/**
-	 * Gets a library containing the lambda terms and corresponding names
-	 * defined in the the last invocation of {@link #parse(String)}}'s input
-	 * String.
+	 * Gets a library containing the lambda terms and corresponding names defined in
+	 * the the last invocation of {@link #parse(String)}}'s input String.
 	 * 
-	 * @return A {@link Library} containing the terms entered by the user with
-	 *         their assigned names
+	 * @return A {@link Library} containing the terms entered by the user with their
+	 *         assigned names
 	 */
 	public Library getInputLibary() {
 		return inputLibrary;
@@ -124,23 +123,25 @@ public class Parser {
 	 */
 	private Token popToken() {
 		Token pop = tokens.pop();
+		// System.out.println(">pop: " + pop.getContent());
 		columnPos = columnPos + pop.getContent().length();
 		return pop;
 	}
 
 	private void pushToken(Token newToken) {
+		// System.out.println(">push: " + newToken.getContent());
 		columnPos = columnPos - newToken.getContent().length();
 		tokens.push(newToken);
 	}
 
 	/**
-	 * Retrieves the term with the specified name from the loaded libraries or
-	 * the library containing the user's named terms.
+	 * Retrieves the term with the specified name from the loaded libraries or the
+	 * library containing the user's named terms.
 	 * 
 	 * @param name
 	 *            The desired term's name
-	 * @return The term with the assigned name, null if no loaded library
-	 *         contains a term with this name.
+	 * @return The term with the assigned name, null if no loaded library contains a
+	 *         term with this name.
 	 */
 	private LambdaTerm retrieveTerm(String name) {
 		if (inputLibrary != null && inputLibrary.containsName(name)) {
@@ -166,8 +167,10 @@ public class Parser {
 	private LambdaTerm parseTerm(String input) throws ParseException {
 		Token[] tokenisedInput = new Tokeniser().tokenise(input);
 		tokens = new Stack<Token>();
+		String debugA = "";
 		for (int i = (tokenisedInput.length - 1); i >= 0; i--) {
 			tokens.add(tokenisedInput[i]);
+			debugA = tokenisedInput[i].getContent() + debugA;
 		}
 		if (peekToken() != null) {
 			columnPos = -(peekToken().getContent().length());
@@ -175,8 +178,17 @@ public class Parser {
 			columnPos = 0;
 			throw new ParseException("λ-terms may not be empty", rowPos, columnPos);
 		}
-		TermCollector root = new TermCollector();
+		System.out.println("start:  " + debugA);
+
+		TermCollector root = new TermCollector(true);
 		FormattedTTNode formattedRoot = root.format();
+
+		String debugB = "";
+		for (Token tok : tokens) {
+			debugB = debugB + tok.getContent();
+		}
+		System.out.println("rest:  " + debugB);
+		System.out.println(formattedRoot.toString());
 		if (tokens.isEmpty() == false) {
 			throw new ParseException("Unable to parse all tokens", rowPos, columnPos);
 		} else {
@@ -202,8 +214,7 @@ public class Parser {
 		/**
 		 * Formats the {@link TTNode} and all its child nodes.
 		 * 
-		 * @return A {@link FormattedTTNode} object with this object's child
-		 *         nodes.
+		 * @return A {@link FormattedTTNode} object with this object's child nodes.
 		 * @throws ParseException
 		 *             If the node can not be formatted
 		 */
@@ -221,8 +232,8 @@ public class Parser {
 		public abstract String toString();
 
 		/**
-		 * Converts the subtree rooted at this node into the corresponding
-		 * LambdaTerm object structure
+		 * Converts the subtree rooted at this node into the corresponding LambdaTerm
+		 * object structure
 		 * 
 		 * @param names
 		 *            A List containing the names of all bound variables
@@ -234,66 +245,76 @@ public class Parser {
 	}
 
 	/**
-	 * When instanced a {@link TermCollector} object will attempt to parse as
-	 * many tokens as possible until either the end of the input or a closing
-	 * bracket is reached. Invoking the format method will generally result in a
-	 * TTApplication object, except for if the collector has only collected a
-	 * single child node. In this case invoking format will yield the child
-	 * node's formatting result.
+	 * When instanced a {@link TermCollector} object will attempt to parse as many
+	 * tokens as possible until either the end of the input or a closing bracket is
+	 * reached. Invoking the format method will generally result in a TTApplication
+	 * object, except for if the collector has only collected a single child node.
+	 * In this case invoking format will yield the child node's formatting result.
 	 *
 	 */
 	private class TermCollector implements TTNode {
 
 		private List<TTNode> childNodes;
+		private boolean expectsBracket = false;
 
 		public TermCollector() throws ParseException {
+			System.out.println("Col parse: " + peekToken().getContent());
 			childNodes = new ArrayList<TTNode>();
 			parse();
+			System.out.println("Col return");
+		}
+
+		private void absorbBracket() {
+			Token activeToken = popToken();
+			if (activeToken.getType() == TokenType.LBRACKET) {
+				expectsBracket = true;
+				System.out.println("absorbed");
+			} else {
+				System.out.println(">Dislike: " + activeToken.getContent());
+				pushToken(activeToken);
+			}
+		}
+
+		public TermCollector(boolean isRoot) throws ParseException {
+			if (isRoot == false) {
+				throw new ParseException("ParseException: wrong isFirst", -1, -1);
+			}
+			System.out.println("mum parse");
+			childNodes = new ArrayList<TTNode>();
+			while (tokens.isEmpty() == false) {
+				if (peekToken().getType() == TokenType.RBRACKET) {
+					throw new ParseException("Mismachted brackets", rowPos, columnPos);
+				}
+				System.out.println("newLoop");
+				childNodes.add(new TermCollector());
+			}
+			// childNodes.add(new TermCollector());
+			System.out.println("mum return");
 		}
 
 		@Override
 		public void parse() throws ParseException {
-			boolean expectBracket = false;
-			if (peekToken().getType() == TokenType.LBRACKET) {
-				expectBracket = true;
-			}
+			/*
+			 * expectsBracket = false; Token activeToken = popToken(); if
+			 * (activeToken.getType() == TokenType.LBRACKET) { expectsBracket = true;
+			 * System.out.println(">exBracket"); } else { pushToken(activeToken); }
+			 */
+			absorbBracket();
 			int loop = 0;
-			boolean foundEnd = false;
-			while (tokens.isEmpty() == false && foundEnd == false) {
+			while (tokens.isEmpty() == false) {
 				loop++;
 				Token activeToken = popToken();
+				// System.out.println(loop + " loop " + activeToken.getContent());
+				System.out.println("active: " + activeToken.getContent());
 				switch (activeToken.getType()) {
 				case LBRACKET:
-					TokenType peekType = peekToken().getType();
-					switch (peekType) {
-					case LBRACKET:
-						this.childNodes.add(new TermCollector());
-						break;
-					case RBRACKET:
-						throw new ParseException("\"()\" is not a valid λ-term", rowPos, columnPos);
-					case LAMBDA:
-						if (loop == 1) {
-							expectBracket = false;
-						}
-						pushToken(activeToken);
-						this.childNodes.add(new TTBoundCollector());
-						break;
-					case NAME:
-						this.childNodes.add(new TTName());
-						break;
-					case DOT:
-						popToken();
-						throw new ParseException("λ-terms may not begin with a \".\"", rowPos, columnPos);
-					default:
-						Token errToken = popToken();
-						throw new ParseException("\"" + errToken.getContent() + "\" is not a valid first token", rowPos,
-								columnPos);
-					}
+					System.out.println("lbracket case");
+					pushToken(activeToken);
+					this.childNodes.add(new TermCollector());
 					break;
 				case RBRACKET:
-					if (expectBracket == true) {
-						foundEnd = true;
-						break;
+					if (expectsBracket) {
+						return;
 					} else {
 						pushToken(activeToken);
 						return;
@@ -303,6 +324,7 @@ public class Parser {
 					this.childNodes.add(new TTBoundCollector());
 					break;
 				case NAME:
+					System.out.println("name case");
 					pushToken(activeToken);
 					this.childNodes.add(new TTName());
 					break;
@@ -338,19 +360,25 @@ public class Parser {
 
 		private TTName variable;
 		private TermCollector termCollector;
+		private boolean leadingBracket;
+
+		public TTBoundCollector(boolean leadingBracket) throws ParseException {
+			System.out.println("Bound parse");
+			this.leadingBracket = leadingBracket;
+			parse();
+			System.out.println("Bound return");
+		}
 
 		public TTBoundCollector() throws ParseException {
+			System.out.println("Bound parse");
+			this.leadingBracket = false;
 			parse();
+			System.out.println("Bound return");
 		}
 
 		@Override
 		public void parse() throws ParseException {
 			Token activeToken = popToken();
-			boolean expectBracket = false;
-			if (activeToken.getType() == TokenType.LBRACKET) {
-				expectBracket = true;
-				activeToken = popToken();
-			}
 			if (activeToken.getType() == TokenType.LAMBDA) {
 				activeToken = popToken();
 				if (activeToken.getType() == TokenType.NAME) {
@@ -358,7 +386,7 @@ public class Parser {
 					activeToken = popToken();
 					if (activeToken.getType() == TokenType.DOT) {
 						this.termCollector = new TermCollector();
-						if (expectBracket && popToken().getType() != TokenType.RBRACKET) {
+						if (leadingBracket && popToken().getType() != TokenType.RBRACKET) {
 							throw new ParseException("Mismating brackets, expected closing bracket", rowPos, columnPos);
 						}
 						return;
@@ -467,6 +495,7 @@ public class Parser {
 		private String name;
 
 		public TTName() throws ParseException {
+			System.out.println("name parse");
 			parse();
 		}
 
@@ -480,10 +509,9 @@ public class Parser {
 			if (activeToken.getType() == TokenType.NAME) {
 				this.name = activeToken.getContent();
 			} else {
-				throw new ParseException("Expected variable or name, found \"" + activeToken.getContent() + "\"", rowPos,
-						columnPos);
+				throw new ParseException("Expected variable or name, found \"" + activeToken.getContent() + "\"",
+						rowPos, columnPos);
 			}
-
 		}
 
 		public boolean isNamedTerm() {

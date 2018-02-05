@@ -45,7 +45,17 @@ public class ParserTest {
 	private String firstDecl = "term = \\x.x y";
 	private String secondDecl = "longTerm = " + stringE;
 	private String twoLibTerms = "";
+	private String julString = "(( ((\\x.x)(\\x.x)) (\\x.x)) ( ((\\x.x)(\\x.x)) (\\x.x) ) )";
+	private String varString = "(( (v v) v) ( (v v) v ) )";
  
+	LambdaTerm idTerm = new Abstraction("x", new BoundVariable(1));
+	LambdaTerm var = new FreeVariable("v");
+	
+	LambdaTerm julTerm =  new Application(new Application(new Application(idTerm, idTerm), idTerm),
+			new Application(new Application(idTerm, idTerm), idTerm));
+	LambdaTerm varTerm = new Application(new Application(new Application(var, var), var),
+			new Application(new Application(var, var), var));
+	
 	LambdaTerm termA = new Abstraction("y", new Application(new BoundVariable(1), new BoundVariable(1)));
 	LambdaTerm termB = new Application(new Abstraction("x", termA), new FreeVariable("v"));
 	LambdaTerm termC = new Abstraction("x",
@@ -56,7 +66,6 @@ public class ParserTest {
 			new Abstraction("x", new Application(new FreeVariable("v"), new BoundVariable(1))), new FreeVariable("v"));
 	LambdaTerm shortAbsTerm = new Abstraction("x",
 			new Abstraction("y", new Abstraction("z", new Application(new BoundVariable(3), new BoundVariable(1)))));
-	LambdaTerm idTerm = new Abstraction("x", new BoundVariable(1));
 	LambdaTerm app2Term = new Application(idTerm, idTerm);
 	LambdaTerm app3Term = new Application(app2Term, idTerm);
 	LambdaTerm app4Term = new Application(app3Term, idTerm);
@@ -67,6 +76,22 @@ public class ParserTest {
 	@Before
 	public void setUp() {
 		testParser = new Parser(new ArrayList<Library>());
+		System.out.println("-----------------");
+		System.out.println("");
+	}
+	
+	@Test
+	public void julTest() throws ParseException {
+		System.out.println("julTest");
+		LambdaTerm term = testParser.parse(julString);
+		assertEquals(term, julTerm);
+	}
+	
+	@Test
+	public void varJulTest() throws ParseException {
+		System.out.println("julVarTest");
+		LambdaTerm term = testParser.parse(varString);
+		assertEquals(term, varTerm);
 	}
 
 	@Test
@@ -84,6 +109,7 @@ public class ParserTest {
 	@Test
 	public void testidentity() {
 		try {
+			System.out.println("ID-Test");
 			LambdaTerm term = testParser.parse(id);
 			assertEquals(term, idTerm);
 		} catch (ParseException e) {
@@ -250,7 +276,7 @@ public class ParserTest {
 		assertEquals(term, expectedTerm);
 	}
 
-	@Ignore
+	@Test
 	public void multipleLibTermTest() {
 		
 	}

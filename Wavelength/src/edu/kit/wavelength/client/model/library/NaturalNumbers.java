@@ -20,6 +20,9 @@ public final class NaturalNumbers implements Library {
 	private ArrayList<String> operationNames;
 	private ArrayList<LambdaTerm> operationTerms;
 
+	/**
+	 * Creates a new NaturalNumbers library.
+	 */
 	public NaturalNumbers() {
 		operationNames = new ArrayList<String>();
 		operationTerms = new ArrayList<LambdaTerm>();

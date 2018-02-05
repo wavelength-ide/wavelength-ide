@@ -17,6 +17,12 @@ import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
+/**
+ * This class is used to convert an input String into a {@link LambdaTerm}
+ * object. If any {@link Libraries} terms are used in the input, the necessary
+ * {@link Libraries} have to be passed to the Parser through its constructor.
+ *
+ */
 public class Parser {
 
 	private final List<Library> loadedLibraries;
@@ -159,7 +165,6 @@ public class Parser {
 	 */
 	private LambdaTerm parseTerm(String input) throws ParseException {
 		Token[] tokenisedInput = new Tokeniser().tokenise(input);
-		columnPos = 0;
 		tokens = new Stack<Token>();
 		for (int i = (tokenisedInput.length - 1); i >= 0; i--) {
 			tokens.add(tokenisedInput[i]);
@@ -167,7 +172,8 @@ public class Parser {
 		if (peekToken() != null) {
 			columnPos = -(peekToken().getContent().length());
 		} else {
-			return null;
+			columnPos = 0;
+			throw new ParseException("λ-terms may not be empty", rowPos, columnPos);
 		}
 		TermCollector root = new TermCollector();
 		FormattedTTNode formattedRoot = root.format();
@@ -474,8 +480,8 @@ public class Parser {
 			if (activeToken.getType() == TokenType.NAME) {
 				this.name = activeToken.getContent();
 			} else {
-				throw new ParseException("Expected variable or name, found \"" + activeToken.getContent() + "\"", -1,
-						-1);
+				throw new ParseException("Expected variable or name, found \"" + activeToken.getContent() + "\"", rowPos,
+						columnPos);
 			}
 
 		}

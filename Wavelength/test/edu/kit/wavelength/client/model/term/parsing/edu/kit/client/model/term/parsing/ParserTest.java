@@ -56,6 +56,7 @@ public class ParserTest {
 	LambdaTerm stringUnicodeLibWUpCaLaTerm = new NamedTerm("ΔΘΛ", new FreeVariable("v"));
 	LambdaTerm stringUnicodeLibTerm = new NamedTerm("", new Abstraction("x", new Application(
 			new BoundVariable(1), new BoundVariable(1))));
+	LambdaTerm uLibTestTerm = null;
 	
 	LambdaTerm idTerm = new Abstraction("x", new BoundVariable(1));
 	LambdaTerm var = new FreeVariable("v");
@@ -88,9 +89,9 @@ public class ParserTest {
 	}
 	
 	@Test
-	public void unicodeLibTerms() {
+	public void unicodeLibTerms() throws ParseException {
 		String input = singleUnicodeLib + "\n" + firstDecl + "\n" + stringUnicodeLibWUpCaLa + "\n"
-					   libUsingString;
+					   + libUsingString;
 	}
 	
 	@Test

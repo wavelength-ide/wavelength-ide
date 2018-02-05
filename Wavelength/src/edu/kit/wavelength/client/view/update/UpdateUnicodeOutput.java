@@ -56,6 +56,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		terms.add(term.panel);
 		// display the new term
 		app.outputArea().add(term.panel);
+		app.autoScroll();
 	}
 
 	public void removeLastTerm() {

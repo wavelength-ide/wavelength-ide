@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Wavelength-Ide" company="Wavelength" webLink="https://github.com/wavelength-ide" view-date="2018-01-10" view-index="0" gantt-divider-location="404" resource-divider-location="300" version="2.8.5" locale="de">
+<?xml version="1.0" encoding="UTF-8"?><project name="Wavelength-Ide" company="Wavelength" webLink="https://github.com/wavelength-ide" view-date="2018-01-13" view-index="0" gantt-divider-location="404" resource-divider-location="300" version="2.8.5" locale="de">
     <description><![CDATA[Wavelength is THE IDE for the world's most awesome programming language : the untyped lambda calculus
 
 "We can only see a short distance ahead, but we can see plenty there that needs to be done."
@@ -38,28 +38,28 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="14" name="model" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true"/>
-        <task id="5" name="model.term" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true"/>
-        <task id="16" name="model.term.parsing" color="#8cb6ce" meeting="false" start="2018-01-13" duration="21" complete="0" expand="true"/>
-        <task id="19" name="model.output" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-        <task id="2" name="model.reduction" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true">
-            <task id="40" name="normale Reduktionsordnung" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-            <task id="41" name="restliche Reduktionsordnungen" color="#8cb6ce" meeting="false" start="2018-02-03" duration="4" complete="0" expand="true"/>
+        <task id="14" name="model" color="#8cb6ce" meeting="false" start="2018-01-13" duration="24" complete="0" expand="true"/>
+        <task id="5" name="model.term" color="#8cb6ce" meeting="false" start="2018-01-13" duration="23" complete="0" expand="true"/>
+        <task id="16" name="model.term.parsing" color="#8cb6ce" meeting="false" start="2018-01-13" duration="26" complete="0" expand="true"/>
+        <task id="19" name="model.output" color="#8cb6ce" meeting="false" start="2018-01-13" duration="2" complete="0" expand="true"/>
+        <task id="2" name="model.reduction" color="#8cb6ce" meeting="false" start="2018-01-31" duration="2" complete="0" expand="true">
+            <task id="40" name="normale Reduktionsordnung" color="#8cb6ce" meeting="false" start="2018-01-31" duration="2" complete="0" expand="true"/>
+            <task id="41" name="restliche Reduktionsordnungen" color="#8cb6ce" meeting="false" start="2018-01-31" duration="2" complete="0" expand="true"/>
         </task>
-        <task id="18" name="model.library" color="#8cb6ce" meeting="false" start="2018-02-03" duration="4" complete="0" expand="true"/>
-        <task id="8" name="view" meeting="false" start="2018-01-13" duration="23" complete="0" expand="true">
-            <task id="28" name="App" color="#8cb6ce" meeting="false" start="2018-01-13" duration="23" complete="0" expand="true"/>
+        <task id="18" name="model.library" color="#8cb6ce" meeting="false" start="2018-01-26" duration="13" complete="0" expand="true"/>
+        <task id="8" name="view" meeting="false" start="2018-01-13" duration="21" complete="0" expand="true">
+            <task id="28" name="App" color="#8cb6ce" meeting="false" start="2018-01-13" duration="21" complete="0" expand="true"/>
         </task>
-        <task id="4" name="view.webui.component" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true">
-            <task id="23" name="Editor" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-            <task id="25" name="Wrapper-Klassen" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
+        <task id="4" name="view.webui.component" meeting="false" start="2018-01-13" duration="16" complete="0" expand="true">
+            <task id="23" name="Editor" color="#8cb6ce" meeting="false" start="2018-01-13" duration="8" complete="0" expand="true"/>
+            <task id="25" name="Wrapper-Klassen" color="#8cb6ce" meeting="false" start="2018-01-13" duration="16" complete="0" expand="true"/>
         </task>
-        <task id="7" name="view.exercise" color="#8cb6ce" meeting="false" start="2018-02-03" duration="4" complete="0" expand="true"/>
-        <task id="9" name="view.execution" color="#8cb6ce" meeting="false" start="2018-01-22" duration="7" complete="0" expand="true"/>
-        <task id="11" name="view.action" color="#8cb6ce" meeting="false" start="2018-01-13" duration="9" complete="0" expand="true"/>
-        <task id="12" name="view.export" color="#8cb6ce" meeting="false" start="2018-01-22" duration="12" complete="0" expand="true"/>
-        <task id="13" name="view.update + Output in view.webui.component" color="#8cb6ce" meeting="false" start="2018-01-22" duration="14" complete="0" expand="true"/>
-        <task id="33" name="Serialisierung" color="#8cb6ce" meeting="false" start="2018-01-29" duration="9" complete="0" expand="true"/>
+        <task id="7" name="view.exercise" color="#8cb6ce" meeting="false" start="2018-02-06" duration="2" complete="0" expand="true"/>
+        <task id="9" name="view.execution" color="#8cb6ce" meeting="false" start="2018-02-01" duration="2" complete="0" expand="true"/>
+        <task id="11" name="view.action" color="#8cb6ce" meeting="false" start="2018-01-13" duration="21" complete="0" expand="true"/>
+        <task id="12" name="view.export" color="#8cb6ce" meeting="false" start="2018-01-28" duration="7" complete="0" expand="true"/>
+        <task id="13" name="view.update" color="#8cb6ce" meeting="false" start="2018-01-27" duration="12" complete="0" expand="true"/>
+        <task id="33" name="Serialisierung" color="#8cb6ce" meeting="false" start="2018-02-03" duration="3" complete="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="1" name="Markus" function="SoftwareDevelopment:2" contacts="" phone=""/>
@@ -80,8 +80,8 @@
         <allocation task-id="23" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="9" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="7" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
-        <allocation task-id="13" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="28" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="11" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="28" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="7" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="33" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
@@ -91,12 +91,56 @@
         <allocation task-id="12" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="33" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="12" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="75.0"/>
+        <allocation task-id="7" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="11" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="7" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
+        <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
-    <previous/>
+    <previous>
+        <previous-tasks name="geplant">
+            <previous-task id="14" start="2018-01-13" duration="25" meeting="false" super="false"/>
+            <previous-task id="5" start="2018-01-13" duration="25" meeting="false" super="false"/>
+            <previous-task id="16" start="2018-01-13" duration="21" meeting="false" super="false"/>
+            <previous-task id="19" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="2" start="2018-01-13" duration="25" meeting="false" super="true"/>
+            <previous-task id="40" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="41" start="2018-02-03" duration="4" meeting="false" super="false"/>
+            <previous-task id="18" start="2018-02-03" duration="4" meeting="false" super="false"/>
+            <previous-task id="8" start="2018-01-13" duration="23" meeting="false" super="true"/>
+            <previous-task id="28" start="2018-01-13" duration="23" meeting="false" super="false"/>
+            <previous-task id="4" start="2018-01-13" duration="9" meeting="false" super="true"/>
+            <previous-task id="23" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="25" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="7" start="2018-02-03" duration="4" meeting="false" super="false"/>
+            <previous-task id="9" start="2018-01-22" duration="7" meeting="false" super="false"/>
+            <previous-task id="11" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="12" start="2018-01-22" duration="12" meeting="false" super="false"/>
+            <previous-task id="13" start="2018-01-22" duration="14" meeting="false" super="false"/>
+            <previous-task id="33" start="2018-01-29" duration="9" meeting="false" super="false"/>
+        </previous-tasks>
+        <previous-tasks name="real">
+            <previous-task id="14" start="2018-01-13" duration="25" meeting="false" super="false"/>
+            <previous-task id="5" start="2018-01-13" duration="25" meeting="false" super="false"/>
+            <previous-task id="16" start="2018-01-13" duration="21" meeting="false" super="false"/>
+            <previous-task id="19" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="2" start="2018-01-13" duration="25" meeting="false" super="true"/>
+            <previous-task id="40" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="41" start="2018-02-03" duration="4" meeting="false" super="false"/>
+            <previous-task id="18" start="2018-02-03" duration="4" meeting="false" super="false"/>
+            <previous-task id="8" start="2018-01-13" duration="23" meeting="false" super="true"/>
+            <previous-task id="28" start="2018-01-13" duration="23" meeting="false" super="false"/>
+            <previous-task id="4" start="2018-01-13" duration="9" meeting="false" super="true"/>
+            <previous-task id="23" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="25" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="7" start="2018-02-03" duration="4" meeting="false" super="false"/>
+            <previous-task id="9" start="2018-01-22" duration="7" meeting="false" super="false"/>
+            <previous-task id="11" start="2018-01-13" duration="9" meeting="false" super="false"/>
+            <previous-task id="12" start="2018-01-22" duration="12" meeting="false" super="false"/>
+            <previous-task id="13" start="2018-01-22" duration="14" meeting="false" super="false"/>
+            <previous-task id="33" start="2018-01-29" duration="9" meeting="false" super="false"/>
+        </previous-tasks>
+    </previous>
     <roles roleset-name="Default"/>
     <roles roleset-name="SoftwareDevelopment"/>
 </project>

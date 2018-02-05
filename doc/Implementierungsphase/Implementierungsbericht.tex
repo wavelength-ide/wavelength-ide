@@ -17,6 +17,7 @@
 \usepackage{bm}
 \usepackage{amssymb}
 \usepackage[hidelinks]{hyperref}
+\usepackage[section]{placeins}
 
 \titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
 \title{Implementierungsbericht}
@@ -86,7 +87,7 @@ Als Schlüssel wird dabei eine zufällig erzeugte UUID (Universally unique ident
 \subsection{JUnit}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Testen einzelner Komponenten
-\item[] \textbf{Beschreibung:} JUnit ist eine Test-Framework für Java.
+\item[] \textbf{Beschreibung:} JUnit ist ein Test-Framework für Java.
 \end{enumerate}
 
 \section{Änderungen am Entwurf}
@@ -123,6 +124,7 @@ Die Funktionsweise kann unter \href{http://www.gwtproject.org/doc/latest/tutoria
 Auf der Server-Seite steht \emph{DatabaseServiceImpl}.\\
 \emph{DatabaseServiceImpl} realisiert die Schnittstelle zur persistenten SQLite-Datenbank auf dem Server.
 
+\newpage
 \section{Implementierte Funktionalitäten}
 Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
 
@@ -148,10 +150,21 @@ Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss
 \textbf{Gesamt} &\textbf{15} & \textbf{12.5}
 \end{tabular}
 
+\newpage
 \section{Implementierungsplan}
-\hspace*{-2cm}
-\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.7, page=4]{Implementierungsplan/Implementierungsplan.pdf}
+\begin{figure}[h]
+\hspace*{-3cm}
+\includegraphics[trim={0, 9.5cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan-vorher.pdf}
+\caption{Der Implementierungsplan wie er zu Beginn der Implementierungsphase vereinbart wurde}
+\end{figure}
 
+\begin{figure}[H]
+\hspace*{-3cm}
+\includegraphics[trim={0, 7cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan.pdf}
+\caption{Der reale Verlauf der Implementierungsphase: Die oberen Balken entsprechen der Realität, die unteren der Planung.}
+\end{figure}
+
+\newpage
 \section{Komponententests}
 \subsection{Paket edu.kit.wavelength.client.model.serialization}
 Dieses Paket testet die Klasse \emph{SerializationUtilities}. 

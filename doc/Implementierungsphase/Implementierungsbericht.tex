@@ -154,12 +154,25 @@ Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss
 
 \section{Komponententests}
 \subsection{Paket edu.kit.wavelength.client.model.serialization}
+Dieses Paket testet die Klasse \emph{SerializationUtilities}. 
+Es wird getestet, ob die Methode \emph{List<String> extract(String input)} eine gegebene Serialisierung korrekt entpackt.
+Weiter wird getestet, ob die Methode \emph{StringBuilder enclose(StringBuilder... content)} aus gegebenen StringBuildern, die eine Serialisierung erhalten,
+einen neuen StringBuilder erzeugt, der eine gültige Gesamt-Serialisierung enthält.
 
 \subsection{Paket edu.kit.wavelength.client.model.term}
+In diesem Paket wird der BetaReducer ausführlich getestet: 
+Index-Anpassung, Aliases, Fixpunkte, Wachstum, Entfernung von Namen, Regexe und PartialApplications.
+Weiterhin wird der ResolvedNamesVisitor auf Gleichheit von Abstraktionen, NamedTerms und Library Terms getestet.
+Ebenso wird die Serialisierung von LambdaTerm-Objekten getestet
 
 \subsection{Paket edu.kit.wavelength.client.model.term.parsing}
+In diesem Paket wird der Parser getestet. 
+Getestet wird das Verhalten bei leerer Eingabe, invalider Eingabe und valider Eingabe.
+Weiter wird die Namensbindung getestet.
 
 \subsection{Paket edu.kit.wavelength.client.view.export}
-
+In diesem Paket werden die ExportFormate und deren Visitors getestet.
+Für die ExportFormate wird jeweils der Umgang mit null-Termen, null-Libraries, leeren Eingaben, einelementigen Eingaben und ganzen Eingabelisten getestet.
+Für die Visitor wird jeweils der Umgang mit simplen und komplexen sowie null-Eingaben getestet ebenso wie PartialApplications, Abstraktionen, Applikationen, Named Terms.
 
 \end{document}

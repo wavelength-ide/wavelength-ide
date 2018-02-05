@@ -78,7 +78,7 @@ Die Modellierung der Daten erfolgt als Java-Quellcode; lediglich die Visualisier
 \item \underline{Beschreibung:} SQLite stellt eine relationale Datenbank zur Verfügung.
 \item \underline{Erläuterung:} Nutzer sollen in der Lage sein, den aktuellen Zustand der Anwendung mit anderen zu teilen.
 Dazu wird der Zustand in eine Zeichenkette übersetzt.
-Diese erreicht aber eine Länge, mit der weder moderne Browser noch URL-Kürzer arbeiten können.
+Diese kann aber eine Länge erreichen, mit der weder moderne Browser noch URL-Kürzer arbeiten können.
 Daher werden die generierten Zeichenketten in einer Datenbank gespeichert.
 Als Schlüssel wird dabei eine zufällig erzeugte UUID (Universally unique identifier) verwendet, die anschließend geteilt werden kann.
 \end{enumerate}
@@ -90,16 +90,30 @@ Als Schlüssel wird dabei eine zufällig erzeugte UUID (Universally unique ident
 \end{enumerate}
 
 \section{Änderungen am Entwurf}
-Im Vergleich zur Spezifikation in der Entwurfsphase treten folgende Veränderungen auf:
-\begin{itemize}
-%ToDo gute Erklärung finden
-\item Die Pakete edu.kit.wavelength.client.view.webui.component und edu.kit.wavelength.client.view.api wurden entfernt.
-\item Die Serialisierung ignoriert den Übungsmodus.
-\end{itemize}
+
+\subsection{View}
+\textbf{Die Pakete \emph{edu.kit.wavelength.client.view.webui.component} und \emph{edu.kit.wavelength.client.view.api} wurden entfernt:} \\
+Die Verwendung der Bootstrap-Komponenten anstelle der ursprünglich geplanten GWT-Komponenten hätte eine Anpassung der Wrapper-Klassen im \emph{webui.component-Paket} zur Folge.
+Diese wurden aber teilweise durch die Komponenten obsolet. \\
+So war bspw die ImageButton Klasse für die Knöpfe mit Icons gedacht.
+Bootstrap stellt aber über Font Awesome selbst Icons bereit, die den Knöpfen direkt zugewiesen werden können.
+Damit hat die ImageButton Klasse keine Funktionalität mehr, die sie von TextButton unterscheidet und kann gestrichen werden. \\
+So ähnlich verhält es sich mit vielen anderen Wrappern.\\
+Darüber hinaus stehen die im \emph{api-Paket} definierten Interfaces bereits (unter anderem Namen) zur Verfügung.
+So entsprechen die Interfaces Readable und Writable gerade GWT's hasText-Interface.\\	
+Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Klasse eingespart werden.
+
+\textbf{Die Serialisierung ignoriert den Übungsmodus:} \\
+In Ermangelung von Zeit wurde der Einfachheit halber der Übungsmodus bei der Serialisierung der Applikation ignoriert, d.h. 
+ weder die aktuell ausgewählte Übungsaufgabe noch die Fenster mit der Aufgabenstellung und der Lösung werden beim 
+ Deserialisieren wiederhergestellt.
 
 \section{Implementierte Funktionalitäten}
+Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
 
 \begin{tabular}{l | l | l}
+\textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} \\
+\hline
 \textbf{M1}& Eingabe von $\lambda$-Termen  & \checkmark \\
 \textbf{M2} & Auswertung von $\lambda$-Termen & \checkmark \\
 \textbf{M3} & Fehlermeldung bei invalider Eingabe & \checkmark \\
@@ -115,11 +129,13 @@ Im Vergleich zur Spezifikation in der Entwurfsphase treten folgende Veränderung
 \textbf{K9} & Schritt-für-Schritt Modus & \checkmark \\
 \textbf{K10} & Permalinks & \checkmark\\ 
 \textbf{K11} & komfortabler $\lambda$-Code & \\
+\hline
+\textbf{Gesamt} &15 &10
 \end{tabular}
 
 \section{Implementierungsplan}
-\hspace*{-4cm}
-\includegraphics[trim={0, 0, 2cm, 0}, clip, scale=0.7, page=4]{Implementierungsplan/Implementierungsplan.pdf}
+\hspace*{-2cm}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.7, page=4]{Implementierungsplan/Implementierungsplan.pdf}
 
 \section{Komponententests}
 

@@ -52,7 +52,14 @@ public class ParserTest {
 	private String stringUnicodeLib = "ΦΨη = (\\x. x x)";
 	private String libUsingString =  "(ΦΨη x)(Σ ΔΘΛ)";
 	
-	LambdaTerm singeUnicodeLibTerrm = new NamedTerm("Σ", new Application(new FreeVariable("z"), new FreeVariable("v")));
+	private String someBlankLines = "abc = x \n def = v v \n (abc def)";
+	private String lBracketAbs = "(\\x. (y) x)";
+	
+	LambdaTerm lBracketAbsTerm = new Abstraction("x", new Application (new FreeVariable("y") ,new BoundVariable(1)));
+	
+	LambdaTerm someBlankLinesTerm = new Application(new NamedTerm("abc", new FreeVariable("x")), new NamedTerm("def", new Application(new FreeVariable("v"), new FreeVariable("v"))));
+	
+	LambdaTerm singeUnicodeLibTerm = new NamedTerm("Σ", new Application(new FreeVariable("z"), new FreeVariable("v")));
 	LambdaTerm stringUnicodeLibWUpCaLaTerm = new NamedTerm("ΔΘΛ", new FreeVariable("v"));
 	LambdaTerm stringUnicodeLibTerm = new NamedTerm("", new Abstraction("x", new Application(
 			new BoundVariable(1), new BoundVariable(1))));
@@ -86,6 +93,22 @@ public class ParserTest {
 	@Before
 	public void setUp() {
 		testParser = new Parser(new ArrayList<Library>());
+		//System.out.println("NEXT_TEST");
+	}
+	
+	@Test
+	public void lbracketBreaksAbs() throws ParseException {
+		LambdaTerm term = testParser.parse(lBracketAbs);
+		assertEquals(lBracketAbsTerm, term);
+	}
+	
+	@Ignore
+	public void someBlankLinesTest() throws ParseException {
+		System.out.println("==========>");
+		String myTest = "a = v \n b = k \n \n\n \n a b";
+		LambdaTerm term = testParser.parse(myTest);
+		System.out.println("<=============");
+		assertEquals(term, someBlankLinesTerm);
 	}
 	
 	@Test

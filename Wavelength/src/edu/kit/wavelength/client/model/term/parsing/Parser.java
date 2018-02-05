@@ -32,7 +32,45 @@ public class Parser {
 
 	private int rowPos = 1;
 	private int columnPos = 0;
+	private final String blankLineRegex = "";
+	private final String commentLineRegex = "";
 
+	public static void main(String[] args) {
+		String blankRedex = "\\s+[^.]*";
+		String commentRedex = "\\s*--.*";
+		MatchResult blankResult = RegExp.compile(blankRedex).exec("");
+		MatchResult commentResult = RegExp.compile(commentRedex).exec("");
+		System.out.println(blankResult);
+		System.out.println(commentResult);
+		System.out.println("");
+		blankResult = RegExp.compile(blankRedex).exec("    ");
+		commentResult = RegExp.compile(commentRedex).exec("    ");
+		System.out.println(blankResult);
+		System.out.println(commentResult);
+		System.out.println("");
+		blankResult = RegExp.compile(blankRedex).exec("            ");
+		commentResult = RegExp.compile(commentRedex).exec("            ");
+		System.out.println(blankResult);
+		System.out.println(commentResult);
+		System.out.println("");
+		blankResult = RegExp.compile(blankRedex).exec(" ");
+		commentResult = RegExp.compile(commentRedex).exec(" ");
+		System.out.println(blankResult);
+		System.out.println(commentResult);
+		System.out.println("");
+		System.out.println("----------------------");
+		blankResult = RegExp.compile(blankRedex).exec(" huhu");
+		commentResult = RegExp.compile(commentRedex).exec(" huhu");
+		System.out.println(blankResult);
+		System.out.println(commentResult);
+		System.out.println("");
+		blankResult = RegExp.compile(blankRedex).exec(" halloooo   ");
+		commentResult = RegExp.compile(commentRedex).exec(" halloooo ");
+		System.out.println(blankResult);
+		System.out.println(commentResult);
+		System.out.println("");
+	}
+	
 	/**
 	 * Initializes a new parser.
 	 * 
@@ -74,9 +112,14 @@ public class Parser {
 			if (possibleRows[i] == "") {
 				break;
 			}
-			MatchResult blankResult = RegExp.compile("^\\s+^[.]").exec(possibleRows[i]);
-			MatchResult commentResult = RegExp.compile("^\\s*--.*").exec(possibleRows[i]);
+			MatchResult blankResult = RegExp.compile("\\s+^[.]").exec(possibleRows[i]);
+			MatchResult commentResult = RegExp.compile("\\s*--.*").exec(possibleRows[i]);
+			//System.out.println(">>>");
+			//System.out.println(blankResult);
+			//System.out.println(commentResult);
+			//System.out.println("<<<");
 			if (blankResult == null && commentResult == null) {
+				//System.out.println("AddingLine: _" + possibleRows[i] + "_");
 				rows.add(possibleRows[i]);
 			}
 		}
@@ -287,6 +330,10 @@ public class Parser {
 			childNodes = new ArrayList<TTNode>();
 			parse();
 		}
+		
+		public TermCollector(List<TTNode> newChildNodes) {
+			this.childNodes = new ArrayList<TTNode>(newChildNodes);
+		}
 
 		private void absorbBracket() {
 			Token activeToken = popToken();
@@ -355,11 +402,13 @@ public class Parser {
 	private class TTBoundCollector implements TTNode {
 
 		private TTName variable;
-		private TermCollector termCollector;
+		private TTNode termCollector;
+		private List<TTNode> childNodes;
 		private boolean leadingBracket;
 
 		public TTBoundCollector() throws ParseException {
 			this.leadingBracket = false;
+			childNodes = new ArrayList<TTNode>();
 			parse();
 		}
 
@@ -372,7 +421,10 @@ public class Parser {
 					this.variable = new TTName(activeToken.getContent());
 					activeToken = popToken();
 					if (activeToken.getType() == TokenType.DOT) {
-						this.termCollector = new TermCollector();
+						//this.termCollector = new TermCollector();
+						while (peekToken() != null && peekToken().getType() != TokenType.RBRACKET) {
+							childNodes.add(new TermCollector());
+						}
 						if (leadingBracket && popToken().getType() != TokenType.RBRACKET) {
 							throw new ParseException("Mismating brackets, expected closing bracket", rowPos, columnPos);
 						}
@@ -393,9 +445,8 @@ public class Parser {
 
 		@Override
 		public FormattedTTNode format() throws ParseException {
-			return new TTAbstraction(variable, termCollector.format());
+			return new TTAbstraction(variable, new TermCollector(childNodes).format());
 		}
-
 	}
 
 	private class TTApplication implements FormattedTTNode {

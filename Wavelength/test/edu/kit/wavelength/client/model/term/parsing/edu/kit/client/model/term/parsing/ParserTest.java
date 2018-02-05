@@ -47,7 +47,16 @@ public class ParserTest {
 	private String twoLibTerms = "";
 	private String julString = "(( ((\\x.x)(\\x.x)) (\\x.x)) ( ((\\x.x)(\\x.x)) (\\x.x) ) )";
 	private String varString = "(( (v v) v) ( (v v) v ) )";
- 
+	private String singleUnicodeLib = "Σ = z v";
+	private String stringUnicodeLibWUpCaLa = "ΔΘΛ =j";
+	private String stringUnicodeLib = "ΦΨη = (\\x. x x)";
+	private String libUsingString =  "(ΦΨη x)(Σ ΔΘΛ)";
+	
+	LambdaTerm singeUnicodeLibTerrm = new NamedTerm("Σ", new Application(new FreeVariable("z"), new FreeVariable("v")));
+	LambdaTerm stringUnicodeLibWUpCaLaTerm = new NamedTerm("ΔΘΛ", new FreeVariable("v"));
+	LambdaTerm stringUnicodeLibTerm = new NamedTerm("", new Abstraction("x", new Application(
+			new BoundVariable(1), new BoundVariable(1))));
+	
 	LambdaTerm idTerm = new Abstraction("x", new BoundVariable(1));
 	LambdaTerm var = new FreeVariable("v");
 	
@@ -76,20 +85,22 @@ public class ParserTest {
 	@Before
 	public void setUp() {
 		testParser = new Parser(new ArrayList<Library>());
-		System.out.println("-----------------");
-		System.out.println("");
+	}
+	
+	@Test
+	public void unicodeLibTerms() {
+		String input = singleUnicodeLib + "\n" + firstDecl + "\n" + stringUnicodeLibWUpCaLa + "\n"
+					   libUsingString;
 	}
 	
 	@Test
 	public void julTest() throws ParseException {
-		System.out.println("julTest");
 		LambdaTerm term = testParser.parse(julString);
 		assertEquals(term, julTerm);
 	}
 	
 	@Test
 	public void varJulTest() throws ParseException {
-		System.out.println("julVarTest");
 		LambdaTerm term = testParser.parse(varString);
 		assertEquals(term, varTerm);
 	}
@@ -109,7 +120,6 @@ public class ParserTest {
 	@Test
 	public void testidentity() {
 		try {
-			System.out.println("ID-Test");
 			LambdaTerm term = testParser.parse(id);
 			assertEquals(term, idTerm);
 		} catch (ParseException e) {
@@ -133,7 +143,6 @@ public class ParserTest {
 	public void test3App() {
 		try {
 			LambdaTerm term = testParser.parse(app3);
-			System.out.println("--");
 			assertEquals(term, app3Term);
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -274,10 +283,5 @@ public class ParserTest {
 			fail();
 		}
 		assertEquals(term, expectedTerm);
-	}
-
-	@Test
-	public void multipleLibTermTest() {
-		
 	}
 }

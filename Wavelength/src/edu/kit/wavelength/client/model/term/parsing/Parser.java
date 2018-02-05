@@ -30,7 +30,7 @@ public class Parser {
 	private Stack<Token> tokens;
 	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]+\\s*=\\s*.+\\s*");
 
-	private int rowPos = 0;
+	private int rowPos = 1;
 	private int columnPos = 0;
 
 	/**
@@ -81,11 +81,11 @@ public class Parser {
 			}
 		}
 		for (int i = 0; i < (rows.size() - 1); i++) {
-			rowPos = i;
+			rowPos = i + 1;
 			readLibraryTerm(rows.get(i));
 		}
 		columnPos = 0;
-		rowPos = rows.size() - 1;
+		rowPos = rows.size();
 		String lastLine = rows.get((rows.size() - 1));
 		return parseTerm(lastLine);
 	}
@@ -96,10 +96,11 @@ public class Parser {
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1].trim();
+			columnPos = name.length() + 1;
 			LambdaTerm term = parseTerm(termString);
 			inputLibrary.addTerm(term, name);
 		} else {
-			throw new ParseException("Not a valid name assignment", rowPos, columnPos);
+			throw new ParseException("\"" + input + "\"is not a valid name assignment", rowPos, columnPos);
 		}
 	}
 
@@ -123,13 +124,11 @@ public class Parser {
 	 */
 	private Token popToken() {
 		Token pop = tokens.pop();
-		// System.out.println(">pop: " + pop.getContent());
 		columnPos = columnPos + pop.getContent().length();
 		return pop;
 	}
 
 	private void pushToken(Token newToken) {
-		// System.out.println(">push: " + newToken.getContent());
 		columnPos = columnPos - newToken.getContent().length();
 		tokens.push(newToken);
 	}
@@ -167,35 +166,22 @@ public class Parser {
 	private LambdaTerm parseTerm(String input) throws ParseException {
 		Token[] tokenisedInput = new Tokeniser().tokenise(input);
 		tokens = new Stack<Token>();
-		String debugA = "";
 		for (int i = (tokenisedInput.length - 1); i >= 0; i--) {
 			tokens.add(tokenisedInput[i]);
-			debugA = tokenisedInput[i].getContent() + debugA;
 		}
-		if (peekToken() != null) {
-			columnPos = -(peekToken().getContent().length());
-		} else {
-			columnPos = 0;
+		if (peekToken() == null) {
 			throw new ParseException("λ-terms may not be empty", rowPos, columnPos);
 		}
-		System.out.println("start:  " + debugA);
-
-		TermCollector root = new TermCollector(true);
-		FormattedTTNode formattedRoot = root.format();
-
-		String debugB = "";
-		for (Token tok : tokens) {
-			debugB = debugB + tok.getContent();
-		}
-		System.out.println("rest:  " + debugB);
-		System.out.println(formattedRoot.toString());
+		TermTree tree = new TermTree();
+		tree.parse();
+		FormattedTTNode formattedTree = tree.format();
 		if (tokens.isEmpty() == false) {
 			throw new ParseException("Unable to parse all tokens", rowPos, columnPos);
 		} else {
-			return formattedRoot.convert(new ArrayList<String>());
+			return formattedTree.convert(new ArrayList<String>());
 		}
 	}
-
+	
 	/**
 	 * This interface defines the methods all nodes in the tree object structure
 	 * from which the final LambdaTerm will be build have to support.
@@ -243,6 +229,46 @@ public class Parser {
 		 */
 		public abstract LambdaTerm convert(List<String> names) throws ParseException;
 	}
+	
+	private class TermTree implements TTNode {
+
+		private List<TTNode> childNodes;
+		private List<TokenType> knownTokenTypes;
+		
+		public TermTree() throws ParseException {
+			childNodes = new ArrayList<TTNode>();
+		}
+		
+		@Override
+		public void parse() throws ParseException {
+			while (tokens.isEmpty() == false) {
+				TokenType nextType = peekToken().getType();
+				if (nextType == TokenType.RBRACKET) {
+					throw new ParseException("Mismachted brackets", rowPos, columnPos);
+				}
+				childNodes.add(new TermCollector());
+			}
+		}
+		
+		@Override
+		public FormattedTTNode format() throws ParseException {
+			if (childNodes.isEmpty()) {
+				throw new ParseException("Unable to parse empty term.", rowPos, columnPos);
+			}
+			FormattedTTNode result;
+			if (childNodes.size() == 1) {
+				result = childNodes.get(0).format();
+			} else {
+				result = new TTApplication(childNodes.remove(0).format(), childNodes.remove(0).format());
+				while (childNodes.isEmpty() == false) {
+					result = new TTApplication(result, childNodes.remove(0).format());
+				}
+			}
+			return result;
+		}
+		
+	}
+	
 
 	/**
 	 * When instanced a {@link TermCollector} object will attempt to parse as many
@@ -258,57 +284,28 @@ public class Parser {
 		private boolean expectsBracket = false;
 
 		public TermCollector() throws ParseException {
-			System.out.println("Col parse: " + peekToken().getContent());
 			childNodes = new ArrayList<TTNode>();
 			parse();
-			System.out.println("Col return");
 		}
 
 		private void absorbBracket() {
 			Token activeToken = popToken();
 			if (activeToken.getType() == TokenType.LBRACKET) {
 				expectsBracket = true;
-				System.out.println("absorbed");
 			} else {
-				System.out.println(">Dislike: " + activeToken.getContent());
 				pushToken(activeToken);
 			}
 		}
 
-		public TermCollector(boolean isRoot) throws ParseException {
-			if (isRoot == false) {
-				throw new ParseException("ParseException: wrong isFirst", -1, -1);
-			}
-			System.out.println("mum parse");
-			childNodes = new ArrayList<TTNode>();
-			while (tokens.isEmpty() == false) {
-				if (peekToken().getType() == TokenType.RBRACKET) {
-					throw new ParseException("Mismachted brackets", rowPos, columnPos);
-				}
-				System.out.println("newLoop");
-				childNodes.add(new TermCollector());
-			}
-			// childNodes.add(new TermCollector());
-			System.out.println("mum return");
-		}
-
 		@Override
 		public void parse() throws ParseException {
-			/*
-			 * expectsBracket = false; Token activeToken = popToken(); if
-			 * (activeToken.getType() == TokenType.LBRACKET) { expectsBracket = true;
-			 * System.out.println(">exBracket"); } else { pushToken(activeToken); }
-			 */
 			absorbBracket();
 			int loop = 0;
 			while (tokens.isEmpty() == false) {
 				loop++;
 				Token activeToken = popToken();
-				// System.out.println(loop + " loop " + activeToken.getContent());
-				System.out.println("active: " + activeToken.getContent());
 				switch (activeToken.getType()) {
 				case LBRACKET:
-					System.out.println("lbracket case");
 					pushToken(activeToken);
 					this.childNodes.add(new TermCollector());
 					break;
@@ -324,7 +321,6 @@ public class Parser {
 					this.childNodes.add(new TTBoundCollector());
 					break;
 				case NAME:
-					System.out.println("name case");
 					pushToken(activeToken);
 					this.childNodes.add(new TTName());
 					break;
@@ -362,18 +358,9 @@ public class Parser {
 		private TermCollector termCollector;
 		private boolean leadingBracket;
 
-		public TTBoundCollector(boolean leadingBracket) throws ParseException {
-			System.out.println("Bound parse");
-			this.leadingBracket = leadingBracket;
-			parse();
-			System.out.println("Bound return");
-		}
-
 		public TTBoundCollector() throws ParseException {
-			System.out.println("Bound parse");
 			this.leadingBracket = false;
 			parse();
-			System.out.println("Bound return");
 		}
 
 		@Override
@@ -495,7 +482,6 @@ public class Parser {
 		private String name;
 
 		public TTName() throws ParseException {
-			System.out.println("name parse");
 			parse();
 		}
 

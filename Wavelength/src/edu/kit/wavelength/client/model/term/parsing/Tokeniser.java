@@ -75,7 +75,7 @@ public class Tokeniser {
 	public Token[] tokeniseNameAssignment(String input) {
 		Token[] result = new Token[3];
 		TokenPattern[] types = new TokenPattern[3];
-		types[0] = new TokenPattern("[a-zA-Z]*", TokenType.NAME);
+		types[0] = new TokenPattern("[a-zA-Z\\p{L}[^λ]]*", TokenType.NAME);
 		types[1] = new TokenPattern("\\s*=\\s*", TokenType.EQUALS);
 		types[2] = new TokenPattern("**[^" + newLine + "]", TokenType.NEWLINE);
 		for (int i = 0; i < 3; i++) {

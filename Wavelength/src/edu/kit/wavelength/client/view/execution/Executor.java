@@ -180,7 +180,11 @@ public class Executor implements Serializable {
 	 * @return The Executor serialized String representation
 	 */
 	public StringBuilder serialize() {
-		return engine.serialize();
+		if(engine == null) {
+			return new StringBuilder("");
+		} else {
+			return engine.serialize();
+		}
 	}
 
 	/**
@@ -191,7 +195,10 @@ public class Executor implements Serializable {
 	 *            serialized Executor
 	 */
 	public void deserialize(String serialization) {
-		this.engine = new ExecutionEngine(serialization);
-		this.pushTerms(engine.getDisplayed());
+		if(serialization.length() > 0) {
+			this.engine = new ExecutionEngine(serialization);
+			this.pushTerms(engine.getDisplayed());
+		}
+		
 	}
 }

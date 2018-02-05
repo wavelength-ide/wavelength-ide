@@ -501,7 +501,9 @@ public class App implements Serializable {
 				public void onSuccess(String result) {
 					if (result != null) {
 						deserialize(result);
+					} else {
 					}
+					
 				}
 			};
 			databaseService.getSerialization(state, callback);
@@ -522,14 +524,15 @@ public class App implements Serializable {
 	public StringBuilder serialize() {
 
 		StringBuilder executionEngineString = executor.serialize();
-
+		
 		StringBuilder editorString = new StringBuilder(editor.read());
-
+		
 		StringBuilder outputFormatBoxString = new StringBuilder(Integer.toString(outputFormatBox.getSelectedIndex()));
+		
 		StringBuilder reductionOrderBoxString = new StringBuilder(
 				Integer.toString(reductionOrderBox.getSelectedIndex()));
+		
 		StringBuilder outputSizeString = new StringBuilder(Integer.toString(outputSizeBox.getSelectedIndex()));
-
 		// has one character for each library. A 'c' for a selected library and
 		// a 'u' for an unselected library
 		StringBuilder libraryCheckBoxesString = new StringBuilder();
@@ -540,7 +543,7 @@ public class App implements Serializable {
 				libraryCheckBoxesString.append("u");
 			}
 		}
-
+		
 		return SerializationUtilities.enclose(executionEngineString, editorString, outputFormatBoxString,
 				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString);
 	}

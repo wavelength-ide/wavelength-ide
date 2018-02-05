@@ -37,7 +37,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 		this.connection = null;
 		this.initializeDatabase();
 	}
-
+	
 	/**
 	 * Initialize the database and create a table (if it does not already exist) mapping ids(as Strings) to serialization Strings.
 	 */
@@ -48,8 +48,9 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 			//do nothing
 		}
 		try {
-			Statement statement = connection.createStatement();
-			statement.execute(createDatabase);
+				Statement statement = connection.createStatement();
+				statement.execute(createDatabase);
+			
 		} catch (SQLException exception) {
 			//do nothing
 		}
@@ -62,12 +63,13 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 				PreparedStatement statement = connection.prepareStatement(selectSerialization);
 				statement.setString(1, id);
 				ResultSet resultSet = statement.executeQuery();
-				if (resultSet != null) {
-					return resultSet.getString(1);
-				} else {
-					return null;
-				}
+				resultSet.next();
+				System.out.println(resultSet.getString(1));
+				return resultSet.getString(1);
+				
+				
 			} catch (SQLException exception) {
+				System.out.println(exception.getMessage());
 				return null;
 			}
 		} else {

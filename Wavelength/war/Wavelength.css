@@ -69,11 +69,11 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 .hover:hover {background-color: #E6F2FD; !important;}
 
-.application a.clickable { color: #2b91af;; text-decoration: none; pointer-events: auto; cursor: pointer; overflow: scroll;}
+.application a.clickable { color: #2b91af;; text-decoration: none; pointer-events: auto; cursor: pointer;}
 
-.notclickable { color: black; text-decoration: none; cursor: default; overflow: scroll;}
+.notclickable { color: black; text-decoration: none; cursor: default;}
 
-.notclickable a.clickable { color: black; text-decoration: none; pointer-events:none; cursor: default; overflow: scroll;}
+.notclickable a.clickable { color: black; text-decoration: none; pointer-events:none; cursor: default;}
 
 .notclickable a.hover:hover {background-color: #E6F2FD; pointer-events:none;}
 

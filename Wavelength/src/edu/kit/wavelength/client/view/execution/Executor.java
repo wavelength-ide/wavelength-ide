@@ -9,6 +9,7 @@ import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.serialization.Serializable;
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
@@ -270,11 +271,13 @@ public class Executor implements Serializable {
 	 * @return The Executor serialized String representation
 	 */
 	public StringBuilder serialize() {
+		StringBuilder serializedEngine;
 		if(engine == null) {
-			return new StringBuilder("");
+			serializedEngine = new StringBuilder("");
 		} else {
-			return engine.serialize();
+			serializedEngine = engine.serialize();
 		}
+		return SerializationUtilities.enclose(serializedEngine, new StringBuilder(terminated ? "t" : "f"));
 	}
 
 	/**
@@ -285,10 +288,12 @@ public class Executor implements Serializable {
 	 *            serialized Executor
 	 */
 	public void deserialize(String serialization) {
-		if(serialization.length() > 0) {
-			this.engine = new ExecutionEngine(serialization);
+		List<String> extracted = SerializationUtilities.extract(serialization);
+		assert extracted.size() == 2;
+		if(extracted.get(0).length() > 0) {
+			this.engine = new ExecutionEngine(extracted.get(0));
 			this.pushTerms(engine.getDisplayed());
 		}
-		
+		terminated = extracted.get(1).equals("t");
 	}
 }

@@ -631,6 +631,7 @@ public class App implements Serializable {
 			// outputArea
 			backwardsButton.setEnabled(true);
 			forwardButton.setEnabled(true);
+			cancelButton.setEnabled(true);
 		}
 	}
 

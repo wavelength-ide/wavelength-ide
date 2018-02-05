@@ -9,7 +9,7 @@ public class MonacoEditor {
 	
 	private static native JavaScriptObject config() /*-{
 		var c = {
-			"value": "hello word",
+			"value": "(\\x.x) x",
 			"automaticLayout": true,
 			"minimap": {"enabled": false},
 			"mouseWheelZoom": true,

@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Wavelength-Ide" company="Wavelength" webLink="https://github.com/wavelength-ide" view-date="2018-01-10" view-index="0" gantt-divider-location="404" resource-divider-location="300" version="2.8.5" locale="de_DE">
+<?xml version="1.0" encoding="UTF-8"?><project name="Wavelength-Ide" company="Wavelength" webLink="https://github.com/wavelength-ide" view-date="2018-01-10" view-index="0" gantt-divider-location="404" resource-divider-location="300" version="2.8.5" locale="de">
     <description><![CDATA[Wavelength is THE IDE for the world's most awesome programming language : the untyped lambda calculus
 
 "We can only see a short distance ahead, but we can see plenty there that needs to be done."
    Alan Turing
 ]]></description>
     <view zooming-state="default:3" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="137" order="0"/>
-        <field id="tpd4" name="Anfang" width="78" order="1"/>
+        <field id="tpd3" name="Vorgang" width="176" order="0"/>
+        <field id="tpd4" name="Anfang" width="39" order="1"/>
         <field id="tpd5" name="Ende" width="72" order="2"/>
         <field id="tpd8" name="Verantwortlich" width="111" order="3"/>
     </view>

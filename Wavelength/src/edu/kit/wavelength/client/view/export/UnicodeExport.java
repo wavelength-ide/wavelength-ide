@@ -12,8 +12,12 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public class UnicodeExport implements Export {
 
 	private static final String LAMBDA = "λ";
-	private static final String ARROW = "➳ ";
+	private ArrowFactory factory;
 
+	public UnicodeExport() {
+		factory = new ArrowFactory();
+	}
+	
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		Objects.requireNonNull(displayedTerms);
@@ -31,14 +35,14 @@ public class UnicodeExport implements Export {
 		BasicExportVisitor visitor = new BasicExportVisitor(libraries, LAMBDA);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
-			result.append(ARROW);
+			result.append(factory.getArrow());
 			result.append(displayedTerms.get(i).acceptVisitor(visitor));
 			result.append("\n");
 		}
 
 		// No line break for last lambda term
 		assert (displayedTerms.size() >= 1);
-		result.append(ARROW);
+		result.append(factory.getArrow());
 		result.append(displayedTerms.get(displayedTerms.size() - 1).acceptVisitor(visitor));
 		return result.toString();
 	}

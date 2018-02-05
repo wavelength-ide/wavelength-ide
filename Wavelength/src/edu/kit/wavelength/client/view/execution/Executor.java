@@ -25,24 +25,26 @@ public class Executor implements Serializable {
 	private boolean terminated = true;
 	private boolean paused = true;
 	private ExecutionEngine engine;
-	
+
 	/**
 	 * Creates a new Executor.
-	 * @param executionObservers Observers to update with reduced lambda terms
+	 * 
+	 * @param observers
+	 *            Observers to update with reduced lambda terms
 	 */
 	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers) {
 		this.executionObservers = executionObservers;
 		this.controlObservers = controlObservers;
 	}
-	
+
 	private void pushTerm(LambdaTerm t) {
 		executionObservers.forEach(o -> o.pushTerm(t));
 	}
-	
+
 	private void pushTerms(Iterable<LambdaTerm> ts) {
 		ts.forEach(this::pushTerm);
 	}
-	
+
 	private void scheduleExecution() {
 		paused = false;
 		Scheduler.get().scheduleIncremental(() -> {
@@ -60,14 +62,21 @@ public class Executor implements Serializable {
 			return !paused;
 		});
 	}
-	
+
 	/**
-	 * Starts the automatic execution of the input, parsing the term and then reducing it.
-	 * @param input code to parse and reduce
-	 * @param order order with which to reduce
-	 * @param size which terms to push to observers
-	 * @param libraries libraries to consider when parsing
-	 * @throws ParseException thrown when input cannot be parsed
+	 * Starts the automatic execution of the input, parsing the term and then
+	 * reducing it.
+	 * 
+	 * @param input
+	 *            code to parse and reduce
+	 * @param order
+	 *            order with which to reduce
+	 * @param size
+	 *            which terms to push to observers
+	 * @param libraries
+	 *            libraries to consider when parsing
+	 * @throws ParseException
+	 *             thrown when input cannot be parsed
 	 */
 	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		if (!terminated) {
@@ -82,7 +91,7 @@ public class Executor implements Serializable {
 		terminated = false;
 		
 	}
-	
+
 	/**
 	 * Pauses the automatic execution, transitioning into the step by step mode.
 	 */
@@ -94,7 +103,8 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Unpauses the automatic execution, transitioning from step by step mode into automatic execution.
+	 * Unpauses the automatic execution, transitioning from step by step mode
+	 * into automatic execution.
 	 */
 	public void unpause() {
 		if (terminated) {
@@ -102,7 +112,7 @@ public class Executor implements Serializable {
 		}
 		scheduleExecution();
 	}
-	
+
 	/**
 	 * Terminates the step by step- and automatic execution.
 	 */
@@ -115,12 +125,19 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Initiates the step by step execution, allowing the caller to choose the next step.
-	 * @param input code to parse and execute
-	 * @param order order with which to reduce
-	 * @param size which terms to push to observers
-	 * @param libraries libraries to consider when parsing
-	 * @throws ParseException thrown when input cannot be parsed
+	 * Initiates the step by step execution, allowing the caller to choose the
+	 * next step.
+	 * 
+	 * @param input
+	 *            code to parse and execute
+	 * @param order
+	 *            order with which to reduce
+	 * @param size
+	 *            which terms to push to observers
+	 * @param libraries
+	 *            libraries to consider when parsing
+	 * @throws ParseException
+	 *             thrown when input cannot be parsed
 	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
 		if (!terminated) {
@@ -133,7 +150,7 @@ public class Executor implements Serializable {
 			pushTerm(engine.getDisplayed().get(0));
 		}
 	}
-	
+
 	/**
 	 * Executes a single reduction of the current lambda term.
 	 */
@@ -148,11 +165,13 @@ public class Executor implements Serializable {
 			pushTerm(current);
 		}
 	}
-	
+
 	/**
 	 * Executes a single reduction of the supplied redex.
-	 * @param redex The redex to be evaluated. Must be a redex, otherwise
-	 * an exception is thrown
+	 * 
+	 * @param redex
+	 *            The redex to be evaluated. Must be a redex, otherwise an
+	 *            exception is thrown
 	 */
 	public void stepForward(Application redex) {
 		if (terminated) {
@@ -161,7 +180,7 @@ public class Executor implements Serializable {
 		List<LambdaTerm> displayedTerms = engine.stepForward(redex);
 		pushTerms(displayedTerms);
 	}
-	
+
 	/**
 	 * Reverts to the previously output lambda term.
 	 */
@@ -176,7 +195,9 @@ public class Executor implements Serializable {
 
 	/**
 	 * Changes the active reduction order to the entered one.
-	 * @param reduction The new reduction order
+	 * 
+	 * @param reduction
+	 *            The new reduction order
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
 		if (terminated) {
@@ -184,7 +205,7 @@ public class Executor implements Serializable {
 		}
 		engine.setReductionOrder(reduction);
 	}
-	
+
 	/**
 	 * Checks whether stepBackward is possible.
 	 * @return whether stepBackward is possible
@@ -237,20 +258,37 @@ public class Executor implements Serializable {
 		}
 		return engine.getDisplayed();
 	}
-	
 	public List<Library> getLibraries() {
 		if (engine == null) {
 			throw new IllegalStateException("trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
 		}
 		return engine.getLibraries();
 	}
-	
 	/**
 	 * Serializes the Executor by serializing its ExecutionEngine.
+	 * 
 	 * @return The Executor serialized String representation
 	 */
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		if(engine == null) {
+			return new StringBuilder("");
+		} else {
+			return engine.serialize();
+		}
 	}
 
+	/**
+	 * Deserializes the Executor by deserializing its ExecutionEngine. Also
+	 * loads the correct content into OutputArea.
+	 * 
+	 * @param serialization
+	 *            serialized Executor
+	 */
+	public void deserialize(String serialization) {
+		if(serialization.length() > 0) {
+			this.engine = new ExecutionEngine(serialization);
+			this.pushTerms(engine.getDisplayed());
+		}
+		
+	}
 }

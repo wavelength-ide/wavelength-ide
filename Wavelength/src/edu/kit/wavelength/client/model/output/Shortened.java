@@ -46,8 +46,12 @@ public final class Shortened implements OutputSize {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("s" + String.valueOf(cutoff));
+	}
+	
+	public static Shortened fromSerialized(String serialized) {
+		return new Shortened(Integer.valueOf(serialized));
 	}
 
 	@Override

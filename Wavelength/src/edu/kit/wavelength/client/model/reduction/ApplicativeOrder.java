@@ -28,8 +28,8 @@ public final class ApplicativeOrder implements ReductionOrder {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("a");
 	}
 	
 	private class ApplicativeVisitor extends NameAgnosticVisitor<Application> {

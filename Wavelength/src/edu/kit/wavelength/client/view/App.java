@@ -24,10 +24,13 @@ import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.DivElement;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -36,13 +39,15 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
+import edu.kit.wavelength.client.database.DatabaseService;
+import edu.kit.wavelength.client.database.DatabaseServiceAsync;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.Pause;
@@ -68,6 +73,10 @@ import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 
 
+import edu.kit.wavelength.client.view.update.UpdateShareURL;
+import edu.kit.wavelength.client.view.update.UpdateURL;
+import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
+
 /**
  * App is a singleton that initializes and holds the view.
  */
@@ -77,7 +86,7 @@ public class App implements Serializable {
 
 	/**
 	 * Gets a singleton instance of App.
-	 * 
+	 *
 	 * @return instance
 	 */
 	public static App get() {
@@ -171,16 +180,13 @@ public class App implements Serializable {
 
 
 	private App() {
-		
+
 	}
 
-	
 	/**
 	 * Initializes App.
 	 */
 	private void initialize() {
-		String state = Window.Location.getPath();
-		// deserialize
 
 		mainPanel = new DockLayoutPanel(Unit.EM);
 		mainPanel.addStyleName("mainPanel");
@@ -189,21 +195,21 @@ public class App implements Serializable {
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
-		
+
 		openMainMenuButton = new Button();
-		openMainMenuButton.addStyleName("fa fa-cog");
+		openMainMenuButton.addStyleName("fa fa-bars");
 		openMainMenuButton.setToggleCaret(false);
 		openMainMenuButton.setDataToggle(Toggle.DROPDOWN);
 		mainMenu.add(openMainMenuButton);
-		
+
 		mainMenuPanel = new DropDownMenu();
 		// prevent dropdown from closing when clicking inside
 		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);
-		
+
 		mainMenuLibraryTitle = new DropDownHeader("Libraries");
 		mainMenuPanel.add(mainMenuLibraryTitle);
-		
+
 		libraryCheckBoxes = new ArrayList<>();
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
@@ -211,13 +217,13 @@ public class App implements Serializable {
 			mainMenuPanel.add(libraryCheckBox);
 			libraryCheckBoxes.add(libraryCheckBox);
 		});
-		
+
 		mainMenuDivider = new Divider();
 		mainMenuPanel.add(mainMenuDivider);
-		
+
 		mainMenuExerciseTitle = new DropDownHeader("Exercises");
 		mainMenuPanel.add(mainMenuExerciseTitle);
-		
+
 		exerciseButtons = new ArrayList<>();
 		Exercises.all().forEach(excs -> {
 			AnchorListItem exerciseButton = new AnchorListItem();
@@ -229,45 +235,44 @@ public class App implements Serializable {
 		loadExercisePopup = new Modal();
 		loadExercisePopup.setClosable(false);
 		loadExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
-		
+
 		loadExercisePopupBody = new ModalBody();
 		loadExercisePopup.add(loadExercisePopupBody);
-		
 		loadExercisePopupText = new Label("Opening the exercise will empty your editor content. Continue?");
 		loadExercisePopupBody.add(loadExercisePopupText);
-		
+
 		loadExercisePopupFooter = new ModalFooter();
 		loadExercisePopup.add(loadExercisePopupFooter);
-		
+
 		loadExercisePopupCancelButton = new Button();
 		loadExercisePopupCancelButton.addStyleName("fa fa-times");
 		loadExercisePopupFooter.add(loadExercisePopupCancelButton);
-		
+
 		loadExercisePopupOkButton = new Button();
 		loadExercisePopupOkButton.addStyleName("fa fa-check");
 		loadExercisePopupFooter.add(loadExercisePopupOkButton);
-		
+
 		closeExercisePopup = new Modal();
 		closeExercisePopup.setClosable(false);
 		closeExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
-		
+
 		closeExercisePopupBody = new ModalBody();
 		closeExercisePopup.add(closeExercisePopupBody);
 		
 		closeExercisePopupText = new Label("Closing the exercise will empty your editor content. Continue?");
 		closeExercisePopupBody.add(closeExercisePopupText);
-		
+
 		closeExercisePopupFooter = new ModalFooter();
 		closeExercisePopup.add(closeExercisePopupFooter);
-		
+
 		closeExercisePopupCancelButton = new Button();
 		closeExercisePopupCancelButton.addStyleName("fa fa-times");
 		closeExercisePopupFooter.add(closeExercisePopupCancelButton);
-		
+
 		closeExercisePopupOkButton = new Button();
 		closeExercisePopupOkButton.addStyleName("fa fa-check");
 		closeExercisePopupFooter.add(closeExercisePopupOkButton);
-		
+
 		footerPanel = new FlowPanel();
 		footerPanel.addStyleName("footerPanel");
 		mainPanel.addSouth(footerPanel, 2);
@@ -297,38 +302,38 @@ public class App implements Serializable {
 		editorExercisePanel = new SplitLayoutPanel(3);
 		editorExercisePanel.addStyleName("editorExercisePanel");
 		inputPanel.add(editorExercisePanel);
-		
+
 		exercisePanel = new FlowPanel();
 		exercisePanel.addStyleName("exercisePanel");
 		editorExercisePanel.addEast(exercisePanel, 0.3 * Window.getClientWidth());
 		editorExercisePanel.setWidgetHidden(exercisePanel, true);
-		
+
 		exerciseHeaderPanel = new FlowPanel();
 		exercisePanel.add(exerciseHeaderPanel);
-		
+
 		exerciseControlPanel = new FlowPanel();
 		exerciseControlPanel.addStyleName("exerciseControlPanel");
 		exerciseHeaderPanel.add(exerciseControlPanel);
-		
+
 		exerciseDescriptionLabel = new HTML("hello world<br>hello world<br>hello world<br>");
 		exerciseDescriptionLabel.addStyleName("exerciseDescriptionLabel");
 		exerciseHeaderPanel.add(exerciseDescriptionLabel);
-		
+
 		toggleSolutionButton = new Button();
 		toggleSolutionButton.addStyleName("fa fa-lightbulb-o");
 		exerciseControlPanel.add(toggleSolutionButton);
-		
+
 		closeExerciseButton = new Button();
 		closeExerciseButton.addStyleName("fa fa-times-circle-o");
 		exerciseControlPanel.add(closeExerciseButton);
-		
+
 		solutionArea = new TextArea();
 		solutionArea.addStyleName("solutionArea");
 		solutionArea.setVisible(false);
 		solutionArea.setReadOnly(true);
 		solutionArea.setText("hello\n\tworld\n\t\teveryone");
 		exercisePanel.add(solutionArea);
-		
+
 		editorPanel = new SimplePanel();
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
@@ -337,7 +342,7 @@ public class App implements Serializable {
 		optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
 		inputControlPanel.add(optionBarPanel);
-		
+
 		outputFormatBox = new ListBox();
 		outputFormatBox.addItem("Unicode Output");
 		outputFormatBox.addItem("Tree Output");
@@ -360,7 +365,7 @@ public class App implements Serializable {
 		stepByStepControlPanel = new FlowPanel();
 		stepByStepControlPanel.addStyleName("stepByStepControlPanel");
 		controlPanel.add(stepByStepControlPanel);
-		
+
 		backwardsButton = new Button();
 		backwardsButton.setEnabled(false);
 		backwardsButton.addStyleName("fa fa-chevron-left");
@@ -378,21 +383,21 @@ public class App implements Serializable {
 		runControlPanel = new FlowPanel();
 		runControlPanel.addStyleName("runControlPanel");
 		controlPanel.add(runControlPanel);
-		
+
 		cancelButton = new Button();
 		cancelButton.setEnabled(false);
 		cancelButton.addStyleName("fa fa-stop");
 		runControlPanel.add(cancelButton);
-		
+
 		runButton = new Button();
 		runButton.addStyleName("fa fa-play");
 		runControlPanel.add(runButton);
-		
+
 		pauseButton = new Button();
 		pauseButton.addStyleName("fa fa-pause");
 		pauseButton.setVisible(false);
 		runControlPanel.add(pauseButton);
-		
+
 		unpauseButton = new Button();
 		unpauseButton.addStyleName("fa fa-play");
 		unpauseButton.setVisible(false);
@@ -401,13 +406,13 @@ public class App implements Serializable {
 		exportDropupGroup = new ButtonGroup();
 		exportDropupGroup.setDropUp(true);
 		footerPanel.add(exportDropupGroup);
-		
+
 		openExportMenuButton = new Button();
 		openExportMenuButton.setDataToggle(Toggle.DROPDOWN);
 		openExportMenuButton.setToggleCaret(false);
 		openExportMenuButton.addStyleName("fa fa-level-up");
 		exportDropupGroup.add(openExportMenuButton);
-		
+
 		exportMenu = new DropDownMenu();
 		exportButtons = new ArrayList<>();
 		Exports.all().forEach(e -> {
@@ -418,63 +423,61 @@ public class App implements Serializable {
 			exportButtons.add(exportButton);
 		});
 		exportDropupGroup.add(exportMenu);
-		
+
 		exportPopup = new Modal();
 		exportPopup.setDataKeyboard(true);
 		exportPopup.setClosable(false);
 		exportPopup.setDataBackdrop(ModalBackdrop.STATIC);
-		
+
 		exportPopupBody = new ModalBody();
 		exportPopup.add(exportPopupBody);
-		
+
 		exportArea = new TextArea();
 		exportArea.addStyleName("exportArea");
 		exportArea.setReadOnly(true);
 		exportPopupBody.add(exportArea);
-		
+
 		exportPopupFooter = new ModalFooter();
 		exportPopup.add(exportPopupFooter);
-		
+
 		exportPopupBodyOkButton = new Button();
 		exportPopupBodyOkButton.addStyleName("fa fa-check");
 		exportPopupFooter.add(exportPopupBodyOkButton);
-		
 		// this only exists for style consistency with exportButton
 		shareGroup = new ButtonGroup();
 		footerPanel.add(shareGroup);
-		
+
 		sharePanel = new TextBox();
 		sharePanel.addStyleName("sharePanel");
 		sharePanel.setText("hello world");
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);
 		footerPanel.add(sharePanel);
-		
+
 		shareButton = new Button();
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
 
 		LoadExercise loadExerciseAction = new LoadExercise();
 		loadExercisePopupOkButton.addClickHandler(e -> loadExerciseAction.run());
-		
+
 		loadExercisePopupCancelButton.addClickHandler(e -> loadExercisePopup.hide());
-		
 		closeExercisePopupOkButton.addClickHandler(e -> new EnterDefaultMode().run());
 		closeExercisePopupCancelButton.addClickHandler(e -> closeExercisePopup.hide());
-		
+
 		exportPopupBodyOkButton.addClickHandler(e -> exportPopup.hide());
-		
+
 		List<Exercise> exercises = Exercises.all();
 		for (int i = 0; i < exercises.size(); i++) {
 			SelectExercise action = new SelectExercise(loadExerciseAction, exercises.get(i));
 			exerciseButtons.get(i).addClickHandler(e -> action.run());
 		}
-		
+
 		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
 		closeExerciseButton.addClickHandler(e -> closeExercisePopup.show());
-		
+
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
-		
+
 		backwardsButton.addClickHandler(e -> new StepBackward().run());
 		stepByStepButton.addClickHandler(e -> new StepByStep().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
@@ -483,25 +486,147 @@ public class App implements Serializable {
 		pauseButton.addClickHandler(e -> new Pause().run());
 
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
-				
 		List<Export> exports = Exports.all();
 		for (int i = 0; i < exports.size(); i++) {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
-		
-		shareButton.addClickHandler(e -> new UseShare(null).run());
+
+		int pollingDelayMS = 10000;
+		UpdateURL updateURL = new UpdateURL();
+		UpdateShareURL updateShareURL = new UpdateShareURL();
+		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), pollingDelayMS);
+		urlSerializer.startPolling();
+		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
+
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(),  new UpdateTreeOutput()), Arrays.asList(new FinishExecution()));
 		unicodeIsSet = true;
 		treeIsSet = false;
+
+		// deserialization if possible
+		String state = History.getToken();
+		if (state.length() > 0) {
+			// deserialize
+			DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);
+			AsyncCallback<String> callback = new AsyncCallback<String>() {
+				@Override
+				public void onFailure(Throwable caught) {
+					App.get().outputArea().add(new Text(caught.getMessage()));
+				}
+
+				@Override
+				public void onSuccess(String result) {
+					if (result != null) {
+						deserialize(result);
+					} else {
+					}
+					
+				}
+			};
+			databaseService.getSerialization(state, callback);
+		}
 	}
 
+	/**
+	 * Serializes the Application by returning a String from which the state of
+	 * the application can be recreated.
+	 *
+	 * The String holds information about the {@link Executor}, the
+	 * {@link Editor}, the {@link OptionBox}es and the selected {@link Library}s
+	 * in this order.
+	 *
+	 * @return the string representation of the application
+	 */
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+
+		StringBuilder executionEngineString = executor.serialize();
+		
+		StringBuilder editorString = new StringBuilder(editor.read());
+		
+		StringBuilder outputFormatBoxString = new StringBuilder(Integer.toString(outputFormatBox.getSelectedIndex()));
+		
+		StringBuilder reductionOrderBoxString = new StringBuilder(
+				Integer.toString(reductionOrderBox.getSelectedIndex()));
+		
+		StringBuilder outputSizeString = new StringBuilder(Integer.toString(outputSizeBox.getSelectedIndex()));
+		// has one character for each library. A 'c' for a selected library and
+		// a 'u' for an unselected library
+		StringBuilder libraryCheckBoxesString = new StringBuilder();
+		for (int i = 0; i < libraryCheckBoxes.size(); i++) {
+			if (libraryCheckBoxes.get(i).getValue()) {
+				libraryCheckBoxesString.append("c");
+			} else {
+				libraryCheckBoxesString.append("u");
+			}
+		}
+		
+		return SerializationUtilities.enclose(executionEngineString, editorString, outputFormatBoxString,
+				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString);
+	}
+
+	/**
+	 * Deserializes the Application with the given String.
+	 *
+	 * This includes {@link Executor}, the {@link Editor}, the
+	 * {@link OptionBox}es and the selected {@link Library}s. It sets the
+	 * application into step by step mode if the Executor holds terms and leaves
+	 * the application in its initial state else.
+	 *
+	 * @param content
+	 *            the string representing the state of the application
+	 */
+	public void deserialize(String content) {
+		List<String> val = SerializationUtilities.extract(content);
+		assert (val
+				.size() == 6) : "SerializationUtilities extracted a list of strings that doesn't contain 6 arguments";
+
+		// deserializes the executor with the correct string
+		executor.deserialize(val.get(0));
+
+		// writes Editor with given content
+		editor.write(val.get(1));
+
+		// Selects the correct option of the optionBoxes
+		// assert that the given strings are representations of decimal integers
+		// and that the idex fits the optionBox
+		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(2)));
+		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(3)));
+		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(4)));
+
+		// checks and unchecks the Library Check Boxes
+		assert (val.get(5).length() == libraryCheckBoxes.size());
+		for (int i = 0; i < val.get(5).length(); i++) {
+			assert (val.get(5).charAt(i) == 'c' || val.get(5).charAt(i) == 'u');
+			if (val.get(5).charAt(i) == 'c') {
+				libraryCheckBoxes.get(i).setValue(true);
+			} else {
+				libraryCheckBoxes.get(i).setValue(false);
+			}
+		}
+
+		if (val.get(0) == "") {
+			// no terms in the OutputArea
+			// nothing to do application is already in initial state
+		} else {
+			// terms in OutputArea
+			// change UI to transition from initialized state to step by step
+			// state
+			editor.lock();
+			stepByStepButton.setEnabled(false);
+			outputSizeBox.setEnabled(false);
+			outputFormatBox.setEnabled(false);
+			libraryCheckBoxes.forEach(b -> b.setEnabled(false));
+			exerciseButtons.forEach(b -> b.setEnabled(false));
+
+			// enable backwardsButton because at least one term should be in the
+			// outputArea
+			backwardsButton.setEnabled(true);
+			forwardButton.setEnabled(true);
+		}
 	}
 
 	public DockLayoutPanel mainPanel() {

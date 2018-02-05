@@ -10,5 +10,5 @@ public interface Serializable {
 	 * @return A string designating the object's state from which it
 	 * can be restored using a corresponding deserialization method
 	 */
-	String serialize();
+	StringBuilder serialize();
 }

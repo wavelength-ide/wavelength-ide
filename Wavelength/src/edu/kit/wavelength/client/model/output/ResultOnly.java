@@ -28,8 +28,8 @@ public final class ResultOnly implements OutputSize {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("r");
 	}
 
 	@Override

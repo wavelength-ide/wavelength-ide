@@ -71,8 +71,8 @@ public final class NaturalNumbers implements Library {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("n");
 	}
 
 }

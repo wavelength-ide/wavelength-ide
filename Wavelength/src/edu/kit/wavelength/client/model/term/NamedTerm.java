@@ -1,5 +1,9 @@
 package edu.kit.wavelength.client.model.term;
 
+import java.util.List;
+
+import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
+
 /**
  * Represents a {@link LambdaTerm} that has a name.
  *
@@ -64,7 +68,15 @@ public final class NamedTerm implements LambdaTerm {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("n").append(SerializationUtilities.enclose(new StringBuilder(name),
+				inner.serialize()));
+	}
+	
+	public static NamedTerm fromSerialized(String serialized) {
+		List<String> extracted = SerializationUtilities.extract(serialized);
+		assert extracted.size() == 2;
+		return new NamedTerm(extracted.get(0),
+				LambdaTerm.deserialize(extracted.get(1)));
 	}
 }

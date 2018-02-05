@@ -30,7 +30,26 @@ public final class OutputSizes {
 	 * @return The {@link OutputSize} that the given string represents, if known to the model
 	 */
 	public static OutputSize deserialize(String serialized) {
-		return null;
+		if (serialized == null || serialized.isEmpty())
+			throw new IllegalArgumentException("serialized must be non-empty");
+		
+		String stripped = serialized.substring(1);
+		
+		switch (serialized.charAt(0)) {
+		case 'f':
+			return new Full();
+			
+		case 'p':
+			return Periodic.fromSerialized(stripped);
+		
+		case 'r':
+			return new ResultOnly();
+			
+		case 's':
+			return Shortened.fromSerialized(stripped);
+		}
+		
+		throw new IllegalArgumentException("serialized must represent an output size");
 	}
 	
 	private OutputSizes() {

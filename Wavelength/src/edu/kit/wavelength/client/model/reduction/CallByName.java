@@ -29,8 +29,8 @@ public final class CallByName implements ReductionOrder {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("N");
 	}
 
 	private class CallByNameVisitor extends NameAgnosticVisitor<Application> {

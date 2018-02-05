@@ -24,8 +24,8 @@ public final class YCombinator implements Library {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("y");
 	}
 
 }

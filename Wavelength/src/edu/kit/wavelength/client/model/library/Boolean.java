@@ -23,8 +23,8 @@ public final class Boolean implements Library {
 	}
 
 	@Override
-	public String serialize() {
-		return null;
+	public StringBuilder serialize() {
+		return new StringBuilder("b");
 	}
 
 }

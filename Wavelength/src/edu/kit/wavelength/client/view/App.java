@@ -48,6 +48,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
+import edu.kit.wavelength.client.view.action.Control;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.Pause;
@@ -627,10 +628,7 @@ public class App implements Serializable {
 			libraryCheckBoxes.forEach(b -> b.setEnabled(false));
 			exerciseButtons.forEach(b -> b.setEnabled(false));
 
-			// enable backwardsButton because at least one term should be in the
-			// outputArea
-			backwardsButton.setEnabled(true);
-			forwardButton.setEnabled(true);
+			Control.updateStepControls();
 			cancelButton.setEnabled(true);
 		}
 	}

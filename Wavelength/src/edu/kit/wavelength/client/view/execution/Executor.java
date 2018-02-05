@@ -271,13 +271,11 @@ public class Executor implements Serializable {
 	 * @return The Executor serialized String representation
 	 */
 	public StringBuilder serialize() {
-		StringBuilder serializedEngine;
 		if(engine == null) {
-			serializedEngine = new StringBuilder("");
+			return new StringBuilder("");
 		} else {
-			serializedEngine = engine.serialize();
+			return SerializationUtilities.enclose(engine.serialize(), new StringBuilder(terminated ? "t" : "f"));
 		}
-		return SerializationUtilities.enclose(serializedEngine, new StringBuilder(terminated ? "t" : "f"));
 	}
 
 	/**
@@ -288,6 +286,9 @@ public class Executor implements Serializable {
 	 *            serialized Executor
 	 */
 	public void deserialize(String serialization) {
+		if(serialization == "") {
+			return;
+		}
 		List<String> extracted = SerializationUtilities.extract(serialization);
 		assert extracted.size() == 2;
 		if(extracted.get(0).length() > 0) {

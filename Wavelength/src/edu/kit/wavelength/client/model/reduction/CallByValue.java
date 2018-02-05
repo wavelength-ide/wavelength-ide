@@ -20,7 +20,7 @@ public final class CallByValue implements ReductionOrder {
 
 	@Override
 	public Application next(LambdaTerm term) {
-		return (Application) term.acceptVisitor(new CallByValueVisitor());
+		return term.acceptVisitor(new CallByValueVisitor());
 	}
 
 	@Override
@@ -33,11 +33,15 @@ public final class CallByValue implements ReductionOrder {
 		return new StringBuilder("V");
 	}
 
+	/**
+	 * A visitor for finding the next redex by the call by value reduction
+	 * order.
+	 */
 	private class CallByValueVisitor extends NameAgnosticVisitor<Application> {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return (Application) app.getRepresented().acceptVisitor(this);
+			return app.getRepresented().acceptVisitor(this);
 		}
 
 		@Override
@@ -47,14 +51,15 @@ public final class CallByValue implements ReductionOrder {
 
 		@Override
 		public Application visitApplication(Application app) {
-			if (app.acceptVisitor(new IsRedexVisitor()) && new NormalOrder().next(app) == null) {
+			if (app.acceptVisitor(new IsRedexVisitor()) && app.getRightHandSide().acceptVisitor(new IsValueVisitor())) {
+				// && new NormalOrder().next(app) == null
 				return app;
 			} else {
-				Application possibleRedex = (Application) app.getLeftHandSide().acceptVisitor(this);
+				Application possibleRedex = app.getLeftHandSide().acceptVisitor(this);
 				if (possibleRedex != null) {
 					return possibleRedex;
 				} else {
-					return (Application) app.getRightHandSide().acceptVisitor(this);
+					return app.getRightHandSide().acceptVisitor(this);
 				}
 			}
 		}
@@ -67,6 +72,39 @@ public final class CallByValue implements ReductionOrder {
 		@Override
 		public Application visitFreeVariable(FreeVariable var) {
 			return null;
+		}
+
+		/**
+		 * A visitor that determines if a given lambda term is a value or not.
+		 * 
+		 * According to our current definition every abstraction is a value.
+		 */
+		private class IsValueVisitor extends NameAgnosticVisitor<Boolean> {
+
+			@Override
+			public Boolean visitPartialApplication(PartialApplication app) {
+				return app.getRepresented().acceptVisitor(this);
+			}
+
+			@Override
+			public Boolean visitAbstraction(Abstraction abs) {
+				return true;
+			}
+
+			@Override
+			public Boolean visitApplication(Application app) {
+				return false;
+			}
+
+			@Override
+			public Boolean visitBoundVariable(BoundVariable var) {
+				return false;
+			}
+
+			@Override
+			public Boolean visitFreeVariable(FreeVariable var) {
+				return false;
+			}
 		}
 	}
 }

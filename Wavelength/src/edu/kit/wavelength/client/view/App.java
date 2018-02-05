@@ -67,9 +67,11 @@ import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+import edu.kit.wavelength.client.view.gwt.VisJs;
 import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
+
 
 
 
@@ -168,16 +170,15 @@ public class App implements Serializable {
 	private ButtonGroup shareGroup;
 	private TextBox sharePanel;
 	private Button shareButton;
-	
+
 	private MonacoEditor editor;
 
 	private Executor executor;
 
 	private boolean unicodeIsSet;
 	private boolean treeIsSet;
-	
-	private FlowPanel outputBlocker;
 
+	private FlowPanel outputBlocker;
 
 	private App() {
 
@@ -238,6 +239,7 @@ public class App implements Serializable {
 
 		loadExercisePopupBody = new ModalBody();
 		loadExercisePopup.add(loadExercisePopupBody);
+
 		loadExercisePopupText = new Label("Opening the exercise will empty your editor content. Continue?");
 		loadExercisePopupBody.add(loadExercisePopupText);
 
@@ -258,7 +260,7 @@ public class App implements Serializable {
 
 		closeExercisePopupBody = new ModalBody();
 		closeExercisePopup.add(closeExercisePopupBody);
-		
+
 		closeExercisePopupText = new Label("Closing the exercise will empty your editor content. Continue?");
 		closeExercisePopupBody.add(closeExercisePopupText);
 
@@ -287,6 +289,7 @@ public class App implements Serializable {
 
 		outputBlocker = new FlowPanel("div");
 		outputBlocker.addStyleName("output");
+		outputBlocker.getElement().setId("scroll");
 
 		outputArea = new FlowPanel("div");
 		outputArea.getElement().setId("network");
@@ -443,6 +446,7 @@ public class App implements Serializable {
 		exportPopupBodyOkButton = new Button();
 		exportPopupBodyOkButton.addStyleName("fa fa-check");
 		exportPopupFooter.add(exportPopupBodyOkButton);
+
 		// this only exists for style consistency with exportButton
 		shareGroup = new ButtonGroup();
 		footerPanel.add(shareGroup);
@@ -486,6 +490,7 @@ public class App implements Serializable {
 		pauseButton.addClickHandler(e -> new Pause().run());
 
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
+		
 		List<Export> exports = Exports.all();
 		for (int i = 0; i < exports.size(); i++) {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));
@@ -498,11 +503,11 @@ public class App implements Serializable {
 		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), pollingDelayMS);
 		urlSerializer.startPolling();
 		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
-
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
-		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(),  new UpdateTreeOutput()), Arrays.asList(new FinishExecution()));
+		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
+				Arrays.asList(new FinishExecution()));
 		unicodeIsSet = true;
 		treeIsSet = false;
 
@@ -765,9 +770,9 @@ public class App implements Serializable {
 		return solutionArea;
 	}
 
-	/*public SimplePanel editorPanel() {
-		return editorPanel;
-	}*/
+	/*
+	 * public SimplePanel editorPanel() { return editorPanel; }
+	 */
 
 	public FlowPanel optionBarPanel() {
 		return optionBarPanel;
@@ -880,25 +885,31 @@ public class App implements Serializable {
 	public Executor executor() {
 		return executor;
 	}
-	
+
 	public boolean unicodeIsSet() {
 		return this.unicodeIsSet;
 	}
-	
+
 	public void setUnicode(boolean value) {
 		this.unicodeIsSet = value;
 	}
-	
+
 	public boolean treeIsSet() {
 		return this.treeIsSet;
 	}
-	
+
 	public void setTree(boolean value) {
 		this.treeIsSet = value;
 	}
-	
+
 	public FlowPanel outputBlocker() {
 		return this.outputBlocker;
 	}
+
+	public static native void autoScroll() /*-{
+		var elem = $doc.getElementById('scroll');
+  		elem.scrollTop = elem.scrollHeight;
+  		return;
+	}-*/;
 
 }

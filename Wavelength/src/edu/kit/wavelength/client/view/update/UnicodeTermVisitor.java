@@ -51,6 +51,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		bracketsForAbs = true;
 		Tuple left = app.getLeftHandSide().acceptVisitor(this);
 
+		bracketsForAbs = true;
 		// If the right term of an application is an application it should get
 		// brackets because implicit brackets bind from left to right.
 		bracketsForApp = true;
@@ -59,7 +60,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		FlowPanel panel = new FlowPanel("span");
 		Anchor a = left.a;
 		
-		/*if (app.equals(this.nextRedex)) {
+		/*if (app == this.nextRedex) {
 			panel.addStyleName(orderName.replaceAll("\\s+",""));
 		}*/
 		
@@ -144,7 +145,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		Tuple inner = abs.getInner().acceptVisitor(this);
 		
 		Anchor a = new Anchor("λ" + resolvedName);
-		a.addStyleName("notclickable");
+		a.addStyleName("abstraction");
 		
 		FlowPanel panel = new FlowPanel("span");
 		

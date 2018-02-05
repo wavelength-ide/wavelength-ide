@@ -78,6 +78,7 @@ public final class CallByValue implements ReductionOrder {
 		 * A visitor that determines if a given lambda term is a value or not.
 		 * 
 		 * According to our current definition every abstraction is a value.
+		 * (https://www.itu.dk/~sestoft/papers/sestoft-lamreduce.pdf)
 		 */
 		private class IsValueVisitor extends NameAgnosticVisitor<Boolean> {
 

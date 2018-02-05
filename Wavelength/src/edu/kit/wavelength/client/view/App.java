@@ -73,9 +73,6 @@ import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
-
-
-
 import edu.kit.wavelength.client.view.update.UpdateShareURL;
 import edu.kit.wavelength.client.view.update.UpdateURL;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
@@ -86,6 +83,14 @@ import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 public class App implements Serializable {
 
 	private static App instance = null;
+
+	private static final int EXECUTOR_SERIALIZATION = 0;
+	private static final int EDITOR_SERIALIZATION = 1;
+	private static final int OUTPUTFORMAT_SERIALIZATION = 2;
+	private static final int REDUCTIONORDER_SERIALIZATION = 3;
+	private static final int OUTPUTSIZE_SERIALIZATION = 4;
+	private static final int LIBRARY_SERIALIZATION = 5;
+	private static final int NUMBER_OF_SERIALIZATIONS = 6;
 
 	/**
 	 * Gets a singleton instance of App.
@@ -491,7 +496,7 @@ public class App implements Serializable {
 		pauseButton.addClickHandler(e -> new Pause().run());
 
 		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
-		
+
 		List<Export> exports = Exports.all();
 		for (int i = 0; i < exports.size(); i++) {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));
@@ -529,7 +534,7 @@ public class App implements Serializable {
 						deserialize(result);
 					} else {
 					}
-					
+
 				}
 			};
 			databaseService.getSerialization(state, callback);
@@ -550,15 +555,14 @@ public class App implements Serializable {
 	public StringBuilder serialize() {
 
 		StringBuilder executionEngineString = executor.serialize();
-		
+
 		StringBuilder editorString = new StringBuilder(editor.read());
-		
+
 		StringBuilder outputFormatBoxString = new StringBuilder(Integer.toString(outputFormatBox.getSelectedIndex()));
-		
 		StringBuilder reductionOrderBoxString = new StringBuilder(
 				Integer.toString(reductionOrderBox.getSelectedIndex()));
-		
 		StringBuilder outputSizeString = new StringBuilder(Integer.toString(outputSizeBox.getSelectedIndex()));
+
 		// has one character for each library. A 'c' for a selected library and
 		// a 'u' for an unselected library
 		StringBuilder libraryCheckBoxesString = new StringBuilder();
@@ -569,7 +573,12 @@ public class App implements Serializable {
 				libraryCheckBoxesString.append("u");
 			}
 		}
-		
+
+		/*
+		 * EXECUTOR_SERIALIZATION = 0; EDITOR_SERIALIZATION = 1;
+		 * OUTPUTFORMAT_SERIALIZATION = 2; REDUCTIONORDER_SERIALIZATION = 3;
+		 * OUTPUTSIZE_SERIALIZATION = 4; LIBRARY_SERIALIZATION = 5;
+		 */
 		return SerializationUtilities.enclose(executionEngineString, editorString, outputFormatBoxString,
 				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString);
 	}
@@ -588,26 +597,26 @@ public class App implements Serializable {
 	public void deserialize(String content) {
 		List<String> val = SerializationUtilities.extract(content);
 		assert (val
-				.size() == 6) : "SerializationUtilities extracted a list of strings that doesn't contain 6 arguments";
+				.size() == NUMBER_OF_SERIALIZATIONS) : "SerializationUtilities extracted a list of strings that doesn't contain 6 arguments";
 
 		// deserializes the executor with the correct string
-		executor.deserialize(val.get(0));
+		executor.deserialize(val.get(EXECUTOR_SERIALIZATION));
 
 		// writes Editor with given content
-		editor.write(val.get(1));
+		editor.write(val.get(EDITOR_SERIALIZATION));
 
 		// Selects the correct option of the optionBoxes
 		// assert that the given strings are representations of decimal integers
 		// and that the idex fits the optionBox
-		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(2)));
-		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(3)));
-		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(4)));
+		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(OUTPUTFORMAT_SERIALIZATION)));
+		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(REDUCTIONORDER_SERIALIZATION)));
+		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(OUTPUTSIZE_SERIALIZATION)));
 
 		// checks and unchecks the Library Check Boxes
-		assert (val.get(5).length() == libraryCheckBoxes.size());
+		assert (val.get(LIBRARY_SERIALIZATION).length() == libraryCheckBoxes.size());
 		for (int i = 0; i < val.get(5).length(); i++) {
-			assert (val.get(5).charAt(i) == 'c' || val.get(5).charAt(i) == 'u');
-			if (val.get(5).charAt(i) == 'c') {
+			assert (val.get(LIBRARY_SERIALIZATION).charAt(i) == 'c' || val.get(LIBRARY_SERIALIZATION).charAt(i) == 'u');
+			if (val.get(LIBRARY_SERIALIZATION).charAt(i) == 'c') {
 				libraryCheckBoxes.get(i).setValue(true);
 			} else {
 				libraryCheckBoxes.get(i).setValue(false);
@@ -907,8 +916,8 @@ public class App implements Serializable {
 
 	public static native void autoScroll() /*-{
 		var elem = $doc.getElementById('scroll');
-  		elem.scrollTop = elem.scrollHeight;
-  		return;
+		elem.scrollTop = elem.scrollHeight;
+		return;
 	}-*/;
 
 }

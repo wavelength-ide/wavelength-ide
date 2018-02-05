@@ -143,6 +143,10 @@ public class Executor implements Serializable {
 		}
 		List<LambdaTerm> displayedTerms = engine.stepForward();
 		pushTerms(displayedTerms);
+		if (!engine.isCurrentDisplayed()) {
+			LambdaTerm current = engine.displayCurrent();
+			pushTerm(current);
+		}
 	}
 	
 	/**

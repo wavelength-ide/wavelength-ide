@@ -85,6 +85,7 @@ public class ExecutionEngine {
 		}
 
 		shown.addAll(result);
+		lastDisplayedNum = shown.get(shown.size() - 1).getNumber();
 
 		return result.stream().map(t -> t.getTerm()).collect(Collectors.toList());
 	}

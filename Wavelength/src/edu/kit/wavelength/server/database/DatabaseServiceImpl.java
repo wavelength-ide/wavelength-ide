@@ -64,12 +64,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 				statement.setString(1, id);
 				ResultSet resultSet = statement.executeQuery();
 				resultSet.next();
-				System.out.println(resultSet.getString(1));
 				return resultSet.getString(1);
 				
 				
 			} catch (SQLException exception) {
-				System.out.println(exception.getMessage());
 				return null;
 			}
 		} else {

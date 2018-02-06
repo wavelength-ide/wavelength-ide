@@ -47,8 +47,12 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, wrapper);
 		Tuple term = t.acceptVisitor(visitor);
 
-		for (FlowPanel panel : wrappedTerms) {
+		/*for (FlowPanel panel : wrappedTerms) {
 			panel.addStyleName("notclickable");
+		}*/
+		
+		if (!wrappedTerms.isEmpty()) {
+			wrappedTerms.get(wrappedTerms.size() - 1).addStyleName("notclickable");
 		}
 
 		wrapper.add(term.panel);

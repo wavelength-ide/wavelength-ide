@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import org.gwtbootstrap3.client.ui.html.Text;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 
@@ -25,12 +27,11 @@ import edu.kit.wavelength.client.view.action.StepManually;
  * {@link UnicodeOutput} view.
  */
 public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
-	
+
 	private boolean bracketsForAbs;
 	private boolean bracketsForApp;
 	private Application nextRedex;
 	private String orderName;
-	
 
 	public UnicodeTermVisitor(List<Library> libraries, Application nextRedex, String orderName) {
 		super(libraries);
@@ -43,7 +44,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	@Override
 	public Tuple visitApplication(Application app) {
 		Objects.requireNonNull(app);
-		
+
 		final boolean brackets = bracketsForApp;
 		resetFlags();
 
@@ -59,11 +60,11 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 		FlowPanel panel = new FlowPanel("span");
 		Anchor a = left.a;
-		
-		/*if (app == this.nextRedex) {
-			panel.addStyleName(orderName.replaceAll("\\s+",""));
-		}*/
-		
+
+		/*
+		 * if (app == this.nextRedex) { panel.addStyleName("reduced"); }
+		 */
+
 		// this is only true if left is an application
 		if (a != null) {
 			// make applications clickable and highlight it on mouse over
@@ -72,7 +73,12 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 			a.addMouseOverHandler(event -> panel.addStyleName("hover"));
 			a.addMouseOutHandler(event -> panel.removeStyleName("hover"));
 			// when clicked reduce the clicked application
-			a.addClickHandler(event -> new StepManually(app).run());
+			a.addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
+					panel.addStyleName("reduced");
+					new StepManually(app).run();
+				}
+			});
 		}
 
 		if (brackets) {
@@ -88,11 +94,11 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	}
 
 	@Override
-	public Tuple visitNamedTerm(NamedTerm term) {	
+	public Tuple visitNamedTerm(NamedTerm term) {
 		Objects.requireNonNull(term);
 
 		resetFlags();
-		
+
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(term.getName()));
 		return new Tuple(panel, null);
@@ -101,18 +107,18 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	@Override
 	public Tuple visitPartialApplication(PartialApplication app) {
 		Objects.requireNonNull(app);
-		
+
 		resetFlags();
-		
+
 		return app.getRepresented().acceptVisitor(this);
 	}
 
 	@Override
 	public Tuple visitFreeVariable(FreeVariable var) {
 		Objects.requireNonNull(var);
-		
+
 		resetFlags();
-		
+
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(var.getName()));
 		return new Tuple(panel, null);
@@ -122,7 +128,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	protected Tuple visitBoundVariable(BoundVariable var, String resolvedName) {
 		Objects.requireNonNull(var);
 		Objects.requireNonNull(resolvedName);
-		
+
 		resetFlags();
 
 		FlowPanel panel = new FlowPanel("span");
@@ -141,24 +147,24 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 		// An application inside an abstraction should get brackets.
 		bracketsForApp = true;
-		
+
 		Tuple inner = abs.getInner().acceptVisitor(this);
-		
+
 		Anchor a = new Anchor("λ" + resolvedName);
 		a.addStyleName("abstraction");
-		
+
 		FlowPanel panel = new FlowPanel("span");
-		
-		if(brackets) {
+
+		if (brackets) {
 			panel.add(new Text("("));
 		}
 		panel.add(a);
 		panel.add(new Text("."));
 		panel.add(inner.panel);
-		if(brackets) {
+		if (brackets) {
 			panel.add(new Text(")"));
 		}
-		
+
 		return new Tuple(panel, a);
 	}
 

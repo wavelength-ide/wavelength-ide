@@ -3,8 +3,7 @@ package edu.kit.wavelength.client.view.update;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtbootstrap3.client.ui.html.Text;
-
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -20,10 +19,12 @@ import edu.kit.wavelength.client.view.execution.ExecutionObserver;
  */
 public class UpdateUnicodeOutput implements ExecutionObserver {
 
-	private List<FlowPanel> terms;
+	private List<FlowPanel> wrappedTerms;
+	private List<LambdaTerm> terms;
 	private static App app = App.get();
 
 	public UpdateUnicodeOutput() {
+		wrappedTerms = new ArrayList<>();
 		terms = new ArrayList<>();
 	}
 
@@ -32,6 +33,8 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		if (!app.unicodeIsSet()) {
 			return;
 		}
+
+		terms.add(t);
 
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
@@ -42,51 +45,51 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, orderName);
 		Tuple term = t.acceptVisitor(visitor);
 
-		// clear the output
-		app.outputArea().clear();
-		
-		// disable clicking on all currently displayed terms
-		for (int i = 0; i < terms.size(); i++) {
-			FlowPanel wrapper = new FlowPanel();
-			wrapper.addStyleName("notclickable");
-			wrapper.add(terms.get(i));
-			app.outputArea().add(wrapper);
+		for (FlowPanel panel : wrappedTerms) {
+			panel.addStyleName("notclickable");
 		}
 
-		terms.add(term.panel);
+		FlowPanel wrapper = new FlowPanel("div");
+		wrapper.add(term.panel);
+		wrappedTerms.add(wrapper);
 		// display the new term
-		app.outputArea().add(term.panel);
+		app.outputArea().add(wrapper);
 		app.autoScroll();
 	}
 
 	public void removeLastTerm() {
-		if (!app.unicodeIsSet() || terms.isEmpty()) {
+		if (!app.unicodeIsSet() || wrappedTerms.isEmpty()) {
 			// no term to remove
 			return;
 		}
+
 		// remove the last term from the list of all displayed terms
 		terms.remove(terms.size() - 1);
-		// TODO: probably not fast enough
-		// clear the output and reset all terms
-		app.outputArea().clear();
 
-		// make all terms, except the last not clickable and display them
-		for (int i = 0; i < terms.size() - 1; i++) {
-			FlowPanel wrap = new FlowPanel("div");
-			wrap.addStyleName("notclickable");
-			wrap.add(terms.get(i));
-			app.outputArea().add(wrap);
-		}
-		// make the last term clickable and display it
-		FlowPanel wrap = new FlowPanel("div");
-		wrap.addStyleName("clickable");
-		wrap.add(terms.get(terms.size() - 1));
-		app.outputArea().add(wrap);
+		FlowPanel toRemove = wrappedTerms.get(wrappedTerms.size() - 1);
+		app.outputArea().remove(toRemove);
+		wrappedTerms.remove(wrappedTerms.size() - 1);
+		reloadLastTerm();
 	}
 
 	@Override
 	public void clear() {
+		wrappedTerms.clear();
 		terms.clear();
+	}
+
+	@Override
+	public void reloadLastTerm() {
+		if (!app.unicodeIsSet()) {
+			return;
+		}
+
+		FlowPanel toRemove = wrappedTerms.get(wrappedTerms.size() - 1);
+		app.outputArea().remove(toRemove);
+		wrappedTerms.remove(wrappedTerms.size() - 1);
+		LambdaTerm term = terms.get(terms.size() - 1);
+		terms.remove(terms.size() - 1);
+		this.pushTerm(term);		
 	}
 
 }

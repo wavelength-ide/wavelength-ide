@@ -22,14 +22,16 @@ import edu.kit.wavelength.client.view.gwt.VisJs;
 public class UpdateTreeOutput implements ExecutionObserver {
 	
 	private static App app = App.get();
-	private List<TreeTriple> terms;
+	private List<TreeTriple> termTriples;
 	private List<FlowPanel> panels;
+	private List<LambdaTerm> terms;
 	private int id;
 	public int nodeId;
 	
 	public UpdateTreeOutput() {
-		terms = new ArrayList<>();
+		termTriples = new ArrayList<>();
 		panels = new ArrayList<>();
+		terms = new ArrayList<>();
 		id = 0;
 		nodeId = 0;
 	}
@@ -39,7 +41,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		if (!app.treeIsSet()) {
 			return;
 		}
-		
+		terms.add(t);
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
 				.findFirst().get();
@@ -47,7 +49,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		
 		id += 1;
 		TreeTriple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this, nextRedex));
-		terms.add(term);
+		termTriples.add(term);
 		
 		String nodes = "[" + term.nodes + "]";
 		String edges = "[" + term.edges + "]";
@@ -67,20 +69,29 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		}
 		
 		id -= 1;
+		terms.remove(terms.size() - 1);
 		app.outputArea().remove(id);	
 	}
 
 	@Override
 	public void clear() {
-		terms.clear();
+		termTriples.clear();
 		panels.clear();;
+		terms.clear();
 		id = 0;
 		nodeId = 0;	
 	}
 
 	@Override
 	public void reloadLastTerm() {
-		// TODO Auto-generated method stub
+		if (!app.treeIsSet()) {
+			return;
+		}
+		
+		app.outputArea().remove(id);
+		LambdaTerm term = terms.get(terms.size() - 1);
+		terms.remove(terms.size() - 1);
+		pushTerm(term);
 		
 	}
 	

@@ -65,7 +65,7 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 /* limit height to footer height, fix width instead of filling rest of footer, set background */
 .sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }
 
-.output { display: inline; overflow: scroll;}
+.output { display: inline; overflow-x: scroll; overflow-y: scroll;}
 
 .hover:hover {background-color: #E6F2FD;}
 
@@ -73,13 +73,15 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 .application a {pointer-events: none;}
 
-.application a.clickable { color: #2b91af;; text-decoration: none; pointer-events: auto; cursor: pointer;}
+.application a.clickable { color: #2b91af; text-decoration: none; pointer-events: auto; cursor: pointer;}
 
-.notclickable { color: black; text-decoration: none; cursor: default;}
+.notclickable { color: black; cursor: default; overflow-x: scroll; overflow-y: scroll;}
 
 .notclickable a.clickable { color: black; text-decoration: none; pointer-events:none; cursor: default;}
 
 .notclickable a.hover:hover {background-color: #E6F2FD; pointer-events:none;}
 
-.NormalOrder {background-color: yellow;}
+.notclickable .reduced {text-decoration: underline; text-decoration-color: #2b91af;}
+
+.reduced {text-decoration: underline; text-decoration-color: #2b91af;}
 

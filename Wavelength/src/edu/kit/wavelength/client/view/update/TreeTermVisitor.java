@@ -37,7 +37,7 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 		String node = "";
 		if (app.acceptVisitor(new IsRedexVisitor())) {
 			if (app == nextRedex) {
-				node = "{id: " + id + ", label: 'App', color:{background:'red',border:'red'},},";
+				node = "{id: " + id + ", label: 'App', color:{background:'#2b91af',border:'#2b91af'},},";
 			} else {
 				node = "{id: " + id + ", label: 'App', color:{background:'#E6F2FD',border:'#2b91af'},},";
 			}

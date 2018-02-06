@@ -81,7 +81,7 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 .notclickable a.hover:hover {background-color: #E6F2FD; pointer-events:none;}
 
-.parent .nextRedex { border-bottom: 1px solid red}
+.parent .nextRedex { border-bottom: 1px solid #2b91af}
 
 .notclickable .reduced {border-bottom: 1px solid #2b91af}
 

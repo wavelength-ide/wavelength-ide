@@ -1,6 +1,5 @@
 package edu.kit.wavelength.client.model.library;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,10 +19,10 @@ public final class Boolean implements Library {
 	private final NamedTerm fal = new NamedTerm("true", new Abstraction("t", new Abstraction("f", new BoundVariable(1))));
 	private final NamedTerm and = new NamedTerm("and", new Abstraction("p", new Abstraction("q", new Application(new Application(new BoundVariable(2), new BoundVariable(1)), new BoundVariable(2)))));
 	private final NamedTerm or = new NamedTerm("and", new Abstraction("p", new Abstraction("q", new Application(new Application(new BoundVariable(2), new BoundVariable(2)), new BoundVariable(1)))));
+	// a correct implementation of not is dependent on the current evaluation strategy. 
+	//This implementation only works with normal order.
 	private final NamedTerm not = new NamedTerm("not", new Abstraction("p", new Application(new Application(new BoundVariable(1), fal), tru)));
 	private final NamedTerm ifThenElse = new NamedTerm("and", new Abstraction("p", new Abstraction("a", new Abstraction("b", new Application(new Application(new BoundVariable(3), new BoundVariable(2)), new BoundVariable(1))))));;
-	
-	
 	
 	private final List<NamedTerm> definitions = Arrays.asList(tru, fal, and, or, not, ifThenElse);
 	
@@ -56,5 +55,4 @@ public final class Boolean implements Library {
 	public StringBuilder serialize() {
 		return new StringBuilder("b");
 	}
-
 }

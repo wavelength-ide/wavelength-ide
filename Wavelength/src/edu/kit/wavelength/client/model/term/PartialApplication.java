@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Objects;
 
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
-import edu.kit.wavelength.client.model.term.parsing.Parser;
 
 /**
  * Represents a {@link LambdaTerm} that consists of a library function that may
@@ -102,10 +101,10 @@ public abstract class PartialApplication implements LambdaTerm {
 		cloned.received[numReceived] = nextParam;
 		++cloned.numReceived;
 
-		if (!nextParam.acceptVisitor(checks.get(cloned.numReceived - 1)))
+		if (!nextParam.acceptVisitor(cloned.checks.get(cloned.numReceived - 1)))
 			return cloned.getRepresented();
 		if (cloned.numReceived == numParameters)
-			return cloned.accelerate(received);
+			return cloned.accelerate(cloned.received);
 		return cloned;
 	}
 

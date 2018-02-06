@@ -3,6 +3,14 @@ package edu.kit.wavelength.client.model.term;
 public class IsChurchNumberVisitor extends NameAgnosticVisitor<Boolean> {
 	
 	int abstractionsSeen = 0;
+	
+	public IsChurchNumberVisitor(int abstractionsSeen) {
+		this.abstractionsSeen = abstractionsSeen;
+	}
+	
+	public IsChurchNumberVisitor() {
+		
+	}
 
 	@Override
 	public Boolean visitPartialApplication(PartialApplication app) {
@@ -11,8 +19,7 @@ public class IsChurchNumberVisitor extends NameAgnosticVisitor<Boolean> {
 
 	@Override
 	public Boolean visitAbstraction(Abstraction abs) {
-		++abstractionsSeen;
-		return abs.getInner().acceptVisitor(this);
+		return abs.getInner().acceptVisitor(new IsChurchNumberVisitor(abstractionsSeen + 1));
 	}
 
 	@Override

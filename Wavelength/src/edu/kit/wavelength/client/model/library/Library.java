@@ -7,7 +7,6 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * This interface is used to interact with the different libraries provided by the application.
  * Each library contains a set of {@link LambdaTerm}s and their assigned names.
  * These names can be used in place of terms to both shorten terms and make them easier to understand.
- *
  */
 public interface Library extends Serializable {
 	

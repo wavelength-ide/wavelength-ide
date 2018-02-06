@@ -21,6 +21,8 @@ public final class NaturalNumbers implements Library {
 
 	/**
 	 * Creates a new NaturalNumbers library.
+	 * 
+	 * @param turbo {@link true} if calculations on this Library should be accelerated and {@link false} otherwise 
 	 */
 	public NaturalNumbers(boolean turbo) {
 		this.turbo = turbo;

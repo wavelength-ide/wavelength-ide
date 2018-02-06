@@ -82,6 +82,4 @@ public class CustomLibrary implements Library {
 			terms.add(term);
 		}
 	}
-	
-
 }

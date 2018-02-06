@@ -1,4 +1,4 @@
-package edu.kit.wavelength.client.model.term.parsing.edu.kit.client.model.term.parsing;
+package edu.kit.wavelength.client.model.term.parsing;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -18,6 +18,7 @@ import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.BoundVariable;
+import edu.kit.wavelength.client.model.term.ToStringVisitor;
 
 /**
  * A class containing parser tests.
@@ -36,7 +37,7 @@ public class ParserTest {
 	private String errorA = "λλx.(x y)";
 	private String uselessBrackets = "((x) v)";
 	private String mismatchedBrackets = "\\v. x )";
-	private String shortAbs = "λxyz.x z";
+	private String shortAbs = "λx.λy.λz.x z";
 	private String id = "(λx.x)";
 	private String app2 = id + id;
 	private String app3 = id + id + id;
@@ -219,6 +220,7 @@ public class ParserTest {
 			e.printStackTrace();
 			fail();
 		}
+		System.out.println(term.acceptVisitor(new ToStringVisitor()));
 		assertEquals(term, termB);
 	}
 

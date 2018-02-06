@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.model.term;
 
-final class ToStringVisitor implements Visitor<String> {
+public final class ToStringVisitor implements Visitor<String> {
 
 	public ToStringVisitor() {
 	}

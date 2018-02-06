@@ -7,6 +7,11 @@ import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 
@@ -31,14 +36,14 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	private boolean bracketsForAbs;
 	private boolean bracketsForApp;
 	private Application nextRedex;
-	private String orderName;
+	private FlowPanel parent;
 
-	public UnicodeTermVisitor(List<Library> libraries, Application nextRedex, String orderName) {
+	public UnicodeTermVisitor(List<Library> libraries, Application nextRedex, FlowPanel parent) {
 		super(libraries);
 		this.bracketsForAbs = false;
 		this.bracketsForApp = false;
 		this.nextRedex = nextRedex;
-		this.orderName = orderName;
+		this.parent = parent;
 	}
 
 	@Override
@@ -61,24 +66,43 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		FlowPanel panel = new FlowPanel("span");
 		Anchor a = left.a;
 
-		/*
-		 * if (app == this.nextRedex) { panel.addStyleName("reduced"); }
-		 */
+		if (app == this.nextRedex) {
+			panel.addStyleName("nextRedex");
+		}
+		
+		parent.addStyleName("parent");
 
 		// this is only true if left is an application
 		if (a != null) {
 			// make applications clickable and highlight it on mouse over
 			panel.addStyleName("application");
 			a.addStyleName("clickable");
-			a.addMouseOverHandler(event -> panel.addStyleName("hover"));
-			a.addMouseOutHandler(event -> panel.removeStyleName("hover"));
+			
+			a.addMouseOverHandler(new MouseOverHandler() {
+				public void onMouseOver(MouseOverEvent event) {
+					parent.setStyleName("parent", false);
+					panel.addStyleName("hover");
+				}
+			});	
+
 			// when clicked reduce the clicked application
 			a.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
+					parent.removeStyleName("nextRedex");
+					parent.removeStyleName("parent");
+					parent.addStyleName("customClick");
 					panel.addStyleName("reduced");
 					new StepManually(app).run();
 				}
 			});
+			
+			a.addMouseOutHandler(new MouseOutHandler() {
+				public void onMouseOut(MouseOutEvent event) {
+					panel.removeStyleName("hover");
+					parent.setStyleName("parent", true);
+				}
+			});
+
 		}
 
 		if (brackets) {
@@ -172,5 +196,6 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		bracketsForAbs = false;
 		bracketsForApp = false;
 	}
+
 
 }

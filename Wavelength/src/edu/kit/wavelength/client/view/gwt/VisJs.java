@@ -30,6 +30,7 @@ public class VisJs {
 					edge: false
 				}
 			}, 
+			autoResize: true,
 			width: '100%',
 			clickToUse: false,
   			interaction: {

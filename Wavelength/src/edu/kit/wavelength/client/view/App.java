@@ -22,8 +22,6 @@ import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
 import org.gwtbootstrap3.client.ui.html.Text;
 
-import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
@@ -68,14 +66,12 @@ import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
-import edu.kit.wavelength.client.view.gwt.VisJs;
 import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 import edu.kit.wavelength.client.view.update.UpdateShareURL;
 import edu.kit.wavelength.client.view.update.UpdateURL;
-import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -148,7 +144,6 @@ public class App implements Serializable {
 	private Button toggleSolutionButton;
 	private Button closeExerciseButton;
 	private TextArea solutionArea;
-	// TODO
 	private SimplePanel editorPanel;
 	private FlowPanel optionBarPanel;
 	private ListBox outputFormatBox;
@@ -300,7 +295,7 @@ public class App implements Serializable {
 
 		outputArea = new FlowPanel("div");
 		outputArea.getElement().setId("network");
-		outputArea.setWidth("100%");
+		outputArea.setWidth("auto");
 		outputArea.addStyleName("output");
 		outputBlocker.add(outputArea);
 		ioPanel.add(outputBlocker);

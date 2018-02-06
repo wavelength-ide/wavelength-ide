@@ -41,15 +41,16 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 				.findFirst().get();
 		Application nextRedex = currentOrder.next(t);
 
+		FlowPanel wrapper = new FlowPanel("div");
+		
 		// create a new visitor and visit the term
-		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, orderName);
+		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, wrapper);
 		Tuple term = t.acceptVisitor(visitor);
 
 		for (FlowPanel panel : wrappedTerms) {
 			panel.addStyleName("notclickable");
 		}
 
-		FlowPanel wrapper = new FlowPanel("div");
 		wrapper.add(term.panel);
 		wrappedTerms.add(wrapper);
 		// display the new term

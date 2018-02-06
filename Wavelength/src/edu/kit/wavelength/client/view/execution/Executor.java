@@ -205,6 +205,7 @@ public class Executor implements Serializable {
 			throw new IllegalStateException("trying to set option while execution is terminated");
 		}
 		engine.setReductionOrder(reduction);
+		executionObservers.forEach(o -> o.reloadLastTerm());
 	}
 
 	/**

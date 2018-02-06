@@ -87,3 +87,5 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 .customClick .nextRedex {border-bottom: none;}
 
+.customClick .nextRedex.reduced {border-bottom: 1px solid #2b91af}
+

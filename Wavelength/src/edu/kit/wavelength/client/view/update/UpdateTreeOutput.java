@@ -7,6 +7,9 @@ import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.user.client.ui.FlowPanel;
 
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.reduction.ReductionOrders;
+import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
@@ -37,8 +40,13 @@ public class UpdateTreeOutput implements ExecutionObserver {
 			return;
 		}
 		
+		String orderName = app.reductionOrderBox().getSelectedItemText();
+		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
+				.findFirst().get();
+		Application nextRedex = currentOrder.next(t);
+		
 		id += 1;
-		TreeTriple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this));
+		TreeTriple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this, nextRedex));
 		terms.add(term);
 		
 		String nodes = "[" + term.nodes + "]";
@@ -49,6 +57,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		panels.add(treePanel);
 		app.outputArea().add(treePanel);
 		VisJs.loadNetwork(nodes, edges, treePanel);
+		app.autoScroll();
 	}
 
 	@Override
@@ -66,7 +75,12 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		terms.clear();
 		panels.clear();;
 		id = 0;
-		nodeId = 0;
+		nodeId = 0;	
+	}
+
+	@Override
+	public void reloadLastTerm() {
+		// TODO Auto-generated method stub
 		
 	}
 	

@@ -7,6 +7,7 @@ import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
+import edu.kit.wavelength.client.model.term.IsRedexVisitor;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
@@ -19,10 +20,12 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 
 	private UpdateTreeOutput output;
+	private Application nextRedex;
 
-	public TreeTermVisitor(List<Library> libraries, UpdateTreeOutput output) {
+	public TreeTermVisitor(List<Library> libraries, UpdateTreeOutput output, Application nextRedex) {
 		super(libraries);
 		this.output = output;
+		this.nextRedex = nextRedex;
 	}
 
 	@Override
@@ -32,8 +35,12 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 		TreeTriple left = app.getLeftHandSide().acceptVisitor(this);
 		TreeTriple right = app.getRightHandSide().acceptVisitor(this);
 		String node = "";
-		if (app.getLeftHandSide() instanceof Abstraction) {
-			node = "{id: " + id + ", label: 'App', color:{background:'#E6F2FD',border:'#2b91af'},},";
+		if (app.acceptVisitor(new IsRedexVisitor())) {
+			if (app == nextRedex) {
+				node = "{id: " + id + ", label: 'App', color:{background:'red',border:'red'},},";
+			} else {
+				node = "{id: " + id + ", label: 'App', color:{background:'#E6F2FD',border:'#2b91af'},},";
+			}
 		} else {
 			node = "{id: " + id + ", label: 'App'},";
 		}

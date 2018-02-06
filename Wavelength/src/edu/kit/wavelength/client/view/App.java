@@ -221,6 +221,7 @@ public class App implements Serializable {
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
 			libraryCheckBox.addStyleName("libraryCheckBox");
+			libraryCheckBox.setName(lib.getName());
 			mainMenuPanel.add(libraryCheckBox);
 			libraryCheckBoxes.add(libraryCheckBox);
 		});

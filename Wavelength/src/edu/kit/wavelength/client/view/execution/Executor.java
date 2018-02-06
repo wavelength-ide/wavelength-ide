@@ -290,6 +290,7 @@ public class Executor implements Serializable {
 		if(serialization == "") {
 			return;
 		}
+		terminated = false;
 		List<String> extracted = SerializationUtilities.extract(serialization);
 		assert extracted.size() == 2;
 		if(extracted.get(0).length() > 0) {

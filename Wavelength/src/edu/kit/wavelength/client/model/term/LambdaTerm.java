@@ -1,14 +1,17 @@
 package edu.kit.wavelength.client.model.term;
 
 import edu.kit.wavelength.client.model.serialization.Serializable;
+import edu.kit.wavelength.client.model.term.PartialApplication.Addition;
+import edu.kit.wavelength.client.model.term.PartialApplication.Exponentiation;
+import edu.kit.wavelength.client.model.term.PartialApplication.Multiplication;
+import edu.kit.wavelength.client.model.term.PartialApplication.Predecessor;
+import edu.kit.wavelength.client.model.term.PartialApplication.Subtraction;
+import edu.kit.wavelength.client.model.term.PartialApplication.Successor;
 
 /**
  * Represents a term in the untyped lambda calculus.
  */
 public interface LambdaTerm extends Serializable {
-
-	//private final char ABSTRACTION_ID = 'A';
-	//private final char APPLICATION_ID = 'a';
 	
 	/**
 	 * Creates a lambda term from its serialization.
@@ -38,9 +41,38 @@ public interface LambdaTerm extends Serializable {
 			
 		case 'n':
 			return NamedTerm.fromSerialized(stripped);
+			
+		case '+':
+			return Addition.fromSerialized(stripped);
+			
+		case '-':
+			return Subtraction.fromSerialized(stripped);
+			
+		case '1':
+			return Successor.fromSerialized(stripped);
+			
+		case '0':
+			return Predecessor.fromSerialized(stripped);
+			
+		case '*':
+			return Multiplication.fromSerialized(stripped);
+			
+		case '^':
+			return Exponentiation.fromSerialized(stripped);
 		}
 		
 		throw new IllegalArgumentException("serialized must represent a lambda term");
+	}
+	
+	public static LambdaTerm churchNumber(int value) {
+		if (value < 0)
+			throw new IllegalArgumentException("value must be non-negative");
+
+		LambdaTerm inner = new BoundVariable(1);
+		for (int i = 1; i <= value; ++i) {
+			inner = new Application(new BoundVariable(2), inner);
+		}
+		return new Abstraction("s", new Abstraction("z", inner));
 	}
 
 	public LambdaTerm clone();

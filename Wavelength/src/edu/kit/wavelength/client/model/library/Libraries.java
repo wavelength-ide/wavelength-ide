@@ -21,15 +21,15 @@ public final class Libraries {
 	 *         {@link Library} known to the model
 	 */
 	public static List<Library> all() {
-		return Arrays.asList(new NaturalNumbers(), new TuplesAndLists(), new YCombinator());
+		return Arrays.asList(new NaturalNumbers(true), new NaturalNumbers(false), new TuplesAndLists(), new YCombinator());
 	}
 
 	/**
 	 * Returns the {@link Library} referred to by the serialized string.
 	 * 
 	 * @param serialized
-	 *            A string created by calling serialize on a {@link Library} known to the
-	 *            Libraries class
+	 *            A string created by calling serialize on a {@link Library} known
+	 *            to the Libraries class
 	 * @return The {@link Library} referred to by the serialized string
 	 */
 	public static Library deserialize(String serialized) {
@@ -37,7 +37,7 @@ public final class Libraries {
 			throw new IllegalArgumentException("serialized must be non-empty");
 
 		String stripped = serialized.substring(1);
-		
+
 		switch (serialized.charAt(0)) {
 		case 'b':
 			return new Boolean();
@@ -46,11 +46,11 @@ public final class Libraries {
 			return CustomLibrary.fromSerialized(stripped);
 
 		case 'n':
-			return new NaturalNumbers();
+			return NaturalNumbers.fromSerialized(stripped);
 
 		case 't':
 			return new TuplesAndLists();
-			
+
 		case 'y':
 			return new YCombinator();
 		}

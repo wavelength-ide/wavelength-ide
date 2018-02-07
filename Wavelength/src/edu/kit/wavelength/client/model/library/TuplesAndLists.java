@@ -16,10 +16,13 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
  */
 public final class TuplesAndLists implements Library {
 
+	public static final char ID = 't';
+	
 	// true and false needed for more advanced list operations
 	private final NamedTerm tru = new NamedTerm("true", new Abstraction("t", new Abstraction("f", new BoundVariable(2))));
 	private final NamedTerm fal = new NamedTerm("false", new Abstraction("t", new Abstraction("f", new BoundVariable(1))));
 	
+	// library terms for tuples
 	private final NamedTerm pair = new NamedTerm("pair", new Abstraction("x", new Abstraction("y", new Abstraction("z", new Application(new Application(new BoundVariable(1), new BoundVariable(3)), new BoundVariable(2))))));
 	private final NamedTerm first = new NamedTerm("first", new Abstraction("p", new Application(new BoundVariable(1), new Abstraction("x", new Abstraction("y", new BoundVariable(2))))));
 	private final NamedTerm second = new NamedTerm("second", new Abstraction("p", new Application(new BoundVariable(1), new Abstraction("x", new Abstraction("y", new BoundVariable(1))))));
@@ -38,8 +41,6 @@ public final class TuplesAndLists implements Library {
 	private final NamedTerm isEmpty = new NamedTerm("isEmpty", new Abstraction("l", new Application(new Application(new BoundVariable(1), new Abstraction("h", new Abstraction("t", new Abstraction("d", fal)))), tru)));
 	
 	private final List<NamedTerm> definitions = Arrays.asList(tru, fal, pair, first, second, newList, prepend, head, tail, isEmpty);
-	
-	public static final char ID = 't';
 	
 	@Override
 	public LambdaTerm getTerm(String name) {
@@ -70,5 +71,4 @@ public final class TuplesAndLists implements Library {
 	public StringBuilder serialize() {
 		return new StringBuilder("" + ID);
 	}
-
 }

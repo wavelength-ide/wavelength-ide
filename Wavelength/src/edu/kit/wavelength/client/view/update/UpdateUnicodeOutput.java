@@ -22,10 +22,12 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	private List<FlowPanel> wrappedTerms;
 	private List<LambdaTerm> terms;
 	private static App app = App.get();
+	private boolean grey;
 
 	public UpdateUnicodeOutput() {
 		wrappedTerms = new ArrayList<>();
 		terms = new ArrayList<>();
+		grey = false;
 	}
 
 	@Override
@@ -42,6 +44,8 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		Application nextRedex = currentOrder.next(t);
 
 		FlowPanel wrapper = new FlowPanel("div");
+		wrapper.setStyleName("grey", grey);
+		grey = !grey;
 		
 		// create a new visitor and visit the term
 		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, wrapper);

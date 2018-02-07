@@ -87,6 +87,8 @@ public class App implements Serializable {
 	private static final int OUTPUTSIZE_SERIALIZATION = 4;
 	private static final int LIBRARY_SERIALIZATION = 5;
 	private static final int NUMBER_OF_SERIALIZATIONS = 6;
+	private static final char CHECKED_LIBRARY = 'c';
+	private static final char UNCHECKED_LIBRARY = 'u';
 
 	/**
 	 * Gets a singleton instance of App.
@@ -499,6 +501,7 @@ public class App implements Serializable {
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
 
+		// TODO magic number!!!!!!!!!!!!!
 		int pollingDelayMS = 10000;
 		UpdateURL updateURL = new UpdateURL();
 		UpdateShareURL updateShareURL = new UpdateShareURL();
@@ -564,9 +567,9 @@ public class App implements Serializable {
 		StringBuilder libraryCheckBoxesString = new StringBuilder();
 		for (int i = 0; i < libraryCheckBoxes.size(); i++) {
 			if (libraryCheckBoxes.get(i).getValue()) {
-				libraryCheckBoxesString.append("c");
+				libraryCheckBoxesString.append(CHECKED_LIBRARY);
 			} else {
-				libraryCheckBoxesString.append("u");
+				libraryCheckBoxesString.append(UNCHECKED_LIBRARY);
 			}
 		}
 
@@ -611,8 +614,9 @@ public class App implements Serializable {
 		// checks and unchecks the Library Check Boxes
 		assert (val.get(LIBRARY_SERIALIZATION).length() == libraryCheckBoxes.size());
 		for (int i = 0; i < val.get(5).length(); i++) {
-			assert (val.get(LIBRARY_SERIALIZATION).charAt(i) == 'c' || val.get(LIBRARY_SERIALIZATION).charAt(i) == 'u');
-			if (val.get(LIBRARY_SERIALIZATION).charAt(i) == 'c') {
+			assert (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY || 
+					val.get(LIBRARY_SERIALIZATION).charAt(i) == UNCHECKED_LIBRARY);
+			if (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY) {
 				libraryCheckBoxes.get(i).setValue(true);
 			} else {
 				libraryCheckBoxes.get(i).setValue(false);
@@ -915,5 +919,4 @@ public class App implements Serializable {
 		elem.scrollTop = elem.scrollHeight;
 		return;
 	}-*/;
-
 }

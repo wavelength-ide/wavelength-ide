@@ -16,6 +16,8 @@ import edu.kit.wavelength.client.model.term.PartialApplication;
  *
  */
 public final class NormalOrder implements ReductionOrder {
+	
+	public static final char ID = 'n';
 
 	@Override
 	public Application next(LambdaTerm term) {
@@ -29,7 +31,7 @@ public final class NormalOrder implements ReductionOrder {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("n");
+		return new StringBuilder("" + ID);
 	}
 
 	private class NormalOrderVisitor extends NameAgnosticVisitor<Application> {

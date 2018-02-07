@@ -16,6 +16,8 @@ import edu.kit.wavelength.client.model.term.PartialApplication;
  */
 public final class ApplicativeOrder implements ReductionOrder {
 	
+	public static final char ID = 'a';
+	
 	@Override
 	public Application next(LambdaTerm term)
 	{
@@ -29,7 +31,7 @@ public final class ApplicativeOrder implements ReductionOrder {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("a");
+		return new StringBuilder("" + ID);
 	}
 	
 	private class ApplicativeVisitor extends NameAgnosticVisitor<Application> {

@@ -18,6 +18,8 @@ public final class NaturalNumbers implements Library {
 			new PartialApplication.Multiplication(), new PartialApplication.Predecessor(),
 			new PartialApplication.Successor() };
 	private boolean turbo;
+	
+	public static final char ID = 'n';
 
 	/**
 	 * Creates a new NaturalNumbers library.
@@ -66,7 +68,7 @@ public final class NaturalNumbers implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("n" + (turbo ? "t" : "f"));
+		return new StringBuilder(ID + (turbo ? "t" : "f"));
 	}
 	
 	public static NaturalNumbers fromSerialized(String serialized) {

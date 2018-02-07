@@ -9,6 +9,8 @@ import java.util.List;
  *
  */
 public final class ResultOnly implements OutputSize {
+	
+	public static final char ID = 'r';
 
 	@Override
 	public boolean displayLive(int step) {
@@ -29,7 +31,7 @@ public final class ResultOnly implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("r");
+		return new StringBuilder(ID);
 	}
 
 	@Override

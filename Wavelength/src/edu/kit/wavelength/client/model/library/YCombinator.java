@@ -21,6 +21,8 @@ public final class YCombinator implements Library {
 											new Application(new BoundVariable(1), new BoundVariable(1)))),
 							new Abstraction("x", new Application(new BoundVariable(2),
 									new Application(new BoundVariable(1), new BoundVariable(1)))))));
+	
+	public static final char ID = 'Y';
 
 	@Override
 	public LambdaTerm getTerm(String name) {
@@ -45,6 +47,6 @@ public final class YCombinator implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("y");
+		return new StringBuilder("" + ID);
 	}
 }

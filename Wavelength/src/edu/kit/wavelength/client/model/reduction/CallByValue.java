@@ -17,6 +17,8 @@ import edu.kit.wavelength.client.model.term.PartialApplication;
  *
  */
 public final class CallByValue implements ReductionOrder {
+	
+	public static final char ID = 'V';
 
 	@Override
 	public Application next(LambdaTerm term) {
@@ -30,7 +32,7 @@ public final class CallByValue implements ReductionOrder {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("V");
+		return new StringBuilder("" + ID);
 	}
 
 	/**

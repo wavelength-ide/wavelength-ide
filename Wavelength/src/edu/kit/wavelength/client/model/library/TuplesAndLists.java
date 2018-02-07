@@ -22,6 +22,8 @@ public final class TuplesAndLists implements Library {
 	
 	private final List<NamedTerm> definitions = Arrays.asList(pair, first, second);
 	
+	public static final char ID = 't';
+	
 	@Override
 	public LambdaTerm getTerm(String name) {
 		for(NamedTerm t: definitions) {
@@ -49,7 +51,7 @@ public final class TuplesAndLists implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("t");
+		return new StringBuilder("" + ID);
 	}
 
 }

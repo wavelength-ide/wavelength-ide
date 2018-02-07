@@ -12,6 +12,9 @@ final class RingBuffer implements Serializable {
 
 	private ArrayList<LambdaTerm> elements;
 	private int size;
+	
+	private static final char EXISTS_INDICATOR = 'e';
+	private static final char NULL_INDICATOR = 'n';
 
 	public RingBuffer(int size) {
 		if (size <= 0)

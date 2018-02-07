@@ -39,23 +39,23 @@ public final class Libraries {
 		String stripped = serialized.substring(1);
 
 		switch (serialized.charAt(0)) {
-		case 'b':
+		case Boolean.ID:
 			return new Boolean();
 
-		case 'c':
+		case CustomLibrary.ID:
 			return CustomLibrary.fromSerialized(stripped);
 
-		case 'n':
+		case NaturalNumbers.ID:
 			return NaturalNumbers.fromSerialized(stripped);
 
-		case 't':
+		case TuplesAndLists.ID:
 			return new TuplesAndLists();
 
-		case 'y':
+		case YCombinator.ID:
 			return new YCombinator();
 		}
 
-		throw new IllegalArgumentException("serialized must represent a reduction order");
+		throw new IllegalArgumentException("serialized must represent a library");
 	}
 
 	private Libraries() {

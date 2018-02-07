@@ -26,6 +26,8 @@ public final class Boolean implements Library {
 	
 	private final List<NamedTerm> definitions = Arrays.asList(tru, fal, and, or, not, ifThenElse);
 	
+	public static final char ID = 'b';
+	
 	@Override
 	public LambdaTerm getTerm(String name) {
 		for(NamedTerm t: definitions) {
@@ -53,6 +55,6 @@ public final class Boolean implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("b");
+		return new StringBuilder("" + ID);
 	}
 }

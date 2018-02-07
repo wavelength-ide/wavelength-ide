@@ -11,6 +11,7 @@ import java.util.List;
 public final class Shortened implements OutputSize {
 
 	private final int cutoff;
+	public static final char ID = 's';
 	
 	/**
 	 * Creates a shortened output size policy with the given cutoff.
@@ -41,7 +42,7 @@ public final class Shortened implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("s" + String.valueOf(cutoff));
+		return new StringBuilder(ID + String.valueOf(cutoff));
 	}
 	
 	public static Shortened fromSerialized(String serialized) {

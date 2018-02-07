@@ -8,6 +8,8 @@ import java.util.List;
  *
  */
 public final class Full implements OutputSize {
+	
+	public static final char ID = 'f';
 
 	@Override
 	public boolean displayLive(int step) {
@@ -26,7 +28,7 @@ public final class Full implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("f");
+		return new StringBuilder("" + ID);
 	}
 
 	@Override

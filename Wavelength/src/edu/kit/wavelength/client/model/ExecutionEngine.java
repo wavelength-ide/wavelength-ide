@@ -35,6 +35,15 @@ public class ExecutionEngine {
 	private RingBuffer current;
 	private int currentNum, lastDisplayedNum;
 	private ArrayList<Library> libraries;
+	
+	private static final int ORDER_POSITION = 0;
+	private static final int SIZE_POSITION = 1;
+	private static final int SHOWN_POSITION = 2;
+	private static final int CURRENT_POSITION = 3;
+	private static final int CURRENT_NUM_POSITION = 4;
+	private static final int LAST_DISPLAYED_NUM_POSITION = 5;
+	private static final int LIBRARIES_POSITION = 6;
+	private static final int TOTAL_SERIALIZATION_SIZE = 7;
 
 	/**
 	 * Creates a new execution engine.
@@ -68,15 +77,15 @@ public class ExecutionEngine {
 	
 	public ExecutionEngine(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
-		assert extracted.size() == 7;
+		assert extracted.size() == TOTAL_SERIALIZATION_SIZE;
 		
-		this.order = ReductionOrders.deserialize(extracted.get(0));
-		this.size = OutputSizes.deserialize(extracted.get(1));
-		this.shown = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(2), NumberedTerm::new));
-		this.current = new RingBuffer(extracted.get(3));
-		this.currentNum = Integer.valueOf(extracted.get(4));
-		this.lastDisplayedNum = Integer.valueOf(extracted.get(5));
-		this.libraries = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(6), Libraries::deserialize));
+		this.order = ReductionOrders.deserialize(extracted.get(ORDER_POSITION));
+		this.size = OutputSizes.deserialize(extracted.get(SIZE_POSITION));
+		this.shown = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(SHOWN_POSITION), NumberedTerm::new));
+		this.current = new RingBuffer(extracted.get(CURRENT_POSITION));
+		this.currentNum = Integer.valueOf(extracted.get(CURRENT_NUM_POSITION));
+		this.lastDisplayedNum = Integer.valueOf(extracted.get(LAST_DISPLAYED_NUM_POSITION));
+		this.libraries = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(LIBRARIES_POSITION), Libraries::deserialize));
 	}
 	public List<Library> getLibraries() {
 		return Collections.unmodifiableList(libraries);

@@ -10,7 +10,8 @@ import java.util.List;
 public final class Periodic implements OutputSize {
 
 	private final int period;
-	
+	public static final char ID = 'p';
+
 	/**
 	 * Creates a periodic output size with the given period.
 	 * @param period The period of terms to be displayed
@@ -44,7 +45,7 @@ public final class Periodic implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("p" + String.valueOf(period));
+		return new StringBuilder(ID + String.valueOf(period));
 	}
 	
 	public static Periodic fromSerialized(String serialized) {

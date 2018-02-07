@@ -39,16 +39,16 @@ public final class ReductionOrders {
 			throw new IllegalArgumentException("serialized must be non-empty");
 
 		switch (serialized.charAt(0)) {
-		case 'a':
+		case ApplicativeOrder.ID:
 			return new ApplicativeOrder();
 
-		case 'N':
+		case CallByName.ID:
 			return new CallByName();
 
-		case 'V':
+		case CallByValue.ID:
 			return new CallByValue();
 
-		case 'n':
+		case NormalOrder.ID:
 			return new NormalOrder();
 		}
 

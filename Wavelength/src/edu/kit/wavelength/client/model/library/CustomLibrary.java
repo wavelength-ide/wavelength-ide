@@ -11,7 +11,9 @@ public class CustomLibrary implements Library {
 
 	private String name;
 	private ArrayList<String> names;
-	private ArrayList<LambdaTerm> terms; 
+	private ArrayList<LambdaTerm> terms;
+	
+	public static final char ID = 'c';
 	
 	public CustomLibrary(String name) {
 		this.name = name;
@@ -21,7 +23,7 @@ public class CustomLibrary implements Library {
 	
 	@Override
 	public StringBuilder serialize() {
-		StringBuilder res = new StringBuilder("c");
+		StringBuilder res = new StringBuilder("" + ID);
 		ArrayList<StringBuilder> comp = new ArrayList<>();
 		comp.add(new StringBuilder(name));
 		int size = names.size();
@@ -55,11 +57,7 @@ public class CustomLibrary implements Library {
 
 	@Override
 	public boolean containsName(String name) {
-		if (names.contains(name))  {
-			return true;
-		} else {
-			return false;
-		}
+		return names.contains(name);
 	}
 
 	@Override

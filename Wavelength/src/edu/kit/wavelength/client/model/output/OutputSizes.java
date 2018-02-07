@@ -36,16 +36,16 @@ public final class OutputSizes {
 		String stripped = serialized.substring(1);
 		
 		switch (serialized.charAt(0)) {
-		case 'f':
+		case Full.ID:
 			return new Full();
 			
-		case 'p':
+		case Periodic.ID:
 			return Periodic.fromSerialized(stripped);
 		
-		case 'r':
+		case ResultOnly.ID:
 			return new ResultOnly();
 			
-		case 's':
+		case Shortened.ID:
 			return Shortened.fromSerialized(stripped);
 		}
 		

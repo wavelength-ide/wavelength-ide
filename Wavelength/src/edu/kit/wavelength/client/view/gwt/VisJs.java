@@ -31,7 +31,6 @@ public class VisJs {
 				}
 			}, 
 			autoResize: true,
-			width: '100%',
 			clickToUse: false,
   			interaction: {
     					dragNodes: false,

@@ -111,7 +111,7 @@ public class Parser {
 		ArrayList<String> rows = new ArrayList<String>();
 		for (int i = 0; i < possibleRows.length; i++) {
 			if (possibleRows[i] == "") {
-				break;
+				continue;
 			}
 			MatchResult blankResult = RegExp.compile("\\s+^[.]").exec(possibleRows[i]);
 			MatchResult commentResult = RegExp.compile("\\s*--.*").exec(possibleRows[i]);

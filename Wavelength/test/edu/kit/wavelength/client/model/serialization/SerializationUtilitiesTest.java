@@ -34,6 +34,18 @@ public class SerializationUtilitiesTest {
 	}
 	
 	@Test
+	public void extract3Test() {
+		String input = "1010";
+		
+		List<String> ans = SerializationUtilities.extract(input);
+		
+		assertNotNull(ans);
+		assertEquals(2, ans.size());
+		assertEquals("", ans.get(0));
+		assertEquals("", ans.get(1));
+	}
+	
+	@Test
 	public void enclose1Test() {
 		String ans = SerializationUtilities.enclose(new StringBuilder("ab"), new StringBuilder("abcdefghij")).toString();
 		

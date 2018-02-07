@@ -220,7 +220,6 @@ public class ParserTest {
 			e.printStackTrace();
 			fail();
 		}
-		System.out.println(term.acceptVisitor(new ToStringVisitor()));
 		assertEquals(term, termB);
 	}
 

@@ -147,6 +147,7 @@ public abstract class PartialApplication implements LambdaTerm {
 		received = new LambdaTerm[numParameters];
 		inner = other.inner.clone();
 		checks = new ArrayList<>(other.checks);
+		name = other.name;
 
 		numReceived = other.numReceived;
 

@@ -403,7 +403,7 @@ public class BetaReductionTest {
 		
 		LambdaTerm reduced2 = reduced1.acceptVisitor(new BetaReducer((Application)reduced1));
 		LambdaTerm want2 = new Application(
-				new Application(namedId, new FreeVariable("a")),
+				new Application(new NamedTerm("Nothing", namedId), new FreeVariable("a")),
 				new FreeVariable("b"));
 		
 		assertEquals(want2, reduced2);

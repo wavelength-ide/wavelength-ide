@@ -25,7 +25,7 @@ public class SerializationUtilities {
 			
 			++currentIndex;
 			
-			if (currentIndex + count >= input.length())
+			if (currentIndex + count > input.length())
 				throw new IllegalArgumentException("Input does not have the correct format");
 			
 			int actualLength;

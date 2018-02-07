@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.execution;
 
+import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.core.client.Scheduler;
@@ -13,13 +14,14 @@ import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
-import edu.kit.wavelength.client.view.App;
 
 /**
  * Concurrently reduces lambda terms.
  */
 public class Executor implements Serializable {
 
+	private static int allowedReductionTimeMS = 100;
+	
 	private List<ExecutionObserver> executionObservers;
 	private List<ControlObserver> controlObservers;
 	
@@ -49,18 +51,27 @@ public class Executor implements Serializable {
 	private void scheduleExecution() {
 		paused = false;
 		Scheduler.get().scheduleIncremental(() -> {
-			if (engine.isFinished()) {
-				paused = true;
-				controlObservers.forEach(ControlObserver::finish);
-				return !paused;
+			Date start = new Date();
+			while (true) {
+				if (engine.isFinished()) {
+					paused = true;
+					controlObservers.forEach(ControlObserver::finish);
+					return false;
+				}
+				List<LambdaTerm> displayedTerms = engine.stepForward();
+				pushTerms(displayedTerms);
+				if (paused) {
+					if (!engine.isCurrentDisplayed()) {
+						LambdaTerm current = engine.displayCurrent();
+						pushTerm(current);
+					}
+					return false;
+				}
+				Date end = new Date();
+				if (end.getTime() - start.getTime() > allowedReductionTimeMS) {
+					return true;
+				}
 			}
-			List<LambdaTerm> displayedTerms = engine.stepForward();
-			pushTerms(displayedTerms);
-			if (paused && !engine.isCurrentDisplayed()) {
-				LambdaTerm current = engine.displayCurrent();
-				pushTerm(current);
-			}
-			return !paused;
 		});
 	}
 

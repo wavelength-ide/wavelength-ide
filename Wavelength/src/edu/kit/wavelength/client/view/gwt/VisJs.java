@@ -16,6 +16,8 @@ public class VisJs {
 			edges : eval(edges)
 		};
 		var options = {
+			width: '100%',
+			height: '100%',
 			nodes: {
 				color: {
 					border: '#333333',

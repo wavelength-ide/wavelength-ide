@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.view.update;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -16,7 +17,6 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.library.Library;
-import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
@@ -70,21 +70,22 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		if (app == this.nextRedex) {
 			panel.addStyleName("nextRedex");
 		}
-		
+
 		parent.addStyleName("parent");
 
 		// this is only true if left is an application
-		if (a != null) {
+		// Window.alert(app.toString());
+		if (app.acceptVisitor(new IsRedexVisitor())) {
 			// make applications clickable and highlight it on mouse over
 			panel.addStyleName("application");
 			a.addStyleName("clickable");
-			
+
 			a.addMouseOverHandler(new MouseOverHandler() {
 				public void onMouseOver(MouseOverEvent event) {
 					parent.setStyleName("parent", false);
 					panel.addStyleName("hover");
 				}
-			});	
+			});
 
 			// when clicked reduce the clicked application
 			a.addClickHandler(new ClickHandler() {
@@ -96,7 +97,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 					new StepManually(app).run();
 				}
 			});
-			
+
 			a.addMouseOutHandler(new MouseOutHandler() {
 				public void onMouseOut(MouseOutEvent event) {
 					panel.removeStyleName("hover");
@@ -115,7 +116,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		if (brackets) {
 			panel.add(new Text(")"));
 		}
-		return new Tuple(panel, null);
+		return new Tuple(panel, a);
 	}
 
 	@Override
@@ -123,17 +124,44 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		Objects.requireNonNull(term);
 
 		resetFlags();
-		
-		Tuple tuple = term.getInner().acceptVisitor(this);
 
 		FlowPanel panel = new FlowPanel("span");
-		panel.add(new Text(term.getName()));
-		
-		/*if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
-			
-		}*/
-		
-		return new Tuple(panel, null);
+		Anchor a = new Anchor(term.getName());
+		a.addStyleName("abstraction");
+		panel.add(a);
+		parent.addStyleName("parent");
+
+		if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
+			panel.addStyleName("application");
+			a.addStyleName("clickable");
+
+			a.addMouseOverHandler(new MouseOverHandler() {
+				public void onMouseOver(MouseOverEvent event) {
+					parent.setStyleName("parent", false);
+					panel.addStyleName("hover");
+				}
+			});
+
+			// when clicked reduce the clicked application
+			a.addClickHandler(new ClickHandler() {
+				public void onClick(ClickEvent event) {
+					parent.removeStyleName("nextRedex");
+					parent.removeStyleName("parent");
+					parent.addStyleName("customClick");
+					panel.addStyleName("reduced");
+					new StepManually((Application) term.getInner()).run();
+				}
+			});
+
+			a.addMouseOutHandler(new MouseOutHandler() {
+				public void onMouseOut(MouseOutEvent event) {
+					panel.removeStyleName("hover");
+					parent.setStyleName("parent", true);
+				}
+			});
+		}
+
+		return new Tuple(panel, a);
 	}
 
 	@Override
@@ -141,8 +169,19 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		Objects.requireNonNull(app);
 
 		resetFlags();
+		
+		FlowPanel panel = new FlowPanel("span");
+		
+		Anchor a = new Anchor(app.getName());
+		a.addStyleName("abstraction");
+		panel.add(a);
+		
+		for (int i = 0; i < app.numReceived; i++ ) {
+			panel.addStyleName("abstraction");
+			panel.add(app.received[i].acceptVisitor(this).panel);
+		}
 
-		return app.getRepresented().acceptVisitor(this);
+		return new Tuple(panel, a);	
 	}
 
 	@Override
@@ -204,6 +243,5 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		bracketsForAbs = false;
 		bracketsForApp = false;
 	}
-
 
 }

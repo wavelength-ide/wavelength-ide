@@ -85,6 +85,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	public void clear() {
 		wrappedTerms.clear();
 		terms.clear();
+		grey = false;
 	}
 
 	@Override

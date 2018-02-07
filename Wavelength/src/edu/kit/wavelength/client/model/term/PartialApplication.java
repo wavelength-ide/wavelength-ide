@@ -19,8 +19,8 @@ public abstract class PartialApplication implements LambdaTerm {
 	private LambdaTerm inner;
 	private int numParameters;
 	private List<Visitor<Boolean>> checks;
-	private LambdaTerm[] received;
-	private int numReceived;
+	public LambdaTerm[] received;
+	public int numReceived;
 	private String name;
 
 	/**
@@ -54,6 +54,15 @@ public abstract class PartialApplication implements LambdaTerm {
 
 	protected PartialApplication() {
 		// This constructor may only be called if absorbClone is used.
+	}
+	
+
+	public LambdaTerm[] getReceived() {
+		return this.received;
+	}
+	
+	public int getNumReceived() {
+		return this.numReceived;
 	}
 
 	@Override

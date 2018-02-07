@@ -32,7 +32,7 @@ public final class Exercises {
 		Exercise treeOutput = new ConcreteExercise(treeOutputName, treeOutputTask, treeOutputPredef,
 				treeOutputSolution);
 
-		String exerciseName = "exercise mode";
+		String exerciseName = "Exercise mode";
 		String exerciseTask = "The active exercise's task will be displayed here. \n"
 				+ " To show a solution to the active exercise press the lightbulb button to the right.";
 		String exerciseSolution = "To leave the exercise mode press the X button in the upper right corner.";
@@ -128,6 +128,7 @@ public final class Exercises {
 		exerciseList.add(exerciseMode);
 		exerciseList.add(treeOutput);
 		exerciseList.add(var);
+		exerciseList.add(freeVar);
 		exerciseList.add(redex);
 		exerciseList.add(redex2);
 		exerciseList.add(redex3);
@@ -135,7 +136,6 @@ public final class Exercises {
 		exerciseList.add(order2);
 		exerciseList.add(order3);
 		exerciseList.add(order4);
-
 		exerciseList.add(alphaRedu);
 
 		return exerciseList;

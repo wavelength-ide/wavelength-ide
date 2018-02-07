@@ -55,7 +55,18 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 		int id = output.nodeId;
 		output.nodeId += 1;
 
-		String node = "{id: " + id + ", label: '" + term.getName() + "'},";
+		String node = "";
+		if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
+			if (term.getInner() == nextRedex) {
+				node = "{id: " + id + ", label: '" + term.getName()
+						+ "', color:{background:'#2b91af',border:'#2b91af'},},";
+			} else {
+				node = "{id: " + id + ", label: '" + term.getName()
+				+ "', color:{background:'#E6F2FD',border:'#2b91af'},},";
+			}
+		} else {
+			node = "{id: " + id + ", label: '" + term.getName() + "'},";
+		}
 		return new TreeTriple(node, "", id);
 	}
 

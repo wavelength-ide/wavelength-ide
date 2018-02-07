@@ -21,6 +21,7 @@ import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
+import edu.kit.wavelength.client.model.term.IsRedexVisitor;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
@@ -122,9 +123,16 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		Objects.requireNonNull(term);
 
 		resetFlags();
+		
+		Tuple tuple = term.getInner().acceptVisitor(this);
 
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(term.getName()));
+		
+		/*if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
+			
+		}*/
+		
 		return new Tuple(panel, null);
 	}
 

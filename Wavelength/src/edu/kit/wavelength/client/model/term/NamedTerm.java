@@ -12,6 +12,8 @@ public final class NamedTerm implements LambdaTerm {
 
 	private String name;
 	private LambdaTerm inner;
+	
+	public static final char ID = 'n';
 
 	/**
 	 * Creates a new named term.
@@ -69,7 +71,7 @@ public final class NamedTerm implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("n").append(SerializationUtilities.enclose(new StringBuilder(name),
+		return new StringBuilder("" + ID).append(SerializationUtilities.enclose(new StringBuilder(name),
 				inner.serialize()));
 	}
 	

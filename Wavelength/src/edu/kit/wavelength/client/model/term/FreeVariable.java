@@ -12,6 +12,8 @@ package edu.kit.wavelength.client.model.term;
 public final class FreeVariable implements LambdaTerm {
 
 	private String name;
+	
+	public static final char ID = 'f';
 
 	/**
 	 * Creates a new free variable term.
@@ -57,7 +59,7 @@ public final class FreeVariable implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("f" + name);
+		return new StringBuilder(ID + name);
 	}
 	
 	public static FreeVariable fromSerialized(String serialized) {

@@ -11,6 +11,8 @@ import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 public final class BoundVariable implements LambdaTerm {
 
 	private int deBruijnIndex;
+	
+	public static final char ID = 'b';
 
 	/**
 	 * Creates a new bound variable term.
@@ -56,7 +58,7 @@ public final class BoundVariable implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("b" + String.valueOf(deBruijnIndex));
+		return new StringBuilder(ID + String.valueOf(deBruijnIndex));
 	}
 	
 	public static BoundVariable fromSerialized(String serialized) {

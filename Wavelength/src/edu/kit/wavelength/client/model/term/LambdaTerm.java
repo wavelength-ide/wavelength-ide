@@ -27,37 +27,37 @@ public interface LambdaTerm extends Serializable {
 		String stripped = serialized.substring(1);
 		
 		switch (serialized.charAt(0)) {
-		case 'A':
+		case Abstraction.ID:
 			return Abstraction.fromSerialized(stripped);
 		
-		case 'a':
+		case Application.ID:
 			return Application.fromSerialized(stripped);
 			
-		case 'b':
+		case BoundVariable.ID:
 			return BoundVariable.fromSerialized(stripped);
 			
-		case 'f':
+		case FreeVariable.ID:
 			return FreeVariable.fromSerialized(stripped);
 			
-		case 'n':
+		case NamedTerm.ID:
 			return NamedTerm.fromSerialized(stripped);
 			
-		case '+':
+		case Addition.ID:
 			return Addition.fromSerialized(stripped);
 			
-		case '-':
+		case Subtraction.ID:
 			return Subtraction.fromSerialized(stripped);
 			
-		case '1':
+		case Successor.ID:
 			return Successor.fromSerialized(stripped);
 			
-		case '0':
+		case Predecessor.ID:
 			return Predecessor.fromSerialized(stripped);
 			
-		case '*':
+		case Multiplication.ID:
 			return Multiplication.fromSerialized(stripped);
 			
-		case '^':
+		case Exponentiation.ID:
 			return Exponentiation.fromSerialized(stripped);
 		}
 		

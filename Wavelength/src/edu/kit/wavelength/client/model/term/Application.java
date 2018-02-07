@@ -15,6 +15,8 @@ public final class Application implements LambdaTerm {
 
 	private LambdaTerm leftHandSide;
 	private LambdaTerm rightHandSide;
+	
+	public static final char ID = 'a';
 
 	/**
 	 * Creates a new application.
@@ -73,7 +75,8 @@ public final class Application implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("a").append(SerializationUtilities.enclose(leftHandSide.serialize(), rightHandSide.serialize()));
+		return new StringBuilder("" + ID)
+				.append(SerializationUtilities.enclose(leftHandSide.serialize(), rightHandSide.serialize()));
 	}
 	
 	public static Application fromSerialized(String serialized) {

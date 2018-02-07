@@ -17,6 +17,8 @@ public final class Abstraction implements LambdaTerm {
 
 	private String preferredName;
 	private LambdaTerm inner;
+	
+	public static final char ID = 'A';
 
 	/**
 	 * Creates a new abstraction.
@@ -74,7 +76,8 @@ public final class Abstraction implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("A").append(SerializationUtilities.enclose(new StringBuilder(preferredName), inner.serialize()));
+		return new StringBuilder("" + ID)
+				.append(SerializationUtilities.enclose(new StringBuilder(preferredName), inner.serialize()));
 	}
 	
 	public static Abstraction fromSerialized(String serialized) {

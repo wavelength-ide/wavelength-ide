@@ -184,6 +184,8 @@ public abstract class PartialApplication implements LambdaTerm {
 												new Application(
 														new Application(new BoundVariable(3), new BoundVariable(2)),
 														new BoundVariable(1)))))));
+		
+		public static final char ID = '+';
 
 		public Addition() {
 			super("plus", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
@@ -197,7 +199,7 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		@Override
 		public StringBuilder serialize() {
-			return new StringBuilder("+").append(super.serializeReceived());
+			return new StringBuilder("" + ID).append(super.serializeReceived());
 		}
 
 		@Override
@@ -222,6 +224,8 @@ public abstract class PartialApplication implements LambdaTerm {
 		private static final LambdaTerm inner = new Abstraction("n",
 				new Abstraction("s", new Abstraction("z", new Application(new BoundVariable(2), new Application(
 						new Application(new BoundVariable(3), new BoundVariable(2)), new BoundVariable(1))))));
+		
+		public static final char ID = '1';
 
 		public Successor() {
 			super("succ", inner, 1, Collections.nCopies(1, new IsChurchNumberVisitor()));
@@ -235,7 +239,7 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		@Override
 		public StringBuilder serialize() {
-			return new StringBuilder("1").append(super.serializeReceived());
+			return new StringBuilder("" + ID).append(super.serializeReceived());
 		}
 
 		@Override
@@ -263,6 +267,8 @@ public abstract class PartialApplication implements LambdaTerm {
 												new Application(new BoundVariable(4),
 														new Application(new BoundVariable(3), new BoundVariable(2))),
 												new BoundVariable(1))))));
+		
+		public static final char ID = '*';
 
 		public Multiplication() {
 			super("times", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
@@ -276,7 +282,7 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		@Override
 		public StringBuilder serialize() {
-			return new StringBuilder("*").append(super.serializeReceived());
+			return new StringBuilder("" + ID).append(super.serializeReceived());
 		}
 
 		@Override
@@ -305,6 +311,8 @@ public abstract class PartialApplication implements LambdaTerm {
 										new Application(new Application(
 												new Application(new BoundVariable(3), new BoundVariable(4)),
 												new BoundVariable(2)), new BoundVariable(1))))));
+		
+		public static final char ID = '^';
 
 		public Exponentiation() {
 			super("pow", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
@@ -318,7 +326,7 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		@Override
 		public StringBuilder serialize() {
-			return new StringBuilder("^").append(super.serializeReceived());
+			return new StringBuilder("" + ID).append(super.serializeReceived());
 		}
 
 		@Override
@@ -359,6 +367,8 @@ public abstract class PartialApplication implements LambdaTerm {
 																						new BoundVariable(4)))))),
 												new Abstraction("u", new BoundVariable(2))),
 										new Abstraction("u", new BoundVariable(1))))));
+		
+		public static final char ID = '0';
 
 		public Predecessor() {
 			super("pred", inner, 1, Collections.nCopies(1, new IsChurchNumberVisitor()));
@@ -372,7 +382,7 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		@Override
 		public StringBuilder serialize() {
-			return new StringBuilder("0").append(super.serializeReceived());
+			return new StringBuilder("" + ID).append(super.serializeReceived());
 		}
 
 		@Override
@@ -406,6 +416,8 @@ public abstract class PartialApplication implements LambdaTerm {
 														new Abstraction("u", new BoundVariable(2))),
 												new Abstraction("u", new BoundVariable(1))))))),
 								new BoundVariable(2))));
+		
+		public static final char ID = '-';
 
 		public Subtraction() {
 			super("minus", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
@@ -419,7 +431,7 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		@Override
 		public StringBuilder serialize() {
-			return new StringBuilder("-").append(super.serializeReceived());
+			return new StringBuilder("" + ID).append(super.serializeReceived());
 		}
 
 		@Override

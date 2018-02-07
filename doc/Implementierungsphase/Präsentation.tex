@@ -1,0 +1,186 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is default)
+  ]{Feather}
+  
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+\definecolor{grey}{rgb}{0.52, 0.52, 0.51}
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=grey!20,bg=grey}
+\include{beamerinnerthemeFeather}
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=grey}
+
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=blue}
+
+% Change the normal text color background:
+\setbeamercolor{normal text}{fg=black,bg=gray!10}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage[export]{adjustbox}
+\usepackage{csquotes}
+
+\usetikzlibrary{arrows, arrows.meta, positioning}
+
+
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textbf{Wavelength}
+}
+
+\subtitle[$\lambda$-IDE]
+{
+      \textbf{$\lambda$-IDE}
+}
+
+\author[wavelength]
+{     
+      Muhammet Gümüs \\
+      Jean-Pierre von der Heydt \\  
+       Markus Himmel \\
+       Marc Huisinga \\
+       Philip Klemens \\ 
+       Julia Schmid   
+}
+
+\institute[]
+{
+      
+  
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+\date{09. Februar 2018}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+%{\1 % this is the name of the PDF file for the background
+% Mein PDF-Viewer bekommt das nicht hin, das Bild im Hintergrund anzuzeigen
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[height=\paperheight]{img/Logo.pdf}};}
+\begin{frame}[plain]
+\maketitle
+\end{frame}
+}
+
+%\begin{frame}{Content}{}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Muss-Kriterien}
+\begin{itemize}
+\item Eingabe von $\lambda$-Termen
+\item Auswertung von $\lambda$-Termen (Normal-Reduktionsordnung)
+\item Fehlermeldung bei invalider Eingabe
+\item Abbruch der Reduktion
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Kann-Kriterien - implementiert (1)}
+\begin{itemize}
+\item weitere Auswertungsstrategien: Call-by-Name, Call-by-Value und Applicative Order
+\item Ausgabe-Formate: Unicode, Syntaxbaum
+\item Ausgabeumfang: alle Teilschritte, erster und letzter Schritt und periodische Abstände
+\item Export-Formate: Unicode, \LaTeX, Haskell, Lisp
+\item Bibliotheken: natürliche Zahlen, Listen, Tupel, Booleans, Y-Kombinator
+\item Namensbindung und Kommentare
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[plain]
+\frametitle{Kann-Kriterien - implementiert (2)}
+\begin{itemize}
+\item Schritt-für-Schritt Modus
+\item intelligenter Editor (Einrückungstiefen, Klammernmatching, etc.)
+\item Übungsaufgaben
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Kann-Kriterien - \alert{Permalinks}}
+\enquote{Es kann ein Link generiert werden, der beim Aufrufen den gesamten Zustand
+der Sitzung wiederherstellt.}
+\begin{itemize}
+\item ignoriert den Übungsmodus
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Kann-Kriterien - \alert{erweiterte Fehlerdiagnostik}}
+\enquote{Im Falle syntaktischer Fehler werden dem Nutzer die genaue Position des Fehlers, die
+Art des Fehlers sowie Behebungsmöglichkeiten angezeigt und die relevante Stelle im
+Editor hervorgehoben.}
+\begin{itemize}
+\item Position und Art des Fehlers werden angezeigt
+\item Behebungsmöglichkeiten und Markierung im Editor fehlen
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Kann-Kriterien: \alert{Syntaxbaum}}
+\enquote{Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
+oder durch Pausieren einer laufenden Reduktion erreicht werden kann.
+Durch Klicken kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
+Auswertungsstrategie einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
+gemacht werden.}
+\begin{itemize}
+\item manuelle Auswertung des Syntaxbaums im Schritt-für-Schritt Modus nicht möglich
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\frametitle{Implementierungsplan}
+\begin{figure}[H]
+%\hspace*{-3cm}
+\includegraphics[trim={0, 7cm, 0, 0}, clip, scale=0.4, page=4]{Implementierungsplan/Implementierungsplan.pdf}
+\caption[caption]{Der Verlauf der Implementierungsphase: \\\hspace{\textwidth}
+Die oberen Balken entsprechen der Realität, die unteren der Planung.}
+\end{figure}
+\end{frame}
+
+\begin{frame}[plain]
+
+\end{frame}
+
+\begin{frame}[plain]
+
+\end{frame}
+
+
+\end{document}

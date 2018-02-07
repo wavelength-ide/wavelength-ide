@@ -40,7 +40,7 @@
         </taskproperties>
         <task id="14" name="model" color="#8cb6ce" meeting="false" start="2018-01-13" duration="24" complete="0" expand="true"/>
         <task id="5" name="model.term" color="#8cb6ce" meeting="false" start="2018-01-13" duration="23" complete="0" expand="true"/>
-        <task id="16" name="model.term.parsing" color="#8cb6ce" meeting="false" start="2018-01-13" duration="26" complete="0" expand="true"/>
+        <task id="16" name="model.term.parsing" color="#8cb6ce" meeting="false" start="2018-01-13" duration="25" complete="0" expand="true"/>
         <task id="19" name="model.output" color="#8cb6ce" meeting="false" start="2018-01-13" duration="2" complete="0" expand="true"/>
         <task id="2" name="model.reduction" color="#8cb6ce" meeting="false" start="2018-01-31" duration="2" complete="0" expand="true">
             <task id="40" name="normale Reduktionsordnung" color="#8cb6ce" meeting="false" start="2018-01-31" duration="2" complete="0" expand="true"/>

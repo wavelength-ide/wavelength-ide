@@ -125,11 +125,11 @@ public class Parser {
 			}
 		}
 		for (int i = 0; i < (rows.size() - 1); i++) {
-			rowPos = i + 1;
+			rowPos = i;
 			readLibraryTerm(rows.get(i));
 		}
 		//columnPos = 0;
-		rowPos = rows.size();
+		rowPos = rows.size() - 1;
 		String lastLine = rows.get((rows.size() - 1));
 		return parseTerm(lastLine);
 	}

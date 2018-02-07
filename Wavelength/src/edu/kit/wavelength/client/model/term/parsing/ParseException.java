@@ -29,7 +29,7 @@ public class ParseException extends Exception {
 	 * @return The row in which the error occurred
 	 */
 	public int getRow() {
-		return row;
+		return row + 1;
 	}
 	
 	/**
@@ -37,7 +37,7 @@ public class ParseException extends Exception {
 	 * @return The column in which the error occurred
 	 */
 	public int getColumn() {
-		return row;
+		return column + 1;
 	}
 	
 	@Override

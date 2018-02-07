@@ -31,46 +31,6 @@ public class Parser {
 	private Token[] tokens;
 	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]+\\s*=\\s*.+\\s*");
 	private ArrayList<String> boundVariables;
-
-	private int rowPos = 1;
-	private final String blankLineRegex = "";
-	private final String commentLineRegex = "";
-
-	public static void main(String[] args) {
-		String blankRedex = "\\s+[^.]*";
-		String commentRedex = "\\s*--.*";
-		MatchResult blankResult = RegExp.compile(blankRedex).exec("");
-		MatchResult commentResult = RegExp.compile(commentRedex).exec("");
-		System.out.println(blankResult);
-		System.out.println(commentResult);
-		System.out.println("");
-		blankResult = RegExp.compile(blankRedex).exec("    ");
-		commentResult = RegExp.compile(commentRedex).exec("    ");
-		System.out.println(blankResult);
-		System.out.println(commentResult);
-		System.out.println("");
-		blankResult = RegExp.compile(blankRedex).exec("            ");
-		commentResult = RegExp.compile(commentRedex).exec("            ");
-		System.out.println(blankResult);
-		System.out.println(commentResult);
-		System.out.println("");
-		blankResult = RegExp.compile(blankRedex).exec(" ");
-		commentResult = RegExp.compile(commentRedex).exec(" ");
-		System.out.println(blankResult);
-		System.out.println(commentResult);
-		System.out.println("");
-		System.out.println("----------------------");
-		blankResult = RegExp.compile(blankRedex).exec(" huhu");
-		commentResult = RegExp.compile(commentRedex).exec(" huhu");
-		System.out.println(blankResult);
-		System.out.println(commentResult);
-		System.out.println("");
-		blankResult = RegExp.compile(blankRedex).exec(" halloooo   ");
-		commentResult = RegExp.compile(commentRedex).exec(" halloooo ");
-		System.out.println(blankResult);
-		System.out.println(commentResult);
-		System.out.println("");
-	}
 	
 	/**
 	 * Initializes a new parser.
@@ -115,12 +75,7 @@ public class Parser {
 			}
 			MatchResult blankResult = RegExp.compile("\\s+^[.]").exec(possibleRows[i]);
 			MatchResult commentResult = RegExp.compile("\\s*--.*").exec(possibleRows[i]);
-			//System.out.println(">>>");
-			//System.out.println(blankResult);
-			//System.out.println(commentResult);
-			//System.out.println("<<<");
 			if (blankResult == null && commentResult == null) {
-				//System.out.println("AddingLine: _" + possibleRows[i] + "_");
 				rows.add(possibleRows[i]);
 			}
 		}
@@ -140,7 +95,6 @@ public class Parser {
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1].trim();
-			//columnPos = name.length() + 1;
 			LambdaTerm term = parseTerm(termString);
 			inputLibrary.addTerm(term, name);
 		} else {

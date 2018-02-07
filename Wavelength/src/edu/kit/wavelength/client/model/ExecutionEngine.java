@@ -93,6 +93,7 @@ public class ExecutionEngine {
 
 		if (displayOverride || size.displayLive(currentNum)) {
 			result.add(new NumberedTerm(current.get(currentNum), currentNum));
+			lastDisplayedNum = currentNum;
 		}
 
 		if (isFinished()) {

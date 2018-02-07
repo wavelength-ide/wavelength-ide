@@ -22,20 +22,14 @@ public final class Shortened implements OutputSize {
 
 	@Override
 	public boolean displayLive(int step) {
-		if (step < cutoff) {
-			return true;
-		} else {
-			return false;
-		}
+		return step < cutoff;
 	}
 
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
 		ArrayList<Integer> displaySteps = new ArrayList<Integer>();
-		for (int i = totalSteps - cutoff; i <= totalSteps; i++) {
-			if (i >= cutoff) {
+		for (int i = Math.max(lastDisplayed + 1, Math.max(cutoff, totalSteps - cutoff + 1)); i <= totalSteps; i++) {
 				displaySteps.add(i);
-			}
 		}	
 		return displaySteps;
 	}

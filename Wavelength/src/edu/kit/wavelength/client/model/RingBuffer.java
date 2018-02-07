@@ -34,7 +34,7 @@ final class RingBuffer implements Serializable {
 			String extr = extracted.get(i);
 			assert extr.length() > 0;
 			
-			if (extr.charAt(0) == 'e') {
+			if (extr.charAt(0) == EXISTS_INDICATOR) {
 				elements.set(i, LambdaTerm.deserialize(extr.substring(1)));
 			}
 		}
@@ -59,9 +59,9 @@ final class RingBuffer implements Serializable {
 		ArrayList<StringBuilder> all = new ArrayList<>();
 		for (int i = 0; i < size; ++i) {
 			if (elements.get(i) == null) {
-				all.add(new StringBuilder("n"));
+				all.add(new StringBuilder("" + NULL_INDICATOR));
 			} else {
-				all.add(new StringBuilder("e").append(elements.get(i).serialize()));
+				all.add(new StringBuilder("" + EXISTS_INDICATOR).append(elements.get(i).serialize()));
 			}
 		}
 		return SerializationUtilities.enclose(all.toArray(new StringBuilder[0]));

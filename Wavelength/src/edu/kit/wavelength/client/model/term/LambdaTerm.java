@@ -72,7 +72,7 @@ public interface LambdaTerm extends Serializable {
 		for (int i = 1; i <= value; ++i) {
 			inner = new Application(new BoundVariable(2), inner);
 		}
-		return new Abstraction("s", new Abstraction("z", inner));
+		return new NamedTerm(String.valueOf(value), new Abstraction("s", new Abstraction("z", inner)));
 	}
 
 	public LambdaTerm clone();

@@ -55,13 +55,14 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 	public String getSerialization(final String id) {
 		try (Connection connection = DriverManager.getConnection(databasePath)) {
 			if (connection != null) {
-				try {
-					PreparedStatement statement = connection.prepareStatement(selectSerialization);
+				try (PreparedStatement statement = connection.prepareStatement(selectSerialization);) {
 					statement.setString(1, id);
-					ResultSet resultSet = statement.executeQuery();
-					resultSet.next();
-					return resultSet.getString(1);
-
+					try (ResultSet resultSet = statement.executeQuery()) {
+						resultSet.next();
+						return resultSet.getString(1);
+					} catch (SQLException exception) {
+						return null;
+					}
 				} catch (SQLException exception) {
 					return null;
 				}
@@ -84,13 +85,15 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 	private String getID(final String serialization) {
 		try (Connection connection = DriverManager.getConnection(databasePath)) {
 			if (connection != null) {
-				try {
-					PreparedStatement statement = connection.prepareStatement(selectID);
+				try (PreparedStatement statement = connection.prepareStatement(selectID);){
 					statement.setString(1, serialization);
-					ResultSet resultSet = statement.executeQuery();
-					if (resultSet != null) {
-						return resultSet.getString(1);
-					} else {
+					try (ResultSet resultSet = statement.executeQuery()) {
+						if (resultSet != null) {
+							return resultSet.getString(1);
+						} else {
+							return null;
+						}
+					} catch (SQLException exception) {
 						return null;
 					}
 				} catch (SQLException exception) {
@@ -112,12 +115,12 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 				if (assignedID == null) {
 					// hopefully this is not already used
 					String id = UUID.randomUUID().toString();
-					try {
-						PreparedStatement statement = connection.prepareStatement(insertEntry);
+					try (PreparedStatement statement = connection.prepareStatement(insertEntry)) {
 						statement.setString(1, id);
 						statement.setString(2, serialization);
 						statement.executeUpdate();
 						return id.toString();
+						
 					} catch (SQLException exception) {
 						return null;
 					}

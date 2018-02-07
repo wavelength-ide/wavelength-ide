@@ -65,9 +65,9 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 /* limit height to footer height, fix width instead of filling rest of footer, set background */
 .sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }
 
-.output { display: inline; overflow: scroll; white-space: nowrap;}
+.output { display: inline; overflow: scroll;}
 
-.grey {background-color: #d3d3d3;}
+.grey {background-color: #f6f6f6;}
 
 .hover:hover {background-color: #E6F2FD;}
 

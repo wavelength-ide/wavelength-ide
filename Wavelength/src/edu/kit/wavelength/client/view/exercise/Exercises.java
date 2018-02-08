@@ -17,24 +17,6 @@ public final class Exercises {
 	 */
 	public static List<Exercise> all() {
 
-		String introName = "Introduction";
-		String introTask = "";
-		String introSolution = "";
-		String introPredef = "Welcome to Wavelength, the lambda calculus IDE. \n"
-				+ "At its core Wavelength is a lamba calculus interpreter. \n"
-				+ "You may enter any λ-term and reduce it down to its normal form using one of Wavelength's four reduction orders. \n "
-				+ "By result only the final reduction result is displayed. To better understand the reduction process, "
-				+ " you may select a different output size from the rightmost combobox. If you want even more transparency and control,"
-				+ " Wavelength offers a step-by-step mode, enabling you to initiate every reduction yourself. "
-				+ "If a redex is clicked in this mode, it is reduced no matter the active reduction order. \n"
-				+ "Using the step-back button you may undo a past reduction. \n"
-				+ "The reduced λ-term and all intermmediate steps display in the output window can be exported in different formats."
-				+ "These can be selected from the export-menu in the lower left corner and for example include Haskell- or Lisp-code. "
-				+ "To ease working with complex terms, Wavelength includes a number of predefined libraries containing commonly used λ-terms "
-				+ "like the Church encodings of Natural Numbers. " 
-				+ "Wavelength also includes a set of exercises for you to complete.";
-		Exercise introEx = new ConcreteExercise(introName, introTask, introSolution, introPredef);
-
 		String exerciseName = "Exercise mode";
 		String exerciseTask = "The active exercise's task will be displayed here. \n"
 				+ " To show a solution to the active exercise press the lightbulb button to the right.";
@@ -127,7 +109,6 @@ public final class Exercises {
 		Exercise order4 = new ConcreteExercise(order4Name, order4Task, order4Solution, order4Predef);
 
 		ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();
-		exerciseList.add(introEx);
 		exerciseList.add(exerciseMode);
 		exerciseList.add(var);
 		exerciseList.add(freeVar);

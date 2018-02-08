@@ -3,7 +3,6 @@ package edu.kit.wavelength.client.view.update;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -24,6 +23,9 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 	private static App app = App.get();
 	private boolean grey;
 
+	/**
+	 * Create a new execution observer for unicode pretty printing.
+	 */
 	public UpdateUnicodeOutput() {
 		wrappedTerms = new ArrayList<>();
 		terms = new ArrayList<>();
@@ -38,43 +40,42 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 
 		terms.add(t);
 
+		// determine the selected reduction order and get the redex that will be reduced
+		// next
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
 				.findFirst().get();
 		Application nextRedex = currentOrder.next(t);
 
+		// create a new panel to wrap the new unicode term
 		FlowPanel wrapper = new FlowPanel("div");
+		// toggles the grey background so terms can be distinguished from each other
 		wrapper.setStyleName("grey", grey);
 		grey = !grey;
-		
-		// create a new visitor and visit the term
-		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, wrapper);
-		Tuple term = t.acceptVisitor(visitor);
 
-		/*for (FlowPanel panel : wrappedTerms) {
-			panel.addStyleName("notclickable");
-		}*/
-		
+		UnicodeTermVisitor visitor = new UnicodeTermVisitor(app.executor().getLibraries(), nextRedex, wrapper);
+		UnicodeTuple term = t.acceptVisitor(visitor);
+
+		// remove click-actions from the predecessor
 		if (!wrappedTerms.isEmpty()) {
 			wrappedTerms.get(wrappedTerms.size() - 1).addStyleName("notclickable");
 		}
 
+		// display the new term
 		wrapper.add(term.panel);
 		wrappedTerms.add(wrapper);
-		// display the new term
 		app.outputArea().add(wrapper);
-		app.autoScroll();
+		// when a new tree was printed, scroll down so the user can see it
+		App.autoScroll();
 	}
 
+	@Override
 	public void removeLastTerm() {
 		if (!app.unicodeIsSet() || wrappedTerms.isEmpty()) {
-			// no term to remove
 			return;
 		}
 
-		// remove the last term from the list of all displayed terms
 		terms.remove(terms.size() - 1);
-
 		FlowPanel toRemove = wrappedTerms.get(wrappedTerms.size() - 1);
 		app.outputArea().remove(toRemove);
 		wrappedTerms.remove(wrappedTerms.size() - 1);
@@ -93,13 +94,12 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		if (!app.unicodeIsSet()) {
 			return;
 		}
-
 		FlowPanel toRemove = wrappedTerms.get(wrappedTerms.size() - 1);
 		app.outputArea().remove(toRemove);
 		wrappedTerms.remove(wrappedTerms.size() - 1);
 		LambdaTerm term = terms.get(terms.size() - 1);
 		terms.remove(terms.size() - 1);
-		this.pushTerm(term);		
+		this.pushTerm(term);
 	}
 
 }

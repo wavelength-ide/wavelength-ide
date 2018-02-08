@@ -5,8 +5,8 @@
    Alan Turing
 ]]></description>
     <view zooming-state="default:3" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="176" order="0"/>
-        <field id="tpd4" name="Anfang" width="39" order="1"/>
+        <field id="tpd3" name="Vorgang" width="150" order="0"/>
+        <field id="tpd4" name="Anfang" width="65" order="1"/>
         <field id="tpd5" name="Ende" width="72" order="2"/>
         <field id="tpd8" name="Verantwortlich" width="111" order="3"/>
     </view>
@@ -54,7 +54,7 @@
             <task id="23" name="Editor" color="#8cb6ce" meeting="false" start="2018-01-13" duration="8" complete="0" expand="true"/>
             <task id="25" name="Wrapper-Klassen" color="#8cb6ce" meeting="false" start="2018-01-13" duration="16" complete="0" expand="true"/>
         </task>
-        <task id="7" name="view.exercise" color="#8cb6ce" meeting="false" start="2018-02-06" duration="2" complete="0" expand="true"/>
+        <task id="7" name="view.exercise" color="#8cb6ce" meeting="false" start="2018-02-07" duration="2" complete="0" expand="true"/>
         <task id="9" name="view.execution" color="#8cb6ce" meeting="false" start="2018-02-01" duration="2" complete="0" expand="true"/>
         <task id="11" name="view.action" color="#8cb6ce" meeting="false" start="2018-01-13" duration="21" complete="0" expand="true"/>
         <task id="12" name="view.export" color="#8cb6ce" meeting="false" start="2018-01-28" duration="7" complete="0" expand="true"/>
@@ -72,18 +72,18 @@
     <allocations>
         <allocation task-id="14" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="5" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="75.0"/>
+        <allocation task-id="16" resource-id="1" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="16" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="19" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="18" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
         <allocation task-id="40" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="41" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="50.0"/>
+        <allocation task-id="7" resource-id="4" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="23" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="25.0"/>
         <allocation task-id="9" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
-        <allocation task-id="7" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="28" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="11" resource-id="2" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="28" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="7" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
         <allocation task-id="33" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="33" resource-id="0" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="25" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
@@ -91,10 +91,9 @@
         <allocation task-id="12" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="33" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="12" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="75.0"/>
-        <allocation task-id="7" resource-id="3" function="SoftwareDevelopment:2" responsible="true" load="0.0"/>
+        <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
+        <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
         <allocation task-id="11" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
-        <allocation task-id="13" resource-id="5" function="SoftwareDevelopment:2" responsible="true" load="100.0"/>
     </allocations>
     <vacations/>
     <previous>

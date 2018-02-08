@@ -247,12 +247,39 @@ Dieses Zeitfenster sorgt erfahrungsgemäß für eine gute Balance zwischen Perfo
 \caption{Der Implementierungsplan wie er zu Beginn der Implementierungsphase vereinbart wurde}
 \end{figure}
 
+Zu Beginn der Implementierungsphase wurde vereinbart, die Aufteilung hauptsächlich nach Paketen zu vergeben.
+Dabei bietet sich eine erste Unterteilung in das \texttt{Model}- und das \texttt{View}-Paket an.
+Dadurch können auch die beteiligten Personen wie in der Entwurfsphase eingeteilt werden.
+
+Im Modell haben die Pakete \texttt{term} und \texttt{term.parsing} hohe Priorität, da sie aufwändiger zu implementieren 
+sind und ihre Korrektheit Voraussetzung für die Korrektheit der gesamten Applikation ist.
+Die restlichen Pakete sind in ihrer Komplexität einfacher und können daher schneller implementiert werden.
+Die normale Reduktionsordnung soll frühzeitig implementiert werden, damit ein erster Test des gesamten Modells frühzeitig erfolgen kann.
+Somit sind die Muss-Kriterien auf Seiten des Modells früh abgedeckt.
+Die restlichen Pakete stellen Kann-Kriterien dar und können später implementiert werden.
+
+In der View haben die \texttt{App}-Klasse, das \texttt{action}- und das \texttt{webui.component}-Paket Vorrang.
+Ebenso soll der Editor frühzeitig eingebaut werden, da er mittels JavaScript eingebunden werden muss und dabei unter Umständen Probleme
+auftreten könnten.
+Diese sollten aber so früh wie möglich erkannt werden, da ansonsten das gesamte Projekt in Verzug käme.
+In einer zweiten Stufe sollten dann die Pakete \texttt{execution}, \texttt{export} und \texttt{update} implementiert werden.
+Wichtig ist hierbei vor Allem das \texttt{update}-Paket, das für die Ausgabe zuständig ist.
+In einem letzten Schritt können dann das Paket \texttt{exercise} und die Serialisierung hinzugefügt werden.
+
 \begin{figure}[H]
 \hspace*{-2cm}
 \includegraphics[trim={0, 7cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan.pdf}
 \caption[caption]{Der reale Verlauf der Implementierungsphase: \\\hspace{\textwidth}
 Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \end{figure}
+
+Viele Termine konnten eingehalten werden, manche Pakete waren sogar früher fertig als geplant.
+Es gab aber auch einige Verzögerungen.
+Die Implementierung des Parsers gestaltete sich schwieriger als gedacht und nahm daher etwas mehr Zeit in Anspruch.
+Die schrittweise Umstellung von GWT-Komponenten auf GWT-Bootstrap-Komponenten führte erst zu einer Anpassung der
+Wrapper-Klassen und letztlich zu deren Entfernung.
+Aus demselben Grund mussten die Actions mehrmals angepasst werden.
+Diese Verzögerungen sind dann der Auslöser für die restlichen Verspätungen im Diagramm.
 
 \newpage
 \section{Komponententests}

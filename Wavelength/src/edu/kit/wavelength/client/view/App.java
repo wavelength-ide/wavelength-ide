@@ -89,6 +89,7 @@ public class App implements Serializable {
 	private static final int NUMBER_OF_SERIALIZATIONS = 6;
 	private static final char CHECKED_LIBRARY = 'c';
 	private static final char UNCHECKED_LIBRARY = 'u';
+	private static final int pollingDelayMS = 10000;
 
 	/**
 	 * Gets a singleton instance of App.
@@ -502,7 +503,7 @@ public class App implements Serializable {
 		}
 
 		// TODO magic number!!!!!!!!!!!!!
-		int pollingDelayMS = 10000;
+		// TODO remove now obsolete TODO!!!!!!!!!!!!!
 		UpdateURL updateURL = new UpdateURL();
 		UpdateShareURL updateShareURL = new UpdateShareURL();
 		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), pollingDelayMS);

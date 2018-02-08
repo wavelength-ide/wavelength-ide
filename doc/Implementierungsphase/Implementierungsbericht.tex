@@ -247,8 +247,7 @@ Getestet wird das Verhalten bei leerer Eingabe, invalider Eingabe und valider Ei
 Weiter wird die Namensbindung getestet.
 
 \subsection{\texttt{Paket edu.kit.wavelength.client.view.export}}
-In diesem Paket werden die ExportFormats und deren Visitors getestet.
-Für die ExportFormats wird jeweils der Umgang mit null-Termen, null-Libraries, leeren Eingaben, einelementigen Eingaben und ganzen Eingabelisten getestet.
-Für die Visitors wird jeweils der Umgang mit simplen und komplexen sowie null-Eingaben getestet ebenso wie PartialApplications, Abstractions, Applications und NamedTerms.
-
+In diesem Paket werden die Exportformate und deren jeweilige Besucher getestet.
+Für die Exportformate wird geprüft, ob der Export für simple Terme richtig erzeugt wird. Zudem wird die Reaktion auf Randfälle wie \texttt{null}-Termen, \texttt{null}-Libraries, leeren Eingaben und einelementigen Eingaben geprüft.\\
+Die Besucher werden ausgiebig auf die richtige Erzeugung textueller Repräsentation von Termen getestet. Dazu gehört unter anderem das richtige Setzten von Klammern oder die korrekte Darstellung eines Terms für das jeweilige Format. Auch hier wird der Umgang mit Randfällen behandelt.
 \end{document}

@@ -223,6 +223,32 @@ Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobe
 Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
 Durch diese Implementierung haben die URLs konstante Länge.
 \end{itemize}
+\subsection{Lückenhafte Implementation der Java-Standardbibliothek durch GWT}
+\begin{itemize}
+\item[] \textbf{Problem:} Das Google Web Toolkit ist aus technischen Gründen darauf angewiesen, die Java-Standardbibliothek neu zu implementieren
+anstatt auf die typischerweise zum Einsatz kommenden Implementationen zu setzen. Hierbei haben die Entwickler aus
+verschiedenen Gründen auf die Implementation einiger Komponenten verzichtet. Insbesondere sind die Java-Klasse \texttt{Pattern}
+für reguläre Ausdrücke und der \texttt{Object.clone}-Mechanismus in Java nicht implementiert.
+\item[] \textbf{Lösung:} Als Ersatz für \texttt{Pattern} stellt GWT eine \texttt{RegExp}-Klasse bereit, welche sich auf die in JavaScript
+nativen regulären Ausdrücke stützt. Diese regulären Ausdrücke haben eine leicht abgewandelte Syntax, sind ansonsten jedoch vollkommen
+ausreichend für unsere Zwecke. Die Nichtverfügbarkeit von \texttt{Object.clone} verhindert die Umsetzung eines idiomatischen Klonmechanismus,
+wie ihn Java typischerweise vorsieht. Stattdessen musste im Falle des Klonens partieller Applikationen ein etwas weniger idiomatischer
+Mechanismus verwendet werden.
+\end{itemize}
+
+
+\subsection{Partielle Applikationen}
+\begin{itemize}
+\item[] \textbf{Problem:} Der Entwurf von partiellen Applikationen zur Beschleunigung der Ausführung arithmetischer
+Operationen ermöglicht durch eine Schablonenmethode, dass zur Beschleunigung beliebiger Java-Code zum Einsatz kommen
+darf, der die gegebenen Parameter frei untersuchen kann. Gleichzeitig müssen diese partiellen Applikationen jedoch
+serialisierbar sein (und das ohne Reflection zu verwenden, die von GWT ohnehin nicht unterstützt wird). Komplizierter
+wird dies durch die Tatsache, dass es nur eine zentrale "Anlaufstelle" im Code geben darf, um beliebige $\lambda$-Terme
+zu deserialisieren.
+\item[] \textbf{Lösung:} Die verschiedenen Typen von partiellen Applikationen sind als innere Klassen von
+\texttt{PartialApplication} realisiert. Dies stellt sicher, dass die verschiedenen Typen partieller Applikationen
+sichtbar für die \texttt{LambdaTerm}-Klasse sind, in der die Typauflösung für die Deserialisierung stattfindet.
+\end{itemize}
 
 \subsection{Verwendung von GWT-Komponenten}
 \begin{itemize}

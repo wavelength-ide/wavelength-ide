@@ -57,6 +57,7 @@ public class VisJs {
 		var parent = $doc.getElementById(idParent);		
 		var data = {};
 		var options = {
+			width: '100%',
 			clickToUse: false,
   			interaction: {
     					dragNodes: false,

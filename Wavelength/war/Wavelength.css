@@ -74,29 +74,41 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 /* limit height to footer height, fix width instead of filling rest of footer, set background */
 .sharePanel { height: 100% !important; width: 500px !important; background-color: white !important; }
 
+/* enable scrolling in output area, */
 .output { display: inline; overflow: scroll; left: 5px !important; right: 5px !important;}
 
+/* change background color to distinguish two terms */
 .grey {background-color: #f6f6f6;}
 
+/* highlight the redex on mouse over */
 .hover:hover {background-color: #2b91af45;}
 
+/* abstractions should not look like normal text */
 .abstraction {pointer-events: none; color: black; text-decoration: none; cursor: default;}
 
+/* abstractions (that are not part of a redex) inside applications should not look like they can be cliked */
 .application a {pointer-events: none;}
 
+/* indicates a redex */
 .application a.clickable { color: #2b91af; text-decoration: none; pointer-events: auto; cursor: pointer;}
 
+/* reverts styling for clicking */
 .notclickable { color: black; cursor: default;}
 
+/* indicates a redex inside a former not clickable term */
 .notclickable a.clickable { color: black; text-decoration: none; pointer-events:none; cursor: default;}
 
+/* highlight a redex inside a former not clickable term on mouse over */
 .notclickable a.hover:hover {background-color: #2b91af45; pointer-events:none;}
 
+/* indicates the next reduced redex considering the current reduction order */ 
 .parent .nextRedex { border-bottom: 1px solid #2b91af}
 
+/* indicates what redex was reduced */
 .notclickable .reduced {border-bottom: 1px solid #2b91af}
 
+/* on custom click remove the next redex indication */
 .customClick .nextRedex {border-bottom: none;}
 
+/* indicate the reduced redex if it was the nextRedex and step forward was clicked */
 .customClick .nextRedex.reduced {border-bottom: 1px solid #2b91af}
-

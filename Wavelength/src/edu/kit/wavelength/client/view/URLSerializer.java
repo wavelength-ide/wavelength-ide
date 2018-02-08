@@ -43,6 +43,10 @@ public class URLSerializer {
 	 * @return whether the serializer will continue to poll after this call
 	 */
 	public boolean serialize() {
+		if(App.get().executor().isRunning()) {
+			// should not serialize with a running execution
+			return true;
+		}
 		// create database entry and url
 		String serialization = App.get().serialize().toString();
 		DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);

@@ -240,7 +240,7 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Checks whether the engine is paused.
+	 * Checks whether the engine is paused (true iff engine is not terminated and paused).
 	 * 
 	 * @return whether the engine is paused
 	 */
@@ -255,6 +255,14 @@ public class Executor implements Serializable {
 	 */
 	public boolean isTerminated() {
 		return terminated;
+	}
+	
+	/**
+	 * Checks whether the engine is running (true iff engine is not terminated and not paused).
+	 * @return whether the engine is running
+	 */
+	public boolean isRunning() {
+		return !paused;
 	}
 
 	/**

@@ -21,6 +21,7 @@ public class Pause implements Action {
 		Control.updateStepControls();
 		
 		app.exportButtons().forEach(b -> b.setEnabled(true));
+		app.shareButton().setEnabled(true);
 		
 		app.unpauseButton().setVisible(true);
 		app.pauseButton().setVisible(false);

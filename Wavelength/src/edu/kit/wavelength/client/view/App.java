@@ -89,6 +89,7 @@ public class App implements Serializable {
 	private static final int NUMBER_OF_SERIALIZATIONS = 6;
 	private static final char CHECKED_LIBRARY = 'c';
 	private static final char UNCHECKED_LIBRARY = 'u';
+	private static final int POLLING_DELAY_MS = 10000;
 
 	/**
 	 * Gets a singleton instance of App.
@@ -457,7 +458,6 @@ public class App implements Serializable {
 
 		sharePanel = new TextBox();
 		sharePanel.addStyleName("sharePanel");
-		sharePanel.setText("hello world");
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);
 		footerPanel.add(sharePanel);
@@ -501,11 +501,9 @@ public class App implements Serializable {
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
 
-		// TODO magic number!!!!!!!!!!!!!
-		int pollingDelayMS = 10000;
 		UpdateURL updateURL = new UpdateURL();
 		UpdateShareURL updateShareURL = new UpdateShareURL();
-		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), pollingDelayMS);
+		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), POLLING_DELAY_MS);
 		urlSerializer.startPolling();
 		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
 		// ui needs to be created BEFORE loading the editor for the ids to exist
@@ -631,6 +629,8 @@ public class App implements Serializable {
 			// change UI to transition from initialized state to step by step
 			// state
 			editor.lock();
+			runButton.setVisible(false);
+			unpauseButton.setVisible(true);
 			stepByStepButton.setEnabled(false);
 			outputSizeBox.setEnabled(false);
 			outputFormatBox.setEnabled(false);

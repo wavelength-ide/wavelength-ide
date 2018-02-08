@@ -19,8 +19,8 @@ public abstract class PartialApplication implements LambdaTerm {
 	private LambdaTerm inner;
 	private int numParameters;
 	private List<Visitor<Boolean>> checks;
-	public LambdaTerm[] received;
-	public int numReceived;
+	private LambdaTerm[] received;
+	private int numReceived;
 	private String name;
 
 	/**

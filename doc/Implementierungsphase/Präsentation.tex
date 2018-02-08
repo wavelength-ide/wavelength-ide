@@ -1,7 +1,7 @@
 \documentclass[10pt]{beamer}
 \usetheme[
 %%% option passed to the outer theme
-%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is default)
+    %progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is default)
   ]{Feather}
   
 % If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
@@ -100,7 +100,7 @@
 %\tableofcontents
 %\end{frame}
 
-\begin{frame}[plain]
+\begin{frame}
 \frametitle{Muss-Kriterien}
 \begin{itemize}
 \item Eingabe von $\lambda$-Termen
@@ -110,29 +110,40 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[plain]
-\frametitle{Kann-Kriterien - implementiert (1)}
+\begin{frame}
+\frametitle{Kann-Kriterien (1)}
 \begin{itemize}
 \item weitere Auswertungsstrategien: Call-by-Name, Call-by-Value und Applicative Order
 \item Ausgabe-Formate: Unicode, Syntaxbaum
 \item Ausgabeumfang: alle Teilschritte, erster und letzter Schritt und periodische Abstände
 \item Export-Formate: Unicode, \LaTeX, Haskell, Lisp
-\item Bibliotheken: natürliche Zahlen, Listen, Tupel, Booleans, Y-Kombinator
-\item Namensbindung und Kommentare
+\item Bibliotheken: Booleans, natürliche Zahlen, Listen, Tupel, Y-Kombinator
+\item Namensbindung, Kommentare, Dezimalzahlen statt Church-Zahlen
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}[plain]
-\frametitle{Kann-Kriterien - implementiert (2)}
+\begin{frame}
+\frametitle{Kann-Kriterien (2)}
 \begin{itemize}
 \item Schritt-für-Schritt Modus
 \item intelligenter Editor (Einrückungstiefen, Klammernmatching, etc.)
-\item Übungsaufgaben
+\item Übungsmodus
+\item Permalinks
+\item erweiterte Fehlerdiagnostik
 \end{itemize}
 \end{frame}
 
-\begin{frame}[plain]
+\begin{frame}
+\frametitle{Kann-Kriterien - \alert{Übungsmodus}}
+\enquote{Das Programm enthält ein Übungsaufgaben-System, welches neben Aufgaben in aufsteigendem
+Schwierigkeitsgrad auch Einführungen und automatisierte Tests für die Lösungen des Nutzers
+enthält.}
+\begin{itemize}
+\item keine automatisierten Tests
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Kann-Kriterien - \alert{Permalinks}}
 \enquote{Es kann ein Link generiert werden, der beim Aufrufen den gesamten Zustand
 der Sitzung wiederherstellt.}
@@ -141,7 +152,7 @@ der Sitzung wiederherstellt.}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[plain]
+\begin{frame}
 \frametitle{Kann-Kriterien - \alert{erweiterte Fehlerdiagnostik}}
 \enquote{Im Falle syntaktischer Fehler werden dem Nutzer die genaue Position des Fehlers, die
 Art des Fehlers sowie Behebungsmöglichkeiten angezeigt und die relevante Stelle im
@@ -152,7 +163,7 @@ Editor hervorgehoben.}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[plain]
+\begin{frame}
 \frametitle{Kann-Kriterien: \alert{Syntaxbaum}}
 \enquote{Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
 oder durch Pausieren einer laufenden Reduktion erreicht werden kann.
@@ -164,23 +175,47 @@ gemacht werden.}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[plain]
+\begin{frame}
 \frametitle{Implementierungsplan}
-\begin{figure}[H]
+\begin{figure}[h]
 %\hspace*{-3cm}
 \includegraphics[trim={0, 7cm, 0, 0}, clip, scale=0.4, page=4]{Implementierungsplan/Implementierungsplan.pdf}
-\caption[caption]{Der Verlauf der Implementierungsphase: \\\hspace{\textwidth}
+\caption[caption]{Der Verlauf der Implementierungsphase 
+\newline
 Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \end{figure}
 \end{frame}
 
-\begin{frame}[plain]
-
+\begin{frame}
+\frametitle{GUI 1.0 - Anspruch}
+\includegraphics[trim={0, 2.45cm, 0, 0} ,clip, scale=0.2]{img/GUI1_Anspruch.png}
 \end{frame}
 
-\begin{frame}[plain]
-
+\begin{frame}
+\frametitle{GUI 1.0 - Wirklichkeit}
+\hspace*{-1cm}
+\includegraphics[scale=0.19]{img/GUI1_Wirklichkeit.png}
 \end{frame}
 
+\begin{frame}
+\frametitle{GUI 2.0}
+\hspace*{-1cm}
+\includegraphics[trim={0, 2.2cm, 0, 0} ,clip, scale=0.25]{img/GUI2.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Änderungen am Entwurf}
+\begin{itemize}
+\item Entfernung der Pakete \alert{edu.kit.wavelength.client.view.webui.component} und \alert{edu.kit.wavelength.client.view.api}
+\item neue Pakete \alert{edu.kit.wavelength.client.database} und \alert{edu.kit.wavelength.server.database}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Statistiken}
+\begin{itemize}
+\item Lines of Code: 
+\end{itemize}
+\end{frame}
 
 \end{document}

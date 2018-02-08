@@ -32,6 +32,7 @@ public class Stop implements Action {
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(true));
 		app.exerciseButtons().forEach(b -> b.setEnabled(true));
 		app.exportButtons().forEach(b -> b.setEnabled(true));
+		app.shareButton().setEnabled(true);
 
 		app.pauseButton().setVisible(false);
 		app.pauseButton().setEnabled(true);

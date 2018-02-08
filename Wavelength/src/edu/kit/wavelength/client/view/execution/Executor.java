@@ -10,7 +10,6 @@ import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.serialization.Serializable;
-import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
@@ -21,10 +20,10 @@ import edu.kit.wavelength.client.model.term.parsing.ParseException;
 public class Executor implements Serializable {
 
 	private static int allowedReductionTimeMS = 100;
-	
+
 	private List<ExecutionObserver> executionObservers;
 	private List<ControlObserver> controlObservers;
-	
+
 	private boolean terminated = true;
 	private boolean paused = true;
 	private ExecutionEngine engine;
@@ -90,7 +89,8 @@ public class Executor implements Serializable {
 	 * @throws ParseException
 	 *             thrown when input cannot be parsed
 	 */
-	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
+	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
+			throws ParseException {
 		if (!terminated) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
@@ -101,7 +101,7 @@ public class Executor implements Serializable {
 		}
 		scheduleExecution();
 		terminated = false;
-		
+
 	}
 
 	/**
@@ -151,7 +151,8 @@ public class Executor implements Serializable {
 	 * @throws ParseException
 	 *             thrown when input cannot be parsed
 	 */
-	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
+	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
+			throws ParseException {
 		if (!terminated) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
@@ -202,7 +203,7 @@ public class Executor implements Serializable {
 		}
 		engine.stepBackward();
 		executionObservers.forEach(o -> o.removeLastTerm());
-		
+
 	}
 
 	/**
@@ -221,36 +222,48 @@ public class Executor implements Serializable {
 
 	/**
 	 * Checks whether stepBackward is possible.
+	 * 
 	 * @return whether stepBackward is possible
 	 */
 	public boolean canStepBackward() {
 		return isPaused() && engine.canStepBackward();
 	}
-	
+
 	/**
 	 * Checks whether stepForward is possible.
+	 * 
 	 * @return whether stepForward is possible
 	 */
 	public boolean canStepForward() {
 		return isPaused() && !engine.isFinished();
 	}
-	
+
 	/**
-	 * Checks whether the engine is paused.
+	 * Checks whether the engine is paused (true iff engine is not terminated and paused).
+	 * 
 	 * @return whether the engine is paused
 	 */
 	public boolean isPaused() {
 		return !terminated && paused;
 	}
-	
+
 	/**
 	 * Checks whether the engine is terminated.
+	 * 
 	 * @return whether the engine is terminated
 	 */
 	public boolean isTerminated() {
 		return terminated;
 	}
 	
+	/**
+	 * Checks whether the engine is running (true iff engine is not terminated and not paused).
+	 * @return whether the engine is running
+	 */
+	public boolean isRunning() {
+		return !paused;
+	}
+
 	/**
 	 * Wipes the memory of the last execution.
 	 */
@@ -260,33 +273,38 @@ public class Executor implements Serializable {
 		}
 		engine = null;
 	}
-	
+
 	/**
 	 * Returns the currently displayed lambda terms.
+	 * 
 	 * @return lt
 	 */
 	public List<LambdaTerm> getDisplayed() {
 		if (engine == null) {
-			throw new IllegalStateException("trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
+			throw new IllegalStateException(
+					"trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
 		}
 		return engine.getDisplayed();
 	}
+
 	public List<Library> getLibraries() {
 		if (engine == null) {
-			throw new IllegalStateException("trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
+			throw new IllegalStateException(
+					"trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
 		}
 		return engine.getLibraries();
 	}
+
 	/**
 	 * Serializes the Executor by serializing its ExecutionEngine.
 	 * 
 	 * @return The Executor serialized String representation
 	 */
 	public StringBuilder serialize() {
-		if(engine == null) {
+		if (engine == null) {
 			return new StringBuilder("");
 		} else {
-			return SerializationUtilities.enclose(engine.serialize(), new StringBuilder(terminated ? "t" : "f"));
+			return engine.serialize();
 		}
 	}
 
@@ -298,16 +316,14 @@ public class Executor implements Serializable {
 	 *            serialized Executor
 	 */
 	public void deserialize(String serialization) {
-		if(serialization == "") {
+		if (serialization == "") {
+			// engine was null
 			return;
-		}
-		terminated = false;
-		List<String> extracted = SerializationUtilities.extract(serialization);
-		assert extracted.size() == 2;
-		if(extracted.get(0).length() > 0) {
-			this.engine = new ExecutionEngine(extracted.get(0));
+		} else {
+			// engine was not null and thus holds terms
+			terminated = false;
+			this.engine = new ExecutionEngine(serialization);
 			this.pushTerms(engine.getDisplayed());
 		}
-		terminated = extracted.get(1).equals("t");
 	}
 }

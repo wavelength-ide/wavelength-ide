@@ -89,6 +89,8 @@ public class RunNewExecution implements Action {
 		app.exerciseButtons().forEach(b -> b.setEnabled(false));
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
 		app.exportButtons().forEach(b -> b.setEnabled(false));
+		app.sharePanel().setVisible(false);
+		app.shareButton().setEnabled(false);
 		
 		app.runButton().setVisible(false);
 		app.pauseButton().setVisible(true);

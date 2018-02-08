@@ -6,8 +6,6 @@ import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.Scheduler;
-import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import edu.kit.wavelength.client.database.DatabaseService;
@@ -43,6 +41,10 @@ public class URLSerializer {
 	 * @return whether the serializer will continue to poll after this call
 	 */
 	public boolean serialize() {
+		if(App.get().executor().isRunning()) {
+			// should not serialize with a running execution
+			return true;
+		}
 		// create database entry and url
 		String serialization = App.get().serialize().toString();
 		DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);

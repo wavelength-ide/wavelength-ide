@@ -72,13 +72,13 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 .exportArea { resize: none; background-color: white !important;}
 
 /* limit height to footer height, fix width instead of filling rest of footer, set background */
-.sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }
+.sharePanel { height: 100% !important; width: 500px !important; background-color: white !important; }
 
-.output { display: inline; overflow: scroll;}
+.output { display: inline; overflow: scroll; left: 5px !important; right: 5px !important;}
 
 .grey {background-color: #f6f6f6;}
 
-.hover:hover {background-color: #E6F2FD;}
+.hover:hover {background-color: #2b91af45;}
 
 .abstraction {pointer-events: none; color: black; text-decoration: none; cursor: default;}
 
@@ -90,7 +90,7 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 .notclickable a.clickable { color: black; text-decoration: none; pointer-events:none; cursor: default;}
 
-.notclickable a.hover:hover {background-color: #E6F2FD; pointer-events:none;}
+.notclickable a.hover:hover {background-color: #2b91af45; pointer-events:none;}
 
 .parent .nextRedex { border-bottom: 1px solid #2b91af}
 

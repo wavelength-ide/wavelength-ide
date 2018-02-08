@@ -20,17 +20,20 @@ public final class Exercises {
 		String introName = "Introduction";
 		String introTask = "";
 		String introSolution = "";
-		String introPredef = "Welcome to Wavelength, the lambda calculus IDE. The following first exercises are designed to introduce you"
-				+ " to Wavelength's features and the basic concepts of lambda calculus.";
+		String introPredef = "Welcome to Wavelength, the lambda calculus IDE. \n"
+				+ "At its core Wavelength is a lamba calculus interpreter. \n"
+				+ "You may enter any λ-term and reduce it down to its normal form using one of Wavelength's four reduction orders. \n "
+				+ "By result only the final reduction result is displayed. To better understand the reduction process, "
+				+ " you may select a different output size from the rightmost combobox. If you want even more transparency and control,"
+				+ " Wavelength offers a step-by-step mode, enabling you to initiate every reduction yourself. "
+				+ "If a redex is clicked in this mode, it is reduced no matter the active reduction order. \n"
+				+ "Using the step-back button you may undo a past reduction. \n"
+				+ "The reduced λ-term and all intermmediate steps display in the output window can be exported in different formats."
+				+ "These can be selected from the export-menu in the lower left corner and for example include Haskell- or Lisp-code. "
+				+ "To ease working with complex terms, Wavelength includes a number of predefined libraries containing commonly used λ-terms "
+				+ "like the Church encodings of Natural Numbers. " 
+				+ "Wavelength also includes a set of exercises for you to complete.";
 		Exercise introEx = new ConcreteExercise(introName, introTask, introSolution, introPredef);
-
-		String treeOutputName = "Tree-Output";
-		String treeOutputTask = "";
-		String treeOutputSolution = "";
-		String treeOutputPredef = "The leftmost combobox allows you to change the way reduced λ-terms are displayed."
-				+ " In addition to the default textual representation, λ-terms can be displayed in tree form to better understand a term's structure.";
-		Exercise treeOutput = new ConcreteExercise(treeOutputName, treeOutputTask, treeOutputPredef,
-				treeOutputSolution);
 
 		String exerciseName = "Exercise mode";
 		String exerciseTask = "The active exercise's task will be displayed here. \n"
@@ -53,7 +56,7 @@ public final class Exercises {
 		String freeVarPredef = "(λx.x y)(λy. y x)((λv. x v) λx.x)";
 		Exercise freeVar = new ConcreteExercise(freeVarName, freeVarTask, freeVarSolution, freeVarPredef);
 
-		String redexName = "β-redex";
+		String redexName = "β-Redex";
 		String redexTask = "A reducable expression or redex is a λ-term which may be reduced by one of the lambda calculus's "
 				+ "reduction rules. In the following exercises redex will always refer to a β-redex,"
 				+ " a redex which may be reduced using β-reduction. A β-redex always consists of an application whoose"
@@ -63,14 +66,14 @@ public final class Exercises {
 		String redexPredef = "λv.(((λx.x x)(k))v)";
 		Exercise redex = new ConcreteExercise(redexName, redexTask, redexSolution, redexPredef);
 
-		String redex2Name = "β-redex II";
+		String redex2Name = "β-Redex II";
 		String redex2Task = "Does the displayed λ-term contain a redex and if so which part of the term"
 				+ " is a redex?";
 		String redex2Solution = "The λ-term does not contain a redex";
 		String redex2Predef = "λy.y x (λv.u v) y";
 		Exercise redex2 = new ConcreteExercise(redex2Name, redex2Task, redex2Solution, redex2Predef);
 
-		String redex3Name = "β-redex III";
+		String redex3Name = "β-Redex III";
 		String redex3Task = "Does the displayed λ-term contain a redex and if so which part of the term is a redex?";
 		String redex3Solution = "(λx.z x) (x y) is the term's only redex";
 		String redex3Predef = "λx.λy.(λz.(λx.z x) (x y))";
@@ -126,7 +129,6 @@ public final class Exercises {
 		ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();
 		exerciseList.add(introEx);
 		exerciseList.add(exerciseMode);
-		exerciseList.add(treeOutput);
 		exerciseList.add(var);
 		exerciseList.add(freeVar);
 		exerciseList.add(redex);

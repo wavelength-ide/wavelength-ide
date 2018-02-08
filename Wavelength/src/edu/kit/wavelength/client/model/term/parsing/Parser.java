@@ -2,9 +2,7 @@ package edu.kit.wavelength.client.model.term.parsing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EmptyStackException;
 import java.util.List;
-import java.util.Stack;
 
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;
@@ -115,11 +113,11 @@ public class Parser {
 	 */
 	private LambdaTerm retrieveTerm(String name) {
 		if (inputLibrary != null && inputLibrary.containsName(name)) {
-			return inputLibrary.getTerm(name);
+			return inputLibrary.getTerm(name).clone();
 		}
 		for (Library currentLibrary : loadedLibraries) {
 			if (currentLibrary.containsName(name)) {
-				return currentLibrary.getTerm(name);
+				return currentLibrary.getTerm(name).clone();
 			}
 		}
 		return null;

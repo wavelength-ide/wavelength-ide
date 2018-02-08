@@ -1,7 +1,5 @@
 package edu.kit.wavelength.client.model.term;
 
-import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
-
 /**
  * Represents a bound variable in the untyped lambda calculus.
  * 

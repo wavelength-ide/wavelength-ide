@@ -1,6 +1,5 @@
 package edu.kit.wavelength.client.view.update;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +11,6 @@ import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 
@@ -32,13 +30,24 @@ import edu.kit.wavelength.client.view.action.StepManually;
  * Visitor for generating the output of a {@link LambdaTerm} for the
  * {@link UnicodeOutput} view.
  */
-public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
+public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 	private boolean bracketsForAbs;
 	private boolean bracketsForApp;
 	private Application nextRedex;
 	private FlowPanel parent;
 
+	/**
+	 * Creates a new ResolvedNamesVisitor for unicode pretty printing.
+	 * 
+	 * @param libraries
+	 *            The libraries to take into account.
+	 * @param nextRedex
+	 *            The redex that is reduced next with the current
+	 *            {@link ReductionOrder}
+	 * @param parent
+	 *            The panel this term will be wrapped in.
+	 */
 	public UnicodeTermVisitor(List<Library> libraries, Application nextRedex, FlowPanel parent) {
 		super(libraries);
 		this.bracketsForAbs = false;
@@ -48,7 +57,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 	}
 
 	@Override
-	public Tuple visitApplication(Application app) {
+	public UnicodeTuple visitApplication(Application app) {
 		Objects.requireNonNull(app);
 
 		final boolean brackets = bracketsForApp;
@@ -56,57 +65,35 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 
 		// An abstraction inside a application should get brackets.
 		bracketsForAbs = true;
-		Tuple left = app.getLeftHandSide().acceptVisitor(this);
-
+		UnicodeTuple left = app.getLeftHandSide().acceptVisitor(this);
+		// set this value again in case it was changed by the statement above
 		bracketsForAbs = true;
 		// If the right term of an application is an application it should get
 		// brackets because implicit brackets bind from left to right.
 		bracketsForApp = true;
-		Tuple right = app.getRightHandSide().acceptVisitor(this);
+		UnicodeTuple right = app.getRightHandSide().acceptVisitor(this);
 
+		// create a new panel to wrap the application
 		FlowPanel panel = new FlowPanel("span");
-		Anchor a = left.a;
 
+		// underlines the nextRedex to indicate the redex that the current reduction
+		// order will reduce next
 		if (app == this.nextRedex) {
 			panel.addStyleName("nextRedex");
 		}
 
 		parent.addStyleName("parent");
 
-		// this is only true if left is an application
-		// Window.alert(app.toString());
+		// get the anchor of the left side of the application for potential manipulation
+		Anchor a = left.anchor;
+
+		// if the given application is a redex: make the redex clickable and add
+		// styling for hovering over the redex
 		if (app.acceptVisitor(new IsRedexVisitor())) {
-			// make applications clickable and highlight it on mouse over
-			panel.addStyleName("application");
-			a.addStyleName("clickable");
-
-			a.addMouseOverHandler(new MouseOverHandler() {
-				public void onMouseOver(MouseOverEvent event) {
-					parent.setStyleName("parent", false);
-					panel.addStyleName("hover");
-				}
-			});
-
-			// when clicked reduce the clicked application
-			a.addClickHandler(new ClickHandler() {
-				public void onClick(ClickEvent event) {
-					parent.removeStyleName("nextRedex");
-					parent.removeStyleName("parent");
-					parent.addStyleName("customClick");
-					panel.addStyleName("reduced");
-					new StepManually(app).run();
-				}
-			});
-
-			a.addMouseOutHandler(new MouseOutHandler() {
-				public void onMouseOut(MouseOutEvent event) {
-					panel.removeStyleName("hover");
-					parent.setStyleName("parent", true);
-				}
-			});
-
+			clickableRedex(app, panel, a);
 		}
 
+		// add all elements to the wrapper panel
 		if (brackets) {
 			panel.add(new Text("("));
 		}
@@ -116,99 +103,84 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		if (brackets) {
 			panel.add(new Text(")"));
 		}
-		return new Tuple(panel, a);
+
+		return new UnicodeTuple(panel, a);
 	}
 
 	@Override
-	public Tuple visitNamedTerm(NamedTerm term) {
+	public UnicodeTuple visitNamedTerm(NamedTerm term) {
 		Objects.requireNonNull(term);
 
 		resetFlags();
 
+		// create a new panel to wrap the named term
 		FlowPanel panel = new FlowPanel("span");
+		// create a new anchor with the given name and make it not clickable by default
 		Anchor a = new Anchor(term.getName());
 		a.addStyleName("abstraction");
 		panel.add(a);
 		parent.addStyleName("parent");
 
+		// if the given named term is a redex: make the redex clickable and add
+		// styling for hovering over the redex
 		if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
-			panel.addStyleName("application");
-			a.addStyleName("clickable");
-
-			a.addMouseOverHandler(new MouseOverHandler() {
-				public void onMouseOver(MouseOverEvent event) {
-					parent.setStyleName("parent", false);
-					panel.addStyleName("hover");
-				}
-			});
-
-			// when clicked reduce the clicked application
-			a.addClickHandler(new ClickHandler() {
-				public void onClick(ClickEvent event) {
-					parent.removeStyleName("nextRedex");
-					parent.removeStyleName("parent");
-					parent.addStyleName("customClick");
-					panel.addStyleName("reduced");
-					new StepManually((Application) term.getInner()).run();
-				}
-			});
-
-			a.addMouseOutHandler(new MouseOutHandler() {
-				public void onMouseOut(MouseOutEvent event) {
-					panel.removeStyleName("hover");
-					parent.setStyleName("parent", true);
-				}
-			});
+			clickableRedex((Application) term.getInner(), panel, a);
 		}
 
-		return new Tuple(panel, a);
+		return new UnicodeTuple(panel, a);
 	}
 
 	@Override
-	public Tuple visitPartialApplication(PartialApplication app) {
+	public UnicodeTuple visitPartialApplication(PartialApplication app) {
 		Objects.requireNonNull(app);
 
 		resetFlags();
-		
+
+		// create a new panel to wrap the partial application
 		FlowPanel panel = new FlowPanel("span");
-		
+		// create a new anchor with the given name and make it not clickable by default
 		Anchor a = new Anchor(app.getName());
 		a.addStyleName("abstraction");
 		panel.add(a);
-		
-		for (int i = 0; i < app.numReceived; i++ ) {
+
+		// display all arguments even if they were already reduced
+		for (int i = 0; i < app.getNumReceived(); i++) {
 			panel.addStyleName("abstraction");
-			panel.add(app.received[i].acceptVisitor(this).panel);
+			panel.add(new Text(" "));
+			panel.add(app.getReceived()[i].acceptVisitor(this).panel);
 		}
 
-		return new Tuple(panel, a);	
+		return new UnicodeTuple(panel, a);
 	}
 
 	@Override
-	public Tuple visitFreeVariable(FreeVariable var) {
+	public UnicodeTuple visitFreeVariable(FreeVariable var) {
 		Objects.requireNonNull(var);
 
 		resetFlags();
 
+		// create a new panel to wrap the free variable and add its name to the panel
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(var.getName()));
-		return new Tuple(panel, null);
+
+		return new UnicodeTuple(panel, null);
 	}
 
 	@Override
-	protected Tuple visitBoundVariable(BoundVariable var, String resolvedName) {
+	protected UnicodeTuple visitBoundVariable(BoundVariable var, String resolvedName) {
 		Objects.requireNonNull(var);
 		Objects.requireNonNull(resolvedName);
 
 		resetFlags();
 
+		// create a new panel to wrap the bound variable and add its name to the panel
 		FlowPanel panel = new FlowPanel("span");
 		panel.add(new Text(resolvedName));
-		return new Tuple(panel, null);
+		return new UnicodeTuple(panel, null);
 	}
 
 	@Override
-	protected Tuple visitAbstraction(Abstraction abs, String resolvedName) {
+	protected UnicodeTuple visitAbstraction(Abstraction abs, String resolvedName) {
 		Objects.requireNonNull(abs);
 		Objects.requireNonNull(resolvedName);
 
@@ -216,13 +188,17 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		final boolean brackets = bracketsForAbs;
 		resetFlags();
 
-		Tuple inner = abs.getInner().acceptVisitor(this);
+		UnicodeTuple inner = abs.getInner().acceptVisitor(this);
 
+		// create a new panel to wrap the abstraction
+		FlowPanel panel = new FlowPanel("span");
+
+		// create a new anchor for the lambda symbol and the given name, make it not
+		// clickable by default
 		Anchor a = new Anchor("λ" + resolvedName);
 		a.addStyleName("abstraction");
 
-		FlowPanel panel = new FlowPanel("span");
-
+		// add all elements to the wrapper panel
 		if (brackets) {
 			panel.add(new Text("("));
 		}
@@ -233,12 +209,51 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 			panel.add(new Text(")"));
 		}
 
-		return new Tuple(panel, a);
+		return new UnicodeTuple(panel, a);
 	}
 
-	protected final void resetFlags() {
+
+	// helper method to reset the flags for brackets in pretty printing
+	private final void resetFlags() {
 		bracketsForAbs = false;
 		bracketsForApp = false;
+	}
+
+	// helper method to add click- and mouse over/out handlers to a given redex and
+	// its panel and anchor
+	private void clickableRedex(Application redex, FlowPanel panel, Anchor a) {
+		panel.addStyleName("application");
+		a.addStyleName("clickable");
+
+		// on mouse over the left side of the redex highlight the redex and remove the
+		// underlining of nextRedex
+		a.addMouseOverHandler(new MouseOverHandler() {
+			public void onMouseOver(MouseOverEvent event) {
+				parent.setStyleName("parent", false);
+				panel.addStyleName("hover");
+			}
+		});
+
+		// when clicked reduce the clicked application, underline the chosen redex and
+		// remove the underlining of nextRedex
+		a.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				parent.removeStyleName("nextRedex");
+				parent.removeStyleName("parent");
+				parent.addStyleName("customClick");
+				panel.addStyleName("reduced");
+				new StepManually(redex).run();
+			}
+		});
+
+		// on mouse out remove the highlighting of the hovered redex and underline
+		// nextRedex again
+		a.addMouseOutHandler(new MouseOutHandler() {
+			public void onMouseOut(MouseOutEvent event) {
+				panel.removeStyleName("hover");
+				parent.setStyleName("parent", true);
+			}
+		});
 	}
 
 }

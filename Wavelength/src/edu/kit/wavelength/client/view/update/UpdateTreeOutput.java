@@ -3,8 +3,6 @@ package edu.kit.wavelength.client.view.update;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.gwtbootstrap3.client.ui.html.Text;
-
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -20,14 +18,17 @@ import edu.kit.wavelength.client.view.gwt.VisJs;
  * displayed.
  */
 public class UpdateTreeOutput implements ExecutionObserver {
-	
+
 	private static App app = App.get();
 	private List<TreeTriple> termTriples;
 	private List<FlowPanel> panels;
 	private List<LambdaTerm> terms;
 	private int id;
 	public int nodeId;
-	
+
+	/**
+	 * Create a new execution observer for tree pretty printing.
+	 */
 	public UpdateTreeOutput() {
 		termTriples = new ArrayList<>();
 		panels = new ArrayList<>();
@@ -41,25 +42,33 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		if (!app.treeIsSet()) {
 			return;
 		}
+
 		terms.add(t);
+		id += 1;
+
+		// determine the selected reduction order and get the redex that will be reduced
+		// next
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
 				.findFirst().get();
 		Application nextRedex = currentOrder.next(t);
-		
-		id += 1;
+
 		TreeTriple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this, nextRedex));
 		termTriples.add(term);
-		
+
 		String nodes = "[" + term.nodes + "]";
 		String edges = "[" + term.edges + "]";
-		
+
+		// create a panel to wrap the new tree
 		FlowPanel treePanel = new FlowPanel("div");
+		// the id is needed so the tree will be placed in the correct panel
 		treePanel.getElement().setId("" + id);
 		panels.add(treePanel);
+		// display the new panel and add the tree
 		app.outputArea().add(treePanel);
 		VisJs.loadNetwork(nodes, edges, treePanel);
-		app.autoScroll();
+		// when a new tree was printed, scroll down so the user can see it
+		App.autoScroll();
 	}
 
 	@Override
@@ -67,19 +76,19 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		if (!app.treeIsSet()) {
 			return;
 		}
-		
+
 		id -= 1;
 		terms.remove(terms.size() - 1);
-		app.outputArea().remove(id);	
+		app.outputArea().remove(id);
 	}
 
 	@Override
 	public void clear() {
 		termTriples.clear();
-		panels.clear();;
+		panels.clear();
 		terms.clear();
 		id = 0;
-		nodeId = 0;	
+		nodeId = 0;
 	}
 
 	@Override
@@ -87,14 +96,10 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		if (!app.treeIsSet()) {
 			return;
 		}
-		
 		app.outputArea().remove(id);
 		LambdaTerm term = terms.get(terms.size() - 1);
 		terms.remove(terms.size() - 1);
 		pushTerm(term);
-		
 	}
-	
-	
 
 }

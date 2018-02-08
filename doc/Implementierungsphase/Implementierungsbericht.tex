@@ -342,7 +342,7 @@ Diese Verzögerungen sind dann der Auslöser für die restlichen Verspätungen i
 \newpage
 \section{Komponententests}
 \subsection{\texttt{Paket edu.kit.wavelength.client.model.serialization}}
-Dieses Paket testet die Klasse \emph{SerializationUtilities}, welche Hilftmethoden zur Serialisierung aggregater Datentypen
+Dieses Paket testet die Klasse \texttt{SerializationUtilities}, welche Hilfsmethoden zur Serialisierung aggregater Datentypen
 bereitstellt. Es wird getestet, ob die Methoden zur Deserialisierung und Serialisierung von Datentypen, deren Zustand sich als Tupel
 von Komponenten auffassen lässt, korrekt funktioniert und das vorgesehene Format einhält.
 %Es wird getestet, ob die Methode \emph{List<String> extract(String input)} eine gegebene Serialisierung korrekt entpackt.
@@ -350,26 +350,26 @@ von Komponenten auffassen lässt, korrekt funktioniert und das vorgesehene Forma
 %einen neuen StringBuilder erzeugt, der eine gültige Gesamt-Serialisierung enthält.
 
 \subsection{\texttt{Paket edu.kit.wavelength.client.model.term}}
-Die Testklasse zur \emph{BetaReducer}-Klasse prüft die korrekte Funktion des Beta-Reduktions-Mechanismus
+Die Testklasse zur \texttt{BetaReducer}-Klasse prüft die korrekte Funktion des $\beta$-Re\-duk\-tions-Me\-cha\-nis\-mus
 der Applikation. Neben der grundlegenden Funktionalität wird getestet, dass auch in Randfällen die
 De-Bruijn-Indizes gebundener Variablen korrekt angepasst werden. Weiter wird getestet, dass in dem
-Fall, dass in einem Term der gleiche Redex mehrfach vorkommt, tatsächlich genau der Regex reduziert
+Fall, dass in einem Term der gleiche Redex mehrfach vorkommt, tatsächlich genau der Redex reduziert
 wird, welcher dem Reduzierer übergeben wurde. Dies wird für mehrere spezifische Situationen, in denen
 ein Term als Ergebnis einer Reduktion mehrfach vorkommt, zusätzlich detailliert getestet. Eine weitere
 Gruppe von Tests überprüft den Umgang mit benannten Termen. Hier muss der Reduzierer sicherstellen, dass
-Änderungen an Termen dazu führen, dass betreffende Namen gestrichen werden -- es sollten aber nicht zu viele
-Namen gestrichen werden. Schließlich wird der korrekte Umgang mit partiellen Applikationen getestet. Hier
+Änderungen an Termen dazu führen, dass betreffende Namen gestrichen werden -- es sollten aber keine Namen
+ohne Notwendigkeit gestrichen werden. Schließlich wird der korrekte Umgang mit partiellen Applikationen getestet. Hier
 muss getestet werden, dass sowohl mit im Sinne der Beschleunigung "wohlgeformten" als auch mit beliebigen
 anderen Termen korrekt umgegangen wird.
 
-Weiter gibt es eine Testklasse für die allgemeine \emph{ResolvedNamesVisitor}-Klasse, welche zu Anzeigezwecken
+Weiter gibt es eine Testklasse für die allgemeine \texttt{ResolvedNamesVisitor}-Klasse, welche zu Anzeigezwecken
 nicht-kollidierende Namen für die Variablen von Abstraktionen vergibt. Hier ist sicherzustellen, dass die
 vergebenen Namen tatsächlich zur Struktur des Eingabeterms passen und auch nicht kollidieren. Weiter wird
 getestet, dass bei der Namensvergabe die verschiedenen im Kontext vergebenen Namen, also umschließende Abstraktionen
 (aber nur die, die den betrachteten Term umschließen), durch den Nutzer oder Bibliotheken gebundene Namen sowie
 innerhalb des Terms vorkommende freie Variablen beachtet werden.
 
-Zusätzlich wird die Serialisierung und Deserialisierung von Lambda-Termen getestet. Hierbei wird tatsächlich
+Zusätzlich wird die Serialisierung und Deserialisierung von $\lambda$-Termen getestet. Hierbei wird tatsächlich
 gefordert, dass die deserialisierten Terme exakt mit ihren Urbildern übereinstimmen.
 
 \subsection{\texttt{Paket edu.kit.wavelength.client.model.term.parsing}}

@@ -14,7 +14,9 @@ public class MonacoEditor {
 			"minimap": {"enabled": false},
 			"mouseWheelZoom": true,
 			"lineNumbersMinChars": 3,
-			"wordWrap": "on"
+			"wordWrap": "on",
+			"theme": "lambdaTheme",
+			"language": "lambda"
 		};
 		return c;
 	}-*/;
@@ -22,6 +24,21 @@ public class MonacoEditor {
 	public static native MonacoEditor load(Panel parent) /*-{
 		var id = parent.@com.google.gwt.user.client.ui.Panel::getElement()().@com.google.gwt.dom.client.Element::getId()();
 		var c = @edu.kit.wavelength.client.view.gwt.MonacoEditor::config()();
+		$wnd.monaco.languages.register({ id: 'lambda' });
+		$wnd.monaco.languages.setMonarchTokensProvider('lambda', {
+			tokenizer: {
+				root: [
+		            ["--.*$", "comment"] 
+				]
+			}
+		});
+		$wnd.monaco.editor.defineTheme('lambdaTheme', {
+			base: 'vs',
+			inherit: false,
+			rules: [ 
+		        { token: 'comment', foreground: '008000' } 
+			]
+		});
 		var editor = $wnd.monaco.editor.create($doc.getElementById(id), c);
 		var wrapper = @edu.kit.wavelength.client.view.gwt.MonacoEditor::new()();
 		wrapper.@edu.kit.wavelength.client.view.gwt.MonacoEditor::editor = editor;

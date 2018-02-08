@@ -19,6 +19,9 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[section]{placeins}
 
+%Change enummeration pattern from 1. to 1)
+\renewcommand\labelenumi{\theenumi)}
+
 \titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
 \title{Implementierungsbericht}
 \subtitle{Wavelength--$\bm{\lambda}$-IDE}
@@ -36,7 +39,7 @@ Die Erfüllung der geforderten Spezifikationen erfordert den Einsatz verschieden
 
 \subsection{Google Web Toolkit (GWT)}
 \begin{enumerate}
-\item[] \textbf{Ziel:} Programmierung der Anwendung in Java 
+\item[] \textbf{Ziel:} Programmierung der Anwendung in Java
 \item[] \textbf{Beschreibung:} Das Google Web Toolkit kompiliert Java-Quellcode zu JavaScript, welches direkt im Webbrowser des Anwenders läuft. Zusätzlich
 werden Werkzeuge bereitgestellt, um die Benutzeroberfläche der Webapplikation direkt in Java zu konstruieren.
 \item[] \textbf{Erläuterung:} Ziel dieses Projektes ist die Entwicklung einer Online-Ent\-wick\-lungs\-um\-ge\-bung für den untypisierten $\lambda$-Kalkül.
@@ -46,16 +49,16 @@ Um dieser Anforderung nachzukommen, wird die Anwendung in Java programmiert und 
 
 \subsection{GWT-Bootstrap 3.0.9.4}
 \begin{enumerate}
-\item[] \textbf{Ziel:} Optisch ansprechende Benutzeroberfläche 
+\item[] \textbf{Ziel:} Optisch ansprechende Benutzeroberfläche
 \item[] \textbf{Beschreibung:} GWT-Bootstrap stellt Java-Klassen für die Verwendung von Bootstrap-Komponenten mit GWT bereit.
 \item[] \textbf{Erläuterung:} Für die Entwickler waren die von GWT bereitgestellten GUI-Elemente optisch inkohärent und von niederer Anmut.
 Die optische Inkohärenz entsteht dadurch, dass die gleiche Komponente in unterschiedlichen Browsern unterschiedlich dargestellt wird.
-Die von GWT bereitgestellten Komponenten wirken durch ihr eckiges Design eher unmodern. 
+Die von GWT bereitgestellten Komponenten wirken durch ihr eckiges Design eher unmodern.
 Runde Ecken werden meist als ansprechender empfunden.
 Daher sind die von Bootstrap bereitgestellten Komponenten besser geeignet, einen benutzerfreundlichen Gesamteindruck zu erzeugen.
-Die Verwendung dieser Komponenten mit GWT erwies sich jedoch als umständlich: 
+Die Verwendung dieser Komponenten mit GWT erwies sich jedoch als umständlich:
 Die von Bootstrap zur Verfügung gestellten Komponenten können in GWT per CSS gestylt, Attribute können aber nicht mehr zum Kompilat hinzugefügt
-werden. Das führt dazu, dass die gesamte Komponente in HTML geschrieben werden muss. 
+werden. Das führt dazu, dass die gesamte Komponente in HTML geschrieben werden muss.
 Um die Bootstrap-Komponenten trotzdem verwenden zu können, wurde GWT-Bootstrap eingebunden, was genau obiges leistet.
 Darüber hinaus stellt die Bibliothek auch Icons zur Verfügung, die für die GUI verwendet werden (siehe dazu beispielsweise Pflichtenheft Anhang A).
 Der Vorteil dieser Icons ist, dass sie einen Satz, also ein konsistentes Bild bieten.
@@ -63,7 +66,7 @@ Der Vorteil dieser Icons ist, dass sie einen Satz, also ein konsistentes Bild bi
 
 \subsection{Monaco}
 \begin{enumerate}
-\item[] \textbf{Ziel:} Bereitstellung eines Editors 
+\item[] \textbf{Ziel:} Bereitstellung eines Editors
 \item[] \textbf{Beschreibung:} Monaco ist ein Code-Editor, der in der Software Visual Studio Code verwendet wird, aber auch als freistehende
 Bibliothek zur Verfügung steht.
 \item[] \textbf{Erläuterung:} Die Entwicklung eines Editors steht bei diesem Projekt nicht im Fokus.  Daher bietet es sich an, hier auf eine Bibliothek zurückzugreifen.
@@ -73,7 +76,7 @@ Monaco eignet sich sehr gut als Code-Editor, ist einfach einzubinden und stellt
 
 \subsection{vis.js}
 \begin{enumerate}
-\item[] \textbf{Ziel:} Erstellung interaktiver Graphen 
+\item[] \textbf{Ziel:} Erstellung interaktiver Graphen
 \item[] \textbf{Beschreibung:} Bei vis.js handelt es sich um eine JavaScript-Bibliothek für Visualisierungen aller Art im Browser.
 \item[] \textbf{Erläuterung:} Die Ausgabe von $\lambda$-Termen in Form eines Syntaxbaums entspricht einer nicht-triviale Aufgabe.
 Dieser muss nicht nur konstruiert werden, sondern auch noch stellenweise klickbar sein (siehe dazu Pflichtenheft unter F5).
@@ -82,7 +85,7 @@ Sowohl die Modellierung der Daten als auch die Visualisierung erfolgen in JavaSc
 
 \subsection{SQLite}
 \begin{enumerate}
-\item[] \textbf{Ziel:} Bereitstellung einer Datenbank 
+\item[] \textbf{Ziel:} Bereitstellung einer Datenbank
 \item[] \textbf{Beschreibung:} SQLite stellt eine relationale Datenbank zur Verfügung.
 \item[] \textbf{Erläuterung:} Nutzer sollen in der Lage sein, den aktuellen Zustand der Anwendung mit anderen zu teilen.
 Dazu wird der Zustand in eine Zeichenkette übersetzt.
@@ -125,9 +128,9 @@ Für diese Tests eignet sich dann auch die Implementierung der \texttt{App-Klass
 Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Klasse eingespart werden.
 
 \subsection{Die Serialisierung benutzt eine Datenbank}
-Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme). 
+Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme).
 Die bei der Serialisierung erzeugten Zeichenketten können aber unter Umständen sehr viel länger als die übliche Grenze von 2.000 Zeichen werden.
-Daher wird die Serialisierung in einer Datenbank gespeichert. 
+Daher wird die Serialisierung in einer Datenbank gespeichert.
 Dann wird ihr eine eindeutige Zeichenkette zugewiesen, die für die Deserialisierung verwendet werden kann.
 Diese wird als über Javas \texttt{UUID}-Klasse implementiert.
 Eine UUID ist eine 128-Bit Zahl.
@@ -135,16 +138,16 @@ Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobe
 Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
 Durch diese Implementierung haben die URLs konstante Länge.
 Außerdem hat die Applikation dadurch eine Server-Seite, die die Datenbank betreibt.
- 
+
 \subsection[Hinzugefügte Pakete]{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
 
 Die \texttt{database-Pakete} stellen Schnittstellen und Implementierung für den Zugriff auf die SQLite-Datenbank beziehungsweise für deren Manipulation bereit.
 Auf der Client-Seite stehen die Interfaces \texttt{DatabaseService} und \texttt{DatabaseServiceAsync} zur Kommunikation mit dem Server bereit.
 
-\texttt{DatabaseService} definiert die Schnittstelle für die Datenbank: 
+\texttt{DatabaseService} definiert die Schnittstelle für die Datenbank:
 
 Erstens eine Methode, die zu einer gegebenen Zeichenkette einen Serialisierungsstring zurückgibt,
-falls ein solcher Eintrag in der Datenbank existiert. 
+falls ein solcher Eintrag in der Datenbank existiert.
 
 Zweitens eine Methode die für einen gegebenen Serialisierungsstring einen neuen Eintrag in der Datenbank erstellt und den entsprechenden Identifikationsstring zurückgibt.
 
@@ -157,54 +160,57 @@ Auf der Server-Seite steht \texttt{DatabaseServiceImpl}.
 
 \newpage
 \section{Implementierte Funktionalitäten}
-Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
+Die folgende Tabelle liefert einen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
 
-\hspace*{-1cm}
+\begin{table}[h]
+\centering
 \begin{tabular}{l | l | l | l}
-\textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} & \textbf{Kommentar} \\
+\textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} & \textbf{Bemerkung} \\
 \hline
-\textbf{M1}& Eingabe von $\lambda$-Termen  & \checkmark \\
+\textbf{M1} & Eingabe von $\lambda$-Termen  & \checkmark \\
 \textbf{M2} & Auswertung von $\lambda$-Termen & \checkmark \\
 \textbf{M3} & Fehlermeldung bei invalider Eingabe & \checkmark \\
 \textbf{M4} & Abbruch der Reduktion & \checkmark \\
 \textbf{K1} & Weitere Auswertungsstrategien &  \checkmark \\
 \textbf{K2} & Exportformate & \checkmark \\
 \textbf{K3} & Ausgabeformate & \checkmark\\
-\textbf{K4} & Erweiterte Fehlerdiagnostik & \checkmark & Angabe von Behebungsmöglichkeiten \\
- &&& verworfen \\
+\textbf{K4} & Erweiterte Fehlerdiagnostik & \checkmark & 1) \\
 \textbf{K5} & Intelligenter Editor & \checkmark \\
 \textbf{K6} & Standardbibliothek & \checkmark \\
-\textbf{K7} & Übungsaufgaben & \checkmark & automatische Tests verworfen\\
+\textbf{K7} & Übungsaufgaben & \checkmark & 2) \\
 \textbf{K8} & Ausgabe von Teilschritten & \checkmark \\
-\textbf{K9} & Schritt-für-Schritt Modus & \checkmark & manuelle Auswertung in der Darstellung \\
-&&& als Syntaxbaum nicht möglich\\
-\textbf{K10} & Permalinks & \checkmark & ignoriert den Übungsmodus\\ 
+\textbf{K9} & Schritt-für-Schritt Modus & \checkmark & 3)\\
+\textbf{K10} & Permalinks & \checkmark & 4)\\
 \textbf{K11} & komfortabler $\lambda$-Code & \checkmark \\
 \hline
 \textbf{Gesamt} &\textbf{15} & \textbf{15}
 \end{tabular}
+\caption{Übersicht der implementierten Muss- und Kann-Kriterien}
+\end{table}
 
-Es konnten also alle im Pflichtenheft aufgestellten Kriterien umgesetzt werden, manche jedoch etwas eingeschränkt:
+Es konnten alle im Pflichtenheft aufgestellten Kriterien umgesetzt werden, wobei folgende Kann-Kriterien nicht vollständig implementiert wurden:
 
-So wird momentan keine Hilfestellung gegeben, wie ein Fehler beseitigt werden kann.
+\begin{enumerate}
+\item Es wird momentan keine Hilfestellung gegeben, wie ein Fehler beseitigt werden kann.
 
-Wie im Entwurfsdokument erklärt wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
+\item Wie im Entwurfsdokument erklärt, wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
 
-Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich.
+\item Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich.
 Es ist noch kein Lösungsansatz für die Implementierung dieses Features für die Ausgabe als Syntaxbaum bekannt.
 
-Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus. 
-Das führt dazu, dass beim Deserialisieren weder die aktuelle Übungsaufgabe noch die Fenster mit Aufgabenstellung und Lösung wiederhergestellt werden.
+\item Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus.
+Dies führt dazu, dass beim Deserialisieren weder die aktuelle Übungsaufgabe noch die Fenster mit Aufgabenstellung und Lösung wiederhergestellt werden.
 Dieses Feature wurde allein aus Zeitgründen ausgelassen und wird in der Qualitätssicherungsphase nachgereicht.
+\end{enumerate}
 
 \section{Schwierigkeiten bei der Implementierung}
 \subsection{Serialisierung}
 \begin{itemize}
-\item[] \textbf{Problem:} 
-Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme). 
+\item[] \textbf{Problem:}
+Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme).
 Die bei der Serialisierung erzeugten Zeichenketten können aber unter Umständen sehr viel länger als die übliche Grenze von 2.000 Zeichen werden.
-\item[] \textbf{Lösung:} 
-Die Serialisierung wird in einer Datenbank gespeichert. 
+\item[] \textbf{Lösung:}
+Die Serialisierung wird in einer Datenbank gespeichert.
 Dann wird ihr eine eindeutige Zeichenkette zugewiesen, die für die Deserialisierung verwendet werden kann.
 Diese wird als über Javas \texttt{UUID}-Klasse implementiert.
 Eine UUID ist eine 128-Bit Zahl.
@@ -262,7 +268,7 @@ Zusätzlich wird die Serialisierung und Deserialisierung von Lambda-Termen getes
 gefordert, dass die deserialisierten Terme exakt mit ihren Urbildern übereinstimmen.
 
 \subsection{\texttt{Paket edu.kit.wavelength.client.model.term.parsing}}
-In diesem Paket wird der Parser getestet. 
+In diesem Paket wird der Parser getestet.
 Getestet wird das Verhalten bei leerer Eingabe, invalider Eingabe und valider Eingabe.
 Weiter wird die Namensbindung getestet.
 

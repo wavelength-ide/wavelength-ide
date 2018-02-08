@@ -631,6 +631,8 @@ public class App implements Serializable {
 			// change UI to transition from initialized state to step by step
 			// state
 			editor.lock();
+			runButton.setVisible(false);
+			unpauseButton.setVisible(true);
 			stepByStepButton.setEnabled(false);
 			outputSizeBox.setEnabled(false);
 			outputFormatBox.setEnabled(false);

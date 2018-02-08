@@ -16,7 +16,7 @@ public final class IsRedexVisitor extends NameAgnosticVisitor<Boolean> {
 	@Override
 	public Boolean visitApplication(Application app) {
 		return app.getLeftHandSide().acceptVisitor(new IsAbstractionVisitor())
-			|| app.getLeftHandSide().acceptVisitor(new IsPartialApplicationVisitor());
+				|| app.getLeftHandSide().acceptVisitor(new IsPartialApplicationVisitor());
 	}
 
 	@Override

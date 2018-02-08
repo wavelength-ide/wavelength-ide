@@ -44,6 +44,9 @@ public final class BetaReducer extends TermTransformer {
 			return new Application(app.getLeftHandSide().acceptVisitor(this),
 					app.getRightHandSide().acceptVisitor(this));
 
+		// We have found the redex we are looking for, the actual reduction will happen
+		// further down
+		// the line, depending on what the RedexResolutionVisitor finds.
 		return app.getLeftHandSide().acceptVisitor(new RedexResolutionVisitor(app.getRightHandSide()));
 	}
 

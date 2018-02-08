@@ -17,7 +17,11 @@ public final class Abstraction implements LambdaTerm {
 
 	private String preferredName;
 	private LambdaTerm inner;
-	
+
+	private static final int NAME_POSITION = 0;
+	private static final int INNER_POSITION = 1;
+	private static final int NUM_COMPONENTS = 2;
+
 	public static final char ID = 'A';
 
 	/**
@@ -79,11 +83,18 @@ public final class Abstraction implements LambdaTerm {
 		return new StringBuilder("" + ID)
 				.append(SerializationUtilities.enclose(new StringBuilder(preferredName), inner.serialize()));
 	}
-	
+
+	/**
+	 * Restores an abstraction from its serialization.
+	 * 
+	 * @param serialized
+	 *            A serialized abstraction
+	 * @return The abstraction described by the serialization
+	 */
 	public static Abstraction fromSerialized(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
-		assert extracted.size() == 2;
-		return new Abstraction(extracted.get(0), LambdaTerm.deserialize(extracted.get(1)));
+		assert extracted.size() == NUM_COMPONENTS;
+		return new Abstraction(extracted.get(NAME_POSITION), LambdaTerm.deserialize(extracted.get(INNER_POSITION)));
 	}
 
 }

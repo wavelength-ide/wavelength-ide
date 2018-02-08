@@ -3,6 +3,7 @@ package edu.kit.wavelength.client.model.term;
 import java.util.Set;
 import java.util.TreeSet;
 
+// A visitor that collects all unchangeable names that are used inside a lambda term
 final class BlockedNamesVisitor implements Visitor<Set<String>> {
 
 	@Override
@@ -12,6 +13,8 @@ final class BlockedNamesVisitor implements Visitor<Set<String>> {
 
 	@Override
 	public Set<String> visitAbstraction(Abstraction abs) {
+		// Abstraction variables are only preferred name, so we do not need to
+		// record them.
 		return abs.getInner().acceptVisitor(this);
 	}
 

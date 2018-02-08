@@ -1,5 +1,9 @@
 package edu.kit.wavelength.client.model.term;
 
+/**
+ * A visitor that returns true iff it was invoked on a partial application.
+ *
+ */
 public final class IsPartialApplicationVisitor extends NameAgnosticVisitor<Boolean> {
 
 	@Override

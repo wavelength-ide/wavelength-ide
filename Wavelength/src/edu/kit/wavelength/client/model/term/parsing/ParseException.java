@@ -39,11 +39,11 @@ public class ParseException extends Exception {
 	 * @return The column in which the error occurred
 	 */
 	public int getColumnStart() {
-		return columnStart + 1;
+		return columnStart;
 	}
 	
 	public int getColumnEnd() {
-		return columnEnd + 1;
+		return columnEnd;
 	}
 	
 	@Override

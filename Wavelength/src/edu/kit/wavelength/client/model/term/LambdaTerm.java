@@ -64,6 +64,11 @@ public interface LambdaTerm extends Serializable {
 		throw new IllegalArgumentException("serialized must represent a lambda term");
 	}
 	
+	/**
+	 * Returns a named lambda term that corresponds to a church number.
+	 * @param value The value of the church number to construct
+	 * @return The requested church number
+	 */
 	public static LambdaTerm churchNumber(int value) {
 		if (value < 0)
 			throw new IllegalArgumentException("value must be non-negative");
@@ -75,6 +80,10 @@ public interface LambdaTerm extends Serializable {
 		return new NamedTerm(String.valueOf(value), new Abstraction("s", new Abstraction("z", inner)));
 	}
 
+	/**
+	 * Creates a deep clone of the lambda term.
+	 * @return A deep clone
+	 */
 	public LambdaTerm clone();
 
 	/**

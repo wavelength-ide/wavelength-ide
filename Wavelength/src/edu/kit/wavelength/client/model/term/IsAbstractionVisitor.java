@@ -1,9 +1,9 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A {@link Visitor} that returns a boolean that is true if the given
- * {@link LambdaTerm} represents an {@link Abstraction} (possibly bound to one
- * or more nested names).
+ * A {@link Visitor} that returns a boolean that is true if and only if the
+ * given {@link LambdaTerm} represents an {@link Abstraction} (possibly bound to
+ * one or more nested names).
  *
  */
 public final class IsAbstractionVisitor extends NameAgnosticVisitor<Boolean> {

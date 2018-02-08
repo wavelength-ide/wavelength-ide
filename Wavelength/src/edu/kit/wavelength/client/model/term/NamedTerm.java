@@ -12,7 +12,7 @@ public final class NamedTerm implements LambdaTerm {
 
 	private String name;
 	private LambdaTerm inner;
-	
+
 	public static final char ID = 'n';
 
 	/**
@@ -71,14 +71,20 @@ public final class NamedTerm implements LambdaTerm {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("" + ID).append(SerializationUtilities.enclose(new StringBuilder(name),
-				inner.serialize()));
+		return new StringBuilder("" + ID)
+				.append(SerializationUtilities.enclose(new StringBuilder(name), inner.serialize()));
 	}
-	
+
+	/**
+	 * Restores a serialized named term.
+	 * 
+	 * @param serialized
+	 *            The serialization of a named term
+	 * @return The restored named term
+	 */
 	public static NamedTerm fromSerialized(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
 		assert extracted.size() == 2;
-		return new NamedTerm(extracted.get(0),
-				LambdaTerm.deserialize(extracted.get(1)));
+		return new NamedTerm(extracted.get(0), LambdaTerm.deserialize(extracted.get(1)));
 	}
 }

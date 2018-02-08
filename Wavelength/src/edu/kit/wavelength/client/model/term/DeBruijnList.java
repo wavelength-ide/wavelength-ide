@@ -2,6 +2,7 @@ package edu.kit.wavelength.client.model.term;
 
 import java.util.ArrayList;
 
+// An array list that is indexed 1-based and right-to-left.
 final class DeBruijnList<T> {
 	ArrayList<T> elements;
 

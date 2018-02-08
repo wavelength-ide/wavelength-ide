@@ -15,7 +15,11 @@ public final class Application implements LambdaTerm {
 
 	private LambdaTerm leftHandSide;
 	private LambdaTerm rightHandSide;
-	
+
+	private static final int LEFT_POSITION = 0;
+	private static final int RIGHT_POSITION = 1;
+	private static final int NUM_COMPONENTS = 2;
+
 	public static final char ID = 'a';
 
 	/**
@@ -78,12 +82,19 @@ public final class Application implements LambdaTerm {
 		return new StringBuilder("" + ID)
 				.append(SerializationUtilities.enclose(leftHandSide.serialize(), rightHandSide.serialize()));
 	}
-	
+
+	/**
+	 * Restores an application from its serialization.
+	 * 
+	 * @param serialized
+	 *            A serialized application
+	 * @return The restored application
+	 */
 	public static Application fromSerialized(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
-		assert extracted.size() == 2;
-		return new Application(LambdaTerm.deserialize(extracted.get(0)),
-				LambdaTerm.deserialize(extracted.get(1)));
+		assert extracted.size() == NUM_COMPONENTS;
+		return new Application(LambdaTerm.deserialize(extracted.get(LEFT_POSITION)),
+				LambdaTerm.deserialize(extracted.get(RIGHT_POSITION)));
 	}
 
 }

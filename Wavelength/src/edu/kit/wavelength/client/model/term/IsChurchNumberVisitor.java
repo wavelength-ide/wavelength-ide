@@ -1,7 +1,11 @@
 package edu.kit.wavelength.client.model.term;
 
+// A visitor that returns true iff the term it was invoked on is a church number
 public class IsChurchNumberVisitor extends NameAgnosticVisitor<Boolean> {
 	
+	// We are looking for exactly two abstractions followed by some number of nested applications
+	// where the left sides are De Bruijn index 2 and the right side is either a new application
+	// or, at the very bottom, the De Bruijn index 1.
 	int abstractionsSeen = 0;
 	
 	public IsChurchNumberVisitor(int abstractionsSeen) {

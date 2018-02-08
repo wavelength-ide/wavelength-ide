@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.model.term;
 
+// A visitor that, depending on the type of redex, either performs a substitution or a partial
+// application.
 final class RedexResolutionVisitor extends TermTransformer {
 
 	private LambdaTerm rhs;

@@ -9,7 +9,7 @@ package edu.kit.wavelength.client.model.term;
 public final class BoundVariable implements LambdaTerm {
 
 	private int deBruijnIndex;
-	
+
 	public static final char ID = 'b';
 
 	/**
@@ -19,6 +19,9 @@ public final class BoundVariable implements LambdaTerm {
 	 *            The De Bruijn index of the term
 	 */
 	public BoundVariable(int deBruijnIndex) {
+		if (deBruijnIndex <= 0)
+			throw new IllegalArgumentException("Invalid De Bruijn Index");
+
 		this.deBruijnIndex = deBruijnIndex;
 	}
 
@@ -58,12 +61,19 @@ public final class BoundVariable implements LambdaTerm {
 	public StringBuilder serialize() {
 		return new StringBuilder(ID + String.valueOf(deBruijnIndex));
 	}
-	
+
+	/**
+	 * Restores a bound variable from its serialization.
+	 * 
+	 * @param serialized
+	 *            A serialized bound variable
+	 * @return The bound variable that the serialization string describes
+	 */
 	public static BoundVariable fromSerialized(String serialized) {
 		try {
 			return new BoundVariable(Integer.valueOf(serialized));
 		} catch (NumberFormatException ex) {
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Serialized string does not describe a number.");
 		}
 	}
 

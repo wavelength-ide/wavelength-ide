@@ -9,6 +9,9 @@ import java.util.Objects;
  */
 public final class SubstitutionVisitor extends TermTransformer {
 
+	// We need to know what the depth difference between the origin right hand side and the
+	// insertion point is, as De Bruijn indices which point outside of the term need to be
+	// adjusted accordingly
 	private int depth;
 	private final LambdaTerm substituent;
 

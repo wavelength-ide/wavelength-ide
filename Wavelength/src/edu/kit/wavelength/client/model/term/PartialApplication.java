@@ -55,12 +55,22 @@ public abstract class PartialApplication implements LambdaTerm {
 	protected PartialApplication() {
 		// This constructor may only be called if absorbClone is used.
 	}
-	
 
+	/**
+	 * Returns the array of received terms.
+	 * 
+	 * @return An array of received terms. Only the first getNumReceived elements
+	 *         are valid.
+	 */
 	public LambdaTerm[] getReceived() {
 		return this.received;
 	}
-	
+
+	/**
+	 * Returns the number of received terms.
+	 * 
+	 * @return The number of received terms
+	 */
 	public int getNumReceived() {
 		return this.numReceived;
 	}
@@ -183,6 +193,10 @@ public abstract class PartialApplication implements LambdaTerm {
 		}
 	}
 
+	/**
+	 * Represents an acceleratable addition of church numbers.
+	 *
+	 */
 	public static final class Addition extends PartialApplication {
 
 		private static final LambdaTerm inner = new Abstraction("m",
@@ -193,13 +207,23 @@ public abstract class PartialApplication implements LambdaTerm {
 												new Application(
 														new Application(new BoundVariable(3), new BoundVariable(2)),
 														new BoundVariable(1)))))));
-		
+
 		public static final char ID = '+';
 
+		/**
+		 * Creates a new addition.
+		 */
 		public Addition() {
 			super("plus", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
 		}
 
+		/**
+		 * Restores a serialized addition.
+		 * 
+		 * @param serialized
+		 *            The serialized addition
+		 * @return The restored addition
+		 */
 		public static Addition fromSerialized(String serialized) {
 			Addition result = new Addition();
 			result.deserializeReceived(serialized);
@@ -228,18 +252,32 @@ public abstract class PartialApplication implements LambdaTerm {
 
 	}
 
+	/**
+	 * Represents the acceleratable successor operation on church numbers.
+	 *
+	 */
 	public static final class Successor extends PartialApplication {
 
 		private static final LambdaTerm inner = new Abstraction("n",
 				new Abstraction("s", new Abstraction("z", new Application(new BoundVariable(2), new Application(
 						new Application(new BoundVariable(3), new BoundVariable(2)), new BoundVariable(1))))));
-		
+
 		public static final char ID = '1';
 
+		/**
+		 * Creates a new successor operation
+		 */
 		public Successor() {
 			super("succ", inner, 1, Collections.nCopies(1, new IsChurchNumberVisitor()));
 		}
 
+		/**
+		 * Restores a serialized successor operation.
+		 * 
+		 * @param serialized
+		 *            The serialized successor
+		 * @return The restored succor
+		 */
 		public static Successor fromSerialized(String serialized) {
 			Successor result = new Successor();
 			result.deserializeReceived(serialized);
@@ -266,6 +304,9 @@ public abstract class PartialApplication implements LambdaTerm {
 		}
 	}
 
+	/**
+	 * An acceleratable multiplication operation.
+	 */
 	public static final class Multiplication extends PartialApplication {
 
 		private static final LambdaTerm inner = new Abstraction("m",
@@ -276,13 +317,23 @@ public abstract class PartialApplication implements LambdaTerm {
 												new Application(new BoundVariable(4),
 														new Application(new BoundVariable(3), new BoundVariable(2))),
 												new BoundVariable(1))))));
-		
+
 		public static final char ID = '*';
 
+		/**
+		 * Creates a new instance of the multiplication operation.
+		 */
 		public Multiplication() {
 			super("times", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
 		}
 
+		/**
+		 * Restores a serialized multiplication operation.
+		 * 
+		 * @param serialized
+		 *            A serialized multiplication operation
+		 * @return The restored multiplication
+		 */
 		public static Multiplication fromSerialized(String serialized) {
 			Multiplication result = new Multiplication();
 			result.deserializeReceived(serialized);
@@ -311,6 +362,10 @@ public abstract class PartialApplication implements LambdaTerm {
 
 	}
 
+	/**
+	 * An acceleratable exponentitation operation.
+	 *
+	 */
 	public static final class Exponentiation extends PartialApplication {
 
 		private static final LambdaTerm inner = new Abstraction("m",
@@ -320,13 +375,23 @@ public abstract class PartialApplication implements LambdaTerm {
 										new Application(new Application(
 												new Application(new BoundVariable(3), new BoundVariable(4)),
 												new BoundVariable(2)), new BoundVariable(1))))));
-		
+
 		public static final char ID = '^';
 
+		/**
+		 * Creates a new instance of the exponentiation operation.
+		 */
 		public Exponentiation() {
 			super("pow", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
 		}
 
+		/**
+		 * Restores a serialized exponentiation.
+		 * 
+		 * @param serialized
+		 *            The serialized exponentiation
+		 * @return The restored exponentiation
+		 */
 		public static Exponentiation fromSerialized(String serialized) {
 			Exponentiation result = new Exponentiation();
 			result.deserializeReceived(serialized);
@@ -361,6 +426,10 @@ public abstract class PartialApplication implements LambdaTerm {
 
 	}
 
+	/**
+	 * An acceleratable predecessor operation.
+	 *
+	 */
 	public static final class Predecessor extends PartialApplication {
 
 		private static final LambdaTerm inner = new Abstraction("n",
@@ -376,13 +445,23 @@ public abstract class PartialApplication implements LambdaTerm {
 																						new BoundVariable(4)))))),
 												new Abstraction("u", new BoundVariable(2))),
 										new Abstraction("u", new BoundVariable(1))))));
-		
+
 		public static final char ID = '0';
 
+		/**
+		 * Creates a new predecessor operation.
+		 */
 		public Predecessor() {
 			super("pred", inner, 1, Collections.nCopies(1, new IsChurchNumberVisitor()));
 		}
 
+		/**
+		 * Restores a serialized predecessor operation.
+		 * 
+		 * @param serialized
+		 *            The serialized predecessor operation
+		 * @return The restored predecessor operation
+		 */
 		public static Predecessor fromSerialized(String serialized) {
 			Predecessor result = new Predecessor();
 			result.deserializeReceived(serialized);
@@ -410,6 +489,10 @@ public abstract class PartialApplication implements LambdaTerm {
 
 	}
 
+	/**
+	 * Represents an acceleratable subtraction operation.
+	 *
+	 */
 	public static final class Subtraction extends PartialApplication {
 		private static final LambdaTerm inner = new Abstraction("m",
 				new Abstraction("n",
@@ -425,13 +508,21 @@ public abstract class PartialApplication implements LambdaTerm {
 														new Abstraction("u", new BoundVariable(2))),
 												new Abstraction("u", new BoundVariable(1))))))),
 								new BoundVariable(2))));
-		
+
 		public static final char ID = '-';
 
+		/**
+		 * Creates a new subtraction operation.
+		 */
 		public Subtraction() {
 			super("minus", inner, 2, Collections.nCopies(2, new IsChurchNumberVisitor()));
 		}
 
+		/**
+		 * Restores a subtraction operation from its serialization.
+		 * @param serialized The serialized subtraction
+		 * @return The restored subtraction
+		 */
 		public static Subtraction fromSerialized(String serialized) {
 			Subtraction result = new Subtraction();
 			result.deserializeReceived(serialized);

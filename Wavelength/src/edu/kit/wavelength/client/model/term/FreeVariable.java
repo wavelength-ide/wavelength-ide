@@ -12,7 +12,7 @@ package edu.kit.wavelength.client.model.term;
 public final class FreeVariable implements LambdaTerm {
 
 	private String name;
-	
+
 	public static final char ID = 'f';
 
 	/**
@@ -61,7 +61,14 @@ public final class FreeVariable implements LambdaTerm {
 	public StringBuilder serialize() {
 		return new StringBuilder(ID + name);
 	}
-	
+
+	/**
+	 * Restores a free variable from its serialization.
+	 * 
+	 * @param serialized
+	 *            A serialized free variable
+	 * @return The free variable referred to by the serialization
+	 */
 	public static FreeVariable fromSerialized(String serialized) {
 		return new FreeVariable(serialized);
 	}

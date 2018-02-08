@@ -2,9 +2,7 @@ package edu.kit.wavelength.client.model.term.parsing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.EmptyStackException;
 import java.util.List;
-import java.util.Stack;
 
 import com.google.gwt.regexp.shared.MatchResult;
 import com.google.gwt.regexp.shared.RegExp;

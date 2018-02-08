@@ -3,11 +3,6 @@ package edu.kit.wavelength.client.model.library;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.kit.wavelength.client.model.reduction.ApplicativeOrder;
-import edu.kit.wavelength.client.model.reduction.CallByName;
-import edu.kit.wavelength.client.model.reduction.CallByValue;
-import edu.kit.wavelength.client.model.reduction.NormalOrder;
-
 /**
  * Static class giving access to all {@link Libraries} known to the model.
  *

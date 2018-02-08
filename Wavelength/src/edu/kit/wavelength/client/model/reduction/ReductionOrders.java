@@ -3,12 +3,6 @@ package edu.kit.wavelength.client.model.reduction;
 import java.util.Arrays;
 import java.util.List;
 
-import edu.kit.wavelength.client.model.output.Full;
-import edu.kit.wavelength.client.model.output.OutputSize;
-import edu.kit.wavelength.client.model.output.Periodic;
-import edu.kit.wavelength.client.model.output.ResultOnly;
-import edu.kit.wavelength.client.model.output.Shortened;
-
 /**
  * Static class giving access to all {@link ReductionOrder}s known to the model.
  *

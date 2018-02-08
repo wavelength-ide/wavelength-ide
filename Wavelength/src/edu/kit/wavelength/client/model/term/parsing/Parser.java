@@ -33,6 +33,8 @@ public class Parser {
 	private ArrayList<String> boundVariables;
 	private int rowPos = 1;
 	
+	private int rowPos;
+
 	/**
 	 * Initializes a new parser.
 	 * 
@@ -46,11 +48,12 @@ public class Parser {
 	}
 
 	/**
-	 * Gets a library containing the lambda terms and corresponding names defined in
-	 * the the last invocation of {@link #parse(String)}}'s input String.
+	 * Gets a library containing the lambda terms and corresponding names
+	 * defined in the the last invocation of {@link #parse(String)}}'s input
+	 * String.
 	 * 
-	 * @return A {@link Library} containing the terms entered by the user with their
-	 *         assigned names
+	 * @return A {@link Library} containing the terms entered by the user with
+	 *         their assigned names
 	 */
 	public Library getInputLibary() {
 		return inputLibrary;
@@ -84,7 +87,7 @@ public class Parser {
 			rowPos = i;
 			readLibraryTerm(rows.get(i));
 		}
-		//columnPos = 0;
+		// columnPos = 0;
 		rowPos = rows.size() - 1;
 		String lastLine = rows.get((rows.size() - 1));
 		return parseTerm(lastLine);
@@ -104,13 +107,13 @@ public class Parser {
 	}
 
 	/**
-	 * Retrieves the term with the specified name from the loaded libraries or the
-	 * library containing the user's named terms.
+	 * Retrieves the term with the specified name from the loaded libraries or
+	 * the library containing the user's named terms.
 	 * 
 	 * @param name
 	 *            The desired term's name
-	 * @return The term with the assigned name, null if no loaded library contains a
-	 *         term with this name.
+	 * @return The term with the assigned name, null if no loaded library
+	 *         contains a term with this name.
 	 */
 	private LambdaTerm retrieveTerm(String name) {
 		if (inputLibrary != null && inputLibrary.containsName(name)) {
@@ -134,32 +137,33 @@ public class Parser {
 	 *             if the String can not be parsed
 	 */
 	private LambdaTerm parseTerm(String input) throws ParseException {
-		tokens = Arrays.stream(new Tokeniser().tokenise(input)).filter(t -> t.getType() != TokenType.SPACE).toArray(Token[]::new);
+		tokens = Arrays.stream(new Tokeniser().tokenise(input)).filter(t -> t.getType() != TokenType.SPACE)
+				.toArray(Token[]::new);
 		boundVariables = new ArrayList<>();
 		return parseLambdaTerm(0, tokens.length);
 	}
-	
+
 	private LambdaTerm parseLambdaTerm(int left, int right) throws ParseException {
 		if (left == right)
 			throw new ParseException("The empty term is not a lambda term", rowPos, left);
-			
+
 		ArrayList<LambdaTerm> terms = new ArrayList<>();
-		
+
 		while (left != right) {
 			RangedTerm term = parseNonApplication(left, right);
-			
+
 			left = term.getRight();
 			terms.add(term.getTerm());
 		}
-		
+
 		LambdaTerm result = terms.get(0);
 		for (int i = 1; i < terms.size(); ++i) {
 			result = new Application(result, terms.get(i));
 		}
-		
+
 		return result;
 	}
-	
+
 	private int findMatching(int left, int right) throws ParseException {
 		int diff = 0;
 		for (int i = left; i < right; ++i) {
@@ -167,32 +171,33 @@ public class Parser {
 				++diff;
 			if (tokens[i].getType() == TokenType.RBRACKET)
 				--diff;
-			
+
 			if (diff == 0)
 				return i;
 		}
 		throw new ParseException("Unbalanced parentheses.", rowPos, left);
 	}
-	
+
 	private RangedTerm parseNonApplication(int left, int right) throws ParseException {
 		if (left == right)
 			throw new ParseException("The empty term is not a lambda term", rowPos, left);
-		
+
 		switch (tokens[left].getType()) {
 		case LBRACKET:
 			int matching = findMatching(left, right);
 			return new RangedTerm(matching + 1, parseLambdaTerm(left + 1, matching));
-			
+
 		case LAMBDA:
-			if (right <= left + 3 || tokens[left + 1].getType() != TokenType.NAME || tokens[left + 2].getType() != TokenType.DOT)
+			if (right <= left + 3 || tokens[left + 1].getType() != TokenType.NAME
+					|| tokens[left + 2].getType() != TokenType.DOT)
 				throw new ParseException("Malformed lambda expression", rowPos, left);
-			
+
 			boundVariables.add(tokens[left + 1].getContent());
 			LambdaTerm result = new Abstraction(tokens[left + 1].getContent(), parseLambdaTerm(left + 3, right));
 			boundVariables.remove(boundVariables.size() - 1);
-			
+
 			return new RangedTerm(right, result);
-			
+
 		case NAME:
 			String looking = tokens[left].getContent();
 			for (int i = boundVariables.size() - 1; i >= 0; --i) {
@@ -204,29 +209,28 @@ public class Parser {
 				return new RangedTerm(left + 1, new NamedTerm(looking, retrieved));
 			else
 				return new RangedTerm(left + 1, new FreeVariable(looking));
-			
-			
+
 		default:
 			throw new ParseException("Unexpected token: \"" + tokens[left].getType().toString() + "\"", rowPos, left);
 		}
 	}
-	
+
 	private static class RangedTerm {
 		private int right;
 		private LambdaTerm term;
-		
+
 		public RangedTerm(int right, LambdaTerm term) {
 			this.right = right;
 			this.term = term;
 		}
-		
+
 		public int getRight() {
 			return right;
 		}
-		
+
 		public LambdaTerm getTerm() {
 			return term;
 		}
 	}
-	
+
 }

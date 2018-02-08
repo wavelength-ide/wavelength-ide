@@ -34,7 +34,7 @@
 Nach einer groben Skizze der Anwendung im Pflichtenheft und einer genaueren Spezifikation in der Entwurfsphase folgt nun eine Vorstellung der konkreten Implementierung.
 Die Erfüllung der geforderten Spezifikationen erfordert den Einsatz verschiedener Bibliotheken, die kurz vorgestellt werden sollen:
 
-\subsection{Google Web Toolkit (GWT)}
+\subsection{Google Web Toolkit (GWT)2.8.2 }
 \begin{enumerate}
 \item[] \textbf{Ziel:} Programmierung der Anwendung in Java 
 \item[] \textbf{Beschreibung:} Das Google Web Toolkit kompiliert Java-Quellcode zu JavaScript, welches direkt im Webbrowser des Anwenders läuft. Zusätzlich
@@ -61,7 +61,7 @@ Darüber hinaus stellt die Bibliothek auch Icons zur Verfügung, die für die GU
 Der Vorteil dieser Icons ist, dass sie einen Satz, also ein konsistentes Bild bieten.
 \end{enumerate}
 
-\subsection{Monaco}
+\subsection{Monaco 0.10.1}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Bereitstellung eines Editors 
 \item[] \textbf{Beschreibung:} Monaco ist ein Code-Editor, der in der Software Visual Studio Code verwendet wird, aber auch als freistehende
@@ -71,7 +71,7 @@ Monaco eignet sich sehr gut als Code-Editor, ist einfach einzubinden und stellt
  eine Menge Konfigurationsmöglichkeiten bereit, um den Editor für die Applikation anzupassen.
 \end{enumerate}
 
-\subsection{vis.js}
+\subsection{vis.js 4.21.0}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Erstellung interaktiver Graphen 
 \item[] \textbf{Beschreibung:} Bei vis.js handelt es sich um eine JavaScript-Bibliothek für Visualisierungen aller Art im Browser.
@@ -80,7 +80,7 @@ Dieser muss nicht nur konstruiert werden, sondern auch noch stellenweise klickba
 Sowohl die Modellierung der Daten als auch die Visualisierung erfolgen in JavaScript.
 \end{enumerate}
 
-\subsection{SQLite}
+\subsection{SQLite 3.21.0}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Bereitstellung einer Datenbank 
 \item[] \textbf{Beschreibung:} SQLite stellt eine relationale Datenbank zur Verfügung.
@@ -212,18 +212,6 @@ Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobe
 Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
 Durch diese Implementierung haben die URLs konstante Länge.
 \end{itemize}
-
-\subsection{Unicode-Ausgabe}
-Um alle im Pflichtenheft spezifizierten Features umzusetzen, muss die Ausgabe als HTML Code erzeugt und mit CSS gestylt werden. GWT bietet hierfür nur wenige Widgets an. Die letztendlich funktionierende Implementierung verlangt eine Hilfsklasse, die ein Tupel aus den GWT Widgets \texttt{FlowPanel} und \texttt{Anchor}. Für beide diese Widgets ist das hinzufügen einer ID für CSS Stylings möglich. Das \texttt{Anchor} Widget bietet weiterhin die Möglichkeit für User Interaktionen. Eine Übergabe der erzeugten Unicode-Terme als Tupel ist notwendig, um im Nachhinein CSS Stylings manipulieren zu können. Dies macht unter anderem möglich, dass nur der letzte angezeigte Unicode-Term manuell ausgewertet werden kann.
-
-\subsection{Baum-Ausgabe}
-\begin{itemize}
-\item[] \textbf{Problem:} Reduzierbare Lambda-Terme können laut Spezifikation im Pflichtenheft auch in der Baum-Darstellung manuell reduziert werden. Dies ist in der aktuellen Version nicht implementiert.
-\item[] \textbf{Lösung:} Bisher existiert für dieses Problem noch keine Lösung. Die verwendete Bibliothek \texttt{vis.js} bietet zwar die Möglichkeit Klicks auf Knoten zu registrieren, da aber auch die Möglichkeit besteht mehrere Knoten und sogar Kanten auszuwählen, ist nicht garantiert, dass im rückgegebenen Objekt nur der gewünschte Knoten beinhaltet ist. Weiterhin besteht nicht die Möglichkeit im Nachhinein Optionen zu Bäumen hinzuzufügen. Das hat zur Folge, dass bei jedem Hinzufügen eines neuen Terms zur Ausgabe der vorhergehende Baum neu erzeugt werden muss, um ein Klicken auf diesen zu verhindern. Da das Hinzufügen eines einzelnen neuen Baumes zur Ausgabe schon bemerkbar langsam ist, wäre das Hinzufügen eines weiteren Baumes ein nicht gewünschter zeitlicher Overhead.
-Diese Faktoren machen unter Verwendung von \texttt{vis.js} ein Anklicken von Baum-Termen nicht möglich und auch nicht nutzerfreundlich. 
-
-\end{itemize}
-
 
 \newpage
 \section{Implementierungsplan}

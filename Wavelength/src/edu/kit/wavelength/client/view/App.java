@@ -92,9 +92,10 @@ public class App implements Serializable {
 	private static final int POLLING_DELAY_MS = 10000;
 
 	/**
-	 * Gets a singleton instance of App.
+	 * Creates a new instance of App if there is none.
+	 * Returns a singleton instance of App.
 	 *
-	 * @return instance
+	 * @return singleton instance of App
 	 */
 	public static App get() {
 		if (instance == null) {
@@ -113,6 +114,7 @@ public class App implements Serializable {
 	 */
 	public static final String TreeOutputName = "Tree";
 
+	//UI-Elements
 	private DockLayoutPanel mainPanel;
 	private DropDown mainMenu;
 	private Button openMainMenuButton;
@@ -174,15 +176,19 @@ public class App implements Serializable {
 	private ButtonGroup shareGroup;
 	private TextBox sharePanel;
 	private Button shareButton;
-
+	private FlowPanel outputBlocker;
+	
+	//editor
 	private MonacoEditor editor;
-
+	
+	//executor
 	private Executor executor;
-
+	
+	//possible outputs
 	private boolean unicodeIsSet;
 	private boolean treeIsSet;
 
-	private FlowPanel outputBlocker;
+	
 
 	private App() {
 
@@ -192,15 +198,16 @@ public class App implements Serializable {
 	 * Initializes App.
 	 */
 	private void initialize() {
-
+	//general layout
 		mainPanel = new DockLayoutPanel(Unit.EM);
 		mainPanel.addStyleName("mainPanel");
+	//main menu
 		mainMenu = new DropDown();
 		mainMenu.addStyleName("mainMenu");
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
-
+	
 		openMainMenuButton = new Button();
 		openMainMenuButton.addStyleName("fa fa-bars");
 		openMainMenuButton.setToggleCaret(false);
@@ -212,10 +219,10 @@ public class App implements Serializable {
 		// prevent dropdown from closing when clicking inside
 		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);
-
+	  //add libraries to main menu
 		mainMenuLibraryTitle = new DropDownHeader("Libraries");
 		mainMenuPanel.add(mainMenuLibraryTitle);
-
+	  
 		libraryCheckBoxes = new ArrayList<>();
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
@@ -224,10 +231,10 @@ public class App implements Serializable {
 			mainMenuPanel.add(libraryCheckBox);
 			libraryCheckBoxes.add(libraryCheckBox);
 		});
-
+	  
 		mainMenuDivider = new Divider();
 		mainMenuPanel.add(mainMenuDivider);
-
+	  //add exercises to main menu
 		mainMenuExerciseTitle = new DropDownHeader("Exercises");
 		mainMenuPanel.add(mainMenuExerciseTitle);
 
@@ -238,7 +245,7 @@ public class App implements Serializable {
 			mainMenuPanel.add(exerciseButton);
 			exerciseButtons.add(exerciseButton);
 		});
-
+	//create exercise mode popup
 		loadExercisePopup = new Modal();
 		loadExercisePopup.setClosable(false);
 		loadExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
@@ -280,7 +287,7 @@ public class App implements Serializable {
 		closeExercisePopupOkButton = new Button();
 		closeExercisePopupOkButton.addStyleName("fa fa-check");
 		closeExercisePopupFooter.add(closeExercisePopupOkButton);
-
+	//general layout
 		footerPanel = new FlowPanel();
 		footerPanel.addStyleName("footerPanel");
 		mainPanel.addSouth(footerPanel, 2);
@@ -347,26 +354,26 @@ public class App implements Serializable {
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
 		editorExercisePanel.add(editorPanel);
-
+	//options
 		optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
 		inputControlPanel.add(optionBarPanel);
-
+	  //output formats
 		outputFormatBox = new ListBox();
 		outputFormatBox.addItem("Unicode Output");
 		outputFormatBox.addItem("Tree Output");
 		optionBarPanel.add(outputFormatBox);
-
+	  //reduction orders
 		reductionOrderBox = new ListBox();
 		reductionOrderBox.setName("Reduction Order");
 		ReductionOrders.all().stream().map(ReductionOrder::getName).forEach(reductionOrderBox::addItem);
 		optionBarPanel.add(reductionOrderBox);
-
+	  //output sizes
 		outputSizeBox = new ListBox();
 		outputSizeBox.setName("Output Size");
 		OutputSizes.all().stream().map(OutputSize::getName).forEach(outputSizeBox::addItem);
 		optionBarPanel.add(outputSizeBox);
-
+	  //engine control options
 		controlPanel = new FlowPanel();
 		controlPanel.addStyleName("controlPanel");
 		inputControlPanel.add(controlPanel);
@@ -411,7 +418,7 @@ public class App implements Serializable {
 		unpauseButton.addStyleName("fa fa-play");
 		unpauseButton.setVisible(false);
 		runControlPanel.add(unpauseButton);
-
+	//footer (export and share)
 		exportDropupGroup = new ButtonGroup();
 		exportDropupGroup.setDropUp(true);
 		footerPanel.add(exportDropupGroup);
@@ -467,6 +474,7 @@ public class App implements Serializable {
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
 
+	//set handlers
 		LoadExercise loadExerciseAction = new LoadExercise();
 		loadExercisePopupOkButton.addClickHandler(e -> loadExerciseAction.run());
 
@@ -481,10 +489,10 @@ public class App implements Serializable {
 			SelectExercise action = new SelectExercise(loadExerciseAction, exercises.get(i));
 			exerciseButtons.get(i).addClickHandler(e -> action.run());
 		}
-
+	
 		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
 		closeExerciseButton.addClickHandler(e -> closeExercisePopup.show());
-
+	
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
 
 		backwardsButton.addClickHandler(e -> new StepBackward().run());
@@ -501,21 +509,23 @@ public class App implements Serializable {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
-
+	//set auto-serialization of URL
 		UpdateURL updateURL = new UpdateURL();
 		UpdateShareURL updateShareURL = new UpdateShareURL();
 		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), POLLING_DELAY_MS);
 		urlSerializer.startPolling();
 		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
+	//create editor and executor
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
 				Arrays.asList(new FinishExecution()));
+	//standard output is unicode output
 		unicodeIsSet = true;
 		treeIsSet = false;
 
-		// deserialization if possible
+	// try deserialization if possible
 		String state = History.getToken();
 		if (state.length() > 0) {
 			// deserialize
@@ -623,10 +633,10 @@ public class App implements Serializable {
 		}
 
 		if (val.get(0) == "") {
-			// no terms in the OutputArea
-			// nothing to do application is already in initial state
+			// there are no terms in the OutputArea
+			// nothing to do since application is already in initial state
 		} else {
-			// terms in OutputArea
+			// there are terms in OutputArea
 			// change UI to transition from initialized state to step by step
 			// state
 			editor.lock();
@@ -642,7 +652,8 @@ public class App implements Serializable {
 			cancelButton.setEnabled(true);
 		}
 	}
-
+	
+	//getters
 	public DockLayoutPanel mainPanel() {
 		return mainPanel;
 	}
@@ -778,10 +789,10 @@ public class App implements Serializable {
 	public TextArea solutionArea() {
 		return solutionArea;
 	}
-
-	/*
-	 * public SimplePanel editorPanel() { return editorPanel; }
-	 */
+	
+	public SimplePanel editorPanel() { 
+		return editorPanel; 
+	}
 
 	public FlowPanel optionBarPanel() {
 		return optionBarPanel;

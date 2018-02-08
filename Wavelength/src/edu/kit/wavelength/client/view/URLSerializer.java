@@ -12,36 +12,43 @@ import edu.kit.wavelength.client.database.DatabaseService;
 import edu.kit.wavelength.client.database.DatabaseServiceAsync;
 
 /**
- * Serializes the application's state into an URL every N milliseconds.
+ * Serializes the application's state into an URL every N milliseconds where N
+ * is definded in the constructor as pollingDelayMS.
  */
 public class URLSerializer {
-	
+
 	private List<SerializationObserver> serializationOutputs;
 	private int pollingDelayMS;
-	
+
 	/**
 	 * Creates a new serializer.
-	 * @param serializationOutputs Observers to update with new serialized URL
-	 * @param pollingDelayMS Delay between every serialization iteration. The serializable may change, so we poll it.
+	 * 
+	 * @param serializationOutputs
+	 *            Observers to update with new serialized URL
+	 * @param pollingDelayMS
+	 *            Delay between every serialization iteration. The serializable may
+	 *            change, so we poll it.
 	 */
 	public URLSerializer(List<SerializationObserver> serializationOutputs, int pollingDelayMS) {
 		this.serializationOutputs = serializationOutputs;
 		this.pollingDelayMS = pollingDelayMS;
 	}
-	
+
 	/**
 	 * Starts polling (serializing) the serializable.
 	 */
 	public void startPolling() {
 		Scheduler.get().scheduleFixedDelay(this::serialize, pollingDelayMS);
 	}
-	
+
 	/**
-	 * Executes a serialization instantly.
+	 * Executes a serialization instantly if the executor is not running. Else does
+	 * nothing.
+	 * 
 	 * @return whether the serializer will continue to poll after this call
 	 */
 	public boolean serialize() {
-		if(App.get().executor().isRunning()) {
+		if (App.get().executor().isRunning()) {
 			// should not serialize with a running execution
 			return true;
 		}
@@ -52,15 +59,15 @@ public class URLSerializer {
 			public void onFailure(Throwable caught) {
 				App.get().outputArea().add(new Text(caught.getMessage()));
 			}
-			
+
 			public void onSuccess(String id) {
 				serializationOutputs.forEach(o -> o.updateSerialized(id));
 			}
 		};
 		databaseService.addEntry(serialization, addEntryCallback);
-		
+
 		// return true to keep going
 		return true;
 	}
-	
+
 }

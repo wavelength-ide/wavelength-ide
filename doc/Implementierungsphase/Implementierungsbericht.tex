@@ -228,7 +228,7 @@ Durch diese Implementierung haben die URLs konstante Länge.
 \end{itemize}
 \subsection{Lückenhafte Implementation der Java-Standardbibliothek durch GWT}
 \begin{itemize}
-\item[] \textbf{Problem:} Das Google Web Toolkit ist aus technischen Gründen darauf angewiesen, die Java-Standardbibliothek neu zu implementieren
+\item[] \textbf{Problem:} Das Google Web Toolkit ist aus technischen Gründen darauf angewiesen, die Java-Standardbibliothek neu zu implementieren,
 anstatt auf die typischerweise zum Einsatz kommenden Implementationen zu setzen. Hierbei haben die Entwickler aus
 verschiedenen Gründen auf die Implementation einiger Komponenten verzichtet. Insbesondere sind die Java-Klasse \texttt{Pattern}
 für reguläre Ausdrücke und der \texttt{Object.clone}-Mechanismus in Java nicht implementiert.
@@ -260,7 +260,7 @@ sichtbar für die \texttt{LambdaTerm}-Klasse sind, in der die Typauflösung für
 Die Komponenten, die von GWT bereitgestellt werden, sind in ihrer Funktionalität und Konfigurierbarkeit stark eingeschränkt.
 Das Aussehen der GWT-Kom\-po\-nen\-ten ist stark Browser-abhängig, die von GWT bereitgestellten Layout-Mechanismen werden an vielen Stellen durch Tabellen realisiert und sind nicht ausreichend, um die Applikation zu modellieren, es werden nicht alle der gängigen UI-Komponenten bereitgestellt und die Komponenten, die bereitgestellt werden, sind mit Java nur geringfügig konfigurierbar.
 \item[] \textbf{Lösung:}
-Statt GWT-Komponenten zu verwenden, wird die Bibliothek "GWTBootstrap 3" verwendet, welche für alle in Bootstrap 3 verfügbaren Komponenten Java-Bindings bereitstellt. Diese Komponenten sind gut konfigurierbar, komplett und im Bezug auf das Aussehen nur geringfügig Browser-abhängig. Außerdem wird für einen Großteil des Layouts CSS verwendet, wobei die grobe Gesamtstruktur der Applikation von GWT \texttt{LayoutPanels} erzeugt wird, welche nicht mit Tabellen arbeiten. Dies vereinfacht das Layout der Gesamtstruktur, ermöglicht aber auch gleichzeitig sehr flexibles Feindesign mit CSS.
+Statt GWT-Komponenten zu verwenden, wird die Bibliothek "GWTBootstrap 3" verwendet, welche für alle in Bootstrap 3 verfügbaren Komponenten Ja\-va-Bin\-dings bereitstellt. Diese Komponenten sind gut konfigurierbar, komplett und im Bezug auf das Aussehen nur geringfügig Browser-abhängig. Außerdem wird für einen Großteil des Layouts CSS verwendet, wobei die grobe Gesamtstruktur der Applikation von GWT \texttt{LayoutPanel}s erzeugt wird, welche nicht mit Tabellen arbeiten. Dies vereinfacht das Layout der Gesamtstruktur, ermöglicht aber auch gleichzeitig sehr flexibles Feindesign mit CSS.
 \end{itemize}
 
 \subsection{Nebenläufigkeit der Reduktion und der Benutzeroberfläche}
@@ -269,15 +269,15 @@ Statt GWT-Komponenten zu verwenden, wird die Bibliothek "GWTBootstrap 3" verwend
 Eines der Ziele der Entwicklung war, dass Reduktion und UI vollständig nebenläufig sind, damit die Benutzeroberfläche auch während einer Reduktion noch bedienbar ist.
 In JavaScript würde man diese Funktionalität mithilfe von Web Workers bereitstellen.
 GWT implementiert Web Workers jedoch nicht, weshalb der reguläre Nebenläufigsmechanismus nicht verwendbar ist, da sonst das gesamte Model in JavaScript entwickelt werden müsste.
-Die Nicht-Funktionale Anforderung \textbf{N1} verlangt jedoch, dass die Anwendung während einer Auswertung weiterhin verwendbar bleibt.
+Die Nicht-Funktionale Anforderung N1 verlangt jedoch, dass die Anwendung während einer Auswertung weiterhin verwendbar bleibt.
 \item[] \textbf{Lösung:}
 Statt eine vollständige Nebenläufigkeit zu implementieren, wird ein GWT-Mechanismus verwendet, der es erlaubt, am Ende jeder Iteration des Browser-Event-Loops Reduktionen durchgeführt.
-Die Reduktionen erhalten ein Zeitfenster von 100ms: Sobald die erste Reduktion abgeschlossen wird, die außerhalb des Zeitfensters liegt, wird die Reduktion in dieser Iteration beendet und erst in der nächsten Iteration fortgesetzt.
-Dieses Zeitfenster sorgt erfahrungsgemäß für eine gute Balance zwischen Performance und Responsiveness der UI: Die UI wird zwar merksam etwas langsamer, die Reduktion wird aber nicht stark beeinträchtigt.
+Die Reduktionen erhalten ein Zeitfenster von 100 Millisekunden: Sobald die erste Reduktion abgeschlossen wird, die außerhalb des Zeitfensters liegt, wird die Reduktion in dieser Iteration beendet und erst in der nächsten Iteration fortgesetzt.
+Dieses Zeitfenster sorgt erfahrungsgemäß für eine gute Balance zwischen Performance und Responsiveness der UI: Die UI wird zwar merklich etwas langsamer, die Reduktion wird aber nicht stark beeinträchtigt.
 \end{itemize}
 
 \subsection{Unicode-Ausgabe}
-Um alle im Pflichtenheft spezifizierten Features umzusetzen, muss die Ausgabe als HTML Code erzeugt und mit CSS gestylt werden. GWT bietet hierfür nur wenige Widgets an. Die letztendlich funktionierende Implementierung verlangt eine Hilfsklasse, die ein Tupel aus den GWT Widgets \texttt{FlowPanel} und \texttt{Anchor} generiert. Für beide diese Widgets ist das hinzufügen einer ID für CSS Stylings möglich. Das \texttt{Anchor} Widget bietet weiterhin die Möglichkeit für User Interaktionen. Eine Übergabe der erzeugten Unicode-Terme als Tupel ist notwendig, um im Nachhinein CSS Stylings manipulieren zu können. Dies macht unter anderem möglich, dass nur der letzte angezeigte Unicode-Term manuell ausgewertet werden kann.
+Um alle im Pflichtenheft spezifizierten Features umzusetzen, muss die Ausgabe als HTML-Code erzeugt und mit CSS gestylt werden. GWT bietet hierfür nur wenige Widgets an. Die letztendlich funktionierende Implementierung verlangt eine Hilfsklasse, die ein Tupel aus den GWT Widgets \texttt{FlowPanel} und \texttt{Anchor} generiert. Für beide diese Widgets ist das Hinzufügen einer ID für CSS-Stylings möglich. Das \texttt{Anchor}-Widget bietet weiterhin die Möglichkeit für Benutzerinteraktionen. Eine Übergabe der erzeugten Unicode-Terme als Tupel ist notwendig, um im Nachhinein CSS-Stylings manipulieren zu können. Dies macht unter anderem möglich, dass nur der letzte angezeigte Unicode-Term manuell ausgewertet werden kann.
 
 \subsection{Baum-Ausgabe}
 \begin{itemize}
@@ -295,10 +295,10 @@ Diese Faktoren machen unter Verwendung von \texttt{vis.js} ein Anklicken von Bau
 \begin{figure}[h]
 \hspace*{-2cm}
 \includegraphics[trim={0, 9.5cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan-vorher.pdf}
-\caption{Der Implementierungsplan wie er zu Beginn der Implementierungsphase vereinbart wurde}
+\caption{Der Implementierungsplan, wie er zu Beginn der Implementierungsphase vereinbart wurde}
 \end{figure}
 
-Zu Beginn der Implementierungsphase wurde vereinbart, die Aufteilung hauptsächlich nach Paketen zu vergeben.
+Zu Beginn der Implementierungsphase wurde vereinbart, die Aufteilung hauptsächlich nach Paketen vorzunehmen.
 Dabei bietet sich eine erste Unterteilung in das \texttt{Model}- und das \texttt{View}-Paket an.
 Dadurch können auch die beteiligten Personen wie in der Entwurfsphase eingeteilt werden.
 
@@ -327,7 +327,7 @@ Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 Viele Termine konnten eingehalten werden, manche Pakete waren sogar früher fertig als geplant.
 Es gab aber auch einige Verzögerungen.
 Die Implementierung des Parsers gestaltete sich schwieriger als gedacht und nahm daher etwas mehr Zeit in Anspruch.
-Die schrittweise Umstellung von GWT-Komponenten auf GWT-Bootstrap-Komponenten führte erst zu einer Anpassung der
+Die schrittweise Umstellung von GWT-Komponenten auf GWT-Bootstrap-Komponenten führte zunächst zu einer Anpassung der
 Wrapper-Klassen und letztlich zu deren Entfernung.
 Aus demselben Grund mussten die Actions mehrmals angepasst werden.
 Diese Verzögerungen sind dann der Auslöser für die restlichen Verspätungen im Diagramm.

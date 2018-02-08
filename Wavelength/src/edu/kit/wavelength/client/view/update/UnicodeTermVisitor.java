@@ -216,9 +216,6 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<Tuple> {
 		final boolean brackets = bracketsForAbs;
 		resetFlags();
 
-		// An application inside an abstraction should get brackets.
-		bracketsForApp = true;
-
 		Tuple inner = abs.getInner().acceptVisitor(this);
 
 		Anchor a = new Anchor("λ" + resolvedName);

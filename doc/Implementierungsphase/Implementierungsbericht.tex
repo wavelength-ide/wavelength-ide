@@ -103,8 +103,7 @@ Daher ist es sinnvoll automatisierte Tests bereitzustellen, insbesondere um Regr
 
 \section{Änderungen am Entwurf}
 
-\subsection{View}
-\textbf{Die Pakete \texttt{edu.kit.wavelength.client.view.webui.component} und \texttt{edu.kit.wavelength.client.view.api} wurden entfernt:} 
+\subsection{\textbf{Die Pakete \texttt{edu.kit.wavelength.client.view.webui.component} und \texttt{edu.kit.wavelength.client.view.api} wurden entfernt:}}
 
 Die Verwendung der Bootstrap-Komponenten anstelle der ursprünglich geplanten GWT-Komponenten hätte eine Anpassung der Wrapper-Klassen im \texttt{webui.component-Paket} zur Folge.
 Diese wurden aber vollständig durch die Komponenten obsolet.
@@ -125,14 +124,14 @@ Für diese Tests eignet sich dann auch die Implementierung der \texttt{App-Klass
 
 Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Klasse eingespart werden.
 
-\textbf{Die Serialisierung benutzt eine Datenbank} 
+\subsection{Die Serialisierung benutzt eine Datenbank}
 
 Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme). 
 Die bei der Serialisierung erzeugten Zeichenketten können aber unter Umständen sehr viel länger als die übliche Grenze von 2.000 Zeichen werden.
 Daher wird die Serialisierung in einer Datenbank gespeichert. 
 Dann wird ihr eine eindeutige Zeichenkette zugewiesen, die für die Deserialisierung verwendet werden kann.
  
-\textbf{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}} 
+\subsection{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
 
 Die \texttt{database-Pakete} stellen Schnittstellen und Implementierung für den Zugriff auf die SQLite-Datenbank beziehungsweise für deren Manipulation bereit.
 Auf der Client-Seite stehen die Interfaces \texttt{DatabaseService} und \texttt{DatabaseServiceAsync} zur Kommunikation mit dem Server bereit.
@@ -155,6 +154,7 @@ Auf der Server-Seite steht \texttt{DatabaseServiceImpl}.
 \section{Implementierte Funktionalitäten}
 Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
 
+\hspace*{-2cm}
 \begin{tabular}{l | l | l | l}
 \textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} & \textbf{Kommentar} \\
 \hline
@@ -196,13 +196,13 @@ Dieses Feature wurde allein aus Zeitgründen ausgelassen und wird in der Qualit�
 \newpage
 \section{Implementierungsplan}
 \begin{figure}[h]
-\hspace*{-3cm}
+\hspace*{-1cm}
 \includegraphics[trim={0, 9.5cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan-vorher.pdf}
 \caption{Der Implementierungsplan wie er zu Beginn der Implementierungsphase vereinbart wurde}
 \end{figure}
 
 \begin{figure}[H]
-\hspace*{-3cm}
+\hspace*{-1cm}
 \includegraphics[trim={0, 7cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan.pdf}
 \caption[caption]{Der reale Verlauf der Implementierungsphase: \\\hspace{\textwidth}
 Die oberen Balken entsprechen der Realität, die unteren der Planung.}

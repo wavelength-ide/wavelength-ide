@@ -5,7 +5,6 @@ import java.util.List;
 
 /**
  * Static class giving access to all {@link Libraries} known to the model.
- *
  */
 public final class Libraries {
 

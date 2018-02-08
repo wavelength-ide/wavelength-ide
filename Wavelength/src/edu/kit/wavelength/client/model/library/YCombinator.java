@@ -6,13 +6,15 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
+
 /**
- * A {@link Library} containing the Y combinator.
- *
+ * A {@link Library} containing a definition of the Y combinator.
  */
 public final class YCombinator implements Library {
 
-	// naisa code
+	public static final char ID = 'Y';
+	public static final String NAME = "Y-Combinator";
+	
 	private final NamedTerm yCombinator = new NamedTerm("Y",
 			new Abstraction("f",
 					new Application(
@@ -22,7 +24,6 @@ public final class YCombinator implements Library {
 							new Abstraction("x", new Application(new BoundVariable(2),
 									new Application(new BoundVariable(1), new BoundVariable(1)))))));
 	
-	public static final char ID = 'Y';
 
 	@Override
 	public LambdaTerm getTerm(String name) {
@@ -42,11 +43,11 @@ public final class YCombinator implements Library {
 
 	@Override
 	public String getName() {
-		return "Y-Combinator";
+		return NAME;
 	}
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("" + ID);
+		return new StringBuilder(ID);
 	}
 }

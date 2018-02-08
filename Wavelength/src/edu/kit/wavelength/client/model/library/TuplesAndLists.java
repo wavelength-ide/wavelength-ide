@@ -9,14 +9,18 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
+
 /**
- * A {@link Library} providing operations for working with
- * tuples and lists.
- *
+ * A {@link Library} contains definitions for {@link LambdaTerms}s for tuples (pairs) and lists.
+ * 
+ * The terms are encoded by the Church encoding. The library contains tuples and the simple 
+ * operations 'first' and 'second'. In addition this library supports lists. 
+ * A list node is represented by a pair. The library also supports basic operations on lists.
  */
 public final class TuplesAndLists implements Library {
 
 	public static final char ID = 't';
+	public static final String NAME = "Church Tuples and Lists";
 	
 	// true and false needed for more advanced list operations
 	private final NamedTerm tru = new NamedTerm("true", new Abstraction("t", new Abstraction("f", new BoundVariable(2))));
@@ -64,11 +68,11 @@ public final class TuplesAndLists implements Library {
 
 	@Override
 	public String getName() {
-		return "Tuples and Lists";
+		return NAME;
 	}
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("" + ID);
+		return new StringBuilder(ID);
 	}
 }

@@ -7,6 +7,9 @@ import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
+/**
+ * TODO JavaDoc
+ */
 public class CustomLibrary implements Library {
 
 	private String name;

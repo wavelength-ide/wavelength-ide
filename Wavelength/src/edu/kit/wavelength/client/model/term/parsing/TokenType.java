@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.model.term.parsing;
 
-public enum TokenType {
+// A type of token
+enum TokenType {
 	LBRACKET {
 		@Override
 		public String toString() {

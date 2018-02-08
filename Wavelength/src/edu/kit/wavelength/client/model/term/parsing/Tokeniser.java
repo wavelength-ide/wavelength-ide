@@ -11,8 +11,6 @@ import com.google.gwt.regexp.shared.RegExp;
  *
  */
 public class Tokeniser {
-	
-	private String newLine = "\n";
 
 	/**
 	 * Divides a sequence of characters into Tokens.
@@ -20,8 +18,9 @@ public class Tokeniser {
 	 * @param input
 	 *            The String to divide into tokens
 	 * @return An array containing all tokens
-	 * @throws ParseException if the input String can not be tokenised
-	 * 			
+	 * @throws ParseException
+	 *             if the input String can not be tokenised
+	 * 
 	 */
 	public Token[] tokenise(String input, int offset, int rowPos) throws ParseException {
 		TokenPattern leftBracket = new TokenPattern("\\(", TokenType.LBRACKET);
@@ -43,9 +42,10 @@ public class Tokeniser {
 				if (mresult != null && mresult.getGroupCount() > 0) {
 					foundMatch = true;
 					String newContent = mresult.getGroup(0);
-					tokens.add(new Token(newContent, types[i].getType(), input.length() - remainingInput.length() - newContent.length() + offset,
-							input.length() - remainingInput.length() + offset));
 					remainingInput = cRegex.replace(remainingInput, "");
+					tokens.add(new Token(newContent, types[i].getType(),
+							input.length() - remainingInput.length() - newContent.length() + offset,
+							input.length() - remainingInput.length() + offset));
 					break;
 				}
 			}
@@ -61,14 +61,15 @@ public class Tokeniser {
 		} else {
 			int column = input.length() - remainingInput.length();
 			System.out.println(remainingInput.length());
-			throw new ParseException("Term could not be parsed, found unknown symbol.", rowPos, column + offset, column + offset + 1);
+			throw new ParseException("Term could not be parsed, found unknown symbol.", rowPos, column + offset,
+					column + offset + 1);
 
 		}
 	}
 
 	/**
-	 * This class is used to ease the process of creating tokens matching
-	 * certain regular expressions and assigning them the correct type.
+	 * This class is used to ease the process of creating tokens matching certain
+	 * regular expressions and assigning them the correct type.
 	 *
 	 */
 	private class TokenPattern {
@@ -87,13 +88,13 @@ public class Tokeniser {
 		 */
 		public TokenPattern(String regex, TokenType type) {
 			this.pattern = RegExp.compile("^" + regex);
-			//this.pattern = RegExp.compile("^" + regex + ")");
+			// this.pattern = RegExp.compile("^" + regex + ")");
 			this.type = type;
 		}
 
 		/**
-		 * Return a RegExp object compiled from the regex the
-		 * {@link TokenPattern} was initialized with.
+		 * Return a RegExp object compiled from the regex the {@link TokenPattern} was
+		 * initialized with.
 		 * 
 		 * @return The TokenPattern's RegExp
 		 */

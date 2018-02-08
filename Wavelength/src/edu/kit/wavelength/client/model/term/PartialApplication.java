@@ -520,7 +520,9 @@ public abstract class PartialApplication implements LambdaTerm {
 
 		/**
 		 * Restores a subtraction operation from its serialization.
-		 * @param serialized The serialized subtraction
+		 * 
+		 * @param serialized
+		 *            The serialized subtraction
 		 * @return The restored subtraction
 		 */
 		public static Subtraction fromSerialized(String serialized) {

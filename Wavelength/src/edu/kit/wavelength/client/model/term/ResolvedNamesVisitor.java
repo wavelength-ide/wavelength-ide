@@ -43,7 +43,8 @@ public abstract class ResolvedNamesVisitor<T> implements Visitor<T> {
 	public final T visitAbstraction(Abstraction abs) {
 		String assignedName = abs.getPreferredName();
 		Set<String> frees = abs.acceptVisitor(new BlockedNamesVisitor());
-		// When a name collides, we try to assign e.g. x1, x2, ... as long as the name still collides.
+		// When a name collides, we try to assign e.g. x1, x2, ... as long as the name
+		// still collides.
 		if (collides(frees, assignedName)) {
 			int i = 0;
 			do {

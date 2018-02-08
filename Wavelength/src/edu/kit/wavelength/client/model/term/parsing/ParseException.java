@@ -10,7 +10,8 @@ public class ParseException extends Exception {
 
 	private final String message;
 	private final int row;
-	private final int column; 
+	private final int columnStart;
+	private final int columnEnd;
 	
 	/**
 	 * Creates a new ParseException with the entered parameters.
@@ -18,10 +19,11 @@ public class ParseException extends Exception {
 	 * @param row The row containing the source of this exception
 	 * @param column The row containing the source of this exception
 	 */
-	public ParseException(String message, int row, int column) {
+	public ParseException(String message, int row, int columnStart, int columnEnd) {
 		this.message = message;
 		this.row = row;
-		this.column = column;
+		this.columnStart = columnStart;
+		this.columnEnd = columnEnd;
 	}
 	
 	/**
@@ -36,8 +38,12 @@ public class ParseException extends Exception {
 	 * Gets the column in which the error causing this exception occurred.
 	 * @return The column in which the error occurred
 	 */
-	public int getColumn() {
-		return column + 1;
+	public int getColumnStart() {
+		return columnStart + 1;
+	}
+	
+	public int getColumnEnd() {
+		return columnEnd + 1;
 	}
 	
 	@Override

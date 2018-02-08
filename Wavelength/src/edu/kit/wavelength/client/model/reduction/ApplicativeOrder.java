@@ -34,6 +34,13 @@ public final class ApplicativeOrder implements ReductionOrder {
 		return new StringBuilder("" + ID);
 	}
 	
+	/**
+	 * The ApplicativeVisitor is used to find the next redex to reduce in a lambda term it visits.
+	 * 
+	 * This is accomplished by the visitor traversing the term subtree rooted at its host term using depth-first-search,
+	 * starting with the rightmost sub term.
+	 *
+	 */
 	private class ApplicativeVisitor extends NameAgnosticVisitor<Application> {
 
 		@Override
@@ -48,6 +55,11 @@ public final class ApplicativeOrder implements ReductionOrder {
 
 		@Override
 		public Application visitApplication(Application app) {
+			// This method implements the behavior specified by the ApplicativeOrder reduction policy,
+			// it first attempts to find a redex in the application's right hand term by recursively visiting its sub terms,
+			// if this is unsuccessful the left hand side is searched.
+			// If a redex is found it is returned.
+			// Only if both sides do not contain a redex, and it is redex itself, this application is returned.
 			Application possibleRedex = app.getRightHandSide().acceptVisitor(this);
 			if (possibleRedex != null) {
 				return possibleRedex;

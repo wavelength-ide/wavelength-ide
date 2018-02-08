@@ -14,6 +14,8 @@ public final class ResultOnly implements OutputSize {
 
 	@Override
 	public boolean displayLive(int step) {
+		// Since ResultOnly is only supposed to display the last term,
+		// this method will always return false so no intermediate step is displayed
 		return false;
 	}
 

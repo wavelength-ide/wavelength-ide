@@ -75,7 +75,7 @@ public class CustomLibrary implements Library {
 	 * @param name The name used to reference the term.
 	 */
 	public void addTerm(LambdaTerm term, String name) {
-		if (name.length() < 1) {
+		if (name == null || name.length() < 1 || term == null) {
 			throw new IllegalArgumentException();
 		}
 		if (containsName(name) == false) {

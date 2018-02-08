@@ -34,6 +34,13 @@ public final class NormalOrder implements ReductionOrder {
 		return new StringBuilder("" + ID);
 	}
 
+	/**
+	 * The NormalOrderVisitor is used to find the next redex to reduce in a lambda term it visits using the normal reduction order.
+	 * 
+	 * This is accomplished by the visitor traversing the term subtree rooted at its host term using depth-first-search,
+	 * starting with the rightmost sub term until a regex is found.
+	 *
+	 */
 	private class NormalOrderVisitor extends NameAgnosticVisitor<Application> {
 
 		@Override
@@ -48,6 +55,8 @@ public final class NormalOrder implements ReductionOrder {
 
 		@Override
 		public Application visitApplication(Application app) {
+			// If the visited Application is a redex it is returned, else first the left hand side then the right hand side
+			// of the application are searched for redexes.
 			if (app.acceptVisitor(new IsRedexVisitor())) {
 				return app;
 			} else {

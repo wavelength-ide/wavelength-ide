@@ -18,6 +18,8 @@ public final class Full implements OutputSize {
 
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
+		// Using full output size, every reduced term has already been displayed live,
+		// so this method will always return an empty list.
 		return new ArrayList<Integer>();
 	}
 

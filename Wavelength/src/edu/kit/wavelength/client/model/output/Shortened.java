@@ -29,6 +29,13 @@ public final class Shortened implements OutputSize {
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
 		ArrayList<Integer> displaySteps = new ArrayList<Integer>();
+		// Adds > lastDisplayed, > cutoff , > totalSteps . cutoff
+		// This loop adds the indices of all available steps following the first step to display.
+		// This first step's index is defined as the maximum of three values:
+		// The index of the step following the last displayed step, to avoid displaying the same step twice, even if step-by-step reduction was used
+		// The first cutoff term's index, to avoid displaying a already displayed term again,
+		// and the index just larger than the number of totalSteps - the cutoff,
+		// to ensure that no more than the value of cutoff-1 terms are displayed
 		for (int i = Math.max(lastDisplayed + 1, Math.max(cutoff, totalSteps - cutoff + 1)); i <= totalSteps; i++) {
 				displaySteps.add(i);
 		}	

@@ -43,16 +43,12 @@ public class ParserTest {
 	private String app4 = id + id + id + id;
 	private String app5 = id + id + id + id + id;
 	private String firstDecl = "term = \\x.x y";
-	private String secondDecl = "longTerm = " + stringE;
-	private String twoLibTerms = "";
 	private String julString = "(( ((\\x.x)(\\x.x)) (\\x.x)) ( ((\\x.x)(\\x.x)) (\\x.x) ) )";
 	private String varString = "(( (v v) v) ( (v v) v ) )";
 	private String singleUnicodeLib = "Σ = z v";
 	private String stringUnicodeLibWUpCaLa = "ΔΘΛ =j";
 	private String stringUnicodeLib = "ΦΨη = (\\x. x x)";
 	private String libUsingString =  "(ΦΨη x)(Σ ΔΘΛ)";
-	
-	private String someBlankLines = "abc = x \n def = v v \n (abc def)";
 	private String lBracketAbs = "(\\x. (y) x)";
 	
 	LambdaTerm lBracketAbsTerm = new Abstraction("x", new Application (new FreeVariable("y") ,new BoundVariable(1)));
@@ -89,11 +85,17 @@ public class ParserTest {
 	LambdaTerm app5Term = new Application(app4Term, idTerm);
 	
 	LambdaTerm uslessBracketsTerm = new Application(new FreeVariable("x"), new FreeVariable("v"));
-
+	LambdaTerm tripleTerm = new Application(new Application(new FreeVariable("x"), new FreeVariable("y")), new FreeVariable("z"));
+			
 	@Before
 	public void setUp() {
 		testParser = new Parser(new ArrayList<Library>());
-		//System.out.println("NEXT_TEST");
+	}
+	
+	@Test
+	public void varTriple() throws ParseException {
+		LambdaTerm term = testParser.parse(triple);
+		assertEquals(term, tripleTerm);
 	}
 	
 	@Test
@@ -104,10 +106,8 @@ public class ParserTest {
 	
 	@Ignore
 	public void someBlankLinesTest() throws ParseException {
-		System.out.println("==========>");
 		String myTest = "a = v \n b = k \n \n\n \n a b";
 		LambdaTerm term = testParser.parse(myTest);
-		System.out.println("<=============");
 		assertEquals(term, someBlankLinesTerm);
 	}
 	

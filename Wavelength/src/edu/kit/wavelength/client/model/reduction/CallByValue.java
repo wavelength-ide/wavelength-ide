@@ -36,8 +36,13 @@ public final class CallByValue implements ReductionOrder {
 	}
 
 	/**
-	 * A visitor for finding the next redex by the call by value reduction
-	 * order.
+	 * The CallByValueVisitor is used to find the next redex to reduce in a lambda term it visits
+	 * using the call-by-value reduction order.
+	 * 
+	 * This is accomplished in a way similar to normal order reduction with the restrictions imposed by the
+	 * call-by-value reduction order: The visitor does not attempt to find redexes in term enclosed in an abstraction
+	 * and only redexes whose right side is a value will be returned by its methods.
+	 *
 	 */
 	private class CallByValueVisitor extends NameAgnosticVisitor<Application> {
 
@@ -48,13 +53,17 @@ public final class CallByValue implements ReductionOrder {
 
 		@Override
 		public Application visitAbstraction(Abstraction abs) {
+			// Since call-by-value does not permitted the reduction of redexes enclosed in an abstraction,
+			// no abstractions sub term can contain a redex this visitor may return.
 			return null;
 		}
 
 		@Override
 		public Application visitApplication(Application app) {
+			// This method works just like its counterpart in the NormalOrder class, with the added restriction
+			// that the visited application is only returned if its right hand side is a value as
+			// demanded by the call by value reduction order
 			if (app.acceptVisitor(new IsRedexVisitor()) && app.getRightHandSide().acceptVisitor(new IsValueVisitor())) {
-				// && new NormalOrder().next(app) == null
 				return app;
 			} else {
 				Application possibleRedex = app.getLeftHandSide().acceptVisitor(this);

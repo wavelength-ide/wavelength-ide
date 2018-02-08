@@ -35,6 +35,14 @@ public final class CallByName implements ReductionOrder {
 		return new StringBuilder("" + ID);
 	}
 
+	/**
+	 * The CallByNameVisitor is used to find the next redex to reduce in a lambda term it visits
+	 * using the call-by-value reduction order.
+	 * 
+	 * This is accomplished in a way similar to normal order reduction with the restriction imposed by the
+	 * call-by-name reduction order: The visitor does not attempt to find redexes in term enclosed in an abstraction.
+	 *
+	 */
 	private class CallByNameVisitor extends NameAgnosticVisitor<Application> {
 
 		@Override
@@ -44,11 +52,17 @@ public final class CallByName implements ReductionOrder {
 
 		@Override
 		public Application visitAbstraction(Abstraction abs) {
+			// Since call-by-name does not permitted the reduction of redexes enclosed in an abstraction,
+			// no abstractions sub term can contain a redex this visitor may return.
 			return null;
 		}
 
 		@Override
 		public Application visitApplication(Application app) {
+			// This method works just like its counterpart in the NormalOrder class:
+			// If the visited application is a redex, it is returned.
+			// If the visited application is not a redex, its left hand side is searched for a redex,
+			// if none is found the right hand side is searched next.
 			if (app.acceptVisitor(new IsRedexVisitor())) {
 				return app;
 			} else {

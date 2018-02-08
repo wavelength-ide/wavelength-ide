@@ -32,7 +32,10 @@ public final class Periodic implements OutputSize {
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
 		ArrayList<Integer> displaySteps = new ArrayList<Integer>();
-		if ((totalSteps % period) != 0) {
+		// The final reduced term is supposed to be displayed no matter the active output size.
+		// The following statement determines whether this step has already been displayed
+		// either by step-by-step reduction or live display.
+		if ((totalSteps % period) != 0 && lastDisplayed != totalSteps) {
 			displaySteps.add(totalSteps);
 		}
 		return displaySteps;

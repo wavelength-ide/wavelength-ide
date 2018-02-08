@@ -115,11 +115,11 @@ public class Parser {
 	 */
 	private LambdaTerm retrieveTerm(String name) {
 		if (inputLibrary != null && inputLibrary.containsName(name)) {
-			return inputLibrary.getTerm(name);
+			return inputLibrary.getTerm(name).clone();
 		}
 		for (Library currentLibrary : loadedLibraries) {
 			if (currentLibrary.containsName(name)) {
-				return currentLibrary.getTerm(name);
+				return currentLibrary.getTerm(name).clone();
 			}
 		}
 		return null;

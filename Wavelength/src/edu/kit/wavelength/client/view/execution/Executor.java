@@ -24,15 +24,21 @@ public class Executor implements Serializable {
 	private List<ExecutionObserver> executionObservers;
 	private List<ControlObserver> controlObservers;
 
+	// terminated is set iff the execution isn't running and stepping manually isn't
+	// possible
 	private boolean terminated = true;
+	// paused is set iff the execution isn't running (i.e. if stepping manually is
+	// possible OR the execution is terminated)
 	private boolean paused = true;
 	private ExecutionEngine engine;
 
 	/**
 	 * Creates a new Executor.
 	 * 
-	 * @param observers
+	 * @param executionObservers
 	 *            Observers to update with reduced lambda terms
+	 * @param controlObservers
+	 *            Observers to notify when executor reaches certain states
 	 */
 	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers) {
 		this.executionObservers = executionObservers;
@@ -115,8 +121,8 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Unpauses the automatic execution, transitioning from step by step mode
-	 * into automatic execution.
+	 * Unpauses the automatic execution, transitioning from step by step mode into
+	 * automatic execution.
 	 */
 	public void unpause() {
 		if (terminated) {
@@ -137,8 +143,8 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Initiates the step by step execution, allowing the caller to choose the
-	 * next step.
+	 * Initiates the step by step execution, allowing the caller to choose the next
+	 * step.
 	 * 
 	 * @param input
 	 *            code to parse and execute
@@ -183,8 +189,8 @@ public class Executor implements Serializable {
 	 * Executes a single reduction of the supplied redex.
 	 * 
 	 * @param redex
-	 *            The redex to be evaluated. Must be a redex, otherwise an
-	 *            exception is thrown
+	 *            The redex to be evaluated. Must be a redex, otherwise an exception
+	 *            is thrown
 	 */
 	public void stepForward(Application redex) {
 		if (terminated) {
@@ -239,7 +245,8 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Checks whether the engine is paused (true iff engine is not terminated and paused).
+	 * Checks whether the engine is paused (true iff engine is not terminated and
+	 * paused).
 	 * 
 	 * @return whether the engine is paused
 	 */
@@ -255,9 +262,11 @@ public class Executor implements Serializable {
 	public boolean isTerminated() {
 		return terminated;
 	}
-	
+
 	/**
-	 * Checks whether the engine is running (true iff engine is not terminated and not paused).
+	 * Checks whether the engine is running (true iff engine is not terminated and
+	 * not paused).
+	 * 
 	 * @return whether the engine is running
 	 */
 	public boolean isRunning() {
@@ -287,6 +296,11 @@ public class Executor implements Serializable {
 		return engine.getDisplayed();
 	}
 
+	/**
+	 * Returns the libraries in use by the engine.
+	 * 
+	 * @return libraries
+	 */
 	public List<Library> getLibraries() {
 		if (engine == null) {
 			throw new IllegalStateException(
@@ -309,8 +323,8 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Deserializes the Executor by deserializing its ExecutionEngine. Also
-	 * loads the correct content into OutputArea.
+	 * Deserializes the Executor by deserializing its ExecutionEngine. Also loads
+	 * the correct content into OutputArea.
 	 * 
 	 * @param serialization
 	 *            serialized Executor

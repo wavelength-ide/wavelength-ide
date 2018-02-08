@@ -171,8 +171,8 @@ Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss
 \textbf{K6} & Standardbibliothek & \checkmark \\
 \textbf{K7} & Übungsaufgaben & \checkmark & automatische Tests verworfen\\
 \textbf{K8} & Ausgabe von Teilschritten & \checkmark \\
-\textbf{K9} & Schritt-für-Schritt Modus & \checkmark & manuelle Auswertung \\
-&&& des Syntaxbaums nicht möglich\\
+\textbf{K9} & Schritt-für-Schritt Modus & \checkmark & manuelle Auswertung in der Darstellung \\
+&&& als Syntaxbaum nicht möglich\\
 \textbf{K10} & Permalinks & \checkmark & ignoriert den Übungsmodus\\ 
 \textbf{K11} & komfortabler $\lambda$-Code & \checkmark \\
 \hline
@@ -185,8 +185,8 @@ So werden Fehlerstellen momentan nicht im Editor markiert und es wird auch keine
 
 Wie im Entwurfsdokument erklärt wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
 
-Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nicht möglich.
-Es ist noch kein Lösungsansatz für die Implementierung dieses Features bekannt.
+Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich..
+Es ist noch kein Lösungsansatz für die Implementierung dieses Features für die Ausgabe als Syntaxbaum bekannt.
 
 Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus. 
 Das führt dazu, dass beim Deserialisieren weder die aktuelle Übungsaufgabe noch die Fenster mit Aufgabenstellung und Lösung wiederhergestellt werden.

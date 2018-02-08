@@ -125,9 +125,11 @@ Für diese Tests eignet sich dann auch die Implementierung der \texttt{App-Klass
 Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Klasse eingespart werden.
 
 \subsection{Die Serialisierung benutzt eine Datenbank}
-
+\begin{itemize}
+\item[] \textbf{Problem:} 
 Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme). 
 Die bei der Serialisierung erzeugten Zeichenketten können aber unter Umständen sehr viel länger als die übliche Grenze von 2.000 Zeichen werden.
+\item[] \textbf{Lösung:} 
 Daher wird die Serialisierung in einer Datenbank gespeichert. 
 Dann wird ihr eine eindeutige Zeichenkette zugewiesen, die für die Deserialisierung verwendet werden kann.
 Diese wird als über Javas \texttt{UUID}-Klasse implementiert.
@@ -135,7 +137,8 @@ Eine UUID ist eine 128-Bit Zahl.
 Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobei die Zahl zufällig generiert wird.
 Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
 Durch diese Implementierung haben die URLs konstante Länge.
-Außerdem hat die Applikation dadurch eine Server-Seite, die die Datenbank betreibt.
+\end{itemize}
+
  
 \subsection[Hinzugefügte Pakete]{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
 

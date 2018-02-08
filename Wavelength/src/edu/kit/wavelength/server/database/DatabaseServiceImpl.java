@@ -16,7 +16,8 @@ import edu.kit.wavelength.client.database.DatabaseService;
  * Implementation of {@link DatabaseService} running on server.
  * 
  * This implementation uses {@link UUID} objects as identifiers for
- * serializations.
+ * serializations. Note that this class uses the try-with-resources statement to
+ * close resources upon finishing.
  */
 public class DatabaseServiceImpl extends RemoteServiceServlet implements DatabaseService {
 
@@ -58,6 +59,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 				try (PreparedStatement statement = connection.prepareStatement(selectSerialization);) {
 					statement.setString(1, id);
 					try (ResultSet resultSet = statement.executeQuery()) {
+						// note that resultSet is supposed to contain only one element
 						resultSet.next();
 						return resultSet.getString(1);
 					} catch (SQLException exception) {
@@ -76,7 +78,8 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 	}
 
 	/**
-	 * Returns the id for a given serialization if it exists.
+	 * Returns the id assigned to a given serialization if it exists. Else returns
+	 * null.
 	 * 
 	 * @param serialization
 	 *            a serialization String
@@ -85,10 +88,11 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 	private String getID(final String serialization) {
 		try (Connection connection = DriverManager.getConnection(databasePath)) {
 			if (connection != null) {
-				try (PreparedStatement statement = connection.prepareStatement(selectID);){
+				try (PreparedStatement statement = connection.prepareStatement(selectID);) {
 					statement.setString(1, serialization);
 					try (ResultSet resultSet = statement.executeQuery()) {
 						if (resultSet != null) {
+							// note that resultSet is supposed to contain only one element
 							return resultSet.getString(1);
 						} else {
 							return null;
@@ -113,14 +117,15 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 			if (connection != null) {
 				String assignedID = this.getID(serialization);
 				if (assignedID == null) {
-					// hopefully this is not already used
+					// it could be possible that the generated id is already used although this is
+					// quite unlikely
 					String id = UUID.randomUUID().toString();
 					try (PreparedStatement statement = connection.prepareStatement(insertEntry)) {
 						statement.setString(1, id);
 						statement.setString(2, serialization);
 						statement.executeUpdate();
 						return id.toString();
-						
+
 					} catch (SQLException exception) {
 						return null;
 					}

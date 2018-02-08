@@ -50,9 +50,7 @@ public class StepByStep implements Action {
 		
 
 		app.outputArea().clear();
-		
-		// TODO: determine the selected output format, display and lock it, hide the other
-		
+				
 		String format = app.outputFormatBox().getSelectedItemText();
 		switch(format) {
 		case "Unicode Output":
@@ -94,8 +92,6 @@ public class StepByStep implements Action {
 		app.runButton().setVisible(false);
 		
 		app.outputBlocker().removeStyleName("notclickable");
-
-		// TODO: determine the selected output format, display and lock it, hide the other
 		
 	}
 }

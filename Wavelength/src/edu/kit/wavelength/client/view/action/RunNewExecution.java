@@ -47,9 +47,7 @@ public class RunNewExecution implements Action {
 				.collect(Collectors.toList());
 
 		app.outputArea().clear();
-		
-		// TODO: determine the selected output format, display and lock it, hide the other
-		
+				
 		String format = app.outputFormatBox().getSelectedItemText();
 		switch(format) {
 		case "Unicode Output":

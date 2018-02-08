@@ -19,6 +19,9 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[section]{placeins}
 
+%Change enummeration pattern from 1. to 1)
+\renewcommand\labelenumi{\theenumi)}
+
 \titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
 \title{Implementierungsbericht}
 \subtitle{Wavelength--$\bm{\lambda}$-IDE}
@@ -54,7 +57,11 @@ Die von GWT bereitgestellten Komponenten wirken durch ihr eckiges Design eher un
 Runde Ecken werden meist als ansprechender empfunden.
 Daher sind die von Bootstrap bereitgestellten Komponenten besser geeignet, einen benutzerfreundlichen Gesamteindruck zu erzeugen.
 Die Verwendung dieser Komponenten mit GWT erwies sich jedoch als umständlich:
+<<<<<<< HEAD
 Die von Bootstrap zur Verfügung gestellten Komponenten können in GWT per CSS gestylt, Attribute aber nicht mehr zum Kompilat hinzugefügt
+=======
+Die von Bootstrap zur Verfügung gestellten Komponenten können in GWT per CSS gestylt, Attribute können aber nicht mehr zum Kompilat hinzugefügt
+>>>>>>> ab77eba... Tabelle überarbeitet.
 werden. Das führt dazu, dass die gesamte Komponente in HTML geschrieben werden muss.
 Um die Bootstrap-Komponenten trotzdem verwenden zu können, wurde GWT-Bootstrap eingebunden, was genau obiges leistet.
 Darüber hinaus stellt die Bibliothek auch Icons zur Verfügung, die für die GUI verwendet werden (siehe dazu beispielsweise Pflichtenheft Anhang A).
@@ -162,45 +169,48 @@ Die \texttt{FinishExecution}-Klasse im \texttt{view.update}-Package implementier
 
 \newpage
 \section{Implementierte Funktionalitäten}
-Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
+Die folgende Tabelle liefert einen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
 
-\hspace*{-1cm}
+\begin{table}[h]
+\centering
 \begin{tabular}{l | l | l | l}
-\textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} & \textbf{Kommentar} \\
+\textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} & \textbf{Bemerkung} \\
 \hline
-\textbf{M1}& Eingabe von $\lambda$-Termen  & \checkmark \\
+\textbf{M1} & Eingabe von $\lambda$-Termen  & \checkmark \\
 \textbf{M2} & Auswertung von $\lambda$-Termen & \checkmark \\
 \textbf{M3} & Fehlermeldung bei invalider Eingabe & \checkmark \\
 \textbf{M4} & Abbruch der Reduktion & \checkmark \\
 \textbf{K1} & Weitere Auswertungsstrategien &  \checkmark \\
 \textbf{K2} & Exportformate & \checkmark \\
 \textbf{K3} & Ausgabeformate & \checkmark\\
-\textbf{K4} & Erweiterte Fehlerdiagnostik & \checkmark & Angabe von Behebungsmöglichkeiten \\
- &&& verworfen \\
+\textbf{K4} & Erweiterte Fehlerdiagnostik & \checkmark & 1) \\
 \textbf{K5} & Intelligenter Editor & \checkmark \\
 \textbf{K6} & Standardbibliothek & \checkmark \\
-\textbf{K7} & Übungsaufgaben & \checkmark & automatische Tests verworfen\\
+\textbf{K7} & Übungsaufgaben & \checkmark & 2) \\
 \textbf{K8} & Ausgabe von Teilschritten & \checkmark \\
-\textbf{K9} & Schritt-für-Schritt Modus & \checkmark & manuelle Auswertung in der Darstellung \\
-&&& als Syntaxbaum nicht möglich\\
-\textbf{K10} & Permalinks & \checkmark & ignoriert den Übungsmodus\\
+\textbf{K9} & Schritt-für-Schritt Modus & \checkmark & 3)\\
+\textbf{K10} & Permalinks & \checkmark & 4)\\
 \textbf{K11} & komfortabler $\lambda$-Code & \checkmark \\
 \hline
 \textbf{Gesamt} &\textbf{15} & \textbf{15}
 \end{tabular}
+\caption{Übersicht der implementierten Muss- und Kann-Kriterien}
+\end{table}
 
-Es konnten also alle im Pflichtenheft aufgestellten Kriterien umgesetzt werden, manche jedoch etwas eingeschränkt:
+Es konnten alle im Pflichtenheft aufgestellten Kriterien umgesetzt werden, wobei folgende Kann-Kriterien nicht vollständig implementiert wurden:
 
-So wird momentan keine Hilfestellung gegeben, wie ein Fehler beseitigt werden kann.
+\begin{enumerate}
+\item Es wird momentan keine Hilfestellung gegeben, wie ein Fehler beseitigt werden kann.
 
-Wie im Entwurfsdokument erklärt wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
+\item Wie im Entwurfsdokument erklärt, wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
 
-Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich.
+\item Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich.
 Es ist noch kein Lösungsansatz für die Implementierung dieses Features für die Ausgabe als Syntaxbaum bekannt.
 
-Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus.
-Das führt dazu, dass beim Deserialisieren weder die aktuelle Übungsaufgabe noch die Fenster mit Aufgabenstellung und Lösung wiederhergestellt werden.
+\item Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus.
+Dies führt dazu, dass beim Deserialisieren weder die aktuelle Übungsaufgabe noch die Fenster mit Aufgabenstellung und Lösung wiederhergestellt werden.
 Dieses Feature wurde allein aus Zeitgründen ausgelassen und wird in der Qualitätssicherungsphase nachgereicht.
+\end{enumerate}
 
 \section{Schwierigkeiten bei der Implementierung}
 \subsection{Serialisierung}

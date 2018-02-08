@@ -63,7 +63,7 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 .exportArea { resize: none; background-color: white !important;}
 
 /* limit height to footer height, fix width instead of filling rest of footer, set background */
-.sharePanel { height: 100% !important; width: 300px !important; background-color: white !important; }
+.sharePanel { height: 100% !important; width: 500px !important; background-color: white !important; }
 
 .output { display: inline; overflow: scroll; left: 5px !important; right: 5px !important;}
 

@@ -21,6 +21,8 @@ public class UnpauseExecution implements Action {
 		app.backwardsButton().setEnabled(false);
 		app.forwardButton().setEnabled(false);
 		app.reductionOrderBox().setEnabled(false);
+		app.sharePanel().setVisible(false);
+		app.shareButton().setEnabled(false);
 
 		app.exportButtons().forEach(b -> b.setEnabled(false));
 		

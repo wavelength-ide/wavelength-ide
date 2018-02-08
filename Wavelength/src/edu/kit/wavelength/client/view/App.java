@@ -458,7 +458,6 @@ public class App implements Serializable {
 
 		sharePanel = new TextBox();
 		sharePanel.addStyleName("sharePanel");
-		sharePanel.setText("hello world");
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);
 		footerPanel.add(sharePanel);

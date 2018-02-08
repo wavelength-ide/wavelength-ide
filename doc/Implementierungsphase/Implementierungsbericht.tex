@@ -252,6 +252,7 @@ Die Nicht-Funktionale Anforderung \textbf{N1} verlangt jedoch, dass die Anwendun
 Statt eine vollständige Nebenläufigkeit zu implementieren, wird ein GWT-Mechanismus verwendet, der es erlaubt, am Ende jeder Iteration des Browser-Event-Loops Reduktionen durchgeführt.
 Die Reduktionen erhalten ein Zeitfenster von 100ms: Sobald die erste Reduktion abgeschlossen wird, die außerhalb des Zeitfensters liegt, wird die Reduktion in dieser Iteration beendet und erst in der nächsten Iteration fortgesetzt.
 Dieses Zeitfenster sorgt erfahrungsgemäß für eine gute Balance zwischen Performance und Responsiveness der UI: Die UI wird zwar merksam etwas langsamer, die Reduktion wird aber nicht stark beeinträchtigt.
+\end{itemize}
 
 \subsection{Unicode-Ausgabe}
 Um alle im Pflichtenheft spezifizierten Features umzusetzen, muss die Ausgabe als HTML Code erzeugt und mit CSS gestylt werden. GWT bietet hierfür nur wenige Widgets an. Die letztendlich funktionierende Implementierung verlangt eine Hilfsklasse, die ein Tupel aus den GWT Widgets \texttt{FlowPanel} und \texttt{Anchor}. Für beide diese Widgets ist das hinzufügen einer ID für CSS Stylings möglich. Das \texttt{Anchor} Widget bietet weiterhin die Möglichkeit für User Interaktionen. Eine Übergabe der erzeugten Unicode-Terme als Tupel ist notwendig, um im Nachhinein CSS Stylings manipulieren zu können. Dies macht unter anderem möglich, dass nur der letzte angezeigte Unicode-Term manuell ausgewertet werden kann.

@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
+import com.google.gwt.user.client.Window;
+
 import edu.kit.wavelength.client.view.App;
 
 /**

@@ -50,7 +50,7 @@ public final class Boolean implements Library {
 
 	@Override
 	public String getName() {
-		return "CurchBoolean";
+		return "Curch Boolean";
 	}
 
 	@Override

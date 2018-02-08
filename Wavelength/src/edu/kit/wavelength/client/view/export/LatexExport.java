@@ -6,9 +6,6 @@ import java.util.Objects;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
-/*
- * TODO: definitionen von Termen mit "\text{...}" unklammern?
- */
 /**
  * This class translates the given lambda terms into LaTeX code. The generated
  * representation assumes math mode when being pasted into an existing LaTeX
@@ -16,31 +13,33 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  */
 public class LatexExport implements Export {
 
+	public static final String NAME = "LaTeX";
+
 	private static final String ARROW = "\\Rightarrow\\ ";
 	private static final String LINEBREAK = "\\\\";
-	
+
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		Objects.requireNonNull(displayedTerms);
 		Objects.requireNonNull(libraries);
-		
+
 		if (displayedTerms.size() == Integer.MAX_VALUE) {
 			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
 		}
 
-		//no terms
+		// no terms
 		if (displayedTerms.size() == 0) {
 			return "";
 		}
-		
+
 		LaTeXExportVisitor visitor = new LaTeXExportVisitor(libraries);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
 			result.append(ARROW);
 			result.append(displayedTerms.get(i).acceptVisitor(visitor));
-			//append a LaTeX line break
+			// append a LaTeX line break
 			result.append(LINEBREAK);
-			//append a Java line break
+			// append a Java line break
 			result.append("\n");
 		}
 
@@ -53,6 +52,6 @@ public class LatexExport implements Export {
 
 	@Override
 	public String getName() {
-		return "LaTeX";
+		return NAME;
 	}
 }

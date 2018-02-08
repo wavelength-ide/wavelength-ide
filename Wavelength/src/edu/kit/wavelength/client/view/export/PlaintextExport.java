@@ -13,6 +13,8 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  */
 public class PlaintextExport implements Export {
 
+	public static final String NAME = "Plaintext";
+	
 	private static final String LAMBDA = "\\";
 	private static final String ARROW = "=> ";
 
@@ -47,6 +49,6 @@ public class PlaintextExport implements Export {
 
 	@Override
 	public String getName() {
-		return "Plaintext";
+		return NAME;
 	}
 }

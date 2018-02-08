@@ -17,7 +17,7 @@ public interface Export {
 	 * @param displayedTerms
 	 *            the terms that should be translated
 	 * @param libraries
-	 *            the libraries of the application that are used in this term
+	 *            the libraries of the application that are used in the terms
 	 * @return the String representation of the given terms
 	 */
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries);

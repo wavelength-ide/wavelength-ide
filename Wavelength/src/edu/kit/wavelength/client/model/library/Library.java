@@ -5,9 +5,10 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * This interface is used to interact with the different libraries provided by
- * the application. Each library contains a set of {@link LambdaTerm}s and their
- * assigned names. 
- * These names can be used in place of terms to both shorten
+ * the application. 
+ * 
+ * Each library contains a set of {@link LambdaTerm}s and their
+ * assigned names. These names can be used in place of terms to both shorten
  * terms and make them easier to understand.
  */
 public interface Library extends Serializable {
@@ -17,7 +18,8 @@ public interface Library extends Serializable {
 	 * 
 	 * @param name
 	 *            The name assigned to the desired term
-	 * @return The {@link LambdaTerm} with the entered name, null on error
+	 * @return The {@link LambdaTerm} with the entered name, null if the library
+	 *         does not contain a term with this name
 	 */
 	abstract LambdaTerm getTerm(String name);
 
@@ -27,8 +29,8 @@ public interface Library extends Serializable {
 	 * 
 	 * @param name
 	 *            The name to search the library for
-	 * @return True if the library contains a {@link LambdaTerm} with the
-	 *         entered name
+	 * @return {@link true} if the library contains a {@link LambdaTerm} with the
+	 *         entered name and {@link false} otherwise
 	 */
 	abstract boolean containsName(String name);
 

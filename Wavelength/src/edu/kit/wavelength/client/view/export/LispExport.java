@@ -13,6 +13,8 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  */
 public class LispExport implements Export {
 
+	public static final String NAME = "Lisp";
+	
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		Objects.requireNonNull(displayedTerms);
@@ -42,6 +44,6 @@ public class LispExport implements Export {
 
 	@Override
 	public String getName() {
-		return "Lisp";
+		return NAME;
 	}
 }

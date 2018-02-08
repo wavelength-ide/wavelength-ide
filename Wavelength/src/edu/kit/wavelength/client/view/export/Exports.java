@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Static class giving access to all available export formats.
+ * Static class giving access to all {@link Export}s known to the model.
  */
 public final class Exports {
 

@@ -17,7 +17,9 @@ public class LispExportVisitor extends BasicExportVisitor {
 	private static final String LAMBDA = "lambda";
 
 	public LispExportVisitor(List<Library> libraries) {
-		super(libraries, "lambda");
+		// argument LAMBDA not needed, since this class overrides the
+		// formatLambda method anyways
+		super(libraries, LAMBDA);
 	}
 
 	@Override
@@ -31,7 +33,7 @@ public class LispExportVisitor extends BasicExportVisitor {
 		result.append("(").append(leftSide).append(" ").append(rightSide).append(")");
 		return result;
 	}
-	
+
 	@Override
 	protected StringBuilder visitAbstraction(Abstraction abs, String resolvedName) {
 		Objects.requireNonNull(abs);
@@ -39,12 +41,13 @@ public class LispExportVisitor extends BasicExportVisitor {
 
 		StringBuilder absVariable = new StringBuilder(resolvedName);
 		StringBuilder innerTerm = new StringBuilder(abs.getInner().acceptVisitor(this));
-		
+
 		StringBuilder result = new StringBuilder();
 		result.append("(").append(formatLambda(absVariable)).append(innerTerm).append(")");
-		
+
 		return result;
 	}
+
 	@Override
 	protected StringBuilder formatLambda(StringBuilder absVariable) {
 		assert (absVariable != null);

@@ -8,26 +8,29 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.export.Export;
 
 /**
- * This class translates the given lambda terms into Haskell code. Since it is
- * only a syntactic translation, it is not guaranteed that the generated
- * representation is executable Haskell code.
+ * This class translates the given lambda terms into Haskell code.
+ * 
+ * Since it is only a syntactic translation, it is not guaranteed that the
+ * generated representation is executable Haskell code.
  */
 public class HaskellExport implements Export {
+
+	public static final String NAME = "Haskell";
 	
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		Objects.requireNonNull(displayedTerms);
 		Objects.requireNonNull(libraries);
-		
+
 		if (displayedTerms.size() == Integer.MAX_VALUE) {
 			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
 		}
 
-		//no terms
+		// no terms
 		if (displayedTerms.size() == 0) {
 			return "";
 		}
-		
+
 		HaskellExportVisitor visitor = new HaskellExportVisitor(libraries);
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < displayedTerms.size() - 1; i++) {
@@ -43,6 +46,6 @@ public class HaskellExport implements Export {
 
 	@Override
 	public String getName() {
-		return "Haskell";
+		return NAME;
 	}
 }

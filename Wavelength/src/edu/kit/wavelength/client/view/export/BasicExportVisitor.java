@@ -12,16 +12,13 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 
-/*
- * TODO: StringBuilder zu ressourcen intensiv?
- */
 /**
  * A basic Visitor to create a string representing a given lambda term. The
- * Visitor tries to set a minimal number of brackets to correctly describe the
- * lambda term.
+ * Visitor sets a minimal number of brackets to correctly describe the lambda
+ * term.
  * 
  * It also provides some means to vary the representation of a lambda term by
- * overwriting strategy methods.
+ * overwriting its strategy methods.
  */
 public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
@@ -67,9 +64,9 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		bracketsForAbs = true;
 		StringBuilder leftSide = app.getLeftHandSide().acceptVisitor(this);
 
-		bracketsForAbs = true;
 		// If the right term of an application is an application it should get
 		// brackets because implicit brackets bind from left to right.
+		bracketsForAbs = true;
 		bracketsForApp = true;
 		StringBuilder rightSide = app.getRightHandSide().acceptVisitor(this);
 
@@ -164,11 +161,13 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
 	/**
 	 * A strategy method to allow inheriting classes to define the
-	 * representation of the left part from an abstraction in the constructed
-	 * String.
+	 * representation of an abstraction in the constructed String.
+	 * 
+	 * The default setting produces a string containing the lambda letter,
+	 * followed by the abstraction variable and a dot (e.g. '\x.').
 	 * 
 	 * @param absVariable
-	 *            the variable of the abstraction of the lambda term
+	 *            the variable of the abstraction
 	 * @return the left part of an abstraction as it should be represented in
 	 *         the final string
 	 */

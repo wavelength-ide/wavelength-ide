@@ -20,6 +20,9 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 /* add slight margin so menu button isn't in the corner of the screen */
 .mainMenu { margin-left: 2px; margin-top: 2px; }
 
+/* add right padding so menu items don't touch menu border and remove margin from button */
+.mainMenuPanel { padding-right: 4px !important; margin-top: 0px !important; }
+
 /* prevent checkbox from touching the left side of the menu (default margin-left is -20px) */
 .libraryCheckBox input { margin-left: -16px !important; }
 
@@ -28,9 +31,6 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 
 /* add borders to separate editor from control */
 .editorExercisePanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }
-
-/* set light blue background in line where error occured */
-.editorErrorContent { background: lightblue; }
 
 /* set red icon color in line where error occured */
 .editorErrorGlyphMargin { color: red; }

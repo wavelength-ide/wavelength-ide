@@ -101,7 +101,6 @@ public class MonacoEditor {
 				range: new $wnd.monaco.Range(startLineNumber, startColumn, endLineNumber, endColumn),
 				options: {
 					isWholeLine: true,
-					className: 'editorErrorContent',
 					glyphMarginClassName: 'editorErrorGlyphMargin',
 					glyphMarginHoverMessage: message
 				}

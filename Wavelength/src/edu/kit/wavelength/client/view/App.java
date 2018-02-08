@@ -208,6 +208,7 @@ public class App implements Serializable {
 		mainMenu.add(openMainMenuButton);
 
 		mainMenuPanel = new DropDownMenu();
+		mainMenuPanel.addStyleName("mainMenuPanel");
 		// prevent dropdown from closing when clicking inside
 		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);

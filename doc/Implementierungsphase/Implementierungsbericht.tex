@@ -41,7 +41,7 @@ Im Rahmen der Implementierungsphase wurden innerhalb von vier Wochen durch über
 
 Die Erfüllung der geforderten Spezifikationen erfordert den Einsatz verschiedener Bibliotheken, die an dieser Stelle kurz vorgestellt werden sollen:
 
-\subsection{Google Web Toolkit (GWT)2.8.2 }
+\subsection{Google Web Toolkit (GWT) 2.8.2 }
 \begin{enumerate}
 \item[] \textbf{Ziel:} Programmierung der Anwendung in Java
 \item[] \textbf{Beschreibung:} Das Google Web Toolkit kompiliert Java-Quellcode zu JavaScript, welches direkt im Webbrowser des Anwenders läuft. Zusätzlich
@@ -65,7 +65,7 @@ Die von Bootstrap zur Verfügung gestellten Komponenten können in GWT per CSS g
 werden. Das führt dazu, dass die gesamte Komponente in HTML geschrieben werden muss.
 Um die Bootstrap-Komponenten trotzdem verwenden zu können, wurde GWT-Bootstrap eingebunden, was genau obiges leistet.
 Darüber hinaus stellt die Bibliothek auch Icons zur Verfügung, die für die GUI verwendet werden (siehe dazu beispielsweise Pflichtenheft Anhang A).
-Der Vorteil dieser Icons ist, dass sie einen Satz, also ein konsistentes Bild bieten.
+Der Vorteil dieser Icons ist, dass sie einen Satz, also ein konsistentes Bild, bieten.
 \end{enumerate}
 
 \subsection{Monaco 0.10.1}
@@ -82,7 +82,7 @@ Monaco eignet sich sehr gut als Code-Editor, ist einfach einzubinden und stellt
 \begin{enumerate}
 \item[] \textbf{Ziel:} Erstellung interaktiver Graphen
 \item[] \textbf{Beschreibung:} Bei vis.js handelt es sich um eine JavaScript-Bibliothek für Visualisierungen aller Art im Browser.
-\item[] \textbf{Erläuterung:} Die Ausgabe von $\lambda$-Termen in Form eines Syntaxbaums entspricht einer nicht-triviale Aufgabe.
+\item[] \textbf{Erläuterung:} Die Ausgabe von $\lambda$-Termen in Form eines Syntaxbaums entspricht einer nicht-trivialen Aufgabe.
 Dieser muss nicht nur konstruiert werden, sondern auch noch stellenweise klickbar sein (siehe dazu Pflichtenheft unter F5).
 Sowohl die Modellierung der Daten als auch die Visualisierung erfolgen in JavaScript.
 \end{enumerate}
@@ -105,7 +105,7 @@ SQLite bietet die geforderte Funktionalität, ist kompakt, stabil und ausreichen
 \item[] \textbf{Ziel:} Testen einzelner Komponenten
 \item[] \textbf{Beschreibung:} JUnit ist ein Test-Framework für Java.
 \item[] \textbf{Erläuterung:} Für die Implementierung des Modells ist die Gewissheit, eine korrekte Implementierung zu haben, unabdingbar.
-Daher ist es sinnvoll automatisierte Tests bereitzustellen, insbesondere um Regressionen zu vermeiden.
+Daher ist es sinnvoll, automatisierte Tests bereitzustellen, insbesondere um Regressionen zu vermeiden.
 \end{enumerate}
 
 \section{Änderungen am Entwurf}
@@ -115,21 +115,21 @@ Daher ist es sinnvoll automatisierte Tests bereitzustellen, insbesondere um Regr
 Die Verwendung der Bootstrap-Komponenten anstelle der ursprünglich geplanten GWT-Komponenten hätte eine Anpassung der Wrapper-Klassen im \texttt{webui.component-Paket} zur Folge.
 Diese wurden aber vollständig durch die Komponenten obsolet.
 
-So war beispielsweise vorgesehen, die ImageButton-Klasse für Schaltflächen mit Icons zu verwenden.
+So war beispielsweise vorgesehen, die \texttt{ImageButton}-Klasse für Schaltflächen mit Icons zu verwenden.
 GWT-Bootstrap stellt aber über Font Awesome selbst Icons bereit, die den Knöpfen direkt zugewiesen werden können.
-Damit hat die ImageButton Klasse keine Funktionalität mehr, die sie von TextButton unterscheidet und kann gestrichen werden.
+Damit hat die \texttt{ImageButton}-Klasse keine Funktionalität mehr, die sie von \texttt{TextButton} unterscheidet und kann gestrichen werden.
 
 Analog verhält es sich mit vielen anderen Wrappern.
 
-Darüber hinaus stehen die im \texttt{api-Paket} definierten Interfaces bereits (unter anderem Namen) zur Verfügung.
-So entsprechen die Interfaces Readable und Writable gerade GWTs hasText-Interface.
+Darüber hinaus stehen die im \texttt{api}-Paket definierten Interfaces bereits (unter anderem Namen) zur Verfügung.
+So entsprechen die Interfaces \texttt{Readable} und \texttt{Writable} gerade GWTs \texttt{hasText}-Interface.
 
-Der ursprüngliche Grund für die Einführung des \texttt{api-Pakets} war die Entkopplung von GWT um beim Testen die GUI mocken zu können.
+Der ursprüngliche Grund für die Einführung des \texttt{api}-Pakets war die Entkopplung von GWT um beim Testen die GUI mocken zu können.
 Reine GUI-Tests erscheinen aber wenig erhellend.
 Es ergibt mehr Sinn die GUI immer in Verbindung mit \texttt{Actions}, also deren Auswirkung, zu testen.
-Für diese Tests eignet sich dann auch die Implementierung der \texttt{App-Klasse} als Singleton.
+Für diese Tests eignet sich dann auch die Implementierung der \texttt{App}-Klasse als Singleton.
 
-Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Klasse eingespart werden.
+Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der \texttt{App}-Klasse eingespart werden.
 
 \subsection{Die Serialisierung benutzt eine Datenbank}
 Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme).
@@ -145,7 +145,7 @@ Außerdem hat die Applikation dadurch eine Server-Seite, die die Datenbank betre
 
 \subsection[Hinzugefügte Pakete]{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
 
-Die \texttt{database-Pakete} stellen Schnittstellen und Implementierung für den Zugriff auf die SQLite-Datenbank beziehungsweise für deren Manipulation bereit.
+Die \texttt{database}-Pakete stellen Schnittstellen und Implementierung für den Zugriff auf die SQLite-Datenbank beziehungsweise für deren Manipulation bereit.
 Auf der Client-Seite stehen die Interfaces \texttt{DatabaseService} und \texttt{DatabaseServiceAsync} zur Kommunikation mit dem Server bereit.
 
 \texttt{DatabaseService} definiert die Schnittstelle für die Datenbank:

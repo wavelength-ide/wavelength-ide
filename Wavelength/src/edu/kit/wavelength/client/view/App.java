@@ -501,8 +501,6 @@ public class App implements Serializable {
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
 
-		// TODO magic number!!!!!!!!!!!!!
-		// TODO remove now obsolete TODO!!!!!!!!!!!!!
 		UpdateURL updateURL = new UpdateURL();
 		UpdateShareURL updateShareURL = new UpdateShareURL();
 		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), POLLING_DELAY_MS);

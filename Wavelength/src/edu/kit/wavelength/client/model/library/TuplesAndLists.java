@@ -73,6 +73,6 @@ public final class TuplesAndLists implements Library {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder(ID);
+		return new StringBuilder("" + ID);
 	}
 }

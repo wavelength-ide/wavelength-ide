@@ -32,8 +32,6 @@ public class Parser {
 	private RegExp assignmentRegExp = RegExp.compile("\\s*[a-zA-Z0-9]+\\s*=\\s*.+\\s*");
 	private ArrayList<String> boundVariables;
 	private int rowPos = 1;
-	
-	private int rowPos;
 
 	/**
 	 * Initializes a new parser.

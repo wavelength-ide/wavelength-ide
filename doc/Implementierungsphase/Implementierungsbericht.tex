@@ -35,7 +35,11 @@
 
 \section{Einleitung}
 Nach einer groben Skizze der Anwendung im Pflichtenheft und einer genaueren Spezifikation in der Entwurfsphase folgt nun eine Vorstellung der konkreten Implementierung.
-Die Erfüllung der geforderten Spezifikationen erfordert den Einsatz verschiedener Bibliotheken, die kurz vorgestellt werden sollen:
+
+Im Rahmen der Implementierungsphase wurden innerhalb von vier Wochen durch über 320 Commits im Versionierungssystem git
+102 Klassen und Schnittstellen in 18 Paketen implementiert, die 8216 Java-Quellcodezeilen umspannen. Zusätzlich dazu wurden zahlreiche Komponententests erstellt.
+
+Die Erfüllung der geforderten Spezifikationen erfordert den Einsatz verschiedener Bibliotheken, die an dieser Stelle kurz vorgestellt werden sollen:
 
 \subsection{Google Web Toolkit (GWT)2.8.2 }
 \begin{enumerate}
@@ -151,8 +155,7 @@ falls ein solcher Eintrag in der Datenbank existiert.
 
 Zweitens eine Methode die für einen gegebenen Serialisierungsstring einen neuen Eintrag in der Datenbank erstellt und den entsprechenden Identifikationsstring zurückgibt.
 
-\texttt{DatabaseServiceAsync} repräsentiert die Schnittstelle für asynchrone Zugriffe auf die Datenbank.
-Die Funktionsweise kann unter \href{http://www.gwtproject.org/doc/latest/tutorial/RPC.html}{http://www.gwtproject.org/doc/latest/tutorial/RPC.html} nachvollzogen werden.
+\texttt{DatabaseServiceAsync} repräsentiert die Schnittstelle für asynchrone Zugriffe auf die Datenbank\footnote{Die Funktionsweise kann unter \href{http://www.gwtproject.org/doc/latest/tutorial/RPC.html}{http://www.gwtproject.org/doc/latest/tutorial/RPC.html} nachvollzogen werden.}.
 
 Auf der Server-Seite steht \texttt{DatabaseServiceImpl}.
 

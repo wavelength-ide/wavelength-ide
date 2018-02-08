@@ -154,6 +154,11 @@ Die Funktionsweise kann unter \href{http://www.gwtproject.org/doc/latest/tutoria
 Auf der Server-Seite steht \texttt{DatabaseServiceImpl}.
 
 \texttt{DatabaseServiceImpl} realisiert die Schnittstelle zur persistenten SQLite-Datenbank auf dem Server.
+\subsection{Fertigstellung der Ausführung}
+Am Ende der Ausführung geht die Applikation in den Step-by-Step-Modus über. Da die Reduktion aber im Event Loop durch GWT gesteuert wird, muss die Information über die Fertigstellung der Ausführung von der automatischen Reduktion an die Benutzeroberfläche weitergegeben werden.
+Hierfür gibt es nun einen weiteren \texttt{Observer}: Der \texttt{ControlObserver} im \texttt{view.execution}-Package wird benachrichtigt, wenn der \texttt{Executor} von alleine Zustandsübergänge durchführt. 
+Die einzige derartige Übergangsbenachrichtigung ist die Benachrichtigung bei Fertigstellung der Ausführung, welche im \texttt{ControlObserver} durch die \texttt{finish}-Methode realisiert wird.
+Die \texttt{FinishExecution}-Klasse im \texttt{view.update}-Package implementiert den \texttt{ControlObserver} und aktualisiert den Zustand der Benutzeroberfläche wenn die Ausführung fertiggestellt wird.
 
 \newpage
 \section{Implementierte Funktionalitäten}
@@ -211,6 +216,27 @@ Eine UUID ist eine 128-Bit Zahl.
 Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobei die Zahl zufällig generiert wird.
 Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
 Durch diese Implementierung haben die URLs konstante Länge.
+\end{itemize}
+
+\subsection{Verwendung von GWT-Komponenten}
+\begin{itemize}
+\item[] \textbf{Problem:}
+Die Komponenten, die von GWT bereitgestellt werden, sind in ihrer Funktionalität und Konfigurierbarkeit stark eingeschränkt. 
+Das Aussehen der GWT-Kom\-po\-nen\-ten ist stark Browser-abhängig, die von GWT bereitgestellten Layout-Mechanismen werden an vielen Stellen durch Tabellen realisiert und sind nicht ausreichend, um die Applikation zu modellieren, es werden nicht alle der gängigen UI-Komponenten bereitgestellt und die Komponenten, die bereitgestellt werden, sind mit Java nur geringfügig konfigurierbar.
+\item[] \textbf{Lösung:}
+Statt GWT-Komponenten zu verwenden, wird die Bibliothek "GWTBootstrap 3" verwendet, welche für alle in Bootstrap 3 verfügbaren Komponenten Java-Bindings bereitstellt. Diese Komponenten sind gut konfigurierbar, komplett und im Bezug auf das Aussehen nur geringfügig Browser-abhängig. Außerdem wird für einen Großteil des Layouts CSS verwendet, wobei die grobe Gesamtstruktur der Applikation von GWT \texttt{LayoutPanels} erzeugt wird, welche nicht mit Tabellen arbeiten. Dies vereinfacht das Layout der Gesamtstruktur, ermöglicht aber auch gleichzeitig sehr flexibles Feindesign mit CSS.
+\end{itemize}
+
+\subsection{Nebenläufigkeit der Reduktion und der Benutzeroberfläche}
+\begin{itemize}
+\item[] \textbf{Problem:}
+Eines der Ziele der Entwicklung war, dass Reduktion und UI vollständig nebenläufig sind, damit die Benutzeroberfläche auch während einer Reduktion noch bedienbar ist.
+In JavaScript würde man diese Funktionalität mithilfe von Web Workers bereitstellen. 
+GWT implementiert Web Workers jedoch nicht, weshalb der reguläre Nebenläufigsmechanismus nicht verwendbar ist, da sonst das gesamte Model in JavaScript entwickelt werden müsste.
+\item[] \textbf{Lösung:}
+Statt eine vollständige Nebenläufigkeit zu implementieren, wird ein GWT-Mechanismus verwendet, der es erlaubt, am Ende jeder Iteration des Browser-Event-Loops Reduktionen durchgeführt.  
+Die Reduktionen erhalten ein Zeitfenster von 100ms: Sobald die erste Reduktion abgeschlossen wird, die außerhalb des Zeitfensters liegt, wird die Reduktion in dieser Iteration beendet und erst in der nächsten Iteration fortgesetzt.
+Dieses Zeitfenster sorgt erfahrungsgemäß für eine gute Balance zwischen Performance und Responsiveness der UI: Die UI wird zwar merksam etwas langsamer, die Reduktion wird aber nicht stark beeinträchtigt.
 \end{itemize}
 
 \newpage

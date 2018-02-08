@@ -70,25 +70,28 @@ public class Parser {
 	public LambdaTerm parse(String input) throws ParseException {
 		String[] possibleRows = input.split("\n");
 
-		ArrayList<String> rows = new ArrayList<String>();
+		ArrayList<Integer> rows = new ArrayList<Integer>();
 		for (int i = 0; i < possibleRows.length; i++) {
 			if (possibleRows[i] == "") {
 				continue;
 			}
-			MatchResult blankResult = RegExp.compile("\\s+^[.]").exec(possibleRows[i]);
-			MatchResult commentResult = RegExp.compile("\\s*--.*").exec(possibleRows[i]);
-			if (blankResult == null && commentResult == null) {
-				rows.add(possibleRows[i]);
+			possibleRows[i] = possibleRows[i].substring(0, (possibleRows[i] + "--").indexOf("--"));
+			MatchResult blankResult = RegExp.compile("^\\s*$").exec(possibleRows[i]);
+			//MatchResult commentResult = RegExp.compile("\\s*--.*").exec(possibleRows[i]);
+			if (blankResult == null) {
+				//indow.alert(possibleRows[i].substring(0, possibleRows[i].indexOf("--")));
+				//rows.add(possibleRows[i].substring(0, possibleRows[i].indexOf("--")));
+				rows.add(i);
 			}
 		}
 		for (int i = 0; i < (rows.size() - 1); i++) {
-			rowPos = i;
-			readLibraryTerm(rows.get(i));
+			rowPos = rows.get(i);
+			readLibraryTerm(possibleRows[rows.get(i)]);
 		}
-		// columnPos = 0;
-		rowPos = rows.size() - 1;
-		String lastLine = rows.get((rows.size() - 1));
-		return parseTerm(lastLine);
+
+		rowPos = rows.get(rows.size() - 1);
+		String lastLine = possibleRows[rows.get((rows.size() - 1))];
+		return parseTerm(lastLine, 0);
 	}
 
 	private void readLibraryTerm(String input) throws ParseException {
@@ -97,10 +100,10 @@ public class Parser {
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1].trim();
-			LambdaTerm term = parseTerm(termString);
+			LambdaTerm term = parseTerm(termString, input.length() - termString.length());
 			inputLibrary.addTerm(term, name);
 		} else {
-			throw new ParseException("\"" + input + "\"is not a valid name assignment", rowPos, 0);
+			throw new ParseException("\"" + input + "\"is not a valid name assignment", rowPos, 0, 0);
 		}
 	}
 
@@ -134,8 +137,8 @@ public class Parser {
 	 * @throws ParseException
 	 *             if the String can not be parsed
 	 */
-	private LambdaTerm parseTerm(String input) throws ParseException {
-		tokens = Arrays.stream(new Tokeniser().tokenise(input)).filter(t -> t.getType() != TokenType.SPACE)
+	private LambdaTerm parseTerm(String input, int offset) throws ParseException {
+		tokens = Arrays.stream(new Tokeniser().tokenise(input, offset, rowPos)).filter(t -> t.getType() != TokenType.SPACE)
 				.toArray(Token[]::new);
 		boundVariables = new ArrayList<>();
 		return parseLambdaTerm(0, tokens.length);
@@ -143,7 +146,7 @@ public class Parser {
 
 	private LambdaTerm parseLambdaTerm(int left, int right) throws ParseException {
 		if (left == right)
-			throw new ParseException("The empty term is not a lambda term", rowPos, left);
+			throw new ParseException("The empty term is not a lambda term", rowPos, tokens[left].getStart(), tokens[left].getEnd());
 
 		ArrayList<LambdaTerm> terms = new ArrayList<>();
 
@@ -173,12 +176,12 @@ public class Parser {
 			if (diff == 0)
 				return i;
 		}
-		throw new ParseException("Unbalanced parentheses.", rowPos, left);
+		throw new ParseException("Unbalanced parentheses.", rowPos, tokens[left].getStart(), tokens[right].getEnd());
 	}
 
 	private RangedTerm parseNonApplication(int left, int right) throws ParseException {
 		if (left == right)
-			throw new ParseException("The empty term is not a lambda term", rowPos, left);
+			throw new ParseException("The empty term is not a lambda term", rowPos, tokens[left].getStart(), tokens[left].getEnd());
 
 		switch (tokens[left].getType()) {
 		case LBRACKET:
@@ -188,7 +191,7 @@ public class Parser {
 		case LAMBDA:
 			if (right <= left + 3 || tokens[left + 1].getType() != TokenType.NAME
 					|| tokens[left + 2].getType() != TokenType.DOT)
-				throw new ParseException("Malformed lambda expression", rowPos, left);
+				throw new ParseException("Malformed lambda expression", rowPos, tokens[left].getStart(), tokens[left].getEnd());
 
 			boundVariables.add(tokens[left + 1].getContent());
 			LambdaTerm result = new Abstraction(tokens[left + 1].getContent(), parseLambdaTerm(left + 3, right));
@@ -209,7 +212,7 @@ public class Parser {
 				return new RangedTerm(left + 1, new FreeVariable(looking));
 
 		default:
-			throw new ParseException("Unexpected token: \"" + tokens[left].getType().toString() + "\"", rowPos, left);
+			throw new ParseException("Unexpected token: \"" + tokens[left].getType().toString() + "\"", rowPos, tokens[left].getStart(), tokens[left].getEnd());
 		}
 	}
 

@@ -11,6 +11,8 @@ public class Token {
 
 	private final String content;
 	private TokenType type;
+	private int start;
+	private int end;
 
 	/**
 	 * Creates a new Token containing the entered String and type.
@@ -20,9 +22,11 @@ public class Token {
 	 * @param type
 	 *            The Token's type
 	 */
-	public Token(String content, TokenType type) {
+	public Token(String content, TokenType type, int start, int end) {
 		this.content = content;
 		this.type = type;
+		this.start = start;
+		this.end = end;
 	}
 
 	/**
@@ -36,5 +40,13 @@ public class Token {
 
 	public TokenType getType() {
 		return type;
+	}
+	
+	public int getStart() {
+		return start;
+	}
+	
+	public int getEnd() {
+		return end;
 	}
 }

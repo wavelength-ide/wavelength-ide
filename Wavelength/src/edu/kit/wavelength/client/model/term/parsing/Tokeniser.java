@@ -23,7 +23,7 @@ public class Tokeniser {
 	 * @throws ParseException if the input String can not be tokenised
 	 * 			
 	 */
-	public Token[] tokenise(String input) throws ParseException {
+	public Token[] tokenise(String input, int offset, int rowPos) throws ParseException {
 		TokenPattern leftBracket = new TokenPattern("\\(", TokenType.LBRACKET);
 		TokenPattern rigthBracket = new TokenPattern("\\)", TokenType.RBRACKET);
 		TokenPattern name = new TokenPattern("[a-zA-Z0-9]+", TokenType.NAME);
@@ -34,6 +34,7 @@ public class Tokeniser {
 		String remainingInput = input;
 		ArrayList<Token> tokens = new ArrayList<Token>();
 		boolean foundMatch;
+
 		do {
 			foundMatch = false;
 			for (int i = 0; i < types.length; i++) {
@@ -41,9 +42,10 @@ public class Tokeniser {
 				MatchResult mresult = cRegex.exec(remainingInput);
 				if (mresult != null && mresult.getGroupCount() > 0) {
 					foundMatch = true;
-					String newContent = mresult.getGroup(0).trim();
+					String newContent = mresult.getGroup(0);
+					tokens.add(new Token(newContent, types[i].getType(), input.length() - remainingInput.length() + offset,
+							input.length() - remainingInput.length() - newContent.length() + offset));
 					remainingInput = cRegex.replace(remainingInput, "");
-					tokens.add(new Token(newContent, types[i].getType()));
 					break;
 				}
 			}
@@ -59,35 +61,9 @@ public class Tokeniser {
 		} else {
 			int column = input.length() - remainingInput.length();
 			System.out.println(remainingInput.length());
-			throw new ParseException("Term could not be parsed, found unknown symbol.", -1, column);
+			throw new ParseException("Term could not be parsed, found unknown symbol.", rowPos, column + offset, column + offset + 1);
 
 		}
-	}
-
-	/**
-	 * Divides an input String containing a name assignment into tokens. The
-	 * first token will always include the name and the last token the term.
-	 * 
-	 * @param input
-	 *            The String to tokenise
-	 * @return An array containing the tokenised input String
-	 */
-	public Token[] tokeniseNameAssignment(String input) {
-		Token[] result = new Token[3];
-		TokenPattern[] types = new TokenPattern[3];
-		types[0] = new TokenPattern("[a-zA-Z\\p{L}[^λ]]*", TokenType.NAME);
-		types[1] = new TokenPattern("\\s*=\\s*", TokenType.EQUALS);
-		types[2] = new TokenPattern("**[^" + newLine + "]", TokenType.NEWLINE);
-		for (int i = 0; i < 3; i++) {
-			RegExp cRegex = types[i].getRegExp();
-			MatchResult mresult = cRegex.exec(input);
-			if (mresult.getGroupCount() > 1) {
-				mresult.getGroup(1);
-				result[i] = new Token(mresult.getGroup(1).trim(), types[i].getType());
-				input = cRegex.replace(input, "");
-			}
-		}
-		return result;
 	}
 
 	/**

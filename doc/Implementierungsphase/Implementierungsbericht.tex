@@ -252,6 +252,16 @@ Die Nicht-Funktionale Anforderung \textbf{N1} verlangt jedoch, dass die Anwendun
 Statt eine vollständige Nebenläufigkeit zu implementieren, wird ein GWT-Mechanismus verwendet, der es erlaubt, am Ende jeder Iteration des Browser-Event-Loops Reduktionen durchgeführt.
 Die Reduktionen erhalten ein Zeitfenster von 100ms: Sobald die erste Reduktion abgeschlossen wird, die außerhalb des Zeitfensters liegt, wird die Reduktion in dieser Iteration beendet und erst in der nächsten Iteration fortgesetzt.
 Dieses Zeitfenster sorgt erfahrungsgemäß für eine gute Balance zwischen Performance und Responsiveness der UI: Die UI wird zwar merksam etwas langsamer, die Reduktion wird aber nicht stark beeinträchtigt.
+
+\subsection{Unicode-Ausgabe}
+Um alle im Pflichtenheft spezifizierten Features umzusetzen, muss die Ausgabe als HTML Code erzeugt und mit CSS gestylt werden. GWT bietet hierfür nur wenige Widgets an. Die letztendlich funktionierende Implementierung verlangt eine Hilfsklasse, die ein Tupel aus den GWT Widgets \texttt{FlowPanel} und \texttt{Anchor}. Für beide diese Widgets ist das hinzufügen einer ID für CSS Stylings möglich. Das \texttt{Anchor} Widget bietet weiterhin die Möglichkeit für User Interaktionen. Eine Übergabe der erzeugten Unicode-Terme als Tupel ist notwendig, um im Nachhinein CSS Stylings manipulieren zu können. Dies macht unter anderem möglich, dass nur der letzte angezeigte Unicode-Term manuell ausgewertet werden kann.
+
+\subsection{Baum-Ausgabe}
+\begin{itemize}
+\item[] \textbf{Problem:} Reduzierbare Lambda-Terme können laut Spezifikation im Pflichtenheft auch in der Baum-Darstellung manuell reduziert werden. Dies ist in der aktuellen Version nicht implementiert.
+\item[] \textbf{Lösung:} Bisher existiert für dieses Problem noch keine Lösung. Die verwendete Bibliothek \texttt{vis.js} bietet zwar die Möglichkeit Klicks auf Knoten zu registrieren, da aber auch die Möglichkeit besteht mehrere Knoten und sogar Kanten auszuwählen, ist nicht garantiert, dass im rückgegebenen Objekt nur der gewünschte Knoten beinhaltet ist. Weiterhin besteht nicht die Möglichkeit im Nachhinein Optionen zu Bäumen hinzuzufügen. Das hat zur Folge, dass bei jedem Hinzufügen eines neuen Terms zur Ausgabe der vorhergehende Baum neu erzeugt werden muss, um ein Klicken auf diesen zu verhindern. Da das Hinzufügen eines einzelnen neuen Baumes zur Ausgabe schon bemerkbar langsam ist, wäre das Hinzufügen eines weiteren Baumes ein nicht gewünschter zeitlicher Overhead.
+Diese Faktoren machen unter Verwendung von \texttt{vis.js} ein Anklicken von Baum-Termen nicht möglich und auch nicht nutzerfreundlich. 
+
 \end{itemize}
 
 

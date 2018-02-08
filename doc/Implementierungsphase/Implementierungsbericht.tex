@@ -103,7 +103,7 @@ Daher ist es sinnvoll automatisierte Tests bereitzustellen, insbesondere um Regr
 
 \section{Änderungen am Entwurf}
 
-\subsection{\textbf{Die Pakete \texttt{edu.kit.wavelength.client.view.webui.component} und \texttt{edu.kit.wavelength.client.view.api} wurden entfernt:}}
+\subsection[Entfernte Pakete]{Die Pakete \texttt{edu.kit.wavelength.client.view.webui.component} und \texttt{edu.kit.wavelength.client.view.api} wurden entfernt:}
 
 Die Verwendung der Bootstrap-Komponenten anstelle der ursprünglich geplanten GWT-Komponenten hätte eine Anpassung der Wrapper-Klassen im \texttt{webui.component-Paket} zur Folge.
 Diese wurden aber vollständig durch die Komponenten obsolet.
@@ -130,8 +130,14 @@ Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2
 Die bei der Serialisierung erzeugten Zeichenketten können aber unter Umständen sehr viel länger als die übliche Grenze von 2.000 Zeichen werden.
 Daher wird die Serialisierung in einer Datenbank gespeichert. 
 Dann wird ihr eine eindeutige Zeichenkette zugewiesen, die für die Deserialisierung verwendet werden kann.
+Diese wird als über Javas \texttt{UUID}-Klasse implementiert.
+Eine UUID ist eine 128-Bit Zahl.
+Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobei die Zahl zufällig generiert wird.
+Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
+Durch diese Implementierung haben die URLs konstante Länge.
+Außerdem hat die Applikation dadurch eine Server-Seite, die die Datenbank betreibt.
  
-\subsection{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
+\subsection[Hinzugefügte Pakete]{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
 
 Die \texttt{database-Pakete} stellen Schnittstellen und Implementierung für den Zugriff auf die SQLite-Datenbank beziehungsweise für deren Manipulation bereit.
 Auf der Client-Seite stehen die Interfaces \texttt{DatabaseService} und \texttt{DatabaseServiceAsync} zur Kommunikation mit dem Server bereit.
@@ -166,7 +172,7 @@ Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss
 \textbf{K2} & Exportformate & \checkmark \\
 \textbf{K3} & Ausgabeformate & \checkmark\\
 \textbf{K4} & Erweiterte Fehlerdiagnostik & \checkmark & Angabe von Behebungsmöglichkeiten \\
- &&& und Markierung im Editor fehlen \\
+ &&& verworfen \\
 \textbf{K5} & Intelligenter Editor & \checkmark \\
 \textbf{K6} & Standardbibliothek & \checkmark \\
 \textbf{K7} & Übungsaufgaben & \checkmark & automatische Tests verworfen\\
@@ -181,7 +187,7 @@ Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss
 
 Es konnten also alle im Pflichtenheft aufgestellten Kriterien umgesetzt werden, manche jedoch etwas eingeschränkt:
 
-So werden Fehlerstellen momentan nicht im Editor markiert und es wird auch keine Hilfestellung gegeben, wie ein Fehler beseitigt werden kann.
+So wird momentan keine Hilfestellung gegeben, wie ein Fehler beseitigt werden kann.
 
 Wie im Entwurfsdokument erklärt wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
 
@@ -192,6 +198,14 @@ Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus.
 Das führt dazu, dass beim Deserialisieren weder die aktuelle Übungsaufgabe noch die Fenster mit Aufgabenstellung und Lösung wiederhergestellt werden.
 Dieses Feature wurde allein aus Zeitgründen ausgelassen und wird in der Qualitätssicherungsphase nachgereicht.
 
+\section{Schwierigkeiten bei der Implementierung}
+\subsection{Serialisierung}
+Im Entwurf war vorgesehen folgende Daten in einer Zeichenkette zu speichern: \\
+ausgewählte Bibliotheken, Eingabe, Ausgabe, ausgewählte Reduktionsordnung, ausgewähltes Ausgabeformat, ausgewählte Ausgabelänge.
+Diese Zeichenkette wird dann zu der Browser URL hinzugefügt.
+Diese Zeichenkette kann aber sehr lang werden, da beispielsweise die Eingabe direkt gespeichert wird.
+Der Protokollstandard für HTML schreibt zwar die Annahme beliebig langer URLs vor, in der Praxis aber unterstützt kein Browser URLs, die länger als 2.000 Zeichen sind.
+Damit 
 
 \newpage
 \section{Implementierungsplan}

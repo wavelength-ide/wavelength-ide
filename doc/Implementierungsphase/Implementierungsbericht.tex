@@ -1,4 +1,4 @@
-\documentclass[parskip=full,11pt,twoside]{scrartcl}
+\documentclass[parskip=full,11pt]{scrartcl}
 
 \usepackage[sfdefault,light]{roboto}
 \usepackage{inconsolata}
@@ -135,7 +135,6 @@ Die Vergabe dieser UUIDs an einen Serialisierungsstring erfolgt bei Bedarf, wobe
 Durch die große Auswahl ist eine doppelte Besetzung sehr unwahrscheinlich.
 Durch diese Implementierung haben die URLs konstante Länge.
 Außerdem hat die Applikation dadurch eine Server-Seite, die die Datenbank betreibt.
-
  
 \subsection[Hinzugefügte Pakete]{Neue Pakete: \texttt{edu.kit.wavelength.client.database} und \texttt{edu.kit.wavelength.server.database}}
 
@@ -160,7 +159,7 @@ Auf der Server-Seite steht \texttt{DatabaseServiceImpl}.
 \section{Implementierte Funktionalitäten}
 Hier gibt es einen kurzen Überblick über die im Pflichtenheft definierten Muss- und Kann-Kriterien und deren Umsetzung:
 
-\hspace*{-2cm}
+\hspace*{-1cm}
 \begin{tabular}{l | l | l | l}
 \textbf{Nummer} & \textbf{Beschreibung} & \textbf{implementiert?} & \textbf{Kommentar} \\
 \hline
@@ -191,7 +190,7 @@ So wird momentan keine Hilfestellung gegeben, wie ein Fehler beseitigt werden ka
 
 Wie im Entwurfsdokument erklärt wurden die automatischen Tests für Übungsaufgaben nicht implementiert.
 
-Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich..
+Im Schritt-für-Schritt Modus ist die manuelle Auswertung durch Anklicken nur für die Unicode-Ausgabe möglich.
 Es ist noch kein Lösungsansatz für die Implementierung dieses Features für die Ausgabe als Syntaxbaum bekannt.
 
 Die Serialisierung des Zustandes berücksichtigt nicht den Übungsmodus. 
@@ -205,7 +204,7 @@ Dieses Feature wurde allein aus Zeitgründen ausgelassen und wird in der Qualit�
 Die in der Praxis gängigen Protokolle verhindern beliebig lange URLs (ab etwa 2.000 Zeichen gibt es Probleme). 
 Die bei der Serialisierung erzeugten Zeichenketten können aber unter Umständen sehr viel länger als die übliche Grenze von 2.000 Zeichen werden.
 \item[] \textbf{Lösung:} 
-Daher wird die Serialisierung in einer Datenbank gespeichert. 
+Die Serialisierung wird in einer Datenbank gespeichert. 
 Dann wird ihr eine eindeutige Zeichenkette zugewiesen, die für die Deserialisierung verwendet werden kann.
 Diese wird als über Javas \texttt{UUID}-Klasse implementiert.
 Eine UUID ist eine 128-Bit Zahl.
@@ -217,13 +216,13 @@ Durch diese Implementierung haben die URLs konstante Länge.
 \newpage
 \section{Implementierungsplan}
 \begin{figure}[h]
-\hspace*{-1cm}
+\hspace*{-2cm}
 \includegraphics[trim={0, 9.5cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan-vorher.pdf}
 \caption{Der Implementierungsplan wie er zu Beginn der Implementierungsphase vereinbart wurde}
 \end{figure}
 
 \begin{figure}[H]
-\hspace*{-1cm}
+\hspace*{-2cm}
 \includegraphics[trim={0, 7cm, 0, 0}, clip, scale=0.65, page=4]{Implementierungsplan/Implementierungsplan.pdf}
 \caption[caption]{Der reale Verlauf der Implementierungsphase: \\\hspace{\textwidth}
 Die oberen Balken entsprechen der Realität, die unteren der Planung.}

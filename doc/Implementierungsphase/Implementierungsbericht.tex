@@ -54,7 +54,7 @@ Um dieser Anforderung nachzukommen, wird die Anwendung in Java programmiert und 
 \subsection{GWT-Bootstrap 3.0.9.4}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Optisch ansprechende Benutzeroberfläche
-\item[] \textbf{Beschreibung:} GWT-Bootstrap stellt Java-Klassen für die Verwendung von Bootstrap-Komponenten mit GWT bereit.
+\item[] \textbf{Beschreibung:} GWT-Bootstrap stellt Java-Klassen für die Verwendung von Boot\-strap-Komponenten mit GWT bereit.
 \item[] \textbf{Erläuterung:} Für die Entwickler waren die von GWT bereitgestellten GUI-Elemente optisch inkohärent und von niederer Anmut.
 Die optische Inkohärenz entsteht dadurch, dass die gleiche Komponente in unterschiedlichen Browsern unterschiedlich dargestellt wird.
 Die von GWT bereitgestellten Komponenten wirken durch ihr eckiges Design eher unmodern.
@@ -163,7 +163,7 @@ Auf der Server-Seite steht \texttt{DatabaseServiceImpl}.
 \subsection{Fertigstellung der Ausführung}
 Am Ende der Ausführung geht die Applikation in den Step-by-Step-Modus über. Da die Reduktion aber im Event Loop durch GWT gesteuert wird, muss die Information über die Fertigstellung der Ausführung von der automatischen Reduktion an die Benutzeroberfläche weitergegeben werden.
 Hierfür gibt es nun einen weiteren \texttt{Observer}: Der \texttt{ControlObserver} im \texttt{view.execution}-Package wird benachrichtigt, wenn der \texttt{Executor} von alleine Zustandsübergänge durchführt.
-Die einzige derartige Übergangsbenachrichtigung ist die Benachrichtigung bei Fertigstellung der Ausführung, welche im \texttt{ControlObserver} durch die \texttt{finish}-Methode realisiert wird.
+Die einzige derartige Übergangsbenachrichtigung ist die Benachrichtigung bei Fertigstellung der Ausführung, welche im \texttt{ControlObserver} durch die Methode \texttt{finish} realisiert wird.
 Die \texttt{FinishExecution}-Klasse im \texttt{view.update}-Package implementiert den \texttt{ControlObserver} und aktualisiert den Zustand der Benutzeroberfläche wenn die Ausführung fertiggestellt wird.
 
 \newpage
@@ -258,7 +258,7 @@ sichtbar für die \texttt{LambdaTerm}-Klasse sind, in der die Typauflösung für
 
 \item[] \textbf{Problem:}
 Die Komponenten, die von GWT bereitgestellt werden, sind in ihrer Funktionalität und Konfigurierbarkeit stark eingeschränkt.
-Das Aussehen der GWT-Kom\-po\-nen\-ten ist stark Browser-abhängig, die von GWT bereitgestellten Layout-Mechanismen werden an vielen Stellen durch Tabellen realisiert und sind nicht ausreichend, um die Applikation zu modellieren, es werden nicht alle der gängigen UI-Komponenten bereitgestellt und die Komponenten, die bereitgestellt werden, sind mit Java nur geringfügig konfigurierbar.
+Das Aussehen der GWT-Kom\-po\-nen\-ten ist stark Browser-abhängig, die von GWT bereitgestellten Lay\-out-Me\-cha\-nis\-men werden an vielen Stellen durch Tabellen realisiert und sind nicht ausreichend, um die Applikation zu modellieren, es werden nicht alle der gängigen UI-Komponenten bereitgestellt und die Komponenten, die bereitgestellt werden, sind mit Java nur geringfügig konfigurierbar.
 \item[] \textbf{Lösung:}
 Statt GWT-Komponenten zu verwenden, wird die Bibliothek "GWTBootstrap 3" verwendet, welche für alle in Bootstrap 3 verfügbaren Komponenten Ja\-va-Bin\-dings bereitstellt. Diese Komponenten sind gut konfigurierbar, komplett und im Bezug auf das Aussehen nur geringfügig Browser-abhängig. Außerdem wird für einen Großteil des Layouts CSS verwendet, wobei die grobe Gesamtstruktur der Applikation von GWT \texttt{LayoutPanel}s erzeugt wird, welche nicht mit Tabellen arbeiten. Dies vereinfacht das Layout der Gesamtstruktur, ermöglicht aber auch gleichzeitig sehr flexibles Feindesign mit CSS.
 \end{itemize}

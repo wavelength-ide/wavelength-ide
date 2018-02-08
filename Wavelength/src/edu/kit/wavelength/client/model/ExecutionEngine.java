@@ -33,9 +33,11 @@ public class ExecutionEngine {
 
 	private ArrayList<NumberedTerm> shown;
 	private RingBuffer current;
-	private int currentNum, lastDisplayedNum;
+
+	private int currentNum;
+	private int lastDisplayedNum;
 	private ArrayList<Library> libraries;
-	
+
 	private static final int ORDER_POSITION = 0;
 	private static final int SIZE_POSITION = 1;
 	private static final int SHOWN_POSITION = 2;
@@ -58,9 +60,10 @@ public class ExecutionEngine {
 	 *            The {@link Libraries} to be taken into consideration during
 	 *            parsing
 	 */
-	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries) throws ParseException {
+	public ExecutionEngine(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
+			throws ParseException {
 		Parser p = new Parser(libraries);
-		
+
 		this.libraries = new ArrayList<>(libraries);
 		this.libraries.add(p.getInputLibary());
 
@@ -74,25 +77,44 @@ public class ExecutionEngine {
 		this.currentNum = 0;
 		this.lastDisplayedNum = 0;
 	}
-	
+
+	/**
+	 * Instantiates a new ExecutionEngine from its serialization.
+	 * 
+	 * @param serialized
+	 *            A serialized ExecutionEngine
+	 */
 	public ExecutionEngine(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
 		assert extracted.size() == TOTAL_SERIALIZATION_SIZE;
-		
+
 		this.order = ReductionOrders.deserialize(extracted.get(ORDER_POSITION));
 		this.size = OutputSizes.deserialize(extracted.get(SIZE_POSITION));
-		this.shown = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(SHOWN_POSITION), NumberedTerm::new));
+		this.shown = new ArrayList<>(
+				SerializationUtilities.deserializeList(extracted.get(SHOWN_POSITION), NumberedTerm::new));
 		this.current = new RingBuffer(extracted.get(CURRENT_POSITION));
 		this.currentNum = Integer.valueOf(extracted.get(CURRENT_NUM_POSITION));
 		this.lastDisplayedNum = Integer.valueOf(extracted.get(LAST_DISPLAYED_NUM_POSITION));
-		this.libraries = new ArrayList<>(SerializationUtilities.deserializeList(extracted.get(LIBRARIES_POSITION), Libraries::deserialize));
+		this.libraries = new ArrayList<>(
+				SerializationUtilities.deserializeList(extracted.get(LIBRARIES_POSITION), Libraries::deserialize));
 	}
+
+	/**
+	 * Returns the libraries that have been used by the execution engine.
+	 * 
+	 * @return The libraries that have been used by the execution engine
+	 */
 	public List<Library> getLibraries() {
+		// Make sure the user cannot edit our libraries
 		return Collections.unmodifiableList(libraries);
 	}
 
+	// Reduces the given redex in the current term, adds the result to the correct
+	// internal
+	// structures and returns which terms should be displayed
 	private List<LambdaTerm> pushTerm(Application redex, boolean displayOverride) {
 
+		// Reduce
 		LambdaTerm newTerm = current.get(currentNum).acceptVisitor(new BetaReducer(redex));
 		++currentNum;
 
@@ -106,6 +128,7 @@ public class ExecutionEngine {
 		}
 
 		if (isFinished()) {
+			// We need the last few terms that have been reduced, which we get from current
 			result.addAll(size.displayAtEnd(currentNum, lastDisplayedNum).stream()
 					.map(i -> new NumberedTerm(current.get(i), i)).collect(Collectors.toList()));
 		}
@@ -150,7 +173,7 @@ public class ExecutionEngine {
 	public boolean isFinished() {
 		return order.next(current.get(currentNum)) == null;
 	}
-	
+
 	public boolean canStepBackward() {
 		return shown.size() >= 2;
 	}
@@ -159,11 +182,16 @@ public class ExecutionEngine {
 	 * Reverts to the previously output {@link LambdaTerm}.
 	 */
 	public void stepBackward() {
-		// This code is buggy. Can you spot it?
-		
 		if (!canStepBackward())
 			throw new IllegalStateException("Not enough terms have been shown to step backwards");
-		
+
+		// This is slightly fragile if different reduction orders reach different normal
+		// forms at
+		// different speeds, because the ring buffer will hold incorrect terms at that
+		// point. Aside
+		// from saving the history of each displayed term instead of each displayed
+		// term, there is no
+		// fix for this.
 		shown.remove(shown.size() - 1);
 		NumberedTerm target = shown.get(shown.size() - 1);
 		currentNum = target.getNumber();
@@ -188,14 +216,14 @@ public class ExecutionEngine {
 	private LambdaTerm getLast() {
 		return shown.get(shown.size() - 1).getTerm();
 	}
-	
+
 	public boolean isCurrentDisplayed() {
 		return lastDisplayedNum == currentNum;
 	}
 
 	/**
 	 * Displays the currently reduced {@link LambdaTerm}, adding it to the list of
-	 * displayed {@link LambdaTerm}.
+	 * displayed {@link LambdaTerm}s.
 	 * 
 	 * @return the current {@link LambdaTerm}
 	 */
@@ -225,13 +253,9 @@ public class ExecutionEngine {
 	 * @return The ExecutionEngine's serialized String representation
 	 */
 	public StringBuilder serialize() {
-		return SerializationUtilities.enclose(
-				order.serialize(),
-				size.serialize(),
-				SerializationUtilities.serializeList(shown, NumberedTerm::serialize),
-				current.serialize(),
-				new StringBuilder(String.valueOf(currentNum)),
-				new StringBuilder(String.valueOf(lastDisplayedNum)),
+		return SerializationUtilities.enclose(order.serialize(), size.serialize(),
+				SerializationUtilities.serializeList(shown, NumberedTerm::serialize), current.serialize(),
+				new StringBuilder(String.valueOf(currentNum)), new StringBuilder(String.valueOf(lastDisplayedNum)),
 				SerializationUtilities.serializeList(libraries, Library::serialize));
 	}
 }

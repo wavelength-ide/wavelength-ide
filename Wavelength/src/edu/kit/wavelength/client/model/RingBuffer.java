@@ -8,6 +8,7 @@ import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
+// A ring buffer of lambda terms
 final class RingBuffer implements Serializable {
 
 	private ArrayList<LambdaTerm> elements;

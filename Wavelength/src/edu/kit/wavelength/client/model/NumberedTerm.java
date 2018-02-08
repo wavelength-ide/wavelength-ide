@@ -7,9 +7,14 @@ import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
+// Simple tuple class for a lambda term and a number.
 class NumberedTerm implements Serializable {
 	private LambdaTerm term;
 	private int number;
+	
+	private static final int NUMBER_POSITION = 0;
+	private static final int TERM_POSITION = 1;
+	private static final int NUM_COMPONENTS = 2;
 
 	public NumberedTerm(LambdaTerm term, int number) {
 		Objects.requireNonNull(term);
@@ -20,10 +25,10 @@ class NumberedTerm implements Serializable {
 	
 	public NumberedTerm(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
-		assert extracted.size() == 2;
+		assert extracted.size() == NUM_COMPONENTS;
 		
-		this.number = Integer.valueOf(extracted.get(0));
-		this.term = LambdaTerm.deserialize(extracted.get(1));
+		this.number = Integer.valueOf(extracted.get(NUMBER_POSITION));
+		this.term = LambdaTerm.deserialize(extracted.get(TERM_POSITION));
 	}
 
 	public LambdaTerm getTerm() {

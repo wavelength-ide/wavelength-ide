@@ -72,9 +72,10 @@ public class StepByStep implements Action {
 		} catch (ParseException e) {
 			String message = e.getMessage();
 			int row = e.getRow();
-			int column = e.getColumn();
-			app.outputArea().add(new Text(message + ":" + row + ":" + column));
-			app.editor().error(message, row, row, column, column);
+			int columnStart = e.getColumnStart();
+			int columnEnd = e.getColumnEnd();
+			app.outputArea().add(new Text(message + "(row " + row + ", colums " + columnStart + "-" + columnEnd + ")"));
+			app.editor().error(message, row, row, columnStart, columnEnd);
 			return;
 		}
 

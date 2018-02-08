@@ -43,8 +43,8 @@ public class Tokeniser {
 				if (mresult != null && mresult.getGroupCount() > 0) {
 					foundMatch = true;
 					String newContent = mresult.getGroup(0);
-					tokens.add(new Token(newContent, types[i].getType(), input.length() - remainingInput.length() + offset,
-							input.length() - remainingInput.length() - newContent.length() + offset));
+					tokens.add(new Token(newContent, types[i].getType(), input.length() - remainingInput.length() - newContent.length() + offset,
+							input.length() - remainingInput.length() + offset));
 					remainingInput = cRegex.replace(remainingInput, "");
 					break;
 				}

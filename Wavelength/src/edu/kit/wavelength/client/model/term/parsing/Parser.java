@@ -174,7 +174,7 @@ public class Parser {
 			if (diff == 0)
 				return i;
 		}
-		throw new ParseException("Unbalanced parentheses.", rowPos, tokens[left].getStart(), tokens[right].getEnd());
+		throw new ParseException("Unbalanced parentheses.", rowPos, tokens[left].getStart(), tokens[left].getEnd());
 	}
 
 	private RangedTerm parseNonApplication(int left, int right) throws ParseException {
@@ -210,7 +210,7 @@ public class Parser {
 				return new RangedTerm(left + 1, new FreeVariable(looking));
 
 		default:
-			throw new ParseException("Unexpected token: \"" + tokens[left].getType().toString() + "\"", rowPos, tokens[left].getStart(), tokens[left].getEnd());
+			throw new ParseException("Unexpected token: " + tokens[left].getType().toString(), rowPos, tokens[left].getStart(), tokens[left].getEnd());
 		}
 	}
 

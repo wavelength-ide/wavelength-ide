@@ -37,31 +37,32 @@ Die Erfüllung der geforderten Spezifikationen erfordert den Einsatz verschieden
 \subsection{Google Web Toolkit (GWT)}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Programmierung der Anwendung in Java 
-\item[] \textbf{Beschreibung:} Das Google Web Toolkit kompiliert Java-Quellcode zu JavaScript, das dann auf einem Web-Server ausgeführt werden kann.
-\item[] \textbf{Erläuterung:} Ziel dieses Projektes ist die Entwicklung einer Online-Entwicklungsumgebung für den untypisierten $\lambda$-Kalkül.
-Diese unterliegt der Einschränkung, in einer statisch typisierten Programmiersprache verfasst zu werden(siehe Pflichtenheft unter N4).
-Um dieser Anforderung nachzukommen, wird die Anwendung in Java programmiert und mit GWT auf einem Web-Server ausgeführt.
+\item[] \textbf{Beschreibung:} Das Google Web Toolkit kompiliert Java-Quellcode zu JavaScript, welches direkt im Webbrowser des Anwenders läuft. Zusätzlich
+werden Werkzeuge bereitgestellt, um die Benutzeroberfläche der Webapplikation direkt in Java zu konstruieren.
+\item[] \textbf{Erläuterung:} Ziel dieses Projektes ist die Entwicklung einer Online-Ent\-wick\-lungs\-um\-ge\-bung für den untypisierten $\lambda$-Kalkül.
+Diese unterliegt der Einschränkung, in einer statisch typisierten Programmiersprache verfasst zu werden (siehe Pflichtenheft unter N4).
+Um dieser Anforderung nachzukommen, wird die Anwendung in Java programmiert und mit GWT im Webbrowser ausgeführt.
 \end{enumerate}
 
 \subsection{GWT-Bootstrap}
 \begin{enumerate}
-\item[] \textbf{Ziel:} optisch ansprechende Benutzeroberfläche 
+\item[] \textbf{Ziel:} Optisch ansprechende Benutzeroberfläche 
 \item[] \textbf{Beschreibung:} GWT-Bootstrap stellt Java-Klassen für die Verwendung von Bootstrap-Komponenten mit GWT bereit.
 \item[] \textbf{Erläuterung:} Für die Entwickler waren die von GWT bereitgestellten GUI-Elemente optisch inkohärent und von niederer Anmut.
-Ein stimmigeres Bild fanden Sie in den von Bootstrap bereitgestellten Komponenten.
+Ein stimmigeres Bild fanden sie in den von Bootstrap bereitgestellten Komponenten.
 Die Verwendung dieser Komponenten mit GWT erwies sich jedoch als umständlich.
 Um diese Komponenten trotzdem verwenden zu können, wurde GWT-Bootstrap eingebunden, das die Verwendung erheblich erleichtert.
-Darüber hinaus stellt die Bibliothek auch Icons zur Verfügung, die für die GUI verwendet werden(siehe dazu bspw Pflichtenheft Anhang A).
+Darüber hinaus stellt die Bibliothek auch Icons zur Verfügung, die für die GUI verwendet werden (siehe dazu beispielsweise Pflichtenheft Anhang A).
 Der Vorteil dieser Icons ist, dass sie einen Satz bilden, also ein konsistentes Bild bieten.
 \end{enumerate}
 
 \subsection{Monaco}
 \begin{enumerate}
 \item[] \textbf{Ziel:} Bereitstellung eines Editors 
-\item[] \textbf{Beschreibung:} Monaco ist ein Code-Editor, der in der Software Visual Studio Code verwendet wird.
-\item[] \textbf{Erläuterung:} Die Entwicklung eines Editors steht bei diesem Projekt nicht im Fokus. 
-Daher bietet es sich an, hier auf eine Bibliothek zurückzugreifen.
-Darüber hinaus wird der Monaco-Editor nicht nur den gestellten Anforderungen gerecht, sondern bietet darüber hinaus viele weitere Features.
+\item[] \textbf{Beschreibung:} Monaco ist ein Code-Editor, der in der Software Visual Studio Code verwendet wird, aber auch als freistehende
+Bibliothek zur Verfügung steht.
+\item[] \textbf{Erläuterung:} Die Entwicklung eines Editors steht bei diesem Projekt nicht im Fokus.  Daher bietet es sich an, hier auf eine Bibliothek zurückzugreifen.
+Darüber hinaus wird der Monaco-Editor nicht nur den gestellten Anforderungen gerecht, sondern bietet viele weitere Features.
 \end{enumerate}
 
 \subsection{vis.js}
@@ -69,7 +70,7 @@ Darüber hinaus wird der Monaco-Editor nicht nur den gestellten Anforderungen ge
 \item[] \textbf{Ziel:} Erstellung interaktiver Graphen 
 \item[] \textbf{Beschreibung:} Bei vis.js handelt es sich um eine Bibliothek für Visualisierungen aller Art mittels JavaScript.
 \item[] \textbf{Erläuterung:} Die Ausgabe von $\lambda$-Termen in Form eines Syntaxbaums gestaltet sich als nicht-triviale Aufgabe.
-Dieser muss nicht nur konstruiert werden, sondern auch noch stellenweise klickbar sein(siehe dazu Pflichtenheft unter F5).
+Dieser muss nicht nur konstruiert werden, sondern auch noch stellenweise klickbar sein (siehe dazu Pflichtenheft unter F5).
 Die Modellierung der Daten erfolgt als Java-Quellcode; lediglich die Visualisierung baut auf der JavaScript-Bibliothek auf.
 \end{enumerate}
 
@@ -81,7 +82,8 @@ Die Modellierung der Daten erfolgt als Java-Quellcode; lediglich die Visualisier
 Dazu wird der Zustand in eine Zeichenkette übersetzt.
 Diese kann aber eine Länge erreichen, mit der weder moderne Browser noch URL-Kürzer arbeiten können.
 Daher werden die generierten Zeichenketten in einer Datenbank gespeichert.
-Als Schlüssel wird dabei eine zufällig erzeugte UUID (Universally unique identifier) verwendet, die anschließend geteilt werden kann.
+Als Schlüssel wird dabei eine zufällig erzeugte UUID (Universally unique identifier) verwendet, die anschließend als Teil einer
+kurzen URL geteilt werden kann.
 \end{enumerate}
 
 \subsection{JUnit}
@@ -95,13 +97,17 @@ Als Schlüssel wird dabei eine zufällig erzeugte UUID (Universally unique ident
 \subsection{View}
 \textbf{Die Pakete \emph{edu.kit.wavelength.client.view.webui.component} und \emph{edu.kit.wavelength.client.view.api} wurden entfernt:} \\
 Die Verwendung der Bootstrap-Komponenten anstelle der ursprünglich geplanten GWT-Komponenten hätte eine Anpassung der Wrapper-Klassen im \emph{webui.component-Paket} zur Folge.
-Diese wurden aber teilweise durch die Komponenten obsolet. \\
-So war bspw die ImageButton Klasse für die Knöpfe mit Icons gedacht.
+Diese wurden aber teilweise durch die Komponenten obsolet.
+
+So war beispielsweise vorgesehen, die ImageButton-Klasse für Schaltflächen mit Icons zu verwenden.
 Bootstrap stellt aber über Font Awesome selbst Icons bereit, die den Knöpfen direkt zugewiesen werden können.
-Damit hat die ImageButton Klasse keine Funktionalität mehr, die sie von TextButton unterscheidet und kann gestrichen werden. \\
-So ähnlich verhält es sich mit vielen anderen Wrappern.\\
+Damit hat die ImageButton Klasse keine Funktionalität mehr, die sie von TextButton unterscheidet und kann gestrichen werden.
+
+Analog verhält es sich mit vielen anderen Wrappern.
+
 Darüber hinaus stehen die im \emph{api-Paket} definierten Interfaces bereits (unter anderem Namen) zur Verfügung.
-So entsprechen die Interfaces Readable und Writable gerade GWT's hasText-Interface.\\	
+So entsprechen die Interfaces Readable und Writable gerade GWTs hasText-Interface.
+
 Außerdem kann eine Menge an Quellcode zur Erstellung der Wrapper in der App-Klasse eingespart werden.
 
 \textbf{Die Serialisierung ignoriert den Übungsmodus:} \\
@@ -110,7 +116,7 @@ In Ermangelung von Zeit wurde der Einfachheit halber der Übungsmodus bei der Se
  Deserialisieren wiederhergestellt.
  
 \textbf{Neue Pakete: edu.kit.wavelength.client.database und edu.kit.wavelength.server.database} \\
-Die \emph{database-Pakete} stellen Schnittstellen für den Zugriff auf die SQLite-Datenbank bzw für deren Manipulation bereit ebenso wie eine konkrete Implementierung.
+Die \emph{database-Pakete} stellen Schnittstellen und Implementierung für den Zugriff auf die SQLite-Datenbank beziehungsweise für deren Manipulation bereit.
 Auf der Client-Seite stehen die Interfaces \emph{DatabaseService} und \emph{DatabaseServiceAsync}.
 
 \emph{DatabaseService} definiert die Schnittstelle für die Datenbank: \\
@@ -168,16 +174,35 @@ Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \newpage
 \section{Komponententests}
 \subsection{Paket edu.kit.wavelength.client.model.serialization}
-Dieses Paket testet die Klasse \emph{SerializationUtilities}. 
-Es wird getestet, ob die Methode \emph{List<String> extract(String input)} eine gegebene Serialisierung korrekt entpackt.
-Weiter wird getestet, ob die Methode \emph{StringBuilder enclose(StringBuilder... content)} aus gegebenen StringBuildern, die eine Serialisierung erhalten,
-einen neuen StringBuilder erzeugt, der eine gültige Gesamt-Serialisierung enthält.
+Dieses Paket testet die Klasse \emph{SerializationUtilities}, welche Hilftmethoden zur Serialisierung aggregater Datentypen
+bereitstellt. Es wird getestet, ob die Methoden zur Deserialisierung und Serialisierung von Datentypen, deren Zustand sich als Tupel
+von Komponenten auffassen lässt, korrekt funktioniert und das vorgesehene Format einhält.
+%Es wird getestet, ob die Methode \emph{List<String> extract(String input)} eine gegebene Serialisierung korrekt entpackt.
+%Weiter wird getestet, ob die Methode \emph{StringBuilder enclose(StringBuilder... content)} aus gegebenen StringBuildern, die eine Serialisierung erhalten,
+%einen neuen StringBuilder erzeugt, der eine gültige Gesamt-Serialisierung enthält.
 
 \subsection{Paket edu.kit.wavelength.client.model.term}
-In diesem Paket wird der BetaReducer ausführlich getestet: 
-Index-Anpassung, Aliases, Fixpunkte, Wachstum, Entfernung von Namen, Regexe und PartialApplications.
-Weiterhin wird der ResolvedNamesVisitor auf Gleichheit von Abstraktionen, NamedTerms und Library Terms getestet.
-Ebenso wird die Serialisierung von LambdaTerm-Objekten getestet
+Die Testklasse zur \emph{BetaReducer}-Klasse prüft die korrekte Funktion des Beta-Reduktions-Mechanismus
+der Applikation. Neben der grundlegenden Funktionalität wird getestet, dass auch in Randfällen die
+De-Bruijn-Indizes gebundener Variablen korrekt angepasst werden. Weiter wird getestet, dass in dem
+Fall, dass in einem Term der gleiche Redex mehrfach vorkommt, tatsächlich genau der Regex reduziert
+wird, welcher dem Reduzierer übergeben wurde. Dies wird für mehrere spezifische Situationen, in denen
+ein Term als Ergebnis einer Reduktion mehrfach vorkommt, zusätzlich detailliert getestet. Eine weitere
+Gruppe von Tests überprüft den Umgang mit benannten Termen. Hier muss der Reduzierer sicherstellen, dass
+Änderungen an Termen dazu führen, dass betreffende Namen gestrichen werden -- es sollten aber nicht zu viele
+Namen gestrichen werden. Schließlich wird der korrekte Umgang mit partiellen Applikationen getestet. Hier
+muss getestet werden, dass sowohl mit im Sinne der Beschleunigung "wohlgeformten" als auch mit beliebigen
+anderen Termen korrekt umgegangen wird.
+
+Weiter gibt es eine Testklasse für die allgemeine \emph{ResolvedNamesVisitor}-Klasse, welche zu Anzeigezwecken
+nicht-kollidierende Namen für die Variablen von Abstraktionen vergibt. Hier ist sicherzustellen, dass die
+vergebenen Namen tatsächlich zur Struktur des Eingabeterms passen und auch nicht kollidieren. Weiter wird
+getestet, dass bei der Namensvergabe die verschiedenen im Kontext vergebenen Namen, also umschließende Abstraktionen
+(aber nur die, die den betrachteten Term umschließen), durch den Nutzer oder Bibliotheken gebundene Namen sowie
+innerhalb des Terms vorkommende freie Variablen beachtet werden.
+
+Zusätzlich wird die Serialisierung und Deserialisierung von Lambda-Termen getestet. Hierbei wird tatsächlich
+gefordert, dass die deserialisierten Terme exakt mit ihren Urbildern übereinstimmen.
 
 \subsection{Paket edu.kit.wavelength.client.model.term.parsing}
 In diesem Paket wird der Parser getestet. 
@@ -185,7 +210,7 @@ Getestet wird das Verhalten bei leerer Eingabe, invalider Eingabe und valider Ei
 Weiter wird die Namensbindung getestet.
 
 \subsection{Paket edu.kit.wavelength.client.view.export}
-In diesem Paket werden die ExportFormate und deren Visitors getestet.
+In diesem Paket werden die Exportformate und deren Visitors getestet.
 Für die ExportFormate wird jeweils der Umgang mit null-Termen, null-Libraries, leeren Eingaben, einelementigen Eingaben und ganzen Eingabelisten getestet.
 Für die Visitor wird jeweils der Umgang mit simplen und komplexen sowie null-Eingaben getestet ebenso wie PartialApplications, Abstraktionen, Applikationen, Named Terms.
 

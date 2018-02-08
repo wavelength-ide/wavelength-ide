@@ -124,9 +124,6 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		setFlags(false);
 
 		StringBuilder absVariable = new StringBuilder(resolvedName);
-
-		// An application inside an abstraction should get brackets.
-		bracketsForApp = true;
 		StringBuilder innerTerm = new StringBuilder(abs.getInner().acceptVisitor(this));
 
 		StringBuilder result = new StringBuilder();

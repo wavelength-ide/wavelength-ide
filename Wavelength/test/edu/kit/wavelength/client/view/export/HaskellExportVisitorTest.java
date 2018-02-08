@@ -38,8 +38,8 @@ public class HaskellExportVisitorTest {
 				new FreeVariable("c"));
 		LambdaTerm term3 = new Abstraction("p", new Application(new FreeVariable("a"), term2));
 
-		assertEquals("\\x -> (a (\\y -> \\z -> (c d)))", term1.acceptVisitor(visitor).toString());
+		assertEquals("\\x -> a (\\y -> \\z -> c d)", term1.acceptVisitor(visitor).toString());
 		assertEquals("(\\x -> \\y -> x) c", term2.acceptVisitor(visitor).toString());
-		assertEquals("\\p -> (a ((\\x -> \\y -> x) c))", term3.acceptVisitor(visitor).toString());
+		assertEquals("\\p -> a ((\\x -> \\y -> x) c)", term3.acceptVisitor(visitor).toString());
 	}
 }

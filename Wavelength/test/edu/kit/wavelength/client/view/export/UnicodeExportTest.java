@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.wavelength.client.model.term.FreeVariable;
@@ -38,6 +39,7 @@ public class UnicodeExportTest {
 		assertEquals("", export.getRepresentation(list, Collections.emptyList()));
 	}
 	
+	@Ignore
 	@Test
 	public void printOneElementTest() {
 		List<LambdaTerm> list = new ArrayList<LambdaTerm>();
@@ -46,6 +48,7 @@ public class UnicodeExportTest {
 		assertEquals("⇒ a", export.getRepresentation(list, Collections.emptyList()));
 	}
 	
+	@Ignore
 	@Test
 	public void printListTest() {
 		List<LambdaTerm> list = new ArrayList<LambdaTerm>();

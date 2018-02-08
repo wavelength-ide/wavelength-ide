@@ -118,7 +118,7 @@ public class BasicExportVisitorTest {
 		LambdaTerm term5 = new Application(new FreeVariable("c"), id1);
 		LambdaTerm term6 = new Application(id1, id2);
 
-		assertEquals("\\x.(x y)", term1.acceptVisitor(visitor).toString());
+		assertEquals("\\x.x y", term1.acceptVisitor(visitor).toString());
 		assertEquals("a b c", term2.acceptVisitor(visitor).toString());
 		assertEquals("c (a b)", term3.acceptVisitor(visitor).toString());
 		assertEquals("(\\x.x) c", term4.acceptVisitor(visitor).toString());
@@ -138,9 +138,9 @@ public class BasicExportVisitorTest {
 				new Application(new FreeVariable("c"), new Application(new FreeVariable("d"), new FreeVariable("e")))));
 		LambdaTerm term4 = new Abstraction("p", new Application(new FreeVariable("a"), term2));
 
-		assertEquals("\\x.(a (\\y.\\z.(c d)))", term1.acceptVisitor(visitor).toString());
+		assertEquals("\\x.a (\\y.\\z.c d)", term1.acceptVisitor(visitor).toString());
 		assertEquals("(\\x.\\y.x) c", term2.acceptVisitor(visitor).toString());
 		assertEquals("a (b (c (d e)))", term3.acceptVisitor(visitor).toString());
-		assertEquals("\\p.(a ((\\x.\\y.x) c))", term4.acceptVisitor(visitor).toString());
+		assertEquals("\\p.a ((\\x.\\y.x) c)", term4.acceptVisitor(visitor).toString());
 	}
 }

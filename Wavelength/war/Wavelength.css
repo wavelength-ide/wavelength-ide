@@ -29,6 +29,15 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 /* add borders to separate editor from control */
 .editorExercisePanel { border-top-style: solid; border-bottom-style: solid; border-color: lightgrey; border-width: 1px; }
 
+/* set light blue background in line where error occured */
+.editorErrorContent { background: lightblue; }
+
+/* set red icon color in line where error occured */
+.editorErrorGlyphMargin { color: red; }
+
+/* set glyph error icon and align properly */
+.editorErrorGlyphMargin::before { margin-left: 2px; font-family: "FontAwesome"; content: "\f06a"; }
+
 /* fix solutionArea overflowing its parent */
 .exercisePanel { display: flex; flex-direction: column; }
 

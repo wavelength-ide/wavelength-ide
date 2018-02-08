@@ -63,7 +63,7 @@ public class RunNewExecution implements Action {
 		default: break;
 		}
 		
-		
+		app.editor().unerror();
 		try {
 			app.executor().start(code, order, size, libraries);
 		} catch (ParseException e) {
@@ -71,6 +71,7 @@ public class RunNewExecution implements Action {
 			int row = e.getRow();
 			int column = e.getColumn();
 			app.outputArea().add(new Text(message + ":" + row + ":" + column));
+			app.editor().error(message, row, row, column, column);
 			return;
 		}
 		

@@ -33,6 +33,8 @@ public class ReplayExecution implements Action {
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
 		app.exportButtons().forEach(b -> b.setEnabled(true));
 		
+		app.editor().lock();
+		
 		app.replayButton().setVisible(false);
 		app.cancelButton().setVisible(true);
 		app.unpauseButton().setVisible(true);

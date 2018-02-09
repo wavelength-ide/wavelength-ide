@@ -658,7 +658,8 @@ public class App implements Serializable {
 			exerciseButtons.forEach(b -> b.setEnabled(false));
 
 			Control.updateStepControls();
-			cancelButton.setEnabled(true);
+			replayButton.setVisible(false);
+			cancelButton.setVisible(true);
 		}
 	}
 	

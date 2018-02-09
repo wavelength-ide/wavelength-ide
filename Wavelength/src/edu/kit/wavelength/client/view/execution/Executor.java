@@ -59,6 +59,7 @@ public class Executor implements Serializable {
 			Date start = new Date();
 			while (true) {
 				if (engine.isFinished()) {
+					terminated = true;
 					paused = true;
 					controlObservers.forEach(ControlObserver::finish);
 					return false;

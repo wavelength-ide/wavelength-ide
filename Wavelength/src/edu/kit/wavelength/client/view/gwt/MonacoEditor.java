@@ -68,10 +68,18 @@ public class MonacoEditor {
 		});
 		$wnd.monaco.editor.defineTheme("lambdaTheme", {
 			base: "vs",
-			inherit: false,
+			inherit: true,
 			rules: [ 
 		        { token: "comment", foreground: "008000" } 
 			]
+		});
+		$wnd.monaco.editor.defineTheme("locked", {
+		    base: 'vs',
+		    inherit: true,
+		    rules: [{ background: "fafafa" }],
+		    colors: {
+		        "editor.background": "#fafafa",
+		    }
 		});
 		var editor = $wnd.monaco.editor.create($doc.getElementById(id), c);
 		var wrapper = @edu.kit.wavelength.client.view.gwt.MonacoEditor::new()();
@@ -109,6 +117,7 @@ public class MonacoEditor {
 		c.readOnly = true;
 		var e = this.@edu.kit.wavelength.client.view.gwt.MonacoEditor::editor;
 		e.updateOptions(c);
+		$wnd.monaco.editor.setTheme("locked"); 
 	}-*/;
 	
 	/**
@@ -119,6 +128,7 @@ public class MonacoEditor {
 		c.readOnly = false;
 		var e = this.@edu.kit.wavelength.client.view.gwt.MonacoEditor::editor;
 		e.updateOptions(c);
+		$wnd.monaco.editor.setTheme("lambdaTheme"); 
 	}-*/;
 	
 	/**

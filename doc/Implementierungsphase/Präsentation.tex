@@ -34,7 +34,6 @@
 
 \usetikzlibrary{arrows, arrows.meta, positioning}
 
-
 %-------------------------------------------------------
 % DEFFINING AND REDEFINING COMMANDS
 %-------------------------------------------------------
@@ -100,6 +99,12 @@
 %\tableofcontents
 %\end{frame}
 
+\begin{frame}[plain]
+\frametitle{GUI 2.0}
+\hspace*{-1cm}
+\includegraphics[trim={0, 2.2cm, 0, 0}, clip, scale=0.25]{img/GUI2.png}
+\end{frame}
+
 \begin{frame}
 \frametitle{Muss-Kriterien}
 \begin{itemize}
@@ -134,43 +139,11 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Kann-Kriterien - \alert{Übungsmodus}}
-\enquote{Das Programm enthält ein Übungsaufgaben-System, welches neben Aufgaben in aufsteigendem
-Schwierigkeitsgrad auch Einführungen und automatisierte Tests für die Lösungen des Nutzers
-enthält.}
+\frametitle{Kann-Kriterien - \alert{Einschränkungen}}
 \begin{itemize}
-\item keine automatisierten Tests
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Kann-Kriterien - \alert{Permalinks}}
-\enquote{Es kann ein Link generiert werden, der beim Aufrufen den gesamten Zustand
-der Sitzung wiederherstellt.}
-\begin{itemize}
-\item ignoriert den Übungsmodus
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Kann-Kriterien - \alert{erweiterte Fehlerdiagnostik}}
-\enquote{Im Falle syntaktischer Fehler werden dem Nutzer die genaue Position des Fehlers, die
-Art des Fehlers sowie Behebungsmöglichkeiten angezeigt und die relevante Stelle im
-Editor hervorgehoben.}
-\begin{itemize}
-\item Position und Art des Fehlers werden angezeigt
-\item Behebungsmöglichkeiten und Markierung im Editor fehlen
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Kann-Kriterien: \alert{Syntaxbaum}}
-\enquote{Es existiert ein Schritt-für-Schritt-Modus, welcher entweder direkt von der Eingabe
-oder durch Pausieren einer laufenden Reduktion erreicht werden kann.
-Durch Klicken kann ein bestimmter Teilausdruck ausgewertet werden oder die ausgewählte
-Auswertungsstrategie einen einzelnen Schritt machen. Diese Auswertungsschritte können rückgängig
-gemacht werden.}
-\begin{itemize}
+\item automatisierte Tests für Übungsaufgaben verworfen
+\item Serialisierung ignoriert den Übungsmodus
+\item keine Angabe von Behebungsmöglichkeiten für Fehler
 \item manuelle Auswertung des Syntaxbaums im Schritt-für-Schritt Modus nicht möglich
 \end{itemize}
 \end{frame}
@@ -187,26 +160,23 @@ Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \end{frame}
 
 \begin{frame}
-\frametitle{GUI 1.0 - Anspruch}
-\includegraphics[trim={0, 2.45cm, 0, 0} ,clip, scale=0.2]{img/GUI1_Anspruch.png}
-\end{frame}
-
-\begin{frame}
-\frametitle{GUI 1.0 - Wirklichkeit}
-\hspace*{-1cm}
-\includegraphics[scale=0.19]{img/GUI1_Wirklichkeit.png}
-\end{frame}
-
-\begin{frame}
-\frametitle{GUI 2.0}
-\hspace*{-1cm}
-\includegraphics[trim={0, 2.2cm, 0, 0} ,clip, scale=0.25]{img/GUI2.png}
+\frametitle{Schwierigkeiten}
+\begin{itemize}
+\item \texttt{Object.clone} und \texttt{Pattern-Klasse} in GWT nicht implementiert
+\item Partielle Applikationen
+\item Nebenläufigkeit
+\item Unicode-Ausgabe (HTML und CSS)
+\item Baum-Ausgabe (manuelle Auswertung und Größe)
+\item GWT-Komponenten
+\item Serialisierung (Länge der URL)
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Änderungen am Entwurf}
 \begin{itemize}
 \item Entfernung der Pakete \alert{edu.kit.wavelength.client.view.webui.component} und \alert{edu.kit.wavelength.client.view.api}
+\item server-seitige Datenbank
 \item neue Pakete \alert{edu.kit.wavelength.client.database} und \alert{edu.kit.wavelength.server.database}
 \end{itemize}
 \end{frame}
@@ -214,8 +184,23 @@ Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \begin{frame}
 \frametitle{Statistiken}
 \begin{itemize}
-\item Lines of Code: 
+\item Lines of Code: 8.216
+\item Anzahl Klassen und Interfaces: 102
+\item Anzahl Pakete: 18
+\item 320 Commits innerhalb von vier Wochen
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tools}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.1]{img/bootstrapLogo.png}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.05]{img/gwtLogo.png}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.1]{img/SQLite.png}
+
+
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.5]{img/visJSLogo.png}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.05]{img/visualStudioCodeLogo.png}
+\includegraphics[trim={0, 0, 0, 0}, clip, scale=0.5]{img/junit.png}
 \end{frame}
 
 \end{document}

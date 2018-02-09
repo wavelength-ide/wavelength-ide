@@ -142,6 +142,14 @@ public class Executor implements Serializable {
 		terminated = true;
 	}
 
+	public void replay() {
+		if (!terminated) {
+			throw new IllegalStateException("trying to replay while not terminated");
+		}
+		terminated = false;
+		executionObservers.forEach(ExecutionObserver::reloadLastTerm);
+	}
+	
 	/**
 	 * Initiates the step by step execution, allowing the caller to choose the next
 	 * step.

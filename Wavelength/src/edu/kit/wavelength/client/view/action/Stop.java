@@ -21,7 +21,6 @@ public class Stop implements Action {
 		app.backwardsButton().setEnabled(false);
 		app.stepByStepButton().setEnabled(true);
 		app.forwardButton().setEnabled(false);
-		app.cancelButton().setEnabled(false);
 
 		app.outputFormatBox().setEnabled(true);
 		app.outputSizeBox().setEnabled(true);
@@ -34,6 +33,9 @@ public class Stop implements Action {
 		app.exportButtons().forEach(b -> b.setEnabled(true));
 		app.shareButton().setEnabled(true);
 
+		app.replayButton().setVisible(true);
+		app.replayButton().setEnabled(true);
+		app.cancelButton().setVisible(false);
 		app.pauseButton().setVisible(false);
 		app.pauseButton().setEnabled(true);
 		app.unpauseButton().setVisible(false);

@@ -18,6 +18,7 @@ public class EnterDefaultMode implements Action {
 		app.editor().write("");
 		app.editor().unlock();
 		app.outputArea().clear();
+		app.replayButton().setEnabled(false);
 		app.exportButtons().forEach(b -> b.setEnabled(false));
 		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), true);

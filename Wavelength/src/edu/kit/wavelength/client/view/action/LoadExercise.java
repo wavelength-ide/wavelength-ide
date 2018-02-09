@@ -23,6 +23,7 @@ public class LoadExercise implements Action {
 	public void run() {
 		app.editor().write(exercise.getPredefinitions());
 		app.outputArea().clear();
+		app.replayButton().setEnabled(false);
 		app.executor().wipe();
 		
 		app.exportButtons().forEach(b -> b.setEnabled(false));

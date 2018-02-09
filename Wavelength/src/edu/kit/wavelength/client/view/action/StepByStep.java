@@ -82,12 +82,13 @@ public class StepByStep implements Action {
 		
 		Control.updateStepControls();
 		app.stepByStepButton().setEnabled(false);
-		app.cancelButton().setEnabled(true);
 		
 		app.exerciseButtons().forEach(b -> b.setEnabled(false));
 		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
 		app.exportButtons().forEach(b -> b.setEnabled(true));
 		
+		app.replayButton().setVisible(false);
+		app.cancelButton().setVisible(true);
 		app.unpauseButton().setVisible(true);
 		app.runButton().setVisible(false);
 		

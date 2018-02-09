@@ -50,6 +50,7 @@ import edu.kit.wavelength.client.view.action.Control;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.Pause;
+import edu.kit.wavelength.client.view.action.ReplayExecution;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
@@ -161,6 +162,7 @@ public class App implements Serializable {
 	private Button forwardButton;
 	private FlowPanel runControlPanel;
 	private Button cancelButton;
+	private Button replayButton;
 	private Button runButton;
 	private Button pauseButton;
 	private Button unpauseButton;
@@ -401,10 +403,16 @@ public class App implements Serializable {
 		controlPanel.add(runControlPanel);
 
 		cancelButton = new Button();
-		cancelButton.setEnabled(false);
+		cancelButton.setVisible(false);
 		cancelButton.addStyleName("fa fa-stop");
 		runControlPanel.add(cancelButton);
 
+		replayButton = new Button();
+		replayButton.setEnabled(false);
+		replayButton.setVisible(true);
+		replayButton.addStyleName("fa fa-refresh");
+		runControlPanel.add(replayButton);
+		
 		runButton = new Button();
 		runButton.addStyleName("fa fa-play");
 		runControlPanel.add(runButton);
@@ -499,6 +507,7 @@ public class App implements Serializable {
 		stepByStepButton.addClickHandler(e -> new StepByStep().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
 		cancelButton.addClickHandler(e -> new Stop().run());
+		replayButton.addClickHandler(e -> new ReplayExecution().run());
 		runButton.addClickHandler(e -> new RunNewExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
 
@@ -838,6 +847,10 @@ public class App implements Serializable {
 		return cancelButton;
 	}
 
+	public Button replayButton() {
+		return replayButton;
+	}
+	
 	public Button runButton() {
 		return runButton;
 	}

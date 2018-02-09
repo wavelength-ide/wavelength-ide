@@ -81,7 +81,6 @@ public class RunNewExecution implements Action {
 		app.backwardsButton().setEnabled(false);
 		app.stepByStepButton().setEnabled(false);
 		app.forwardButton().setEnabled(false);
-		app.cancelButton().setEnabled(true);
 		
 		app.editor().lock();
 		
@@ -91,6 +90,8 @@ public class RunNewExecution implements Action {
 		app.sharePanel().setVisible(false);
 		app.shareButton().setEnabled(false);
 		
+		app.replayButton().setVisible(false);
+		app.cancelButton().setVisible(true);
 		app.runButton().setVisible(false);
 		app.pauseButton().setVisible(true);
 		

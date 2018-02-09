@@ -89,7 +89,7 @@
 %{\1 % this is the name of the PDF file for the background
 % Mein PDF-Viewer bekommt das nicht hin, das Bild im Hintergrund anzuzeigen
 {
-\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[height=\paperheight]{img/Logo.pdf}};}
+\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[height=\paperheight]{img/logo.pdf}};}
 \begin{frame}[plain]
 \maketitle
 \end{frame}
@@ -99,11 +99,6 @@
 %\tableofcontents
 %\end{frame}
 
-\begin{frame}[plain]
-\frametitle{GUI 2.0}
-\hspace*{-1cm}
-\includegraphics[trim={0, 2.2cm, 0, 0}, clip, scale=0.25]{img/GUI2.png}
-\end{frame}
 
 \begin{frame}
 \frametitle{Muss-Kriterien}
@@ -131,7 +126,7 @@
 \frametitle{Kann-Kriterien (2)}
 \begin{itemize}
 \item Schritt-für-Schritt Modus
-\item intelligenter Editor (Einrückungstiefen, Klammernmatching, etc.)
+\item intelligenter Editor (Einrückungstiefen, Klammermatching, etc.)
 \item Übungsmodus
 \item Permalinks
 \item erweiterte Fehlerdiagnostik
@@ -139,9 +134,20 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{GUI - \alert{Pflichtenheft}}
+\includegraphics[scale=0.55]{img/startseite.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{GUI - \alert{Implementierung}}
+\hspace*{-1cm}
+\includegraphics[trim={0, 2.2cm, 0, 0}, clip, scale=0.25]{img/GUI2.png}
+\end{frame}
+
+\begin{frame}
 \frametitle{Kann-Kriterien - \alert{Einschränkungen}}
 \begin{itemize}
-\item automatisierte Tests für Übungsaufgaben verworfen
+\item automatisches Prüfen für Übungsaufgaben verworfen
 \item Serialisierung ignoriert den Übungsmodus
 \item keine Angabe von Behebungsmöglichkeiten für Fehler
 \item manuelle Auswertung des Syntaxbaums im Schritt-für-Schritt Modus nicht möglich
@@ -162,8 +168,7 @@ Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \begin{frame}
 \frametitle{Schwierigkeiten}
 \begin{itemize}
-\item \texttt{Object.clone} und \texttt{Pattern-Klasse} in GWT nicht implementiert
-\item Partielle Applikationen
+\item GWT unterstütz nicht alle Standardbibliotheken
 \item Nebenläufigkeit
 \item Unicode-Ausgabe (HTML und CSS)
 \item Baum-Ausgabe (manuelle Auswertung und Größe)
@@ -175,9 +180,9 @@ Die oberen Balken entsprechen der Realität, die unteren der Planung.}
 \begin{frame}
 \frametitle{Änderungen am Entwurf}
 \begin{itemize}
-\item Entfernung der Pakete \alert{edu.kit.wavelength.client.view.webui.component} und \alert{edu.kit.wavelength.client.view.api}
 \item server-seitige Datenbank
 \item neue Pakete \alert{edu.kit.wavelength.client.database} und \alert{edu.kit.wavelength.server.database}
+\item Entfernung der Pakete \alert{edu.kit.wavelength.client.view.webui.component} und \alert{edu.kit.wavelength.client.view.api}
 \end{itemize}
 \end{frame}
 

@@ -17,6 +17,6 @@ public class StepForward implements Action {
 	public void run() {
 		app.executor().stepForward();
 
-		Control.updateStepControls();
+		Control.updateControls();
 	}
 }

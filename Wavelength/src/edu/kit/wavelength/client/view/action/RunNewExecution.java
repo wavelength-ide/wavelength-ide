@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
 import java.util.Collection;
+
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -16,6 +17,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.view.App;
+
 /**
  * This class starts a new reduction process and sets the view accordingly.
  */
@@ -49,7 +51,7 @@ public class RunNewExecution implements Action {
 		app.outputArea().clear();
 				
 		String format = app.outputFormatBox().getSelectedItemText();
-		switch(format) {
+		switch (format) {
 		case "Unicode Output":
 			app.setUnicode(true);
 			app.setTree(false);
@@ -61,6 +63,9 @@ public class RunNewExecution implements Action {
 		default: break;
 		}
 		
+		if (!app.executor().isTerminated()) {
+			app.executor().terminate();
+		}
 		app.editor().unerror();
 		try {
 			app.executor().start(code, order, size, libraries);
@@ -74,28 +79,6 @@ public class RunNewExecution implements Action {
 			return;
 		}
 		
-		app.outputFormatBox().setEnabled(false);
-		app.reductionOrderBox().setEnabled(false);
-		app.outputSizeBox().setEnabled(false);
-		
-		app.backwardsButton().setEnabled(false);
-		app.stepByStepButton().setEnabled(false);
-		app.forwardButton().setEnabled(false);
-		
-		app.editor().lock();
-		
-		app.exerciseButtons().forEach(b -> b.setEnabled(false));
-		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
-		app.exportButtons().forEach(b -> b.setEnabled(false));
-		app.sharePanel().setVisible(false);
-		app.shareButton().setEnabled(false);
-		
-		app.replayButton().setVisible(false);
-		app.cancelButton().setVisible(true);
-		app.runButton().setVisible(false);
-		app.pauseButton().setVisible(true);
-		
-		app.outputBlocker().addStyleName("notclickable");
-
+		Control.updateControls();
 	}
 }

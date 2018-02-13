@@ -29,6 +29,10 @@ public class SelectExportFormat implements Action {
 	 */
 	@Override
 	public void run() {
+		if (!app.executor().isPaused()) {
+			app.executor().pause();
+			Control.updateControls();
+		}
 		String reprk = exportFormat.getRepresentation(app.executor().getDisplayed(), app.executor().getLibraries());
 		app.exportArea().setText(reprk);
 		int lineCount = reprk.split("\r\n|\r|\n", -1).length;

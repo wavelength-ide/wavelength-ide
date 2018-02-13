@@ -21,20 +21,15 @@ public class LoadExercise implements Action {
 	 */
 	@Override
 	public void run() {
-		app.editor().write(exercise.getPredefinitions());
-		app.outputArea().clear();
-		app.replayButton().setEnabled(false);
-		app.executor().wipe();
+		Control.wipe();
 		
-		app.exportButtons().forEach(b -> b.setEnabled(false));
+		app.editor().write(exercise.getPredefinitions());
 		
 		app.exerciseDescriptionLabel().setText(exercise.getTask());
 		app.solutionArea().setText(exercise.getSolution());
 		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), false);
 		app.loadExercisePopup().hide();
-		
-		app.outputBlocker().removeStyleName("notclickable");
 	}
 
 	public Exercise getExercise() {

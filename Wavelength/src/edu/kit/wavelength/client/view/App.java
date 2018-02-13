@@ -25,6 +25,7 @@ import org.gwtbootstrap3.client.ui.html.Text;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
@@ -40,6 +41,7 @@ import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import edu.kit.wavelength.client.database.DatabaseService;
 import edu.kit.wavelength.client.database.DatabaseServiceAsync;
 import edu.kit.wavelength.client.model.library.Libraries;
+import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -50,7 +52,6 @@ import edu.kit.wavelength.client.view.action.Control;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.Pause;
-import edu.kit.wavelength.client.view.action.ReplayExecution;
 import edu.kit.wavelength.client.view.action.RunNewExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
@@ -58,7 +59,6 @@ import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepByStep;
 import edu.kit.wavelength.client.view.action.StepForward;
-import edu.kit.wavelength.client.view.action.Stop;
 import edu.kit.wavelength.client.view.action.UnpauseExecution;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
@@ -68,11 +68,10 @@ import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.FinishExecution;
-import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
-import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
-
 import edu.kit.wavelength.client.view.update.UpdateShareURL;
+import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateURL;
+import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -93,8 +92,8 @@ public class App implements Serializable {
 	private static final int POLLING_DELAY_MS = 10000;
 
 	/**
-	 * Creates a new instance of App if there is none.
-	 * Returns a singleton instance of App.
+	 * Creates a new instance of App if there is none. Returns a singleton instance
+	 * of App.
 	 *
 	 * @return singleton instance of App
 	 */
@@ -115,7 +114,7 @@ public class App implements Serializable {
 	 */
 	public static final String TreeOutputName = "Tree";
 
-	//UI-Elements
+	// UI-Elements
 	private DockLayoutPanel mainPanel;
 	private DropDown mainMenu;
 	private Button openMainMenuButton;
@@ -161,8 +160,6 @@ public class App implements Serializable {
 	private Button stepByStepButton;
 	private Button forwardButton;
 	private FlowPanel runControlPanel;
-	private Button cancelButton;
-	private Button replayButton;
 	private Button runButton;
 	private Button pauseButton;
 	private Button unpauseButton;
@@ -179,18 +176,16 @@ public class App implements Serializable {
 	private TextBox sharePanel;
 	private Button shareButton;
 	private FlowPanel outputBlocker;
-	
-	//editor
+
+	// editor
 	private MonacoEditor editor;
-	
-	//executor
+
+	// executor
 	private Executor executor;
-	
-	//possible outputs
+
+	// possible outputs
 	private boolean unicodeIsSet;
 	private boolean treeIsSet;
-
-	
 
 	private App() {
 
@@ -200,16 +195,16 @@ public class App implements Serializable {
 	 * Initializes App.
 	 */
 	private void initialize() {
-	//general layout
+		// general layout
 		mainPanel = new DockLayoutPanel(Unit.EM);
 		mainPanel.addStyleName("mainPanel");
-	//main menu
+		// main menu
 		mainMenu = new DropDown();
 		mainMenu.addStyleName("mainMenu");
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
-	
+
 		openMainMenuButton = new Button();
 		openMainMenuButton.addStyleName("fa fa-bars");
 		openMainMenuButton.setToggleCaret(false);
@@ -221,10 +216,10 @@ public class App implements Serializable {
 		// prevent dropdown from closing when clicking inside
 		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);
-	  //add libraries to main menu
+		// add libraries to main menu
 		mainMenuLibraryTitle = new DropDownHeader("Libraries");
 		mainMenuPanel.add(mainMenuLibraryTitle);
-	  
+
 		libraryCheckBoxes = new ArrayList<>();
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
@@ -233,10 +228,10 @@ public class App implements Serializable {
 			mainMenuPanel.add(libraryCheckBox);
 			libraryCheckBoxes.add(libraryCheckBox);
 		});
-	  
+
 		mainMenuDivider = new Divider();
 		mainMenuPanel.add(mainMenuDivider);
-	  //add exercises to main menu
+		// add exercises to main menu
 		mainMenuExerciseTitle = new DropDownHeader("Exercises");
 		mainMenuPanel.add(mainMenuExerciseTitle);
 
@@ -247,7 +242,7 @@ public class App implements Serializable {
 			mainMenuPanel.add(exerciseButton);
 			exerciseButtons.add(exerciseButton);
 		});
-	//create exercise mode popup
+		// create exercise mode popup
 		loadExercisePopup = new Modal();
 		loadExercisePopup.setClosable(false);
 		loadExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
@@ -289,7 +284,7 @@ public class App implements Serializable {
 		closeExercisePopupOkButton = new Button();
 		closeExercisePopupOkButton.addStyleName("fa fa-check");
 		closeExercisePopupFooter.add(closeExercisePopupOkButton);
-	//general layout
+		// general layout
 		footerPanel = new FlowPanel();
 		footerPanel.addStyleName("footerPanel");
 		mainPanel.addSouth(footerPanel, 2);
@@ -356,26 +351,26 @@ public class App implements Serializable {
 		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
 		editorExercisePanel.add(editorPanel);
-	//options
+		// options
 		optionBarPanel = new FlowPanel();
 		optionBarPanel.addStyleName("optionBarPanel");
 		inputControlPanel.add(optionBarPanel);
-	  //output formats
+		// output formats
 		outputFormatBox = new ListBox();
 		outputFormatBox.addItem("Unicode Output");
 		outputFormatBox.addItem("Tree Output");
 		optionBarPanel.add(outputFormatBox);
-	  //reduction orders
+		// reduction orders
 		reductionOrderBox = new ListBox();
 		reductionOrderBox.setName("Reduction Order");
 		ReductionOrders.all().stream().map(ReductionOrder::getName).forEach(reductionOrderBox::addItem);
 		optionBarPanel.add(reductionOrderBox);
-	  //output sizes
+		// output sizes
 		outputSizeBox = new ListBox();
 		outputSizeBox.setName("Output Size");
 		OutputSizes.all().stream().map(OutputSize::getName).forEach(outputSizeBox::addItem);
 		optionBarPanel.add(outputSizeBox);
-	  //engine control options
+		// engine control options
 		controlPanel = new FlowPanel();
 		controlPanel.addStyleName("controlPanel");
 		inputControlPanel.add(controlPanel);
@@ -402,21 +397,6 @@ public class App implements Serializable {
 		runControlPanel.addStyleName("runControlPanel");
 		controlPanel.add(runControlPanel);
 
-		cancelButton = new Button();
-		cancelButton.setVisible(false);
-		cancelButton.addStyleName("fa fa-stop");
-		runControlPanel.add(cancelButton);
-
-		replayButton = new Button();
-		replayButton.setEnabled(false);
-		replayButton.setVisible(true);
-		replayButton.addStyleName("fa fa-refresh");
-		runControlPanel.add(replayButton);
-		
-		runButton = new Button();
-		runButton.addStyleName("fa fa-play");
-		runControlPanel.add(runButton);
-
 		pauseButton = new Button();
 		pauseButton.addStyleName("fa fa-pause");
 		pauseButton.setVisible(false);
@@ -424,9 +404,15 @@ public class App implements Serializable {
 
 		unpauseButton = new Button();
 		unpauseButton.addStyleName("fa fa-play");
-		unpauseButton.setVisible(false);
+		unpauseButton.setEnabled(false);
+		
 		runControlPanel.add(unpauseButton);
-	//footer (export and share)
+		
+		runButton = new Button();
+		runButton.addStyleName("fa fa-fast-forward");
+		runControlPanel.add(runButton);
+		
+		// footer (export and share)
 		exportDropupGroup = new ButtonGroup();
 		exportDropupGroup.setDropUp(true);
 		footerPanel.add(exportDropupGroup);
@@ -482,7 +468,7 @@ public class App implements Serializable {
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
 
-	//set handlers
+		// set handlers
 		LoadExercise loadExerciseAction = new LoadExercise();
 		loadExercisePopupOkButton.addClickHandler(e -> loadExerciseAction.run());
 
@@ -497,17 +483,15 @@ public class App implements Serializable {
 			SelectExercise action = new SelectExercise(loadExerciseAction, exercises.get(i));
 			exerciseButtons.get(i).addClickHandler(e -> action.run());
 		}
-	
+
 		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
 		closeExerciseButton.addClickHandler(e -> closeExercisePopup.show());
-	
+
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
 
 		backwardsButton.addClickHandler(e -> new StepBackward().run());
 		stepByStepButton.addClickHandler(e -> new StepByStep().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
-		cancelButton.addClickHandler(e -> new Stop().run());
-		replayButton.addClickHandler(e -> new ReplayExecution().run());
 		runButton.addClickHandler(e -> new RunNewExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
 
@@ -518,23 +502,23 @@ public class App implements Serializable {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
-	//set auto-serialization of URL
+		// set auto-serialization of URL
 		UpdateURL updateURL = new UpdateURL();
 		UpdateShareURL updateShareURL = new UpdateShareURL();
 		URLSerializer urlSerializer = new URLSerializer(Arrays.asList(updateURL, updateShareURL), POLLING_DELAY_MS);
 		urlSerializer.startPolling();
 		shareButton.addClickHandler(e -> new UseShare(urlSerializer).run());
-	//create editor and executor
+		// create editor and executor
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
 				Arrays.asList(new FinishExecution()));
-	//standard output is unicode output
+		// standard output is unicode output
 		unicodeIsSet = true;
 		treeIsSet = false;
 
-	// try deserialization if possible
+		// try deserialization if possible
 		String state = History.getToken();
 		if (state.length() > 0) {
 			// deserialize
@@ -549,7 +533,6 @@ public class App implements Serializable {
 				public void onSuccess(String result) {
 					if (result != null) {
 						deserialize(result);
-					} else {
 					}
 
 				}
@@ -559,12 +542,11 @@ public class App implements Serializable {
 	}
 
 	/**
-	 * Serializes the Application by returning a String from which the state of
-	 * the application can be recreated.
+	 * Serializes the Application by returning a String from which the state of the
+	 * application can be recreated.
 	 *
-	 * The String holds information about the {@link Executor}, the
-	 * {@link Editor}, the {@link OptionBox}es and the selected {@link Library}s
-	 * in this order.
+	 * The String holds information about the {@link Executor}, the {@link Editor},
+	 * the {@link OptionBox}es and the selected {@link Library}s in this order.
 	 *
 	 * @return the string representation of the application
 	 */
@@ -603,10 +585,10 @@ public class App implements Serializable {
 	/**
 	 * Deserializes the Application with the given String.
 	 *
-	 * This includes {@link Executor}, the {@link Editor}, the
-	 * {@link OptionBox}es and the selected {@link Library}s. It sets the
-	 * application into step by step mode if the Executor holds terms and leaves
-	 * the application in its initial state else.
+	 * This includes {@link Executor}, the {@link Editor}, the {@link OptionBox}es
+	 * and the selected {@link Library}s. It sets the application into step by step
+	 * mode if the Executor holds terms and leaves the application in its initial
+	 * state else.
 	 *
 	 * @param content
 	 *            the string representing the state of the application
@@ -632,8 +614,8 @@ public class App implements Serializable {
 		// checks and unchecks the Library Check Boxes
 		assert (val.get(LIBRARY_SERIALIZATION).length() == libraryCheckBoxes.size());
 		for (int i = 0; i < val.get(5).length(); i++) {
-			assert (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY || 
-					val.get(LIBRARY_SERIALIZATION).charAt(i) == UNCHECKED_LIBRARY);
+			assert (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY
+					|| val.get(LIBRARY_SERIALIZATION).charAt(i) == UNCHECKED_LIBRARY);
 			if (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY) {
 				libraryCheckBoxes.get(i).setValue(true);
 			} else {
@@ -641,29 +623,10 @@ public class App implements Serializable {
 			}
 		}
 
-		if (val.get(0) == "") {
-			// there are no terms in the OutputArea
-			// nothing to do since application is already in initial state
-		} else {
-			// there are terms in OutputArea
-			// change UI to transition from initialized state to step by step
-			// state
-			editor.lock();
-			runButton.setVisible(false);
-			unpauseButton.setVisible(true);
-			stepByStepButton.setEnabled(false);
-			outputSizeBox.setEnabled(false);
-			outputFormatBox.setEnabled(false);
-			libraryCheckBoxes.forEach(b -> b.setEnabled(false));
-			exerciseButtons.forEach(b -> b.setEnabled(false));
-
-			Control.updateStepControls();
-			replayButton.setVisible(false);
-			cancelButton.setVisible(true);
-		}
+		Control.updateControls();
 	}
-	
-	//getters
+
+	// getters
 	public DockLayoutPanel mainPanel() {
 		return mainPanel;
 	}
@@ -799,9 +762,9 @@ public class App implements Serializable {
 	public TextArea solutionArea() {
 		return solutionArea;
 	}
-	
-	public SimplePanel editorPanel() { 
-		return editorPanel; 
+
+	public SimplePanel editorPanel() {
+		return editorPanel;
 	}
 
 	public FlowPanel optionBarPanel() {
@@ -844,14 +807,6 @@ public class App implements Serializable {
 		return runControlPanel;
 	}
 
-	public Button cancelButton() {
-		return cancelButton;
-	}
-
-	public Button replayButton() {
-		return replayButton;
-	}
-	
 	public Button runButton() {
 		return runButton;
 	}

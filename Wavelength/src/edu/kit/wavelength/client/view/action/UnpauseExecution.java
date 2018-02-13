@@ -18,17 +18,6 @@ public class UnpauseExecution implements Action {
 	public void run() {
 		app.executor().unpause();
 
-		app.backwardsButton().setEnabled(false);
-		app.forwardButton().setEnabled(false);
-		app.reductionOrderBox().setEnabled(false);
-		app.sharePanel().setVisible(false);
-		app.shareButton().setEnabled(false);
-
-		app.exportButtons().forEach(b -> b.setEnabled(false));
-		
-		app.unpauseButton().setVisible(false);
-		app.pauseButton().setVisible(true);
-		
-		app.outputBlocker().addStyleName("notclickable");
+		Control.updateControls();
 	}
 }

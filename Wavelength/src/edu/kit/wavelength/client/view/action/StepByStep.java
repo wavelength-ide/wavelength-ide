@@ -52,7 +52,7 @@ public class StepByStep implements Action {
 		app.outputArea().clear();
 				
 		String format = app.outputFormatBox().getSelectedItemText();
-		switch(format) {
+		switch (format) {
 		case "Unicode Output":
 			app.setUnicode(true);
 			app.setTree(false);
@@ -64,6 +64,9 @@ public class StepByStep implements Action {
 		default: break;
 		}
 		
+		if (!app.executor().isTerminated()) {
+			app.executor().terminate();
+		}
 		app.editor().unerror();
 		try {
 			app.executor().stepByStep(code, order, size, libraries);
@@ -76,25 +79,8 @@ public class StepByStep implements Action {
 			app.editor().error(message, row, row, columnStart, columnEnd);
 			return;
 		}
-
-		app.outputFormatBox().setEnabled(false);
-		app.outputSizeBox().setEnabled(false);
 		
-		Control.updateStepControls();
-		app.stepByStepButton().setEnabled(false);
-		
-		app.editor().lock();
-		
-		app.exerciseButtons().forEach(b -> b.setEnabled(false));
-		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
-		app.exportButtons().forEach(b -> b.setEnabled(true));
-		
-		app.replayButton().setVisible(false);
-		app.cancelButton().setVisible(true);
-		app.unpauseButton().setVisible(true);
-		app.runButton().setVisible(false);
-		
-		app.outputBlocker().removeStyleName("notclickable");
+		Control.updateControls();
 		
 	}
 }

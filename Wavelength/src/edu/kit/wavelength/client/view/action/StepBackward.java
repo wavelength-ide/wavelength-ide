@@ -16,7 +16,7 @@ public class StepBackward implements Action {
 	public void run() {
 		app.executor().stepBackward();
 
-		Control.updateStepControls();
+		Control.updateControls();
 	}
 
 }

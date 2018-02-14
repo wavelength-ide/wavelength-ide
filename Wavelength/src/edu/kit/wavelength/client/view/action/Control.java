@@ -18,9 +18,9 @@ public final class Control {
 		app.backwardsButton().setEnabled(canStepBackward);
 		app.forwardButton().setEnabled(canStepForward);
 		
-		app.pauseButton().setVisible(isRunning);
-		app.unpauseButton().setVisible(isPaused || isTerminated);
-		app.unpauseButton().setEnabled(canStepForward);
+		app.pauseButton().setVisible(isRunning || isTerminated || !canStepForward);
+		app.pauseButton().setEnabled(isRunning || isTerminated);
+		app.unpauseButton().setVisible(canStepForward);
 		
 		app.outputBlocker().setStyleName("notclickable", !isPaused);
 		

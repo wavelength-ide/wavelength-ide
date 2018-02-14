@@ -384,9 +384,15 @@ public class App implements Serializable {
 		backwardsButton.addStyleName("fa fa-chevron-left");
 		stepByStepControlPanel.add(backwardsButton);
 
-		stepByStepButton = new Button();
-		stepByStepButton.addStyleName("fa fa-exchange");
-		stepByStepControlPanel.add(stepByStepButton);
+		pauseButton = new Button();
+		pauseButton.addStyleName("fa fa-pause");
+		pauseButton.setEnabled(false);
+		stepByStepControlPanel.add(pauseButton);
+
+		unpauseButton = new Button();
+		unpauseButton.addStyleName("fa fa-play");
+		unpauseButton.setVisible(false);
+		stepByStepControlPanel.add(unpauseButton);
 
 		forwardButton = new Button();
 		forwardButton.setEnabled(false);
@@ -396,17 +402,10 @@ public class App implements Serializable {
 		runControlPanel = new FlowPanel();
 		runControlPanel.addStyleName("runControlPanel");
 		controlPanel.add(runControlPanel);
-
-		pauseButton = new Button();
-		pauseButton.addStyleName("fa fa-pause");
-		pauseButton.setVisible(false);
-		runControlPanel.add(pauseButton);
-
-		unpauseButton = new Button();
-		unpauseButton.addStyleName("fa fa-play");
-		unpauseButton.setEnabled(false);
 		
-		runControlPanel.add(unpauseButton);
+		stepByStepButton = new Button();
+		stepByStepButton.addStyleName("fa fa-exchange");
+		runControlPanel.add(stepByStepButton);
 		
 		runButton = new Button();
 		runButton.addStyleName("fa fa-fast-forward");

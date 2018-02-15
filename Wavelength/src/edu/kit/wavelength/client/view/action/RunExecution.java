@@ -21,7 +21,7 @@ import edu.kit.wavelength.client.view.App;
 /**
  * This class starts a new reduction process and sets the view accordingly.
  */
-public class RunNewExecution implements Action {
+public class RunExecution implements Action {
 
 	private static App app = App.get();
 
@@ -36,6 +36,12 @@ public class RunNewExecution implements Action {
 	 */
 	@Override
 	public void run() {
+		if (app.executor().isPaused() && app.executor().canStepForward()) {
+			app.executor().unpause();
+			Control.updateControls();
+			return;
+		}
+		
 		String code = app.editor().read();
 
 		String orderName = app.reductionOrderBox().getSelectedItemText();

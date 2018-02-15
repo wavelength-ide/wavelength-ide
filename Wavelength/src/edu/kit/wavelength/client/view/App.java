@@ -52,14 +52,13 @@ import edu.kit.wavelength.client.view.action.Control;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
 import edu.kit.wavelength.client.view.action.Pause;
-import edu.kit.wavelength.client.view.action.RunNewExecution;
+import edu.kit.wavelength.client.view.action.RunExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
 import edu.kit.wavelength.client.view.action.Terminate;
-import edu.kit.wavelength.client.view.action.UnpauseExecution;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
@@ -162,7 +161,6 @@ public class App implements Serializable {
 	private Button terminateButton;
 	private Button runButton;
 	private Button pauseButton;
-	private Button unpauseButton;
 	private ButtonGroup exportDropupGroup;
 	private Button openExportMenuButton;
 	private DropDownMenu exportMenu;
@@ -383,16 +381,6 @@ public class App implements Serializable {
 		backwardsButton.setEnabled(false);
 		backwardsButton.addStyleName("fa fa-chevron-left");
 		stepByStepControlPanel.add(backwardsButton);
-
-		pauseButton = new Button();
-		pauseButton.addStyleName("fa fa-pause");
-		pauseButton.setEnabled(false);
-		stepByStepControlPanel.add(pauseButton);
-
-		unpauseButton = new Button();
-		unpauseButton.addStyleName("fa fa-play");
-		unpauseButton.setVisible(false);
-		stepByStepControlPanel.add(unpauseButton);
 		
 		forwardButton = new Button();
 		forwardButton.addStyleName("fa fa-chevron-right");
@@ -403,12 +391,17 @@ public class App implements Serializable {
 		controlPanel.add(runControlPanel);
 		
 		terminateButton = new Button();
-		terminateButton.addStyleName("fa fa-stop");
+		terminateButton.addStyleName("fa fa-times");
 		terminateButton.setEnabled(false);
 		runControlPanel.add(terminateButton);
 		
+		pauseButton = new Button();
+		pauseButton.addStyleName("fa fa-pause");
+		pauseButton.setVisible(false);
+		runControlPanel.add(pauseButton);
+		
 		runButton = new Button();
-		runButton.addStyleName("fa fa-fast-forward");
+		runButton.addStyleName("fa fa-play");
 		runControlPanel.add(runButton);
 		
 		// footer (export and share)
@@ -491,10 +484,8 @@ public class App implements Serializable {
 		backwardsButton.addClickHandler(e -> new StepBackward().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
 		terminateButton.addClickHandler(e -> new Terminate().run());
-		runButton.addClickHandler(e -> new RunNewExecution().run());
+		runButton.addClickHandler(e -> new RunExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
-
-		unpauseButton.addClickHandler(e -> new UnpauseExecution().run());
 
 		List<Export> exports = Exports.all();
 		for (int i = 0; i < exports.size(); i++) {
@@ -812,10 +803,6 @@ public class App implements Serializable {
 
 	public Button pauseButton() {
 		return pauseButton;
-	}
-
-	public Button unpauseButton() {
-		return unpauseButton;
 	}
 
 	public ButtonGroup exportDropupGroup() {

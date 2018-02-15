@@ -15,13 +15,12 @@ public final class Control {
 		boolean canStepForward = exec.canStepForward();
 		boolean canStepBackward = exec.canStepBackward();
 		
-		app.backwardsButton().setEnabled(canStepBackward);
+		app.backwardsButton().setEnabled(isPaused);
 		app.forwardButton().setEnabled(isTerminated || canStepForward);
 		
 		app.terminateButton().setEnabled(!isTerminated);
-		app.pauseButton().setVisible(isTerminated || isRunning || !canStepForward);
-		app.pauseButton().setEnabled(isRunning);
-		app.unpauseButton().setVisible(canStepForward);
+		app.pauseButton().setVisible(isRunning);
+		app.runButton().setVisible(!isRunning);
 		
 		app.outputBlocker().setStyleName("notclickable", !isPaused);
 		

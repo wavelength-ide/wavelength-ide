@@ -47,8 +47,6 @@ public class RunNewExecution implements Action {
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
-
-		app.outputArea().clear();
 				
 		String format = app.outputFormatBox().getSelectedItemText();
 		switch (format) {
@@ -65,7 +63,9 @@ public class RunNewExecution implements Action {
 		
 		if (!app.executor().isTerminated()) {
 			app.executor().terminate();
+			app.outputArea().clear();
 		}
+		
 		app.editor().unerror();
 		try {
 			app.executor().start(code, order, size, libraries);

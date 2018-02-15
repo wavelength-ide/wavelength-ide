@@ -16,10 +16,11 @@ public final class Control {
 		boolean canStepBackward = exec.canStepBackward();
 		
 		app.backwardsButton().setEnabled(canStepBackward);
-		app.forwardButton().setEnabled(canStepForward);
+		app.forwardButton().setEnabled(isTerminated || canStepForward);
 		
-		app.pauseButton().setVisible(isRunning || isTerminated || !canStepForward);
-		app.pauseButton().setEnabled(isRunning || isTerminated);
+		app.terminateButton().setEnabled(!isTerminated);
+		app.pauseButton().setVisible(isTerminated || isRunning || !canStepForward);
+		app.pauseButton().setEnabled(isRunning);
 		app.unpauseButton().setVisible(canStepForward);
 		
 		app.outputBlocker().setStyleName("notclickable", !isPaused);

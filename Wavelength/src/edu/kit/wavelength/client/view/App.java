@@ -57,8 +57,8 @@ import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
-import edu.kit.wavelength.client.view.action.StepByStep;
 import edu.kit.wavelength.client.view.action.StepForward;
+import edu.kit.wavelength.client.view.action.Terminate;
 import edu.kit.wavelength.client.view.action.UnpauseExecution;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
@@ -157,9 +157,9 @@ public class App implements Serializable {
 	private FlowPanel controlPanel;
 	private FlowPanel stepByStepControlPanel;
 	private Button backwardsButton;
-	private Button stepByStepButton;
 	private Button forwardButton;
 	private FlowPanel runControlPanel;
+	private Button terminateButton;
 	private Button runButton;
 	private Button pauseButton;
 	private Button unpauseButton;
@@ -393,19 +393,19 @@ public class App implements Serializable {
 		unpauseButton.addStyleName("fa fa-play");
 		unpauseButton.setVisible(false);
 		stepByStepControlPanel.add(unpauseButton);
-
+		
 		forwardButton = new Button();
-		forwardButton.setEnabled(false);
 		forwardButton.addStyleName("fa fa-chevron-right");
 		stepByStepControlPanel.add(forwardButton);
-
+		
 		runControlPanel = new FlowPanel();
 		runControlPanel.addStyleName("runControlPanel");
 		controlPanel.add(runControlPanel);
 		
-		stepByStepButton = new Button();
-		stepByStepButton.addStyleName("fa fa-exchange");
-		runControlPanel.add(stepByStepButton);
+		terminateButton = new Button();
+		terminateButton.addStyleName("fa fa-stop");
+		terminateButton.setEnabled(false);
+		runControlPanel.add(terminateButton);
 		
 		runButton = new Button();
 		runButton.addStyleName("fa fa-fast-forward");
@@ -489,8 +489,8 @@ public class App implements Serializable {
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
 
 		backwardsButton.addClickHandler(e -> new StepBackward().run());
-		stepByStepButton.addClickHandler(e -> new StepByStep().run());
 		forwardButton.addClickHandler(e -> new StepForward().run());
+		terminateButton.addClickHandler(e -> new Terminate().run());
 		runButton.addClickHandler(e -> new RunNewExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
 
@@ -794,10 +794,6 @@ public class App implements Serializable {
 		return backwardsButton;
 	}
 
-	public Button stepByStepButton() {
-		return stepByStepButton;
-	}
-
 	public Button forwardButton() {
 		return forwardButton;
 	}
@@ -806,6 +802,10 @@ public class App implements Serializable {
 		return runControlPanel;
 	}
 
+	public Button terminateButton() {
+		return terminateButton;
+	}
+	
 	public Button runButton() {
 		return runButton;
 	}

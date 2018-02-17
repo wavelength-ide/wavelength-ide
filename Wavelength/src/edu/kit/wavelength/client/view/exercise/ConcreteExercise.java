@@ -19,6 +19,9 @@ public class ConcreteExercise implements Exercise {
 	 * @param predefinitions - initial code to load into the editor
 	 */
 	public ConcreteExercise(final String name, final String task, final String solution, final String predefinitions) {
+		if (name == null || task == null || solution == null || predefinitions == null) {
+			throw new IllegalArgumentException("Invalid parameters!");
+		}
 		this.name = name;
 		this.task = task;
 		this.solution = solution;
@@ -50,4 +53,10 @@ public class ConcreteExercise implements Exercise {
 		return this.predefinitions;
 	}
 
+	@Override
+	public StringBuilder serialize() {
+		return new StringBuilder(this.name);
+	}
+
+	
 }

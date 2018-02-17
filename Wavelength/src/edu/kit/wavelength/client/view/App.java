@@ -86,7 +86,8 @@ public class App implements Serializable {
 	private static final int REDUCTIONORDER_SERIALIZATION = 3;
 	private static final int OUTPUTSIZE_SERIALIZATION = 4;
 	private static final int LIBRARY_SERIALIZATION = 5;
-	private static final int NUMBER_OF_SERIALIZATIONS = 6;
+	private static final int EXERCISE_SERIALIZATION = 6;
+	private static final int NUMBER_OF_SERIALIZATIONS = 7;
 	private static final char CHECKED_LIBRARY = 'c';
 	private static final char UNCHECKED_LIBRARY = 'u';
 	private static final int POLLING_DELAY_MS = 10000;
@@ -180,9 +181,16 @@ public class App implements Serializable {
 
 	// editor
 	private MonacoEditor editor;
-
-	// executor
+	
+	//executor
 	private Executor executor;
+	
+	//possible outputs
+	private boolean unicodeIsSet;
+	private boolean treeIsSet;
+	
+	//current Exercise
+	private Exercise currentExercise;
 
 	private App() {
 
@@ -476,7 +484,10 @@ public class App implements Serializable {
 		List<Exercise> exercises = Exercises.all();
 		for (int i = 0; i < exercises.size(); i++) {
 			SelectExercise action = new SelectExercise(loadExerciseAction, exercises.get(i));
-			exerciseButtons.get(i).addClickHandler(e -> action.run());
+			exerciseButtons.get(i).addClickHandler(e -> {
+				action.run();
+				currentExercise = action.getExercise();
+			});
 		}
 
 		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
@@ -508,6 +519,12 @@ public class App implements Serializable {
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
 				Arrays.asList(new FinishExecution()));
+
+	//standard output is unicode output
+		unicodeIsSet = true;
+		treeIsSet = false;
+		
+		currentExercise = null;
 
 		Control.updateControls();
 
@@ -565,6 +582,10 @@ public class App implements Serializable {
 				libraryCheckBoxesString.append(UNCHECKED_LIBRARY);
 			}
 		}
+		StringBuilder exerciseString = new StringBuilder("");
+		if (currentExercise != null) {
+			exerciseString = currentExercise.serialize();
+		}
 
 		/*
 		 * EXECUTOR_SERIALIZATION = 0; EDITOR_SERIALIZATION = 1;
@@ -572,7 +593,7 @@ public class App implements Serializable {
 		 * OUTPUTSIZE_SERIALIZATION = 4; LIBRARY_SERIALIZATION = 5;
 		 */
 		return SerializationUtilities.enclose(executionEngineString, editorString, outputFormatBoxString,
-				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString);
+				reductionOrderBoxString, outputSizeString, libraryCheckBoxesString, exerciseString);
 	}
 
 	/**
@@ -615,8 +636,42 @@ public class App implements Serializable {
 				libraryCheckBoxes.get(i).setValue(false);
 			}
 		}
+		if (!val.get(EXERCISE_SERIALIZATION).isEmpty()) {
+			// deserialize exercise mode
+			Exercise exercise = Exercises.deserialize(val.get(EXERCISE_SERIALIZATION).toString());
+			this.currentExercise = exercise;
+			editor().write(exercise.getPredefinitions());
+			
+			exportButtons().forEach(b -> b.setEnabled(false));
+			
+			exerciseDescriptionLabel().setText(exercise.getTask());
+			solutionArea().setText(exercise.getSolution());
+			
+			editorExercisePanel().setWidgetHidden(exercisePanel(), false);
+			
+			outputBlocker().removeStyleName("notclickable");
+		}
+
 
 		Control.updateControls();
+
+		if (val.get(EXECUTOR_SERIALIZATION).equals("")) {
+			// there are no terms in the OutputArea
+			// nothing to do since application is already in initial state
+		} else {
+			// there are terms in OutputArea
+			// change UI to transition from initialized state to step by step
+			// state
+			editor.lock();
+			runButton.setVisible(false);
+			unpauseButton.setVisible(true);
+			outputSizeBox.setEnabled(false);
+			outputFormatBox.setEnabled(false);
+			libraryCheckBoxes.forEach(b -> b.setEnabled(false));
+			exerciseButtons.forEach(b -> b.setEnabled(false));
+
+		}
+
 	}
 
 	// getters

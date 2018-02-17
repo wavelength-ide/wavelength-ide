@@ -1,11 +1,13 @@
 package edu.kit.wavelength.client.view.exercise;
 
+import edu.kit.wavelength.client.model.serialization.Serializable;
+
 /**
  * An exercise consists of a task specifying what the User is supposed to do and
  * a solution specifying what the result should look like. Additionally
  * exercises may provide a basis for a given task.
  */
-public interface Exercise {
+public interface Exercise extends Serializable{
 
 	/**
 	 * Gets the name of the exercise.

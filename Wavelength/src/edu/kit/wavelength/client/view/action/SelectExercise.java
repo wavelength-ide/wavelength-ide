@@ -34,4 +34,8 @@ public class SelectExercise implements Action {
 		loadExerciseAction.setExercise(selected);
 		app.loadExercisePopup().show();
 	}
+	
+	public Exercise getExercise() {
+		return this.selected;
+	}
 }

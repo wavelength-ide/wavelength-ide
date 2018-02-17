@@ -124,4 +124,22 @@ public final class Exercises {
 		return exerciseList;
 	}
 
+	/**
+	 * Deserializes an {@link Exercise}.
+	 * @param serialized supposedly a serialization of an Exercise
+	 * @return Exercise belonging to serialization
+	 * @throws IllegalArgumentException if serialized is {@code null} or empty or exercise could not be found
+	 */
+	public static Exercise deserialize(String serialized) {
+		if (serialized == null || serialized.isEmpty()) {
+			throw new IllegalArgumentException("This is not a valid serialization of an Exercise!");
+		}
+		for (Exercise exercise : Exercises.all()) {
+			if (exercise.getName().equals(serialized)) {
+				return exercise;
+			}
+		}
+		throw new IllegalArgumentException("Exercise not found!");
+		
+	}
 }

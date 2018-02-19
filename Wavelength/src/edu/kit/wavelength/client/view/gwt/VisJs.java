@@ -16,8 +16,8 @@ public class VisJs {
 			edges : eval(edges)
 		};
 		var options = {
-			width: '100%',
-			height: '100%',
+			width: ($wnd.innerWidth - 25) + "px",
+			height: ($wnd.innerHeight - 400) + "px",
 			nodes: {
 				color: {
 					border: '#333333',
@@ -51,24 +51,5 @@ public class VisJs {
 		var network = new $wnd.vis.Network(parent, data, options);
 	}-*/;
 
-	// TODO: looks like I don't need this
-	public static native VisJs load() /*-{
-		var idParent = "network";
-		var parent = $doc.getElementById(idParent);		
-		var data = {};
-		var options = {
-			width: '100%',
-			clickToUse: false,
-  			interaction: {
-    					dragNodes: false,
-    					dragView: false,
-    					zoomView: false},
-    			layout: {
-    				hierarchical: {
-    					enabled: true,
-    					sortMethod: 'directed'}}
-			};
-		return new $wnd.vis.Network(parent, data, options);
-	}-*/;
 
 }

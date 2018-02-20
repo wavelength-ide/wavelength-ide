@@ -17,7 +17,6 @@ public class Pause implements Action {
 	@Override
 	public void run() {
 		app.executor().pause();
-		
 		Control.updateControls();
 	}
 }

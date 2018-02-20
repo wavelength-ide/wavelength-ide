@@ -36,12 +36,6 @@ public class RunExecution implements Action {
 	 */
 	@Override
 	public void run() {
-		if (app.executor().isPaused() && app.executor().canStepForward()) {
-			app.executor().unpause();
-			Control.updateControls();
-			return;
-		}
-		
 		String code = app.editor().read();
 
 		String orderName = app.reductionOrderBox().getSelectedItemText();

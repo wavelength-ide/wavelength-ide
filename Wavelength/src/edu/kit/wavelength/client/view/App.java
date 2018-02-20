@@ -59,6 +59,7 @@ import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
 import edu.kit.wavelength.client.view.action.Terminate;
+import edu.kit.wavelength.client.view.action.Unpause;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
 import edu.kit.wavelength.client.view.exercise.Exercise;
@@ -156,11 +157,12 @@ public class App implements Serializable {
 	private FlowPanel controlPanel;
 	private FlowPanel stepByStepControlPanel;
 	private Button backwardsButton;
+	private Button pauseButton;
+	private Button unpauseButton;
 	private Button forwardButton;
 	private FlowPanel runControlPanel;
 	private Button terminateButton;
 	private Button runButton;
-	private Button pauseButton;
 	private ButtonGroup exportDropupGroup;
 	private Button openExportMenuButton;
 	private DropDownMenu exportMenu;
@@ -378,9 +380,16 @@ public class App implements Serializable {
 		controlPanel.add(stepByStepControlPanel);
 
 		backwardsButton = new Button();
-		backwardsButton.setEnabled(false);
 		backwardsButton.addStyleName("fa fa-chevron-left");
 		stepByStepControlPanel.add(backwardsButton);
+		
+		pauseButton = new Button();
+		pauseButton.addStyleName("fa fa-pause");
+		stepByStepControlPanel.add(pauseButton);
+		
+		unpauseButton = new Button();
+		unpauseButton.addStyleName("fa fa-step-forward");
+		stepByStepControlPanel.add(unpauseButton);
 		
 		forwardButton = new Button();
 		forwardButton.addStyleName("fa fa-chevron-right");
@@ -392,13 +401,7 @@ public class App implements Serializable {
 		
 		terminateButton = new Button();
 		terminateButton.addStyleName("fa fa-times");
-		terminateButton.setEnabled(false);
 		runControlPanel.add(terminateButton);
-		
-		pauseButton = new Button();
-		pauseButton.addStyleName("fa fa-pause");
-		pauseButton.setVisible(false);
-		runControlPanel.add(pauseButton);
 		
 		runButton = new Button();
 		runButton.addStyleName("fa fa-play");
@@ -486,6 +489,7 @@ public class App implements Serializable {
 		terminateButton.addClickHandler(e -> new Terminate().run());
 		runButton.addClickHandler(e -> new RunExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
+		unpauseButton.addClickHandler(e -> new Unpause().run());
 
 		List<Export> exports = Exports.all();
 		for (int i = 0; i < exports.size(); i++) {
@@ -507,6 +511,8 @@ public class App implements Serializable {
 		// standard output is unicode output
 		unicodeIsSet = true;
 		treeIsSet = false;
+		
+		Control.updateControls();
 
 		// try deserialization if possible
 		String state = History.getToken();
@@ -785,6 +791,14 @@ public class App implements Serializable {
 		return backwardsButton;
 	}
 
+	public Button unpauseButton() {
+		return unpauseButton;
+	}
+	
+	public Button pauseButton() {
+		return pauseButton;
+	}
+	
 	public Button forwardButton() {
 		return forwardButton;
 	}
@@ -799,10 +813,6 @@ public class App implements Serializable {
 	
 	public Button runButton() {
 		return runButton;
-	}
-
-	public Button pauseButton() {
-		return pauseButton;
 	}
 
 	public ButtonGroup exportDropupGroup() {

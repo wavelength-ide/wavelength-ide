@@ -184,10 +184,6 @@ public class App implements Serializable {
 	//executor
 	private Executor executor;
 	
-	//possible outputs
-	private boolean unicodeIsSet;
-	private boolean treeIsSet;
-
 	
 
 	private App() {
@@ -521,9 +517,6 @@ public class App implements Serializable {
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
 				Arrays.asList(new FinishExecution()));
-	//standard output is unicode output
-		unicodeIsSet = true;
-		treeIsSet = false;
 
 	// try deserialization if possible
 		String state = History.getToken();
@@ -904,22 +897,6 @@ public class App implements Serializable {
 
 	public Executor executor() {
 		return executor;
-	}
-
-	public boolean unicodeIsSet() {
-		return this.unicodeIsSet;
-	}
-
-	public void setUnicode(boolean value) {
-		this.unicodeIsSet = value;
-	}
-
-	public boolean treeIsSet() {
-		return this.treeIsSet;
-	}
-
-	public void setTree(boolean value) {
-		this.treeIsSet = value;
 	}
 
 	public FlowPanel outputBlocker() {

@@ -47,19 +47,6 @@ public class RunNewExecution implements Action {
 				.collect(Collectors.toList());
 
 		app.outputArea().clear();
-				
-		String format = app.outputFormatBox().getSelectedItemText();
-		switch(format) {
-		case "Unicode Output":
-			app.setUnicode(true);
-			app.setTree(false);
-			break;
-		case "Tree Output":
-			app.setUnicode(false);
-			app.setTree(true);
-			break;
-		default: break;
-		}
 		
 		app.editor().unerror();
 		try {

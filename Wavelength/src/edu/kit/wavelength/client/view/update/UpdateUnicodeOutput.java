@@ -34,7 +34,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
-		if (!app.unicodeIsSet()) {
+		if (!isSet()) {
 			return;
 		}
 
@@ -71,7 +71,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 
 	@Override
 	public void removeLastTerm() {
-		if (!app.unicodeIsSet() || wrappedTerms.isEmpty()) {
+		if (!isSet() || wrappedTerms.isEmpty()) {
 			return;
 		}
 
@@ -91,7 +91,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 
 	@Override
 	public void reloadLastTerm() {
-		if (!app.unicodeIsSet()) {
+		if (!isSet()) {
 			return;
 		}
 		FlowPanel toRemove = wrappedTerms.get(wrappedTerms.size() - 1);
@@ -100,6 +100,11 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		LambdaTerm term = terms.get(terms.size() - 1);
 		terms.remove(terms.size() - 1);
 		this.pushTerm(term);
+	}
+
+	private boolean isSet() {
+		String format = app.outputFormatBox().getSelectedItemText();
+		return format.equals("Unicode Output");
 	}
 
 }

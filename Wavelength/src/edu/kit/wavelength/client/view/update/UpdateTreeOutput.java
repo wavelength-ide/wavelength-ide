@@ -39,7 +39,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 
 	@Override
 	public void pushTerm(LambdaTerm t) {
-		if (!app.treeIsSet()) {
+		if (!isSet()) {
 			return;
 		}
 
@@ -73,7 +73,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 
 	@Override
 	public void removeLastTerm() {
-		if (!app.treeIsSet()) {
+		if (!isSet()) {
 			return;
 		}
 
@@ -93,13 +93,18 @@ public class UpdateTreeOutput implements ExecutionObserver {
 
 	@Override
 	public void reloadLastTerm() {
-		if (!app.treeIsSet()) {
+		if (!isSet()) {
 			return;
 		}
 		app.outputArea().remove(id);
 		LambdaTerm term = terms.get(terms.size() - 1);
 		terms.remove(terms.size() - 1);
 		pushTerm(term);
+	}
+	
+	private boolean isSet() {
+		String format = app.outputFormatBox().getSelectedItemText();
+		return format.equals("Tree Output");
 	}
 
 }

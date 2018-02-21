@@ -104,7 +104,7 @@ public class Parser {
 			LambdaTerm term = parseTerm(termString, input.length() - termString.length());
 			inputLibrary.addTerm(term, name);
 		} else {
-			throw new ParseException("\"" + input + "\"is not a valid name assignment", rowPos, 0, 0);
+			throw new ParseException("\"" + input + "\" is not a valid name assignment", rowPos, 0, 0);
 		}
 	}
 

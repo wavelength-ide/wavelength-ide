@@ -50,8 +50,9 @@ public class RunExecution implements Action {
 		
 		if (!app.executor().isTerminated()) {
 			app.executor().terminate();
-			app.outputArea().clear();
 		}
+		
+		app.outputArea().clear();
 		
 		app.editor().unerror();
 		try {

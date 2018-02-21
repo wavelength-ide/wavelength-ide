@@ -144,9 +144,9 @@ public class Executor implements Serializable {
 		if (!isTerminated()) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
-		setState(S.Paused);
 		executionObservers.forEach(o -> o.clear());
 		engine = new ExecutionEngine(input, order, size, libraries);
+		setState(S.Paused);
 		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}

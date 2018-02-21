@@ -57,6 +57,8 @@ public class StepForward implements Action {
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
 
+		app.outputArea().clear();
+		
 		app.editor().unerror();
 		try {
 			app.executor().stepByStep(code, order, size, libraries);
@@ -65,7 +67,7 @@ public class StepForward implements Action {
 			int row = e.getRow();
 			int columnStart = e.getColumnStart();
 			int columnEnd = e.getColumnEnd();
-			app.outputArea().add(new Text(message + "(row " + row + ", colums " + columnStart + "-" + columnEnd + ")"));
+			app.outputArea().add(new Text(message + " (row " + row + ", colums " + columnStart + "-" + columnEnd + ")"));
 			app.editor().error(message, row, row, columnStart, columnEnd);
 			return;
 		}

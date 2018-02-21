@@ -15,8 +15,8 @@ public final class Control {
 		boolean canStepForward = exec.canStepForward();
 		boolean canStepBackward = exec.canStepBackward();
 		
-		app.backwardsButton().setEnabled(isPaused);
-		app.forwardButton().setEnabled(isTerminated || canStepForward);
+		app.backwardsButton().setEnabled(isRunning || isPaused);
+		app.forwardButton().setEnabled(isTerminated || isPaused && canStepForward || isRunning && canStepForward);
 		
 		app.terminateButton().setEnabled(!isTerminated);
 		app.pauseButton().setVisible(!isPaused);

@@ -388,7 +388,7 @@ public class App implements Serializable {
 		stepByStepControlPanel.add(pauseButton);
 		
 		unpauseButton = new Button();
-		unpauseButton.addStyleName("fa fa-step-forward");
+		unpauseButton.addStyleName("fa fa-play");
 		stepByStepControlPanel.add(unpauseButton);
 		
 		forwardButton = new Button();
@@ -404,7 +404,7 @@ public class App implements Serializable {
 		runControlPanel.add(terminateButton);
 		
 		runButton = new Button();
-		runButton.addStyleName("fa fa-play");
+		runButton.addStyleName("fa fa-fast-forward");
 		runControlPanel.add(runButton);
 		
 		// footer (export and share)

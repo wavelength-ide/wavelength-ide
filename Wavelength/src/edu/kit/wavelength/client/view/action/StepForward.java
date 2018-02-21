@@ -34,7 +34,13 @@ public class StepForward implements Action {
 	 */
 	@Override
 	public void run() {
-		if (!app.executor().isTerminated()) {
+		if (app.executor().isRunning()) {
+			app.executor().pause();
+			app.executor().stepForward();
+			Control.updateControls();
+			return;
+		}
+		if (app.executor().isPaused()) {
 			app.executor().stepForward();
 			Control.updateControls();
 			return;

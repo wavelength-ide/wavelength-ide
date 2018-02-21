@@ -112,7 +112,7 @@ public class Executor implements Serializable {
 	 */
 	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
 			throws ParseException {
-		if (state.val != S.Terminated) {
+		if (!isTerminated()) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
 		executionObservers.forEach(o -> o.clear());
@@ -141,7 +141,7 @@ public class Executor implements Serializable {
 	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
 			throws ParseException {
-		if (state.val != S.Terminated) {
+		if (!isTerminated()) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
 		setState(S.Paused);
@@ -156,7 +156,7 @@ public class Executor implements Serializable {
 	 * Pauses the automatic execution, transitioning into the step by step mode.
 	 */
 	public void pause() {
-		if (state.val != S.Running) {
+		if (!isRunning()) {
 			throw new IllegalStateException("trying to pause execution that isn't running");
 		}
 		setState(S.Paused);
@@ -171,7 +171,7 @@ public class Executor implements Serializable {
 	 * automatic execution.
 	 */
 	public void unpause() {
-		if (state.val != S.Paused) {
+		if (!isPaused()) {
 			throw new IllegalStateException("trying to unpause execution that isn't paused");
 		}
 		setState(S.Running);
@@ -182,7 +182,7 @@ public class Executor implements Serializable {
 	 * Terminates the step by step- and automatic execution.
 	 */
 	public void terminate() {
-		if (state.val == S.Terminated) {
+		if (isTerminated()) {
 			throw new IllegalStateException("trying to terminate a terminated execution");
 		}
 		setState(S.Terminated);
@@ -193,7 +193,7 @@ public class Executor implements Serializable {
 	 * Executes a single reduction of the current lambda term.
 	 */
 	public void stepForward() {
-		if (state.val != S.Paused) {
+		if (!isPaused()) {
 			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		List<LambdaTerm> displayedTerms = engine.stepForward();
@@ -212,7 +212,7 @@ public class Executor implements Serializable {
 	 *            is thrown
 	 */
 	public void stepForward(Application redex) {
-		if (state.val != S.Paused) {
+		if (!isPaused()) {
 			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		List<LambdaTerm> displayedTerms = engine.stepForward(redex);
@@ -223,7 +223,7 @@ public class Executor implements Serializable {
 	 * Reverts to the previously output lambda term.
 	 */
 	public void stepBackward() {
-		if (state.val != S.Paused) {
+		if (!isPaused()) {
 			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		engine.stepBackward();
@@ -238,7 +238,7 @@ public class Executor implements Serializable {
 	 *            The new reduction order
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
-		if (state.val != S.Paused) {
+		if (!isPaused()) {
 			throw new IllegalStateException("trying to set option while execution isn't paused");
 		}
 		engine.setReductionOrder(reduction);
@@ -246,21 +246,21 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Checks whether stepBackward is possible.
+	 * Checks whether stepping backward is possible, disregarding whether the execution is paused.
 	 * 
-	 * @return whether stepBackward is possible
+	 * @return whether stepping backward is possible
 	 */
 	public boolean canStepBackward() {
-		return isPaused() && engine.canStepBackward();
+		return !isTerminated() && engine.canStepBackward();
 	}
 
 	/**
-	 * Checks whether stepForward is possible.
+	 * Checks whether stepping forward is possible, disregarding whether the execution is paused.
 	 * 
-	 * @return whether stepForward is possible
+	 * @return whether stepping forward is possible
 	 */
 	public boolean canStepForward() {
-		return isPaused() && !engine.isFinished();
+		return !isTerminated() && !engine.isFinished();
 	}
 
 	/**
@@ -296,7 +296,7 @@ public class Executor implements Serializable {
 	 * @return lt
 	 */
 	public List<LambdaTerm> getDisplayed() {
-		if (state.val == S.Terminated) {
+		if (isTerminated()) {
 			throw new IllegalStateException("trying to read data of execution while executor is terminated");
 		}
 		return engine.getDisplayed();
@@ -308,7 +308,7 @@ public class Executor implements Serializable {
 	 * @return libraries
 	 */
 	public List<Library> getLibraries() {
-		if (state.val == S.Terminated) {
+		if (isTerminated()) {
 			throw new IllegalStateException("trying to read data of execution while executor is terminated");
 		}
 		return engine.getLibraries();

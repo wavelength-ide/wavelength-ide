@@ -160,6 +160,7 @@ public class App implements Serializable {
 	private Button pauseButton;
 	private Button unpauseButton;
 	private Button forwardButton;
+	private Label spinner;
 	private FlowPanel runControlPanel;
 	private Button terminateButton;
 	private Button runButton;
@@ -376,7 +377,6 @@ public class App implements Serializable {
 		inputControlPanel.add(controlPanel);
 
 		stepByStepControlPanel = new FlowPanel();
-		stepByStepControlPanel.addStyleName("stepByStepControlPanel");
 		controlPanel.add(stepByStepControlPanel);
 
 		backwardsButton = new Button();
@@ -395,8 +395,12 @@ public class App implements Serializable {
 		forwardButton.addStyleName("fa fa-chevron-right");
 		stepByStepControlPanel.add(forwardButton);
 		
+		spinner = new Label();
+		spinner.addStyleName("spinner");
+		spinner.addStyleName("fa fa-spinner fa-spin");
+		controlPanel.add(spinner);
+		
 		runControlPanel = new FlowPanel();
-		runControlPanel.addStyleName("runControlPanel");
 		controlPanel.add(runControlPanel);
 		
 		terminateButton = new Button();
@@ -803,6 +807,10 @@ public class App implements Serializable {
 		return forwardButton;
 	}
 
+	public Label spinner() {
+		return spinner;
+	}
+	
 	public FlowPanel runControlPanel() {
 		return runControlPanel;
 	}

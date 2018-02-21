@@ -18,6 +18,8 @@ public final class Control {
 		app.backwardsButton().setEnabled(isRunning || isPaused);
 		app.forwardButton().setEnabled(isTerminated || isPaused && canStepForward || isRunning && canStepForward);
 		
+		app.spinner().setStyleName("invisible", !isRunning);
+		
 		app.terminateButton().setEnabled(!isTerminated);
 		app.pauseButton().setVisible(!isPaused);
 		app.pauseButton().setEnabled(isRunning);

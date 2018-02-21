@@ -59,8 +59,8 @@ select.form-control { width: 130px; padding: 0px; padding-left: 3px; height: 26p
 /* prevent flowpanels from filling the entire width of the control panel */
 .controlPanel > * { display: inline-block; }
 
-/* space step by step controls and run controls */
-.stepByStepControlPanel { margin-right: 30px; }
+/* space controlPanel elements */
+.spinner { margin-left: 20px; margin-right: 20px; }
 
 /* align footer panel children */
 .footerPanel { display: flex; align-items: bottom; }

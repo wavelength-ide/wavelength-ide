@@ -8,7 +8,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface DatabaseServiceAsync {
 	
 	/**
-	 * Asynchronous call to method specified in {@link DatabaseService#getSerialization(String)}
+	 * Asynchronous call to method specified in {@link DatabaseService#getSerialization(String)}.
 	 * 
 	 * @see DatabaseService
 	 * @param id serialization's id
@@ -17,7 +17,7 @@ public interface DatabaseServiceAsync {
 	void getSerialization(final String id, AsyncCallback<String> callback);
 	
 	/**
-	 * Asynchronous call to method specified in {@link DatabaseService#addEntry(String)}
+	 * Asynchronous call to method specified in {@link DatabaseService#addEntry(String)}.
 	 * 
 	 * @see DatabaseService
 	 * @param serialization a valid serialization

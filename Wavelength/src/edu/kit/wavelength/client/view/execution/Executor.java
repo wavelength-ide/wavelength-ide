@@ -18,18 +18,33 @@ import edu.kit.wavelength.client.model.term.parsing.ParseException;
  * Concurrently reduces lambda terms.
  */
 public class Executor implements Serializable {
-
+	
+	private enum S { Running, Paused, Terminated }
+	
+	private static class State { 
+		S val;
+		
+		State(S v) { 
+			this.val = v; 
+		}
+		
+		State(State s) { 
+			this(s.val); 
+		}
+	}
+	
 	private static int allowedReductionTimeMS = 100;
 
 	private List<ExecutionObserver> executionObservers;
 	private List<ControlObserver> controlObservers;
-
-	// terminated is set iff the execution isn't running and stepping manually isn't
-	// possible
-	private boolean terminated = true;
-	// paused is set iff the execution isn't running (i.e. if stepping manually is
-	// possible OR the execution is terminated)
-	private boolean paused = true;
+	
+	private State state = new State(S.Terminated);
+	
+	private void setState(S v) { 
+		state.val = v; 
+		state = new State(state); 
+	}
+	
 	private ExecutionEngine engine;
 
 	/**
@@ -54,27 +69,27 @@ public class Executor implements Serializable {
 	}
 
 	private void scheduleExecution() {
-		paused = false;
+		final State state = this.state;
 		Scheduler.get().scheduleIncremental(() -> {
 			Date start = new Date();
-			while (true) {
-				if (engine.isFinished()) {
-					paused = true;
-					controlObservers.forEach(ControlObserver::finish);
-					return false;
-				}
-				List<LambdaTerm> displayedTerms = engine.stepForward();
-				pushTerms(displayedTerms);
-				if (paused) {
-					if (!engine.isCurrentDisplayed()) {
-						LambdaTerm current = engine.displayCurrent();
-						pushTerm(current);
+			switch (state.val) {
+			case Terminated:
+				return false;
+			case Paused:
+				return false;
+			default:
+				while (true) {
+					if (engine.isFinished()) {
+						setState(S.Paused);
+						controlObservers.forEach(ControlObserver::finish);
+						return false;
 					}
-					return false;
-				}
-				Date end = new Date();
-				if (end.getTime() - start.getTime() > allowedReductionTimeMS) {
-					return true;
+					List<LambdaTerm> displayedTerms = engine.stepForward();
+					pushTerms(displayedTerms);
+					Date end = new Date();
+					if (end.getTime() - start.getTime() > allowedReductionTimeMS) {
+						return true;
+					}
 				}
 			}
 		});
@@ -97,49 +112,16 @@ public class Executor implements Serializable {
 	 */
 	public void start(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
 			throws ParseException {
-		if (!terminated) {
+		if (!isTerminated()) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
 		executionObservers.forEach(o -> o.clear());
 		engine = new ExecutionEngine(input, order, size, libraries);
+		setState(S.Running);
 		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}
 		scheduleExecution();
-		terminated = false;
-
-	}
-
-	/**
-	 * Pauses the automatic execution, transitioning into the step by step mode.
-	 */
-	public void pause() {
-		if (terminated) {
-			throw new IllegalStateException("trying to pause execution while execution is terminated");
-		}
-		paused = true;
-	}
-
-	/**
-	 * Unpauses the automatic execution, transitioning from step by step mode into
-	 * automatic execution.
-	 */
-	public void unpause() {
-		if (terminated) {
-			throw new IllegalStateException("trying to unpause execution while execution is terminated");
-		}
-		scheduleExecution();
-	}
-
-	/**
-	 * Terminates the step by step- and automatic execution.
-	 */
-	public void terminate() {
-		if (terminated) {
-			throw new IllegalStateException("trying to terminate a terminated execution");
-		}
-		pause();
-		terminated = true;
 	}
 
 	/**
@@ -159,23 +141,60 @@ public class Executor implements Serializable {
 	 */
 	public void stepByStep(String input, ReductionOrder order, OutputSize size, List<Library> libraries)
 			throws ParseException {
-		if (!terminated) {
+		if (!isTerminated()) {
 			throw new IllegalStateException("trying to start execution while execution is not terminated");
 		}
+		setState(S.Paused);
 		executionObservers.forEach(o -> o.clear());
 		engine = new ExecutionEngine(input, order, size, libraries);
-		terminated = false;
 		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}
+	}
+	
+	/**
+	 * Pauses the automatic execution, transitioning into the step by step mode.
+	 */
+	public void pause() {
+		if (!isRunning()) {
+			throw new IllegalStateException("trying to pause execution that isn't running");
+		}
+		setState(S.Paused);
+		if (!engine.isCurrentDisplayed()) {
+			LambdaTerm current = engine.displayCurrent();
+			pushTerm(current);
+		}
+	}
+
+	/**
+	 * Unpauses the automatic execution, transitioning from step by step mode into
+	 * automatic execution.
+	 */
+	public void unpause() {
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to unpause execution that isn't paused");
+		}
+		setState(S.Running);
+		scheduleExecution();
+	}
+
+	/**
+	 * Terminates the step by step- and automatic execution.
+	 */
+	public void terminate() {
+		if (isTerminated()) {
+			throw new IllegalStateException("trying to terminate a terminated execution");
+		}
+		setState(S.Terminated);
+		engine = null;
 	}
 
 	/**
 	 * Executes a single reduction of the current lambda term.
 	 */
 	public void stepForward() {
-		if (terminated) {
-			throw new IllegalStateException("trying to step while execution is terminated");
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		List<LambdaTerm> displayedTerms = engine.stepForward();
 		pushTerms(displayedTerms);
@@ -193,8 +212,8 @@ public class Executor implements Serializable {
 	 *            is thrown
 	 */
 	public void stepForward(Application redex) {
-		if (terminated) {
-			throw new IllegalStateException("trying to step while execution is terminated");
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		List<LambdaTerm> displayedTerms = engine.stepForward(redex);
 		pushTerms(displayedTerms);
@@ -204,8 +223,8 @@ public class Executor implements Serializable {
 	 * Reverts to the previously output lambda term.
 	 */
 	public void stepBackward() {
-		if (terminated) {
-			throw new IllegalStateException("trying to step while execution is terminated");
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		engine.stepBackward();
 		executionObservers.forEach(o -> o.removeLastTerm());
@@ -219,8 +238,8 @@ public class Executor implements Serializable {
 	 *            The new reduction order
 	 */
 	public void setReductionOrder(ReductionOrder reduction) {
-		if (terminated) {
-			throw new IllegalStateException("trying to set option while execution is terminated");
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to set option while execution isn't paused");
 		}
 		engine.setReductionOrder(reduction);
 		executionObservers.forEach(o -> o.reloadLastTerm());
@@ -245,13 +264,12 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Checks whether the engine is paused (true iff engine is not terminated and
-	 * paused).
+	 * Checks whether the engine is paused.
 	 * 
 	 * @return whether the engine is paused
 	 */
 	public boolean isPaused() {
-		return !terminated && paused;
+		return state.val == S.Paused;
 	}
 
 	/**
@@ -260,27 +278,16 @@ public class Executor implements Serializable {
 	 * @return whether the engine is terminated
 	 */
 	public boolean isTerminated() {
-		return terminated;
+		return state.val == S.Terminated;
 	}
 
 	/**
-	 * Checks whether the engine is running (true iff engine is not terminated and
-	 * not paused).
+	 * Checks whether the engine is running.
 	 * 
 	 * @return whether the engine is running
 	 */
 	public boolean isRunning() {
-		return !paused;
-	}
-
-	/**
-	 * Wipes the memory of the last execution.
-	 */
-	public void wipe() {
-		if (!terminated) {
-			throw new IllegalStateException("trying to wipe the executor while executor is not terminated");
-		}
-		engine = null;
+		return state.val == S.Running;
 	}
 
 	/**
@@ -289,9 +296,8 @@ public class Executor implements Serializable {
 	 * @return lt
 	 */
 	public List<LambdaTerm> getDisplayed() {
-		if (engine == null) {
-			throw new IllegalStateException(
-					"trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
+		if (isTerminated()) {
+			throw new IllegalStateException("trying to read data of execution while executor is terminated");
 		}
 		return engine.getDisplayed();
 	}
@@ -302,9 +308,8 @@ public class Executor implements Serializable {
 	 * @return libraries
 	 */
 	public List<Library> getLibraries() {
-		if (engine == null) {
-			throw new IllegalStateException(
-					"trying to read data of execution while there is nothing to read (no execution yet or executor was wiped beforehand)");
+		if (isTerminated()) {
+			throw new IllegalStateException("trying to read data of execution while executor is terminated");
 		}
 		return engine.getLibraries();
 	}
@@ -334,8 +339,7 @@ public class Executor implements Serializable {
 			// engine was null
 			return;
 		} else {
-			// engine was not null and thus holds terms
-			terminated = false;
+			setState(S.Paused);
 			this.engine = new ExecutionEngine(serialization);
 			this.pushTerms(engine.getDisplayed());
 		}

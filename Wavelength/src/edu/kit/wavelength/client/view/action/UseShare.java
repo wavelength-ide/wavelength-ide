@@ -12,6 +12,8 @@ import edu.kit.wavelength.client.view.URLSerializer;
 
 public class UseShare implements Action {
 
+	private static App app = App.get();
+	
 	private URLSerializer serializer;
 
 	/**
@@ -30,6 +32,10 @@ public class UseShare implements Action {
 	 */
 	@Override
 	public void run() {
+		if (app.executor().isRunning()) {
+			app.executor().pause();
+			Control.updateControls();
+		}
 		TextBox sharePanel = App.get().sharePanel();
 		if (sharePanel.isVisible()) {
 			sharePanel.setVisible(false);

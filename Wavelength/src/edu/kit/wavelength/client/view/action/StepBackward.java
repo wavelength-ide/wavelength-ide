@@ -14,9 +14,20 @@ public class StepBackward implements Action {
 	 */
 	@Override
 	public void run() {
-		app.executor().stepBackward();
-
-		Control.updateStepControls();
+		if (app.executor().isRunning()) {
+			app.executor().pause();
+			Control.updateControls();
+			return;
+		}
+		if (app.executor().canStepBackward()) {
+			app.executor().stepBackward();
+			Control.updateControls();
+			return;
+		}
+		
+		app.executor().terminate();
+		app.outputArea().clear();
+		Control.updateControls();
 	}
 
 }

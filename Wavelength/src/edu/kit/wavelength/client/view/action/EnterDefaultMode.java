@@ -15,16 +15,11 @@ public class EnterDefaultMode implements Action {
 	 */
 	@Override
 	public void run() {
-		app.editor().write("");
-		app.editor().unlock();
-		app.outputArea().clear();
-		app.exportButtons().forEach(b -> b.setEnabled(false));
+		Control.wipe();
 		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), true);
 		app.solutionArea().setVisible(false);
 		app.closeExercisePopup().hide();
-		
-		app.outputBlocker().removeStyleName("notclickable");
 	}
 
 }

@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.view.action;
 
 import java.util.Collection;
+
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -16,10 +17,11 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.view.App;
+
 /**
  * This class starts a new reduction process and sets the view accordingly.
  */
-public class RunNewExecution implements Action {
+public class RunExecution implements Action {
 
 	private static App app = App.get();
 
@@ -45,8 +47,11 @@ public class RunNewExecution implements Action {
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
 				.collect(Collectors.toList());
-
-		app.outputArea().clear();
+		
+		if (!app.executor().isTerminated()) {
+			app.executor().terminate();
+			app.outputArea().clear();
+		}
 		
 		app.editor().unerror();
 		try {
@@ -61,27 +66,6 @@ public class RunNewExecution implements Action {
 			return;
 		}
 		
-		app.outputFormatBox().setEnabled(false);
-		app.reductionOrderBox().setEnabled(false);
-		app.outputSizeBox().setEnabled(false);
-		
-		app.backwardsButton().setEnabled(false);
-		app.stepByStepButton().setEnabled(false);
-		app.forwardButton().setEnabled(false);
-		app.cancelButton().setEnabled(true);
-		
-		app.editor().lock();
-		
-		app.exerciseButtons().forEach(b -> b.setEnabled(false));
-		app.libraryCheckBoxes().forEach(b -> b.setEnabled(false));
-		app.exportButtons().forEach(b -> b.setEnabled(false));
-		app.sharePanel().setVisible(false);
-		app.shareButton().setEnabled(false);
-		
-		app.runButton().setVisible(false);
-		app.pauseButton().setVisible(true);
-		
-		app.outputBlocker().addStyleName("notclickable");
-
+		Control.updateControls();
 	}
 }

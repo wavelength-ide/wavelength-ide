@@ -31,7 +31,7 @@ public class StepManually implements Action {
 	public void run() {
 		app.executor().stepForward(redex);
 		
-		Control.updateStepControls();
+		Control.updateControls();
 	}
 
 }

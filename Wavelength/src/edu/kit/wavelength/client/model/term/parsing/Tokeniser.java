@@ -60,7 +60,6 @@ public class Tokeniser {
 			return tokens.toArray(new Token[tokens.size()]);
 		} else {
 			int column = input.length() - remainingInput.length();
-			System.out.println(remainingInput.length());
 			throw new ParseException("Term could not be parsed, found unknown symbol.", rowPos, column + offset,
 					column + offset + 1);
 

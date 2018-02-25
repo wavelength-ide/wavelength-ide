@@ -1,6 +1,6 @@
 # wavelength-ide
 <p>
-Wavelength is THE IDE for the world's most awesome programming language : the untyped lambda calculus.
+Wavelength is THE IDE for the worlds most awesome programming language : the untyped lambda calculus.
 </p>
 
 <h3>Getting started</h3>

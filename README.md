@@ -88,7 +88,9 @@ To improve your programming experience you can include different libraries by se
 </ul>
 
 <h5>Natural Numbers</h5>
+<p>
 Allows you to use arabic numerals in the input.
+</p>
 
 <h5>Church Tuples and Lists</h5>
 <ul>
@@ -105,21 +107,29 @@ Allows you to use arabic numerals in the input.
 </ul>
 
 <h5>Y-Combinator</h5>
+<p>
 Provides the named term <code>Y</code> to use as the Y-Combinator.
-
+</p>
 
 <h4>Export</h4>
+<p>
 To copy the current output in a desired format press <img src="https://github.com/wavelength-ide/wavelength-ide/blob/023f3a45e010835c9212214041676f860cfabf6e/design/ReadMeImages/export.png?raw=true" height = "14">
  beneath the output area and select a predefined format. In the current version plaintext, unicode, LaTeX, Haskell and Lisp are support. Notice that we do not guarantee executable Haskell or Lisp code since it is only a syntactic translation.
+</p>
 
 <h4>URL Serialization</h4>
-The current state of the IDE is encoded in the URL shown in your browser. It will be adjusted if the state of the IDE changes (e.g. a new execution step is shown). For sharing the current state of the IDE with you friends you can either copy the URL from the address bar of your browser or press [share] beneath the output area and copy the generated URL.
+<p>
+The current state of the IDE is encoded in the URL shown in your browser. It will be adjusted if the state of the IDE changes (e.g. a new execution step is shown). For sharing the current state of the IDE with you friends you can either copy the URL from the address bar of your browser or press <img src="https://github.com/wavelength-ide/wavelength-ide/blob/023f3a45e010835c9212214041676f860cfabf6e/design/ReadMeImages/share.png?raw=true" height = "14"> beneath the output area and copy the generated URL.
+</p>
 
 <h4>Exercises</h4>
+<p>
 To test your understanding of the untyped lambda calculus, Wavelength provides different exercises. Each exercise consists of a task description and a sample solution. Just select an exercise in the main menu and master the lambda calculus!
-
+</p>
 
 ## License
+<p>
 Copyright (C) 2018 Muhammet Guemues, Markus Himmel, Marc Huisinga, Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt
 
 Wavelength is licensed under BSD 3-Clause.
+</p>

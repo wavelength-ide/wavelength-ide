@@ -185,10 +185,6 @@ public class App implements Serializable {
 	//executor
 	private Executor executor;
 	
-	//possible outputs
-	private boolean unicodeIsSet;
-	private boolean treeIsSet;
-	
 	//current Exercise
 	private Exercise currentExercise;
 
@@ -519,10 +515,6 @@ public class App implements Serializable {
 		editor = MonacoEditor.load(editorPanel);
 		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
 				Arrays.asList(new FinishExecution()));
-
-	//standard output is unicode output
-		unicodeIsSet = true;
-		treeIsSet = false;
 		
 		currentExercise = null;
 

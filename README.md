@@ -17,13 +17,13 @@ or by using the unicode lambda symbol.
 <pre>(λx.x) y</pre>
 
 <p>
-You may also define custom aliases for terms or use predefined library terms by selecting a library in the main menu ([main menu]).
+You may also define custom aliases for terms or use predefined library terms by selecting a library in the main menu <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/mainMenu.png?raw=true" height = "14">.
 </p>
 
 <pre>id = (λx.x)</pre>
 
 <p>
-Evaluate your input by pressing [run-button]. The result and all steps leading to the result will be displayed in the output area beneath the editor.
+Evaluate your input by pressing <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/run.png?raw=true" height = "14">. The result and all steps leading to the result will be displayed in the output area beneath the editor.
 </p>
 <p>
 Congrats, you just evaluated your first lambda expression!
@@ -31,13 +31,13 @@ Congrats, you just evaluated your first lambda expression!
 
 <h3>Advanced Usage</h3>
 <h4>Execution control</h4>
-<p> Instead of evaluating the lambda term from beginning to end with one click, you can step through the evaluation manually by using the [step-fwd] and [step-bwd] buttons, or by clicking a reducible expression (redex) in the output area (only possible if unicode output format is selected).
+<p> Instead of evaluating the lambda term from beginning to end with one click, you can step through the evaluation manually by using the <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/backwards.png?raw=true" height = "14"> and <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/forward.png?raw=true" height = "14"> buttons, or by clicking a reducible expression (redex) in the output area (only possible if unicode output format is selected).
 </p>
 <p>
-Pressing [run-button] will always start the execution from the beginning, whereas [play] will run the execution from the current point of execution. [pause] will pause a running execution, allowing you to step manually.
+Pressing <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/run.png?raw=true" height = "14"> will always start the execution from the beginning, whereas <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/play.png?raw=true" height = "14"> will run the execution from the current point of execution. <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/pause.png?raw=true" height = "14"> will pause a running execution, allowing you to step manually.
 </p>
 <p>
-Use [x] to clear the output area.
+Use <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/clear.png?raw=true" height = "14">  to clear the output area.
 </p>
 
 <h4>Output format</h4>
@@ -74,7 +74,7 @@ In case you do not want to get every step of the execution displayed you can cha
 </p>
 
 <h4>Libraries</h4>
-To improve your programming experience you can include different libraries by selecting them in the main menu ([main menu]).
+To improve your programming experience you can include different libraries by selecting them in the main menu <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/mainMenu.png?raw=true" height = "14">.
 <h5>Church Boolean</h5>
 <ul>
   <li>true</li>
@@ -107,7 +107,7 @@ Provides the named term <code>Y</code> to use as the Y-Combinator.
 
 
 <h4>Export</h4>
-To copy the current output in a desired format press ![alt text](https://github.com/wavelength-ide/wavelength-ide/blob/023f3a45e010835c9212214041676f860cfabf6e/design/ReadMeImages/export.png)
+To copy the current output in a desired format press <img src="https://github.com/wavelength-ide/wavelength-ide/blob/023f3a45e010835c9212214041676f860cfabf6e/design/ReadMeImages/export.png?raw=true" height = "14">
  beneath the output area and select a predefined format. In the current version plaintext, unicode, LaTeX, Haskell and Lisp are support. Notice that we do not guarantee executable Haskell or Lisp code since it is only a syntactic translation.
 
 <h4>URL Serialization</h4>

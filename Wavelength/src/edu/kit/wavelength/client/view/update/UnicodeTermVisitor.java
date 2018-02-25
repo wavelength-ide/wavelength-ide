@@ -125,6 +125,9 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		// styling for hovering over the redex
 		if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
 			clickableRedex((Application) term.getInner(), panel, a);
+			if (term.getInner() == this.nextRedex) {
+				panel.addStyleName("nextRedex");
+			}
 		}
 
 		return new UnicodeTuple(panel, a);

@@ -74,7 +74,9 @@ In case you do not want to get every step of the execution displayed you can cha
 </p>
 
 <h4>Libraries</h4>
+<p>
 To improve your programming experience you can include different libraries by selecting them in the main menu <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/mainMenu.png?raw=true" height = "14">.
+</p>
 <h5>Church Boolean</h5>
 <ul>
   <li>true</li>

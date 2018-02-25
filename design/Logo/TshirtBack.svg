@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:osb="http://www.openswatchbook.org/uri/2009/osb"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="300mm"
+   height="300mm"
+   viewBox="0 0 300 300"
+   version="1.1"
+   id="svg1466"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="TshirtBack.svg">
+  <defs
+     id="defs1460">
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient2293">
+      <stop
+         id="stop2291"
+         offset="0"
+         style="stop-color:#000080;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       osb:paint="solid"
+       id="linearGradient2354">
+      <stop
+         id="stop2352"
+         offset="0"
+         style="stop-color:#800000;stop-opacity:1;" />
+    </linearGradient>
+    <inkscape:perspective
+       id="perspective4543"
+       inkscape:persp3d-origin="25 : 16.666664 : 1"
+       inkscape:vp_z="49.999999 : 24.999996 : 1"
+       inkscape:vp_y="0 : 999.99982 : 0"
+       inkscape:vp_x="0 : 24.999996 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="400.24823"
+     inkscape:cy="696.0616"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1440"
+     inkscape:window-height="783"
+     inkscape:window-x="0"
+     inkscape:window-y="1"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata1463">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,3)">
+    <g
+       id="g2081"
+       transform="matrix(0.23546119,0,0,0.23412286,44.56004,72.090442)">
+      <path
+         sodipodi:nodetypes="scccssccccccs"
+         inkscape:connector-curvature="0"
+         id="path826"
+         d="M 86.927029,0 C 69.656915,0 56.847159,2.0605257 41.289182,5.9500383 L 41.736488,128.1418 C 113.94887,67.328767 194.8038,281.64876 210.21158,354.67018 c 10.94837,22.16814 21.14262,42.30972 31.24839,59.15069 10.10577,16.84095 19.36603,30.60019 33.28125,40.36925 6.95762,4.88453 52.41,10.35577 62.60473,10.14627 l -0.0277,-119.55514 c -7.72143,2.11988 -11.74554,7.84408 -15.60555,-0.34734 C 296.97097,274.57029 248.04422,144.1348 248.04424,144.1348 v -0.0184 C 231.31057,99.653265 216.91812,65.238428 190.20684,38.336403 161.78287,9.7093709 123.60102,0 86.927029,0 Z"
+         style="line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-transform:none;overflow:visible;opacity:1;fill:#1eb2ff;fill-opacity:0.96399997;stroke-width:9.21081161" />
+      <path
+         sodipodi:nodetypes="cccssscccaccccscc"
+         inkscape:connector-curvature="0"
+         id="path4540"
+         d="m 86.495272,17.755997 c -17.482855,0.44771 -31.087017,3.993163 -45.190541,6.044595 l 0.305826,104.143318 c 41.520786,-8.68002 69.064923,-44.055038 91.550423,-13.8342 22.48549,30.22084 39.49054,76.74312 55.17492,124.11208 15.68438,47.36896 30.00423,95.39081 51.84679,131.03818 10.92127,17.82368 32.15942,60.77033 49.5691,69.80742 46.35029,-8.26854 -0.51149,30.15647 47.7021,25.26901 l -0.0359,-103.69358 c -3.94765,2.87634 -16.86864,6.58994 -24.14242,3.00431 -2.64471,-1.30373 -3.55579,-5.62888 -4.47948,-7.62774 l -0.0184,-0.0359 -77.33844,-205.60618 v -0.0184 C 214.87018,106.33331 201.0745,74.485468 177.61393,50.857348 153.23267,26.30191 120.69203,17.755997 86.927029,17.755997 c -0.14391,-0.0019 -0.287848,-0.0019 -0.431757,0 z"
+         style="line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-transform:none;overflow:visible;opacity:1;fill:#0000ff;fill-opacity:1;stroke-width:9.21081161" />
+      <path
+         sodipodi:nodetypes="ssccccssscccccccccccssccccccscccsss"
+         inkscape:connector-curvature="0"
+         id="path4545"
+         d="m 86.927029,46.971526 c -12.076397,0 -26.411799,1.925586 -38.282433,4.893243 l -6.908108,1.727028 v 7.195946 56.991887 10.36217 l 10.362161,-1.15136 c 8.587442,-0.95416 13.029456,-1.72702 16.406757,-1.72702 15.2417,0 22.486168,1.87631 28.783784,7.48378 6.24001,5.55617 12.38673,17.08361 20.43648,37.13108 0.0746,0.18504 0.21324,0.10122 0.28784,0.28784 l 6.90811,18.42162 L 5.7567568,457.71613 0,470.66882 h 14.104054 77.42838 6.044594 l 2.302703,-5.75674 65.339199,-158.8865 38.28243,103.33379 c 7.69962,21.65521 17.2771,37.71706 31.66215,48.06891 14.38505,10.35187 32.57427,14.10406 55.26487,14.10406 14.63496,0 30.15942,-1.41801 40.58514,-4.89324 l 6.33243,-2.30271 v -6.62026 -56.9919 -11.80135 l -11.51352,2.87838 c -2.63306,0.6583 -8.99972,1.43919 -12.37702,1.43919 -10.15748,0 -15.66969,-1.37169 -19.57298,-4.31757 -7.79504,-8.21086 -7.90414,-10.17973 -11.51349,-20.14865 L 204.07705,160.66747 C 187.82605,117.48623 174.8191,89.513399 156.87165,71.437742 138.92419,53.362086 116.228,46.971526 86.927046,46.971526 Z"
+         style="line-height:normal;font-family:Sans;-inkscape-font-specification:Sans;text-indent:0;text-align:start;text-transform:none;overflow:visible;opacity:1;fill:#000080;fill-opacity:1;stroke:none;stroke-width:9.21081161;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="39.714359"
+       y="216.12883"
+       id="text2085"><tspan
+         sodipodi:role="line"
+         id="tspan2083"
+         x="39.714359"
+         y="216.12883"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.75555611px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">PSE Finisher '17/18</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="200.32739"
+       y="83.065483"
+       id="text2110"><tspan
+         sodipodi:role="line"
+         id="tspan2108"
+         x="200.32739"
+         y="148.80066"
+         style="stroke-width:0.26458332px" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="144.36465"
+       y="177.42982"
+       id="text2114"><tspan
+         sodipodi:role="line"
+         id="tspan2112"
+         x="144.36465"
+         y="177.42982"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">Muhammed</tspan><tspan
+         sodipodi:role="line"
+         x="144.36465"
+         y="241.08691"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px"
+         id="tspan2116" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="175.56055"
+       y="142.25388"
+       id="text2146"><tspan
+         sodipodi:role="line"
+         id="tspan2144"
+         x="175.56055"
+         y="142.25388"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">Markus</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="191.84691"
+       y="110.75676"
+       id="text2150"><tspan
+         sodipodi:role="line"
+         id="tspan2148"
+         x="191.84691"
+         y="110.75676"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">Marc</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="189.20949"
+       y="126.18893"
+       id="text2154"><tspan
+         sodipodi:role="line"
+         id="tspan2152"
+         x="189.20949"
+         y="126.18893"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">Philip</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="196.66048"
+       y="92.873306"
+       id="text2158"><tspan
+         sodipodi:role="line"
+         id="tspan2156"
+         x="196.66048"
+         y="92.873306"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">Julia</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:246.94444275px;line-height:3.17499995px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Italic';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="151.52045"
+       y="158.29005"
+       id="text2162"><tspan
+         sodipodi:role="line"
+         id="tspan2160"
+         x="151.52045"
+         y="158.29005"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:14.11111069px;font-family:sans-serif;-inkscape-font-specification:sans-serif;stroke-width:0.26458332px">Jean-Pierre</tspan></text>
+  </g>
+</svg>

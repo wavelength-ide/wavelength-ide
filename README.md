@@ -1,4 +1,4 @@
-# wavelength-ide
+# Wavelength
 <p>
 Wavelength is THE IDE for the world's most awesome programming language : the untyped lambda calculus.
 </p>

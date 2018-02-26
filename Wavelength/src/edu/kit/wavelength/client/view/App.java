@@ -619,7 +619,7 @@ public class App implements Serializable {
 
 		// checks and unchecks the Library Check Boxes
 		assert (val.get(LIBRARY_SERIALIZATION).length() == libraryCheckBoxes.size());
-		for (int i = 0; i < val.get(5).length(); i++) {
+		for (int i = 0; i < val.get(LIBRARY_SERIALIZATION).length(); i++) {
 			assert (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY
 					|| val.get(LIBRARY_SERIALIZATION).charAt(i) == UNCHECKED_LIBRARY);
 			if (val.get(LIBRARY_SERIALIZATION).charAt(i) == CHECKED_LIBRARY) {
@@ -646,24 +646,7 @@ public class App implements Serializable {
 
 
 		Control.updateControls();
-
-		if (val.get(EXECUTOR_SERIALIZATION).equals("")) {
-			// there are no terms in the OutputArea
-			// nothing to do since application is already in initial state
-		} else {
-			// there are terms in OutputArea
-			// change UI to transition from initialized state to step by step
-			// state
-			editor.lock();
-			runButton.setVisible(false);
-			unpauseButton.setVisible(true);
-			outputSizeBox.setEnabled(false);
-			outputFormatBox.setEnabled(false);
-			libraryCheckBoxes.forEach(b -> b.setEnabled(false));
-			exerciseButtons.forEach(b -> b.setEnabled(false));
-
-		}
-
+		
 	}
 
 	// getters
@@ -928,4 +911,8 @@ public class App implements Serializable {
 		elem.scrollTop = elem.scrollHeight;
 		return;
 	}-*/;
+	
+	public void resetExercise() {
+		this.currentExercise = null;
+	}
 }

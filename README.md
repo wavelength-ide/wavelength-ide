@@ -79,31 +79,45 @@ To improve your programming experience you can include different libraries by se
 </p>
 <h5>Church Boolean</h5>
 <ul>
-  <li>true</li>
-  <li>false</li>
-  <li>and</li>
-  <li>or</li>
-  <li>not</li>
-  <li>ifThenElse</li>
+  <li><code>true</code></li>
+  <li><code>false</code></li>
+  <li><code>and</code></li>
+  <li><code>or</code></li>
+  <li><code>not</code></li>
+  <li><code>ifThenElse</code></li>
 </ul>
 
 <h5>Natural Numbers</h5>
 <p>
-Allows you to use arabic numerals in the input.
+Allows you to use arabic numerals in the input. All arithmetic operations provided are prefix expressions.
 </p>
+<ul>
+<li><code>plus</code>: takes two arguments n and m, calculates n + m</li>
+    <li><code>minus</code>: takes two arguments n and m, calculates n - m</li>
+    <li><code>times</code>: takes two arguments n and m, calculates n * m</li>
+    <li><code>pow</code>: takes two arguments n and m, calculates n<sup>m</sup></li>
+    <li><code>pred</code>: takes one argument and calculates its predecessor</li>
+    <li><code>succ</code>: takes one argument and calculates its successor</li>
+</ul>
+
+<h5>Accelerated Natural Numbers</h5>
+This library contains the same functionality as Natural Numbers. However, numbers will be displayed as arabic numerals instead of their respective lambda term. Thus arithmetic operations will in general be faster.
 
 <h5>Church Tuples and Lists</h5>
+<p>
+All provided operations are prefix expressions.
+</p>
 <ul>
-  <li>true</li>
-  <li>false</li>
-  <li>pair</li>
-  <li>first</li>
-  <li>second</li>
-  <li>newList</li>
-  <li>prepend</li>
-  <li>head</li>
-  <li>tail</li>
-  <li>isEmpty</li>
+  <li><code>true</code></li>
+  <li><code>false</code></li>
+  <li><code>pair</code>: takes two parameters n and m, constructs a tuple (n,m)</li>
+  <li><code>first</code>: takes a tuple as parameter and returns the first argument</li>
+  <li><code>second</code>: takes a tuple as parameter and returns the second argument</li>
+  <li><code>newList</code>: constructs a new empty singly linked list</li>
+  <li><code>prepend</code>: takes an element and a list of elements as parameter and sets the element as the lists new head</li>
+  <li><code>head</code>: takes a list as parameter and returns its first element</li>
+  <li><code>tail</code>: takes a list as parameter and returns its last element</li>
+  <li><code>isEmpty</code>: returns true if the list contains no elements</li>
 </ul>
 
 <h5>Y-Combinator</h5>

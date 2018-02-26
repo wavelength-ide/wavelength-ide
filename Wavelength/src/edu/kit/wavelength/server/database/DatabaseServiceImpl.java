@@ -1,5 +1,6 @@
 package edu.kit.wavelength.server.database;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,6 +44,10 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 	 * mapping ids(as Strings) to serialization Strings.
 	 */
 	private void initializeDatabase() {
+		File file = new File("database");
+		if (!file.exists()) {
+			file.mkdir();
+		}
 		try (Connection connection = DriverManager.getConnection(databasePath)) {
 			try (Statement statement = connection.createStatement()) {
 				statement.execute(createDatabase);

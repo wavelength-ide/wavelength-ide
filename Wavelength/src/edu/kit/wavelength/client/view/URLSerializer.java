@@ -57,7 +57,7 @@ public class URLSerializer {
 		DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);
 		AsyncCallback<String> addEntryCallback = new AsyncCallback<String>() {
 			public void onFailure(Throwable caught) {
-				App.get().outputArea().add(new Text(caught.getMessage()));
+				System.err.println(caught.getMessage());
 			}
 
 			public void onSuccess(String id) {

@@ -152,6 +152,15 @@ select.form-control {
 	overflow: scroll;
 	left: 5px !important;
 	right: 5px !important;
+	width: 100%;
+	height: 100%
+}
+
+.tree {
+    width: 100%;
+    height: 100%;
+    right: 0;
+    top: 0;
 }
 
 /* change background color to distinguish two terms */

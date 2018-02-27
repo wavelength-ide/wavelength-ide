@@ -63,6 +63,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		FlowPanel treePanel = new FlowPanel("div");
 		// the id is needed so the tree will be placed in the correct panel
 		treePanel.getElement().setId("" + id);
+		treePanel.addStyleName("tree");
 		panels.add(treePanel);
 		// display the new panel and add the tree
 		app.outputArea().add(treePanel);

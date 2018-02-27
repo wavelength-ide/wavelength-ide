@@ -16,8 +16,8 @@ public class VisJs {
 			edges : eval(edges)
 		};
 		var options = {
-			width: ($wnd.innerWidth - 25) + "px",
-			height: ($wnd.innerHeight - 400) + "px",
+			width: (parent.offsetWidth - 25) + "px",
+			height: (parent.offsetHeight - 25) + "px",
 			nodes: {
 				color: {
 					border: '#333333',

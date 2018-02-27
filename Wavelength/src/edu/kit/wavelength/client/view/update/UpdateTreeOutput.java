@@ -20,7 +20,6 @@ import edu.kit.wavelength.client.view.gwt.VisJs;
 public class UpdateTreeOutput implements ExecutionObserver {
 
 	private static App app = App.get();
-	private List<TreeTriple> termTriples;
 	private List<FlowPanel> panels;
 	private List<LambdaTerm> terms;
 	private int id;
@@ -30,7 +29,6 @@ public class UpdateTreeOutput implements ExecutionObserver {
 	 * Create a new execution observer for tree pretty printing.
 	 */
 	public UpdateTreeOutput() {
-		termTriples = new ArrayList<>();
 		panels = new ArrayList<>();
 		terms = new ArrayList<>();
 		id = 0;
@@ -54,7 +52,6 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		Application nextRedex = currentOrder.next(t);
 
 		TreeTriple term = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this, nextRedex));
-		termTriples.add(term);
 
 		String nodes = "[" + term.nodes + "]";
 		String edges = "[" + term.edges + "]";
@@ -77,15 +74,17 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		if (!isSet()) {
 			return;
 		}
-
+		
 		id -= 1;
+
+		FlowPanel toRemove = panels.get(panels.size() - 1);
+		app.outputArea().remove(toRemove);
 		terms.remove(terms.size() - 1);
-		app.outputArea().remove(id);
+		panels.remove(panels.size() - 1);
 	}
 
 	@Override
 	public void clear() {
-		termTriples.clear();
 		panels.clear();
 		terms.clear();
 		id = 0;
@@ -97,10 +96,14 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		if (!isSet()) {
 			return;
 		}
-		app.outputArea().remove(id);
+		
+		FlowPanel toRemove = panels.get(panels.size() - 1);
+		app.outputArea().remove(toRemove);
+		panels.remove(panels.size() - 1);
+		
 		LambdaTerm term = terms.get(terms.size() - 1);
 		terms.remove(terms.size() - 1);
-		pushTerm(term);
+		this.pushTerm(term);
 	}
 	
 	private boolean isSet() {

@@ -70,4 +70,9 @@ public class RedexExercise implements Exercise {
 			+ " reduction order.";
 		}
 	}
+
+	@Override
+	public StringBuilder serialize() {
+		return new StringBuilder("β-Redex - " + myReductionOrder.getName());
+	}
 }

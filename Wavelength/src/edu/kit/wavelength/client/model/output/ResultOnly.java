@@ -33,12 +33,16 @@ public final class ResultOnly implements OutputSize {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder(ID);
+		return new StringBuilder("" + ID);
 	}
 
 	@Override
 	public int numToPreserve() {
 		return 1;
 	}
-
+	
+	@Override
+	public boolean equals(Object other) {
+		return other instanceof ResultOnly;
+	}
 }

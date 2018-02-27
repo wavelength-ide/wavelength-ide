@@ -11,9 +11,11 @@ import java.util.List;
 public final class OutputSizes {
 
 	/**
-	 * Returns an unmodifiable list of all {@link OutputSize}s known to the model.
-	 * @return An unmodifiable list containing all {@link OutputSize}s known to the
-	 * model
+	 * Returns an unmodifiable list of all {@link OutputSize}s known to the
+	 * model.
+	 * 
+	 * @return An unmodifiable list containing all {@link OutputSize}s known to
+	 *         the model
 	 */
 	public static List<OutputSize> all() {
 		ArrayList<OutputSize> allOutputs = new ArrayList<OutputSize>();
@@ -23,35 +25,38 @@ public final class OutputSizes {
 		allOutputs.add(new ResultOnly());
 		return Collections.unmodifiableList(allOutputs);
 	}
-	
+
 	/**
 	 * Returns the {@link OutputSize} referred to by a given string.
-	 * @param serialized The string to be deserialized
-	 * @return The {@link OutputSize} that the given string represents, if known to the model
+	 * 
+	 * @param serialized
+	 *            The string to be deserialized
+	 * @return The {@link OutputSize} that the given string represents, if known
+	 *         to the model
 	 */
 	public static OutputSize deserialize(String serialized) {
 		if (serialized == null || serialized.isEmpty())
 			throw new IllegalArgumentException("serialized must be non-empty");
-		
+
 		String stripped = serialized.substring(1);
-		
+
 		switch (serialized.charAt(0)) {
 		case Full.ID:
 			return new Full();
-			
+
 		case Periodic.ID:
 			return Periodic.fromSerialized(stripped);
-		
+
 		case ResultOnly.ID:
 			return new ResultOnly();
-			
+
 		case Shortened.ID:
 			return Shortened.fromSerialized(stripped);
 		}
-		
+
 		throw new IllegalArgumentException("serialized must represent an output size");
 	}
-	
+
 	private OutputSizes() {
 	}
 }

@@ -37,5 +37,10 @@ public final class Full implements OutputSize {
 	public int numToPreserve() {
 		return 1;
 	}
+	
+	@Override
+	public boolean equals(Object other) {
+		return other instanceof Full;
+	}
 
 }

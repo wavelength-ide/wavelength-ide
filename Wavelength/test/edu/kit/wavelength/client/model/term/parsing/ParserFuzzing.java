@@ -33,6 +33,9 @@ public class ParserFuzzing {
 
 					if (seenPathHashes.add(hash))
 						synchronized (Parser.class) {
+							if (res.exception instanceof ParseException)
+								return;
+
 							System.out.printf("Unique path for param '%s', %s\n", res.params[0],
 									res.exception == null
 											? ((LambdaTerm) res.result).acceptVisitor(new ToStringVisitor())

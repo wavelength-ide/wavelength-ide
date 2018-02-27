@@ -308,4 +308,49 @@ public class ParserTest {
 		}
 		assertEquals(term, expectedTerm);
 	}
+	
+	@Test(expected = ParseException.class)
+	public void whitespaceInput1() throws ParseException {
+		testParser.parse(" ");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void whitespaceInput2() throws ParseException {
+		testParser.parse("\n");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void whitespaceInput3() throws ParseException {
+		testParser.parse("\n ");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void whitespaceInput4() throws ParseException {
+		testParser.parse(" \n ");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void whitespaceInput5() throws ParseException {
+		testParser.parse("");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void whitespaceInput6() throws ParseException {
+		testParser.parse("   \n \n\n  \n");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedNameAssignment1() throws ParseException {
+		testParser.parse("==a==\n\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedNameAssignment2() throws ParseException {
+		testParser.parse("8==\n\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedNameAssignment3() throws ParseException {
+		testParser.parse("= C= C<\n\\x.x");
+	}
 }

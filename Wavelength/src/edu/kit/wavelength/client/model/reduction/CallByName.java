@@ -22,6 +22,9 @@ public final class CallByName implements ReductionOrder {
 
 	@Override
 	public Application next(LambdaTerm term) {
+		if (term == null) {
+			throw new IllegalArgumentException("Term may not be null.");
+		}
 		return (Application) term.acceptVisitor(new CallByNameVisitor());
 	}
 

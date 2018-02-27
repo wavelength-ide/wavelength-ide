@@ -22,7 +22,10 @@ public final class CallByValue implements ReductionOrder {
 
 	@Override
 	public Application next(LambdaTerm term) {
-		return term.acceptVisitor(new CallByValueVisitor());
+		if (term == null) {
+			throw new IllegalArgumentException("Term may not be null.");
+		}
+		return (Application) term.acceptVisitor(new CallByValueVisitor());
 	}
 
 	@Override

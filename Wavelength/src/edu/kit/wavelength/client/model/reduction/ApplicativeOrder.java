@@ -21,7 +21,10 @@ public final class ApplicativeOrder implements ReductionOrder {
 	@Override
 	public Application next(LambdaTerm term)
 	{
-		return term.acceptVisitor(new ApplicativeVisitor());
+		if (term == null) {
+			throw new IllegalArgumentException("Term may not be null.");
+		}
+		return (Application) term.acceptVisitor(new ApplicativeVisitor());
 	}
 	
 	@Override

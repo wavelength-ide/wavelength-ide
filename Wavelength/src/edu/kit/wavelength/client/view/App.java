@@ -654,9 +654,6 @@ public class App implements Serializable {
 		// deserializes the executor with the correct string
 		executor.deserialize(val.get(EXECUTOR_SERIALIZATION));
 
-		// writes Editor with given content
-		editor.write(val.get(EDITOR_SERIALIZATION));
-
 		// Selects the correct option of the optionBoxes
 		// assert that the given strings are representations of decimal integers
 		// and that the idex fits the optionBox
@@ -687,7 +684,9 @@ public class App implements Serializable {
 			
 			editorExercisePanel().setWidgetHidden(exercisePanel(), false);
 		}
-
+		
+		// writes Editor with given content
+		editor.write(val.get(EDITOR_SERIALIZATION));
 
 		Control.updateControls();
 		

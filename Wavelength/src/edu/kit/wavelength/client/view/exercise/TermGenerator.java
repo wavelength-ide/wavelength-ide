@@ -17,48 +17,50 @@ public class TermGenerator {
 	private int minDepth;
 	private int maxDepth;
 	private int openNodes;
-	
-	int deepestTerm = 0;
-	int deepestAbs = 0;
 
-	public static void main(String[] args) {
-		int minD = 3;
-		int maxD = 10;
-		TermGenerator tg = new TermGenerator();
-		BasicExportVisitor bev = new BasicExportVisitor(new ArrayList<Library>(), "λ");
-		for (int i = 0; i < 100; i++) {
-			LambdaTerm someTerm = tg.buildTerm(minD, maxD);
-			String result = someTerm.acceptVisitor(bev).toString();
-			System.out.println(result);
-			if (tg.deepestTerm < minD) {
-				throw new IllegalArgumentException("too shallow " + tg.deepestTerm);
-			}
-			if (tg.deepestAbs > maxD) {
-				throw new IllegalArgumentException("too deep " + tg.deepestAbs);
-			}
-		}
+	/**
+	 * Creates a new random LambdaTerm.
+	 * The input minimal and maximal depth are used to limit the terms size.
+	 * @param minDepth The minimal term depth
+	 * @param maxDepth The maximal term depth
+	 * @return The newly created term
+	 * 
+	 */
+	public LambdaTerm getNewTerm(int minDepth, int maxDepth) {
+		return getNewTerm(minDepth, maxDepth, 0, 0);
 	}
-
-	public LambdaTerm buildTerm(int minDepth, int maxDepth) {
+	
+	/**
+	 * Create a new random subterm.
+	 * @param minDepth The minimal term depth
+	 * @param maxDepth The maximal term depth
+	 * @param termDepth The current depth
+	 * @param abstractionDepth The number of abstractions enclosing this term.
+	 * @return The newly created subterm.
+	 */
+	public LambdaTerm getNewTerm (int minDepth, int maxDepth, int termDepth, int abstractionDepth) {
+		if (minDepth > maxDepth) {
+			throw new IllegalArgumentException("MinDepth has to be lower than maxDepth.");
+		}
+		if (termDepth < 0 || abstractionDepth < 0) {
+			throw new IllegalArgumentException("TermDepth and abstractionDepth may not be negative.");
+		}
 		this.maxDepth = maxDepth;
 		this.minDepth = minDepth;
-		deepestTerm = 0;
-		deepestAbs = 0;
 		openNodes = 1;
-		return makeTerm(0, 0);
+		return makeTerm(termDepth, abstractionDepth);
 	}
 
+	/**
+	 * Creates a new random LambdaTerm by recursively invoking this method to construct sub terms.
+	 * @param termDepth The number of abstractions and applications above the term
+	 * @param abstractionDepth The number of abstractions enclosing the term
+	 * @return A a new random LambdaTerm
+	 */
 	private LambdaTerm makeTerm(int termDepth, int abstractionDepth) {
-		if (termDepth > deepestTerm) {
-			deepestTerm = termDepth;
-		}
-		if (abstractionDepth > deepestAbs) {
-			deepestAbs = abstractionDepth;
-		}
-		
-		int random = Random.nextInt(4);
+		int random = nextInt(4);
 		if (termDepth == maxDepth) {
-			// forces variable
+			// force variable
 			random = (random % 2) + 2;
 		} else if (termDepth < minDepth) {
 			if (openNodes == 1) {
@@ -78,7 +80,7 @@ public class TermGenerator {
 		case 2:
 			if (abstractionDepth > 0) {
 				openNodes--;
-				int randomIndex = Random.nextInt(abstractionDepth) + 1;
+				int randomIndex = nextInt(abstractionDepth) + 1;
 				return new BoundVariable(randomIndex);
 			}
 		default:
@@ -86,9 +88,18 @@ public class TermGenerator {
 			return new FreeVariable(getRandomVarName());
 		}
 	}
+	
+	/**
+	 * Return a random integer in [0,bound)
+	 * @param bound The upper bound to use
+	 * @return a random integer
+	 */
+	protected int nextInt(int bound) {
+		return Random.nextInt(bound);
+	}
 
 	private String getRandomVarName() {
-		char result = (char) (Random.nextInt('z' - 'a' + 1) + 'a');
+		char result = (char) (nextInt('z' - 'a' + 1) + 'a');
 		return "" + result;
 	}
 }

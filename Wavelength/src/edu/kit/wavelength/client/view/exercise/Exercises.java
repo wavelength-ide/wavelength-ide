@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.kit.wavelength.client.model.reduction.NormalOrder;
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
+import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 
 /**
  * Static class giving access to all available exercises.
@@ -109,10 +111,13 @@ public final class Exercises {
 		String order4Solution = "(λx.x)(λz. z x)";
 		String order4Predef = "(λv. v v)(a b)((λx.x)(λz. z x))";
 		Exercise order4 = new ConcreteExercise(order4Name, order4Task, order4Solution, order4Predef);
-
-		Exercise normalRedex = new RedexExercise(new NormalOrder());
 		
 		ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();
+		List<ReductionOrder> reductions = ReductionOrders.all();
+		for (ReductionOrder cOrder: reductions) {
+			exerciseList.add(new RedexExercise(cOrder));
+		}
+		
 		exerciseList.add(exerciseMode);
 		exerciseList.add(var);
 		exerciseList.add(freeVar);
@@ -124,7 +129,6 @@ public final class Exercises {
 		exerciseList.add(order3);
 		exerciseList.add(order4);
 		exerciseList.add(alphaRedu);
-		exerciseList.add(normalRedex);
 		
 		return exerciseList;
 	}

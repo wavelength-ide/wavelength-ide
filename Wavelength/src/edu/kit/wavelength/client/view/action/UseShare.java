@@ -13,18 +13,6 @@ import edu.kit.wavelength.client.view.URLSerializer;
 public class UseShare implements Action {
 
 	private static App app = App.get();
-	
-	private URLSerializer serializer;
-
-	/**
-	 * Constructs a new action handler for the permalink request.
-	 * 
-	 * @param serializer
-	 *            The instance to delegate the serialization process to
-	 */
-	public UseShare(URLSerializer serializer) {
-		this.serializer = serializer;
-	}
 
 	/**
 	 * Hides the share panel if it is currently shown, otherwise generates the
@@ -36,11 +24,11 @@ public class UseShare implements Action {
 			app.executor().pause();
 			Control.updateControls();
 		}
-		TextBox sharePanel = App.get().sharePanel();
+		TextBox sharePanel = app.sharePanel();
 		if (sharePanel.isVisible()) {
 			sharePanel.setVisible(false);
 		} else {
-			serializer.serialize();
+			app.urlSerializer().serialize();
 			sharePanel.setVisible(true);
 		}
 	}

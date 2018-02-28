@@ -20,7 +20,7 @@ public class EnterDefaultMode implements Action {
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), true);
 		app.solutionArea().setVisible(false);
 		app.closeExercisePopup().hide();
-		app.resetExercise();
+		app.setCurrentExercise(null);
 	}
 
 }

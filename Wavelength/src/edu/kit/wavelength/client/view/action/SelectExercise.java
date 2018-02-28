@@ -32,6 +32,7 @@ public class SelectExercise implements Action {
 	@Override
 	public void run() {
 		loadExerciseAction.setExercise(selected);
+		app.setCurrentExercise(selected);
 		app.loadExercisePopup().show();
 	}
 	

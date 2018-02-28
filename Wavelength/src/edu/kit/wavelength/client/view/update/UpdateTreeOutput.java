@@ -66,7 +66,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 		app.outputArea().add(treePanel);
 		VisJs.loadNetwork(nodes, edges, treePanel);
 		// when a new tree was printed, scroll down so the user can see it
-		App.autoScroll();
+		App.autoScrollOutput();
 	}
 
 	@Override

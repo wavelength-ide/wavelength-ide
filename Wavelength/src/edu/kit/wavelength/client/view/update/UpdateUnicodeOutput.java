@@ -66,7 +66,7 @@ public class UpdateUnicodeOutput implements ExecutionObserver {
 		wrappedTerms.add(wrapper);
 		app.outputArea().add(wrapper);
 		// when a new tree was printed, scroll down so the user can see it
-		App.autoScroll();
+		App.autoScrollOutput();
 	}
 
 	@Override

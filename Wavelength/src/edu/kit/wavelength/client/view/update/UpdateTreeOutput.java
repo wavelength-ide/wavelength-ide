@@ -97,6 +97,7 @@ public class UpdateTreeOutput implements ExecutionObserver {
 			return;
 		}
 		
+		id -= 1;
 		FlowPanel toRemove = panels.get(panels.size() - 1);
 		app.outputArea().remove(toRemove);
 		panels.remove(panels.size() - 1);

@@ -49,13 +49,16 @@ public class RedexExercise implements Exercise {
 		return predefinitions;
 	}
 	
-	private void reset() {
+	/**
+	 * Resets the exercise by randomly creating a new term and updating predefinition and solution.
+	 */
+	public void reset() {
 		BasicExportVisitor toString = new BasicExportVisitor(new ArrayList<Library>(), "λ");
 		TermGenerator generator = new TermGenerator();
-		LambdaTerm newTerm = generator.buildTerm(minTermDepth, maxTermDepth);
+		LambdaTerm newTerm = generator.getNewTerm(minTermDepth, maxTermDepth);
 		if (firstRedex == null) {
 			while (myReductionOrder.next(newTerm) == null) {
-				newTerm = generator.buildTerm(minTermDepth, maxTermDepth);
+				newTerm = generator.getNewTerm(minTermDepth, maxTermDepth);
 			}
 		}
 		predefinitions = newTerm.acceptVisitor(toString).toString();

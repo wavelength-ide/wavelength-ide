@@ -20,7 +20,7 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
  */
 public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 
-	private UpdateTreeOutput output;
+	private UpdateOutput output;
 	private Application nextRedex;
 
 	/**
@@ -28,15 +28,15 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 	 * 
 	 * @param libraries
 	 *            The libraries to take into account.
-	 * @param output
+	 * @param updateOutput
 	 *            The output that keeps track of the number of nodes
 	 * @param nextRedex
 	 *            The redex that is reduced next with the current
 	 *            {@link ReductionOrder}
 	 */
-	public TreeTermVisitor(List<Library> libraries, UpdateTreeOutput output, Application nextRedex) {
+	public TreeTermVisitor(List<Library> libraries, UpdateOutput updateOutput, Application nextRedex) {
 		super(libraries);
-		this.output = output;
+		this.output = updateOutput;
 		this.nextRedex = nextRedex;
 	}
 

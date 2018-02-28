@@ -344,4 +344,12 @@ public class Executor implements Serializable {
 			this.pushTerms(engine.getDisplayed());
 		}
 	}
+
+	public void setOutputFormat() {
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to set option while execution isn't paused");
+		}
+		executionObservers.forEach(o -> o.reloadLastTerm());
+		
+	}
 }

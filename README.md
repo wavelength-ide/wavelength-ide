@@ -42,8 +42,8 @@ Use <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/desig
 
 <h4>Output format</h4>
 <p>
-You can choose between to display formats, either unicode or syntax trees by selecting the dedicated option in the left-most combobox beneath the editor. <br>
-The output format can not be changed during an ongoing execution.
+You can choose between two display formats, either unicode or syntax trees, by selecting the dedicated option in the left-most combobox beneath the editor. <br>
+The output format cannot be changed during an ongoing execution.
 </p>
 <p>
 The default output format is unicode output, which will display the terms using the unicode lambda symbol (λ). <br>

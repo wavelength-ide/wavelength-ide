@@ -28,5 +28,5 @@ public interface ExecutionObserver {
 	/**
 	 * Reloads the last displayed term.
 	 */
-	void reloadLastTerm();
+	void reloadTerm();
 }

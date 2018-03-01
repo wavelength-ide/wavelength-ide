@@ -242,7 +242,7 @@ public class Executor implements Serializable {
 			throw new IllegalStateException("trying to set option while execution isn't paused");
 		}
 		engine.setReductionOrder(reduction);
-		executionObservers.forEach(o -> o.reloadLastTerm());
+		executionObservers.forEach(o -> o.reloadTerm());
 	}
 
 	/**
@@ -343,5 +343,13 @@ public class Executor implements Serializable {
 			this.engine = new ExecutionEngine(serialization);
 			this.pushTerms(engine.getDisplayed());
 		}
+	}
+
+	public void setOutputFormat() {
+		if (!isPaused()) {
+			throw new IllegalStateException("trying to set option while execution isn't paused");
+		}
+		executionObservers.forEach(o -> o.reloadTerm());
+		
 	}
 }

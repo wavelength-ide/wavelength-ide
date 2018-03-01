@@ -55,6 +55,7 @@ import edu.kit.wavelength.client.view.action.Pause;
 import edu.kit.wavelength.client.view.action.RunExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
+import edu.kit.wavelength.client.view.action.SetOutputFormat;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
@@ -68,10 +69,9 @@ import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.FinishExecution;
+import edu.kit.wavelength.client.view.update.UpdateOutput;
 import edu.kit.wavelength.client.view.update.UpdateShareURL;
-import edu.kit.wavelength.client.view.update.UpdateTreeOutput;
 import edu.kit.wavelength.client.view.update.UpdateURL;
-import edu.kit.wavelength.client.view.update.UpdateUnicodeOutput;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -539,7 +539,11 @@ public class App implements Serializable {
 		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
 		closeExerciseButton.addClickHandler(e -> closeExercisePopup.show());
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
+
 		backwardButton.addClickHandler(e -> new StepBackward().run());
+
+		outputFormatBox.addChangeHandler(h -> new SetOutputFormat().run());
+
 		forwardButton.addClickHandler(e -> new StepForward().run());
 		terminateButton.addClickHandler(e -> new Terminate().run());
 		runButton.addClickHandler(e -> new RunExecution().run());
@@ -557,7 +561,8 @@ public class App implements Serializable {
 		// ui needs to be created BEFORE loading the editor for the ids to exist
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
-		executor = new Executor(Arrays.asList(new UpdateUnicodeOutput(), new UpdateTreeOutput()),
+
+		executor = new Executor(Arrays.asList(new UpdateOutput()),
 				Arrays.asList(new FinishExecution()));
 		urlSerializer = new URLSerializer(Arrays.asList(new UpdateURL(), new UpdateShareURL()), POLLING_DELAY_MS);
 		urlSerializer.startPolling();

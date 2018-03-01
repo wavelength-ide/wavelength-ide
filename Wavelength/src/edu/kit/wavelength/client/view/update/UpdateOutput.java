@@ -31,27 +31,22 @@ public class UpdateOutput implements ExecutionObserver {
 	}
 
 	@Override
-	public void pushTerm(LambdaTerm t) {
+	public void pushTerm(LambdaTerm term) {
 		String formatName = app.outputFormatBox().getSelectedItemText();
 		OutputFormat format = this.determineFormat(formatName);
 
-		terms.add(new TermFormatTuple(t, format));
+		terms.add(new TermFormatTuple(term, format));
 		FlowPanel wrapper = new FlowPanel("div");
 		wrapper.getElement().setId("" + panelID);
 
-		// determine the selected reduction order and get the redex that will be reduced
-		// next
-		String orderName = app.reductionOrderBox().getSelectedItemText();
-		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
-				.findFirst().get();
-		Application nextRedex = currentOrder.next(t);
+		Application nextRedex = nextRedex(term);
 
 		switch (format) {
 		case UNICODE:
-			pushUnicodeTerm(t, wrapper, nextRedex);
+			pushUnicodeTerm(term, wrapper, nextRedex);
 			break;
 		case TREE:
-			pushTreeTerm(t, wrapper, nextRedex);
+			pushTreeTerm(term, wrapper, nextRedex);
 			break;
 		}
 		// when a new term was printed, scroll down so the user can see it
@@ -59,6 +54,85 @@ public class UpdateOutput implements ExecutionObserver {
 		panelID += 1;
 	}
 
+	
+
+	@Override
+	public void removeLastTerm() {
+		grey = !grey;
+		panelID -= 1;
+		terms.remove(terms.size() - 1);
+		FlowPanel toRemove = panels.get(panels.size() - 1);
+		app.outputArea().remove(toRemove);
+		panels.remove(panels.size() - 1);
+		reloadLastTerm();
+	}
+
+	@Override
+	public void clear() {
+		panels.clear();
+		terms.clear();
+		panelID = 0;
+		nodeId = 0;
+		grey = false;
+	}
+
+	@Override
+	public void reloadTerm() {
+		panelID -= 1;
+		FlowPanel toRemove = panels.get(panels.size() - 1);
+		app.outputArea().remove(toRemove);
+		panels.remove(panels.size() - 1);
+		LambdaTerm term = terms.get(terms.size() - 1).term;
+		terms.remove(terms.size() - 1);
+		grey = !grey;
+		this.pushTerm(term);
+	}
+	
+	/*********
+	 * helper methods
+	 *********/
+
+	private void reloadLastTerm() {
+		panelID -= 1;
+		FlowPanel toRemove = panels.get(panels.size() - 1);
+		app.outputArea().remove(toRemove);
+		
+		panels.remove(panels.size() - 1);
+		
+		LambdaTerm term = terms.get(terms.size() - 1).term;
+		OutputFormat format = terms.get(terms.size() - 1).format;
+		
+		terms.remove(terms.size() - 1);
+		
+		grey = !grey;
+		
+		terms.add(new TermFormatTuple(term, format));
+		FlowPanel wrapper = new FlowPanel("div");
+		wrapper.getElement().setId("" + panelID);
+
+		Application nextRedex = nextRedex(term);
+
+		switch (format) {
+		case UNICODE:
+			pushUnicodeTerm(term, wrapper, nextRedex);
+			break;
+		case TREE:
+			pushTreeTerm(term, wrapper, nextRedex);
+			break;
+		}
+		// when a new term was printed, scroll down so the user can see it
+		App.autoScroll();
+		panelID += 1;
+		
+	}
+	
+	private Application nextRedex(LambdaTerm term) {
+		String orderName = app.reductionOrderBox().getSelectedItemText();
+		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
+				.findFirst().get();
+		return currentOrder.next(term);
+	}
+	
 	private OutputFormat determineFormat(String formatName) {
 		switch (formatName) {
 		case "Unicode Output":
@@ -98,77 +172,6 @@ public class UpdateOutput implements ExecutionObserver {
 		// display the new panel and add the tree
 		app.outputArea().add(wrapper);
 		VisJs.loadNetwork(nodes, edges, wrapper);
-	}
-
-	@Override
-	public void removeLastTerm() {
-		grey = !grey;
-		panelID -= 1;
-		terms.remove(terms.size() - 1);
-		FlowPanel toRemove = panels.get(panels.size() - 1);
-		app.outputArea().remove(toRemove);
-		panels.remove(panels.size() - 1);
-		reloadTerm();
-	}
-
-	@Override
-	public void clear() {
-		panels.clear();
-		terms.clear();
-		panelID = 0;
-		nodeId = 0;
-		grey = false;
-	}
-
-	@Override
-	public void reloadLastTerm() {
-		panelID -= 1;
-		FlowPanel toRemove = panels.get(panels.size() - 1);
-		app.outputArea().remove(toRemove);
-		panels.remove(panels.size() - 1);
-		LambdaTerm term = terms.get(terms.size() - 1).term;
-		terms.remove(terms.size() - 1);
-		grey = !grey;
-		this.pushTerm(term);
-	}
-
-	private void reloadTerm() {
-		panelID -= 1;
-		FlowPanel toRemove = panels.get(panels.size() - 1);
-		app.outputArea().remove(toRemove);
-		
-		panels.remove(panels.size() - 1);
-		
-		LambdaTerm term = terms.get(terms.size() - 1).term;
-		OutputFormat format = terms.get(terms.size() - 1).format;
-		
-		terms.remove(terms.size() - 1);
-		
-		grey = !grey;
-		
-		terms.add(new TermFormatTuple(term, format));
-		FlowPanel wrapper = new FlowPanel("div");
-		wrapper.getElement().setId("" + panelID);
-
-		// determine the selected reduction order and get the redex that will be reduced
-		// next
-		String orderName = app.reductionOrderBox().getSelectedItemText();
-		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
-				.findFirst().get();
-		Application nextRedex = currentOrder.next(term);
-
-		switch (format) {
-		case UNICODE:
-			pushUnicodeTerm(term, wrapper, nextRedex);
-			break;
-		case TREE:
-			pushTreeTerm(term, wrapper, nextRedex);
-			break;
-		}
-		// when a new term was printed, scroll down so the user can see it
-		App.autoScroll();
-		panelID += 1;
-		
 	}
 
 }

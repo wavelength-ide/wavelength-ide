@@ -45,7 +45,7 @@ public final class Shortened implements OutputSize {
 		// displayed term again,
 		// and the index just larger than the number of totalSteps - the cutoff,
 		// to ensure that no more than the value of cutoff-1 terms are displayed
-		for (int i = Math.max(lastDisplayed + 1, Math.max(cutoff, totalSteps - cutoff + 1)); i <= totalSteps; i++) {
+		for (int i = Math.max(lastDisplayed + 1, Math.max(cutoff, (totalSteps - cutoff) + 1)); i <= totalSteps; i++) {
 			displaySteps.add(i);
 		}
 		return displaySteps;

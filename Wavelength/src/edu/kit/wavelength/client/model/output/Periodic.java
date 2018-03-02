@@ -45,7 +45,7 @@ public final class Periodic implements OutputSize {
 		// The following statement determines whether this step has already been
 		// displayed
 		// either by step-by-step reduction or live display.
-		if ((totalSteps % period) != 0 && lastDisplayed != totalSteps) {
+		if (lastDisplayed != totalSteps) {
 			displaySteps.add(totalSteps);
 		}
 		return displaySteps;

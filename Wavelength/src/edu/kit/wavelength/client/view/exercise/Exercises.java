@@ -42,29 +42,6 @@ public final class Exercises {
 		String freeVarPredef = "(λx.x y)(λy. y x)((λv. x v) λx.x)";
 		Exercise freeVar = new ConcreteExercise(freeVarName, freeVarTask, freeVarSolution, freeVarPredef);
 
-		String redexName = "β-Redex";
-		String redexTask = "A reducable expression or redex is a λ-term which may be reduced by one of the lambda calculus's "
-				+ "reduction rules. In the following exercises redex will always refer to a β-redex,"
-				+ " a redex which may be reduced using β-reduction. A β-redex always consists of an application whoose"
-				+ " left argument is a abstraction. Does the displayed λ-term contain a redex and if so which part of the term"
-				+ " is a redex?";
-		String redexSolution = "(λx. x x)(k)  is the term's only redex";
-		String redexPredef = "λv.(((λx.x x)(k))v)";
-		Exercise redex = new ConcreteExercise(redexName, redexTask, redexSolution, redexPredef);
-
-		String redex2Name = "β-Redex II";
-		String redex2Task = "Does the displayed λ-term contain a redex and if so which part of the term"
-				+ " is a redex?";
-		String redex2Solution = "The λ-term does not contain a redex";
-		String redex2Predef = "λy.y x (λv.u v) y";
-		Exercise redex2 = new ConcreteExercise(redex2Name, redex2Task, redex2Solution, redex2Predef);
-
-		String redex3Name = "β-Redex III";
-		String redex3Task = "Does the displayed λ-term contain a redex and if so which part of the term is a redex?";
-		String redex3Solution = "(λx.z x) (x y) is the term's only redex";
-		String redex3Predef = "λx.λy.(λz.(λx.z x) (x y))";
-		Exercise redex3 = new ConcreteExercise(redex3Name, redex3Task, redex3Solution, redex3Predef);
-
 		String alphaReduName = "α-conversion";
 		String alphaReduTask = "α-conversion makes it possible to rename variables bound by an abstraction with some restrictions to prevent the term"
 				+ " changing it structure: The renaming must not result in free variables becoming bound ones and only variables bound to the"
@@ -121,9 +98,6 @@ public final class Exercises {
 		exerciseList.add(exerciseMode);
 		exerciseList.add(var);
 		exerciseList.add(freeVar);
-		exerciseList.add(redex);
-		exerciseList.add(redex2);
-		exerciseList.add(redex3);
 		exerciseList.add(order1);
 		exerciseList.add(order2);
 		exerciseList.add(order3);

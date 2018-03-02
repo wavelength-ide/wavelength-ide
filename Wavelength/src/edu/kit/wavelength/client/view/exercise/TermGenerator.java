@@ -98,7 +98,11 @@ public class TermGenerator {
 		return Random.nextInt(bound);
 	}
 
-	private String getRandomVarName() {
+	/**
+	 * Return a random lower case character.
+	 * @return a random lower case character
+	 */
+	public String getRandomVarName() {
 		char result = (char) (nextInt('z' - 'a' + 1) + 'a');
 		return "" + result;
 	}

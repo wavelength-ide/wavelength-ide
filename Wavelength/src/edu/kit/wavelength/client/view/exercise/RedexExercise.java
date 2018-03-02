@@ -24,7 +24,7 @@ public class RedexExercise implements Exercise {
 	
 	@Override
 	public String getName() {
-		return "β-Redex - " + myReductionOrder.getName();
+		return "β-Redex - " + myReductionOrder.getName() + "*";
 	}
 
 	@Override

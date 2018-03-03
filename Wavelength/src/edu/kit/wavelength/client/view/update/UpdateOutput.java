@@ -54,8 +54,6 @@ public class UpdateOutput implements ExecutionObserver {
 		panelID += 1;
 	}
 
-	
-
 	@Override
 	public void removeLastTerm() {
 		grey = !grey;
@@ -83,11 +81,16 @@ public class UpdateOutput implements ExecutionObserver {
 		app.outputArea().remove(toRemove);
 		panels.remove(panels.size() - 1);
 		LambdaTerm term = terms.get(terms.size() - 1).term;
+		OutputFormat format = terms.get(terms.size() - 1).format;
+
 		terms.remove(terms.size() - 1);
-		grey = !grey;
+
+		if (format == OutputFormat.UNICODE) {
+			grey = !grey;
+		}
 		this.pushTerm(term);
 	}
-	
+
 	/*********
 	 * helper methods
 	 *********/
@@ -96,16 +99,14 @@ public class UpdateOutput implements ExecutionObserver {
 		panelID -= 1;
 		FlowPanel toRemove = panels.get(panels.size() - 1);
 		app.outputArea().remove(toRemove);
-		
+
 		panels.remove(panels.size() - 1);
-		
+
 		LambdaTerm term = terms.get(terms.size() - 1).term;
 		OutputFormat format = terms.get(terms.size() - 1).format;
-		
+
 		terms.remove(terms.size() - 1);
-		
-		grey = !grey;
-		
+
 		terms.add(new TermFormatTuple(term, format));
 		FlowPanel wrapper = new FlowPanel("div");
 		wrapper.getElement().setId("" + panelID);
@@ -114,6 +115,7 @@ public class UpdateOutput implements ExecutionObserver {
 
 		switch (format) {
 		case UNICODE:
+			grey = !grey;
 			pushUnicodeTerm(term, wrapper, nextRedex);
 			break;
 		case TREE:
@@ -123,16 +125,16 @@ public class UpdateOutput implements ExecutionObserver {
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
 		panelID += 1;
-		
+
 	}
-	
+
 	private Application nextRedex(LambdaTerm term) {
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
 				.findFirst().get();
 		return currentOrder.next(term);
 	}
-	
+
 	private OutputFormat determineFormat(String formatName) {
 		switch (formatName) {
 		case "Unicode Output":

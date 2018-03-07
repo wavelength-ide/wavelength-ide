@@ -353,4 +353,26 @@ public class ParserTest {
 	public void malformedNameAssignment3() throws ParseException {
 		testParser.parse("= C= C<\n\\x.x");
 	}
+	
+	@Test(expected = ParseException.class)
+	public void singleDash1() throws ParseException {
+		testParser.parse("-\n\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void singleDash2() throws ParseException {
+		testParser.parse("a=b -\n\\x.x");
+	}
+	
+	@Test
+	public void termOrder1() throws ParseException {
+		LambdaTerm t = testParser.parse("a=b\na=c\na");
+		assertEquals(new NamedTerm("a", new FreeVariable("c")), t);
+	}
+	
+	@Test
+	public void termOrder2() throws ParseException {
+		LambdaTerm t = testParser.parse("a=b\nb=a\na=a\na");
+		assertEquals(new NamedTerm("a", new NamedTerm("a", new FreeVariable("b"))), t);
+	}
 }

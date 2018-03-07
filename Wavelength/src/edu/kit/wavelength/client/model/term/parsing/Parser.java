@@ -77,7 +77,8 @@ public class Parser {
 			}
 
 			// Remove comments
-			possibleRows[i] = possibleRows[i].substring(0, (possibleRows[i] + "--").indexOf("--"));
+			String withDummyComment = possibleRows[i] + " --";
+			possibleRows[i] = withDummyComment.substring(0, withDummyComment.indexOf("--"));
 
 			// Only consider lines that contain something interesting
 			MatchResult blankResult = RegExp.compile("^\\s*$").exec(possibleRows[i]);

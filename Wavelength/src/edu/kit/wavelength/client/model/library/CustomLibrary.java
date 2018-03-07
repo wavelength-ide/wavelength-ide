@@ -51,7 +51,7 @@ public class CustomLibrary implements Library {
 	@Override
 	public LambdaTerm getTerm(String name) {
 		LambdaTerm desiredTerm = null;
-		int termIndex = names.indexOf(name);
+		int termIndex = names.lastIndexOf(name);
 		if (termIndex != -1) {
 			desiredTerm = terms.get(termIndex);
 		}
@@ -70,7 +70,6 @@ public class CustomLibrary implements Library {
 	
 	/**
 	 * Adds a new lambda and its name to the library. 
-	 * The term will only be added if  the library does not already contain a term with this name.
 	 * @param term The lambda term to add to the library
 	 * @param name The name used to reference the term.
 	 */
@@ -78,9 +77,7 @@ public class CustomLibrary implements Library {
 		if (name == null || name.length() < 1 || term == null) {
 			throw new IllegalArgumentException();
 		}
-		if (containsName(name) == false) {
-			names.add(name);
-			terms.add(term);
-		}
+		names.add(name);
+		terms.add(term);
 	}
 }

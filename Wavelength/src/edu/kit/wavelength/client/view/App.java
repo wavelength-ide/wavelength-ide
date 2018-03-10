@@ -661,7 +661,7 @@ public class App implements Serializable {
 
 		// Selects the correct option of the optionBoxes
 		// assert that the given strings are representations of decimal integers
-		// and that the idex fits the optionBox
+		// and that the index fits the optionBox
 		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(OUTPUTFORMAT_SERIALIZATION)));
 		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(REDUCTIONORDER_SERIALIZATION)));
 		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(OUTPUTSIZE_SERIALIZATION)));
@@ -677,6 +677,7 @@ public class App implements Serializable {
 				libraryCheckBoxes.get(i).setValue(false);
 			}
 		}
+		
 		if (!val.get(EXERCISE_SERIALIZATION).isEmpty()) {
 			// deserialize exercise mode
 			Exercise exercise = Exercises.deserialize(val.get(EXERCISE_SERIALIZATION).toString());

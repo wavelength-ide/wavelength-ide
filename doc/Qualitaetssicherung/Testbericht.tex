@@ -1,0 +1,62 @@
+\documentclass[parskip=full,11pt]{scrartcl}
+
+\usepackage[sfdefault,light]{roboto}
+\usepackage{inconsolata}
+\usepackage[ngerman]{babel}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{microtype}
+
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage[section]{placeins}
+
+\usepackage{enumitem}  
+
+%Change enummeration pattern from 1. to 1)
+\renewcommand\labelenumi{\theenumi)}
+
+\titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
+\title{Testbericht}
+\subtitle{Wavelength--$\bm{\lambda}$-IDE}
+\author{Muhammet Guemues, Markus Himmel, Marc Huisinga,\\Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt}
+
+\begin{document}
+\maketitle
+\newpage
+\tableofcontents
+\newpage
+
+\section{Testprotokolle}
+
+\section{Fehlerprotokoll}
+
+\begin{itemize}
+
+\item[]
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Veränderungen am von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt. }
+\item [\textbf{Grund:}] Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben. 
+\item [\textbf{Behebung:}] Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.
+\end{itemize}
+
+\item[]
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+
+\end{itemize}
+
+
+\end{document}

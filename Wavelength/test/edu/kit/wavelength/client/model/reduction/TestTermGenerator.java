@@ -27,6 +27,6 @@ public class TestTermGenerator extends TermGenerator {
 	}
 	
 	public Application getRandomRedex() {
-		return new Application(getRandomApplication(), getNewTerm(0, 100));
+		return new Application(getRandomApplication(), getNewTerm(0, 100, 1, 1));
 	}
 }

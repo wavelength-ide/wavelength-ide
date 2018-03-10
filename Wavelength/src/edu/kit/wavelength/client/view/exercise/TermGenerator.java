@@ -1,17 +1,16 @@
 package edu.kit.wavelength.client.view.exercise;
 
-import java.util.ArrayList;
-
 import com.google.gwt.user.client.Random;
 
-import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.view.export.BasicExportVisitor;
 
+/**
+ * This class is used to create random lambda terms for use in exercises.
+ */
 public class TermGenerator {
 
 	private int minDepth;
@@ -43,7 +42,7 @@ public class TermGenerator {
 			throw new IllegalArgumentException("MinDepth has to be lower than maxDepth.");
 		}
 		if (termDepth < 0 || abstractionDepth < 0) {
-			throw new IllegalArgumentException("TermDepth and abstractionDepth may not be negative.");
+			throw new IllegalArgumentException("Neither TermDepth nor abstractionDepth may be negative.");
 		}
 		this.maxDepth = maxDepth;
 		this.minDepth = minDepth;

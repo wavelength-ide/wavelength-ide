@@ -375,4 +375,124 @@ public class ParserTest {
 		LambdaTerm t = testParser.parse("a=b\nb=a\na=a\na");
 		assertEquals(new NamedTerm("a", new NamedTerm("a", new FreeVariable("b"))), t);
 	}
+	
+	@Test(expected = ParseException.class)
+	public void unbalancedParens1() throws ParseException {
+		testParser.parse("(\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void unbalancedParens2() throws ParseException {
+		testParser.parse("\\x.x)");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void unbalancedParens3() throws ParseException {
+		testParser.parse(")\\x.x(");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void unbalancedParens4() throws ParseException {
+		testParser.parse("\\x.x)(");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void unbalancedParens5() throws ParseException {
+		testParser.parse("(\\x.((x x)) x))");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput1() throws ParseException {
+		testParser.parse("");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput2() throws ParseException {
+		testParser.parse(" ");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput3() throws ParseException {
+		testParser.parse("\n");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput4() throws ParseException {
+		testParser.parse(" \n      ");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput5() throws ParseException {
+		testParser.parse("x=y");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput6() throws ParseException {
+		testParser.parse("x=y\n");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput7() throws ParseException {
+		testParser.parse("x=y\n     ");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput8() throws ParseException {
+		testParser.parse("\\x.()");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput9() throws ParseException {
+		testParser.parse("u=\n\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void emptyInput10() throws ParseException {
+		testParser.parse("u=    \n\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression1() throws ParseException {
+		testParser.parse("\\\\x.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression2() throws ParseException {
+		testParser.parse("\\x\\x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression3() throws ParseException {
+		testParser.parse("\\x..x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression4() throws ParseException {
+		testParser.parse("\\.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression5() throws ParseException {
+		testParser.parse("\\x y.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression6() throws ParseException {
+		testParser.parse("\\(x).x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression7() throws ParseException {
+		testParser.parse("\\(.x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression8() throws ParseException {
+		testParser.parse("\\(x x).x");
+	}
+	
+	@Test(expected = ParseException.class)
+	public void malformedLambdaExpression9() throws ParseException {
+		testParser.parse("\\(\\y. y).x");
+	}
 }

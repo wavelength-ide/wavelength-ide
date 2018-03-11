@@ -107,7 +107,7 @@ public class Parser {
 		if (assign != null) {
 			String[] split = input.split("=");
 			String name = split[0].trim();
-			String termString = split[1].trim();
+			String termString = split[1];
 			LambdaTerm term = parseTerm(termString, input.length() - termString.length());
 			inputLibrary.addTerm(term, name);
 		} else {
@@ -196,9 +196,7 @@ public class Parser {
 	}
 
 	private RangedTerm parseNonApplication(int left, int right) throws ParseException {
-		if (left == right)
-			throw new ParseException("The empty term is not a lambda term", rowPos, tokens[left].getStart(),
-					tokens[left].getEnd());
+		assert left != right;
 
 		// Since we are explicitly not looking for an application, we greedily know what
 		// to do

@@ -76,6 +76,6 @@ public class RedexExercise implements Exercise {
 
 	@Override
 	public StringBuilder serialize() {
-		return new StringBuilder("β-Redex - " + myReductionOrder.getName());
+		return new StringBuilder(getName());
 	}
 }

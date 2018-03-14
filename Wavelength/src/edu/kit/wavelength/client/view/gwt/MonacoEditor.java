@@ -12,14 +12,14 @@ public class MonacoEditor {
 	// keeping track of decorations to delete them when editing
 	private JavaScriptObject decorations;
 	
-	private static final String introPredef = "Welcome to Wavelength, the lambda calculus IDE. \n"
-			+ "At its core Wavelength is a lamba calculus interpreter. \n"
-			+ "You may enter any λ-term and reduce it down to its normal form using one of Wavelength's four reduction orders. \n"
+	private static final String introPredef = "--Welcome to Wavelength, the lambda calculus IDE. "
+			+ "At its core Wavelength is a lamba calculus interpreter. "
+			+ "You may enter any λ-term and reduce it down to its normal form using one of Wavelength's four reduction orders. "
 			+ "By result only the final reduction result is displayed. To better understand the reduction process, "
 			+ " you may select a different output size from the rightmost combobox. If you want even more transparency and control,"
 			+ " Wavelength offers a step-by-step mode, enabling you to initiate every reduction yourself. "
-			+ "If a redex is clicked in this mode, it is reduced no matter the active reduction order. \n"
-			+ "Using the step-back button you may undo a past reduction. \n"
+			+ "If a redex is clicked in this mode, it is reduced no matter the active reduction order. "
+			+ "Using the step-back button you may undo a past reduction. "
 			+ "The reduced λ-term and all intermediate steps display in the output window can be exported in different formats."
 			+ "These can be selected from the export-menu in the lower left corner and for example include Haskell- or Lisp-code. "
 			+ "To ease working with complex terms, Wavelength includes a number of predefined libraries containing commonly used λ-terms "

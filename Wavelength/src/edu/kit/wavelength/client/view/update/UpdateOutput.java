@@ -15,18 +15,24 @@ import edu.kit.wavelength.client.view.gwt.VisJs;
 
 public class UpdateOutput implements ExecutionObserver {
 
+	// stores all shown panels
 	private List<FlowPanel> panels;
+	// stores all shown terms and what format was selected at the time of pretty
+	// printing
 	private List<TermFormatTuple> terms;
+	// needed for vis.js network
 	private int panelID;
-	public int nodeId;
-	private static App app = App.get();
+	// states, whether a panel should have grey background to separate unicode terms
 	private boolean grey;
+	private static App app = App.get();
 
+	/**
+	 * Creates a new Output class.
+	 */
 	public UpdateOutput() {
 		this.panels = new ArrayList<>();
 		this.terms = new ArrayList<>();
 		this.panelID = 0;
-		this.nodeId = 0;
 		this.grey = false;
 	}
 
@@ -34,8 +40,8 @@ public class UpdateOutput implements ExecutionObserver {
 	public void pushTerm(LambdaTerm term) {
 		String formatName = app.outputFormatBox().getSelectedItemText();
 		OutputFormat format = this.determineFormat(formatName);
-
 		terms.add(new TermFormatTuple(term, format));
+
 		FlowPanel wrapper = new FlowPanel("div");
 		wrapper.getElement().setId("" + panelID);
 
@@ -47,6 +53,8 @@ public class UpdateOutput implements ExecutionObserver {
 			break;
 		case TREE:
 			pushTreeTerm(term, wrapper, nextRedex);
+			break;
+		default:
 			break;
 		}
 		// when a new term was printed, scroll down so the user can see it
@@ -62,6 +70,7 @@ public class UpdateOutput implements ExecutionObserver {
 		FlowPanel toRemove = panels.get(panels.size() - 1);
 		app.outputArea().remove(toRemove);
 		panels.remove(panels.size() - 1);
+		// needed to clear the highlighting of the former reduced redex
 		reloadLastTerm();
 	}
 
@@ -70,16 +79,20 @@ public class UpdateOutput implements ExecutionObserver {
 		panels.clear();
 		terms.clear();
 		panelID = 0;
-		nodeId = 0;
 		grey = false;
 	}
 
+	/**
+	 * This method is triggered if the user wants to change the output by selecting
+	 * a different format or a different reduction order.
+	 */
 	@Override
 	public void reloadTerm() {
 		panelID -= 1;
 		FlowPanel toRemove = panels.get(panels.size() - 1);
 		app.outputArea().remove(toRemove);
 		panels.remove(panels.size() - 1);
+
 		LambdaTerm term = terms.get(terms.size() - 1).term;
 		OutputFormat format = terms.get(terms.size() - 1).format;
 
@@ -91,23 +104,19 @@ public class UpdateOutput implements ExecutionObserver {
 		this.pushTerm(term);
 	}
 
-	/*********
-	 * helper methods
-	 *********/
-
+	/**
+	 * This method is triggered if the last displayed term is removed. It causes the
+	 * new last displayed term to be reloaded so all highlights are reset.
+	 */
 	private void reloadLastTerm() {
 		panelID -= 1;
 		FlowPanel toRemove = panels.get(panels.size() - 1);
 		app.outputArea().remove(toRemove);
-
 		panels.remove(panels.size() - 1);
 
 		LambdaTerm term = terms.get(terms.size() - 1).term;
 		OutputFormat format = terms.get(terms.size() - 1).format;
 
-		terms.remove(terms.size() - 1);
-
-		terms.add(new TermFormatTuple(term, format));
 		FlowPanel wrapper = new FlowPanel("div");
 		wrapper.getElement().setId("" + panelID);
 
@@ -121,6 +130,8 @@ public class UpdateOutput implements ExecutionObserver {
 		case TREE:
 			pushTreeTerm(term, wrapper, nextRedex);
 			break;
+		default:
+			break;
 		}
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
@@ -128,6 +139,10 @@ public class UpdateOutput implements ExecutionObserver {
 
 	}
 
+	/**
+	 * Determines the next redex according to the currently selected reduction
+	 * order.
+	 */
 	private Application nextRedex(LambdaTerm term) {
 		String orderName = app.reductionOrderBox().getSelectedItemText();
 		ReductionOrder currentOrder = ReductionOrders.all().stream().filter(o -> o.getName().equals(orderName))
@@ -135,6 +150,9 @@ public class UpdateOutput implements ExecutionObserver {
 		return currentOrder.next(term);
 	}
 
+	/**
+	 * Determines the output format according to the currently selected format.
+	 */
 	private OutputFormat determineFormat(String formatName) {
 		switch (formatName) {
 		case "Unicode Output":
@@ -164,7 +182,7 @@ public class UpdateOutput implements ExecutionObserver {
 	}
 
 	private void pushTreeTerm(LambdaTerm t, FlowPanel wrapper, Application nextRedex) {
-		TreeTriple treeTerm = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), this, nextRedex));
+		TreeTriple treeTerm = t.acceptVisitor(new TreeTermVisitor(new ArrayList<>(), nextRedex));
 
 		String nodes = "[" + treeTerm.nodes + "]";
 		String edges = "[" + treeTerm.edges + "]";

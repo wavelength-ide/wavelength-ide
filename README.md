@@ -23,6 +23,12 @@ You may also define custom aliases for terms or use predefined library terms by 
 <pre>id = (λx.x)</pre>
 
 <p>
+Insert comments to clearify your code.
+</p>
+<pre><font color=green>-- welcome to wavelength</font></pre>
+
+
+<p>
 Evaluate your input by pressing <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/run.png?raw=true" height = "14">. The result and all steps leading to the result will be displayed in the output area beneath the editor.
 </p>
 <p>

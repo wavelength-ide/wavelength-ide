@@ -39,22 +39,120 @@
 
 \section{Fehlerprotokoll}
 
-\begin{itemize}
+\begin{itemize}[itemsep=3ex]
 
-\item[]
+\item[] % issue 19
 \begin{itemize}[noitemsep]
-\item[] {\bfseries Veränderungen am von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt. }
-\item [\textbf{Grund:}] Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben. 
-\item [\textbf{Behebung:}] Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.
+\item[] {\bfseries }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
 \end{itemize}
 
-\item[]
+\item[] % issue 18
+\begin{itemize}[noitemsep]
+\item[] {\bfseries }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 17
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  Das Anhängen eines "-" an eine ansonsten korrekte Zeile der Eingabe führt nicht zu einem Fehler. }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 16
 \begin{itemize}[noitemsep]
 \item[] {\bfseries  }
 \item [\textbf{Grund:}]
 \item [\textbf{Behebung:}]
 \end{itemize}
 
+\item[] % issue 15
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  Beginnt eine Eingabe mit eine Kommentar in der ersten Zeile, so wird sie nicht korrekt geparst sondern ein Fehler ausgegeben. }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 14; TODO 
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 13; TODO
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+
+\item[] % issue 12; TODO
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Veränderungen an von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt. }
+\item [\textbf{Grund:}] Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben. 
+\item [\textbf{Behebung:}] Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.
+\end{itemize}
+
+\item[] % issue 11;TODO
+\begin{itemize}[noitemsep]
+\item[] {\bfseries }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 10
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Das Parsen einer Eingabe die nur aus Leerstellen besteht führt zu einem Fehler.}
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 9; Parser does not check for null
+\begin{itemize}[noitemsep]
+\item[] {\bfseries }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 8; TODO
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 7
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Im Uniode Ausgabeformat werden benannte Term nicht markiert auch wenn sie den als nächstes zu reduzierenden Redex enthalten. }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 6; TODO
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 5; TODO
+\begin{itemize}[noitemsep]
+\item[] {\bfseries  }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 4
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Enthält ein Lambda-Term  verschiedene Instanzen des gleichen vordefinierten Terms, so werden, sobald eine Instanz reduziert wird, auch alle anderen Instanzen reduziert. }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
 
 \end{itemize}
 

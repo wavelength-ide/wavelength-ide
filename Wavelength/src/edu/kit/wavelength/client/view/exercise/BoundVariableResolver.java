@@ -28,7 +28,8 @@ public class BoundVariableResolver implements Visitor<LambdaTerm> {
 		inSubTerm = false;
 		resolvedSubTerm = null;
 		maxDeBruijn = 0;
-		return term.acceptVisitor(this);
+		term.acceptVisitor(this);
+		return resolvedSubTerm;
 	}
 	
 	public LambdaTerm getResolvedSubTerm() {
@@ -93,8 +94,7 @@ public class BoundVariableResolver implements Visitor<LambdaTerm> {
 
 	@Override
 	public LambdaTerm visitNamedTerm(NamedTerm term) {
-		// TODO Auto-generated method stub
-		return null;
+		return new NamedTerm(term.getName(), term.getInner().acceptVisitor(this));
 	}
 
 	@Override

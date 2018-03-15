@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 import edu.kit.wavelength.client.view.export.BasicExportVisitor;
 
 public class RedexExercise implements Exercise {
@@ -22,7 +23,7 @@ public class RedexExercise implements Exercise {
 	public RedexExercise(ReductionOrder reduction) {
 		this.myReductionOrder = reduction;
 		termGenerator = new TermGenerator();
-		//reset();
+		reset();
 	}
 	
 	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {
@@ -67,14 +68,16 @@ public class RedexExercise implements Exercise {
 	 * Resets the exercise by randomly creating a new term and updating predefinition and solution.
 	 */
 	public void reset() {
-		BasicExportVisitor toString = new BasicExportVisitor(new ArrayList<Library>(), "λ");
+		BoundVariableResolver resolver = new BoundVariableResolver();
+		BasicExportVisitor stringMaker = new BasicExportVisitor(new ArrayList<Library>(), "λ");
 		LambdaTerm newTerm = termGenerator.getNewTerm(minTermDepth, maxTermDepth);
-		predefinitions = newTerm.acceptVisitor(toString).toString();
-		LambdaTerm firstRedexTerm = myReductionOrder.next(newTerm);
-		if (firstRedexTerm == null) {
+		LambdaTerm redex = myReductionOrder.next(newTerm);
+		predefinitions = newTerm.acceptVisitor(stringMaker).toString();
+		if (redex == null) {
 			firstRedex = null;
 		} else {
-			firstRedex = firstRedexTerm.acceptVisitor(toString).toString();
+			LambdaTerm resolvedRedex =  resolver.resolveVariables(newTerm, redex);
+			firstRedex = resolvedRedex.acceptVisitor(stringMaker).toString();
 		}
 	}
 

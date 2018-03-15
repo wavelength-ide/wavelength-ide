@@ -1,4 +1,4 @@
-\documentclass[parskip=full,11pt]{scrartcl}
+\documentclass[parskip=full,11pt,openany]{scrreprt}
 
 \usepackage[sfdefault,light]{roboto}
 \usepackage{inconsolata}
@@ -19,10 +19,19 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage[section]{placeins}
 
+\usepackage{amsmath}
+
 \usepackage{enumitem}  
 
 %Change enummeration pattern from 1. to 1)
 \renewcommand\labelenumi{\theenumi)}
+
+%align lambda terms left, no spacing before or after environment
+\newenvironment{nospaceflalign*}
+ {\setlength{\abovedisplayskip}{0pt}\setlength{\belowdisplayskip}{0pt}%
+  \csname flalign*\endcsname}
+ {\csname endflalign*\endcsname\ignorespacesafterend}
+
 
 \titlehead{\centering\includegraphics[width=6cm]{img/logo.pdf}}
 \title{Testbericht}
@@ -35,9 +44,154 @@
 \tableofcontents
 \newpage
 
-\section{Testprotokolle}
+\chapter{Testprotokolle}
 
-\section{Fehlerprotokoll}
+\section{UI Tests}
+%TODO Begründung warum keine Unittests
+
+
+
+\subsection{Ausgabe}
+
+\subsubsection{Unicode: Syntax Test}
+Bei diesem Test ist lediglich die Syntax der Ausgabe relevant. Markierungen werden in späteren Tests abgedeckt.
+Dieser Test wird mit folgenden Einstellungen durchgeführt: Reduktionsordnung 'Normal Order' und Ausgabegröße 'full'. Es wurde immer die gesamte Ausgabe (sofern der Term terminiert) auf Syntaxfehler überprüft.
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&\lambda x.x \\
+	&(\lambda x.x) \ x \\
+	&(\lambda x.x\ x\ x)\  (\lambda x.x\ x\ x) \\
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+\begin{nospaceflalign*}
+	& \text{id} = \lambda x.x \\
+	& \text{id} \ x &&
+\end{nospaceflalign*}
+
+\subsubsection{Unicode: Highlight Tests}
+
+\paragraph{Redexe}
+Nur Redexe im  Term werden als anklickbar markiert und ob nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
+
+Es wurde mit folgenden Termen getestet:
+\begin{nospaceflalign*}
+	&\lambda x.x \\
+	&(\lambda x.x) x \\
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+
+
+
+\paragraph{Mouse-over}
+Dieser Test testet das korrekte Verhalten bei Bewegen der Maus über Lambda-Terme. Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&\lambda x.x \\
+	&(\lambda x.x) x \\
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+
+
+\paragraph{Hintergrund}
+Jeder neue Term wird in einer neuen Zeile ausgegeben und verschiedene Terme werden durch verschiedene Hintergrundfarben unterscheidbar gemacht.
+
+
+\subsubsection{Unicode: Schritt vor}
+Bei Schritt vor bleibt (per Button oder manuellem Klick) die Markierung des ausgewerteten Redex korrekt erhalten. Weiterhin sind Redexe im ursprünglichen Term nicht mehr anklickbar und auch bei mouse-over zeigen diese keine Reaktion. Der neu angezeigte Term verhält sich wie in den vorherigen Tests spezifiziert.
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&\lambda x.x \\
+	&(\lambda x.x) x \\
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+\subsubsection{Unicode: Schritt zurück}
+Test1: 
+Im Ausgabefenster wird ein einzelner Term angezeigt. Bei Schritt zurück wird dieser entfernt und das Ausgabefenster ist leer. 
+Dieser Test funktioniert unabhängig von einem bestimmten Term.
+
+Test2: 
+Im Ausgabefenster wird mehr als ein Term angezeigt. Bei Schritt zurück wird der zuletzt angezeigte Term entfernt.
+Beim nun letzten Term werden die Markierungen zurückgesetzt, das bedeutet, dass die Markierung des reduzierten Redex durch die Markierung der aktuell gewählten Reduktionsordnung ersetzt wird. Weiterhin sind nun alle Redexe wieder klickbar und mouse-over verhält sich wie oben getestet.
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&\lambda x.x \\
+	&(\lambda x.x) x \\
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+
+
+\subsubsection{Unicode: Reduktionsordnung}
+Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechend der neuen Reduktionsordnung neu markiert. 
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+
+\subsubsection{Baum: Highlight Tests}
+Nur Knoten von Redexen werden im Baum als solche farblich markiert.
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&\lambda x.x \\
+	&(\lambda x.x) x \\
+	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+
+\subsubsection{Baum: Änderung der Reduktionsordnung}
+%TODO: siehe git issue
+Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechend der neuen Reduktionsordnung neu gefärbt.
+
+Es wurde mit folgenden Eingaben getestet:
+\begin{nospaceflalign*}
+	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
+	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+\end{nospaceflalign*}
+
+
+\subsubsection{Baum: Schritt vor und Schritt zurück}
+Test1: Bei Schritt nach vorne bleibt die Knotenfärbung des letzten Baumes erhalten.
+
+Test2: Bei Schritt nach vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
+
+Test3: Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung gefärbt.
+
+\subsubsection{Formatwechsel}
+Test1: Bei nicht leerem Ausgabefenster und einem Wechsel des Ausgabeformats wird nur der zuletzt angezeigte Term neu geladen entsprechend des neuen Formats. Die restlichen angezeigten Terme bleiben unverändert.
+
+Test2: Bei Schritt vor (per Button, manuell oder durch Wiederaufnehmen der automatischen Ausführung) wird der neue Term entsprechend des neu gewählten Ausgabeformats angezeigt. 
+
+Test3: Ein Formatwechsel hat keine Auswirkung auf bereits angezeigte Terme bei Schritt zurück. Diese werden in ihrem alten Ausgabeformat angezeigt (und ggf. neu markiert, siehe obige Tests).
+
+Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsistent. %TODO: Link zu git issue einfuegen
+
+
+\chapter{Fehlerprotokoll}
 
 \begin{itemize}[itemsep=3ex]
 

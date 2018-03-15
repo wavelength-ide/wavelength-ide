@@ -5,9 +5,11 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
+import edu.kit.wavelength.client.model.reduction.TestTermGenerator;
+
 public class TermGeneratorTest {
 
-	TermGenerator generator = new TermGenerator();
+	TermGenerator generator = new TestTermGenerator();
 	
 	@Test
 	public void randomVarNameTest() {

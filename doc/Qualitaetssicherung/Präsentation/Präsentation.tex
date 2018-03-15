@@ -1,0 +1,100 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+    %progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is default)
+  ]{Feather}
+  
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+\definecolor{grey}{rgb}{0.52, 0.52, 0.51}
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=grey!20,bg=grey}
+\include{beamerinnerthemeFeather}
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=grey}
+
+% Change the frame title text color:
+\setbeamercolor{frametitle}{fg=blue}
+
+% Change the normal text color background:
+\setbeamercolor{normal text}{fg=black,bg=gray!10}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+\usepackage{lipsum}
+\usepackage{tikz}
+\usepackage[export]{adjustbox}
+\usepackage{csquotes}
+
+\usetikzlibrary{arrows, arrows.meta, positioning}
+
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textbf{Wavelength}
+}
+
+\subtitle[$\lambda$-IDE]
+{
+      \textbf{$\lambda$-IDE}
+}
+
+\author[wavelength]
+{     
+      Muhammet Gümüs \\
+      Jean-Pierre von der Heydt \\  
+       Markus Himmel \\
+       Marc Huisinga \\
+       Philip Klemens \\ 
+       Julia Schmid   
+}
+
+\institute[]
+{
+      
+  
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+\date{19. März 2018}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+%{\1 % this is the name of the PDF file for the background
+% Mein PDF-Viewer bekommt das nicht hin, das Bild im Hintergrund anzuzeigen
+{
+\setbeamertemplate{background canvas}{\tikz[remember picture,overlay]\node[opacity=0.3] at (current page.center) {\includegraphics[height=\paperheight]{img/logo.pdf}};}
+\begin{frame}[plain]
+\maketitle
+\end{frame}
+}
+
+
+
+\end{document}

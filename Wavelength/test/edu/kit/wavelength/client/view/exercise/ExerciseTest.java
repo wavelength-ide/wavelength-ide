@@ -42,23 +42,51 @@ public class ExerciseTest {
 		StringBuilder serial = ex.serialize();
 		assertEquals(serial.toString(), "name");
 	}
-	
+
 	@Test
 	public void exerciseSerialization() {
 		List<Exercise> allExercises = Exercises.all();
-		for (int i = 0; i < allExercises.size(); i++) {
+		for (int i = 4; i < allExercises.size(); i++) {
 			StringBuilder serial = allExercises.get(i).serialize();
 			Exercise deserialized = Exercises.deserialize(serial.toString());
 			assertEquals(deserialized.getName(), allExercises.get(i).getName());
 		}
 	}
 	
-	@Test
-	public void resetTest() {
-		RedexExercise ex = new RedexExercise((new NormalOrder()));
-		ex.reset();
-		Parser parser = new Parser(new ArrayList<Library>());
-		
+	@Test(expected = IllegalArgumentException.class)
+	public void invalidDeserializationTest() {
+		Exercises.deserialize("unknownExerciseName");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void emptyDeserializationTest() {
+		Exercises.deserialize("");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void nullDeserializationTest() {
+		Exercises.deserialize(null);
+	}
+	
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void nullNameTest() {
+		Exercise ex = new ConcreteExercise(null, "task", "solution", "predefinition");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void nullTaskTest() {
+		Exercise ex = new ConcreteExercise("name", null, "solution", "predefinition");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void nullSolutionTest() {
+		Exercise ex = new ConcreteExercise("name", "task", null, "predefinition");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void nullPredefinitionTest() {
+		Exercise ex = new ConcreteExercise("name", "task", "solution", null);
 	}
 	
 	

@@ -13,6 +13,7 @@ public class RedexExercise implements Exercise {
 	private int maxTermDepth = 8;
 	
 	private ReductionOrder myReductionOrder;
+	private TermGenerator termGenerator;
 	private String solution;
 	private String predefinitions;
 	
@@ -20,6 +21,14 @@ public class RedexExercise implements Exercise {
 	
 	public RedexExercise(ReductionOrder reduction) {
 		this.myReductionOrder = reduction;
+		termGenerator = new TermGenerator();
+		//reset();
+	}
+	
+	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {
+		myReductionOrder = reduction;
+		termGenerator = generator;
+		reset();
 	}
 	
 	@Override
@@ -35,7 +44,13 @@ public class RedexExercise implements Exercise {
 
 	@Override
 	public String getSolution() {
-		return solution;
+		if (firstRedex == null) {
+			return "Using the " + myReductionOrder.getName()
+			+  " reduction order, the displayed term does not contain a redex.";
+		} else {
+			return "\"" + firstRedex + " \" is the first redex to be reduced using the " + myReductionOrder.getName()
+			+ " reduction order.";
+		}
 	}
 
 	@Override
@@ -45,7 +60,6 @@ public class RedexExercise implements Exercise {
 	
 	@Override
 	public String getPredefinitions() {
-		reset();
 		return predefinitions;
 	}
 	
@@ -54,23 +68,13 @@ public class RedexExercise implements Exercise {
 	 */
 	public void reset() {
 		BasicExportVisitor toString = new BasicExportVisitor(new ArrayList<Library>(), "λ");
-		TermGenerator generator = new TermGenerator();
-		LambdaTerm newTerm = generator.getNewTerm(minTermDepth, maxTermDepth);
-		if (firstRedex == null) {
-			while (myReductionOrder.next(newTerm) == null) {
-				newTerm = generator.getNewTerm(minTermDepth, maxTermDepth);
-			}
-		}
+		LambdaTerm newTerm = termGenerator.getNewTerm(minTermDepth, maxTermDepth);
 		predefinitions = newTerm.acceptVisitor(toString).toString();
 		LambdaTerm firstRedexTerm = myReductionOrder.next(newTerm);
 		if (firstRedexTerm == null) {
 			firstRedex = null;
-			solution = "Using the " + myReductionOrder.getName()
-			+  " reduction order, the displayed term does not contain a redex.";
 		} else {
 			firstRedex = firstRedexTerm.acceptVisitor(toString).toString();
-			solution =  firstRedex + " is the first redex to be reduced using the " + myReductionOrder.getName()
-			+ " reduction order.";
 		}
 	}
 

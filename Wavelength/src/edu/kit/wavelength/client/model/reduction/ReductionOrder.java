@@ -6,16 +6,20 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * Represents a reduction order for the untyped lambda calculus. A reduction
- * order is a policy to determine the next reducible expression (redex) to be evaluated.
+ * order is a policy to determine the next reducible expression (redex) to be
+ * evaluated.
  *
  */
 public interface ReductionOrder extends Serializable {
+
 	/**
-	 * Determines the next redex to be evaluated according to the reduction order.
+	 * Determines the next redex to be evaluated according to the reduction
+	 * order.
 	 * 
-	 * @param term The term whose next redex should be found
+	 * @param term
+	 *            The term whose next redex should be found
 	 * @return {@code null} if there is no redex in the given term. Otherwise,
-	 * the next redex to be evaluated
+	 *         the next redex to be evaluated.
 	 */
 	Application next(LambdaTerm term);
 

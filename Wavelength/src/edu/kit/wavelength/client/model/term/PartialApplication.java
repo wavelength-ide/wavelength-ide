@@ -550,6 +550,5 @@ public abstract class PartialApplication implements LambdaTerm {
 			cloned.absorbClone(this);
 			return cloned;
 		}
-
 	}
 }

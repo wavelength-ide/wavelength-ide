@@ -265,7 +265,7 @@ public abstract class PartialApplication implements LambdaTerm {
 		public static final char ID = '1';
 
 		/**
-		 * Creates a new successor operation
+		 * Creates a new successor operation.
 		 */
 		public Successor() {
 			super("succ", inner, 1, Collections.nCopies(1, new IsChurchNumberVisitor()));

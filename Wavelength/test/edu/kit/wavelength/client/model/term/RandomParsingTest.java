@@ -35,7 +35,6 @@ public class RandomParsingTest {
 		
 		for (int i = 0; i < 100; i++) {
 			LambdaTerm randomTerm = factory.generateLambdaTerm();
-			System.out.println("Simple Nr." + i + " " + randomTerm.acceptVisitor(exportVisitor) + "\n");
 			assertEquals(randomTerm, parser.parse(randomTerm.acceptVisitor(exportVisitor).toString()));
 			assertEquals(randomTerm, LambdaTerm.deserialize(randomTerm.serialize().toString()));
 		}
@@ -47,7 +46,6 @@ public class RandomParsingTest {
 
 		for (int i = 0; i < 100; i++) {
 			LambdaTerm randomTerm = factory.generateLambdaTerm();
-			System.out.println("Advance Nr." + i + " " + randomTerm.acceptVisitor(exportVisitor) + "\n");
 			assertEquals(randomTerm, parser.parse(randomTerm.acceptVisitor(exportVisitor).toString()));
 			assertEquals(randomTerm, LambdaTerm.deserialize(randomTerm.serialize().toString()));
 		}

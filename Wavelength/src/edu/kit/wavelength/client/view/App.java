@@ -565,13 +565,11 @@ public class App implements Serializable {
 		executor = new Executor(Arrays.asList(new UpdateOutput()),
 				Arrays.asList(new FinishExecution()));
 		urlSerializer = new URLSerializer(Arrays.asList(new UpdateURL(), new UpdateShareURL()), POLLING_DELAY_MS);
-		urlSerializer.startPolling();
-		
+		urlSerializer.startPolling();	
 		
 		
 		Control.updateControls();
 
-		
 		
 		// try deserialization if possible
 		String state = History.getToken();
@@ -654,10 +652,8 @@ public class App implements Serializable {
 	public void deserialize(String content) {
 		List<String> val = SerializationUtilities.extract(content);
 		assert (val
-				.size() == NUMBER_OF_SERIALIZATIONS) : "SerializationUtilities extracted a list of strings that doesn't contain 6 arguments";
-
-		// deserializes the executor with the correct string
-		executor.deserialize(val.get(EXECUTOR_SERIALIZATION));
+				.size() == NUMBER_OF_SERIALIZATIONS) : 
+					"SerializationUtilities extracted a list of strings that doesn't contain 6 arguments";
 
 		// Selects the correct option of the optionBoxes
 		// assert that the given strings are representations of decimal integers
@@ -665,6 +661,9 @@ public class App implements Serializable {
 		outputFormatBox.setSelectedIndex(Integer.parseInt(val.get(OUTPUTFORMAT_SERIALIZATION)));
 		reductionOrderBox.setSelectedIndex(Integer.parseInt(val.get(REDUCTIONORDER_SERIALIZATION)));
 		outputSizeBox.setSelectedIndex(Integer.parseInt(val.get(OUTPUTSIZE_SERIALIZATION)));
+		
+		// deserializes the executor with the correct string
+		executor.deserialize(val.get(EXECUTOR_SERIALIZATION));
 
 		// checks and unchecks the Library Check Boxes
 		assert (val.get(LIBRARY_SERIALIZATION).length() == libraryCheckBoxes.size());

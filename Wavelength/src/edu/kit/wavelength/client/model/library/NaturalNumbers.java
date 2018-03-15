@@ -51,6 +51,9 @@ public final class NaturalNumbers implements Library {
 
 	@Override
 	public boolean containsName(String name) {
+		if (name == null) {
+			return false;
+		}
 		if (name.matches(decimalRegex)) {
 			return true;
 		}

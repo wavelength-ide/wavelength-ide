@@ -19,10 +19,6 @@ public class LispExport implements Export {
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {
 		Objects.requireNonNull(displayedTerms);
 		Objects.requireNonNull(libraries);
-		
-		if (displayedTerms.size() == Integer.MAX_VALUE) {
-			throw new IndexOutOfBoundsException("List of displayedTerms is too big.");
-		}
 
 		// no terms
 		if (displayedTerms.size() == 0) {

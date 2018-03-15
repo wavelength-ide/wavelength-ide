@@ -46,17 +46,17 @@ public class LibrariesTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void IllegalArgument1() {
+	public void illegalArgument1() {
 		Libraries.deserialize(null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void IllegalArgument2() {
+	public void illegalArgument2() {
 		Libraries.deserialize("");
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
-	public void IllegalArgument3() {
+	public void illegalArgument3() {
 		Libraries.deserialize("invalidString");
 	}
 }

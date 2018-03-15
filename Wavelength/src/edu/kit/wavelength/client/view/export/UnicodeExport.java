@@ -15,7 +15,7 @@ public class UnicodeExport implements Export {
 	public static final String NAME = "Unicode";
 
 	private static final String LAMBDA = "λ";
-	private static final String ARROW = "⇒";
+	private static final String ARROW = "⇒ ";
 
 	@Override
 	public String getRepresentation(List<LambdaTerm> displayedTerms, List<Library> libraries) {

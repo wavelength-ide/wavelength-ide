@@ -18,4 +18,7 @@ public final class Exports {
 		return Arrays.asList(new PlaintextExport(), new UnicodeExport(), new LatexExport(), new HaskellExport(),
 				new LispExport());
 	}
+
+	private Exports() {
+	}
 }

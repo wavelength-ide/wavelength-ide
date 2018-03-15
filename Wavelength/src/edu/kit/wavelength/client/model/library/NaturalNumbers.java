@@ -18,13 +18,15 @@ public final class NaturalNumbers implements Library {
 			new PartialApplication.Multiplication(), new PartialApplication.Predecessor(),
 			new PartialApplication.Successor() };
 	private boolean turbo;
-	
+
 	public static final char ID = 'n';
 
 	/**
 	 * Creates a new NaturalNumbers library.
 	 * 
-	 * @param turbo {@link true} if calculations on this Library should be accelerated and {@link false} otherwise 
+	 * @param turbo
+	 *            {@link true} if calculations on this Library should be
+	 *            accelerated and {@link false} otherwise
 	 */
 	public NaturalNumbers(boolean turbo) {
 		this.turbo = turbo;
@@ -70,9 +72,23 @@ public final class NaturalNumbers implements Library {
 	public StringBuilder serialize() {
 		return new StringBuilder(ID + (turbo ? "t" : "f"));
 	}
-	
+
 	public static NaturalNumbers fromSerialized(String serialized) {
 		return new NaturalNumbers("t".equals(serialized));
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+		if (this == o) {
+			return true;
+		}
+		if (getClass() != o.getClass()) {
+			return false;
+		}
+		NaturalNumbers naturalNumbers = (NaturalNumbers) o;
+		return this.turbo == naturalNumbers.turbo;
+	}
 }

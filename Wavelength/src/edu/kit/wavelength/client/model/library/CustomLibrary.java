@@ -15,15 +15,15 @@ public class CustomLibrary implements Library {
 	private String name;
 	private ArrayList<String> names;
 	private ArrayList<LambdaTerm> terms;
-	
+
 	public static final char ID = 'c';
-	
+
 	public CustomLibrary(String name) {
 		this.name = name;
 		names = new ArrayList<String>();
 		terms = new ArrayList<LambdaTerm>();
 	}
-	
+
 	@Override
 	public StringBuilder serialize() {
 		StringBuilder res = new StringBuilder("" + ID);
@@ -35,7 +35,7 @@ public class CustomLibrary implements Library {
 		}
 		return res.append(SerializationUtilities.enclose(comp.toArray(new StringBuilder[0])));
 	}
-	
+
 	public static CustomLibrary fromSerialized(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
 		assert extracted.size() > 0;
@@ -67,17 +67,47 @@ public class CustomLibrary implements Library {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
-	 * Adds a new lambda and its name to the library. 
-	 * @param term The lambda term to add to the library
-	 * @param name The name used to reference the term.
+	 * Adds a new lambda and its name to the library.
+	 * 
+	 * @param term
+	 *            The lambda term to add to the library
+	 * @param name
+	 *            The name used to reference the term.
 	 */
 	public void addTerm(LambdaTerm term, String name) {
-		if (name == null || name.length() < 1 || term == null) {
+		if (name == null || name.isEmpty() || term == null) {
 			throw new IllegalArgumentException();
 		}
 		names.add(name);
 		terms.add(term);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (o == null) {
+			return false;
+		}
+		if (this == o) {
+			return true;
+		}
+		if (getClass() != o.getClass()) {
+			return false;
+		}
+		CustomLibrary naturalNumbers = (CustomLibrary) o;
+
+		if (names.size() != naturalNumbers.names.size() || terms.size() != naturalNumbers.terms.size()) {
+			return false;
+		}
+		for (int i = 0; i < names.size(); i++) {
+			if (!names.get(i).equals(naturalNumbers.names.get(i))) {
+				return false;
+			}
+			if (!terms.get(i).equals(naturalNumbers.terms.get(i))) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

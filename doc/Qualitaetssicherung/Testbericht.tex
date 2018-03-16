@@ -55,7 +55,7 @@
 
 \subsubsection{Unicode: Syntax Test}
 Bei diesem Test ist lediglich die Syntax der Ausgabe relevant. Markierungen werden in späteren Tests abgedeckt.
-Dieser Test wird mit folgenden Einstellungen durchgeführt: Reduktionsordnung 'Normal Order' und Ausgabegröße 'full'. Es wurde immer die gesamte Ausgabe (sofern der Term terminiert) auf Syntaxfehler überprüft.
+Dieser Test wird mit folgenden Einstellungen durchgeführt: Reduktionsordnung 'Normal Order' und Ausgabegröße 'Full'. Es wurde immer die gesamte Ausgabe (sofern der Term terminiert) auf Syntaxfehler überprüft.
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
@@ -198,8 +198,8 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 \item[] % issue 27
 \begin{itemize}[noitemsep]
 \item[] {\bfseries Wird die Lösung einer aktiven Übungsaufgaben angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen sondern die Lösung der neuen Aufgabe angezeigt. }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
+\item [\textbf{Grund:}] Beim Öffnen einer neuen Übungsaufgabe wird der Status Lösungsfensters nicht zurückgesetzt.
+\item [\textbf{Behebung:}] Die LoadExercise Action setzt nun den Status des Lösungsfensters zurück bevor eine neue Übungsaufgabe angezeigt wird.
 \end{itemize}
 
 \item[] % issue 26

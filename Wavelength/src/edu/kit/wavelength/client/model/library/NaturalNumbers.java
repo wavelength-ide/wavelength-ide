@@ -1,5 +1,6 @@
 package edu.kit.wavelength.client.model.library;
 
+import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 

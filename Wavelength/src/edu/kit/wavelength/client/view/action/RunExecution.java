@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.html.Text;
 
+import com.google.gwt.user.client.Window;
+
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -45,7 +47,7 @@ public class RunExecution implements Action {
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
 
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
-				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
+				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getText().equals(l.getName())))
 				.collect(Collectors.toList());
 		
 		if (!app.executor().isTerminated()) {

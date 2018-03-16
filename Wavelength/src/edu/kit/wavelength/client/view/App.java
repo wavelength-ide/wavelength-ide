@@ -27,7 +27,6 @@ import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -78,7 +77,7 @@ import edu.kit.wavelength.client.view.update.UpdateShareURL;
 public class App implements Serializable {
 
 	private static App instance = null;
-
+	
 	private static final int EXECUTOR_SERIALIZATION = 0;
 	private static final int EDITOR_SERIALIZATION = 1;
 	private static final int OUTPUTFORMAT_SERIALIZATION = 2;
@@ -90,6 +89,8 @@ public class App implements Serializable {
 	private static final char CHECKED_LIBRARY = 'c';
 	private static final char UNCHECKED_LIBRARY = 'u';
 	private static final int POLLING_DELAY_MS = 10000;
+	
+	public static final String KEY = "ser";
 
 	/**
 	 * Creates a new instance of App if there is none. Returns a singleton instance
@@ -618,7 +619,7 @@ public class App implements Serializable {
 
 		
 		// try deserialization if possible
-		String state = History.getToken();
+		String state = Window.Location.getParameter(KEY);
 		if (state.length() > 0) {
 			// deserialize
 			DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);

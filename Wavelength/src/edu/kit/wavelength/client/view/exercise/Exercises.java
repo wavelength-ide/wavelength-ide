@@ -90,10 +90,6 @@ public final class Exercises {
 		Exercise order4 = new ConcreteExercise(order4Name, order4Task, order4Solution, order4Predef);
 		
 		ArrayList<Exercise> exerciseList = new ArrayList<Exercise>();
-		List<ReductionOrder> reductions = ReductionOrders.all();
-		for (ReductionOrder cOrder: reductions) {
-			exerciseList.add(new RedexExercise(cOrder));
-		}
 		
 		exerciseList.add(exerciseMode);
 		exerciseList.add(var);
@@ -103,6 +99,11 @@ public final class Exercises {
 		exerciseList.add(order3);
 		exerciseList.add(order4);
 		exerciseList.add(alphaRedu);
+		
+		List<ReductionOrder> reductions = ReductionOrders.all();
+		for (ReductionOrder cOrder: reductions) {
+			exerciseList.add(new RedexExercise(cOrder));
+		}
 		
 		return exerciseList;
 	}

@@ -21,7 +21,7 @@ public class RedexExercise implements Exercise {
 	public RedexExercise(ReductionOrder reduction) {
 		this.myReductionOrder = reduction;
 		termGenerator = new TermGenerator();
-		//reset();
+		reset();
 	}
 	
 	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {
@@ -54,7 +54,11 @@ public class RedexExercise implements Exercise {
 
 	@Override
 	public boolean hasPredefinitions() {
-		return true;
+		if (this.predefinitions == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 	
 	@Override

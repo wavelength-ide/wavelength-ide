@@ -23,7 +23,9 @@ public class LoadExercise implements Action {
 	public void run() {
 		Control.wipe();
 		
-		app.editor().write(exercise.getPredefinitions());
+		if (exercise.hasPredefinitions()) {
+			app.editor().write(exercise.getPredefinitions());
+		}
 		
 		app.exerciseDescriptionLabel().setText(exercise.getTask());
 		app.solutionArea().setText(exercise.getSolution());

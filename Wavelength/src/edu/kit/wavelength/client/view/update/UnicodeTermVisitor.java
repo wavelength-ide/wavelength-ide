@@ -3,6 +3,8 @@ package edu.kit.wavelength.client.view.update;
 import java.util.List;
 import java.util.Objects;
 
+import org.gwtbootstrap3.client.ui.html.Paragraph;
+import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -15,6 +17,7 @@ import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.library.Library;
+import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
@@ -25,6 +28,7 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 import edu.kit.wavelength.client.view.action.StepManually;
+import webdriver.output.UnicodeOutput;
 
 /**
  * Visitor for generating the output of a {@link LambdaTerm} for the
@@ -56,6 +60,13 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		this.parent = parent;
 	}
 
+	private static FlowPanel textSpan(String text) {
+		FlowPanel s = new FlowPanel("span");
+		s.add(new Text(text));
+		s.addStyleName("outputText");
+		return s;
+	}
+	
 	@Override
 	public UnicodeTuple visitApplication(Application app) {
 		Objects.requireNonNull(app);
@@ -75,6 +86,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		// create a new panel to wrap the application
 		FlowPanel panel = new FlowPanel("span");
+		panel.addStyleName("applicationWrapper");
 
 		// underlines the nextRedex to indicate the redex that the current reduction
 		// order will reduce next
@@ -95,13 +107,13 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		// add all elements to the wrapper panel
 		if (brackets) {
-			panel.add(new Text("("));
+			panel.add(textSpan("("));
 		}
 		panel.add(left.panel);
-		panel.add(new Text(" "));
+		panel.add(textSpan(" "));
 		panel.add(right.panel);
 		if (brackets) {
-			panel.add(new Text(")"));
+			panel.add(textSpan(")"));
 		}
 
 		return new UnicodeTuple(panel, a);
@@ -115,6 +127,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		// create a new panel to wrap the named term
 		FlowPanel panel = new FlowPanel("span");
+		panel.addStyleName("namedTermWrapper");
 		// create a new anchor with the given name and make it not clickable by default
 		Anchor a = new Anchor(term.getName());
 		a.addStyleName("abstraction");
@@ -149,7 +162,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		// display all arguments even if they were already reduced
 		for (int i = 0; i < app.getNumReceived(); i++) {
 			panel.addStyleName("abstraction");
-			panel.add(new Text(" "));
+			panel.add(textSpan(" "));
 			panel.add(app.getReceived()[i].acceptVisitor(this).panel);
 		}
 
@@ -162,11 +175,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		resetFlags();
 
-		// create a new panel to wrap the free variable and add its name to the panel
-		FlowPanel panel = new FlowPanel("span");
-		panel.add(new Text(var.getName()));
-
-		return new UnicodeTuple(panel, null);
+		return new UnicodeTuple(textSpan(var.getName()), null);
 	}
 
 	@Override
@@ -176,10 +185,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		resetFlags();
 
-		// create a new panel to wrap the bound variable and add its name to the panel
-		FlowPanel panel = new FlowPanel("span");
-		panel.add(new Text(resolvedName));
-		return new UnicodeTuple(panel, null);
+		return new UnicodeTuple(textSpan(resolvedName), null);
 	}
 
 	@Override
@@ -195,6 +201,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		// create a new panel to wrap the abstraction
 		FlowPanel panel = new FlowPanel("span");
+		panel.addStyleName("abstractionWrapper");
 
 		// create a new anchor for the lambda symbol and the given name, make it not
 		// clickable by default
@@ -203,13 +210,13 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 
 		// add all elements to the wrapper panel
 		if (brackets) {
-			panel.add(new Text("("));
+			panel.add(textSpan("("));
 		}
 		panel.add(a);
-		panel.add(new Text("."));
+		panel.add(textSpan("."));
 		panel.add(inner.panel);
 		if (brackets) {
-			panel.add(new Text(")"));
+			panel.add(textSpan(")"));
 		}
 
 		return new UnicodeTuple(panel, a);

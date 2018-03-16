@@ -252,42 +252,48 @@ public class App implements Serializable {
 		 */
 		
 		mainPanel = new DockLayoutPanel(Unit.EM);
+		mainPanel.getElement().setId("mainPanel");
 		mainPanel.addStyleName("mainPanel");
 
 		mainMenu = new DropDown();
+		mainMenu.setId("mainMenu");
 		mainMenu.addStyleName("mainMenu");
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		openMainMenuButton = new Button();
+		openMainMenuButton.setId("openMainMenuButton");
 		openMainMenuButton.addStyleName("fa fa-bars");
 		openMainMenuButton.setToggleCaret(false);
 		openMainMenuButton.setDataToggle(Toggle.DROPDOWN);
 		mainMenu.add(openMainMenuButton);
 
 		mainMenuPanel = new DropDownMenu();
+		mainMenuPanel.setId("mainMenuPanel");
 		mainMenuPanel.addStyleName("mainMenuPanel");
 		// prevent dropdown from closing when clicking inside
 		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);
 
 		mainMenuLibraryTitle = new DropDownHeader("Libraries");
+		mainMenuLibraryTitle.getElement().setId("mainMenuLibraryTitle");
 		mainMenuPanel.add(mainMenuLibraryTitle);
 
 		libraryCheckBoxes = new ArrayList<>();
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
 			libraryCheckBox.addStyleName("libraryCheckBox");
-			libraryCheckBox.setName(lib.getName());
 			mainMenuPanel.add(libraryCheckBox);
 			libraryCheckBoxes.add(libraryCheckBox);
 		});
 
 		mainMenuDivider = new Divider();
+		mainMenuDivider.getElement().setId("mainMenuDivider");
 		mainMenuPanel.add(mainMenuDivider);
 
 		mainMenuExerciseTitle = new DropDownHeader("Exercises");
+		mainMenuExerciseTitle.getElement().setId("mainMenuExerciseTitle");
 		mainMenuPanel.add(mainMenuExerciseTitle);
 
 		exerciseButtons = new ArrayList<>();
@@ -299,6 +305,7 @@ public class App implements Serializable {
 		});
 
 		footerPanel = new FlowPanel();
+		footerPanel.getElement().setId("footerPanel");
 		footerPanel.addStyleName("footerPanel");
 		// addSouth needs to be called before add, otherwise gwt will stop working => footerPanel before ioPanel
 		mainPanel.addSouth(footerPanel, 2);
@@ -306,16 +313,19 @@ public class App implements Serializable {
 		footerPanel.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		exportDropupGroup = new ButtonGroup();
+		exportDropupGroup.setId("exportDropupGroup");
 		exportDropupGroup.setDropUp(true);
 		footerPanel.add(exportDropupGroup);
 
 		openExportMenuButton = new Button();
+		openExportMenuButton.setId("openExportMenuButton");
 		openExportMenuButton.setDataToggle(Toggle.DROPDOWN);
 		openExportMenuButton.setToggleCaret(false);
 		openExportMenuButton.addStyleName("fa fa-level-up");
 		exportDropupGroup.add(openExportMenuButton);
 
 		exportMenu = new DropDownMenu();
+		exportMenu.setId("exportMenu");
 		exportDropupGroup.add(exportMenu);
 		
 		exportButtons = new ArrayList<>();
@@ -329,129 +339,154 @@ public class App implements Serializable {
 
 		// this only exists for style consistency with exportButton
 		shareGroup = new ButtonGroup();
+		shareGroup.setId("shareGroup");
 		footerPanel.add(shareGroup);
 
 		shareButton = new Button();
+		shareButton.setId("shareButton");
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
 
 		sharePanel = new TextBox();
+		sharePanel.setId("sharePanel");
 		sharePanel.addStyleName("sharePanel");
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);
 		footerPanel.add(sharePanel);
 		
 		ioPanel = new SplitLayoutPanel(3);
+		ioPanel.getElement().setId("ioPanel");
 		mainPanel.add(ioPanel);
 
 		inputPanel = new DockLayoutPanel(Unit.EM);
+		inputPanel.getElement().setId("inputPanel");
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
 		inputControlPanel = new FlowPanel();
+		inputControlPanel.getElement().setId("inputControlPanel");
 		inputControlPanel.addStyleName("inputControlPanel");
 		// addSouth needs to be called before add, otherwise gwt will stop working => inputControlPanel before editorExercisePanel
 		inputPanel.addSouth(inputControlPanel, 1.85);
 
 		optionBarPanel = new FlowPanel();
+		optionBarPanel.getElement().setId("optionBarPanel");
 		optionBarPanel.addStyleName("optionBarPanel");
 		inputControlPanel.add(optionBarPanel);
 
 		outputFormatBox = new ListBox();
+		outputFormatBox.setId("outputFormatBox");
 		outputFormatBox.addItem("Unicode Output");
 		outputFormatBox.addItem("Tree Output");
 		optionBarPanel.add(outputFormatBox);
 
 		reductionOrderBox = new ListBox();
-		reductionOrderBox.setName("Reduction Order");
+		reductionOrderBox.setId("reductionOrderBox");
 		ReductionOrders.all().stream().map(ReductionOrder::getName).forEach(reductionOrderBox::addItem);
 		optionBarPanel.add(reductionOrderBox);
 
 		outputSizeBox = new ListBox();
-		outputSizeBox.setName("Output Size");
+		outputSizeBox.setId("outputSizeBox");
 		OutputSizes.all().stream().map(OutputSize::getName).forEach(outputSizeBox::addItem);
 		optionBarPanel.add(outputSizeBox);
 
 		controlPanel = new FlowPanel();
+		controlPanel.getElement().setId("controlPanel");
 		controlPanel.addStyleName("controlPanel");
 		inputControlPanel.add(controlPanel);
 
 		stepByStepControlPanel = new FlowPanel();
+		stepByStepControlPanel.getElement().setId("stepByStepControlPanel");
 		controlPanel.add(stepByStepControlPanel);
 
 		backwardButton = new Button();
+		backwardButton.setId("backwardButton");
 		backwardButton.addStyleName("fa fa-chevron-left");
 		stepByStepControlPanel.add(backwardButton);
 		
 		pauseButton = new Button();
+		pauseButton.setId("pauseButton");
 		pauseButton.addStyleName("fa fa-pause");
 		stepByStepControlPanel.add(pauseButton);
 		
 		unpauseButton = new Button();
+		unpauseButton.setId("unpauseButton");
 		unpauseButton.addStyleName("fa fa-play");
 		stepByStepControlPanel.add(unpauseButton);
 		
 		forwardButton = new Button();
+		forwardButton.setId("forwardButton");
 		forwardButton.addStyleName("fa fa-chevron-right");
 		stepByStepControlPanel.add(forwardButton);
 		
 		spinner = new Label();
+		spinner.getElement().setId("spinner");
 		spinner.addStyleName("spinner");
 		spinner.addStyleName("fa fa-spinner fa-spin");
 		controlPanel.add(spinner);
 		
 		runControlPanel = new FlowPanel();
+		runControlPanel.getElement().setId("runControlPanel");
 		controlPanel.add(runControlPanel);
 		
 		terminateButton = new Button();
+		terminateButton.setId("terminateButton");
 		terminateButton.addStyleName("fa fa-times");
 		runControlPanel.add(terminateButton);
 		
 		runButton = new Button();
+		runButton.setId("runButton");
 		runButton.addStyleName("fa fa-fast-forward");
 		runControlPanel.add(runButton);
 		
 		editorExercisePanel = new SplitLayoutPanel(3);
+		editorExercisePanel.getElement().setId("editorExercisePanel");
 		editorExercisePanel.addStyleName("editorExercisePanel");
 		inputPanel.add(editorExercisePanel);
 
 		exercisePanel = new FlowPanel();
+		exercisePanel.getElement().setId("exercisePanel");
 		exercisePanel.addStyleName("exercisePanel");
 		// addEast needs to be called before add, otherwise gwt will stop working => exercisePanel before editorPanel
 		editorExercisePanel.addEast(exercisePanel, 0.3 * Window.getClientWidth());
 		editorExercisePanel.setWidgetHidden(exercisePanel, true);
 
 		exerciseHeaderPanel = new FlowPanel();
+		exerciseHeaderPanel.getElement().setId("exerciseHeaderPanel");
 		exercisePanel.add(exerciseHeaderPanel);
 
 		exerciseControlPanel = new FlowPanel();
+		exerciseControlPanel.getElement().setId("exerciseControlPanel");
 		exerciseControlPanel.addStyleName("exerciseControlPanel");
 		exerciseHeaderPanel.add(exerciseControlPanel);
 
 		toggleSolutionButton = new Button();
+		toggleSolutionButton.setId("toggleSolutionButton");
 		toggleSolutionButton.addStyleName("fa fa-lightbulb-o");
 		exerciseControlPanel.add(toggleSolutionButton);
 
 		closeExerciseButton = new Button();
+		closeExerciseButton.setId("closeExerciseButton");
 		closeExerciseButton.addStyleName("fa fa-times-circle-o");
 		exerciseControlPanel.add(closeExerciseButton);
 
-		exerciseDescriptionLabel = new HTML("hello world<br>hello world<br>hello world<br>");
+		exerciseDescriptionLabel = new HTML();
+		exerciseDescriptionLabel.getElement().setId("exerciseDescriptionLabel");
 		exerciseDescriptionLabel.addStyleName("exerciseDescriptionLabel");
 		exerciseHeaderPanel.add(exerciseDescriptionLabel);
 		
 		solutionArea = new TextArea();
+		solutionArea.setId("solutionArea");
 		solutionArea.addStyleName("solutionArea");
 		solutionArea.setVisible(false);
 		solutionArea.setReadOnly(true);
-		solutionArea.setText("hello\n\tworld\n\t\teveryone");
 		exercisePanel.add(solutionArea);
 
 		editorPanel = new SimplePanel();
-		// id needed because MonacoEditor adds to panel div by id
 		editorPanel.getElement().setId("editor");
 		editorExercisePanel.add(editorPanel);
 		
 		outputBlocker = new FlowPanel("div");
+		outputBlocker.getElement().setId("outputBlocker");
 		outputBlocker.addStyleName("output");
 		outputBlocker.getElement().setId("scroll");
 		ioPanel.add(outputBlocker);
@@ -462,64 +497,81 @@ public class App implements Serializable {
 		outputBlocker.add(outputArea);
 		
 		loadExercisePopup = new Modal();
+		loadExercisePopup.setId("loadExercisePopup");
 		loadExercisePopup.setClosable(false);
 		loadExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
 
 		loadExercisePopupBody = new ModalBody();
+		loadExercisePopupBody.setId("loadExercisePopupBody");
 		loadExercisePopup.add(loadExercisePopupBody);
 
 		loadExercisePopupText = new Label("Opening the exercise will empty your editor content. Continue?");
+		loadExercisePopupText.getElement().setId("loadExercisePopupText");
 		loadExercisePopupBody.add(loadExercisePopupText);
 
 		loadExercisePopupFooter = new ModalFooter();
+		loadExercisePopupFooter.setId("loadExercisePopupFooter");
 		loadExercisePopup.add(loadExercisePopupFooter);
 
 		loadExercisePopupCancelButton = new Button();
+		loadExercisePopupCancelButton.setId("loadExercisePopupCancelButton");
 		loadExercisePopupCancelButton.addStyleName("fa fa-times");
 		loadExercisePopupFooter.add(loadExercisePopupCancelButton);
 
 		loadExercisePopupOkButton = new Button();
+		loadExercisePopupOkButton.setId("loadExercisePopupOkButton");
 		loadExercisePopupOkButton.addStyleName("fa fa-check");
 		loadExercisePopupFooter.add(loadExercisePopupOkButton);
 
 		closeExercisePopup = new Modal();
+		closeExercisePopup.setId("closeExercisePopup");
 		closeExercisePopup.setClosable(false);
 		closeExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
 
 		closeExercisePopupBody = new ModalBody();
+		closeExercisePopupBody.setId("closeExercisePopupBody");
 		closeExercisePopup.add(closeExercisePopupBody);
 
 		closeExercisePopupText = new Label("Closing the exercise will empty your editor content. Continue?");
+		closeExercisePopupText.getElement().setId("closeExercisePopupText");
 		closeExercisePopupBody.add(closeExercisePopupText);
 
 		closeExercisePopupFooter = new ModalFooter();
+		closeExercisePopupFooter.setId("closeExercisePopupFooter");
 		closeExercisePopup.add(closeExercisePopupFooter);
 
 		closeExercisePopupCancelButton = new Button();
+		closeExercisePopupCancelButton.setId("closeExercisePopupCancelButton");
 		closeExercisePopupCancelButton.addStyleName("fa fa-times");
 		closeExercisePopupFooter.add(closeExercisePopupCancelButton);
 
 		closeExercisePopupOkButton = new Button();
+		closeExercisePopupOkButton.setId("closeExercisePopupOkButton");
 		closeExercisePopupOkButton.addStyleName("fa fa-check");
 		closeExercisePopupFooter.add(closeExercisePopupOkButton);
 		
 		exportPopup = new Modal();
+		exportPopup.setId("exportPopup");
 		exportPopup.setDataKeyboard(true);
 		exportPopup.setClosable(false);
 		exportPopup.setDataBackdrop(ModalBackdrop.STATIC);
 
 		exportPopupBody = new ModalBody();
+		exportPopupBody.setId("exportPopupBody");
 		exportPopup.add(exportPopupBody);
 
 		exportArea = new TextArea();
+		exportArea.setId("exportArea");
 		exportArea.addStyleName("exportArea");
 		exportArea.setReadOnly(true);
 		exportPopupBody.add(exportArea);
 
 		exportPopupFooter = new ModalFooter();
+		exportPopupFooter.setId("exportPopupFooter");
 		exportPopup.add(exportPopupFooter);
 
 		exportPopupOkButton = new Button();
+		exportPopupOkButton.setId("exportPopupOkButton");
 		exportPopupOkButton.addStyleName("fa fa-check");
 		exportPopupFooter.add(exportPopupOkButton);
 		

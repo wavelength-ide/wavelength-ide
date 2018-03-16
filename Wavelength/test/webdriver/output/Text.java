@@ -1,15 +1,29 @@
 package webdriver.output;
 
+import java.util.Arrays;
 import java.util.List;
+
+import org.openqa.selenium.WebElement;
 
 public class Text implements OutputNode {
 
-	public final String content;
-	public final List<String> classes;
+	private final WebElement element;
 	
-	public Text(String content, List<String> classes) {
-		this.content = content;
-		this.classes = classes;
+	public Text(WebElement element) {
+		this.element = element;
+	}
+	
+	public String content() {
+		String text = element.getText();
+		// selenium removes the whitespace in our space leaf, so we add it back
+		if (text.equals("")) {
+			text = " ";
+		}
+		return text;
+	}
+	
+	public List<String> classes() {
+		return Arrays.asList(element.getAttribute("class").split(" "));
 	}
 	
 	@Override

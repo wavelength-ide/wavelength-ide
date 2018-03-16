@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import webdriver.driver.Driver;
 
@@ -51,6 +52,10 @@ public class Editor {
 					.collect(Collectors.joining()))
 			.collect(Collectors.joining("\n"));
 		return text;
+	}
+	
+	public void hover() {
+		new Actions(driver).moveToElement(editor()).perform();
 	}
 	
 }

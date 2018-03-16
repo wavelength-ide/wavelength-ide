@@ -2,6 +2,7 @@ package webdriver.components;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import webdriver.driver.Driver;
 
@@ -44,6 +45,10 @@ public class Button {
 	
 	public boolean isVisible() {
 		return Finder.hasElement(driver, id, text) && button().isDisplayed();
+	}
+	
+	public void hover() {
+		new Actions(driver).moveToElement(button()).perform();
 	}
 	
 }

@@ -2,6 +2,7 @@ package webdriver.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import webdriver.driver.Driver;
 
@@ -29,6 +30,10 @@ public class TextElement {
 	
 	public boolean isVisible() {
 		return element().isDisplayed();
+	}
+	
+	public void hover() {
+		new Actions(driver).moveToElement(element()).perform();
 	}
 	
 }

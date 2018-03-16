@@ -1,6 +1,7 @@
 package webdriver.components;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import webdriver.driver.Driver;
 
@@ -38,6 +39,10 @@ public class CheckBox {
 	
 	public boolean isSelected() {
 		return box().isSelected();
+	}
+	
+	public void hover() {
+		new Actions(driver).moveToElement(box()).perform();
 	}
 	
 }

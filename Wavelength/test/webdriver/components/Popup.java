@@ -1,6 +1,8 @@
 package webdriver.components;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import webdriver.driver.Driver;
 
@@ -18,8 +20,16 @@ public class Popup {
 		return new Popup(driver, id);
 	}
 	
+	public WebElement popup() {
+		return driver.findElement(By.id(id));
+	}
+	
 	public boolean isVisible() {
-		return driver.hasElement(By.id(id)) && driver.findElement(By.id(id)).isDisplayed();
+		return driver.hasElement(By.id(id)) && popup().isDisplayed();
+	}
+	
+	public void hover() {
+		new Actions(driver).moveToElement(popup()).perform();
 	}
 	
 }

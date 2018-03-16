@@ -23,34 +23,45 @@ public class UnicodeOutput {
 		return new UnicodeOutput(driver, id);
 	}
 	
+	private WebElement parent() {
+		return driver.findElement(By.cssSelector("#" + id + " > div"));
+	}
+	
 	private List<WebElement> outputs() {
 		return driver.findElements(By.cssSelector("#" + id + " > div > span"));
 	}
 	
-	private OutputNode readStructure(WebElement current) {
+	private OutputNode readElement(WebElement current) {
 		List<String> classes = Arrays.asList(current.getAttribute("class").split(" "));
 		if (classes.contains("outputText")) {
-			String text = current.getText();
-			// selenium removes the whitespace in our space leaf, so we add it back
-			if (text.equals("")) {
-				text = " ";
-			}
-			return new Text(text, classes);
+			return new Text(current);
 		}
 		if (classes.contains("abstraction")) {
-			return new URL(current, current.getText(), classes);
+			return new URL(driver, current);
 		}
 		List<WebElement> children = current.findElements(By.xpath("child::node()"));
-		List<OutputNode> childNodes = children.stream().map(this::readStructure).collect(Collectors.toList());
-		return new Container(classes, childNodes);
+		List<OutputNode> childNodes = children.stream().map(this::readElement).collect(Collectors.toList());
+		return new Container(current, childNodes);
+	}
+	
+	private List<OutputNode> readLines() {
+		return outputs().stream().map(this::readElement).collect(Collectors.toList());
 	}
 	
 	public List<OutputNode> readStructure() {
-		return outputs().stream().map(this::readStructure).collect(Collectors.toList());
+		return readLines();
 	}
 	
 	public String readText() {
 		return outputs().stream().map(WebElement::getText).collect(Collectors.joining("\n"));
+	}
+	
+	public String readHTML() {
+		return outputs().stream().map(o -> o.getAttribute("outerHTML").replaceAll("\"", "'")).collect(Collectors.joining("\n"));
+	}
+	
+	public OutputNode find(String xpath) {
+		return readElement(parent().findElement(By.xpath(xpath)));
 	}
 	
 	public boolean isEmpty() {

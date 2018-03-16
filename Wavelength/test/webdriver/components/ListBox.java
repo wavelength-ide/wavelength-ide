@@ -1,6 +1,8 @@
 package webdriver.components;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import webdriver.driver.Driver;
@@ -19,8 +21,12 @@ public class ListBox {
 		return new ListBox(driver, id);
 	}
 	
+	private WebElement element() {
+		return driver.findElement(By.id(id));
+	}
+	
 	private Select box() {
-		return new Select(driver.findElement(By.id(id)));
+		return new Select(element());
 	}
 	
 	public String readSelected() {
@@ -29,6 +35,10 @@ public class ListBox {
 	
 	public void select(String value) {
 		box().selectByValue(value);
+	}
+	
+	public void hover() {
+		new Actions(driver).moveToElement(element()).perform();
 	}
 	
 }

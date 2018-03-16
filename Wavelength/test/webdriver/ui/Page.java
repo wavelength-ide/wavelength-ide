@@ -86,6 +86,7 @@ public class Page {
 		if (sharePanel().isVisible()) {
 			shareButton().click();
 		}
+		editor().clear();
 	}
 	
 	public void close() {

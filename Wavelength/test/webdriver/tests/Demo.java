@@ -24,8 +24,10 @@ public class Demo {
 		p.forwardButton().click();
 		p.forwardButton().click();
 		String output = p.unicodeOutput().readText();
-		assertEquals(output, "(λx.x x) (λx.x x)\n(λx.x x) (λx.x x)");
+		assertEquals("(λx.x x) (λx.x x)\n(λx.x x) (λx.x x)", output);
 		p.reset();
+		assertEquals(" ", p.editor().read());
+		p.editor().write("(\\x. x x)(\\x. x x)");
 		p.forwardButton().click();
 		p.backwardButton().click();
 		assertTrue(p.unicodeOutput().isEmpty());

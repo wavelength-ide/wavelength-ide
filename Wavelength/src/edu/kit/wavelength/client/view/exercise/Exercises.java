@@ -72,7 +72,7 @@ public final class Exercises {
 		Exercise order2 = new ConcreteExercise(order2Name, order2Task, order2Solution, order2Predef);
 
 		String order3Name = "Call-by-Name";
-		String order3Task = "Call-by-value reduction is similiar to the normal reduction order, the outermost leftmost redex is reduced first."
+		String order3Task = "Call-by-name reduction is similiar to the normal reduction order, the outermost leftmost redex is reduced first."
 				+ "call-by-value's major difference is the restriction that only redexes not enclosed in the body of an abstraction may be reduced."
 				+ " This means, using call-by-name a term might still contain redexes but will not be reduced further. \n"
 				+ " Using call-by-value which redex in the displayed term will be reduced first?";

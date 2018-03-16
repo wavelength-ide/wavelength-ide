@@ -195,9 +195,30 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 
 \begin{itemize}[itemsep=3ex]
 
+\item[] % issue 27
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Wird die Lösung einer aktiven Übungsaufgaben angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen sondern die Lösung der neuen Aufgabe angezeigt. }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 26
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt. }
+\item [\textbf{Grund:}]
+\item [\textbf{Behebung:}]
+\end{itemize}
+
+\item[] % issue 23
+\begin{itemize}[noitemsep]
+\item[] {\bfseries Beim Öffnen einer neuen Redex-Übungsaufgabe kommt es manchmal zu einem Fehler. }
+\item [\textbf{Grund:}] Enthält der gesuchte Redex eine gebundene Variable deren bindende Abstraktion außerhalb des Redex liegt ist der Redex-Subterm kein valider Lambda-Term was zu einem Fehler bei der Ausgabe als String führt. 
+\item [\textbf{Behebung:}]  Vor der Ausgabe wird ein bereinigter Term für die Ausgabe erstellt. In diesem Term wurden alle gebundenen Variablen deren bindende Abstraktion nicht innerhalb des Redex liegt durch freie Variablen mit dem Namen der abstrahierten Variable ersetzt.
+\end{itemize}
+
 \item[] % issue 19
 \begin{itemize}[noitemsep]
-\item[] {\bfseries }
+\item[] {\bfseries  }
 \item [\textbf{Grund:}]
 \item [\textbf{Behebung:}]
 \end{itemize}

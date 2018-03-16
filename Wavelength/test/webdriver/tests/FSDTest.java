@@ -111,6 +111,41 @@ public class FSDTest {
 		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
 		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='outputText'>z</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
+		
+		p.reset();
+	}
+	
+	@Test
+	public void T3() {
+		// T3.1
+		p.editor().write("(\\x. x x) y");
+		p.reductionOrderBox().select("Applicative Order");
+		p.outputSizeBox().select("Result only");
+		p.forwardButton().click();
+		p.forwardButton().click();
+		String oldOutput = p.unicodeOutput().readText();
+		assertEquals("(λx.x x) y\n" + 
+		             "y y", oldOutput);
+		
+		// T3.2
+		p.shareButton().click();
+		assertTrue(p.sharePanel().isVisible());
+		p.sharePanel().waitForText();
+		assertTrue(!p.sharePanel().read().isEmpty());
+		
+		// T3.3
+		String url = p.sharePanel().read();
+		// temporary workaround until sharePanel correctly displays url
+		url = "http://" + url;
+		p.navigate(url);
+		assertEquals("(\\x. x x) y", p.editor().read());
+		assertEquals(oldOutput, p.unicodeOutput().readText());
+		assertEquals("Applicative Order", p.reductionOrderBox().readSelected());
+		assertEquals("Result only", p.outputSizeBox().readSelected());
+		
+		// T3.4
+		p.backwardButton().click();
+		assertEquals("(λx.x x) y", p.unicodeOutput().readText());
 	}
 	
 	@AfterClass

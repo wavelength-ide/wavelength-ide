@@ -5,11 +5,15 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import webdriver.components.Button;
 import webdriver.components.CheckBox;
 import webdriver.components.Editor;
+import webdriver.components.Input;
 import webdriver.components.ListBox;
 import webdriver.components.Popup;
 import webdriver.components.TextElement;
@@ -102,6 +106,13 @@ public class Page {
 	
 	public void waitForCompletion() {
 		new WebDriverWait(driver, 20).until(d -> !spinner().isVisible());
+	}
+	
+	public void navigate(String url) {
+		// temporary workaround to prevent issue https://github.com/wavelength-ide/wavelength-ide/issues/33
+		// where the driver will not navigate to the new url unless we are on an entirely different page
+		driver.get("http://127.0.0.1:8888");
+		driver.get(url);
 	}
 	
 	public Button openMainMenuButton() {
@@ -204,8 +215,8 @@ public class Page {
 		return Button.byID(driver, "shareButton");
 	}
 	
-	public TextElement sharePanel() {
-		return TextElement.byID(driver, "sharePanel");
+	public Input sharePanel() {
+		return Input.byID(driver, "sharePanel");
 	}
 	
 	public Popup loadExercisePopup() {

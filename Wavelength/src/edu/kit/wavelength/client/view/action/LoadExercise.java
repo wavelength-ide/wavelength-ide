@@ -29,6 +29,7 @@ public class LoadExercise implements Action {
 		app.solutionArea().setText(exercise.getSolution());
 		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), false);
+		app.solutionArea().setVisible(false);
 		app.loadExercisePopup().hide();
 	}
 

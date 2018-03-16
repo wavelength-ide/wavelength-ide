@@ -88,6 +88,4 @@ public class ExerciseTest {
 	public void nullPredefinitionTest() {
 		Exercise ex = new ConcreteExercise("name", "task", "solution", null);
 	}
-	
-	
 }

@@ -18,8 +18,10 @@ import edu.kit.wavelength.client.model.reduction.TestTermGenerator;
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
+import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.IsRedexVisitor;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.model.term.parsing.Parser;
 import edu.kit.wavelength.client.view.exercise.BoundVariableResolver;
@@ -27,7 +29,7 @@ import edu.kit.wavelength.client.view.export.BasicExportVisitor;
 
 public class RedexExerciseTest {
 
-	final int testIterations = 1000;
+	final int testIterations = 10000;
 	private TestTermGenerator generator;
 	private Parser testParser;
 	private BasicExportVisitor toString;
@@ -98,6 +100,33 @@ public class RedexExerciseTest {
 		}
 	}
 	
+	@Test(expected = IllegalArgumentException.class) 
+	public void nullTermResolverTest() {
+		resolver.resolveVariables(null, new FreeVariable("x"));
+	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+	public void nullSubTermResolverTest() {
+		resolver.resolveVariables(new FreeVariable("x"), null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class) 
+	public void invalidTermResolverTest() {
+		resolver.resolveVariables(new FreeVariable("x"), new FreeVariable("y"));
+	}
+	
+	@Test
+	public void nameRessolverTest() {
+		NamedTerm subNameTerm = new NamedTerm("name", new Application(new FreeVariable("y"),
+				new Application(new Abstraction("x", new BoundVariable(1)), new BoundVariable(1))));
+		LambdaTerm term = new Abstraction("v", subNameTerm);
+		LambdaTerm resolvedName = resolver.resolveVariables(term, subNameTerm);
+		assertTrue(resolvedName instanceof NamedTerm);
+		NamedTerm resName = (NamedTerm) resolvedName;
+		assertEquals(resName.getInner(), new Application(new FreeVariable("y"),
+				new Application(new Abstraction("x", new BoundVariable(1)), new FreeVariable("v"))));
+	}
+	
 	@Test
 	public void basicResolverTest() {
 		LambdaTerm term = new Abstraction("x",
@@ -122,16 +151,9 @@ public class RedexExerciseTest {
 					assertTrue(rSubTerm.acceptVisitor(new IsRedexVisitor()));
 					String originalTerm = cTerm.acceptVisitor(toString).toString();
 					String subterm = rSubTerm.acceptVisitor(toString).toString();
-					// If the original term contains naming conflicts, the visitor adds indices to these variables
-					// in these cases the contain method may not be used to verify the result.
-					boolean containsIndices = false;
-					for (int j = 0; j < 10; j++) {
-						if (originalTerm.contains("" + j)) {
-							containsIndices = true;
-							i--; // repeat test with new term
-						}
-					}
-					assertTrue(containsIndices || originalTerm.contains(subterm));
+					String originalTermNoIndex = originalTerm.replaceAll("[0-9]", "");
+					String subtermNoIndex = subterm.replaceAll("[0-9]", "");
+					assertTrue(originalTermNoIndex.contains(subtermNoIndex));
 				}
 			}		
 		}

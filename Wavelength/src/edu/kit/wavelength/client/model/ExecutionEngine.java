@@ -230,7 +230,6 @@ public class ExecutionEngine {
 	public LambdaTerm displayCurrent() {
 		if (isCurrentDisplayed())
 			throw new IllegalStateException("No term to show");
-
 		shown.add(new NumberedTerm(current.get(currentNum), currentNum));
 		lastDisplayedNum = currentNum;
 		return getLast();

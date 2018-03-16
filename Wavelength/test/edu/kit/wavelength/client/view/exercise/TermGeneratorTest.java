@@ -21,4 +21,24 @@ public class TermGeneratorTest {
 			assertTrue(nameValue >= (int) 'a');
 		}
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void invalidParamsA() {
+		generator.getNewTerm(10, 5, 0, 0);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void invalidParamsB() {
+		generator.getNewTerm(5, 15, -1, 0);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void invalidParamsC() {
+		generator.getNewTerm(5, 15, 0, -1);
+	}
+	
+	@Test
+	public void invalidParamsD() {
+		
+	}
 }

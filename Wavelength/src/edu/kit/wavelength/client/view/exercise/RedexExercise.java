@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
 import edu.kit.wavelength.client.view.export.BasicExportVisitor;
 
 public class RedexExercise implements Exercise {
@@ -15,7 +14,6 @@ public class RedexExercise implements Exercise {
 	
 	private ReductionOrder myReductionOrder;
 	private TermGenerator termGenerator;
-	private String solution;
 	private String predefinitions;
 	
 	private String firstRedex;
@@ -23,7 +21,7 @@ public class RedexExercise implements Exercise {
 	public RedexExercise(ReductionOrder reduction) {
 		this.myReductionOrder = reduction;
 		termGenerator = new TermGenerator();
-		reset();
+		//reset();
 	}
 	
 	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {

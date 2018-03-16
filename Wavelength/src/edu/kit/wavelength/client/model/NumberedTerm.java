@@ -8,7 +8,7 @@ import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 // Simple tuple class for a lambda term and a number.
-class NumberedTerm implements Serializable {
+public class NumberedTerm implements Serializable {
 	private LambdaTerm term;
 	private int number;
 	

@@ -2,6 +2,7 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.exercise.Exercise;
+import edu.kit.wavelength.client.view.exercise.RedexExercise;
 
 
 /**
@@ -22,6 +23,11 @@ public class LoadExercise implements Action {
 	@Override
 	public void run() {
 		Control.wipe();
+		
+		if (exercise instanceof RedexExercise) {
+			RedexExercise redexEx = (RedexExercise) exercise;
+			redexEx.reset();
+		}
 		
 		if (exercise.hasPredefinitions()) {
 			app.editor().write(exercise.getPredefinitions());

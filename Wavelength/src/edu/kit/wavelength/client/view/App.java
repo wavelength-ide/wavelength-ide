@@ -71,7 +71,6 @@ import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateOutput;
 import edu.kit.wavelength.client.view.update.UpdateShareURL;
-import edu.kit.wavelength.client.view.update.UpdateURL;
 
 /**
  * App is a singleton that initializes and holds the view.
@@ -172,8 +171,6 @@ public class App implements Serializable {
 	private MonacoEditor editor;
 	
 	private Executor executor;
-	
-	private URLSerializer urlSerializer;
 	
 	private Exercise currentExercise;
 
@@ -606,7 +603,7 @@ public class App implements Serializable {
 			SelectExportFormat action = new SelectExportFormat(exports.get(i));
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
-		shareButton.addClickHandler(e -> new UseShare().run());
+		shareButton.addClickHandler(e -> new UseShare(Arrays.asList(new UpdateShareURL())).run());
 
 		
 		
@@ -615,10 +612,7 @@ public class App implements Serializable {
 		editor = MonacoEditor.load(editorPanel);
 
 		executor = new Executor(Arrays.asList(new UpdateOutput()),
-				Arrays.asList(new FinishExecution()));
-		urlSerializer = new URLSerializer(Arrays.asList(new UpdateURL(), new UpdateShareURL()), POLLING_DELAY_MS);
-		urlSerializer.startPolling();	
-		
+				Arrays.asList(new FinishExecution()));	
 		
 		Control.updateControls();
 
@@ -1003,10 +997,6 @@ public class App implements Serializable {
 	
 	public Executor executor() {
 		return executor;
-	}
-	
-	public URLSerializer urlSerializer() {
-		return urlSerializer;
 	}
 	
 	public Exercise currentExercise() {

@@ -249,5 +249,4 @@ public class ReductionOrderTest {
 			assertEquals(byValue.next(partialApp), byValue.next(partialApp.getRepresented()));
 		}
 	}
-	
 }

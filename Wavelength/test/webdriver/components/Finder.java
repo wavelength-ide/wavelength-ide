@@ -18,12 +18,15 @@ class Finder {
 	static boolean hasElement(Driver driver, String id, String text) {
 		driver.removeImplicitTimeout();
 		if (driver.findElements(By.id(id)).size() == 0) {
+			driver.resetImplicitTimeout();
 			return false;
 		}
 		WebElement button = driver.findElement(By.id(id));
 		if (text != null && button.findElements(By.xpath("//*[text()='" + text + "']")).size() == 0) {
+			driver.resetImplicitTimeout();
 			return false;
 		}
+		driver.resetImplicitTimeout();
 		return true;
 	}
 	

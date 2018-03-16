@@ -26,9 +26,9 @@ public class Driver extends ChromeDriver {
 	
 	public boolean hasElement(By by) {
 		removeImplicitTimeout();
-		boolean hasChildren = super.findElements(by).size() > 0;
+		boolean hasElement = super.findElements(by).size() > 0;
 		resetImplicitTimeout();
-		return hasChildren;
+		return hasElement;
 	}
 	
 	private class LocalOptions implements Options {

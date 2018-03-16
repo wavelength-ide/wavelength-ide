@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import webdriver.components.Button;
 import webdriver.components.CheckBox;
 import webdriver.components.Editor;
@@ -91,6 +94,14 @@ public class Page {
 	
 	public void close() {
 		driver.quit();
+	}
+	
+	public boolean isLoaded() {
+		return driver.getTitle().equals("Wavelength") && driver.findElements(By.id("mainPanel")).size() > 0;
+	}
+	
+	public void waitForCompletion() {
+		new WebDriverWait(driver, 20).until(d -> !spinner().isVisible());
 	}
 	
 	public Button openMainMenuButton() {

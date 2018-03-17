@@ -90,19 +90,6 @@ public class App implements Serializable {
 	private static final char UNCHECKED_LIBRARY = 'u';
 	private static final int POLLING_DELAY_MS = 10000;
 	
-	private static final String MAIN_MENU_BUTTON_TOOLTIP = "Open/Close the main menu.";
-	private static final String RUN_BUTTON_TOOLTIP = "Run a new reduction.";
-	private static final String PAUSE_BUTTON_TOOLTIP = "Pause the currently running reduction.";
-	private static final String UNPAUSE_BUTTON_TOOLTIP = "Resume current reduction.";
-	private static final String FORWARD_BUTTON_TOOLTIP = "Do a single reduction step.";
-	private static final String BACKWARD_BUTTON_TOOLTIP = "Revert the last reduction step.";
-	private static final String CLEAR_BUTTON_TOOLTIP = "Clear the output.";
-	private static final String TOGGLE_SOLUTION_BUTTON_TOOLTIP = "Show/Hide the current exercise's solution.";
-    private static final String CLOSE_EXERCISE_BUTTON_TOOLTIP = "Leave the exercise mode.";
-	private static final String SHARE_BUTTON_TOOLTIP = "Create a permalink.";
-	private static final String EXPORT_BUTTON_TOOLTIP = "Export the current autput.";
-	
-	
 	public static final String KEY = "s";
 
 	/**
@@ -274,7 +261,7 @@ public class App implements Serializable {
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
 		openMainMenuButton = new Button();
-		openMainMenuButton.setTitle(MAIN_MENU_BUTTON_TOOLTIP);
+		openMainMenuButton.setTitle("Open/Close the main menu.");
 		openMainMenuButton.setId("openMainMenuButton");
 		openMainMenuButton.addStyleName("fa fa-bars");
 		openMainMenuButton.setToggleCaret(false);
@@ -330,7 +317,7 @@ public class App implements Serializable {
 		footerPanel.add(exportDropupGroup);
 
 		openExportMenuButton = new Button();
-		openExportMenuButton.setTitle(EXPORT_BUTTON_TOOLTIP);
+		openExportMenuButton.setTitle("Export the current autput.");
 		openExportMenuButton.setId("openExportMenuButton");
 		openExportMenuButton.setDataToggle(Toggle.DROPDOWN);
 		openExportMenuButton.setToggleCaret(false);
@@ -356,7 +343,7 @@ public class App implements Serializable {
 		footerPanel.add(shareGroup);
 
 		shareButton = new Button();
-		shareButton.setTitle(SHARE_BUTTON_TOOLTIP);
+		shareButton.setTitle("Create a permalink.");
 		shareButton.setId("shareButton");
 		shareButton.addStyleName("fa fa-share-alt");
 		shareGroup.add(shareButton);
@@ -413,25 +400,25 @@ public class App implements Serializable {
 		controlPanel.add(stepByStepControlPanel);
 
 		backwardButton = new Button();
-		backwardButton.setTitle(BACKWARD_BUTTON_TOOLTIP);
+		backwardButton.setTitle("Revert the last reduction step.");
 		backwardButton.setId("backwardButton");
 		backwardButton.addStyleName("fa fa-chevron-left");
 		stepByStepControlPanel.add(backwardButton);
 		
 		pauseButton = new Button();
-		pauseButton.setTitle(PAUSE_BUTTON_TOOLTIP);
+		pauseButton.setTitle("Pause the currently running reduction.");
 		pauseButton.setId("pauseButton");
 		pauseButton.addStyleName("fa fa-pause");
 		stepByStepControlPanel.add(pauseButton);
 		
 		unpauseButton = new Button();
-		unpauseButton.setTitle(UNPAUSE_BUTTON_TOOLTIP);
+		unpauseButton.setTitle("Resume current reduction.");
 		unpauseButton.setId("unpauseButton");
 		unpauseButton.addStyleName("fa fa-play");
 		stepByStepControlPanel.add(unpauseButton);
 		
 		forwardButton = new Button();
-		forwardButton.setTitle(FORWARD_BUTTON_TOOLTIP);
+		forwardButton.setTitle("Do a single reduction step.");
 		forwardButton.setId("forwardButton");
 		forwardButton.addStyleName("fa fa-chevron-right");
 		stepByStepControlPanel.add(forwardButton);
@@ -447,13 +434,13 @@ public class App implements Serializable {
 		controlPanel.add(runControlPanel);
 		
 		clearButton = new Button();
-		clearButton.setTitle(CLEAR_BUTTON_TOOLTIP);
+		clearButton.setTitle("Clear the output.");
 		clearButton.setId("clearButton");
 		clearButton.addStyleName("fa fa-times");
 		runControlPanel.add(clearButton);
 		
 		runButton = new Button();
-		runButton.setTitle(RUN_BUTTON_TOOLTIP);
+		runButton.setTitle("Run a new reduction.");
 		runButton.setId("runButton");
 		runButton.addStyleName("fa fa-fast-forward");
 		runControlPanel.add(runButton);
@@ -480,13 +467,13 @@ public class App implements Serializable {
 		exerciseHeaderPanel.add(exerciseControlPanel);
 
 		toggleSolutionButton = new Button();
-		toggleSolutionButton.setTitle(TOGGLE_SOLUTION_BUTTON_TOOLTIP);
+		toggleSolutionButton.setTitle("Show/Hide the current exercise's solution.");
 		toggleSolutionButton.setId("toggleSolutionButton");
 		toggleSolutionButton.addStyleName("fa fa-lightbulb-o");
 		exerciseControlPanel.add(toggleSolutionButton);
 
 		closeExerciseButton = new Button();
-		closeExerciseButton.setTitle(CLOSE_EXERCISE_BUTTON_TOOLTIP);
+		closeExerciseButton.setTitle("Leave the exercise mode.");
 		closeExerciseButton.setId("closeExerciseButton");
 		closeExerciseButton.addStyleName("fa fa-times-circle-o");
 		exerciseControlPanel.add(closeExerciseButton);

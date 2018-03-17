@@ -87,12 +87,12 @@ public class CompletionTest {
 	
 	@Test
 	public void partialAppReceivedTest() {
-		assertEquals(new PartialApplication.Addition().getReceived().length, 2));
+		assertEquals(new PartialApplication.Addition().getReceived().length, 2);
 	}
 	
 	@Test
-	public void patialAppNumReceivedTest() {
-		assertEquals(new PartialApplication.Addition().getNumReceived(), 0)
+	public void partialAppNumReceivedTest() {
+		assertEquals(new PartialApplication.Addition().getNumReceived(), 0);
 	}
 }
 

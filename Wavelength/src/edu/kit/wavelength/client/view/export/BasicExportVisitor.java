@@ -16,7 +16,7 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
  * A basic Visitor to create a string representing a given lambda term. The
  * Visitor sets a minimal number of brackets to correctly describe the lambda
  * term.
- * 
+ *
  * It also provides some means to vary the representation of a lambda term by
  * overwriting its strategy methods.
  */
@@ -34,10 +34,10 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 
 	/**
 	 * Creates a new Visitor for {@link LambdaTerm}s.
-	 * 
+	 *
 	 * It will build a String (represented by a {@link StringBuilder}) from the
 	 * lambda term with a custom representation for the lambda-letter.
-	 * 
+	 *
 	 * @param libraries
 	 *            the libraries of the application that are used in this term
 	 * @param lambdaRepresentation
@@ -70,8 +70,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		bracketsForApp = true;
 		StringBuilder rightSide = app.getRightHandSide().acceptVisitor(this);
 
-		StringBuilder result = new StringBuilder();
-		result.append(leftSide).append(" ").append(rightSide);
+		StringBuilder result = formatApplication(leftSide, rightSide);
 		if (brackets) {
 			result.insert(0, "(").append(")");
 		}
@@ -135,7 +134,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	/**
 	 * Sets all Flags for brackets. Flags should be false at the end of each
 	 * visit method.
-	 * 
+	 *
 	 * @param set
 	 *            {@link true} if the Flags should be set and {@link false}
 	 *            otherwise
@@ -148,7 +147,7 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	/**
 	 * A strategy method to allow inheriting classes to define the
 	 * representation of text in the constructed String.
-	 * 
+	 *
 	 * @param text
 	 *            the text of the lambda term
 	 * @return the text as it should be represented in the final string
@@ -162,10 +161,10 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	/**
 	 * A strategy method to allow inheriting classes to define the
 	 * representation of an abstraction in the constructed String.
-	 * 
+	 *
 	 * The default setting produces a string containing the lambda letter,
 	 * followed by the abstraction variable and a dot (e.g. '\x.').
-	 * 
+	 *
 	 * @param absVariable
 	 *            the variable of the abstraction
 	 * @return the left part of an abstraction as it should be represented in
@@ -175,5 +174,25 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 		assert (absVariable != null);
 
 		return absVariable.insert(0, lambda).append(". ");
+	}
+
+	/**
+	 * A strategy method to allow inheriting classed to define the
+	 * representation of an application in the constructed String.
+	 *
+	 * The default setting seperates the left and right side of the
+	 * application by a space.
+	 *
+	 * @param leftSide
+	 *            the left Side of the application
+	 * @param rightSide
+	 * 						the right Side of the application
+	 * @return the application as it should be represented in the
+	 * 				 final string
+	 */
+	protected StringBuilder formatApplication(StringBuilder leftSide, StringBuilder rightSide) {
+		assert (leftSide != null && rightSide != null);
+
+		return leftSide.append(" ").append(rightSide);
 	}
 }

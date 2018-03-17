@@ -25,11 +25,18 @@ public class LaTeXExportVisitor extends BasicExportVisitor {
 
 		return text.insert(0, TEXTSTART).append(TEXTEND);
 	}
-	
+
 	@Override
 	protected StringBuilder formatLambda(StringBuilder absVariable) {
 		assert (absVariable != null);
 
-		return absVariable.insert(0, lambda).append(".\\ ");
+		return absVariable.insert(0, lambda).append(".\\, ");
+	}
+
+	@Override
+	protected StringBuilder formatApplication(StringBuilder leftSide, StringBuilder rightSide) {
+		assert (leftSide != null && rightSide != null);
+
+		return leftSide.append("\\: ").append(rightSide);
 	}
 }

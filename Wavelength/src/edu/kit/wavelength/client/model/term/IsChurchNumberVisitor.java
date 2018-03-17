@@ -45,5 +45,4 @@ public class IsChurchNumberVisitor extends NameAgnosticVisitor<Boolean> {
 	public Boolean visitFreeVariable(FreeVariable var) {
 		return false;
 	}
-
 }

@@ -44,6 +44,45 @@
 \tableofcontents
 \newpage
 
+\chapter{Testmethoden}
+
+\section{Parser-Fuzzing}
+Neben herkömmlichen JUnit-Tests und dem Parsen von zufällig generierten
+$\lambda$-Termen kam zum Testen des Parsers ein Fuzzer zum Einsatz. Fuzzing ist
+eine Testtechnik, bei der nach dem Modell eines genetischen Algorithmus
+automatisch interessante Testfälle generiert werden, die neue interne Zustände
+in der Applikation hervorrufen. Da der Fuzzer introspektiv mit der kompilierten
+Applikation arbeitet, werden innerhalb von kurzer Zeit Testfälle gefunden, die
+neue Ausnahmen oder Zustände hervorrufen.
+
+Wavelength verwendet zum Fuzzen des Parsers die Java-Bibliothek
+\textit{Javan Warty Pig\footnote{\url{https://github.com/cretz/javan-warty-pig}}},
+welche die Instrumentationsfeatures der Java Virtual Machine nutzt, um Fuzzing
+auf der Ebene des Java Bytecodes durchzuführen.
+
+Durch das gezielte Suchen des Fuzzers nach neuen Programmzuständern ist der
+Fuzzer in der Lage, innerhalb von Sekunden gültige $\lambda$-Terme und
+Namenszuweisungen zu generieren, ohne vorher mit Informationen über die Struktur
+von $\lambda$-Termen initialisiert zu werden. Ebenfalls konnte der Fuzzer innerhalb
+von kurzer Zeit mehrere unerwartete Ausnahmen im Parser hervorrufen und syntaktisch
+inkorrekte Testfälle generieren, die dennoch vom Parser akzeptiert wurden. Einige
+dieser Bugs wären ohne die Verwendung eines Fuzzers mit hoher Wahrscheinlichkeit
+unentdeckt geblieben.
+
+Bei der Verwendung des Fuzzers wurden jedoch auch die Limitationen dieser Methodik
+zum Testen deutlich. Der Fuzzer such spezifisch nach neuen internen Zuständen und
+Ausführungspfaden. Fehlverhalten, welches nicht zu einer Verzweigung im
+Programmfluss führt, ist für den Fuzzer somit nicht sichtbar. Im Fall des
+Wavelength-Parsers wird dieser Umstand im Bezug auf Kommentare in der Eingabe
+am deutlichsten -- im Parser existieren keine Branches, die abhängig vom
+Vorhandensein eines Kommentars genommen werden. Das Resultat ist, dass durch
+Fuzzen keine interessanten Testfälle zum Umgang mit Kommentaren gefunden werden.
+Insbesondere gab es einen subtilen Fehler in der Kommentarentfernungsreoutine,
+der auf den ersten Blick wie ein typischer durch einen Fuzzer indentifizierbarer
+Fehlerfall aussieht, vom Fuzzer jedoch nicht entdeckt wurde. Daher stützen wir
+uns zum Testen des Parsers nicht nur auf Fuzzing, sondern auch auf herkömmliche
+manuell erstellte Komponententests.
+
 \chapter{Testprotokolle}
 
 \section{UI Tests}
@@ -195,139 +234,89 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 
 \begin{itemize}[itemsep=3ex]
 
-\item[] % issue 27
+\newcommand{\issue}[3]{%
+\item[]
 \begin{itemize}[noitemsep]
-\item[] {\bfseries Wird die Lösung einer aktiven Übungsaufgaben angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen sondern die Lösung der neuen Aufgabe angezeigt. }
-\item [\textbf{Grund:}] Beim Öffnen einer neuen Übungsaufgabe wird der Status Lösungsfensters nicht zurückgesetzt.
-\item [\textbf{Behebung:}] Die LoadExercise Action setzt nun den Status des Lösungsfensters zurück bevor eine neue Übungsaufgabe angezeigt wird.
-\end{itemize}
-
-\item[] % issue 26
-\begin{itemize}[noitemsep]
-\item[] {\bfseries Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt. }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 23
-\begin{itemize}[noitemsep]
-\item[] {\bfseries Beim Öffnen einer neuen Redex-Übungsaufgabe kommt es manchmal zu einem Fehler. }
-\item [\textbf{Grund:}] Enthält der gesuchte Redex eine gebundene Variable deren bindende Abstraktion außerhalb des Redex liegt ist der Redex-Subterm kein valider Lambda-Term was zu einem Fehler bei der Ausgabe als String führt. 
-\item [\textbf{Behebung:}]  Vor der Ausgabe wird ein bereinigter Term für die Ausgabe erstellt. In diesem Term wurden alle gebundenen Variablen deren bindende Abstraktion nicht innerhalb des Redex liegt durch freie Variablen mit dem Namen der abstrahierten Variable ersetzt.
-\end{itemize}
-
-\item[] % issue 19
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 18
-\begin{itemize}[noitemsep]
-\item[] {\bfseries }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 17
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  Das Anhängen eines "-" an eine ansonsten korrekte Zeile der Eingabe führt nicht zu einem Fehler. }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 16
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 15
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  Beginnt eine Eingabe mit eine Kommentar in der ersten Zeile, so wird sie nicht korrekt geparst sondern ein Fehler ausgegeben. }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 14; TODO 
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
-
-\item[] % issue 13; TODO
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+\item[]\textbf{#1}
+\item[\textbf{Grund:}]#2
+\item[\textbf{Behebung:}]#3
+\end{itemize}}
 
 
-\item[] % issue 12; TODO
-\begin{itemize}[noitemsep]
-\item[] {\bfseries Veränderungen an von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt. }
-\item [\textbf{Grund:}] Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben. 
-\item [\textbf{Behebung:}] Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.
-\end{itemize}
+%issue 22
+\issue{Wird die Lösung einer aktiven Übungsaufgaben angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen sondern die Lösung der neuen Aufgabe angezeigt. }
+{Beim Öffnen einer neuen Übungsaufgabe wird der Status Lösungsfensters nicht zurückgesetzt.}
+{Die LoadExercise Action setzt nun den Status des Lösungsfensters zurück bevor eine neue Übungsaufgabe angezeigt wird}
 
-\item[] % issue 11;TODO
-\begin{itemize}[noitemsep]
-\item[] {\bfseries }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+%issue 21
+\issue{Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt.}
+{}
+{}
 
-\item[] % issue 10
-\begin{itemize}[noitemsep]
-\item[] {\bfseries Das Parsen einer Eingabe die nur aus Leerstellen besteht führt zu einem Fehler.}
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+%issue 20
+\issue{Beim Öffnen einer neuen Redex-Übungsaufgabe kommt es manchmal zu einem Fehler.}
+{Enthält der gesuchte Redex eine gebundene Variable deren bindende Abstraktion außerhalb des Redex liegt ist der Redex-Subterm kein valider Lambda-Term was zu einem Fehler bei der Ausgabe als String führt.}
+{Vor der Ausgabe wird ein bereinigter Term für die Ausgabe erstellt. In diesem Term wurden alle gebundenen Variablen deren bindende Abstraktion nicht innerhalb des Redex liegt durch freie Variablen mit dem Namen der abstrahierten Variable ersetzt.}
 
-\item[] % issue 9; Parser does not check for null
-\begin{itemize}[noitemsep]
-\item[] {\bfseries }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+% issue 19
+\issue{}{}{}
 
-\item[] % issue 8; TODO
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+% issue 18
+\issue{}{}{}
 
-\item[] % issue 7
-\begin{itemize}[noitemsep]
-\item[] {\bfseries Im Uniode Ausgabeformat werden benannte Term nicht markiert auch wenn sie den als nächstes zu reduzierenden Redex enthalten. }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+% issue 17
+\issue{Das Anhängen eines "-" an eine ansonsten korrekte Zeile der Eingabe führt nicht zu einem Fehler.}
+{}
+{}
 
-\item[] % issue 6; TODO
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+% issue 16
+\issue{}{}{}
 
-\item[] % issue 5; TODO
-\begin{itemize}[noitemsep]
-\item[] {\bfseries  }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+% issue 15
+\issue{Beginnt eine Eingabe mit eine Kommentar in der ersten Zeile, so wird sie nicht korrekt geparst sondern ein Fehler ausgegeben.}
+{}
+{}
 
-\item[] % issue 4
-\begin{itemize}[noitemsep]
-\item[] {\bfseries Enthält ein Lambda-Term  verschiedene Instanzen des gleichen vordefinierten Terms, so werden, sobald eine Instanz reduziert wird, auch alle anderen Instanzen reduziert. }
-\item [\textbf{Grund:}]
-\item [\textbf{Behebung:}]
-\end{itemize}
+% issue 14; TODO 
+\issue{}{}{}
+
+% issue 13; TODO
+\issue{}{}{}
+
+% issue 12; TODO
+\issue{Veränderungen an von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt.}
+{Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben.}
+{Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.}
+
+% issue 11;TODO
+\issue{}{}{}
+
+% issue 10
+\issue{Das Parsen einer Eingabe die nur aus Leerstellen besteht führt zu einem Fehler.}
+{}
+{}
+
+% issue 9; Parser does not check for null
+\issue{}{}{}
+
+% issue 8; TODO
+\issue{}{}{}
+
+% issue 7
+\issue{Im Uniode Ausgabeformat werden benannte Term nicht markiert auch wenn sie den als nächstes zu reduzierenden Redex enthalten.}
+{}
+{}
+
+% issue 6; TODO
+\issue{}{}{}
+
+% issue 5; TODO
+\issue{}{}{}
+
+% issue 4
+\issue{Enthält ein Lambda-Term  verschiedene Instanzen des gleichen vordefinierten Terms, so werden, sobald eine Instanz reduziert wird, auch alle anderen Instanzen reduziert.}
+{}
+{}
 
 \end{itemize}
 

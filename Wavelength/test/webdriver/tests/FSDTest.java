@@ -17,6 +17,7 @@ public class FSDTest {
 	@BeforeClass
 	public static void setUp() {
 		p = new Page();
+		p.waitForLoading();
 	}
 	
 	@Test
@@ -135,8 +136,6 @@ public class FSDTest {
 		
 		// T3.3
 		String url = p.sharePanel().read();
-		// temporary workaround until sharePanel correctly displays url
-		url = "http://" + url;
 		p.navigate(url);
 		assertEquals("(\\x. x x) y", p.editor().read());
 		assertEquals(oldOutput, p.unicodeOutput().readText());

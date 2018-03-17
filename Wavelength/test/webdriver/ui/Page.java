@@ -100,8 +100,12 @@ public class Page {
 		driver.quit();
 	}
 	
+	public void waitForLoading() {
+		driver.findElements(By.id("mainPanel"));
+	}
+	
 	public boolean isLoaded() {
-		return driver.getTitle().equals("Wavelength") && driver.findElements(By.id("mainPanel")).size() > 0;
+		return driver.getTitle().equals("Wavelength") && driver.hasElement(By.id("mainPanel"));
 	}
 	
 	public void waitForCompletion() {
@@ -109,10 +113,8 @@ public class Page {
 	}
 	
 	public void navigate(String url) {
-		// temporary workaround to prevent issue https://github.com/wavelength-ide/wavelength-ide/issues/33
-		// where the driver will not navigate to the new url unless we are on an entirely different page
-		driver.get("http://127.0.0.1:8888");
 		driver.get(url);
+		waitForLoading();
 	}
 	
 	public Button openMainMenuButton() {

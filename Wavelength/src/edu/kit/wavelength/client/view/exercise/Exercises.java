@@ -32,7 +32,7 @@ public final class Exercises {
 		String varTask = "In lambda calculus, bound variables are variables enclosed in the body of an abstration,"
 				+ " while free variable are those variables not enclosed by an abstration.\n Note that one occurence of a variable in a given term"
 				+ " may be a bound variable while another one might be a free variable. Which variables in the displayed term are bound? Which are free?";
-		String varSolution = "";
+		String varSolution = "The first v, and last x are free variables.";
 		String varPredef = "v ((λx.λv.(v x)) x)";
 		Exercise var = new ConcreteExercise(varName, varTask, varSolution, varPredef);
 

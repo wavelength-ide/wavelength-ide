@@ -20,7 +20,6 @@ public class CustomLibraryTest {
 		library.addTerm(new FreeVariable("a"), "a");
 		assertTrue(library.containsName("a"));
 		assertEquals(library.getTerm("a"), new FreeVariable("a"));
-		
 		assertFalse(library.containsName("b"));
 		library.addTerm(new Abstraction("x", new BoundVariable(1)), "b");
 		assertTrue(library.containsName("b"));

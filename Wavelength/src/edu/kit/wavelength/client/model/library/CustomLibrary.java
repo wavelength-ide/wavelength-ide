@@ -8,7 +8,8 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
 /**
- * TODO JavaDoc
+ * The CustomLibrary class represents a library which starts out empty, but to which any term and name can be added.
+ * It is used by the Parser to store all name assignments defined by the user.
  */
 public class CustomLibrary implements Library {
 
@@ -36,6 +37,11 @@ public class CustomLibrary implements Library {
 		return res.append(SerializationUtilities.enclose(comp.toArray(new StringBuilder[0])));
 	}
 
+	/**
+	 * Restores a {@link CustomLibrary} object from a serialization String.
+	 * @param serialized The serialization from which to restore the library
+	 * @return A CustomLibrary equal to the library processed to the input String
+	 */
 	public static CustomLibrary fromSerialized(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
 		assert extracted.size() > 0;

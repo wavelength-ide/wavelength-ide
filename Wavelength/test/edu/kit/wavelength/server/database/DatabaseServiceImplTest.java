@@ -2,8 +2,11 @@ package edu.kit.wavelength.server.database;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.PrintStream;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,6 +55,19 @@ public class DatabaseServiceImplTest {
 	public void cleanUp() {
 		file.delete();
 	}
+	//creation tests
+	@Test
+	public void folderCreationTest() {
+		folder.delete();
+		database = new DatabaseServiceImpl();
+		assertEquals(true, folder.exists());
+	}
+	@Test
+	public void fileCreationTest() {
+		file.delete();
+		database = new DatabaseServiceImpl();
+		assertEquals(true, file.exists());
+	}
 	
 	//getSerialization(final String id) tests
 	@Test
@@ -74,6 +90,15 @@ public class DatabaseServiceImplTest {
 		String id = database.addEntry(testString);
 		assertEquals(database.getSerialization(id), database.getSerialization(id));
 	}
+	@Test
+	public void getSerializationError() {
+		String errorString = "org.sqlite.SQLiteException";
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		System.setErr(new PrintStream(stream));
+		file.delete();
+		database.getSerialization("don't care");
+		assertTrue(stream.toString().startsWith(errorString));
+	}
 	
 	//addEntry(final String serialization) tests
 	@Test
@@ -90,6 +115,15 @@ public class DatabaseServiceImplTest {
 		String id = database.addEntry(testString);
 		assertEquals(id, database.addEntry(testString));
 	}
+	@Test
+	public void addEntryError() {
+		String errorString = "org.sqlite.SQLiteException";
+		ByteArrayOutputStream stream = new ByteArrayOutputStream();
+		System.setErr(new PrintStream(stream));
+		file.delete();
+		database.addEntry("don't care");
+		assertTrue(stream.toString().startsWith(errorString));
+	}
 	
 	//mixed tests
 	@Test
@@ -99,7 +133,7 @@ public class DatabaseServiceImplTest {
 	}
 	@Test
 	public void injectionTest() {
-		String injectedInsert = ";INSERT INTO map(id, serialization) VALUES (injectedID, injectedSerialization)";
+		String injectedInsert = ";INSERT INTO map (id, serialization) VALUES (injectedID, injectedSerialization)";
 		database.addEntry(injectedInsert);
 		database.getSerialization(injectedInsert);
 		

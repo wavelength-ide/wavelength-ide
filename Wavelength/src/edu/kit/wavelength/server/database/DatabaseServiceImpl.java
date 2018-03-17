@@ -23,13 +23,15 @@ import edu.kit.wavelength.client.database.DatabaseService;
 public class DatabaseServiceImpl extends RemoteServiceServlet implements DatabaseService {
 
 	private static final long serialVersionUID = 1L;
+	public static final String NULL_CONNECTION = "Connection to database could not be established!";
+	public static final String SQL_EXCEPTION_MESSAGE = "An SQL Exception occured!";
 
 	// SQL-Commands
 	private static final String databasePath = "jdbc:sqlite:database/database.db";
 	private static final String createDatabase = "CREATE TABLE IF NOT EXISTS map (\n id text PRIMARY KEY, \n serialization text);";
 	private static final String selectSerialization = "SELECT serialization FROM map WHERE id = ?";
 	private static final String selectID = "SELECT id FROM map WHERE serialization = ?";
-	private static final String insertEntry = "INSERT INTO map(id, serialization) VALUES (?,?)";
+	private static final String insertEntry = "INSERT INTO map (id, serialization) VALUES (?,?)";
 
 	/**
 	 * Initialize connection to database located at url given by
@@ -53,7 +55,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 				statement.execute(createDatabase);
 			}
 		} catch (SQLException exception) {
-			// do nothing because of autoclose
+			System.err.println(NULL_CONNECTION + exception.toString());
 		}
 	}
 
@@ -65,18 +67,25 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 					statement.setString(1, id);
 					try (ResultSet resultSet = statement.executeQuery()) {
 						// note that resultSet is supposed to contain only one element
-						resultSet.next();
-						return resultSet.getString(1);
+						if (resultSet.next()) {
+							return resultSet.getString(1);
+						} else {
+							return null;
+						}
 					} catch (SQLException exception) {
+						exception.printStackTrace();
 						return null;
 					}
 				} catch (SQLException exception) {
+					exception.printStackTrace();
 					return null;
 				}
 			} else {
+				System.err.println(NULL_CONNECTION);
 				return null;
 			}
 		} catch (SQLException exception) {
+			exception.printStackTrace();
 			return null;
 		}
 
@@ -96,22 +105,26 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 				try (PreparedStatement statement = connection.prepareStatement(selectID);) {
 					statement.setString(1, serialization);
 					try (ResultSet resultSet = statement.executeQuery()) {
-						if (resultSet != null) {
-							// note that resultSet is supposed to contain only one element
+						// note that resultSet is supposed to contain only one element
+						if (resultSet.next()) {
 							return resultSet.getString(1);
 						} else {
 							return null;
 						}
 					} catch (SQLException exception) {
+						exception.printStackTrace();
 						return null;
 					}
 				} catch (SQLException exception) {
+					exception.printStackTrace();
 					return null;
 				}
 			} else {
+				System.err.println(NULL_CONNECTION);
 				return null;
 			}
 		} catch (SQLException exception) {
+			exception.printStackTrace();
 			return null;
 		}
 	}
@@ -132,6 +145,7 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 						return id.toString();
 
 					} catch (SQLException exception) {
+						System.err.println(exception.getMessage());
 						return null;
 					}
 				} else {
@@ -139,9 +153,11 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 					return assignedID;
 				}
 			} else {
+				System.err.println(NULL_CONNECTION);
 				return null;
 			}
 		} catch (SQLException exception) {
+			exception.printStackTrace();
 			return null;
 		}
 

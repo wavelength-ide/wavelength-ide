@@ -90,7 +90,7 @@ public class App implements Serializable {
 	private static final char UNCHECKED_LIBRARY = 'u';
 	private static final int POLLING_DELAY_MS = 10000;
 	
-	public static final String KEY = "ser";
+	public static final String KEY = "s";
 
 	/**
 	 * Creates a new instance of App if there is none. Returns a singleton instance

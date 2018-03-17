@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import javax.swing.text.JTextComponent.KeyBinding;
-
 import org.gwtbootstrap3.client.ui.AnchorListItem;
 import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.ButtonGroup;
@@ -18,7 +16,6 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.Modal;
 import org.gwtbootstrap3.client.ui.ModalBody;
 import org.gwtbootstrap3.client.ui.ModalFooter;
-import org.gwtbootstrap3.client.ui.SubmitButton;
 import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
@@ -50,6 +47,7 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrders;
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
+import edu.kit.wavelength.client.view.action.Clear;
 import edu.kit.wavelength.client.view.action.Control;
 import edu.kit.wavelength.client.view.action.EnterDefaultMode;
 import edu.kit.wavelength.client.view.action.LoadExercise;
@@ -61,7 +59,6 @@ import edu.kit.wavelength.client.view.action.SetOutputFormat;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
-import edu.kit.wavelength.client.view.action.Clear;
 import edu.kit.wavelength.client.view.action.Unpause;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
@@ -520,8 +517,7 @@ public class App implements Serializable {
 		loadExercisePopupCancelButton.addStyleName("fa fa-times");
 		loadExercisePopupFooter.add(loadExercisePopupCancelButton);
 
-		loadExercisePopupOkButton = new SubmitButton();
-		
+		loadExercisePopupOkButton = new Button();
 		loadExercisePopupOkButton.setId("loadExercisePopupOkButton");
 		loadExercisePopupOkButton.addStyleName("fa fa-check");
 		loadExercisePopupFooter.add(loadExercisePopupOkButton);

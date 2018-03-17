@@ -620,7 +620,7 @@ public class App implements Serializable {
 		
 		// try deserialization if possible
 		String state = Window.Location.getParameter(KEY);
-		if (state.length() > 0) {
+		if (state != null) {
 			// deserialize
 			DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);
 			AsyncCallback<String> callback = new AsyncCallback<String>() {

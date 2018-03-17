@@ -246,12 +246,55 @@ public class FSDTest {
 		
 		// T7.3
 		// spec for binding two terms was changed to shadow earlier terms, so we test that instead
-		p.editor().write("f = \\x. x\n"
-		               + "f = \\x. x x\n"
-		               + "f y");
+		p.editor().write("f = \\x. x\n" +
+		                 "f = \\x. x x\n" +
+		                 "f y");
 		p.runButton().click();
-		assertEquals("f y\n"
-		           + "y y", p.unicodeOutput().readText());
+		assertEquals("f y\n" +
+		             "y y", p.unicodeOutput().readText());
+	}
+	
+	@Test
+	public void T8() {
+		p.reset();
+		
+		// T8.1
+		p.openMainMenuButton().click();
+		p.libraryCheckBox("Church Tuples and Lists").toggle();
+		p.openMainMenuButton().click();
+		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + 
+		                 "(curry (\\p. (first p) (second p))) x x");
+		p.outputSizeBox().select("Result only");
+		assertEquals("Result only", p.outputSizeBox().readSelected());
+		p.runButton().click();
+		assertEquals("curry (λp.first p (second p)) x x\n" + 
+		             "x x", p.unicodeOutput().readText());
+		
+		// T8.2
+		p.outputSizeBox().select("Full");
+		assertEquals("Full", p.outputSizeBox().readSelected());
+		p.runButton().click();
+		assertEquals("curry (λp.first p (second p)) x x\n" + 
+		             "(λa.λb.(λp.first p (second p)) (pair a b)) x x\n" + 
+		             "(λb.(λp.first p (second p)) (pair x b)) x\n" + 
+		             "(λp.first p (second p)) (pair x x)\n" + 
+		             "first (pair x x) (second (pair x x))\n" + 
+		             "pair x x (λx.λy.x) (second (pair x x))\n" + 
+		             "(λy.λz.z x y) x (λx.λy.x) (second (pair x x))\n" + 
+		             "(λz.z x x) (λx.λy.x) (second (pair x x))\n" + 
+		             "(λx.λy.x) x x (second (pair x x))\n" + 
+		             "(λy.x) x (second (pair x x))\n" + 
+		             "x (second (pair x x))\n" + 
+		             "x (pair x x (λx.λy.y))\n" + 
+		             "x ((λy.λz.z x y) x (λx.λy.y))\n" + 
+		             "x ((λz.z x x) (λx.λy.y))\n" + 
+		             "x ((λx.λy.y) x x)\n" + 
+		             "x ((λy.y) x)\n" + 
+		             "x x", p.unicodeOutput().readText());
+		
+		// T8.3
+		// too hard to test
+		
 	}
 	
 	@AfterClass

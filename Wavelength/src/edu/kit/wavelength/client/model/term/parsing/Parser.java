@@ -16,6 +16,7 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
+import edu.kit.wavelength.client.model.term.TermTooDeepException;
 
 /**
  * This class is used to convert an input String into a {@link LambdaTerm}
@@ -78,7 +79,7 @@ public class Parser {
 
 			// Remove comments
 			String withDummyComment = possibleRows[i] + " --";
-			possibleRows[i] = withDummyComment.substring(0, withDummyComment.indexOf("--"));
+			possibleRows[i] = withDummyComment.substring(0, withDummyComment.indexOf("--")).trim();
 
 			// Only consider lines that contain something interesting
 			MatchResult blankResult = RegExp.compile("^\\s*$").exec(possibleRows[i]);
@@ -99,7 +100,11 @@ public class Parser {
 		// Final row is the actual term that we are looking for
 		rowPos = rows.get(rows.size() - 1);
 		String lastLine = possibleRows[rows.get((rows.size() - 1))];
-		return parseTerm(lastLine, 0);
+		try {
+			return parseTerm(lastLine, 0);
+		} catch (TermTooDeepException ex) {
+			throw new ParseException("Term too deep", rows.size() - 1, 0, lastLine.length());
+		}
 	}
 
 	private void readLibraryTerm(String input) throws ParseException {
@@ -108,10 +113,14 @@ public class Parser {
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1];
-			LambdaTerm term = parseTerm(termString, input.length() - termString.length());
+			LambdaTerm term;
+			try {
+				term = parseTerm(termString, input.length() - termString.length());
+			} catch (TermTooDeepException ex) {
+				throw new ParseException("Term too deep", rowPos, input.length() - termString.trim().length(), input.length());
+			}
 			inputLibrary.addTerm(term, name);
 		} else {
-			input = input.trim();
 			throw new ParseException("\"" + input+ "\" is not a valid name assignment", rowPos, 0,
 					input.length());
 		}

@@ -15,6 +15,7 @@ import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BetaReducer;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.TermTooDeepException;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.model.term.parsing.Parser;
 
@@ -112,10 +113,17 @@ public class ExecutionEngine {
 	// Reduces the given redex in the current term, adds the result to the correct
 	// internal
 	// structures and returns which terms should be displayed
-	private List<LambdaTerm> pushTerm(Application redex, boolean displayOverride) {
+	private List<LambdaTerm> pushTerm(Application redex, boolean displayOverride) throws ExecutionException {
 
 		// Reduce
-		LambdaTerm newTerm = current.get(currentNum).acceptVisitor(new BetaReducer(redex));
+		LambdaTerm newTerm;
+		try {
+			newTerm = current.get(currentNum).acceptVisitor(new BetaReducer(redex));
+		} catch (TermTooDeepException ex) {
+			++currentNum;
+			current.set(currentNum, null);
+			throw new ExecutionException("Term too deep.");
+		}
 		++currentNum;
 
 		current.set(currentNum, newTerm);
@@ -144,7 +152,7 @@ public class ExecutionEngine {
 	 * 
 	 * @return The lambda terms that should be displayed as a result of this step
 	 */
-	public List<LambdaTerm> stepForward() {
+	public List<LambdaTerm> stepForward() throws ExecutionException {
 		if (isFinished())
 			throw new IllegalStateException("The reduction order does not provide any more terms.");
 
@@ -159,7 +167,7 @@ public class ExecutionEngine {
 	 *            The {@link Application} to be evaluated. Must be a redex,
 	 *            otherwise an exception is thrown
 	 */
-	public List<LambdaTerm> stepForward(Application redex) {
+	public List<LambdaTerm> stepForward(Application redex) throws ExecutionException {
 		return pushTerm(redex, true);
 	}
 
@@ -171,7 +179,7 @@ public class ExecutionEngine {
 	 *         another redex, {@code false} otherwise
 	 */
 	public boolean isFinished() {
-		return order.next(current.get(currentNum)) == null;
+		return current.get(currentNum) == null || order.next(current.get(currentNum)) == null;
 	}
 
 	public boolean canStepBackward() {
@@ -221,7 +229,7 @@ public class ExecutionEngine {
 	 * @return the current {@link LambdaTerm}
 	 */
 	public LambdaTerm displayCurrent() {
-		if (isCurrentDisplayed())
+		if (current.get(currentNum) == null || isCurrentDisplayed())
 			throw new IllegalStateException("No term to show");
 		shown.add(new NumberedTerm(current.get(currentNum), currentNum));
 		lastDisplayedNum = currentNum;

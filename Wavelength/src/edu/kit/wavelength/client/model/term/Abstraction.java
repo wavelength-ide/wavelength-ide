@@ -17,6 +17,7 @@ public final class Abstraction implements LambdaTerm {
 
 	private String preferredName;
 	private LambdaTerm inner;
+	private int depth;
 
 	private static final int NAME_POSITION = 0;
 	private static final int INNER_POSITION = 1;
@@ -35,6 +36,10 @@ public final class Abstraction implements LambdaTerm {
 	public Abstraction(String preferredName, LambdaTerm inner) {
 		this.preferredName = preferredName;
 		this.inner = inner;
+		this.depth = inner.acceptVisitor(new GetDepthVisitor()) + 1;
+		
+		if (this.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermTooDeepException();
 	}
 
 	@Override
@@ -58,6 +63,14 @@ public final class Abstraction implements LambdaTerm {
 	 */
 	public LambdaTerm getInner() {
 		return inner;
+	}
+	
+	/**
+	 * Returns the depth of this abstraction.
+	 * @return The depth of this abstraction
+	 */
+	public int getDepth() {
+		return depth;
 	}
 
 	@Override

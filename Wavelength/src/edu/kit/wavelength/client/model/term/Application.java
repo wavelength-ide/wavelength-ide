@@ -15,6 +15,7 @@ public final class Application implements LambdaTerm {
 
 	private LambdaTerm leftHandSide;
 	private LambdaTerm rightHandSide;
+	private int depth;
 
 	private static final int LEFT_POSITION = 0;
 	private static final int RIGHT_POSITION = 1;
@@ -33,6 +34,11 @@ public final class Application implements LambdaTerm {
 	public Application(LambdaTerm leftHandSide, LambdaTerm rightHandSide) {
 		this.leftHandSide = leftHandSide;
 		this.rightHandSide = rightHandSide;
+		this.depth = Math.max(leftHandSide.acceptVisitor(new GetDepthVisitor()),
+				rightHandSide.acceptVisitor(new GetDepthVisitor())) + 1;
+		
+		if (this.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermTooDeepException();
 	}
 
 	@Override
@@ -56,6 +62,14 @@ public final class Application implements LambdaTerm {
 	 */
 	public LambdaTerm getRightHandSide() {
 		return rightHandSide;
+	}
+	
+	/**
+	 * Returns the depth of this application.
+	 * @return The depth of this application
+	 */
+	public int getDepth() {
+		return depth;
 	}
 
 	@Override

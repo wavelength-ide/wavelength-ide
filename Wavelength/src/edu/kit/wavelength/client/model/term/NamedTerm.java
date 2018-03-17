@@ -12,6 +12,7 @@ public final class NamedTerm implements LambdaTerm {
 
 	private String name;
 	private LambdaTerm inner;
+	private int depth;
 
 	public static final char ID = 'n';
 
@@ -26,6 +27,10 @@ public final class NamedTerm implements LambdaTerm {
 	public NamedTerm(String name, LambdaTerm inner) {
 		this.name = name;
 		this.inner = inner;
+		this.depth = inner.acceptVisitor(new GetDepthVisitor()) + 1;
+		
+		if (this.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermTooDeepException();
 	}
 
 	@Override
@@ -49,6 +54,14 @@ public final class NamedTerm implements LambdaTerm {
 	 */
 	public String getName() {
 		return name;
+	}
+	
+	/**
+	 * Returns the depth of this named term.
+	 * @return The depth of this named term
+	 */
+	public int getDepth() {
+		return depth;
 	}
 
 	@Override

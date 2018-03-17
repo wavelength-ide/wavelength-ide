@@ -21,8 +21,10 @@ public class ParseException extends Exception {
 	 *            A message to the user describing the error causing the exception
 	 * @param row
 	 *            The row containing the source of this exception
-	 * @param column
-	 *            The row containing the source of this exception
+	 * @param columnStart
+	 *            The inclusive start column of the source of the exception
+	 * @param columnEnd
+	 *            The exclusive end column of the source of the exception
 	 */
 	public ParseException(String message, int row, int columnStart, int columnEnd) {
 		this.message = message;
@@ -44,7 +46,7 @@ public class ParseException extends Exception {
 	 * Gets the start column of the token in which the error causing this exception
 	 * occurred.
 	 * 
-	 * @return The start column of the token in which the error occurred
+	 * @return The inclusive start column of the token in which the error occurred
 	 */
 	public int getColumnStart() {
 		return columnStart + 1;
@@ -54,7 +56,7 @@ public class ParseException extends Exception {
 	 * Gets the end column of the token in which the error causing this exception
 	 * occurred.
 	 * 
-	 * @return The end column of the token in which the error occurred
+	 * @return The exclusive end column of the token in which the error occurred
 	 */
 	public int getColumnEnd() {
 		return columnEnd + 1;

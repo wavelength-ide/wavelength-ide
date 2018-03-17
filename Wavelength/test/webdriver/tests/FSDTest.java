@@ -10,6 +10,7 @@ import org.junit.Test;
 
 import webdriver.output.URL;
 import webdriver.ui.Exercise;
+import webdriver.ui.Export;
 import webdriver.ui.Library;
 import webdriver.ui.OutputSize;
 import webdriver.ui.Page;
@@ -228,6 +229,31 @@ public class FSDTest {
 		
 		// T5.3
 		// too hard to test
+	}
+	
+	@Test
+	public void T6() {
+		p.reset();
+		
+		// T6.1
+		p.editor().write("(\\x. x x) (\\x. x) (\\x. x) x");
+		p.runButton().click();
+		p.waitForCompletion();
+		p.openExportMenuButton().click();
+		assertTrue(p.exportMenu().isVisible());
+		
+		// T6.2
+		p.exportButton(Export.LaTeX).click();
+		assertTrue(p.exportPopup().isVisible());
+		assertEquals("\\Rightarrow\\ (\\lambda x.\\, x\\: x)\\: (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
+		             "\\Rightarrow\\ (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
+		             "\\Rightarrow\\ (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
+		             "\\Rightarrow\\ (\\lambda x.\\, x)\\: x\\\\\n" + 
+		             "\\Rightarrow\\ x", p.exportArea().read());
+		
+		// T6.3
+		p.exportPopupOkButton().click();
+		assertFalse(p.exportPopup().isVisible());
 	}
 	
 	@Test

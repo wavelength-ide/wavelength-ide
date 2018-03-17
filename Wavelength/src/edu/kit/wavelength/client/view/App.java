@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.swing.text.JTextComponent.KeyBinding;
+
 import org.gwtbootstrap3.client.ui.AnchorListItem;
 import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.ButtonGroup;
@@ -16,6 +18,7 @@ import org.gwtbootstrap3.client.ui.ListBox;
 import org.gwtbootstrap3.client.ui.Modal;
 import org.gwtbootstrap3.client.ui.ModalBody;
 import org.gwtbootstrap3.client.ui.ModalFooter;
+import org.gwtbootstrap3.client.ui.SubmitButton;
 import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
@@ -498,6 +501,7 @@ public class App implements Serializable {
 		loadExercisePopup.setId("loadExercisePopup");
 		loadExercisePopup.setClosable(false);
 		loadExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
+		loadExercisePopup.setDataKeyboard(true);
 
 		loadExercisePopupBody = new ModalBody();
 		loadExercisePopupBody.setId("loadExercisePopupBody");
@@ -516,7 +520,8 @@ public class App implements Serializable {
 		loadExercisePopupCancelButton.addStyleName("fa fa-times");
 		loadExercisePopupFooter.add(loadExercisePopupCancelButton);
 
-		loadExercisePopupOkButton = new Button();
+		loadExercisePopupOkButton = new SubmitButton();
+		
 		loadExercisePopupOkButton.setId("loadExercisePopupOkButton");
 		loadExercisePopupOkButton.addStyleName("fa fa-check");
 		loadExercisePopupFooter.add(loadExercisePopupOkButton);
@@ -525,6 +530,7 @@ public class App implements Serializable {
 		closeExercisePopup.setId("closeExercisePopup");
 		closeExercisePopup.setClosable(false);
 		closeExercisePopup.setDataBackdrop(ModalBackdrop.STATIC);
+		closeExercisePopup.setDataKeyboard(true);
 
 		closeExercisePopupBody = new ModalBody();
 		closeExercisePopupBody.setId("closeExercisePopupBody");

@@ -231,7 +231,12 @@ public class Parser {
 
 			// Name is not bound by abstraction, try to find it as a named term from some
 			// library
-			LambdaTerm retrieved = retrieveTerm(looking);
+			LambdaTerm retrieved;
+			try {
+				retrieved = retrieveTerm(looking);
+			} catch (IllegalArgumentException ex) {
+				throw new ParseException(ex.getMessage(), rowPos, tokens[left].getStart(), tokens[left].getEnd());
+			}
 			if (retrieved != null)
 				return new RangedTerm(left + 1, new NamedTerm(looking, retrieved));
 			else

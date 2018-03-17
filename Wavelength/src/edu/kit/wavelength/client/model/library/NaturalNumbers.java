@@ -1,6 +1,5 @@
 package edu.kit.wavelength.client.model.library;
 
-import edu.kit.wavelength.client.model.ExecutionEngine;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 
@@ -26,8 +25,8 @@ public final class NaturalNumbers implements Library {
 	 * Creates a new NaturalNumbers library.
 	 * 
 	 * @param turbo
-	 *            {@link true} if calculations on this Library should be
-	 *            accelerated and {@link false} otherwise
+	 *            {@link true} if calculations on this Library should be accelerated
+	 *            and {@link false} otherwise
 	 */
 	public NaturalNumbers(boolean turbo) {
 		this.turbo = turbo;
@@ -39,7 +38,11 @@ public final class NaturalNumbers implements Library {
 			return null;
 		}
 		if (name.matches(decimalRegex)) {
-			return LambdaTerm.churchNumber(Integer.valueOf(name));
+			try {
+				return LambdaTerm.churchNumber(Integer.valueOf(name));
+			} catch (NumberFormatException ex) {
+				throw new IllegalArgumentException("Number too large: " + name);
+			}
 		} else {
 			for (int i = 0; i < acceleratable.length; ++i) {
 				if (acceleratable[i].getName().equals(name)) {

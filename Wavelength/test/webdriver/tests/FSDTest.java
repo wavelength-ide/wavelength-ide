@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.openqa.selenium.Keys;
 
 import webdriver.output.URL;
 import webdriver.ui.Exercise;
@@ -242,7 +243,7 @@ public class FSDTest {
 		// T6.2
 		p.exportButton(Export.LaTeX).click();
 		assertTrue(p.exportPopup().isVisible());
-		assertEquals("\\Rightarrow\\ (\\lambda x.\\, x\\: x)\\: (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
+		assertEquals("(\\lambda x.\\, x\\: x)\\: (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
 		             "\\Rightarrow\\ (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
 		             "\\Rightarrow\\ (\\lambda x.\\, x)\\: (\\lambda x.\\, x)\\: x\\\\\n" + 
 		             "\\Rightarrow\\ (\\lambda x.\\, x)\\: x\\\\\n" + 
@@ -289,7 +290,7 @@ public class FSDTest {
 		p.editor().write("foo.bar = \\x. x\n" + 
 		                 "foo.bar y");
 		p.runButton().click();
-		assertEquals("\"foo.bar = \\x. x\" is not a valid name assignment (row 1, colums 1-16)", p.unicodeOutput().readText());
+		assertEquals("\"foo.bar = \\x. x\" is not a valid name assignment (row 1, colums 1-15)", p.unicodeOutput().readText());
 		assertTrue(p.editor().hasMarginErrorMarker(0));
 		assertTrue(p.editor().hasUnderlineErrorMarker(0));
 		p.editor().hoverOverMarginErrorMarker(0);
@@ -444,6 +445,44 @@ public class FSDTest {
 		p.runAndWait();
 		assertEquals("first list3 (second list3)\n" + 
 		             "b (λz. z a list)", p.unicodeOutput().readText());
+	}
+	
+	@Test
+	public void T11() {
+		p.reset();
+		
+		// T11.1
+		// backspace to delete last ) that would otherwise get auto-inserted by monaco
+		p.editor().write("(\\x. x)" + Keys.BACK_SPACE);
+		System.out.println(p.editor().read());
+		p.runButton().click();
+		assertEquals("Unbalanced parentheses. (row 1, colums 1-1)", p.unicodeOutput().readText());
+		assertTrue(p.editor().hasMarginErrorMarker(0));
+		assertTrue(p.editor().hasUnderlineErrorMarker(0));
+		p.editor().hoverOverMarginErrorMarker(0);
+		assertEquals("Unbalanced parentheses.", p.editor().readHoverError());
+		
+		// T11.2
+		p.editor().write("\\x.");
+		p.runButton().click();
+		assertEquals("Malformed lambda expression (row 1, colums 1-1)", p.unicodeOutput().readText());
+		
+		// T11.3
+		p.editor().clear();
+		p.runButton().click();
+		assertEquals("input must contain a lambda term (row 1, colums 1-1)", p.unicodeOutput().readText());
+		
+		// T11.4
+		// comment symbol changed from // to --
+		p.editor().write("--(x. x) y");
+		p.runButton().click();
+		assertEquals("input must contain a lambda term (row 1, colums 1-1)", p.unicodeOutput().readText());
+		
+		// T11.5
+		p.editor().write("\\x. x\n" + 
+		                 "\\x. x");
+		p.runButton().click();
+		assertEquals("\"\\x. x\" is not a valid name assignment (row 1, colums 1-5)", p.unicodeOutput().readText());
 	}
 	
 	@AfterClass

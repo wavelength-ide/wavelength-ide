@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.sun.javafx.PlatformUtil;
 
@@ -91,8 +92,13 @@ public class Editor {
 		new Actions(driver).moveToElement(marker).perform();
 	}
 	
-	public String readHoverError() {
+	private String hoverError() {
 		return editor().findElement(By.cssSelector("div.hover-row > div > p")).getText();
+	}
+	
+	public String readHoverError() {
+		new WebDriverWait(driver, 2).until(d -> !hoverError().isEmpty());
+		return hoverError();
 	}
 	
 }

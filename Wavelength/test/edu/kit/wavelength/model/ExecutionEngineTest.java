@@ -19,6 +19,7 @@ import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.output.Periodic;
 import edu.kit.wavelength.client.model.output.ResultOnly;
+import edu.kit.wavelength.client.model.output.Shortened;
 import edu.kit.wavelength.client.model.reduction.ApplicativeOrder;
 import edu.kit.wavelength.client.model.reduction.NormalOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -31,10 +32,11 @@ import edu.kit.wavelength.client.model.term.parsing.Parser;
 
 public class ExecutionEngineTest {
 	
-	final String idRedex = "(λx.x) y";
-	final String twoRedex = "(λx.x ((λy.y) z)) v";
-	final String infinite = "(λx. x x)(λx. x x)";
-	Parser testParser;
+	private final String idRedex = "(λx.x) y";
+	private final String twoRedex = "(λx.x ((λy.y) z)) v";
+	private final String infinite = "(λx. x x)(λx. x x)";
+	private final String nestedId = "(\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x)";
+	private Parser testParser;
 
 	@Before
 	public void setUp() {
@@ -151,10 +153,18 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void redexStepTest() throws ParseException {
-		ExecutionEngine engine = new ExecutionEngine(idRedex, new NormalOrder(), new Full(), Collections.emptyList());
-		LambdaTerm result = engine.stepForward((Application) testParser.parse(idRedex)).get(0);
-		
+	public void setOutputSizeTest() throws ParseException {
+		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(1, engine.stepForward().size());
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(1, engine.stepForward().size());
+		engine.setOutputSize(new Full());
+		assertEquals(1, engine.stepForward().size());
+		assertEquals(1, engine.stepForward().size());
+		engine.setOutputSize(new Shortened(6));
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(2, engine.stepForward().size());
 	}
 }
  

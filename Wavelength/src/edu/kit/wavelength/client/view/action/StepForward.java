@@ -54,7 +54,7 @@ public class StepForward implements Action {
 		OutputSize size = find(OutputSizes.all(), s -> s.getName().equals(sizeName));
 
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
-				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getName().equals(l.getName())))
+				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getText().equals(l.getName())))
 				.collect(Collectors.toList());
 
 		app.outputArea().clear();

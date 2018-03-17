@@ -21,6 +21,10 @@ public class Token {
 	 *            The String to be stored in the Token
 	 * @param type
 	 *            The Token's type
+	 * @param start
+	 *            The inclusive start column of the token
+	 * @param end
+	 *            The exclusive end column of the token
 	 */
 	public Token(String content, TokenType type, int start, int end) {
 		this.content = content;
@@ -50,7 +54,7 @@ public class Token {
 	/**
 	 * Returns the start of the token.
 	 * 
-	 * @return The start of the token
+	 * @return The inclusive start of the token
 	 */
 	public int getStart() {
 		return start;
@@ -59,7 +63,7 @@ public class Token {
 	/**
 	 * Returns the end of the token.
 	 * 
-	 * @return The end of the token
+	 * @return The exclusive end of the token
 	 */
 	public int getEnd() {
 		return end;

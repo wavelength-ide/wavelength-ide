@@ -113,7 +113,7 @@ public class Parser {
 		} else {
 			input = input.trim();
 			throw new ParseException("\"" + input+ "\" is not a valid name assignment", rowPos, 0,
-					input.length() - 1);
+					input.length());
 		}
 	}
 

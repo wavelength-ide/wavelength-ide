@@ -212,6 +212,25 @@ public class FSDTest {
 	}
 	
 	@Test
+	public void T5() {
+		p.reset();
+		
+		// T5.1
+		p.editor().write("(\\x. x) y");
+		p.runButton().click();
+		p.waitForCompletion();
+		String expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span>\n" + 
+		                      "<span class='outputText'>y</span>";
+		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
+		
+		// T5.2
+		// feature was disregarded at some point during development
+		
+		// T5.3
+		// too hard to test
+	}
+	
+	@Test
 	public void T7() {
 		p.reset();
 		
@@ -225,6 +244,7 @@ public class FSDTest {
 		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + 
 		                 "(curry (\\p. (first p) (second p))) x x");
 		p.runButton().click();
+		p.waitForCompletion();
 		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n" + 
 		             "(λb. (λp. first p (second p)) (pair x b)) x\n" + 
@@ -255,6 +275,7 @@ public class FSDTest {
 		                 "f = \\x. x x\n" +
 		                 "f y");
 		p.runButton().click();
+		p.waitForCompletion();
 		assertEquals("f y\n" +
 		             "y y", p.unicodeOutput().readText());
 	}
@@ -272,6 +293,7 @@ public class FSDTest {
 		p.outputSizeBox().select(OutputSize.ResultOnly);
 		assertEquals(OutputSize.ResultOnly, p.outputSizeBox().readSelected());
 		p.runButton().click();
+		p.waitForCompletion();
 		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "x x", p.unicodeOutput().readText());
 		
@@ -279,6 +301,7 @@ public class FSDTest {
 		p.outputSizeBox().select(OutputSize.Full);
 		assertEquals(OutputSize.Full, p.outputSizeBox().readSelected());
 		p.runButton().click();
+		p.waitForCompletion();
 		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n" + 
 		             "(λb. (λp. first p (second p)) (pair x b)) x\n" + 

@@ -290,6 +290,10 @@ public class FSDTest {
 		                 "foo.bar y");
 		p.runButton().click();
 		assertEquals("\"foo.bar = \\x. x\" is not a valid name assignment (row 1, colums 1-16)", p.unicodeOutput().readText());
+		assertTrue(p.editor().hasMarginErrorMarker(0));
+		assertTrue(p.editor().hasUnderlineErrorMarker(0));
+		p.editor().hoverOverMarginErrorMarker(0);
+		assertEquals("\"foo.bar = \\x. x\" is not a valid name assignment", p.editor().readHoverError());
 		
 		// T7.3
 		// spec for binding two terms was changed to shadow earlier terms, so we test that instead

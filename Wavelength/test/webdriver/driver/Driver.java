@@ -4,10 +4,9 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.logging.Logs;
 
 public class Driver extends ChromeDriver {
@@ -29,6 +28,13 @@ public class Driver extends ChromeDriver {
 	public boolean hasElement(By by) {
 		removeImplicitTimeout();
 		boolean hasElement = super.findElements(by).size() > 0;
+		resetImplicitTimeout();
+		return hasElement;
+	}
+	
+	public boolean parentHasElement(WebElement parent, By by) {
+		removeImplicitTimeout();
+		boolean hasElement = parent.findElements(by).size() > 0;
 		resetImplicitTimeout();
 		return hasElement;
 	}

@@ -8,6 +8,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import com.sun.javafx.PlatformUtil;
+
 import webdriver.driver.Driver;
 
 public class Editor {
@@ -34,8 +36,15 @@ public class Editor {
 	
 	public void clear() {
 		WebElement area = area();
-		area.sendKeys(Keys.CONTROL + "a");
-		area.sendKeys(Keys.DELETE);
+		String os = System.getProperty("os.name");
+		if (os.startsWith("Mac")) {
+			// for mac compat
+			area.sendKeys(Keys.COMMAND + "a");
+			area.sendKeys(Keys.DELETE);
+		} else {
+			area.sendKeys(Keys.CONTROL + "a");
+			area.sendKeys(Keys.DELETE);
+		}
 	}
 	
 	public void write(String s) {
@@ -56,6 +65,34 @@ public class Editor {
 	
 	public void hover() {
 		new Actions(driver).moveToElement(editor()).perform();
+	}
+	
+	public boolean hasMarginErrorMarker(int line) {
+		List<WebElement> overlays = editor().findElements(By.cssSelector(".margin-view-overlays > div"));
+		if (overlays.size() <= line) {
+			return false;
+		}
+		WebElement parent = overlays.get(line);
+		return driver.parentHasElement(parent, By.className("editorErrorGlyphMargin"));
+	}
+	
+	public boolean hasUnderlineErrorMarker(int line) {
+		List<WebElement> overlays = editor().findElements(By.cssSelector(".view-overlays > div"));
+		if (overlays.size() <= line) {
+			return false;
+		}
+		WebElement parent = overlays.get(line);
+		return driver.parentHasElement(parent, By.className("redsquiggly"));
+	}
+	
+	public void hoverOverMarginErrorMarker(int line) {
+		List<WebElement> overlays = editor().findElements(By.cssSelector(".margin-view-overlays > div"));
+		WebElement marker = overlays.get(line).findElement(By.className("editorErrorGlyphMargin"));
+		new Actions(driver).moveToElement(marker).perform();
+	}
+	
+	public String readHoverError() {
+		return editor().findElement(By.cssSelector("div.hover-row > div > p")).getText();
 	}
 	
 }

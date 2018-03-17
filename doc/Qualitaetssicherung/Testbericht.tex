@@ -18,10 +18,20 @@
 \usepackage{amssymb}
 \usepackage[hidelinks]{hyperref}
 \usepackage[section]{placeins}
+\usepackage{booktabs}
 
 \usepackage{amsmath}
 
-\usepackage{enumitem}  
+\usepackage{enumitem} 
+
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}% 
+
+\usepackage{fourier} 
+\usepackage{array}
+\usepackage{makecell}
 
 %Change enummeration pattern from 1. to 1)
 \renewcommand\labelenumi{\theenumi)}
@@ -43,6 +53,70 @@
 \newpage
 \tableofcontents
 \newpage
+
+\chapter{Überblick}
+
+\section{Abdeckung der Tests im Pflichtenheft}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{@{}llcr@{}}
+		\toprule
+		&\textbf{Test Nr.} & \textbf{Getestet} &\textbf{Anmerkung} \\ 
+		\midrule
+		\multicolumn{4}{l}{\small \textsc{\textbf{T1} Komplettauswertung}} \\ 
+		&T1.1 & \cmark & \\
+		&T1.2 & (\cmark) & Das Verhalten des Editors wurde nicht getestet \\
+		&T1.3 & \cmark & \\ 
+		\multicolumn{4}{l}{\small \textsc{\textbf{T2} Schritt-für-Schritt-Modus}}\\ 
+		&T2.1 & \cmark & An die neue Benutzeroberfläche angepasst \\
+		&T2.2 - T2.9 & \cmark & \\
+		\multicolumn{4}{l}{\small \textsc{\textbf{T3} Erstellen von Permalinks}}\\ 	
+		&T3.1 - T3.4 & \cmark & \\
+		\multicolumn{4}{l}{\small \textsc{\textbf{T4} Übungsmodus}}\\ 
+		&T4.1 & \cmark & \\
+		&T4.2 - T4.3 & (\xmark) & Feature wurde in der Entwurfsphase verworfen \\
+		&T4.4 & \cmark & \\
+		&T4.5 & (\xmark) & Feature wurde in der Entwurfsphase verworfen \\
+		&T4.6 & \cmark & \\
+		&T4.7 & (\cmark) & Es existiert keine Übungsaufgabe der geforderten Form \\
+		&T4.8 - T4.9 & \cmark & \\
+		\multicolumn{4}{l}{\small \textsc{\textbf{T5} Ausgabeformat}}\\ 
+		&T5.1 & \cmark & \\
+		&T5.2 & (\xmark) & Feature wurde in der Implementierungsphase verworfen\\
+		&T5.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
+		\multicolumn{4}{l}{\small \textsc{\textbf{T6} Export}}\\ 
+		&T6.1 - T6.3 & \cmark & \\
+		\multicolumn{4}{l}{\small \textsc{\textbf{T7} Namensbindung}}\\ 
+		&T7.1 - T7.2 & \cmark & \\
+		&T7.3 & (\cmark) & Spezifikation für doppelte Namensbindung wurde geändert \\ %TODO Anmerkung in einem Text
+		\multicolumn{4}{l}{\small \textsc{\textbf{T8} Auswahl des Ausgabeumfangs}}\\ 
+		&T8.1 & \xmark & \\
+		&T8.2 & \xmark & \\
+		&T8.3 & \xmark & \\
+		\multicolumn{4}{l}{\small \textsc{\textbf{T9} Wechsel des Auswertungsmodus}}\\ 
+		&T9.1 & \xmark & \\
+		&T9.2 & \xmark & \\
+		&T9.3 & \xmark & \\
+		\multicolumn{4}{l}{\small \textsc{\textbf{T10} Standardbibliothek}}\\ 
+		&T10.1 & \xmark & \\
+		&T10.2 & \xmark & \\
+		&T10.3 & \xmark & \\
+		&T10.4 & \xmark & \\
+		&T10.5 & \xmark & \\
+		&T10.6 & \xmark & \\
+		&T10.7 & \xmark & \\
+		&T10.8 & \xmark & \\
+		&T10.9 & \xmark & \\ 
+		\multicolumn{4}{l}{\small \textsc{\textbf{T11} Fehlerdiagnostik}}\\ 
+		&T11.1 & \xmark & \\
+		&T11.2 & \xmark & \\
+		&T11.3 & \xmark & \\
+		&T11.4 & \xmark & \\
+		&T11.5 & \xmark & \\
+		\bottomrule
+	\end{tabular}
+\end{table}
 
 \chapter{Testmethoden}
 

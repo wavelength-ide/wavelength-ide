@@ -1,7 +1,10 @@
 package edu.kit.wavelength.model;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -36,6 +39,7 @@ public class ExecutionEngineTest {
 	private final String twoRedex = "(λx.x ((λy.y) z)) v";
 	private final String infinite = "(λx. x x)(λx. x x)";
 	private final String nestedId = "(\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x) (\\x. x)";
+	private final String multi = "(\\x.x)(\\x.x)((\\x.x)(\\x.x))";
 	private Parser testParser;
 
 	@Before
@@ -74,6 +78,17 @@ public class ExecutionEngineTest {
 				}
 			}
 		}
+	}
+	
+	@Test
+	public void deserialize1Test() throws ParseException {
+		ExecutionEngine original = new ExecutionEngine(idRedex, new NormalOrder(), new Full(), Collections.emptyList());
+		original.stepForward();
+		ExecutionEngine restored = new ExecutionEngine(original.serialize().toString());
+		assertArrayEquals(original.getDisplayed().toArray(new LambdaTerm[0]), restored.getDisplayed().toArray(new LambdaTerm[0]));
+		restored.stepBackward();
+		assertEquals(1, restored.getDisplayed().size());
+		assertEquals(testParser.parse(idRedex), restored.getDisplayed().get(0));
 	}
 	
 	@Test
@@ -166,6 +181,50 @@ public class ExecutionEngineTest {
 		engine.setOutputSize(new Shortened(6));
 		assertEquals(0, engine.stepForward().size());
 		assertEquals(3, engine.stepForward().size());
+	}
+	
+	@Test
+	public void getStepNumber1Test() throws ParseException {
+		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
+		assertEquals(0, engine.getStepNumber());
+		for (int i = 1; i <= 8; ++i) {
+			engine.stepForward();
+			assertEquals(i, engine.getStepNumber());
+		}
+	}
+	
+	@Test
+	public void getStepNumber2Test() throws ParseException {
+		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
+		assertEquals(0, engine.getStepNumber());
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(1, engine.stepForward().size());
+		assertEquals(2, engine.getStepNumber());
+		engine.stepBackward();
+		assertEquals(0, engine.getStepNumber());
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(1, engine.getStepNumber());
+		assertEquals(1, engine.stepForward().size());
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(1, engine.stepForward().size());
+		assertEquals(4, engine.getStepNumber());
+		engine.stepBackward();
+		assertEquals(2, engine.getStepNumber());
+		engine.stepBackward();
+		assertEquals(0, engine.getStepNumber());
+	}
+	
+	@Test
+	public void pushTest() throws ParseException {
+		ExecutionEngine engine = new ExecutionEngine(multi, new NormalOrder(), new Periodic(2), Collections.emptyList());
+		LambdaTerm start = engine.getDisplayed().get(engine.getDisplayed().size() - 1);
+		assertThat(start, instanceOf(Application.class));
+		LambdaTerm right = ((Application)start).getRightHandSide();
+		assertEquals(testParser.parse("(\\x.x)(\\x.x)"), right);
+		engine.stepForward((Application)right);
+		
+		// In particular, _not_ (\x.x)((\x.x)(\x.x))
+		assertEquals(testParser.parse("(\\x.x)(\\x.x)(\\x.x)"), engine.getDisplayed().get(engine.getDisplayed().size() - 1));
 	}
 }
  

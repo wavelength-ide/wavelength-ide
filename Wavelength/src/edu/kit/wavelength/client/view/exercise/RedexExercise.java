@@ -21,7 +21,6 @@ public class RedexExercise implements Exercise {
 	public RedexExercise(ReductionOrder reduction) {
 		this.myReductionOrder = reduction;
 		termGenerator = new TermGenerator();
-		reset();
 	}
 	
 	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {
@@ -74,6 +73,10 @@ public class RedexExercise implements Exercise {
 		BasicExportVisitor stringMaker = new BasicExportVisitor(new ArrayList<Library>(), "λ");
 		LambdaTerm newTerm = termGenerator.getNewTerm(minTermDepth, maxTermDepth);
 		LambdaTerm redex = myReductionOrder.next(newTerm);
+		while (firstRedex == null && redex == null) {
+			newTerm = termGenerator.getNewTerm(minTermDepth, maxTermDepth);
+			redex = myReductionOrder.next(newTerm);
+		}
 		predefinitions = newTerm.acceptVisitor(stringMaker).toString();
 		if (redex == null) {
 			firstRedex = null;

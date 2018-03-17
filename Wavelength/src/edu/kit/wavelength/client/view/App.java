@@ -735,12 +735,20 @@ public class App implements Serializable {
 			solutionArea().setText(exercise.getSolution());
 			
 			editorExercisePanel().setWidgetHidden(exercisePanel(), false);
-		}
-		
-		// writes Editor with given content
-		editor.write(val.get(EDITOR_SERIALIZATION));
+			
+			// writes Editor with given content
+			if (val.get(EDITOR_SERIALIZATION) != exercise.getPredefinitions()) {
+				editor.write(val.get(EDITOR_SERIALIZATION));
+			}
+			//editor.write(val.get(EDITOR_SERIALIZATION));
 
-		Control.updateControls();
+			Control.updateControls();
+		} else {
+			// writes Editor with given content
+			editor.write(val.get(EDITOR_SERIALIZATION));
+
+			Control.updateControls();
+		}
 		
 	}
 

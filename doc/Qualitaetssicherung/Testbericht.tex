@@ -59,17 +59,17 @@ Dieser Test wird mit folgenden Einstellungen durchgeführt: Reduktionsordnung 'N
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&\lambda x.x \\
-	&(\lambda x.x) \ x \\
-	&(\lambda x.x\ x\ x)\  (\lambda x.x\ x\ x) \\
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&\lambda x.\, x \\
+	&(\lambda x.\, x)\: x \\
+	&(\lambda x.\, x\: x\: x)\: (\lambda x.\, x\: x\: x) \\
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 \begin{nospaceflalign*}
-	& \text{id} = \lambda x.x \\
-	& \text{id} \ x &&
+	& \text{id} = \lambda x.\, x \\
+	& \text{id}\ x &&
 \end{nospaceflalign*}
 
 \subsubsection{Unicode: Highlight Tests}
@@ -79,11 +79,11 @@ Nur Redexe im  Term werden als anklickbar markiert und ob nur diese lösen bei K
 
 Es wurde mit folgenden Termen getestet:
 \begin{nospaceflalign*}
-	&\lambda x.x \\
-	&(\lambda x.x) x \\
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&\lambda x.\, x \\
+	&(\lambda x.\, x)\: x \\
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 
@@ -94,11 +94,11 @@ Dieser Test testet das korrekte Verhalten bei Bewegen der Maus über Lambda-Term
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&\lambda x.x \\
-	&(\lambda x.x) x \\
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&\lambda x.\, x \\
+	&(\lambda x.\, x)\: x \\
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 
@@ -112,11 +112,11 @@ Bei Schritt vor bleibt (per Button oder manuellem Klick) die Markierung des ausg
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&\lambda x.x \\
-	&(\lambda x.x) x \\
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&\lambda x.\, x \\
+	&(\lambda x.\, x)\: x \\
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 \subsubsection{Unicode: Schritt zurück}
@@ -130,11 +130,11 @@ Beim nun letzten Term werden die Markierungen zurückgesetzt, das bedeutet, dass
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&\lambda x.x \\
-	&(\lambda x.x) x \\
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&\lambda x.\, x \\
+	&(\lambda x.\, x)\: x \\
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 
@@ -144,9 +144,9 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechen
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 
@@ -155,11 +155,11 @@ Nur Knoten von Redexen werden im Baum als solche farblich markiert.
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&\lambda x.x \\
-	&(\lambda x.x) x \\
-	&(\lambda a.a) \ b \ (\lambda c.c) \ d \\
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&\lambda x.\, x \\
+	&(\lambda x.\, x)\: x \\
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 
@@ -169,8 +169,8 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 
 Es wurde mit folgenden Eingaben getestet:
 \begin{nospaceflalign*}
-	&(\lambda a.a) \ b \ ((\lambda c.c) \ d) \\
-	&(\lambda a. \lambda b.b)\ ((\lambda c.\ (\lambda d. d\ d)\ (\lambda e. e\ e))\ ((\lambda f. f) (\lambda g. g)))\ (\lambda h. \lambda i. i)&&
+	&(\lambda a.\, a)\: b\: (\lambda c.\, c)\: d \\
+	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
 
 

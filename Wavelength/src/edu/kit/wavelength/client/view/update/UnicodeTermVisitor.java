@@ -213,7 +213,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 			panel.add(textSpan("("));
 		}
 		panel.add(a);
-		panel.add(textSpan("."));
+		panel.add(textSpan(". "));
 		panel.add(inner.panel);
 		if (brackets) {
 			panel.add(textSpan(")"));

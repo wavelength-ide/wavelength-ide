@@ -174,6 +174,6 @@ public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {
 	protected StringBuilder formatLambda(StringBuilder absVariable) {
 		assert (absVariable != null);
 
-		return absVariable.insert(0, lambda).append(".");
+		return absVariable.insert(0, lambda).append(". ");
 	}
 }

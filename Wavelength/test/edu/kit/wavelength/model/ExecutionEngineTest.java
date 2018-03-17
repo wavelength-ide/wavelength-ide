@@ -157,14 +157,15 @@ public class ExecutionEngineTest {
 		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
 		assertEquals(0, engine.stepForward().size());
 		assertEquals(1, engine.stepForward().size());
-		assertEquals(0, engine.stepForward().size());
-		assertEquals(1, engine.stepForward().size());
 		engine.setOutputSize(new Full());
 		assertEquals(1, engine.stepForward().size());
 		assertEquals(1, engine.stepForward().size());
+		engine.setOutputSize(new Shortened(2));
+		assertEquals(0, engine.stepForward().size());
+		assertEquals(0, engine.stepForward().size());
 		engine.setOutputSize(new Shortened(6));
 		assertEquals(0, engine.stepForward().size());
-		assertEquals(2, engine.stepForward().size());
+		assertEquals(3, engine.stepForward().size());
 	}
 }
  

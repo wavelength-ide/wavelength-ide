@@ -14,7 +14,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 public class PlaintextExport implements Export {
 
 	public static final String NAME = "Plaintext";
-	
+
 	private static final String LAMBDA = "\\";
 	private static final String ARROW = "=> ";
 
@@ -27,17 +27,27 @@ public class PlaintextExport implements Export {
 		if (displayedTerms.size() == 0) {
 			return "";
 		}
-
+		
 		BasicExportVisitor visitor = new BasicExportVisitor(libraries, LAMBDA);
 		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < displayedTerms.size() - 1; i++) {
+
+		if (displayedTerms.size() == 1) {
+			return result.append(displayedTerms.get(1).acceptVisitor(visitor)).toString();
+		}
+		
+		// No arrow for first Line
+		assert (displayedTerms.size() > 1);
+		result.append(displayedTerms.get(1).acceptVisitor(visitor));
+		result.append("\n");
+
+		for (int i = 1; i < displayedTerms.size() - 1; i++) {
 			result.append(ARROW);
 			result.append(displayedTerms.get(i).acceptVisitor(visitor));
 			result.append("\n");
 		}
 
 		// No line break for last lambda term
-		assert (displayedTerms.size() >= 1);
+		assert (displayedTerms.size() > 1);
 		result.append(ARROW);
 		result.append(displayedTerms.get(displayedTerms.size() - 1).acceptVisitor(visitor));
 		return result.toString();

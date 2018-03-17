@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.html.Text;
 
+import com.google.gwt.user.client.ui.FlowPanel;
+
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
@@ -67,7 +69,12 @@ public class StepForward implements Action {
 			int row = e.getRow();
 			int columnStart = e.getColumnStart();
 			int columnEnd = e.getColumnEnd();
-			app.outputArea().add(new Text(message + " (row " + row + ", colums " + columnStart + "-" + columnEnd + ")"));
+			FlowPanel error = new FlowPanel("span");
+			error.add(new Text(message + " (row " + row + ", colums " + columnStart + "-" + columnEnd + ")"));
+			error.addStyleName("errorText");
+			FlowPanel wrapper = new FlowPanel();
+			wrapper.add(error);
+			app.outputArea().add(wrapper);
 			app.editor().error(message, row, row, columnStart, columnEnd);
 			return;
 		}

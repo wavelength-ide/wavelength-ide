@@ -25,6 +25,8 @@ public class FSDTest {
 		// T1.1
 		assertTrue(p.isLoaded());
 		
+		p.reset();
+		
 		// T1.2
 		// editor control testing is left out (responsibility of monaco)
 		p.editor().write("(\\z. \\x. (\\y.y) x) z");
@@ -47,6 +49,8 @@ public class FSDTest {
 	
 	@Test
 	public void T2() {
+		p.reset();
+		
 		// adjusted to fit new control
 		// T2.1
 		p.editor().write("(\\z. (\\y. (\\x. x) y) z) a");
@@ -112,12 +116,12 @@ public class FSDTest {
 		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
 		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='outputText'>z</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
-		
-		p.reset();
 	}
 	
 	@Test
 	public void T3() {
+		p.reset();
+		
 		// T3.1
 		p.editor().write("(\\x. x x) y");
 		p.reductionOrderBox().select("Applicative Order");
@@ -145,12 +149,12 @@ public class FSDTest {
 		// T3.4
 		p.backwardButton().click();
 		assertEquals("(λx.x x) y", p.unicodeOutput().readText());
-		
-		p.reset();
 	}
 	
 	@Test
 	public void T4() {
+		p.reset();
+		
 		// T4.1
 		p.openMainMenuButton().click();
 		assertTrue(p.mainMenuPanel().isVisible());
@@ -200,6 +204,54 @@ public class FSDTest {
 		assertTrue(p.closeExercisePopup().isVisible());
 		p.closeExercisePopupOkButton().click();
 		assertFalse(p.exerciseDescriptionLabel().isVisible());
+	}
+	
+	@Test
+	public void T7() {
+		p.reset();
+		
+		// T7.1
+		p.openMainMenuButton().click();
+		assertTrue(p.mainMenuPanel().isVisible());
+		p.libraryCheckBox("Church Tuples and Lists").toggle();
+		assertTrue(p.libraryCheckBox("Church Tuples and Lists").isSelected());
+		p.openMainMenuButton().click();
+		assertFalse(p.mainMenuPanel().isVisible());
+		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + 
+		                 "(curry (\\p. (first p) (second p))) x x");
+		p.runButton().click();
+		assertEquals("curry (λp.first p (second p)) x x\n" + 
+		             "(λa.λb.(λp.first p (second p)) (pair a b)) x x\n" + 
+		             "(λb.(λp.first p (second p)) (pair x b)) x\n" + 
+		             "(λp.first p (second p)) (pair x x)\n" + 
+		             "first (pair x x) (second (pair x x))\n" + 
+		             "pair x x (λx.λy.x) (second (pair x x))\n" + 
+		             "(λy.λz.z x y) x (λx.λy.x) (second (pair x x))\n" + 
+		             "(λz.z x x) (λx.λy.x) (second (pair x x))\n" + 
+		             "(λx.λy.x) x x (second (pair x x))\n" + 
+		             "(λy.x) x (second (pair x x))\n" + 
+		             "x (second (pair x x))\n" + 
+		             "x (pair x x (λx.λy.y))\n" + 
+		             "x ((λy.λz.z x y) x (λx.λy.y))\n" + 
+		             "x ((λz.z x x) (λx.λy.y))\n" + 
+		             "x ((λx.λy.y) x x)\n" + 
+		             "x ((λy.y) x)\n" + 
+		             "x x", p.unicodeOutput().readText());
+		
+		// T7.2
+		p.editor().write("foo.bar = \\x. x\n" + 
+		                 "foo.bar y");
+		p.runButton().click();
+		assertEquals("\"foo.bar = \\x. x\" is not a valid name assignment (row 1, colums 1-16)", p.unicodeOutput().readText());
+		
+		// T7.3
+		// spec for binding two terms was changed to shadow earlier terms, so we test that instead
+		p.editor().write("f = \\x. x\n"
+		               + "f = \\x. x x\n"
+		               + "f y");
+		p.runButton().click();
+		assertEquals("f y\n"
+		           + "y y", p.unicodeOutput().readText());
 	}
 	
 	@AfterClass

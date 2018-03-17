@@ -104,7 +104,7 @@ public class Page {
 	}
 	
 	public void waitForLoading() {
-		driver.findElements(By.id("mainPanel"));
+		new WebDriverWait(driver, 20).until(d -> driver.hasElement(By.id("mainPanel")));
 	}
 	
 	public boolean isLoaded() {

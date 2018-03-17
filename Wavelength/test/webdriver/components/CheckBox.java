@@ -1,5 +1,6 @@
 package webdriver.components;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
@@ -26,15 +27,17 @@ public class CheckBox {
 	}
 	
 	private WebElement box() {
-		return Finder.find(driver, id, text);
+		WebElement box = driver.findElement(By.id(id));
+		if (text == null) {
+			box = box.findElement(By.xpath("label/input"));
+		} else {
+			box = box.findElement(By.xpath("//*[text()='" + text + "']/../input"));
+		}
+		return box;
 	}
 	
 	public void toggle() {
 		box().click();
-	}
-	
-	public boolean isSet() {
-		return box().isSelected();
 	}
 	
 	public boolean isSelected() {

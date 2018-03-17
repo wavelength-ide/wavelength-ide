@@ -1,5 +1,6 @@
 package webdriver.components;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -27,7 +28,11 @@ public class Button {
 	}
 	
 	private WebElement button() {
-		return Finder.find(driver, id, text);
+		WebElement button = driver.findElement(By.id(id));
+		if (text != null) {
+			button = button.findElement(By.xpath("//*[text()='" + text + "']"));
+		}
+		return button;
 	}
 	
 	public void click() {
@@ -44,7 +49,18 @@ public class Button {
 	}
 	
 	public boolean isVisible() {
-		return Finder.hasElement(driver, id, text) && button().isDisplayed();
+		boolean hasElement = true;
+		driver.removeImplicitTimeout();
+		if (driver.findElements(By.id(id)).size() == 0) {
+			hasElement = false;
+		} else {
+			WebElement button = driver.findElement(By.id(id));
+			if (text != null && button.findElements(By.xpath("//*[text()='" + text + "']")).size() == 0) {
+				hasElement = false;
+			}
+		}
+		driver.resetImplicitTimeout();
+		return hasElement && button().isDisplayed();
 	}
 	
 	public void hover() {

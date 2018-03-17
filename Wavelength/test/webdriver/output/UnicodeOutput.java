@@ -33,7 +33,7 @@ public class UnicodeOutput {
 	
 	private OutputNode readElement(WebElement current) {
 		List<String> classes = Arrays.asList(current.getAttribute("class").split(" "));
-		if (classes.contains("outputText")) {
+		if (classes.contains("outputText") || classes.contains("errorText")) {
 			return new Text(current);
 		}
 		if (classes.contains("abstraction")) {

@@ -83,6 +83,9 @@ Fehlerfall aussieht, vom Fuzzer jedoch nicht entdeckt wurde. Daher stützen wir
 uns zum Testen des Parsers nicht nur auf Fuzzing, sondern auch auf herkömmliche
 manuell erstellte Komponententests.
 
+Neben dem Beheben der durch Fuzzing identifizierten Fehler wurden die entsprechenden
+Testfälle in Unittests festgehalten, um Regressionen entgegenzuwirken.
+
 \chapter{Testprotokolle}
 
 \section{UI Tests}
@@ -264,18 +267,10 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 % issue 18
 \issue{}{}{}
 
-% issue 17
-\issue{Das Anhängen eines "-" an eine ansonsten korrekte Zeile der Eingabe führt nicht zu einem Fehler.}
-{}
-{}
-
 % issue 16
-\issue{}{}{}
-
-% issue 15
-\issue{Beginnt eine Eingabe mit eine Kommentar in der ersten Zeile, so wird sie nicht korrekt geparst sondern ein Fehler ausgegeben.}
-{}
-{}
+\issue{Namenszuweisungen schattieren einander nicht, sondern es wird immer die erste Zuweisung verwendet.}
+{Die zugewiesenen Namen wurden in der falschen Reiehenfolge zur Auflösung durchsucht.}
+{Die Durchsuchungsreihenfolge wurde umgekehrt.}
 
 % issue 14; TODO 
 \issue{}{}{}
@@ -289,21 +284,17 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 {Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.}
 
 % issue 11;TODO
-\issue{}{}{}
-
-% issue 10
-\issue{Das Parsen einer Eingabe die nur aus Leerstellen besteht führt zu einem Fehler.}
-{}
-{}
-
-% issue 9; Parser does not check for null
-\issue{}{}{}
+\issue{Bestimmte syntaktisch inkorrekte Namenszuweisungen führen zu Ausnahmen oder werden akzeptiert.}
+{Der Parser hat Zeilen, die das Symbol \enquote{\texttt{=}} mehrfach enthalten, nicht als Syntaxfehler identifiziert und
+alles ab dem zweiten \enquote{\texttt{=}}-Symbol verworfen.}
+{Namenszuweisungen, die nicht exakt aus einem Namen, einem \enquote{\texttt{=}}-Symbol und einem gültigen
+$\lambda$-Term bestehen, werden abgelehnt.}
 
 % issue 8; TODO
 \issue{}{}{}
 
 % issue 7
-\issue{Im Uniode Ausgabeformat werden benannte Term nicht markiert auch wenn sie den als nächstes zu reduzierenden Redex enthalten.}
+\issue{Im Uniode-Ausgabeformat werden benannte Term nicht markiert, auch wenn sie den als nächstes zu reduzierenden Redex enthalten.}
 {}
 {}
 
@@ -314,9 +305,10 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 \issue{}{}{}
 
 % issue 4
-\issue{Enthält ein Lambda-Term  verschiedene Instanzen des gleichen vordefinierten Terms, so werden, sobald eine Instanz reduziert wird, auch alle anderen Instanzen reduziert.}
-{}
-{}
+\issue{Enthält ein $\lambda$-Term verschiedene Instanzen des gleichen vordefinierten Terms, so werden, sobald eine Instanz reduziert wird, auch alle anderen Instanzen reduziert.}
+{Der Mechanismus zur Auflösung gebundener Namen hat für den gleichen Namen stets das gleiche Objekt
+herausgegeben, sodass die Objektstruktur, die den geparsten Term repräsentiert, ein echter Baum ist}
+{Benannte Terme werden vor dem Einbauen in einen zu parsenden $\lambda$-Term dupliziert.}
 
 \end{itemize}
 

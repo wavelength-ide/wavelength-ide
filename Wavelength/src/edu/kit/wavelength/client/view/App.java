@@ -138,7 +138,7 @@ public class App implements Serializable {
 	private Button forwardButton;
 	private Label spinner;
 	private FlowPanel runControlPanel;
-	private Button terminateButton;
+	private Button clearButton;
 	private Button runButton;
 	private SplitLayoutPanel editorExercisePanel;
 	private FlowPanel exercisePanel;
@@ -426,10 +426,10 @@ public class App implements Serializable {
 		runControlPanel.getElement().setId("runControlPanel");
 		controlPanel.add(runControlPanel);
 		
-		terminateButton = new Button();
-		terminateButton.setId("terminateButton");
-		terminateButton.addStyleName("fa fa-times");
-		runControlPanel.add(terminateButton);
+		clearButton = new Button();
+		clearButton.setId("clearButton");
+		clearButton.addStyleName("fa fa-times");
+		runControlPanel.add(clearButton);
 		
 		runButton = new Button();
 		runButton.setId("runButton");
@@ -595,7 +595,7 @@ public class App implements Serializable {
 		outputFormatBox.addChangeHandler(h -> new SetOutputFormat().run());
 
 		forwardButton.addClickHandler(e -> new StepForward().run());
-		terminateButton.addClickHandler(e -> new Terminate().run());
+		clearButton.addClickHandler(e -> new Terminate().run());
 		runButton.addClickHandler(e -> new RunExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
 		unpauseButton.addClickHandler(e -> new Unpause().run());
@@ -880,8 +880,8 @@ public class App implements Serializable {
 		return runControlPanel;
 	}
 
-	public Button terminateButton() {
-		return terminateButton;
+	public Button clearButton() {
+		return clearButton;
 	}
 	
 	public Button runButton() {

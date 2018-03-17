@@ -20,7 +20,7 @@ public final class Control {
 		
 		app.spinner().setStyleName("invisible", !isRunning);
 		
-		app.terminateButton().setEnabled(!isTerminated);
+		app.clearButton().setEnabled(!isTerminated);
 		app.pauseButton().setVisible(!isPaused);
 		app.pauseButton().setEnabled(isRunning);
 		app.unpauseButton().setVisible(isPaused);

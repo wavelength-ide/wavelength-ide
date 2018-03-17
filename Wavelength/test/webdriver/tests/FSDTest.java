@@ -294,7 +294,32 @@ public class FSDTest {
 		
 		// T8.3
 		// too hard to test
+	}
+	
+	@Test
+	public void T9() {
+		p.reset();
 		
+		// T9.1
+		p.editor().write("(\\x. x x)(\\x. x x)");
+		p.outputSizeBox().select("Result only");
+		p.runButton().click();
+		try { Thread.sleep(500); } catch (InterruptedException e) {}
+		assertTrue(p.spinner().isVisible());
+		p.pauseButton().click();
+		assertFalse(p.spinner().isVisible());
+		assertEquals("(λx.x x) (λx.x x)\n" + 
+		             "(λx.x x) (λx.x x)", p.unicodeOutput().readText());
+		
+		// T9.2
+		p.unpauseButton().click();
+		assertTrue(p.spinner().isVisible());
+		
+		// T9.3
+		// clear button was respecified to do something else
+		p.clearButton().click();
+		assertTrue(p.unicodeOutput().readText().isEmpty());
+		assertFalse(p.spinner().isVisible());
 	}
 	
 	@AfterClass

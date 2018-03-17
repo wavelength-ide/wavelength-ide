@@ -84,8 +84,8 @@ public class Page {
 			}
 		});
 		openMainMenuButton().click();
-		if (terminateButton().isEnabled()) {
-			terminateButton().click();
+		if (clearButton().isEnabled()) {
+			clearButton().click();
 		}
 		outputFormatBox().select("Unicode Output");
 		reductionOrderBox().select("Normal Order");
@@ -192,8 +192,8 @@ public class Page {
 		return Popup.byID(driver, "spinner");
 	}
 	
-	public Button terminateButton() {
-		return Button.byID(driver, "terminateButton");
+	public Button clearButton() {
+		return Button.byID(driver, "clearButton");
 	}
 	
 	public Button runButton() {

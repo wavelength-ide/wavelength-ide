@@ -44,8 +44,7 @@ public class FSDTest {
 		assertEquals(ReductionOrder.CallByName, p.reductionOrderBox().readSelected());
 		
 		// T1.3
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		assertEquals("(λz. λx. (λy. y) x) z\n" + 
 		             "λx. (λy. y) x", p.unicodeOutput().readText());
 		
@@ -218,8 +217,7 @@ public class FSDTest {
 		
 		// T5.1
 		p.editor().write("(\\x. x) y");
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		String expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span>\n" + 
 		                      "<span class='outputText'>y</span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
@@ -237,8 +235,7 @@ public class FSDTest {
 		
 		// T6.1
 		p.editor().write("(\\x. x x) (\\x. x) (\\x. x) x");
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		p.openExportMenuButton().click();
 		assertTrue(p.exportMenu().isVisible());
 		
@@ -269,8 +266,7 @@ public class FSDTest {
 		assertFalse(p.mainMenuPanel().isVisible());
 		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + 
 		                 "(curry (\\p. (first p) (second p))) x x");
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n" + 
 		             "(λb. (λp. first p (second p)) (pair x b)) x\n" + 
@@ -300,8 +296,7 @@ public class FSDTest {
 		p.editor().write("f = \\x. x\n" +
 		                 "f = \\x. x x\n" +
 		                 "f y");
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		assertEquals("f y\n" +
 		             "y y", p.unicodeOutput().readText());
 	}
@@ -318,16 +313,14 @@ public class FSDTest {
 		                 "(curry (\\p. (first p) (second p))) x x");
 		p.outputSizeBox().select(OutputSize.ResultOnly);
 		assertEquals(OutputSize.ResultOnly, p.outputSizeBox().readSelected());
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "x x", p.unicodeOutput().readText());
 		
 		// T8.2
 		p.outputSizeBox().select(OutputSize.Full);
 		assertEquals(OutputSize.Full, p.outputSizeBox().readSelected());
-		p.runButton().click();
-		p.waitForCompletion();
+		p.runAndWait();
 		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n" + 
 		             "(λb. (λp. first p (second p)) (pair x b)) x\n" + 
@@ -358,7 +351,7 @@ public class FSDTest {
 		p.editor().write("(\\x. x x)(\\x. x x)");
 		p.outputSizeBox().select(OutputSize.ResultOnly);
 		p.runButton().click();
-		try { Thread.sleep(500); } catch (InterruptedException e) {}
+		try { Thread.sleep(100); } catch (InterruptedException e) {}
 		assertTrue(p.spinner().isVisible());
 		p.pauseButton().click();
 		assertFalse(p.spinner().isVisible());
@@ -374,6 +367,79 @@ public class FSDTest {
 		p.clearButton().click();
 		assertTrue(p.unicodeOutput().readText().isEmpty());
 		assertFalse(p.spinner().isVisible());
+	}
+	
+	@Test
+	public void T10() {
+		p.reset();
+		
+		// T10.1
+		p.openMainMenuButton().click();
+		p.libraryCheckBox(Library.YCombinator).toggle();
+		assertTrue(p.libraryCheckBox(Library.YCombinator).isSelected());
+		
+		// T10.2
+		p.libraryCheckBox(Library.NaturalNumbers).toggle();
+		p.libraryCheckBox(Library.ChurchBooleans).toggle();
+		p.openMainMenuButton().click();
+		p.editor().write("isZero = \\n. n (\\x. false) true\n" + 
+		                 "Y (\\f. \\x. (ifThenElse (isZero x) 1 (times x (f (pred x))))) 2");
+		p.outputSizeBox().select(OutputSize.ResultOnly);
+		p.runAndWait();
+		assertEquals("Y (λf. λx. ifThenElse (isZero x) 1 (times x (f (pred x)))) 2\n" + 
+		             "λs. λz. s (s z)", p.unicodeOutput().readText());
+		
+		// T10.3
+		p.editor().write("pred (succ (succ 1))");
+		p.runAndWait();
+		assertEquals("pred (succ (succ 1))\n" + 
+		             "λs. λz. s (s z)", p.unicodeOutput().readText());
+		
+		// T10.4
+		p.editor().write("pow (times 2 (minus (plus 2 2) 3)) 2");
+		p.runAndWait();
+		assertEquals("pow (times 2 (minus (plus 2 2) 3)) 2\n" + 
+		             "λs. λz. s (s (s (s z)))", p.unicodeOutput().readText());
+		
+		// T10.5
+		p.editor().write("times 2 3");
+		p.runAndWait();
+		assertEquals("times 2 3\n" + 
+		             "λs. λz. s (s (s (s (s (s z)))))", p.unicodeOutput().readText());
+		
+		// T10.6
+		p.editor().write("true a b");
+		p.runAndWait();
+		assertEquals("true a b\n" +
+		             "a", p.unicodeOutput().readText());
+		
+		// T10.7
+		p.editor().write("false a b");
+		p.runAndWait();
+		assertEquals("false a b\n" +
+		             "b", p.unicodeOutput().readText());
+		
+		// T10.8
+		p.openMainMenuButton().click();
+		p.libraryCheckBox(Library.ChurchLists).toggle();
+		p.openMainMenuButton().click();
+		// car and cdr are now first and second
+		p.editor().write("p = pair 1 2\n" + 
+		                 "plus (first p) (second p)");
+		p.runAndWait();
+		assertEquals("plus (first p) (second p)\n" + 
+				     "λs. λz. s (s (s z))", p.unicodeOutput().readText());
+		
+		// T10.9
+		// null is now newList, cons is now prepend
+		// spec contained error at this point: first and second are analogous to head and tail in lists
+		p.editor().write("list = newList\n" + 
+		                 "list2 = prepend a list\n" + 
+		                 "list3 = prepend b list2\n" + 
+		                 "(first list3) (second list3)");
+		p.runAndWait();
+		assertEquals("first list3 (second list3)\n" + 
+		             "b (λz. z a list)", p.unicodeOutput().readText());
 	}
 	
 	@AfterClass

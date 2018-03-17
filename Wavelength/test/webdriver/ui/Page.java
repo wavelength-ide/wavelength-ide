@@ -73,6 +73,11 @@ public class Page {
 		driver.quit();
 	}
 	
+	public void runAndWait() {
+		runButton().click();
+		waitForCompletion();
+	}
+	
 	public void waitForLoading() {
 		new WebDriverWait(driver, 20).until(d -> driver.hasElement(By.id("mainPanel")));
 	}

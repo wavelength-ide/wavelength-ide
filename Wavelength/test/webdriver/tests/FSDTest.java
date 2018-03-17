@@ -1,6 +1,7 @@
 package webdriver.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.AfterClass;
@@ -17,7 +18,6 @@ public class FSDTest {
 	@BeforeClass
 	public static void setUp() {
 		p = new Page();
-		p.waitForLoading();
 	}
 	
 	@Test
@@ -145,6 +145,61 @@ public class FSDTest {
 		// T3.4
 		p.backwardButton().click();
 		assertEquals("(λx.x x) y", p.unicodeOutput().readText());
+		
+		p.reset();
+	}
+	
+	@Test
+	public void T4() {
+		// T4.1
+		p.openMainMenuButton().click();
+		assertTrue(p.mainMenuPanel().isVisible());
+		p.exerciseButton("Exercise mode").click();
+		assertTrue(p.loadExercisePopup().isVisible());
+		p.loadExercisePopupOkButton().click();
+		assertTrue(p.exerciseDescriptionLabel().isVisible());
+		assertTrue(p.exerciseDescriptionLabel().read().length() > 0);
+		
+		// T4.2
+		// feature for testing of exercise solutions was removed in design phase
+		
+		// T4.3
+		// feature for testing of exercise solutions was removed in design phase
+		
+		// T4.4
+		p.openMainMenuButton().click();
+		p.exerciseButton("Variable II").click();
+		p.loadExercisePopupOkButton().click();
+		assertTrue(p.exerciseDescriptionLabel().isVisible());
+		assertTrue(!p.exerciseDescriptionLabel().read().isEmpty());
+		
+		// T4.5
+		// (feature for testing of exercise solutions was removed in design phase)
+		while (p.forwardButton().isEnabled()) {
+			p.forwardButton().click();
+		}
+		assertEquals("(λx.x y) (λy.y x) ((λv.x v) (λx.x))\n" + 
+		             "(λy.y x) y ((λv.x v) (λx.x))\n" + 
+		             "y x ((λv.x v) (λx.x))\n" + 
+		             "y x (x (λx.x))", p.unicodeOutput().readText());
+		
+		// T4.6
+		p.toggleSolutionButton().click();
+		assertTrue(p.solutionArea().isVisible());
+		assertTrue(!p.solutionArea().read().isEmpty());
+		
+		// T4.7
+		// not testable as there are no exercises where the solution can be copied to the input
+		
+		// T4.8
+		p.toggleSolutionButton().click();
+		assertFalse(p.solutionArea().isVisible());
+		
+		// T4.9
+		p.closeExerciseButton().click();
+		assertTrue(p.closeExercisePopup().isVisible());
+		p.closeExercisePopupOkButton().click();
+		assertFalse(p.exerciseDescriptionLabel().isVisible());
 	}
 	
 	@AfterClass

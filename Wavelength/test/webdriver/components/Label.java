@@ -7,18 +7,18 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import webdriver.driver.Driver;
 
-public class Input {
+public class Label {
 	
 	private final Driver driver;
 	private final String id;
 	
-	private Input(Driver driver, String id) {
+	private Label(Driver driver, String id) {
 		this.driver = driver;
 		this.id = id;
 	}
 	
-	public static Input byID(Driver driver, String id) {
-		return new Input(driver, id);
+	public static Label byID(Driver driver, String id) {
+		return new Label(driver, id);
 	}
 	
 	private WebElement element() {
@@ -26,7 +26,7 @@ public class Input {
 	}
 	
 	public String read() {
-		return element().getAttribute("value");
+		return element().getText();
 	}
 	
 	public boolean isVisible() {

@@ -26,7 +26,7 @@ public class TextElement {
 	}
 	
 	public String read() {
-		return element().getText();
+		return element().getAttribute("value");
 	}
 	
 	public boolean isVisible() {

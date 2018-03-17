@@ -5,15 +5,12 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import webdriver.components.Button;
 import webdriver.components.CheckBox;
 import webdriver.components.Editor;
-import webdriver.components.Input;
+import webdriver.components.Label;
 import webdriver.components.ListBox;
 import webdriver.components.Popup;
 import webdriver.components.TextElement;
@@ -56,9 +53,15 @@ public class Page {
 		driver = new Driver();
 		driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 		driver.get("http://127.0.0.1:8888/Wavelength.html");
+		waitForLoading();
 	}
 	
 	public void reset() {
+		if (!driver.getCurrentUrl().equals("http://127.0.0.1:8888/Wavelength.html")) {
+			navigate("http://127.0.0.1:8888/Wavelength.html");
+			editor().clear();
+			return;
+		}
 		if (loadExercisePopup().isVisible()) {
 			loadExercisePopupCancelButton().click();
 		}
@@ -141,8 +144,8 @@ public class Page {
 		return Popup.byID(driver, "exercisePanel");
 	}
 	
-	public TextElement exerciseDescriptionLabel() {
-		return TextElement.byID(driver, "exerciseDescriptionLabel");
+	public Label exerciseDescriptionLabel() {
+		return Label.byID(driver, "exerciseDescriptionLabel");
 	}
 	
 	public Button toggleSolutionButton() {
@@ -217,8 +220,8 @@ public class Page {
 		return Button.byID(driver, "shareButton");
 	}
 	
-	public Input sharePanel() {
-		return Input.byID(driver, "sharePanel");
+	public TextElement sharePanel() {
+		return TextElement.byID(driver, "sharePanel");
 	}
 	
 	public Popup loadExercisePopup() {

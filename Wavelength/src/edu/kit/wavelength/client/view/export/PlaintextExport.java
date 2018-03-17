@@ -32,12 +32,12 @@ public class PlaintextExport implements Export {
 		StringBuilder result = new StringBuilder();
 
 		if (displayedTerms.size() == 1) {
-			return result.append(displayedTerms.get(1).acceptVisitor(visitor)).toString();
+			return result.append(displayedTerms.get(0).acceptVisitor(visitor)).toString();
 		}
 		
 		// No arrow for first Line
 		assert (displayedTerms.size() > 1);
-		result.append(displayedTerms.get(1).acceptVisitor(visitor));
+		result.append(displayedTerms.get(0).acceptVisitor(visitor));
 		result.append("\n");
 
 		for (int i = 1; i < displayedTerms.size() - 1; i++) {

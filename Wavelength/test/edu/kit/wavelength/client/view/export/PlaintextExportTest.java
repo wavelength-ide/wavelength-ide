@@ -43,7 +43,7 @@ public class PlaintextExportTest {
 		List<LambdaTerm> list = new ArrayList<LambdaTerm>();
 		list.add(new FreeVariable("a"));
 		
-		assertEquals("=> a", export.getRepresentation(list, Collections.emptyList()));
+		assertEquals("a", export.getRepresentation(list, Collections.emptyList()));
 	}
 	
 	@Test
@@ -53,6 +53,6 @@ public class PlaintextExportTest {
 		list.add(new FreeVariable("b"));
 		list.add(new FreeVariable("c"));
 		
-		assertEquals("=> a\n=> b\n=> c", export.getRepresentation(list, Collections.emptyList()));
+		assertEquals("a\n=> b\n=> c", export.getRepresentation(list, Collections.emptyList()));
 	}
 }

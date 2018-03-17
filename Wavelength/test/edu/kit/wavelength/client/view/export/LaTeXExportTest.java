@@ -43,7 +43,7 @@ public class LaTeXExportTest {
 		List<LambdaTerm> list = new ArrayList<LambdaTerm>();
 		list.add(new FreeVariable("a"));
 
-		assertEquals("\\Rightarrow\\ a", export.getRepresentation(list, Collections.emptyList()));
+		assertEquals("a", export.getRepresentation(list, Collections.emptyList()));
 	}
 
 	@Test
@@ -53,7 +53,7 @@ public class LaTeXExportTest {
 		list.add(new FreeVariable("b"));
 		list.add(new FreeVariable("c"));
 
-		assertEquals("\\Rightarrow\\ a\\\\\n\\Rightarrow\\ b\\\\\n\\Rightarrow\\ c",
+		assertEquals("a\\\\\n\\Rightarrow\\ b\\\\\n\\Rightarrow\\ c",
 				export.getRepresentation(list, Collections.emptyList()));
 	}
 }

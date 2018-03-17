@@ -70,7 +70,7 @@ public class StepForward implements Action {
 			int columnStart = e.getColumnStart();
 			int columnEnd = e.getColumnEnd();
 			FlowPanel error = new FlowPanel("span");
-			error.add(new Text(message + " (row " + row + ", colums " + columnStart + "-" + columnEnd + ")"));
+			error.add(new Text(message + " (row " + row + ", colums " + columnStart + "-" + (columnEnd - 1) + ")"));
 			error.addStyleName("errorText");
 			FlowPanel wrapper = new FlowPanel();
 			wrapper.add(error);

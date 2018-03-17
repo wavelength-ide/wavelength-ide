@@ -58,7 +58,7 @@ import edu.kit.wavelength.client.view.action.SetOutputFormat;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
-import edu.kit.wavelength.client.view.action.Terminate;
+import edu.kit.wavelength.client.view.action.Clear;
 import edu.kit.wavelength.client.view.action.Unpause;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
@@ -595,7 +595,7 @@ public class App implements Serializable {
 		outputFormatBox.addChangeHandler(h -> new SetOutputFormat().run());
 
 		forwardButton.addClickHandler(e -> new StepForward().run());
-		clearButton.addClickHandler(e -> new Terminate().run());
+		clearButton.addClickHandler(e -> new Clear().run());
 		runButton.addClickHandler(e -> new RunExecution().run());
 		pauseButton.addClickHandler(e -> new Pause().run());
 		unpauseButton.addClickHandler(e -> new Unpause().run());

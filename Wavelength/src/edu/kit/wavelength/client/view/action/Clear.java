@@ -2,7 +2,7 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.view.App;
 
-public class Terminate implements Action {
+public class Clear implements Action {
 
 	private static App app = App.get();
 	

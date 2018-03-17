@@ -46,7 +46,7 @@ public class Parser {
 
 	/**
 	 * Gets a library containing the lambda terms and corresponding names defined in
-	 * the the last invocation of {@link #parse(String)}}'s input String.
+	 * the the last invocation of {@link parse(String)}}'s input String.
 	 * 
 	 * @return A {@link Library} containing the terms entered by the user with their
 	 *         assigned names

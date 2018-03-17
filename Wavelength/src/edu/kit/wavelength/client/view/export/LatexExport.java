@@ -38,7 +38,7 @@ public class LatexExport implements Export {
 		// No arrow for first Line
 		assert (displayedTerms.size() > 1);
 		result.append(displayedTerms.get(0).acceptVisitor(visitor));
-		result.append("\n");
+		result.append("\\\\\n");
 
 		for (int i = 1; i < displayedTerms.size() - 1; i++) {
 			result.append(ARROW);

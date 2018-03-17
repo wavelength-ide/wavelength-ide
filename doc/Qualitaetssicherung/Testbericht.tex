@@ -319,18 +319,35 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 \item[\textbf{Behebung:}]#3
 \end{itemize}}
 
+%issue 44
+\issue{Wird die Position eines Fehlers in der Eingabe ausgegeben, ist die rechte Grenze des Positionsintervalls genau um Eins größer als erwartet.}
+{arg2}{arg3}
 
-%issue 22
+%issue 43
+\issue{In den Exportformaten Plaintext, Unicode ud LaTeX wird ein Reduktionspfeil vor dem Ausgangstermin der ersten Zeile ausgegeben.}
+{arg2}{arg3}
+
+%issue 41
+
+%issue 34
+
+%issue 33
+\issue{arg1}{arg2}{arg3}
+
+%issue 31
+\issue{arg1}{arg2}{arg3}
+
+%issue 27
 \issue{Wird die Lösung einer aktiven Übungsaufgaben angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen sondern die Lösung der neuen Aufgabe angezeigt. }
 {Beim Öffnen einer neuen Übungsaufgabe wird der Status des Lösungsfensters nicht zurückgesetzt.}
 {Die LoadExercise Action setzt nun den Status des Lösungsfensters zurück bevor eine neue Übungsaufgabe angezeigt wird}
 
-%issue 21
+%issue 26
 \issue{Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt.}
 {}
 {}
 
-%issue 20
+%issue 23
 \issue{Beim Öffnen einer neuen Redex-Übungsaufgabe kommt es manchmal zu einem Fehler.}
 {Enthält der gesuchte Redex eine gebundene Variable deren bindende Abstraktion außerhalb des Redex liegt ist der Redex-Subterm kein valider Lambda-Term was zu einem Fehler bei der Ausgabe als String führt.}
 {Vor der Ausgabe wird ein bereinigter Term für die Ausgabe erstellt. In diesem Term wurden alle gebundenen Variablen deren bindende Abstraktion nicht innerhalb des Redex liegt durch freie Variablen mit dem Namen der abstrahierten Variable ersetzt.}

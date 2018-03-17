@@ -67,7 +67,7 @@ public class Parser {
 	 */
 	public LambdaTerm parse(String input) throws ParseException {
 		Objects.requireNonNull(input);
-		
+
 		String[] possibleRows = input.split("\n");
 
 		ArrayList<Integer> rows = new ArrayList<Integer>();
@@ -92,7 +92,7 @@ public class Parser {
 			rowPos = rows.get(i);
 			readLibraryTerm(possibleRows[rows.get(i)]);
 		}
-		
+
 		if (rows.isEmpty())
 			throw new ParseException("input must contain a lambda term", 0, 0, 1);
 
@@ -111,7 +111,9 @@ public class Parser {
 			LambdaTerm term = parseTerm(termString, input.length() - termString.length());
 			inputLibrary.addTerm(term, name);
 		} else {
-			throw new ParseException("\"" + input + "\" is not a valid name assignment", rowPos, 0, 0);
+			input = input.trim();
+			throw new ParseException("\"" + input+ "\" is not a valid name assignment", rowPos, 0,
+					input.length() - 1);
 		}
 	}
 
@@ -148,10 +150,10 @@ public class Parser {
 	private LambdaTerm parseTerm(String input, int offset) throws ParseException {
 		tokens = new Tokeniser().tokenise(input, offset, rowPos);
 		boundVariables = new ArrayList<>();
-		
+
 		if (tokens.length == 0)
 			throw new ParseException("The empty term is not a lambda term", rowPos, 0, 1);
-		
+
 		return parseLambdaTerm(0, tokens.length);
 	}
 

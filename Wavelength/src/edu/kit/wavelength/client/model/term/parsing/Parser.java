@@ -19,8 +19,8 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
 
 /**
  * This class is used to convert an input String into a {@link LambdaTerm}
- * object. If any {@link Libraries} terms are used in the input, the necessary
- * {@link Libraries} have to be passed to the Parser through its constructor.
+ * object. If any {@link Library} terms are used in the input, the necessary
+ * {@link Library} have to be passed to the Parser through its constructor.
  *
  */
 public class Parser {
@@ -36,7 +36,7 @@ public class Parser {
 	 * Initializes a new parser.
 	 * 
 	 * @param libraries
-	 *            The {@link Libraries} to be taken into consideration during
+	 *            The {@link Library} to be taken into consideration during
 	 *            parsing
 	 */
 	public Parser(List<Library> libraries) {

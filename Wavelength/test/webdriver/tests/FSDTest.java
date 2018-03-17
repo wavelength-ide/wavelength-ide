@@ -9,7 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import webdriver.output.URL;
+import webdriver.ui.Exercise;
+import webdriver.ui.Library;
+import webdriver.ui.OutputSize;
 import webdriver.ui.Page;
+import webdriver.ui.ReductionOrder;
 
 public class FSDTest {
 
@@ -29,20 +33,20 @@ public class FSDTest {
 		
 		// T1.2
 		// editor control testing is left out (responsibility of monaco)
-		p.editor().write("(\\z. \\x. (\\y.y) x) z");
-		assertEquals("(\\z. \\x. (\\y.y) x) z", p.editor().read());
-		p.outputSizeBox().select("Result only");
-		assertEquals("Result only", p.outputSizeBox().readSelected());
-		p.outputSizeBox().select("Full");
-		assertEquals("Full", p.outputSizeBox().readSelected());
-		p.reductionOrderBox().select("Call by Name");
-		assertEquals("Call by Name", p.reductionOrderBox().readSelected());
+		p.editor().write("(\\z. \\x. (\\y. y) x) z");
+		assertEquals("(\\z. \\x. (\\y. y) x) z", p.editor().read());
+		p.outputSizeBox().select(OutputSize.ResultOnly);
+		assertEquals(OutputSize.ResultOnly, p.outputSizeBox().readSelected());
+		p.outputSizeBox().select(OutputSize.Full);
+		assertEquals(OutputSize.Full, p.outputSizeBox().readSelected());
+		p.reductionOrderBox().select(ReductionOrder.CallByName);
+		assertEquals(ReductionOrder.CallByName, p.reductionOrderBox().readSelected());
 		
 		// T1.3
 		p.runButton().click();
 		p.waitForCompletion();
-		assertEquals("(λz.λx.(λy.y) x) z\n" + 
-		             "λx.(λy.y) x", p.unicodeOutput().readText());
+		assertEquals("(λz. λx. (λy. y) x) z\n" + 
+		             "λx. (λy. y) x", p.unicodeOutput().readText());
 		
 		p.reset();
 	}
@@ -55,27 +59,28 @@ public class FSDTest {
 		// T2.1
 		p.editor().write("(\\z. (\\y. (\\x. x) y) z) a");
 		p.forwardButton().click();
-		assertEquals("(λz.(λy.(λx.x) y) z) a", p.unicodeOutput().readText());
-		String expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		assertEquals("(λz. (λy. (λx. x) y) z) a", p.unicodeOutput().readText());
+		
+		String expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		
 		// T2.2
 		p.forwardButton().click();
-		assertEquals("(λz.(λy.(λx.x) y) z) a\n" + 
-		             "(λy.(λx.x) y) a", p.unicodeOutput().readText());
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-				            "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		assertEquals("(λz. (λy. (λx. x) y) z) a\n" + 
+		             "(λy. (λx. x) y) a", p.unicodeOutput().readText());
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		
 		// T2.3
 		p.backwardButton().click();
-		assertEquals("(λz.(λy.(λx.x) y) z) a", p.unicodeOutput().readText());
+		assertEquals("(λz. (λy. (λx. x) y) z) a", p.unicodeOutput().readText());
 		
 		// T2.4
 		String htmlBeforeHover = p.unicodeOutput().readHTML();
 		URL u = (URL) p.unicodeOutput().find("(span/span/span/span/span/span/a[@class='gwt-Anchor abstraction clickable'])[1]");
 		u.hover();
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application hover'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application hover'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		
 		// T2.5
@@ -84,37 +89,37 @@ public class FSDTest {
 		
 		// T2.6
 		u.click();
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		
 		// T2.7
-		p.reductionOrderBox().select("Call by Name");
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		p.reductionOrderBox().select(ReductionOrder.CallByName);
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		
 		// T2.8
 		p.forwardButton().click();
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+				"<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+				"<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		
 		// T2.9
 		p.backwardButton().click();
-		p.reductionOrderBox().select("Call by Value");
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		p.reductionOrderBox().select(ReductionOrder.CallByValue);
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
-		p.reductionOrderBox().select("Applicative Order");
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		p.reductionOrderBox().select(ReductionOrder.ApplicativeOrder);
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 		p.forwardButton().click();
-		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>.</span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>.</span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
-		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>.</span><span class='outputText'>z</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
+		expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='applicationWrapper application reduced'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λy</a><span class='outputText'>. </span><span class='outputText'>y</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>z</span></span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>\n" + 
+		               "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λz</a><span class='outputText'>. </span><span class='outputText'>z</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>a</span></span>";
 		assertEquals(expectedHTML, p.unicodeOutput().readHTML());
 	}
 	
@@ -124,12 +129,12 @@ public class FSDTest {
 		
 		// T3.1
 		p.editor().write("(\\x. x x) y");
-		p.reductionOrderBox().select("Applicative Order");
-		p.outputSizeBox().select("Result only");
+		p.reductionOrderBox().select(ReductionOrder.ApplicativeOrder);
+		p.outputSizeBox().select(OutputSize.ResultOnly);
 		p.forwardButton().click();
 		p.forwardButton().click();
 		String oldOutput = p.unicodeOutput().readText();
-		assertEquals("(λx.x x) y\n" + 
+		assertEquals("(λx. x x) y\n" + 
 		             "y y", oldOutput);
 		
 		// T3.2
@@ -143,12 +148,12 @@ public class FSDTest {
 		p.navigate(url);
 		assertEquals("(\\x. x x) y", p.editor().read());
 		assertEquals(oldOutput, p.unicodeOutput().readText());
-		assertEquals("Applicative Order", p.reductionOrderBox().readSelected());
-		assertEquals("Result only", p.outputSizeBox().readSelected());
+		assertEquals(ReductionOrder.ApplicativeOrder, p.reductionOrderBox().readSelected());
+		assertEquals(OutputSize.ResultOnly, p.outputSizeBox().readSelected());
 		
 		// T3.4
 		p.backwardButton().click();
-		assertEquals("(λx.x x) y", p.unicodeOutput().readText());
+		assertEquals("(λx. x x) y", p.unicodeOutput().readText());
 	}
 	
 	@Test
@@ -158,7 +163,7 @@ public class FSDTest {
 		// T4.1
 		p.openMainMenuButton().click();
 		assertTrue(p.mainMenuPanel().isVisible());
-		p.exerciseButton("Exercise mode").click();
+		p.exerciseButton(Exercise.ExerciseMode).click();
 		assertTrue(p.loadExercisePopup().isVisible());
 		p.loadExercisePopupOkButton().click();
 		assertTrue(p.exerciseDescriptionLabel().isVisible());
@@ -172,7 +177,7 @@ public class FSDTest {
 		
 		// T4.4
 		p.openMainMenuButton().click();
-		p.exerciseButton("Variable II").click();
+		p.exerciseButton(Exercise.Variables2).click();
 		p.loadExercisePopupOkButton().click();
 		assertTrue(p.exerciseDescriptionLabel().isVisible());
 		assertTrue(!p.exerciseDescriptionLabel().read().isEmpty());
@@ -182,10 +187,10 @@ public class FSDTest {
 		while (p.forwardButton().isEnabled()) {
 			p.forwardButton().click();
 		}
-		assertEquals("(λx.x y) (λy.y x) ((λv.x v) (λx.x))\n" + 
-		             "(λy.y x) y ((λv.x v) (λx.x))\n" + 
-		             "y x ((λv.x v) (λx.x))\n" + 
-		             "y x (x (λx.x))", p.unicodeOutput().readText());
+		assertEquals("(λx. x y) (λy. y x) ((λv. x v) (λx. x))\n" + 
+		             "(λy. y x) y ((λv. x v) (λx. x))\n" + 
+		             "y x ((λv. x v) (λx. x))\n" + 
+		             "y x (x (λx. x))", p.unicodeOutput().readText());
 		
 		// T4.6
 		p.toggleSolutionButton().click();
@@ -213,29 +218,29 @@ public class FSDTest {
 		// T7.1
 		p.openMainMenuButton().click();
 		assertTrue(p.mainMenuPanel().isVisible());
-		p.libraryCheckBox("Church Tuples and Lists").toggle();
-		assertTrue(p.libraryCheckBox("Church Tuples and Lists").isSelected());
+		p.libraryCheckBox(Library.ChurchLists).toggle();
+		assertTrue(p.libraryCheckBox(Library.ChurchLists).isSelected());
 		p.openMainMenuButton().click();
 		assertFalse(p.mainMenuPanel().isVisible());
 		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + 
 		                 "(curry (\\p. (first p) (second p))) x x");
 		p.runButton().click();
-		assertEquals("curry (λp.first p (second p)) x x\n" + 
-		             "(λa.λb.(λp.first p (second p)) (pair a b)) x x\n" + 
-		             "(λb.(λp.first p (second p)) (pair x b)) x\n" + 
-		             "(λp.first p (second p)) (pair x x)\n" + 
+		assertEquals("curry (λp. first p (second p)) x x\n" + 
+		             "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n" + 
+		             "(λb. (λp. first p (second p)) (pair x b)) x\n" + 
+		             "(λp. first p (second p)) (pair x x)\n" + 
 		             "first (pair x x) (second (pair x x))\n" + 
-		             "pair x x (λx.λy.x) (second (pair x x))\n" + 
-		             "(λy.λz.z x y) x (λx.λy.x) (second (pair x x))\n" + 
-		             "(λz.z x x) (λx.λy.x) (second (pair x x))\n" + 
-		             "(λx.λy.x) x x (second (pair x x))\n" + 
-		             "(λy.x) x (second (pair x x))\n" + 
+		             "pair x x (λx. λy. x) (second (pair x x))\n" + 
+		             "(λy. λz. z x y) x (λx. λy. x) (second (pair x x))\n" + 
+		             "(λz. z x x) (λx. λy. x) (second (pair x x))\n" + 
+		             "(λx. λy. x) x x (second (pair x x))\n" + 
+		             "(λy. x) x (second (pair x x))\n" + 
 		             "x (second (pair x x))\n" + 
-		             "x (pair x x (λx.λy.y))\n" + 
-		             "x ((λy.λz.z x y) x (λx.λy.y))\n" + 
-		             "x ((λz.z x x) (λx.λy.y))\n" + 
-		             "x ((λx.λy.y) x x)\n" + 
-		             "x ((λy.y) x)\n" + 
+		             "x (pair x x (λx. λy. y))\n" + 
+		             "x ((λy. λz. z x y) x (λx. λy. y))\n" + 
+		             "x ((λz. z x x) (λx. λy. y))\n" + 
+		             "x ((λx. λy. y) x x)\n" + 
+		             "x ((λy. y) x)\n" + 
 		             "x x", p.unicodeOutput().readText());
 		
 		// T7.2
@@ -260,36 +265,36 @@ public class FSDTest {
 		
 		// T8.1
 		p.openMainMenuButton().click();
-		p.libraryCheckBox("Church Tuples and Lists").toggle();
+		p.libraryCheckBox(Library.ChurchLists).toggle();
 		p.openMainMenuButton().click();
 		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + 
 		                 "(curry (\\p. (first p) (second p))) x x");
-		p.outputSizeBox().select("Result only");
-		assertEquals("Result only", p.outputSizeBox().readSelected());
+		p.outputSizeBox().select(OutputSize.ResultOnly);
+		assertEquals(OutputSize.ResultOnly, p.outputSizeBox().readSelected());
 		p.runButton().click();
-		assertEquals("curry (λp.first p (second p)) x x\n" + 
+		assertEquals("curry (λp. first p (second p)) x x\n" + 
 		             "x x", p.unicodeOutput().readText());
 		
 		// T8.2
-		p.outputSizeBox().select("Full");
-		assertEquals("Full", p.outputSizeBox().readSelected());
+		p.outputSizeBox().select(OutputSize.Full);
+		assertEquals(OutputSize.Full, p.outputSizeBox().readSelected());
 		p.runButton().click();
-		assertEquals("curry (λp.first p (second p)) x x\n" + 
-		             "(λa.λb.(λp.first p (second p)) (pair a b)) x x\n" + 
-		             "(λb.(λp.first p (second p)) (pair x b)) x\n" + 
-		             "(λp.first p (second p)) (pair x x)\n" + 
+		assertEquals("curry (λp. first p (second p)) x x\n" + 
+		             "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n" + 
+		             "(λb. (λp. first p (second p)) (pair x b)) x\n" + 
+		             "(λp. first p (second p)) (pair x x)\n" + 
 		             "first (pair x x) (second (pair x x))\n" + 
-		             "pair x x (λx.λy.x) (second (pair x x))\n" + 
-		             "(λy.λz.z x y) x (λx.λy.x) (second (pair x x))\n" + 
-		             "(λz.z x x) (λx.λy.x) (second (pair x x))\n" + 
-		             "(λx.λy.x) x x (second (pair x x))\n" + 
-		             "(λy.x) x (second (pair x x))\n" + 
+		             "pair x x (λx. λy. x) (second (pair x x))\n" + 
+		             "(λy. λz. z x y) x (λx. λy. x) (second (pair x x))\n" + 
+		             "(λz. z x x) (λx. λy. x) (second (pair x x))\n" + 
+		             "(λx. λy. x) x x (second (pair x x))\n" + 
+		             "(λy. x) x (second (pair x x))\n" + 
 		             "x (second (pair x x))\n" + 
-		             "x (pair x x (λx.λy.y))\n" + 
-		             "x ((λy.λz.z x y) x (λx.λy.y))\n" + 
-		             "x ((λz.z x x) (λx.λy.y))\n" + 
-		             "x ((λx.λy.y) x x)\n" + 
-		             "x ((λy.y) x)\n" + 
+		             "x (pair x x (λx. λy. y))\n" + 
+		             "x ((λy. λz. z x y) x (λx. λy. y))\n" + 
+		             "x ((λz. z x x) (λx. λy. y))\n" + 
+		             "x ((λx. λy. y) x x)\n" + 
+		             "x ((λy. y) x)\n" + 
 		             "x x", p.unicodeOutput().readText());
 		
 		// T8.3
@@ -302,14 +307,14 @@ public class FSDTest {
 		
 		// T9.1
 		p.editor().write("(\\x. x x)(\\x. x x)");
-		p.outputSizeBox().select("Result only");
+		p.outputSizeBox().select(OutputSize.ResultOnly);
 		p.runButton().click();
 		try { Thread.sleep(500); } catch (InterruptedException e) {}
 		assertTrue(p.spinner().isVisible());
 		p.pauseButton().click();
 		assertFalse(p.spinner().isVisible());
-		assertEquals("(λx.x x) (λx.x x)\n" + 
-		             "(λx.x x) (λx.x x)", p.unicodeOutput().readText());
+		assertEquals("(λx. x x) (λx. x x)\n" + 
+		             "(λx. x x) (λx. x x)", p.unicodeOutput().readText());
 		
 		// T9.2
 		p.unpauseButton().click();

@@ -1,7 +1,5 @@
 package webdriver.ui;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -17,35 +15,7 @@ import webdriver.components.TextElement;
 import webdriver.driver.Driver;
 import webdriver.output.UnicodeOutput;
 
-public class Page {
-
-	public static final List<String> libraryNames = Arrays.asList(
-			"Accelerated Natural Numbers", 
-			"Natural Numbers", 
-			"Church Boolean", 
-			"Church Tuples and Lists", 
-			"Y-Combinator");
-	
-	public static final List<String> exerciseNames = Arrays.asList(
-			"β-Redex - Normal Order*",
-			"β-Redex - Call by Name*",
-			"β-Redex - Call by Value*",
-			"β-Redex - Applicative Order*",
-			"Exercise mode",
-			"Variables",
-			"Variable II",
-			"Normal Order",
-			"Applicative Order",
-			"Call-by-Name",
-			"Call-by-Value",
-			"α-conversion");
-	
-	public static final List<String> exportFormatNames = Arrays.asList(
-			"Plaintext",
-			"Unicode",
-			"LaTeX",
-			"Haskell",
-			"Lisp");	
+public class Page {	
 			
 	private final Driver driver;
 	
@@ -77,7 +47,7 @@ public class Page {
 		if (!mainMenuPanel().isVisible()) {
 			openMainMenuButton().click();
 		}
-		libraryNames.stream().forEach(name -> {
+		Library.all().stream().forEach(name -> {
 			CheckBox box = libraryCheckBox(name);
 			if (box.isSelected()) {
 				box.toggle();
@@ -87,9 +57,9 @@ public class Page {
 		if (clearButton().isEnabled()) {
 			clearButton().click();
 		}
-		outputFormatBox().select("Unicode Output");
-		reductionOrderBox().select("Normal Order");
-		outputSizeBox().select("Full");
+		outputFormatBox().select(OutputFormat.Unicode);
+		reductionOrderBox().select(ReductionOrder.NormalOrder);
+		outputSizeBox().select(OutputSize.Full);
 		if (exportMenu().isVisible()) {
 			openExportMenuButton().click();
 		}
@@ -128,12 +98,12 @@ public class Page {
 		return Popup.byID(driver, "mainMenuPanel");
 	}
 	
-	public CheckBox libraryCheckBox(String text) {
-		return CheckBox.byText(driver, "mainMenu", text);
+	public CheckBox libraryCheckBox(String name) {
+		return CheckBox.byText(driver, "mainMenu", name);
 	}
 	
-	public Button exerciseButton(String text) {
-		return Button.byText(driver, "mainMenu", text);
+	public Button exerciseButton(String name) {
+		return Button.byText(driver, "mainMenu", name);
 	}
 	
 	public Editor editor() {
@@ -212,8 +182,8 @@ public class Page {
 		return Popup.byID(driver, "exportMenu");
 	}
 	
-	public Button exportButton(String text) {
-		return Button.byText(driver, "exportMenu", text);
+	public Button exportButton(String name) {
+		return Button.byText(driver, "exportMenu", name);
 	}
 	
 	public Button shareButton() {

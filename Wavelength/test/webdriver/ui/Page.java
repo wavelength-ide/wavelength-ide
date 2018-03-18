@@ -107,6 +107,10 @@ public class Page {
 		return CheckBox.byText(driver, "mainMenu", name);
 	}
 	
+	public Button libraryTermInfoToggleButton(String name) {
+		return Button.bySiblingText(driver, "mainMenu", name);
+	}
+	
 	public Button exerciseButton(String name) {
 		return Button.byText(driver, "mainMenu", name);
 	}
@@ -197,6 +201,10 @@ public class Page {
 	
 	public TextElement sharePanel() {
 		return TextElement.byID(driver, "sharePanel");
+	}
+	
+	public TextElement reductionStepCounterLabel() {
+		return TextElement.byID(driver, "reductionStepCounterLabel");
 	}
 	
 	public Popup loadExercisePopup() {

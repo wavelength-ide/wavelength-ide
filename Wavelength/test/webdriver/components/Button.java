@@ -12,25 +12,35 @@ public class Button {
 	private final Driver driver;
 	private final String id;
 	private final String text;
+	private final boolean sibling;
 	
-	private Button(Driver driver, String id, String text) {
+	private Button(Driver driver, String id, String text, boolean sibling) {
 		this.driver = driver;
 		this.id = id;
 		this.text = text;
+		this.sibling = sibling;
 	}
 	
 	public static Button byID(Driver driver, String id) {
-		return new Button(driver, id, null);
+		return new Button(driver, id, null, false);
 	}
 	
 	public static Button byText(Driver driver, String parentID, String text) {
-		return new Button(driver, parentID, text);
+		return new Button(driver, parentID, text, false);
+	}
+	
+	public static Button bySiblingText(Driver driver, String parentID, String text) {
+		return new Button(driver, parentID, text, true);
 	}
 	
 	private WebElement button() {
 		WebElement button = driver.findElement(By.id(id));
 		if (text != null) {
-			button = button.findElement(By.xpath("//*[text()='" + text + "']"));
+			if (sibling) {
+				button = button.findElement(By.xpath("//*[text()='" + text + "']/../button"));
+			} else {
+				button = button.findElement(By.xpath("//*[text()='" + text + "']"));
+			}
 		}
 		return button;
 	}
@@ -53,9 +63,11 @@ public class Button {
 		driver.removeImplicitTimeout();
 		if (driver.findElements(By.id(id)).size() == 0) {
 			hasElement = false;
-		} else {
+		} else if (text != null) {
 			WebElement button = driver.findElement(By.id(id));
-			if (text != null && button.findElements(By.xpath("//*[text()='" + text + "']")).size() == 0) {
+			if (sibling && button.findElements(By.xpath("//*[text()='" + text + "']/../button")).size() == 0) {
+				hasElement = false;
+			} else if (!sibling && button.findElements(By.xpath("//*[text()='" + text + "']")).size() == 0) {
 				hasElement = false;
 			}
 		}

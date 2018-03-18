@@ -151,7 +151,7 @@ Es ist zu beachten, dass, mit Ausnahme derjenigen Testszenarien die in Entwurfs-
 Implementierungsphase verworfen wurden, \\ alle Tests als automatisierte Selenium Tests implementiert wurden, und kein Test unter den vorausgesetzten Bedingungen fehlschlägt.
 
 Einige Testszenarien wurden an die aktuelle Spezifikation der Applikation angepasst. 
-Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt werden. %TODO anmerkung im Text
+Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt werden und wurden manuell getestet (vgl. \ref{Baumtests}).
 
 \begin{table}[h]
 	\centering
@@ -179,7 +179,7 @@ Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt wer
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T5} Ausgabeformat}}\\ 
 		&T5.1 & \cmark & \\
 		&T5.2 & (\xmark) & Feature wurde in der Implementierungsphase verworfen\\
-		&T5.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
+		&T5.3 & \xmark & Wurde nur manuell getestet (vgl. \ref{Baumtests})\\
 		\multicolumn{2}{l|}{\small \textsc{\textbf{T6} Export}} & &\\ 
 		&T6.1 - T6.3 & \cmark & \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T7} Namensbindung}}\\ 
@@ -187,7 +187,7 @@ Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt wer
 		&T7.3 & \cmark & \makecell[r]{Spezifikation für doppelte Namensbindung\\wurde geändert (vgl. \ref{changeBinding})} \\
 		\multicolumn{4}{l}{\small \textsc{\textbf{T8} Auswahl des Ausgabeumfangs}}\\ 
 		&T8.1 - T8.2 & \cmark & \\
-		&T8.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
+		&T8.3 & \xmark & Wurde nur manuell getestet (vgl. \ref{Baumtests})\\
 		\multicolumn{4}{l}{\small \textsc{\textbf{T9} Wechsel des Auswertungsmodus}}\\ 
 		&T9.1 - T9.2 & \cmark & \\
 		&T9.3 & \cmark & An die neue Benutzeroberfläche angepasst  (vgl. \ref{changeWorkflow})\\
@@ -212,7 +212,7 @@ Wir haben für das \texttt{View} und das \texttt{Model} Package unterschiedliche
 
 Eine Konsequenz hieraus ist, dass wir eine akzeptable Testabdeckung nur im \texttt{Model} Package erreicht haben. Die Testabdeckung, die wir im \texttt{View} Package erreicht haben, kann aufgrund der Verwendung von Selenium nur schwer berechnet werden.
 
-Da wir für die Bäume eine externe JavaScript Bibliothek verwenden, wäre das automatische Testen der Bäume sehr aufwändig bis unmöglich. Aus diesem Grund haben wir uns dazu entschieden die Baumausgabe manuell zu testen (siehe \ref{Baumtests}).
+Da wir für die Bäume eine externe JavaScript Bibliothek verwenden und diese nur Bilder ausgibt, wäre das automatische Testen der Bäume sehr aufwändig bis unmöglich. Aus diesem Grund haben wir uns dazu entschieden die Baumausgabe manuell zu testen (vgl. \ref{Baumtests}).
 
 \section{Komponententests}
 Für das gesamte Model und große Teile der Benutzeroberfläche, wo dies realistisch
@@ -343,14 +343,16 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 
 \paragraph{Test 2:} Bei Schritt nach vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
 
-\paragraph{Test 3:} Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
+%\, ist wichtig
+\paragraph{Test\, 3:} Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
 
 \subsection{Formatwechsel}
 \paragraph{Test 1:} Bei nicht leerem Ausgabefenster und einem Wechsel des Ausgabeformats wird nur der zuletzt angezeigte Term neu geladen entsprechend des neuen Formats. Die restlichen angezeigten Terme bleiben unverändert.
 
 \paragraph{Test 2:} Bei Schritt vor (per Button, manuell oder durch Wiederaufnehmen der automatischen Ausführung) wird der neue Term entsprechend des neu gewählten Ausgabeformats angezeigt. 
 
-\paragraph{Test 3:} Ein Formatwechsel hat keine Auswirkung auf bereits angezeigte Terme bei Schritt zurück. Diese werden in ihrem alten Ausgabeformat angezeigt (und ggf. neu markiert, siehe obige Tests).
+%\, ist wichtig
+\paragraph{Test\, 3:} Ein Formatwechsel hat keine Auswirkung auf bereits angezeigte Terme bei Schritt zurück. Diese werden in ihrem alten Ausgabeformat angezeigt (und ggf. neu markiert, siehe obige Tests).
 
 \paragraph{Test 4:} Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsistent.
 
@@ -398,16 +400,8 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 
 \section{Fehler mit Ursprung in der Benutzeroberfläche}
 
-\begin{itemize}[itemsep=3ex]
-	%TODO vielleicht weiß Marc noch etwas dazu
-	%issue 19
-	\issue{Die Webworker des Monaco Editors werden nicht korrekt initialisiert.}
-	{Fehlende Anweisung in der HTML Datei.}
-	{Die Fehlende Anweisung wurde ergänzt.}
-\end{itemize}
-
 \subsection{Anzeige betreffend}
-%TODO z.B. 46, 45, 42, 28, 24, 5
+
 \begin{itemize}[itemsep=3ex]
 	
 	%issue 27
@@ -420,11 +414,15 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 \end{itemize}
 
 \subsection{Steuerung betreffend}
-%TODO z.B. 34, 31, 30, 13, 6
+
 \begin{itemize}[itemsep=3ex]
-	% issue 13; TODO
+	% issue 13
 	\issue{Bei Wechseln des Ausgabeformats sind verschiedene Formate in der Ausgabe gemischt angezeigt. Schritt zurück resultiert in Konvertierung des zuletzt angezeigten Terms in das neue Ausgabeformat.}{Formatwechsel während einer Ausgabe wurden nicht deaktiviert. Dies ist ein Resultat des überarbeiteten Workflows.
 	}{Formatwechsel ist nun möglich, auch während einer laufenden Auswertung. Dabei wird nur der zuletzt angezeigte und alle folgenden Terme entsprechend des neuen Ausgabeformats geladen. Die bisher angezeigten Terme bleiben in ihrem ursprünglichen Format erhalten und werden bei Schritt zurück auch entsprechend dieses Formats behandelt.}
+
+	\issue{Durch verschiedene Abfolgen von Aktionen auf der Ausführung konnten die Kontroll-Buttons in einen blockierenden oder undefinierten Zustand gebracht werden.}
+	{Für mehrere Aktionen wurde nicht alle Fälle beachtet, die zu einer Änderung der Kontroll-Buttons führen konnten.}
+	{Es wurde eine \texttt{Control} Klasse eingefügt, die eine \texttt{updateControll()} Methode bereitstellt und abhängig vom Zustand der Applikation das Verhalten der Buttons richtig setzt.}
 
 	%issue 2
 	\issue{Nachdem im Übungsmodus ein Term in den Editor geladen wurde, führt eine Deserialisierung zur Auswertung des Terms und die Steuerung für eine erneute Auswertung blockiert.}

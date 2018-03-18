@@ -263,7 +263,18 @@ Operationen wie \enquote{Ausgeben} und \enquote{Parsen} sowie \enquote{Serialisi
 und \enquote{Deserialisiseren} invers zueinander sind.
 
 \section{Selenium}
-%TODO text
+Zum Testen der Benutzeroberfläche wurde Selenium WebDriver verwendet. Selenium ermöglicht die Automatisierung von funktionalen Tests, indem Eingaben im Browser programmatisch simuliert werden. Diese automatischen Eingabeabläufe können dann in herkömmliche JUnit-Testcases eingebunden werden, um die erwarteten Ergebnisse der Abläufe mit den eigentlichen Ergebnissen zu vergleichen.
+
+Um die Entwicklung von funktionalen Tests zu erleichtern, wurde die Steuerung der Website mittels Selenium vollständig abstrahiert, sodass Testautoren ohne viel Mühe Elemente ansteuern können.
+Da Selenium nur sehr primitive Methoden bereitstellt, erwies sich die Entwicklung dieser Abstraktion als sehr aufwendig. 
+
+Da sich die Testfälle aus dem Pflichtenheft optimal als funktionale Tests eignen, diese im Pflichtenheft sehr umfangreich waren und gleichzeitig gut verwendet werden können, um die Vollständigkeit der Applikation im Vergleich zur ursprünglichen funktionalen Planung zu überprüfen, wurden gerade diese mittels Selenium implementiert. Während der Entwicklung der Tests wurden mehrere kleinere Fehler in der Applikation identifiziert: So zum Beispiel, dass die Art und Weise wie teilbare URLs zusammengebaut werden dafür sorgt, dass in häufig verwendeten Browsern eine URL immer zwei Mal eingegeben werden muss, damit die Seite wechselt.
+
+Das Ergebnis der Automatisierung der funktionalen Tests des Pflichtenhefts ist, dass fast alle Features wie spezifiziert implementiert wurden und sich lediglich einige Features leicht verändert haben, um die Nutzerfreundlichkeit zu fördern.
+
+Insgesamt hat sich die Verwendung von Selenium als sehr aufwendig, aber auch sehr nützlich erwiesen. Einerseits entsprechen die Tests sehr nützlichen Integrationstests, andererseits eignen sie sich gut als Regressionstests. Nach der Fertigstellung der Selenium-Abstraktion wurde es zudem auch deutlich einfacher, neue Tests zu entwickeln: Der große Initialaufwand war also einmalig.
+
+
 
 \section{Parser-Fuzzing}
 Neben herkömmlichen JUnit-Tests und dem Parsen von zufällig generierten

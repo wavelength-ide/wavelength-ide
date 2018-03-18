@@ -107,7 +107,7 @@ Problem dar.
 Aus diesen Gründen wurde die ständige Serialisierung entfernt. Sie erfolgt nun nur noch on-demand beim Klicken
 des Share-Buttons. Intern wurden die History-Tokens durch die sinnvolleren URL-Parameter ersetzt.
 
-\subsection{Maximale Tiefe für $\lambda$-Terme}
+\subsection{Maximale Größe und Tiefe für $\lambda$-Terme}
 Die für das $\lambda$-Kalkül typische Repräsentation natürlicher Zahlen ist die
 Church-Codierung, welche auch bei der in Wavelength beinhalteten Bibliothek für
 natürliche Zahlen zum Einsatz kommt. Die Tiefe dieser $\lambda$-Terme ist linear
@@ -116,12 +116,14 @@ $\lambda$-Termen das Visitor-Pattern verwendet, ist die Tiefe der
 verschachtelten Aufrufe proportional zur Tiefe des $\lambda$-Terms. Beim Umgang mit großen
 Zahlen treten somit notwendigerweise Überläufe des Aufrufstapels auf.
 
-Bei großen Zahlen trat zusätzlich das Problem auf, dass so viel Speicher für
-die Objekte des zugehörigen $\lambda$-Terms allokiert wird, dass Wavelength
-durch den Browser beendet wird.
+Der duale pathologische Fall ist der, in dem der Baum, den der Term bildet,
+ein vollständiger binärer Baum aus Applikationen ist. Dieser Term hat nur eine
+geringe Tiefe, aber sehr viele Knoten. Beim Versuch, einen solchen Term zu
+parsen, wird sehr viel Speicher allokiert, was zum Crash der Applikation im
+Browser führt.
 
-Um diese Fehlerfälle systematisch behandeln zu können, wurde eine applikationsweite
-Maximaltiefe für $\lambda$-Terme eingeführt. Wird diese beim Parsen oder Reduzieren
+Um diese Fehlerfälle systematisch behandeln zu können, wurden eine applikationsweite
+Maximaltiefe und Maximalgröße für $\lambda$-Terme eingeführt. Werden diese beim Parsen oder Reduzieren
 eines $\lambda$-Terms überschritten, wird eine Ausnahme generiert, sodass dem
 Nutzer eine Fehlermeldung angezeigt werden kann.
 

@@ -430,10 +430,17 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	{DIe Deserialisierung des Executors findet vor dem Setzen des Output-Formats statt. Der Executor liest beim Deserialisieren das OutputFormat aus, das standardmäßig der Unicode-Output ist.}
 	{Die Deserialisierung des Executors findet nach dem Setzen des Output-Formats statt.}
 	
-	% issue 12; TODO
+	% issue 12
 	\issue{Veränderungen an von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt.}
 	{Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben.}
 	{Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.}
+	
+	% issue 33
+	\issue{Die Seite wird nicht neu geladen, wenn sich nur das History-Token ändert. Um die Seite neu zu Laden muss zweimal ENTER gedrückt werden. 
+	Dies verhindert den Einsatz eines WebDrivers wie er beispielsweise für die Selenium-Tests gebraucht wird, da dieser ewig darauf wartet, dass die Seite neu geladen wird.}
+	{Die Serialisierungs-ID der Anwendung wird in Form eines History-Tokens in der URL gesetzt. Wird nur das History-Token geändert, so wird die Seite nicht neu geladen.}
+	{Die ständige Serialisierung der Anwendung wird entfernt. Dadurch ist es nicht notwendig den Zustand in der URL zu spiegeln, was der einzige Grund für die History-Tokens war.
+	Dadurch konnte der Umstieg auf URL-Parameter erfolgen, die bei einer Änderung dafür sorgen, dass die Seite neu geladen wird.}
 \end{itemize}
 
 \end{document}

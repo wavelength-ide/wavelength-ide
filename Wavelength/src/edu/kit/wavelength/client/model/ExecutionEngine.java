@@ -193,7 +193,9 @@ public class ExecutionEngine {
 		if (!canStepBackward())
 			throw new IllegalStateException("Not enough terms have been shown to step backwards");
 
-		shown.remove(shown.size() - 1);
+		if (current.get(currentNum) != null) {
+			shown.remove(shown.size() - 1);
+		}
 		NumberedTerm target = shown.get(shown.size() - 1);
 		currentNum = target.getNumber();
 		lastDisplayedNum = currentNum;
@@ -245,27 +247,30 @@ public class ExecutionEngine {
 	public void setReductionOrder(ReductionOrder reduction) {
 		this.order = reduction;
 	}
-	
+
 	/**
 	 * Changes the active {@link OutputSize} to the entered one.
 	 * 
-	 * In general, this will not be possible seamlessly. Instead, it
-	 * will just apply to the future.
-	 * @param size The new output size
+	 * In general, this will not be possible seamlessly. Instead, it will just apply
+	 * to the future.
+	 * 
+	 * @param size
+	 *            The new output size
 	 */
 	public void setOutputSize(OutputSize size) {
 		this.size = size;
 		RingBuffer newBuffer = new RingBuffer(size.numToPreserve());
 		newBuffer.set(this.currentNum, this.current.get(this.currentNum));
-		
+
 		// The effect of this line is that only terms which have been produced after
 		// changing the output size are considered.
 		this.lastDisplayedNum = Math.max(this.lastDisplayedNum, this.currentNum - 1);
 		this.current = newBuffer;
 	}
-	
+
 	/**
 	 * Returns the number of the current step in the computation.
+	 * 
 	 * @return The number of the current step in the computation
 	 */
 	public int getStepNumber() {

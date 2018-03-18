@@ -60,6 +60,40 @@
 %TODO kurze Einleitung. Verwendete Tools, Daten (Coverage, #Testcases)
 
 \section{Änderungen in der Applikation}
+\subsection{Optionen}
+Im Pflichtenheft wurde noch spezifiziert, dass bei einer laufenden Auswertung weder Output-Format noch Output-Size
+oder Reduktionsordnung geändert werden können. Im Schritt-für-Schritt Modus sollten weder Output-Format noch
+Output-Size geändert werden können. 
+
+Mittlerweile kann jede einzelne Option sowohl während einer laufenden Auswertung als auch im Schritt-für-Schritt Modus
+geändert werden. Die Änderungen gelten nur für den aktuellen und alle nachfolgenden Terme.
+
+\subsection{Workflow}
+Um die Auswertung von $\lambda$-Termen flüssiger zu gestalten wurden die Knöpfe überarbeitet:
+
+Es gibt nun einen run-Button, der eine neue Komplettauswertung startet und einen clear-Button, der das Output-Fenster leert.
+Während der Auswertung können der step-forward- und der step-backward-Button gedrückt werden, was die Auswertung pausiert. 
+Die Auswertung kann auch über den pause-Button pausiert werden.
+Eine pausierte Auswertung kann den über den unpause-Button fortgesetzt werden.
+Der step-forward-Button kann auch für den ersten Auswertungsschritt einer Eingabe benutzt werden und der step-backward-Button
+kann den ersten Auswertungsschritt rückgängig machen.
+
+\subsection{Benutzbarkeit}
+Um die Nutzung der Anwendung insgesamt intuitiver zu gestalten ergeben sich eine Reihe kleiner Änderungen:
+
+\begin{itemize}
+\item Es gibt nun Tooltips zu jeder Schaltfläche, die die Funktion erklären.
+\item Der clear-Button kann mit "CTRL und BACKSPACE" ausgelöst werden und der run-Button mit "CTRL und ENTER".
+\item Die Popups beim Wechsel zwischen dem normalen- und dem Übungsmodus können mit "ENTER" akzeptiert und mit
+"ESCAPE" abgebrochen werden.
+\item Es gibt nun einen Spinner, der anzeigt, dass eine gerade eine Auswertung läuft.
+\item Es wird nun angezeigt, wie viele Reduktionsschritte benötigt werden.
+\end{itemize}
+
+\subsection{randomisierte Übungsaufgaben}
+Zu jeder Auswertungsstrategie gibt es eine Übungsaufgabe, die einen zufällig generierten $\lambda$-Term erzeugt
+und nach dem nächsten auszuwertenden Redex fragt.
+
 \subsection{Serialisierung}
 Nach der Implementierungsphase wurde der Zustand der Anwendung in regelmäßigen Abständen serialisiert und 
 ein entsprechender Link generiert, der vom Browser übernommen wurde.
@@ -97,9 +131,9 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{@{}ll|c|r@{}}
+	\begin{tabular}{@{}ll|c|c|c@{}}
 		\toprule
-		&\textbf{Test Nr.} & \textbf{Getestet} &\textbf{Anmerkung} \\ 
+		&\textbf{Test Nr.} & \textbf{Getestet} &\textbf{Anmerkung} &\textbf{Bemerkung}\\ 
 		\midrule
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T1} Komplettauswertung}} \\ 
 		&T1.1 & \cmark & \\
@@ -121,15 +155,15 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T5} Ausgabeformat}}\\ 
 		&T5.1 & \cmark & \\
 		&T5.2 & (\xmark) & Feature wurde in der Implementierungsphase verworfen\\
-		&T5.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
+		&T5.3 & \xmark & Wurde nur manuell getestet & 1) \\ %TODO Anmerkung in einem Text
 		\multicolumn{2}{l|}{\small \textsc{\textbf{T6} Export}} & &\\ 
 		&T6.1 - T6.3 & \cmark & \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T7} Namensbindung}}\\ 
 		&T7.1 - T7.2 & \cmark & \\
-		&T7.3 & \cmark & Spezifikation für doppelte Namensbindung wurde geändert \\ %TODO Anmerkung in einem Text
+		&T7.3 & \cmark & Spezifikation für doppelte Namensbindung wurde geändert & 2) \\ %TODO Anmerkung in einem Text
 		\multicolumn{4}{l}{\small \textsc{\textbf{T8} Auswahl des Ausgabeumfangs}}\\ 
 		&T8.1 - T8.2 & \cmark & \\
-		&T8.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
+		&T8.3 & \xmark & Wurde nur manuell getestet & 3) \\ %TODO Anmerkung in einem Text
 		\multicolumn{4}{l}{\small \textsc{\textbf{T9} Wechsel des Auswertungsmodus}}\\ 
 		&T9.1 - T9.2 & \cmark & \\
 		&T9.3 & \cmark & An die neue Benutzeroberfläche angepasst \\
@@ -146,6 +180,12 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 	\end{tabular}
 	\caption{Übersicht zur Abdeckung der Test aus dem Pflichtenheft}
 \end{table}
+
+\begin{enumerate}
+\item 
+\item Die Spezifikation wurde dahingehend geändert, dass mehrfache Namensbindungen zugelassen sind. In diesem Fall wird die letzte (unterste) verwendet.
+\item 
+\end{enumerate}
 
 
 \chapter{Testmethoden}

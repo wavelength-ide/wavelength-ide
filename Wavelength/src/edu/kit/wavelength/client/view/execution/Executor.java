@@ -93,6 +93,7 @@ public class Executor implements Serializable {
 					try {
 						displayedTerms = engine.stepForward();
 					} catch (ExecutionException e) {
+						setState(S.Paused);
 						pushError(e.getMessage());
 						controlObservers.forEach(ControlObserver::finish);
 						return false;
@@ -212,6 +213,7 @@ public class Executor implements Serializable {
 		try {
 			displayedTerms = engine.stepForward();
 		} catch (ExecutionException e) {
+			setState(S.Paused);
 			pushError(e.getMessage());
 			controlObservers.forEach(ControlObserver::finish);
 			return;
@@ -238,6 +240,7 @@ public class Executor implements Serializable {
 		try {
 			displayedTerms = engine.stepForward(redex);
 		} catch (ExecutionException e) {
+			setState(S.Paused);
 			pushError(e.getMessage());
 			controlObservers.forEach(ControlObserver::finish);
 			return;

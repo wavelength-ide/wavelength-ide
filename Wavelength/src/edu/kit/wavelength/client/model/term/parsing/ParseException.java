@@ -7,9 +7,9 @@ import java.lang.Exception;
  * {@link LambdaTerm}.
  *
  */
+@SuppressWarnings("serial")
 public class ParseException extends Exception {
-
-	private final String message;
+	
 	private final int row;
 	private final int columnStart;
 	private final int columnEnd;
@@ -27,7 +27,7 @@ public class ParseException extends Exception {
 	 *            The exclusive end column of the source of the exception
 	 */
 	public ParseException(String message, int row, int columnStart, int columnEnd) {
-		this.message = message;
+		super(message);
 		this.row = row;
 		this.columnStart = columnStart;
 		this.columnEnd = columnEnd;
@@ -61,10 +61,4 @@ public class ParseException extends Exception {
 	public int getColumnEnd() {
 		return columnEnd + 1;
 	}
-
-	@Override
-	public String getMessage() {
-		return message;
-	}
-
 }

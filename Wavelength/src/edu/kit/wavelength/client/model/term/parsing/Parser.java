@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client.model.term.parsing;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -47,7 +46,7 @@ public class Parser {
 
 	/**
 	 * Gets a library containing the lambda terms and corresponding names defined in
-	 * the the last invocation of {@link parse(String)}}'s input String.
+	 * the the last invocation of {@link parse}'s input String.
 	 * 
 	 * @return A {@link Library} containing the terms entered by the user with their
 	 *         assigned names
@@ -99,10 +98,14 @@ public class Parser {
 
 		// Final row is the actual term that we are looking for
 		rowPos = rows.get(rows.size() - 1);
-		String lastLine = possibleRows[rows.get((rows.size() - 1))];
+		String lastLine = possibleRows[rows.get(rows.size() - 1)];
+
 		try {
 			return parseTerm(lastLine, 0);
 		} catch (TermNotAcceptableException ex) {
+			// We catch this exception at precisely this point because we can give decent feedback
+			// about the position of the error without having to catch the exception all over the
+			// place.
 			throw new ParseException(ex.getMessage(), rows.size() - 1, 0, lastLine.length());
 		}
 	}
@@ -110,9 +113,11 @@ public class Parser {
 	private void readLibraryTerm(String input) throws ParseException {
 		MatchResult assign = assignmentRegExp.exec(input);
 		if (assign != null) {
+			// We know this is safe because we match the assignment regex
 			String[] split = input.split("=");
 			String name = split[0].trim();
 			String termString = split[1];
+
 			LambdaTerm term;
 			try {
 				term = parseTerm(termString, input.length() - termString.length());
@@ -121,7 +126,7 @@ public class Parser {
 			}
 			inputLibrary.addTerm(term, name);
 		} else {
-			throw new ParseException("\"" + input+ "\" is not a valid name assignment", rowPos, 0,
+			throw new ParseException("\"" + input + "\" is not a valid name assignment", rowPos, 0,
 					input.length());
 		}
 	}
@@ -257,7 +262,7 @@ public class Parser {
 		}
 	}
 
-	// A term that extends to right-1 in the token array
+	// A term that extends to index right exclusive in the token array
 	private static class RangedTerm {
 		private int right;
 		private LambdaTerm term;

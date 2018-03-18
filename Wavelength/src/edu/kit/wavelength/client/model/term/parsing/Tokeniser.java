@@ -30,10 +30,12 @@ public class Tokeniser {
 		TokenPattern dot = new TokenPattern("\\.", TokenType.DOT);
 		TokenPattern space = new TokenPattern("\\s+", TokenType.SPACE);
 		TokenPattern[] types = { leftBracket, rigthBracket, name, lambda, dot, space };
+
 		String remainingInput = input;
 		ArrayList<Token> tokens = new ArrayList<Token>();
 		boolean foundMatch;
 
+		// Greedily match tokens until we do not match any more tokens
 		do {
 			foundMatch = false;
 			for (int i = 0; i < types.length; i++) {
@@ -49,8 +51,8 @@ public class Tokeniser {
 					break;
 				}
 			}
-
 		} while (foundMatch);
+		
 		if (remainingInput.length() == 0) {
 			for (int i = 0; i < tokens.size(); i++) {
 				if (tokens.get(i).getType() == TokenType.SPACE) {
@@ -60,7 +62,7 @@ public class Tokeniser {
 			return tokens.toArray(new Token[tokens.size()]);
 		} else {
 			int column = input.length() - remainingInput.length();
-			throw new ParseException("Term could not be parsed, found unknown symbol.", rowPos, column + offset,
+			throw new ParseException("Unknown symbol: \"" + remainingInput.charAt(0) + "\"", rowPos, column + offset,
 					column + offset + 1);
 
 		}
@@ -102,7 +104,7 @@ public class Tokeniser {
 		}
 
 		/**
-		 * Returns the {@link TokenType} assigned to this {@link TokenPattern}
+		 * Returns the {@link TokenType} assigned to this {@link TokenPattern}.
 		 * 
 		 * @return The TokenPattern's type
 		 */

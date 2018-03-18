@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-
 /**
  * Static class that provides tools for serializing and deserializing aggregate
  * data.
@@ -79,6 +78,9 @@ public class SerializationUtilities {
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < content.length; ++i) {
 			String lens = String.valueOf(content[i].length());
+			
+			// Each component consists of three parts: The length of the length,
+			// the length, and the component itself.
 			result.append(String.valueOf(lens.length()));
 			result.append(lens);
 			result.append(content[i]);

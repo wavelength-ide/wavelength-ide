@@ -248,7 +248,7 @@ Wavelength-Parsers wird dieser Umstand im Bezug auf Kommentare in der Eingabe
 am deutlichsten -- im Parser existieren keine Branches, die abhängig vom
 Vorhandensein eines Kommentars genommen werden. Das Resultat ist, dass durch
 Fuzzen keine interessanten Testfälle zum Umgang mit Kommentaren gefunden werden.
-Insbesondere gab es einen subtilen Fehler in der Kommentarentfernungsreoutine,
+Insbesondere gab es einen subtilen Fehler in der Kommentarentfernungsroutine,
 der auf den ersten Blick wie ein typischer durch einen Fuzzer indentifizierbarer
 Fehlerfall aussieht, vom Fuzzer jedoch nicht entdeckt wurde. Daher stützen wir
 uns zum Testen des Parsers nicht nur auf Fuzzing, sondern auch auf herkömmliche
@@ -260,8 +260,8 @@ Testfälle in Unittests festgehalten, um Regressionen entgegenzuwirken.
 \chapter{Testprotokolle}
 
 \section{Ausgabe Highlighttests}
-
-Die nachfolgenden Tests wurden mit folgenden Eingaben getestet:
+In den folgenden Tests werden die Markierungen in den $\lambda$-Termen der Ausgabe getestet. 
+Es wurde mit folgenden Eingaben getestet:
 
 \begin{nospaceflalign*}
 	&\lambda x.\, x \\
@@ -290,46 +290,48 @@ Die nachfolgenden Tests wurden mit folgenden Eingaben getestet:
 
 %TODO: mehr Terme
 
-\subsection{Redexe}
+\subsection{Unicode}
+\subsubsection{Redexe}
 Nur Redexe im  Term werden als anklickbar markiert und nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
 
 
-\subsection{Mouse-over}
+\subsubsection{Mouse-over}
 Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
 
 
-\subsection{Hintergrund}
+\subsubsection{Hintergrund}
 Jeder neue Term wird in einer neuen Zeile ausgegeben und verschiedene Terme werden durch verschiedene Hintergrundfarben unterscheidbar gemacht.
 
 
-\subsection{Unicode: Schritt vor}
+\subsubsection{Schritt vor}
 Bei Schritt vor bleibt (per Button oder manuellem Klick) die Markierung des ausgewerteten Redex korrekt erhalten. Weiterhin sind Redexe im ursprünglichen Term nicht mehr anklickbar und auch bei mouse-over zeigen diese keine Reaktion. Der neu angezeigte Term verhält sich wie in den vorherigen Tests spezifiziert.
 
-\subsection{Unicode: Schritt zurück}
-Test1: 
+\subsubsection{Schritt zurück}
+\paragraph{Test1:} 
 Im Ausgabefenster wird ein einzelner Term angezeigt. Bei Schritt zurück wird dieser entfernt und das Ausgabefenster ist leer. 
 Dieser Test funktioniert unabhängig von einem bestimmten Term.
 
-Test2: 
+\paragraph{Test2:} 
 Im Ausgabefenster wird mehr als ein Term angezeigt. Bei Schritt zurück wird der zuletzt angezeigte Term entfernt.
 Beim nun letzten Term werden die Markierungen zurückgesetzt, das bedeutet, dass die Markierung des reduzierten Redex durch die Markierung der aktuell gewählten Reduktionsordnung ersetzt wird. Weiterhin sind nun alle Redexe wieder klickbar und mouse-over verhält sich wie oben getestet.
 
-\subsection{Unicode: Reduktionsordnung}
+\subsubsection{Reduktionsordnung}
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechend der neuen Reduktionsordnung neu markiert. 
 
-\subsection{Baum: Knotenmarkierung}
+\subsection{Syntaxbaum}
+\subsubsection{Knotenmarkierung}
 Nur Knoten von Redexen werden im Baum als solche farblich markiert. Dabei ist der Knoten mit dem Redex, welcher als nächstes ausgewertet wird anders markiert als die übrigen Redexe.
 
-\subsection{Baum: Änderung der Reduktionsordnung}
+\subsubsection{Änderung der Reduktionsordnung}
 %TODO: siehe git issue
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechend der neuen Reduktionsordnung neu gefärbt. Die restlichen Bäume behalten ihre bisherige Färbung bei.
 
-\subsection{Baum: Schritt vor und Schritt zurück}
-Test1: Bei Schritt nach vorne bleibt die Knotenfärbung des aktuellen Baumes erhalten.
+\subsubsection{Schritt vor und Schritt zurück}
+\paragraph{Test1:} Bei Schritt nach vorne bleibt die Knotenfärbung des aktuellen Baumes erhalten.
 
-Test2: Bei Schritt nach vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
+\paragraph{Test2:} Bei Schritt nach vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
 
-Test3: Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
+\paragraph{Test3:} Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
 
 \subsection{Formatwechsel}
 Test1: Bei nicht leerem Ausgabefenster und einem Wechsel des Ausgabeformats wird nur der zuletzt angezeigte Term neu geladen entsprechend des neuen Formats. Die restlichen angezeigten Terme bleiben unverändert.

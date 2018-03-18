@@ -17,10 +17,9 @@ public class MonacoEditor {
 	private JavaScriptObject completionItemProvider;
 	
 	private static final String introPredef =
-			  "-- __\n"
-			+ "-- \\ \\\n"
-			+ "--  \\ \\            Welcome to Wavelength, the λ-calculus IDE.\n"
-			+ "--   > \\\n"
+			  "--  __\n"
+			+ "--  \\ \\\n"
+			+ "--   > \\            Welcome to Wavelength, the λ-calculus IDE. \n"
 			+ "--  / ^ \\\n"
 			+ "-- /_/ \\_\\\n"
 			+ "--\n"

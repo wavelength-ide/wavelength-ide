@@ -78,6 +78,7 @@ import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
 import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateOutput;
+import edu.kit.wavelength.client.view.update.UpdateReductionStepCounter;
 import edu.kit.wavelength.client.view.update.UpdateShareURL;
 
 /**
@@ -134,6 +135,7 @@ public class App implements Serializable {
 	private ButtonGroup shareGroup;
 	private Button shareButton;
 	private TextBox sharePanel;
+	private Label reductionStepCounterLabel;
 	private SplitLayoutPanel ioPanel;
 	private DockLayoutPanel inputPanel;
 	private FlowPanel inputControlPanel;
@@ -202,6 +204,8 @@ public class App implements Serializable {
 		 * 			mainMenuPanel
 		 * 				mainMenuLibraryTitle
 		 * 				libraryCheckBoxes
+		 * 					libraryTermInfos
+		 * 					libraryTermInfoToggleButtons
 		 * 				mainMenuDivider
 		 * 				mainMenuExerciseTitle
 		 * 				exerciseButtons
@@ -213,6 +217,7 @@ public class App implements Serializable {
 		 *			shareGroup
 		 *				shareButton
  		 *			sharePanel	
+ 		 *			reductionStepCounterLabel
 		 *		ioPanel
 		 *			inputPanel
 		 *				inputControlPanel
@@ -390,6 +395,11 @@ public class App implements Serializable {
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);
 		footerPanel.add(sharePanel);
+		
+		reductionStepCounterLabel = new Label();
+		reductionStepCounterLabel.getElement().setId("reductionStepCounterLabel");
+		reductionStepCounterLabel.addStyleName("reductionStepCounterLabel");
+		footerPanel.add(reductionStepCounterLabel);
 		
 		ioPanel = new SplitLayoutPanel(3);
 		ioPanel.addStyleName("ioPanel");
@@ -698,7 +708,7 @@ public class App implements Serializable {
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 
-		executor = new Executor(Arrays.asList(new UpdateOutput()),
+		executor = new Executor(Arrays.asList(new UpdateOutput(), new UpdateReductionStepCounter()),
 				Arrays.asList(new FinishExecution()));	
 		
 		Control.updateControls();
@@ -911,12 +921,16 @@ public class App implements Serializable {
 		return shareGroup;
 	}
 
+	public Button shareButton() {
+		return shareButton;
+	}
+	
 	public TextBox sharePanel() {
 		return sharePanel;
 	}
-
-	public Button shareButton() {
-		return shareButton;
+	
+	public Label reductionStepCounterLabel() {
+		return reductionStepCounterLabel;
 	}
 	
 	public SplitLayoutPanel ioPanel() {

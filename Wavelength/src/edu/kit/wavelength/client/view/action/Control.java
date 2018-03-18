@@ -39,6 +39,8 @@ public final class Control {
 		if (isRunning) {
 			app.sharePanel().setVisible(false);
 		}
+		
+		app.reductionStepCounterLabel().setVisible(!isTerminated);
 	}
 
 	/**

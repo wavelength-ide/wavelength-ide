@@ -202,10 +202,18 @@ select.form-control {
 	background-color: white !important;
 }
 
+/* move label to the bottom right of the screen */
+.reductionStepCounterLabel {
+	position: absolute;
+	top: 4px;
+	right: 0;
+	margin-right: 10px;
+}
+
 /* enable scrolling in output area and provide padding for output so terms are not squeezed to the edge*/
 .output {
 	display: inline;
-	overflow: scroll;
+	overflow: auto;
 	left: 5px !important;
 	right: 5px !important;
 	width: 100%;

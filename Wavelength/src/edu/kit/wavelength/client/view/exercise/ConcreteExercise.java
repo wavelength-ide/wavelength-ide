@@ -10,13 +10,18 @@ public class ConcreteExercise implements Exercise {
 	private String task;
 	private String solution;
 	private String predefinitions;
-	
+
 	/**
 	 * Creates a new Exercise.
-	 * @param name - name of the exercise
-	 * @param task - problem task to display
-	 * @param solution - intended solution for the problem
-	 * @param predefinitions - initial code to load into the editor
+	 * 
+	 * @param name
+	 *            - name of the exercise
+	 * @param task
+	 *            - problem task to display
+	 * @param solution
+	 *            - intended solution for the problem
+	 * @param predefinitions
+	 *            - initial code to load into the editor
 	 */
 	public ConcreteExercise(final String name, final String task, final String solution, final String predefinitions) {
 		if (name == null || task == null || solution == null || predefinitions == null) {
@@ -32,7 +37,7 @@ public class ConcreteExercise implements Exercise {
 	public String getName() {
 		return this.name;
 	}
-	
+
 	@Override
 	public String getTask() {
 		return this.task;
@@ -58,5 +63,4 @@ public class ConcreteExercise implements Exercise {
 		return new StringBuilder(this.name);
 	}
 
-	
 }

@@ -23,7 +23,8 @@ public class RedexExercise implements Exercise {
 	private String firstRedex;
 
 	/**
-	 * Creates a new random redex exercise that uses the given {@link ReductionOrder}.
+	 * Creates a new random redex exercise that uses the given
+	 * {@link ReductionOrder}.
 	 * 
 	 * @param reduction
 	 *            The {@link ReductionOrder} the user should use
@@ -34,9 +35,13 @@ public class RedexExercise implements Exercise {
 	}
 
 	/**
-	 * Creates a new random redex exercise that uses the given {@link ReductionOrder} and the given {@link TermGenerator}.
-	 * @param reduction The {@link ReductionOrder} the user should use
-	 * @param generator  The {@link TermGenerator} used for term generation.
+	 * Creates a new random redex exercise that uses the given
+	 * {@link ReductionOrder} and the given {@link TermGenerator}.
+	 * 
+	 * @param reduction
+	 *            The {@link ReductionOrder} the user should use
+	 * @param generator
+	 *            The {@link TermGenerator} used for term generation.
 	 */
 	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {
 		myReductionOrder = reduction;

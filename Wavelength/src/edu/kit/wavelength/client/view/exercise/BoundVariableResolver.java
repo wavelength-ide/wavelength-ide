@@ -13,8 +13,8 @@ import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.Visitor;
 
 /**
- * This visitor is used by the  {@link RegexExercise} class to ensure the sub term making up the predefined
- * term's redex can be exported to a String.
+ * This visitor is used by the {@link RegexExercise} class to ensure the sub
+ * term making up the predefined term's redex can be exported to a String.
  *
  */
 public class BoundVariableResolver implements Visitor<LambdaTerm> {
@@ -24,13 +24,17 @@ public class BoundVariableResolver implements Visitor<LambdaTerm> {
 	private boolean inSubTerm;
 	private int maxDeBruijn;
 	private LambdaTerm resolvedSubTerm;
-	
+
 	/**
-	 * Turn every bound variable in the entered sub term whose corresponding abstraction is outside the 
-	 * sub term into a FreeVariable with the the bound variables preferred name.
-	 * The resulting sub term is a correct lambda term, containing no faulty indices.
-	 * @param term The term containing the subterm
-	 * @param subTerm The sub term whose bound variables to replace
+	 * Turn every bound variable in the entered sub term whose corresponding
+	 * abstraction is outside the sub term into a FreeVariable with the the bound
+	 * variables preferred name. The resulting sub term is a correct lambda term,
+	 * containing no faulty indices.
+	 * 
+	 * @param term
+	 *            The term containing the subterm
+	 * @param subTerm
+	 *            The sub term whose bound variables to replace
 	 * @return The sub term with every bound variable adjusted.
 	 */
 	public LambdaTerm resolveVariables(LambdaTerm term, LambdaTerm subTerm) {
@@ -46,10 +50,10 @@ public class BoundVariableResolver implements Visitor<LambdaTerm> {
 		if (resolvedSubTerm == null) {
 			throw new IllegalArgumentException("The input term does not contain the input sub term.");
 		}
-		
+
 		return resolvedSubTerm;
 	}
-	
+
 	@Override
 	public LambdaTerm visitAbstraction(Abstraction abs) {
 		if (abs == subTerm) {
@@ -64,7 +68,7 @@ public class BoundVariableResolver implements Visitor<LambdaTerm> {
 			this.resolvedSubTerm = localTerm;
 		}
 		return localTerm;
-		
+
 	}
 
 	@Override
@@ -72,19 +76,19 @@ public class BoundVariableResolver implements Visitor<LambdaTerm> {
 		if (app == subTerm) {
 			inSubTerm = true;
 		}
-		
+
 		int currentMaxDeBruijn = maxDeBruijn;
 		ArrayList<String> currentAbstractedVars = new ArrayList<String>(abstractedVariables);
 		boolean inside = inSubTerm;
-		
+
 		LambdaTerm left = app.getLeftHandSide().acceptVisitor(this);
-		
+
 		maxDeBruijn = currentMaxDeBruijn;
 		abstractedVariables = currentAbstractedVars;
 		inSubTerm = inside;
 		LambdaTerm right = app.getRightHandSide().acceptVisitor(this);
-		LambdaTerm localTerm =  new Application(left, right);
-		
+		LambdaTerm localTerm = new Application(left, right);
+
 		if (app == subTerm) {
 			resolvedSubTerm = localTerm;
 		}

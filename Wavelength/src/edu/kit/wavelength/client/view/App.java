@@ -742,7 +742,8 @@ public class App implements Serializable {
 	 * application can be recreated.
 	 *
 	 * The String holds information about the {@link Executor}, the {@link Editor},
-	 * the {@link OptionBox}es and the selected {@link Library}s in this order.
+	 * the {@link OptionBox}es, the selected {@link Library}s and the selected
+	 * {@link Exercise}s in this order.
 	 *
 	 * @return the string representation of the application
 	 */
@@ -785,9 +786,9 @@ public class App implements Serializable {
 	 * Deserializes the Application with the given String.
 	 *
 	 * This includes {@link Executor}, the {@link Editor}, the {@link OptionBox}es
-	 * and the selected {@link Library}s. It sets the application into step by step
-	 * mode if the Executor holds terms and leaves the application in its initial
-	 * state else.
+	 * the selected {@link Library}s and the selected {@link Exercise}s. It sets 
+	 * the application into step by step mode if the Executor holds terms and leaves 
+	 * the application in its initial state else.
 	 *
 	 * @param content
 	 *            the string representing the state of the application
@@ -1126,6 +1127,9 @@ public class App implements Serializable {
 		return currentExercise;
 	}
 	
+	/**
+	 * Automatically scrolls to the bottom of the output window.
+	 */
 	public static native void autoScrollOutput() /*-{
 		var elem = $doc.getElementById('scroll');
 		elem.scrollTop = elem.scrollHeight;

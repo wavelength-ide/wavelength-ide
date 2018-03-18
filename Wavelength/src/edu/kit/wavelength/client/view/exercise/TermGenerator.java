@@ -18,23 +18,31 @@ public class TermGenerator {
 	private int openNodes;
 
 	/**
-	 * Creates a new random LambdaTerm.
-	 * The input minimal and maximal depth are used to limit the terms size.
-	 * @param minDepth The minimal term depth
-	 * @param maxDepth The maximal term depth
+	 * Creates a new random LambdaTerm. The input minimal and maximal depth are used
+	 * to limit the terms size.
+	 * 
+	 * @param minDepth
+	 *            The minimal term depth
+	 * @param maxDepth
+	 *            The maximal term depth
 	 * @return The newly created term
 	 * 
 	 */
 	public LambdaTerm getNewTerm(int minDepth, int maxDepth) {
 		return getNewTerm(minDepth, maxDepth, 0, 0);
 	}
-	
+
 	/**
 	 * Create a new random sub term.
-	 * @param minDepth The minimal term depth
-	 * @param maxDepth The maximal term depth
-	 * @param termDepth The current depth
-	 * @param abstractionDepth The number of abstractions enclosing this term.
+	 * 
+	 * @param minDepth
+	 *            The minimal term depth
+	 * @param maxDepth
+	 *            The maximal term depth
+	 * @param termDepth
+	 *            The current depth
+	 * @param abstractionDepth
+	 *            The number of abstractions enclosing this term.
 	 * @return The newly created sub term.
 	 */
 	public LambdaTerm getNewTerm(int minDepth, int maxDepth, int termDepth, int abstractionDepth) {
@@ -51,9 +59,13 @@ public class TermGenerator {
 	}
 
 	/**
-	 * Creates a new random LambdaTerm by recursively invoking this method to construct sub terms.
-	 * @param termDepth The number of abstractions and applications above the term
-	 * @param abstractionDepth The number of abstractions enclosing the term
+	 * Creates a new random LambdaTerm by recursively invoking this method to
+	 * construct sub terms.
+	 * 
+	 * @param termDepth
+	 *            The number of abstractions and applications above the term
+	 * @param abstractionDepth
+	 *            The number of abstractions enclosing the term
 	 * @return A a new random LambdaTerm
 	 */
 	private LambdaTerm makeTerm(int termDepth, int abstractionDepth) {
@@ -66,7 +78,7 @@ public class TermGenerator {
 				// force further abstraction or application
 				random = random % 2;
 			}
-		}	
+		}
 		switch (random) {
 		case 0:
 			String absVariable = getRandomVarName();
@@ -90,10 +102,12 @@ public class TermGenerator {
 			return new FreeVariable(getRandomVarName());
 		}
 	}
-	
+
 	/**
 	 * Return a random integer in [0,bound).
-	 * @param bound The upper bound to use
+	 * 
+	 * @param bound
+	 *            The upper bound to use
 	 * @return a random integer
 	 */
 	protected int nextInt(int bound) {
@@ -102,6 +116,7 @@ public class TermGenerator {
 
 	/**
 	 * Return a random lower case character.
+	 * 
 	 * @return a random lower case character
 	 */
 	public String getRandomVarName() {

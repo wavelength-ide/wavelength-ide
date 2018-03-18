@@ -40,11 +40,7 @@ public final class Abstraction implements LambdaTerm {
 		this.size = inner.acceptVisitor(new GetSizeVisitor()) + 1;
 		this.depth = inner.acceptVisitor(new GetDepthVisitor()) + 1;
 		
-		if (this.size > LambdaTerm.MAX_SIZE)
-			throw new TermNotAcceptableException("Term too large.");
-		
-		if (this.depth > LambdaTerm.MAX_DEPTH)
-			throw new TermNotAcceptableException("Term too deep.");
+		TermUtilities.validateTerm(this);
 	}
 
 	@Override

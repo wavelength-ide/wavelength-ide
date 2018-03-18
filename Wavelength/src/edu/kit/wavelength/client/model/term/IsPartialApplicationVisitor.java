@@ -1,7 +1,8 @@
 package edu.kit.wavelength.client.model.term;
 
 /**
- * A visitor that returns true iff it was invoked on a partial application.
+ * A visitor that returns true iff it was invoked on a partial application, possibly
+ * bound to one or more nested names.
  *
  */
 public final class IsPartialApplicationVisitor extends NameAgnosticVisitor<Boolean> {

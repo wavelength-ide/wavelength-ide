@@ -14,12 +14,6 @@ import edu.kit.wavelength.client.model.term.PartialApplication.Successor;
 public interface LambdaTerm extends Serializable {
 	
 	/**
-	 * The maximal depth of any lambda term
-	 */
-	public static final int MAX_SIZE = 130000;
-	public static final int MAX_DEPTH = 2000;
-	
-	/**
 	 * Creates a lambda term from its serialization.
 	 * 
 	 * @param serialized
@@ -65,14 +59,15 @@ public interface LambdaTerm extends Serializable {
 			
 		case Exponentiation.ID:
 			return Exponentiation.fromSerialized(stripped);
+			
+		default:
+			throw new IllegalArgumentException("serialized must represent a lambda term");
 		}
-		
-		throw new IllegalArgumentException("serialized must represent a lambda term");
 	}
 	
 	/**
 	 * Returns a named lambda term that corresponds to a church number.
-	 * @param value The value of the church number to construct
+	 * @param value The value of the church number to construct. Must be nonnegative.
 	 * @return The requested church number
 	 */
 	public static LambdaTerm churchNumber(int value) {

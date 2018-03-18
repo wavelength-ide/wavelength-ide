@@ -13,7 +13,7 @@ final class BlockedNamesVisitor implements Visitor<Set<String>> {
 
 	@Override
 	public Set<String> visitAbstraction(Abstraction abs) {
-		// Abstraction variables are only preferred name, so we do not need to
+		// Abstraction variables are only preferred names, so we do not need to
 		// record them.
 		return abs.getInner().acceptVisitor(this);
 	}

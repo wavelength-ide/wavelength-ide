@@ -36,6 +36,6 @@ public class SelectExportFormat implements Action {
 		app.exportPopup().show();
 		app.exportArea().setFocus(true);
 		app.exportArea().selectAll();
-
 	}
+	
 }

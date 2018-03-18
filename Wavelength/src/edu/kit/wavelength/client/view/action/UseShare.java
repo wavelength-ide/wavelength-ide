@@ -16,7 +16,6 @@ import edu.kit.wavelength.client.view.SerializationObserver;
  * This action generates the permalink and toggles the dedicated panel. The
  * permalink encodes the current input, output and settings.
  */
-
 public class UseShare implements Action {
 
 	private static App app = App.get();

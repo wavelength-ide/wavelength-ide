@@ -15,6 +15,10 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
 import edu.kit.wavelength.client.view.gwt.VisJs;
 
+/**
+ * Updates the output.
+ *
+ */
 public class UpdateOutput implements ExecutionObserver {
 
 	// stores all shown panels

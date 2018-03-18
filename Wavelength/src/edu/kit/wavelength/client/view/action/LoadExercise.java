@@ -36,10 +36,18 @@ public class LoadExercise implements Action {
 		app.loadExercisePopup().hide();
 	}
 
+	/**
+	 * Gets the selected exercise to load. 
+	 * @return Exercise
+	 */
 	public Exercise getExercise() {
 		return exercise;
 	}
 
+	/**
+	 * Sets the selected exercise to load.
+	 * @param exercise
+	 */
 	public void setExercise(Exercise exercise) {
 		this.exercise = exercise;
 	}

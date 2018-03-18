@@ -16,8 +16,11 @@ public class SelectExercise implements Action {
 	
 	/**
 	 * Constructor.
-	 * @param loadExerciseAction - action to run with selected exercise
-	 * @param selected - exercise that is selected when this action fires
+	 * 
+	 * @param loadExerciseAction
+	 *            action to run with selected exercise
+	 * @param selected
+	 *            exercise that is selected when this action fires
 	 */
 	public SelectExercise(LoadExercise loadExerciseAction, Exercise selected) {
 		this.loadExerciseAction = loadExerciseAction;
@@ -32,7 +35,12 @@ public class SelectExercise implements Action {
 		app.loadExercisePopup().show();
 	}
 	
+	/**
+	 * Gets the exercise that is selected when this action fires
+	 * @return exercise that is selected when this action fires
+	 */
 	public Exercise getExercise() {
 		return this.selected;
 	}
+	
 }

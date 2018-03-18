@@ -194,4 +194,9 @@ public class UpdateOutput implements ExecutionObserver {
 		VisJs.loadNetwork(nodes, edges, wrapper);
 	}
 
+	@Override
+	public void pushError(String error) {
+		// TODO
+	}
+
 }

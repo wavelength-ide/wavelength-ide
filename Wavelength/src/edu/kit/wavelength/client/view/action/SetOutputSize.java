@@ -1,6 +1,6 @@
 package edu.kit.wavelength.client.view.action;
 
-<<<<<<< HEAD
+
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 =======

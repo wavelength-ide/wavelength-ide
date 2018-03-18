@@ -12,6 +12,7 @@ import java.util.List;
 import org.junit.Test;
 
 import edu.kit.wavelength.client.model.library.Library;
+import edu.kit.wavelength.client.model.library.TermInfo;
 
 public class ResolvedNamesVisitorTest {
 	
@@ -130,6 +131,12 @@ public class ResolvedNamesVisitorTest {
 			@Override
 			public String getName() {
 				return "Test Library";
+			}
+
+			@Override
+			public List<TermInfo> getTermInfos() {
+				// TODO Auto-generated method stub
+				return null;
 			}
 		};
 	

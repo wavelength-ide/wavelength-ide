@@ -8,7 +8,10 @@ import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
-// A ring buffer of lambda terms
+/**
+ * A simple ring buffer of lambda terms.
+ *
+ */
 final class RingBuffer implements Serializable {
 
 	private ArrayList<LambdaTerm> elements;
@@ -17,6 +20,10 @@ final class RingBuffer implements Serializable {
 	private static final char EXISTS_INDICATOR = 'e';
 	private static final char NULL_INDICATOR = 'n';
 
+	/**
+	 * Creates a new ring buffer of a given size.
+	 * @param size The size of the ring buffer
+	 */
 	public RingBuffer(int size) {
 		if (size <= 0)
 			throw new IllegalArgumentException("The ring buffer needs to have at least one element.");
@@ -25,6 +32,10 @@ final class RingBuffer implements Serializable {
 		this.size = size;
 	}
 	
+	/**
+	 * Restores a serialized ring buffer.
+	 * @param serialized The serialized ring buffer
+	 */
 	public RingBuffer(String serialized) {
 		List<String> extracted = SerializationUtilities.extract(serialized);
 		assert extracted.size() > 0;
@@ -41,6 +52,11 @@ final class RingBuffer implements Serializable {
 		}
 	}
 
+	/**
+	 * Gets the lambda term at the given position in the ring buffer.
+	 * @param index The position to access
+	 * @return The lambda term at the specified position
+	 */
 	public LambdaTerm get(int index) {
 		if (index < 0)
 			throw new IllegalArgumentException("Index needs to be non-negative");
@@ -48,6 +64,11 @@ final class RingBuffer implements Serializable {
 		return elements.get(index % size);
 	}
 
+	/**
+	 * Sets the lambda term at the given position in the ring buffer.
+	 * @param index The position to access
+	 * @param value The lambda term to set
+	 */
 	public void set(int index, LambdaTerm value) {
 		if (index < 0)
 			throw new IllegalArgumentException("Index needs to be non-negative");

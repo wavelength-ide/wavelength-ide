@@ -5,6 +5,7 @@ package edu.kit.wavelength.client.model;
  * lambda term occurrs.
  *
  */
+@SuppressWarnings("serial")
 public final class ExecutionException extends Exception {
 	public ExecutionException(String message) {
 		super(message);

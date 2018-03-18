@@ -124,12 +124,13 @@ public class ExecutionEngine {
 			current.set(currentNum, null);
 			throw new ExecutionException(ex.getMessage());
 		}
-		++currentNum;
 
+		++currentNum;
 		current.set(currentNum, newTerm);
 
 		List<NumberedTerm> result = new ArrayList<NumberedTerm>();
 
+		// Show the term live
 		if (displayOverride || size.displayLive(currentNum)) {
 			result.add(new NumberedTerm(current.get(currentNum), currentNum));
 			lastDisplayedNum = currentNum;
@@ -196,6 +197,7 @@ public class ExecutionEngine {
 		if (current.get(currentNum) != null) {
 			shown.remove(shown.size() - 1);
 		}
+		
 		NumberedTerm target = shown.get(shown.size() - 1);
 		currentNum = target.getNumber();
 		lastDisplayedNum = currentNum;
@@ -233,6 +235,7 @@ public class ExecutionEngine {
 	public LambdaTerm displayCurrent() {
 		if (current.get(currentNum) == null || isCurrentDisplayed())
 			throw new IllegalStateException("No term to show");
+
 		shown.add(new NumberedTerm(current.get(currentNum), currentNum));
 		lastDisplayedNum = currentNum;
 		return getLast();

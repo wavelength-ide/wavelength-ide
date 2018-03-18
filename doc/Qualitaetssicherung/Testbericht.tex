@@ -58,12 +58,12 @@
 
 \section{Einleitung}
 %TODO kurze Einleitung. Verwendete Tools, Daten (Coverage, #Testcases)
-In diesem Dokument werden die Ergebnisse der Qualitätssicherungsphase des Wavelength-IDE-Projekts festgehalten.
+In diesem Dokument werden die Ergebnisse der Qualitätssicherungsphase des Wave\-length-IDE-Projekts festgehalten.
 In dieser Phase wurden wie versprochen Features nachgeliefert (Serialisierung des Übungsmodus).
 Es kam aber auch zu einigen Änderungen an bestehenden Features (meist um die Benutzbarkeit zu erhöhen).
 Weiterhin konnten durch intensives Testen viele Spezialfälle und Ausnahmen behandelt werden.
 Dazu wurden verschiedene Testparadigmen ausprobiert.
-Zum Einsatz kamen JUnit4, Fuzzing und Selenium.
+Zum Einsatz kamen JUnit 4, Fuzzing und Selenium.
 Über einen Zeitraum von drei Wochen wurden xx\% der Anwendung in xx Test-Klassen mit insgesamt xx Zeilen getestet.
 
 \section{Änderungen in der Applikation}
@@ -205,16 +205,30 @@ Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt wer
 
 
 \chapter{Testmethoden}
-Wir haben für das \texttt{View} und das \texttt{Model} Package unterschiedliche Methoden zum Testen verwendet. Dabei haben wir und im \texttt{Model} auf einen Fuzzer und Komponententests und im \texttt{View} auf funktionales testen mit Selenium verlassen.
+Wir haben für das \texttt{View} und das \texttt{Model} Package unterschiedliche
+Methoden zum Testen verwendet. Dabei haben wir uns im \texttt{Model} auf einen
+Fuzzer und Komponententests und im \texttt{View} auf funktionales Testen mit
+Selenium verlassen.
 
-Eine Konsequenz hieraus ist, dass wir eine akzeptable Testabdeckung nur im \texttt{Model} Package erreicht haben. Die Testabdeckung, die wir im \texttt{View} Package erreicht haben, kann aufgrund der Verwendung von Selenium nur schwer berechnet werden.
+Eine Konsequenz hieraus ist, dass wir eine akzeptable Testabdeckung nur im
+\texttt{Model} Package erreicht haben. Die Testabdeckung, die wir im
+\texttt{View} Package erreicht haben, kann aufgrund der Verwendung von Selenium
+nur schwer berechnet werden.
 
-Unsere Testcases für das \texttt{Model} laufen überwiegend in der JVM. Da der Quellcode aber in JavaScript übersetzt wird, welches insbesondere nur \texttt{doubles} und keine \texttt{integer}s bereitstellt, können keine aussagekräftigen Tests geschrieben werden, die das Verhalten bei einem Overflow prüfen.
+Unsere Testcases für das \texttt{Model} laufen überwiegend in der JVM. Da der
+Quellcode aber in JavaScript übersetzt wird, welches insbesondere nur
+\texttt{doubles} und keine \texttt{integer}s bereitstellt, können keine
+aussagekräftigen Tests geschrieben werden, die das Verhalten bei einem Overflow
+prüfen.
 
-Da für die Bäume eine externe JavaScript Bibliothek verwendet wurde und diese nur Bilder ausgibt, wäre das automatische Testen der Bäume sehr aufwändig bis unmöglich. Aus diesem Grund haben wir uns dazu entschieden die Baumausgabe manuell zu testen (vgl. \ref{Baumtests}).
+Da für die Bäume eine externe JavaScript-Bibliothek verwendet wurde und diese
+nur Bilder ausgibt, wäre das automatische Testen der Bäume sehr aufwändig bis
+unmöglich. Aus diesem Grund haben wir uns dazu entschieden, die Baumausgabe
+manuell zu testen (vgl. \ref{Baumtests}).
 
 Darüber hinaus gab es einige Komplikationen aufgrund der Verwendung von GWT.
-So hatten wir Probleme GWT-TestCases oder das Framework GWT-Mockito ausführbar zu bekommen. Dies hat das Testen der \texttt{View} durch Testcases verhindert.
+So hatten wir Probleme, GWT-TestCases oder das Framework GWT-Mockito ausführbar
+zu bekommen. Dies hat das Testen der \texttt{View} durch Testcases verhindert.
 
 \section{Komponententests}
 Für das gesamte Model und große Teile der Benutzeroberfläche, wo dies realistisch

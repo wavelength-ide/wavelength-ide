@@ -15,7 +15,7 @@ public class MonacoEditor {
 	private static final String introPredef =
 			  "-- __\n"
 			+ "-- \\ \\\n"
-			+ "--  \\ \\            Welcome to Wavelelength, the λ-calculus IDE.\n"
+			+ "--  \\ \\            Welcome to Wavelength, the λ-calculus IDE.\n"
 			+ "--   > \\\n"
 			+ "--  / ^ \\\n"
 			+ "-- /_/ \\_\\\n"

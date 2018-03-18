@@ -28,8 +28,6 @@ public class TreeTermVisitor extends ResolvedNamesVisitor<TreeTriple> {
 	 * 
 	 * @param libraries
 	 *            The libraries to take into account.
-	 * @param updateOutput
-	 *            The output that keeps track of the number of nodes
 	 * @param nextRedex
 	 *            The redex that is reduced next with the current
 	 *            {@link ReductionOrder}

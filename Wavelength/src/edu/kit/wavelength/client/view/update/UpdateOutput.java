@@ -40,12 +40,12 @@ public class UpdateOutput implements ExecutionObserver {
 
 	@Override
 	public void pushTerm(LambdaTerm term) {
-		String formatName = app.outputFormatBox().getSelectedItemText();
-		OutputFormat format = this.determineFormat(formatName);
+		OutputFormat format = this.determineOutputFormat();
 		terms.add(new TermFormatTuple(term, format));
 
 		FlowPanel wrapper = new FlowPanel("div");
 		wrapper.getElement().setId("" + panelID);
+		panelID += 1;
 
 		Application nextRedex = nextRedex(term);
 
@@ -61,7 +61,6 @@ public class UpdateOutput implements ExecutionObserver {
 		}
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
-		panelID += 1;
 	}
 
 	@Override
@@ -82,7 +81,9 @@ public class UpdateOutput implements ExecutionObserver {
 
 		panel.add(new Text(error));
 		panels.add(panel);
+		
 		app.outputArea().add(panel);
+		
 		App.autoScrollOutput();
 	}
 
@@ -91,8 +92,7 @@ public class UpdateOutput implements ExecutionObserver {
 		grey = !grey;
 		panelID -= 1;
 		terms.remove(terms.size() - 1);
-		FlowPanel toRemove = panels.get(panels.size() - 1);
-		app.outputArea().remove(toRemove);
+		app.outputArea().remove(panels.get(panels.size() - 1));
 		panels.remove(panels.size() - 1);
 		// needed to clear the highlighting of the former reduced redex
 		reloadLastTerm();
@@ -120,11 +120,9 @@ public class UpdateOutput implements ExecutionObserver {
 		}
 		
 		panelID -= 1;
-		FlowPanel toRemove = panels.get(panels.size() - 1);
-		app.outputArea().remove(toRemove);
+		
+		app.outputArea().remove(panels.get(panels.size() - 1));
 		panels.remove(panels.size() - 1);
-
-
 		terms.remove(terms.size() - 1);
 
 		if (format == OutputFormat.UNICODE) {
@@ -146,8 +144,8 @@ public class UpdateOutput implements ExecutionObserver {
 		}
 		
 		panelID -= 1;
-		FlowPanel toRemove = panels.get(panels.size() - 1);
-		app.outputArea().remove(toRemove);
+		
+		app.outputArea().remove(panels.get(panels.size() - 1));
 		panels.remove(panels.size() - 1);
 		
 		FlowPanel wrapper = new FlowPanel("div");
@@ -186,7 +184,8 @@ public class UpdateOutput implements ExecutionObserver {
 	/**
 	 * Determines the output format according to the currently selected format.
 	 */
-	private OutputFormat determineFormat(String formatName) {
+	private OutputFormat determineOutputFormat() {
+		String formatName = app.outputFormatBox().getSelectedItemText();
 		switch (formatName) {
 		case "Unicode Output":
 			return OutputFormat.UNICODE;

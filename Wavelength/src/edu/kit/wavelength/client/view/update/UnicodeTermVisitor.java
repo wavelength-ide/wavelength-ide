@@ -136,6 +136,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		// if the given named term is a redex: make the redex clickable and add
 		// styling for hovering over the redex
 		if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
+			// extract the application from the inner term
 			Application t = term.getInner().acceptVisitor(new ExtractApplicationVisitor());
 			clickableRedex(t, panel, a);
 			if (term.getInner() == this.nextRedex) {

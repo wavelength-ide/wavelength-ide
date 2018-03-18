@@ -206,14 +206,14 @@ Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt wer
 
 \section{Statistiken}
 
-Wavelength wird in 64 Testklassen, mit insgesamt 303 Tests
+Wavelength wird in 64 Testklassen mit insgesamt 303 Tests
 und 5862 Zeilen Testcode getestet.
 
 Innerhalb der durch JUnit testbaren Pakete wurde eine 
-Testabdeckung von 95,8 \% erreicht. Dies entspricht 59,6 \%
+Testabdeckung von 95,8\% erreicht. Dies entspricht 59,6 \%
 des gesamten Quelltexts.
 
-Im Verlauf der fünf-wöchigen Qualitätssicherungsphase wurden
+Im Verlauf der fünfwöchigen Qualitätssicherungsphase wurden
 48 Github-Issues erstellt und Änderungen committed.
 
 
@@ -444,7 +444,7 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	
 	% issue 14; TODO 
 	\issue{Die farbliche Abgrenzung der Terme im Unicode-Ausgabeformat verhält sich nicht korrekt bei mehrmaligem Formatwechsel. Der Hintergrund zweier aufeinanderfolgender Terme wird bei Wechsel, Schritt-vor und Schritt-zurück gleich gefärbt.}
-	{Alle Interaktion des Ausgabefensters, unabhängig von der Wahl des Formats, haben Einfluss auf die Hintergrundfarbe.}
+	{Alle Interaktionen des Ausgabefensters, unabhängig von der Wahl des Formats, haben Einfluss auf die Hintergrundfarbe.}
 	{Die Hintergrundfarbe wird nur verändert, wenn Terme im Unicode-Format hinzugefügt, entfernt oder manipuliert werden.}
 \end{itemize}
 
@@ -458,15 +458,15 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 
 	\issue{Durch verschiedene Abfolgen von Aktionen auf der Ausführung konnten die Kontroll-Buttons in einen blockierenden oder undefinierten Zustand gebracht werden.}
 	{Für mehrere Aktionen wurden nicht alle Fälle beachtet, die zu einer Änderung der Kontroll-Buttons führen konnten.}
-	{Es wurde eine \texttt{Control} Klasse eingefügt, die eine \texttt{updateControll()} Methode bereitstellt und abhängig vom Zustand der Applikation das Verhalten der Buttons richtig setzt.}
+	{Es wurde eine \texttt{Control}-Klasse eingefügt, die eine \texttt{updateControl()} Methode bereitstellt und abhängig vom Zustand der Applikation das Verhalten der Buttons richtig setzt.}
 
 	%issue 2
-	\issue{Nachdem im Übungsmodus ein Term in den Editor geladen wurde, führt eine Deserialisierung zur Auswertung des Terms und die Steuerung für eine erneute Auswertung blockiert.}
+	\issue{Nachdem im Übungsmodus ein Term in den Editor geladen wurde, führt eine Deserialisierung zur Auswertung des Terms und die Steuerung für eine erneute Auswertung wird blockiert.}
 	{Der Executor gerät beim Laden einer Übungsaufgabe in einen inkonsistenten Zustand, was kaskadierende Fehler verursacht.}
 	{Der Executor wird während des Ladens einer Übungsaufgabe komplett zurückgesetzt.}
 \end{itemize}
 
-\subsection{De-/Serialisierung betreffend}
+\subsection{(De-)Serialisierung betreffend}
 
 \begin{itemize}[itemsep=3ex]
 	%issue 26
@@ -475,7 +475,7 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	{Die Deserialisierung des Executors findet nach dem Setzen des Output-Formats statt.}
 	
 	% issue 12
-	\issue{Veränderungen am von einer Übungsaufgabe vorgegebenen Term werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt.}
+	\issue{Veränderungen am von einer Übungsaufgabe vorgegebenen Term werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt; stattdessen wird der ursprünglich vorgegebene Term angezeigt.}
 	{Beim Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term 			überschrieben.}
 	{Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.}
 	

@@ -1,5 +1,7 @@
 package edu.kit.wavelength.client.model.library;
 
+import java.util.List;
+
 import edu.kit.wavelength.client.model.serialization.Serializable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
@@ -21,7 +23,7 @@ public interface Library extends Serializable {
 	 * @return The {@link LambdaTerm} with the entered name, null if the library
 	 *         does not contain a term with this name
 	 */
-	abstract LambdaTerm getTerm(String name);
+	LambdaTerm getTerm(String name);
 
 	/**
 	 * Determines whether the library contains a {@link LambdaTerm} with the
@@ -32,12 +34,20 @@ public interface Library extends Serializable {
 	 * @return {@link true} if the library contains a {@link LambdaTerm} with the
 	 *         entered name and {@link false} otherwise
 	 */
-	abstract boolean containsName(String name);
+	boolean containsName(String name);
 
 	/**
 	 * Returns the library's name
 	 * 
 	 * @return The name of the library
 	 */
-	abstract String getName();
+	String getName();
+	
+	/**
+	 * Returns info for the terms that this library provides
+	 * 
+	 * @return infos
+	 */
+	List<TermInfo> getTermInfos();
+	
 }

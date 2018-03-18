@@ -92,4 +92,19 @@ public final class TuplesAndLists implements Library {
 	public StringBuilder serialize() {
 		return new StringBuilder("" + ID);
 	}
+	
+	@Override
+	public List<TermInfo> getTermInfos() {
+		return Arrays.asList(new TermInfo("true", "Used as a literal or 'true a b' yields a."),
+                             new TermInfo("false", "Used as a literal or 'false a b' yields b."),
+		                     new TermInfo("pair a b", "'pair a b' yields (a, b)."),
+		                     new TermInfo("newList", "'newList' yields []."),
+		                     new TermInfo("first a", "'first a' yields a[0] for a : pair or a : list."),
+		                     new TermInfo("second a", "'second a' yields a[1] for a : pair or a[1:end] for a : list."),
+		                     new TermInfo("prepend a b", "'prepend a b' yields a:b for a : list."),
+		                     new TermInfo("head a", "'first a' yields a[0] for a : list or a : pair."),
+		                     new TermInfo("tail a", "'second a' yields a[1:end] for a : list or a[1] for a : pair."),
+		                     new TermInfo("isEmpty a", "'isEmpty a' yields true if a == [] or false if a != [] for a : list."));
+	}
+	
 }

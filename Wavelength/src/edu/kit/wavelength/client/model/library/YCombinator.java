@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.model.library;
 
+import java.util.Arrays;
+import java.util.List;
+
 import edu.kit.wavelength.client.model.term.Abstraction;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
@@ -49,5 +52,10 @@ public final class YCombinator implements Library {
 	@Override
 	public StringBuilder serialize() {
 		return new StringBuilder("" + ID);
+	}
+	
+	@Override
+	public List<TermInfo> getTermInfos() {
+		return Arrays.asList(new TermInfo("Y f", "'Y f' yields f (Y f)."));
 	}
 }

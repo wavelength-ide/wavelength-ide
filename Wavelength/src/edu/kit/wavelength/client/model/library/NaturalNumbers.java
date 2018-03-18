@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.model.library;
 
+import java.util.Arrays;
+import java.util.List;
+
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 
@@ -98,4 +101,16 @@ public final class NaturalNumbers implements Library {
 		NaturalNumbers naturalNumbers = (NaturalNumbers) o;
 		return this.turbo == naturalNumbers.turbo;
 	}
+	
+	@Override
+	public List<TermInfo> getTermInfos() {
+		return Arrays.asList(new TermInfo("<number>", "Allows you to type any natural number as an integer literal."),
+		                     new TermInfo("plus a b", "'plus a b' yields a + b for a, b : nat."),
+		                     new TermInfo("minus a b", "'minus a b' yields a - b for a, b : nat."),
+		                     new TermInfo("times a b", "'times a b' yields a * b for a, b : nat."),
+		                     new TermInfo("pow a b", "'pow a b' yields a^b for a, b : nat."),
+		                     new TermInfo("pred a", "'pred a' yields a - 1 for a : nat."),
+		                     new TermInfo("succ a", "'succ a' yields a + 1 for a : nat."));
+	}
+	
 }

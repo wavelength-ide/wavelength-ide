@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.model.library;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
@@ -115,5 +116,10 @@ public class CustomLibrary implements Library {
 			}
 		}
 		return true;
+	}
+
+	@Override
+	public List<TermInfo> getTermInfos() {
+		return Arrays.asList(new TermInfo("<user term>", "Any term declared by the user."));
 	}
 }

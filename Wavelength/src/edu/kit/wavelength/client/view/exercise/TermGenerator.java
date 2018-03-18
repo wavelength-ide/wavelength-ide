@@ -30,12 +30,12 @@ public class TermGenerator {
 	}
 	
 	/**
-	 * Create a new random subterm.
+	 * Create a new random sub term.
 	 * @param minDepth The minimal term depth
 	 * @param maxDepth The maximal term depth
 	 * @param termDepth The current depth
 	 * @param abstractionDepth The number of abstractions enclosing this term.
-	 * @return The newly created subterm.
+	 * @return The newly created sub term.
 	 */
 	public LambdaTerm getNewTerm(int minDepth, int maxDepth, int termDepth, int abstractionDepth) {
 		if (minDepth > maxDepth) {
@@ -82,6 +82,9 @@ public class TermGenerator {
 				int randomIndex = nextInt(abstractionDepth) + 1;
 				return new BoundVariable(randomIndex);
 			}
+			// This fallthrough is intended, if a bound variable is to be created but
+			// it would not be enclosed by a binding abstraction,
+			// which would make the lambda term invalid, a free variable is created instead.
 		default:
 			openNodes--;
 			return new FreeVariable(getRandomVarName());

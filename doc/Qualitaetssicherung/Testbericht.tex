@@ -65,8 +65,12 @@ Es kam aber auch zu einigen Änderungen an bestehenden Features, meist um die Be
 
 Weiterhin konnten durch intensives Testen viele Spezialfälle und Ausnahmen behandelt werden.
 Dazu wurden verschiedene Testparadigmen ausprobiert.
+<<<<<<< HEAD
 Zum Einsatz kamen JUnit 4, Fuzzing und Selenium.
 Über einen Zeitraum von drei Wochen wurden xx\% der Anwendung in xx Test-Klassen mit insgesamt xx Zeilen getestet.
+=======
+Zum Einsatz kamen JUnit4, Fuzzing und Selenium.
+>>>>>>> statistiken
 
 \section{Änderungen in der Applikation}
 \subsection{Optionen}
@@ -204,6 +208,18 @@ Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt wer
 	\end{tabular}
 	\caption{Übersicht zur Abdeckung der Test aus dem Pflichtenheft}
 \end{table}
+
+\section{Statistiken}
+
+Wavelength wird in 64 Testklassen, mit insgesamt 303 Tests
+und 5862 Zeilen Testcode getestet.
+
+Innerhalb der durch JUnit testbaren Pakete wurde eine 
+Testabdeckung von 95,8 \% erreicht. Dies entspricht 59,6 \%
+des gesamten Quelltexts.
+
+Im Lauf der 5-wöchigen Qualitätssicherungsphase wurden
+48 Github-Issues erstellt und  Änderungen committet.
 
 
 \chapter{Testmethoden}

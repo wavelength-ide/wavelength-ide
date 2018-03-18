@@ -59,7 +59,7 @@
 
 \section{Änderungen in der Applikation}
 \subsection{Optionen}
-Im Pflichtenheft wurde noch spezifiziert, dass bei einer laufenden Auswertung weder Output-Format noch Output-Size
+Im Pflichtenheft wurde spezifiziert, dass bei einer laufenden Auswertung weder Output-Format noch Output-Size
 oder Reduktionsordnung geändert werden können. Im Schritt-für-Schritt Modus sollten weder Output-Format noch
 Output-Size geändert werden können. 
 
@@ -126,6 +126,13 @@ Um diese Fehlerfälle systematisch behandeln zu können, wurden eine applikation
 Maximaltiefe und Maximalgröße für $\lambda$-Terme eingeführt. Werden diese beim Parsen oder Reduzieren
 eines $\lambda$-Terms überschritten, wird eine Ausnahme generiert, sodass dem
 Nutzer eine Fehlermeldung angezeigt werden kann.
+
+\subsection{Veränderung des Sytax für Eingaben}
+Die Syntax für die Eingabe von $\lambda$-Termen hat sich an einigen Stellen verändert. 
+Kommentare werden durch "-$\,$-" anstatt "$\backslash\backslash$" markiert 
+und die Bezeichnung für einige Bibliotheksfunktionen wurde geändert. 
+Die ursprüngliche Spezifikation erlaubte keine doppelte Namensbindung. 
+In der finalen Version der Applikation überschatten sich die Namensbindungen.
 
 \section{Abdeckung der Tests im Pflichtenheft}
 

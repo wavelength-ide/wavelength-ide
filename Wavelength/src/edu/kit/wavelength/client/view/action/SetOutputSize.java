@@ -3,8 +3,6 @@ package edu.kit.wavelength.client.view.action;
 
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
-=======
->>>>>>> depthlimit
 import edu.kit.wavelength.client.view.App;
 
 public class SetOutputSize implements Action {

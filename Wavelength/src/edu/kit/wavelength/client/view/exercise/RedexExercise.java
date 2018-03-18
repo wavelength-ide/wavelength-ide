@@ -52,17 +52,15 @@ public class RedexExercise implements Exercise {
 	@Override
 	public String getTask() {
 		return "Does the displayed term contain a redex and if so which redex will be reduced first using "
-				+ myReductionOrder.getName() + " reduction order?";
+				+ myReductionOrder.getName() + "?";
 	}
 
 	@Override
 	public String getSolution() {
 		if (firstRedex == null) {
-			return "Using the " + myReductionOrder.getName()
-					+ " reduction order, the displayed term does not contain a redex.";
+			return "Using " + myReductionOrder.getName() + ", the displayed term does not contain a redex.";
 		} else {
-			return "\"" + firstRedex + " \" is the first redex to be reduced using the " + myReductionOrder.getName()
-					+ " reduction order.";
+			return "\"" + firstRedex + " \" is the first redex to be reduced using " + myReductionOrder.getName() + ".";
 		}
 	}
 

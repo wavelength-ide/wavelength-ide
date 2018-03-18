@@ -28,8 +28,8 @@ public class LoadExercise implements Action {
 			app.editor().write(exercise.getPredefinitions());
 		}
 		
-		app.exerciseDescriptionLabel().setText(exercise.getTask());
-		app.solutionArea().setText(exercise.getSolution());
+		app.exerciseDescriptionLabel().getElement().setInnerHTML(exercise.getTask());
+		app.solutionArea().getElement().setInnerHTML(exercise.getSolution());
 		
 		app.editorExercisePanel().setWidgetHidden(app.exercisePanel(), false);
 		app.solutionArea().setVisible(false);

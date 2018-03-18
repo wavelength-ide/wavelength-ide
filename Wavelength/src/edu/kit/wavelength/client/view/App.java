@@ -671,7 +671,7 @@ public class App implements Serializable {
 		}
 		shareButton.addClickHandler(e -> new UseShare(Arrays.asList(new UpdateShareURL())).run());
 
-		//keybindings
+		// keybindings
 		Event.addNativePreviewHandler(event -> {
 			if (event.getNativeEvent().getCtrlKey() && event.getNativeEvent().getKeyCode() == KeyCodes.KEY_ENTER) {
 				if (runButton.isEnabled()) {
@@ -842,7 +842,7 @@ public class App implements Serializable {
 					editor.write("");
 				}
 			}
-			//editor.write(val.get(EDITOR_SERIALIZATION));
+			// editor.write(val.get(EDITOR_SERIALIZATION));
 
 			Control.updateControls();
 		} else {

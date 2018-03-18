@@ -10,14 +10,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import edu.kit.wavelength.client.model.library.Library;
+import edu.kit.wavelength.client.model.term.Abstraction;
+import edu.kit.wavelength.client.model.term.Application;
+import edu.kit.wavelength.client.model.term.BoundVariable;
+import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
-import edu.kit.wavelength.client.model.term.parsing.ParseException;
-import edu.kit.wavelength.client.model.term.parsing.Parser;
-import edu.kit.wavelength.client.model.term.Application;
-import edu.kit.wavelength.client.model.term.Abstraction;
-import edu.kit.wavelength.client.model.term.FreeVariable;
-import edu.kit.wavelength.client.model.term.BoundVariable;
 
 /**
  * A class containing parser tests.
@@ -51,9 +49,10 @@ public class ParserTest {
 	private String libUsingString =  "(ΦΨη x)(Σ ΔΘΛ)";
 	private String lBracketAbs = "(\\x. (y) x)";
 	
-	LambdaTerm lBracketAbsTerm = new Abstraction("x", new Application (new FreeVariable("y") ,new BoundVariable(1)));
+	LambdaTerm lBracketAbsTerm = new Abstraction("x", new Application(new FreeVariable("y"), new BoundVariable(1)));
 	
-	LambdaTerm someBlankLinesTerm = new Application(new NamedTerm("abc", new FreeVariable("x")), new NamedTerm("def", new Application(new FreeVariable("v"), new FreeVariable("v"))));
+	LambdaTerm someBlankLinesTerm = new Application(new NamedTerm("abc", new FreeVariable("x")), 
+			new NamedTerm("def", new Application(new FreeVariable("v"), new FreeVariable("v"))));
 	
 	LambdaTerm singeUnicodeLibTerm = new NamedTerm("Σ", new Application(new FreeVariable("z"), new FreeVariable("v")));
 	LambdaTerm stringUnicodeLibWUpCaLaTerm = new NamedTerm("ΔΘΛ", new FreeVariable("v"));
@@ -85,7 +84,8 @@ public class ParserTest {
 	LambdaTerm app5Term = new Application(app4Term, idTerm);
 	
 	LambdaTerm uslessBracketsTerm = new Application(new FreeVariable("x"), new FreeVariable("v"));
-	LambdaTerm tripleTerm = new Application(new Application(new FreeVariable("x"), new FreeVariable("y")), new FreeVariable("z"));
+	LambdaTerm tripleTerm = new Application(new Application(new FreeVariable("x"), 
+			new FreeVariable("y")), new FreeVariable("z"));
 			
 	@Before
 	public void setUp() {
@@ -114,7 +114,7 @@ public class ParserTest {
 	@Test
 	public void unicodeLibTerms() throws ParseException {
 		String input = singleUnicodeLib + "\n" + firstDecl + "\n" + stringUnicodeLibWUpCaLa + "\n"
-					   + libUsingString;
+				+ libUsingString;
 	}
 	
 	@Test

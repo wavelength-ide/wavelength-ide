@@ -57,7 +57,8 @@ public class UnicodeOutput {
 	}
 	
 	public String readHTML() {
-		return outputs().stream().map(o -> o.getAttribute("outerHTML").replaceAll("\"", "'")).collect(Collectors.joining("\n"));
+		return outputs().stream().map(o -> o.getAttribute("outerHTML").replaceAll("\"", "'"))
+				.collect(Collectors.joining("\n"));
 	}
 	
 	public OutputNode find(String xpath) {

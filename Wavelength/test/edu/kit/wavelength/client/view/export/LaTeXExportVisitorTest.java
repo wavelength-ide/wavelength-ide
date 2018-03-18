@@ -54,6 +54,7 @@ public class LaTeXExportVisitorTest {
 
 		assertEquals("\\lambda x.\\, a\\: (\\lambda y.\\, \\lambda z.\\, c\\: d)", term1.acceptVisitor(visitor).toString());
 		assertEquals("(\\lambda x.\\, \\lambda y.\\, x)\\: c", term2.acceptVisitor(visitor).toString());
-		assertEquals("\\lambda p.\\, a\\: ((\\lambda x.\\, \\lambda y.\\, x)\\: c)", term3.acceptVisitor(visitor).toString());
+		assertEquals("\\lambda p.\\, a\\: ((\\lambda x.\\, \\lambda y.\\, x)\\: c)", 
+				term3.acceptVisitor(visitor).toString());
 	}
 }

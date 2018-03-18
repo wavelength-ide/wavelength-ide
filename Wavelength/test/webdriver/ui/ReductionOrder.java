@@ -7,10 +7,10 @@ public final class ReductionOrder {
 	
 	private ReductionOrder() {}
 	
-	public final static String NormalOrder = "Normal Order";
-	public final static String CallByName = "Call by Name";
-	public final static String CallByValue = "Call by Value";
-	public final static String ApplicativeOrder = "Applicative Order";
+	public static final String NormalOrder = "Normal Order";
+	public static final String CallByName = "Call by Name";
+	public static final String CallByValue = "Call by Value";
+	public static final String ApplicativeOrder = "Applicative Order";
 	
 	public static List<String> all() {
 		return Arrays.asList(NormalOrder, CallByName, CallByValue, ApplicativeOrder);

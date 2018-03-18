@@ -414,7 +414,8 @@ public class App implements Serializable {
 		inputControlPanel = new FlowPanel();
 		inputControlPanel.getElement().setId("inputControlPanel");
 		inputControlPanel.addStyleName("inputControlPanel");
-		// addSouth needs to be called before add, otherwise gwt will stop working => inputControlPanel before editorExercisePanel
+		// addSouth needs to be called before add, otherwise gwt will stop working 
+		// => inputControlPanel before editorExercisePanel
 		inputPanel.addSouth(inputControlPanel, 1.85);
 
 		optionBarPanel = new FlowPanel();

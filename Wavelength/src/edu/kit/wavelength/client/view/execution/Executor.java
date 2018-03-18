@@ -59,7 +59,8 @@ public class Executor implements Serializable {
 	 * @param controlObservers
 	 *            Observers to notify when executor reaches certain states
 	 */
-	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers, List<ReductionStepCountObserver> reductionStepCountObserver) {
+	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers, 
+			List<ReductionStepCountObserver> reductionStepCountObserver) {
 		this.executionObservers = executionObservers;
 		this.controlObservers = controlObservers;
 		this.reductionStepCountObserver = reductionStepCountObserver;

@@ -31,7 +31,8 @@
 \usepackage{tikz}
 \usepackage[export]{adjustbox}
 \usepackage{csquotes}
-\usepackage{enumitem}
+
+\usepackage{multicol}
 
 \usetikzlibrary{arrows, arrows.meta, positioning}
 
@@ -96,50 +97,65 @@
 }
 
 \begin{frame}{Veränderungen}
-	\item[•] Quality-of-Life Verbesserungen:
-	\begin{itemize}
-		\item[•] Tooltips
-		\item[•] Statusanzeige und Reduktionsschrittzähler
-		\item[•] Vorschlagsfunktion für Bibliotheksterme
-		\item[•] Tastenkürzel zum Starten und Beenden der Auswertung
-		\item[•] Überarbeitete Steuerung der Auswertung
-	\end{itemize}
+Quality-of-Life Verbesserungen:
+\begin{itemize}
+	\item[•] Tooltips
+	\item[•] Statusanzeige und Reduktionsschrittzähler
+	\item[•] Vorschlagsfunktion für Bibliotheksterme
+	\item[•] Tastenkürzel zum Starten und Beenden der Auswertung
+	\item[•] Überarbeitete Steuerung der Auswertung
+\end{itemize}
 \end{frame}
 
 \begin{frame}{Veränderungen}
 \begin{itemize}
-\item[•] Änderung von Ausgabeformat, Ausgabeumfang und Reduktionsordnung während laufende Auswertung möglich.
-\item[•] Wiederholbare Übungsaufgabe zu den Reduktionsordnungen
-\item[•] On-Demand Serialisierung
+	\item[•] Änderung von Ausgabeformat, Ausgabeumfang und Reduktionsordnung während laufende Auswertung möglich.
+	\item[•] Wiederholbare Übungsaufgabe zu den Reduktionsordnungen
+	\item[•] On-Demand Serialisierung
+	\item[•] Beschränkung der Tiefe von $\lambda$-Termen
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Fuzzing}
-\begin{itemize}
-	\item Verwendet wurde die JWP-Bibliothek
-	\item Gezieltes Testen des Parsers auf Randfälle
-	\item 
+\begin{frame}{Fuzzing} % 9 10 16, 11 
+\begin{itemize} 
+	\item verwendet wird die JWP-Bibliothek
+	\item systematisches Testen des Parsers
+	\newline
+	\item Invalide Namenszuweisungen wie
+	\begin{multicols}{3}
+	\begin{itemize}
+		\item[] ==a== \\ $\lambda$x. x
+		\item[] 8== \\ $\lambda$x. x
+		\item[] = C= C< \\ $\lambda$x. x
+	\end{itemize}
+	\end{multicols}
+	führten zu ArrayOutOfBoundsExceptions
 \end{itemize}
-
 \end{frame}
 
 \begin{frame}{JUnit}
 Komponententests der nicht-UI Pakete:
 \begin{itemize}
-\item[•] edu.kit.wavelength.client.model
-\item[•] edu.kit.wavelength.client.view.exercise
-\item[•] edu.kit.wavelength.client.view.export
-\item[•] edu.kit.wavelength.server.database
+	\item[•] edu.kit.wavelength.client.model
+	\item[•] edu.kit.wavelength.client.view.exercise
+	\item[•] edu.kit.wavelength.client.view.export
+	\item[•] edu.kit.wavelength.server.database
 \end{itemize}
 Testüberdeckung: 95,8 \%
 \end{frame}
 
-
-
-\begin{frame}{Selenium}
+\begin{frame}{Selenium Web Driver}
 \begin{itemize}
-\item[•] Abdeckung aller Testszenarien aus dem Pflichtenheft
-\item[•] automatische Regressionstests
+	\item[•] automatische Überprüfung aller Pflichtenheft Testszenarien
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Schwierigkeiten}
+\begin{itemize}
+	\setlength{\itemsep}{10pt}
+	\item GWT JUnit und Mockito 
+	\item Test der Baumausgabe
+	\item Selenium
 \end{itemize}
 \end{frame}
 

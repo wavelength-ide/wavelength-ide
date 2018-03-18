@@ -60,7 +60,18 @@
 %TODO kurze Einleitung. Verwendete Tools, Daten (Coverage, #Testcases)
 
 \section{Änderungen in der Applikation}
-%TODO Änderungen in der Spezifikation oder dem Design
+\subsection{Serialisierung}
+Nach der Implementierungsphase wurde der Zustand der Anwendung in regelmäßigen Abständen serialisiert und 
+ein entsprechender Link generiert, der vom Browser übernommen wurde.
+Da die Verwendung von URL-Parametern ein Neuladen der Seite erzwingen würde, wurde vom verantwortlichen 
+Entwickler die History von GWT zweckentfremdet.
+Dadurch konnten im Browser kurioserweise die Vorwärts- und die Rückwarts-Schaltfläche benutzt werden, wobei
+der aktuelle History-Token durch den nächsten respektive letzten ersetzt wurde.
+Darüber hinaus stellt die ständige Serialisierung hinsichtlich des Speicherverbrauchs ein auf Dauer unhandliches
+Problem dar.
+
+Aus diesen Gründen wurde die ständige Serialisierung entfernt. Sie erfolgt nun nur noch on-demand beim Klicken
+des Share-Buttons. Intern wurden die History-Tokens durch die sinnvolleren URL-Parameter ersetzt.
 
 \section{Abdeckung der Tests im Pflichtenheft}
 

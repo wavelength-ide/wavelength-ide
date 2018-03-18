@@ -212,8 +212,7 @@ Wir haben für das \texttt{View} und das \texttt{Model} Package unterschiedliche
 
 Eine Konsequenz hieraus ist, dass wir eine akzeptable Testabdeckung nur im \texttt{Model} Package erreicht haben. Die Testabdeckung, die wir im \texttt{View} Package erreicht haben, kann aufgrund der Verwendung von Selenium nur schwer berechnet werden.
 
-Es ist schwer Bäume zu testen, weil:""
--Julia
+Da wir für die Bäume eine externe JavaScript Bibliothek verwenden, wäre das automatische Testen der Bäume sehr aufwändig bis unmöglich. Aus diesem Grund haben wir uns dazu entschieden die Baumausgabe manuell zu testen (siehe \ref{Baumtests}).
 
 \section{Komponententests}
 Für das gesamte Model und große Teile der Benutzeroberfläche, wo dies realistisch
@@ -332,12 +331,11 @@ Beim nun letzten Term werden die Markierungen zurückgesetzt, das bedeutet, dass
 \subsubsection{Reduktionsordnung}
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechend der neuen Reduktionsordnung neu markiert. 
 
-\subsection{Syntaxbaum}
+\subsection{Syntaxbaum} \label{Baumtests}
 \subsubsection{Knotenmarkierung}
 Nur Knoten von Redexen werden im Baum als solche farblich markiert. Dabei ist der Knoten mit dem Redex, welcher als nächstes ausgewertet wird anders markiert als die übrigen Redexe.
 
 \subsubsection{Änderung der Reduktionsordnung}
-%TODO: siehe git issue
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechend der neuen Reduktionsordnung neu gefärbt. Die restlichen Bäume behalten ihre bisherige Färbung bei.
 
 \subsubsection{Schritt vor und Schritt zurück}
@@ -409,7 +407,7 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 \end{itemize}
 
 \subsection{Anzeige betreffend}
-%TODO z.B. 46, 45, 42, 28, 24, 8, 7, 5
+%TODO z.B. 46, 45, 42, 28, 24, 5
 \begin{itemize}[itemsep=3ex]
 	
 	%issue 27

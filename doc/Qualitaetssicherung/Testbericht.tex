@@ -93,7 +93,7 @@ Um die Nutzung der Anwendung insgesamt intuitiver zu gestalten ergeben sich eine
 Bibliotheken angezeigt werden.
 \end{itemize}
 
-\subsection{randomisierte Übungsaufgaben}
+\subsection{Randomisierte Übungsaufgaben}
 Zu jeder Auswertungsstrategie gibt es eine Übungsaufgabe, die einen zufällig generierten $\lambda$-Term erzeugt
 und nach dem nächsten auszuwertenden Redex fragt.
 
@@ -201,8 +201,18 @@ Lediglich die Test zu der Baum-Ausgabe konnten nicht automatisch durchgeführt w
 %TODO Coverage, wie viel? warum nur im Model?
 %TODO Was war möglich? was nicht?
 
-\section{Komponententest}
-%TODO text
+\section{Komponententests}
+Für das gesamte Model und große Teile der Benutzeroberläche, wo dies realistisch
+machbar ist, wurden \textsc{JUnit}-Tests geschrieben, welche auf der Java Virtual
+Machine ausgeführt werden. Die hiervon betroffenen Pakete werden durch etwa 300
+Testfälle getestet und es wird eine Testabdeckung von über 95\% erzielt. Hierbei
+hadelt es sich bei vielen Tests um spezifisch entwickelte Testfälle; in einigen
+anderen Testfällen wurden Fehler festgehalten, die auf andere Weise gefunden
+wurden, um automatisiert sicherzustellen, dass dieser Fehler nicht erneut
+auftritt. Eine weitere Kategorie von Komponententests bilden solche, die zufällig Strukturen
+(insbesondere $\lambda$-Terme) generieren und sicherstellen, dass Paare von
+Operationen wie \enquote{Ausgeben} und \enquote{Parsen} sowie \enquote{Serialisieren}
+und \enquote{Deserialisiseren} invers zueinander sind.
 
 \section{Selenium}
 %TODO text
@@ -217,7 +227,7 @@ Applikation arbeitet, werden innerhalb von kurzer Zeit Testfälle gefunden, die
 neue Ausnahmen oder Zustände hervorrufen.
 
 Wavelength verwendet zum Fuzzen des Parsers die Java-Bibliothek
-\textit{Javan Warty Pig\footnote{\url{https://github.com/cretz/javan-warty-pig}}},
+\textsc{Javan Warty Pig\footnote{\url{https://github.com/cretz/javan-warty-pig}}},
 welche die Instrumentationsfeatures der Java Virtual Machine nutzt, um Fuzzing
 auf der Ebene des Java Bytecodes durchzuführen.
 

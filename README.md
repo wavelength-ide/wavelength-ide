@@ -40,10 +40,10 @@ Congrats, you just evaluated your first lambda expression!
 <p> Instead of evaluating the lambda term from beginning to end with one click, you can step through the evaluation manually by using the <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/backwards.png?raw=true" height = "14"> and <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/forward.png?raw=true" height = "14"> buttons, or by clicking a reducible expression (redex) in the output area (only possible if unicode output format is selected).
 </p>
 <p>
-Pressing <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/run.png?raw=true" height = "14"> will always start the execution from the beginning, whereas <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/play.png?raw=true" height = "14"> will run the execution from the current point of execution. <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/pause.png?raw=true" height = "14"> will pause a running execution, allowing you to step manually.
+Pressing <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/run.png?raw=true" height = "14"> or CTRL + ENTER will always start the execution from the beginning, whereas <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/play.png?raw=true" height = "14"> will run the execution from the current point of execution. <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/pause.png?raw=true" height = "14"> will pause a running execution, allowing you to step manually.
 </p>
 <p>
-Use <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/clear.png?raw=true" height = "14">  to clear the output area.
+Use <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/clear.png?raw=true" height = "14">  or CTRL + BACKSPACE to clear the output area.
 </p>
 
 <h4>Output format</h4>
@@ -81,7 +81,7 @@ In case you do not want to get every step of the execution displayed you can cha
 
 <h4>Libraries</h4>
 <p>
-To improve your programming experience you can include different libraries by selecting them in the main menu <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/mainMenu.png?raw=true" height = "14">.
+To improve your programming experience you can include different libraries by selecting them in the main menu <img src="https://github.com/wavelength-ide/wavelength-ide/blob/master/design/ReadMeImages/mainMenu.png?raw=true" height = "14">. Press CTRL + SPACE in the editor to view the available predefined terms.
 </p>
 <h5>Church Boolean</h5>
 <ul>

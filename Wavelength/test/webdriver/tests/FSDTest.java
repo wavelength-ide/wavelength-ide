@@ -454,7 +454,6 @@ public class FSDTest {
 		// T11.1
 		// backspace to delete last ) that would otherwise get auto-inserted by monaco
 		p.editor().write("(\\x. x)" + Keys.BACK_SPACE);
-		System.out.println(p.editor().read());
 		p.runButton().click();
 		assertEquals("Unbalanced parentheses. (row 1, colums 1-1)", p.unicodeOutput().readText());
 		assertTrue(p.editor().hasMarginErrorMarker(0));

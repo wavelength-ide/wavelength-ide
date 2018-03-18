@@ -17,7 +17,7 @@ import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
  * Visitor sets a minimal number of brackets to correctly describe the lambda
  * term.
  *
- * It also provides some means to vary the representation of a lambda term by
+ * It also provides a means of varying the representation of a lambda term by
  * overwriting its strategy methods.
  */
 public class BasicExportVisitor extends ResolvedNamesVisitor<StringBuilder> {

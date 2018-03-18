@@ -58,6 +58,7 @@ import edu.kit.wavelength.client.view.action.Pause;
 import edu.kit.wavelength.client.view.action.RunExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
+import edu.kit.wavelength.client.view.action.SelectLibrary;
 import edu.kit.wavelength.client.view.action.SetOutputFormat;
 import edu.kit.wavelength.client.view.action.SetOutputSize;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
@@ -598,6 +599,11 @@ public class App implements Serializable {
 		closeExercisePopupOkButton.addClickHandler(e -> new EnterDefaultMode().run());
 		closeExercisePopupCancelButton.addClickHandler(e -> closeExercisePopup.hide());
 		exportPopupOkButton.addClickHandler(e -> exportPopup.hide());
+		List<Library> libraries = Libraries.all();
+		for (int i = 0; i < libraries.size(); i++) {
+			SelectLibrary action = new SelectLibrary();
+			libraryCheckBoxes.get(i).addChangeHandler(e -> action.run());
+		}
 		List<Exercise> exercises = Exercises.all();
 		for (int i = 0; i < exercises.size(); i++) {
 			SelectExercise action = new SelectExercise(loadExerciseAction, exercises.get(i));

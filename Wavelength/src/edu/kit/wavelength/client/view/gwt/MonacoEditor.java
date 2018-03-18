@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.view.gwt;
 
+import java.util.List;
+import edu.kit.wavelength.client.model.library.Library;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.ui.Panel;
 
@@ -9,8 +12,9 @@ import com.google.gwt.user.client.ui.Panel;
  */
 public class MonacoEditor {
 	private JavaScriptObject editor;
-	// keeping track of decorations to delete them when editing
+	// keeping track of things to delete them when editing
 	private JavaScriptObject decorations;
+	private JavaScriptObject completionItemProvider;
 	
 	private static final String introPredef =
 			  "-- __\n"
@@ -77,6 +81,43 @@ public class MonacoEditor {
 		return c;
 	}-*/;
 	
+	public native void setLibraries(List<Library> libraries) /*-{
+		function uniqBy(a, key) {
+		    var seen = {};
+		    return a.filter(function(item) {
+		        var k = key(item);
+		        return seen.hasOwnProperty(k) ? false : (seen[k] = true);
+		    });
+		}
+		var items = [];
+		for (var i = 0; i < libraries.@java.util.List::size()(); i++) {
+			var lib = libraries.@java.util.List::get(I)(i);
+			var infos = lib.@edu.kit.wavelength.client.model.library.Library::getTermInfos()();
+			for (var j = 0; j < infos.@java.util.List::size()(); j++) {
+				var info = infos.@java.util.List::get(I)(j);
+				var name = info.@edu.kit.wavelength.client.model.library.TermInfo::name;
+				var desc = info.@edu.kit.wavelength.client.model.library.TermInfo::description;
+				items.push({
+					label: name,
+					kind: $wnd.monaco.languages.CompletionItemKind.Function,
+					detail: desc
+				});
+			}
+		}
+		items = uniqBy(items, function(item) {
+			return item.label;
+		});
+		var completionItemProvider = this.@edu.kit.wavelength.client.view.gwt.MonacoEditor::completionItemProvider;
+		if (completionItemProvider !== undefined) {
+			completionItemProvider.dispose();
+		}
+		this.@edu.kit.wavelength.client.view.gwt.MonacoEditor::completionItemProvider = $wnd.monaco.languages.registerCompletionItemProvider("lambda", {
+			provideCompletionItems: function(model, position) {
+				return items;
+			}
+		});
+	}-*/;
+	
 	/**
 	 * Loads the editor into the specified parent and creates a wrapper to control the editor through GWT.
 	 * @param parent - parent to load into
@@ -99,6 +140,7 @@ public class MonacoEditor {
 				]
 			}
 		});
+		
 		$wnd.monaco.editor.defineTheme("lambdaTheme", {
 			base: "vs",
 			inherit: true,

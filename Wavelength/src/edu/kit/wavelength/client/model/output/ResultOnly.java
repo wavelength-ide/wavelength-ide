@@ -1,6 +1,7 @@
 package edu.kit.wavelength.client.model.output;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -21,6 +22,9 @@ public final class ResultOnly implements OutputSize {
 
 	@Override
 	public List<Integer> displayAtEnd(int totalSteps, int lastDisplayed) {
+		if (lastDisplayed == totalSteps)
+			return Collections.emptyList();
+
 		ArrayList<Integer> displaySteps = new ArrayList<Integer>();
 		displaySteps.add(totalSteps);
 		return displaySteps;

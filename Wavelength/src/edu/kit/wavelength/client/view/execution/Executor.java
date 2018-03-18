@@ -232,20 +232,6 @@ public class Executor implements Serializable {
 	}
 
 	/**
-	 * Changes the active reduction order to the entered one.
-	 * 
-	 * @param reduction
-	 *            The new reduction order
-	 */
-	public void setReductionOrder(ReductionOrder reduction) {
-		if (!isPaused()) {
-			throw new IllegalStateException("trying to set option while execution isn't paused");
-		}
-		engine.setReductionOrder(reduction);
-		executionObservers.forEach(o -> o.reloadTerm());
-	}
-
-	/**
 	 * Checks whether stepBackward is possible.
 	 * 
 	 * @return whether stepBackward is possible
@@ -345,11 +331,31 @@ public class Executor implements Serializable {
 		}
 	}
 
-	public void setOutputFormat() {
-		if (!isPaused()) {
-			throw new IllegalStateException("trying to set option while execution isn't paused");
+	/**
+	 * Changes the active reduction order to the entered one.
+	 * 
+	 * @param reduction
+	 *            The new reduction order
+	 */
+	public void setReductionOrder(ReductionOrder reduction) {
+		if (isTerminated()) {
+			throw new IllegalStateException("trying to set option while execution is terminated");
+		}
+		engine.setReductionOrder(reduction);
+		executionObservers.forEach(o -> o.reloadTerm());
+	}
+	
+	public void updatedOutputFormat() {
+		if (isTerminated()) {
+			throw new IllegalStateException("trying to set option while execution is terminated");
 		}
 		executionObservers.forEach(o -> o.reloadTerm());
-		
+	}
+	
+	public void setOutputSize(OutputSize s) {
+		if (isTerminated()) {
+			throw new IllegalStateException("trying to set option while execution is terminated");
+		}
+		engine.setOutputSize(s);
 	}
 }

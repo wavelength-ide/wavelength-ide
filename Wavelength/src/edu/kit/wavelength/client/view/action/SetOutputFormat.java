@@ -14,7 +14,7 @@ public class SetOutputFormat implements Action {
 		if (!app.executor().isPaused()) {
 			return;
 		}
-		app.executor().setOutputFormat();
+		app.executor().updatedOutputFormat();
 	}
 
 }

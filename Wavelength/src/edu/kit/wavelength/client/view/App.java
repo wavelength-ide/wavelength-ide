@@ -59,6 +59,7 @@ import edu.kit.wavelength.client.view.action.RunExecution;
 import edu.kit.wavelength.client.view.action.SelectExercise;
 import edu.kit.wavelength.client.view.action.SelectExportFormat;
 import edu.kit.wavelength.client.view.action.SetOutputFormat;
+import edu.kit.wavelength.client.view.action.SetOutputSize;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
@@ -604,11 +605,11 @@ public class App implements Serializable {
 		}
 		toggleSolutionButton.addClickHandler(e -> solutionArea.setVisible(!solutionArea.isVisible()));
 		closeExerciseButton.addClickHandler(e -> closeExercisePopup.show());
+		outputFormatBox.addChangeHandler(h -> new SetOutputFormat().run());
 		reductionOrderBox.addChangeHandler(h -> new SetReductionOrder().run());
+		outputSizeBox.addChangeHandler(h -> new SetOutputSize().run());
 
 		backwardButton.addClickHandler(e -> new StepBackward().run());
-
-		outputFormatBox.addChangeHandler(h -> new SetOutputFormat().run());
 
 		forwardButton.addClickHandler(e -> new StepForward().run());
 		clearButton.addClickHandler(e -> new Clear().run());

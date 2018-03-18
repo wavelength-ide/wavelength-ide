@@ -16,7 +16,7 @@ public class SetReductionOrder implements Action {
 	 */
 	@Override
 	public void run() {
-		if (!app.executor().isPaused()) {
+		if (app.executor().isTerminated()) {
 			return;
 		}
 		String orderName = app.reductionOrderBox().getSelectedItemText();

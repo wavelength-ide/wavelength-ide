@@ -139,22 +139,27 @@ In der finalen Version der Applikation überschatten sich die Namensbindungen\la
 
 \section{Abdeckung der Tests im Pflichtenheft}
 
-%TODO Die folgende Tabelle greift die im Pflichtenheft definierten Test auf und 
+Die folgende Tabelle greift die im Pflichtenheft definierten Test auf und gibt an,
+welche davon automatisch getestet werden. 
+Es ist zu beachten, dass mit Ausnahme derjenigen Testszenarien die in Entwurfs- oder
+Implementierungsphase verworfen wurden, kein Test bei manueller Durchführung fehlschlägt.\\
+Einige Testszenarien wurden and die aktuelle Spezifikation der Applikation angepasst. 
+Lediglich die Test zu der Baum-Ausgabe konnten nicht automatisch durchgeführt werden.
 
 \begin{table}[h]
 	\centering
 	\begin{tabular}{@{}ll|c|r@{}}
 		\toprule
-		&\textbf{Test Nr.} & \textbf{Getestet} &\textbf{Anmerkung} \\ 
+		&\textbf{Test Nr.} & \makecell{\textbf{Automatisch}\\\textbf{getestet}} &\textbf{Anmerkung} \\ 
 		\midrule
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T1} Komplettauswertung}} \\ 
 		&T1.1 & \cmark & \\
 		&T1.2 & (\cmark) & Das Verhalten des Editors wurde nicht getestet \\
 		&T1.3 & \cmark & \\ 
-		\multicolumn{4}{l}{\small \textsc{\textbf{T2} Schritt-für-Schritt-Modus}}\\ 
+		\multicolumn{3}{l|}{\small \textsc{\textbf{T2} Schritt-für-Schritt-Modus}}\\ 
 		&T2.1 & \cmark & An die neue Benutzeroberfläche angepasst vgl. \ref{changeWorkflow} \\
 		&T2.2 - T2.9 & \cmark & \\
-		\multicolumn{4}{l}{\small \textsc{\textbf{T3} Erstellen von Permalinks}}\\ 	
+		\multicolumn{3}{l|}{\small \textsc{\textbf{T3} Erstellen von Permalinks}}\\ 	
 		&T3.1 - T3.4 & \cmark & \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T4} Übungsmodus}}\\ 
 		&T4.1 & \cmark & \\
@@ -190,12 +195,6 @@ In der finalen Version der Applikation überschatten sich die Namensbindungen\la
 	\end{tabular}
 	\caption{Übersicht zur Abdeckung der Test aus dem Pflichtenheft}
 \end{table}
-
-\begin{enumerate}
-\item 
-\item Die Spezifikation wurde dahingehend geändert, dass mehrfache Namensbindungen zugelassen sind. In diesem Fall wird die letzte (unterste) verwendet.
-\item 
-\end{enumerate}
 
 
 \chapter{Testmethoden}

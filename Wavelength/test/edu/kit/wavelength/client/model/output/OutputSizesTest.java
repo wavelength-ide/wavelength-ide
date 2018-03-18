@@ -166,7 +166,7 @@ public class OutputSizesTest {
 	public void resultOnlyOutput() {
 		ResultOnly out = new ResultOnly();
 		for (int i = 0; i < testIterations; i++) {
-			int cNumber = new Random().nextInt(10000);
+			int cNumber = new Random().nextInt(10000) + 1;
 			assertEquals(out.displayLive(cNumber), false);
 			List<Integer> endTerms = out.displayAtEnd(cNumber, 0);
 			assertEquals(endTerms.size(), 1);

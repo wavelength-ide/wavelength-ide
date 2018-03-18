@@ -29,9 +29,6 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}% 
 
-\usepackage{fourier} 
-\usepackage{array}
-\usepackage{makecell}
 
 %Change enummeration pattern from 1. to 1)
 \renewcommand\labelenumi{\theenumi)}
@@ -131,9 +128,9 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 
 \begin{table}[h]
 	\centering
-	\begin{tabular}{@{}ll|c|c|c@{}}
+	\begin{tabular}{@{}ll|c|r@{}}
 		\toprule
-		&\textbf{Test Nr.} & \textbf{Getestet} &\textbf{Anmerkung} &\textbf{Bemerkung}\\ 
+		&\textbf{Test Nr.} & \textbf{Getestet} &\textbf{Anmerkung} \\ 
 		\midrule
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T1} Komplettauswertung}} \\ 
 		&T1.1 & \cmark & \\
@@ -155,15 +152,15 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T5} Ausgabeformat}}\\ 
 		&T5.1 & \cmark & \\
 		&T5.2 & (\xmark) & Feature wurde in der Implementierungsphase verworfen\\
-		&T5.3 & \xmark & Wurde nur manuell getestet & 1) \\ %TODO Anmerkung in einem Text
+		&T5.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
 		\multicolumn{2}{l|}{\small \textsc{\textbf{T6} Export}} & &\\ 
 		&T6.1 - T6.3 & \cmark & \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T7} Namensbindung}}\\ 
 		&T7.1 - T7.2 & \cmark & \\
-		&T7.3 & \cmark & Spezifikation für doppelte Namensbindung wurde geändert & 2) \\ %TODO Anmerkung in einem Text
+		&T7.3 & \cmark & Spezifikation für doppelte Namensbindung wurde geändert \\ %TODO Anmerkung in einem Text
 		\multicolumn{4}{l}{\small \textsc{\textbf{T8} Auswahl des Ausgabeumfangs}}\\ 
 		&T8.1 - T8.2 & \cmark & \\
-		&T8.3 & \xmark & Wurde nur manuell getestet & 3) \\ %TODO Anmerkung in einem Text
+		&T8.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
 		\multicolumn{4}{l}{\small \textsc{\textbf{T9} Wechsel des Auswertungsmodus}}\\ 
 		&T9.1 - T9.2 & \cmark & \\
 		&T9.3 & \cmark & An die neue Benutzeroberfläche angepasst \\
@@ -171,11 +168,9 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 		&T10.1 - T10.7 & \cmark & \\
 		&T10.8 - T10.9 & \cmark & Bibliotheksfunktionen umbenannt und leicht angepasst \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T11} Fehlerdiagnostik}}\\ 
-		&T11.1 & \xmark & \\
-		&T11.2 & \xmark & \\
-		&T11.3 & \xmark & \\
-		&T11.4 & \xmark & \\
-		&T11.5 & \xmark & \\
+		&T11.1 - T11.3 & \cmark & \\
+		&T11.4 & \cmark & Syntax für Kommentare wurde geändert \\
+		&T11.5 & \cmark & \\
 		\bottomrule
 	\end{tabular}
 	\caption{Übersicht zur Abdeckung der Test aus dem Pflichtenheft}

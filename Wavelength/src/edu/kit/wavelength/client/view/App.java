@@ -793,6 +793,12 @@ public class App implements Serializable {
 			// writes Editor with given content
 			if (val.get(EDITOR_SERIALIZATION) != exercise.getPredefinitions()) {
 				editor.write(val.get(EDITOR_SERIALIZATION));
+			} else {
+				if (exercise.hasPredefinitions()) {
+					editor.write(exercise.getPredefinitions());
+				} else {
+					editor.write("");
+				}
 			}
 			//editor.write(val.get(EDITOR_SERIALIZATION));
 

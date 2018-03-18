@@ -27,6 +27,8 @@ import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.KeyCodes;
+import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
@@ -34,6 +36,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
@@ -619,6 +622,34 @@ public class App implements Serializable {
 		}
 		shareButton.addClickHandler(e -> new UseShare(Arrays.asList(new UpdateShareURL())).run());
 
+		//keybindings
+		RootPanel.get().addDomHandler(event -> {
+			if (event.isControlKeyDown() && event.getNativeKeyCode() == KeyCodes.KEY_BACKSPACE) {
+				if (clearButton.isEnabled()) {
+					clearButton.click();
+				}
+			}
+		}, KeyDownEvent.getType());
+		
+		RootPanel.get().addDomHandler(event -> {
+			if (event.isControlKeyDown() && event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+				if (runButton.isEnabled()) {
+					runButton.click();
+				}
+			}
+		}, KeyDownEvent.getType());
+		
+		loadExercisePopup.addDomHandler(event -> {
+			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+				loadExercisePopupOkButton.click();
+			}
+		}, KeyDownEvent.getType());
+		
+		closeExercisePopup.addDomHandler(event -> {
+			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+				closeExercisePopupOkButton.click();
+			}
+		}, KeyDownEvent.getType());
 		
 		
 		// ui needs to be created BEFORE loading the editor for the ids to exist

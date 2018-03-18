@@ -32,7 +32,7 @@ public class SelectExportFormat implements Action {
 		String reprk = exportFormat.getRepresentation(app.executor().getDisplayed(), app.executor().getLibraries());
 		app.exportArea().setText(reprk);
 		int lineCount = reprk.split("\r\n|\r|\n", -1).length;
-		app.exportArea().setVisibleLines(Math.min(30, lineCount));
+		app.exportArea().setVisibleLines(Math.max(30, lineCount));
 		app.exportPopup().show();
 		app.exportArea().setFocus(true);
 		app.exportArea().selectAll();

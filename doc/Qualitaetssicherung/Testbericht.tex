@@ -481,7 +481,7 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	
 	% issue 33
 	\issue{Die Seite wird nicht neu geladen, wenn sich nur das History-Token ändert. Um die Seite neu zu Laden muss zweimal ENTER gedrückt werden. 
-	Dies verhindert den Einsatz eines WebDrivers wie er beispielsweise für die Selenium-Tests gebraucht wird, da dieser ewig darauf wartet, dass die Seite neu geladen wird.}
+	Dies verhindert den Einsatz eines WebDrivers, wie er beispielsweise für die Selenium-Tests gebraucht wird, da dieser ewig darauf wartet, dass die Seite neu geladen wird.}
 	{Die Serialisierungs-ID der Anwendung wird in Form eines History-Tokens in der URL gesetzt. Wird nur das History-Token geändert, so wird die Seite nicht neu geladen.}
 	{Die ständige Serialisierung der Anwendung wird entfernt. Dadurch ist es nicht notwendig den Zustand in der URL zu spiegeln, was der einzige Grund für die History-Tokens war.
 	Dadurch konnte der Umstieg auf URL-Parameter erfolgen, die bei einer Änderung dafür sorgen, dass die Seite neu geladen wird.}

@@ -16,7 +16,7 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
-import edu.kit.wavelength.client.model.term.TermTooDeepException;
+import edu.kit.wavelength.client.model.term.TermNotAcceptableException;
 
 /**
  * This class is used to convert an input String into a {@link LambdaTerm}
@@ -102,8 +102,8 @@ public class Parser {
 		String lastLine = possibleRows[rows.get((rows.size() - 1))];
 		try {
 			return parseTerm(lastLine, 0);
-		} catch (TermTooDeepException ex) {
-			throw new ParseException("Term too large", rows.size() - 1, 0, lastLine.length());
+		} catch (TermNotAcceptableException ex) {
+			throw new ParseException(ex.getMessage(), rows.size() - 1, 0, lastLine.length());
 		}
 	}
 
@@ -116,8 +116,8 @@ public class Parser {
 			LambdaTerm term;
 			try {
 				term = parseTerm(termString, input.length() - termString.length());
-			} catch (TermTooDeepException ex) {
-				throw new ParseException("Term too large", rowPos, input.length() - termString.trim().length(), input.length());
+			} catch (TermNotAcceptableException ex) {
+				throw new ParseException(ex.getMessage(), rowPos, input.length() - termString.trim().length(), input.length());
 			}
 			inputLibrary.addTerm(term, name);
 		} else {

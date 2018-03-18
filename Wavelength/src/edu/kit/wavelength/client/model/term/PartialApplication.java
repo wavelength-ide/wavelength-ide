@@ -23,6 +23,7 @@ public abstract class PartialApplication implements LambdaTerm {
 	private int numReceived;
 	private String name;
 	private int size;
+	private int depth;
 
 	/**
 	 * Creates a new partial application that has not yet bound any parameters.
@@ -52,9 +53,13 @@ public abstract class PartialApplication implements LambdaTerm {
 		this.received = new LambdaTerm[numParameters];
 		this.numReceived = 0;
 		this.size = getRepresented().acceptVisitor(new GetSizeVisitor()) + 1;
+		this.depth = getRepresented().acceptVisitor(new GetDepthVisitor()) + 1;
 		
 		if (this.size > LambdaTerm.MAX_SIZE)
-			throw new TermTooDeepException();
+			throw new TermNotAcceptableException("Term too large.");
+		
+		if (this.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermNotAcceptableException("Term too deep.");
 	}
 
 	protected PartialApplication() {
@@ -81,11 +86,19 @@ public abstract class PartialApplication implements LambdaTerm {
 	}
 	
 	/**
-	 * Returns the depth of this partial application.
-	 * @return The depth of this partial application
+	 * Returns the size of this partial application.
+	 * @return The size of this partial application
 	 */
 	public int getSize() {
 		return this.size;
+	}
+	
+	/**
+	 * Returns the depth of this partial application.
+	 * @return The depth of this partial application
+	 */
+	public int getDepth() {
+		return this.depth;
 	}
 
 	@Override
@@ -138,9 +151,15 @@ public abstract class PartialApplication implements LambdaTerm {
 		if (cloned.numReceived == numParameters)
 			return cloned.accelerate(cloned.received);
 		cloned.size = cloned.getRepresented().acceptVisitor(new GetSizeVisitor()) + 1;
+		cloned.depth = cloned.getRepresented().acceptVisitor(new GetDepthVisitor()) + 1;
+		
 		
 		if (cloned.size > LambdaTerm.MAX_SIZE)
-			throw new TermTooDeepException();
+			throw new TermNotAcceptableException("Term too large.");
+		
+		if (cloned.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermNotAcceptableException("Term too deep.");
+
 		return cloned;
 	}
 

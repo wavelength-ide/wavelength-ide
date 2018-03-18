@@ -43,6 +43,14 @@ public final class FreeVariable implements LambdaTerm {
 	 * Returns the depth of this free variable.
 	 * @return The depth of this free variable
 	 */
+	public int getDepth() {
+		return 1;
+	}
+	
+	/**
+	 * Returns the size of this free variable.
+	 * @return The size of this free variable
+	 */
 	public int getSize() {
 		return 1;
 	}

@@ -40,10 +40,18 @@ public final class BoundVariable implements LambdaTerm {
 	}
 	
 	/**
+	 * Returns the size of this bound variable.
+	 * @return The size of this bound variable
+	 */
+	public int getSize() {
+		return 1;
+	}
+	
+	/**
 	 * Returns the depth of this bound variable.
 	 * @return The depth of this bound variable
 	 */
-	public int getSize() {
+	public int getDepth() {
 		return 1;
 	}
 

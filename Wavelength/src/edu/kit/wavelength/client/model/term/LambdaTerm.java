@@ -16,7 +16,8 @@ public interface LambdaTerm extends Serializable {
 	/**
 	 * The maximal depth of any lambda term
 	 */
-	public static final int MAX_SIZE = 3500;
+	public static final int MAX_SIZE = 130000;
+	public static final int MAX_DEPTH = 2000;
 	
 	/**
 	 * Creates a lambda term from its serialization.

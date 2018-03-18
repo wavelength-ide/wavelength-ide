@@ -5,6 +5,8 @@ package edu.kit.wavelength.client.model.term;
  * exceeds the maximum allowed depth.
  *
  */
-public final class TermTooDeepException extends RuntimeException {
-
+public final class TermNotAcceptableException extends RuntimeException {
+	public TermNotAcceptableException(String message) {
+		super(message);
+	}
 }

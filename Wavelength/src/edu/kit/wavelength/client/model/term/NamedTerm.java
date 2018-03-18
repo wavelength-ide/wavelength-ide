@@ -12,6 +12,7 @@ public final class NamedTerm implements LambdaTerm {
 
 	private String name;
 	private LambdaTerm inner;
+	private int size;
 	private int depth;
 
 	public static final char ID = 'n';
@@ -27,10 +28,14 @@ public final class NamedTerm implements LambdaTerm {
 	public NamedTerm(String name, LambdaTerm inner) {
 		this.name = name;
 		this.inner = inner;
-		this.depth = inner.acceptVisitor(new GetSizeVisitor()) + 1;
+		this.size = inner.acceptVisitor(new GetSizeVisitor()) + 1;
+		this.depth = inner.acceptVisitor(new GetDepthVisitor()) + 1;
 		
-		if (this.depth > LambdaTerm.MAX_SIZE)
-			throw new TermTooDeepException();
+		if (this.size > LambdaTerm.MAX_SIZE)
+			throw new TermNotAcceptableException("Term too large.");
+		
+		if (this.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermNotAcceptableException("Term too deep.");
 	}
 
 	@Override
@@ -57,10 +62,18 @@ public final class NamedTerm implements LambdaTerm {
 	}
 	
 	/**
+	 * Returns the size of this named term.
+	 * @return The size of this named term
+	 */
+	public int getSize() {
+		return size;
+	}
+	
+	/**
 	 * Returns the depth of this named term.
 	 * @return The depth of this named term
 	 */
-	public int getSize() {
+	public int getDepth() {
 		return depth;
 	}
 

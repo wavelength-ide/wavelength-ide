@@ -15,7 +15,7 @@ import edu.kit.wavelength.client.model.serialization.SerializationUtilities;
 import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BetaReducer;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.model.term.TermTooDeepException;
+import edu.kit.wavelength.client.model.term.TermNotAcceptableException;
 import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.model.term.parsing.Parser;
 
@@ -119,10 +119,10 @@ public class ExecutionEngine {
 		LambdaTerm newTerm;
 		try {
 			newTerm = current.get(currentNum).acceptVisitor(new BetaReducer(redex));
-		} catch (TermTooDeepException ex) {
+		} catch (TermNotAcceptableException ex) {
 			++currentNum;
 			current.set(currentNum, null);
-			throw new ExecutionException("Term too large.");
+			throw new ExecutionException(ex.getMessage());
 		}
 		++currentNum;
 

@@ -16,7 +16,8 @@ public final class Application implements LambdaTerm {
 	private LambdaTerm leftHandSide;
 	private LambdaTerm rightHandSide;
 	private int size;
-
+	private int depth;
+	
 	private static final int LEFT_POSITION = 0;
 	private static final int RIGHT_POSITION = 1;
 	private static final int NUM_COMPONENTS = 2;
@@ -33,12 +34,17 @@ public final class Application implements LambdaTerm {
 	 */
 	public Application(LambdaTerm leftHandSide, LambdaTerm rightHandSide) {
 		this.leftHandSide = leftHandSide;
-		this.rightHandSide = rightHandSide;
+		this.rightHandSide = rightHandSide; 
 		this.size = leftHandSide.acceptVisitor(new GetSizeVisitor()) +
 				rightHandSide.acceptVisitor(new GetSizeVisitor());
+		this.depth = Math.max(leftHandSide.acceptVisitor(new GetDepthVisitor()),
+				rightHandSide.acceptVisitor(new GetDepthVisitor())) + 1;
 		
 		if (this.size > LambdaTerm.MAX_SIZE)
-			throw new TermTooDeepException();
+			throw new TermNotAcceptableException("Term too large.");
+		
+		if (this.depth > LambdaTerm.MAX_DEPTH)
+			throw new TermNotAcceptableException("Term too deep.");
 	}
 
 	@Override
@@ -65,11 +71,19 @@ public final class Application implements LambdaTerm {
 	}
 	
 	/**
-	 * Returns the depth of this application.
-	 * @return The depth of this application
+	 * Returns the size of this application.
+	 * @return The size of this application
 	 */
 	public int getSize() {
 		return size;
+	}
+	
+	/**
+	 * Returns the depth of this application.
+	 * @return The depth of this application
+	 */
+	public int getDepth() {
+		return depth;
 	}
 
 	@Override

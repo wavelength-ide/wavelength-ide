@@ -231,7 +231,7 @@ dieser Bugs wären ohne die Verwendung eines Fuzzers mit hoher Wahrscheinlichkei
 unentdeckt geblieben.
 
 Bei der Verwendung des Fuzzers wurden jedoch auch die Limitationen dieser Methodik
-zum Testen deutlich. Der Fuzzer such spezifisch nach neuen internen Zuständen und
+zum Testen deutlich. Der Fuzzer sucht spezifisch nach neuen internen Zuständen und
 Ausführungspfaden. Fehlverhalten, welches nicht zu einer Verzweigung im
 Programmfluss führt, ist für den Fuzzer somit nicht sichtbar. Im Fall des
 Wavelength-Parsers wird dieser Umstand im Bezug auf Kommentare in der Eingabe
@@ -267,17 +267,26 @@ Die nachfolgenden Tests wurden mit folgenden Eingaben getestet:
 	& \text{id}\ x &&
 \end{nospaceflalign*}
 
+\begin{nospaceflalign*}
+	& \text{curry} = \lambda f.\, \lambda a.\, \lambda b.\, f \, (\text{pair}\, a\: b) \\
+	&(\text{curry}\, (\lambda p.\, (\text{first}\, p)\ (\text{second}\, p)))\, x\: x &&
+\end{nospaceflalign*}
+
+\begin{nospaceflalign*}
+	&\text{plus} = \text{plus} \: 1000 \\
+	&\text{plus} = \text{plus} \\
+	&\text{plus} \: 1 &&
+\end{nospaceflalign*}
+
 %TODO: mehr Terme
 
 \subsection{Redexe}
-Nur Redexe im  Term werden als anklickbar markiert und ob nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
+Nur Redexe im  Term werden als anklickbar markiert und nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
 
 
 \subsection{Mouse-over}
-Dieser Test testet das korrekte Verhalten bei Bewegen der Maus über Lambda-Terme. Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
+Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
 
-
-Nur Redexe im  Term werden als anklickbar markiert und ob nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus. %TODO: link to issue
 
 \subsection{Hintergrund}
 Jeder neue Term wird in einer neuen Zeile ausgegeben und verschiedene Terme werden durch verschiedene Hintergrundfarben unterscheidbar gemacht.
@@ -409,10 +418,6 @@ $\lambda$-Term bestehen, werden abgelehnt.}
 % issue 8; TODO
 \issue{}{}{}
 
-% issue 7
-\issue{Im Unicode-Ausgabeformat werden benannte Term nicht markiert, auch wenn sie den als nächstes zu reduzierenden Redex enthalten.}
-{Bei benannten Termen wird nicht überprüft, ob er einen Redex repräsentiert.}
-{Ein benannter Term wird jetzt bezüglich der Markierung je nach innerer Repräsentation behandelt.}
 
 % issue 6; TODO
 \issue{}{}{}

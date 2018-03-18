@@ -58,9 +58,11 @@
 
 \section{Einleitung}
 %TODO kurze Einleitung. Verwendete Tools, Daten (Coverage, #Testcases)
-In diesem Dokument werden die Ergebnisse der Qualitätssicherungsphase des Wave\-length-IDE-Projekts festgehalten.
-In dieser Phase wurden wie versprochen Features nachgeliefert (Serialisierung des Übungsmodus).
-Es kam aber auch zu einigen Änderungen an bestehenden Features (meist um die Benutzbarkeit zu erhöhen).
+
+In diesem Dokument werden die Ergebnisse der Qualitätssicherungsphase des Wavelength-IDE-Projekts festgehalten.
+In dieser Phase wurden wie versprochen Features nachgeliefert, wie die Serialisierung des Übungsmodus.
+Es kam aber auch zu einigen Änderungen an bestehenden Features, meist um die Benutzbarkeit zu erhöhen.
+
 Weiterhin konnten durch intensives Testen viele Spezialfälle und Ausnahmen behandelt werden.
 Dazu wurden verschiedene Testparadigmen ausprobiert.
 Zum Einsatz kamen JUnit 4, Fuzzing und Selenium.
@@ -292,6 +294,7 @@ Testfälle in Unittests festgehalten, um Regressionen entgegenzuwirken.
 In den folgenden Tests werden die Markierungen in den $\lambda$-Termen der Ausgabe getestet. 
 Es wurde mit folgenden Eingaben getestet:
 
+\paragraph{unbenannte Terme}
 \begin{nospaceflalign*}
 	&\lambda x.\, x \\
 	&(\lambda x.\, x)\: x \\
@@ -300,6 +303,8 @@ Es wurde mit folgenden Eingaben getestet:
 	&(\lambda a.\, a)\: b \: ((\lambda c.\, c)\: d) \\
 	&(\lambda a.\, \lambda b.\, b)\: ((\lambda c.\, (\lambda d.\, d\: d)\: (\lambda e.\, e\: e))\: ((\lambda f.\, f)\: (\lambda g.\, g)))\: (\lambda h.\, \lambda i.\, i)&&
 \end{nospaceflalign*}
+
+\paragraph{benannte Terme} 
 
 \begin{nospaceflalign*}
 	& \text{id} = \lambda x.\, x \\
@@ -311,13 +316,13 @@ Es wurde mit folgenden Eingaben getestet:
 	&(\text{curry}\, (\lambda p.\, (\text{first}\, p)\ (\text{second}\, p)))\, x\: x &&
 \end{nospaceflalign*}
 
+Bei dem plus im folgenden Testfall handelt es sich um die Funktion aus den Bibliotheken zu natürlichen Zahlen.
 \begin{nospaceflalign*}
-	&\text{plus} = \text{plus} \: 1000 \\
+	&\text{plus} = \text{plus} \: 1 \\
 	&\text{plus} = \text{plus} \\
 	&\text{plus} \: 1 &&
 \end{nospaceflalign*}
 
-%TODO: mehr Terme
 
 \subsection{Unicode}
 \subsubsection{Redexe}
@@ -450,8 +455,8 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 
 \begin{itemize}[itemsep=3ex]
 	%issue 26
-	\issue{Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt.}
-	{DIe Deserialisierung des Executors findet vor dem Setzen des Output-Formats statt. Der Executor liest beim Deserialisieren das OutputFormat aus, das standardmäßig der Unicode-Output ist.}
+	\issue{Wenn eine Reduktion in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt.}
+	{Die Deserialisierung des Executors findet vor dem Setzen des Output-Formats statt. Der Executor liest beim Deserialisieren das Output-Format aus, das standardmäßig der Unicode-Output ist.}
 	{Die Deserialisierung des Executors findet nach dem Setzen des Output-Formats statt.}
 	
 	% issue 12

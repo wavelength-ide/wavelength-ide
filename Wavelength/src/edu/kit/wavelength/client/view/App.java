@@ -322,7 +322,7 @@ public class App implements Serializable {
 		footerPanel.add(exportDropupGroup);
 
 		openExportMenuButton = new Button();
-		openExportMenuButton.setTitle("Export the current autput.");
+		openExportMenuButton.setTitle("Export the current output.");
 		openExportMenuButton.setId("openExportMenuButton");
 		openExportMenuButton.setDataToggle(Toggle.DROPDOWN);
 		openExportMenuButton.setToggleCaret(false);

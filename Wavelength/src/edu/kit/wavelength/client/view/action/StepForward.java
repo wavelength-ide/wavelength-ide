@@ -21,7 +21,7 @@ import edu.kit.wavelength.client.view.App;
 
 /**
  * This action requests and displays the next reduction step of the current
- * execution.
+ * execution. It also pauses the ongoing execution.
  */
 public class StepForward implements Action {
 
@@ -31,9 +31,6 @@ public class StepForward implements Action {
 		return list.stream().filter(pred).findFirst().get();
 	}
 	
-	/**
-	 * Requests and displays the next reduction step.
-	 */
 	@Override
 	public void run() {
 		if (app.executor().isRunning()) {

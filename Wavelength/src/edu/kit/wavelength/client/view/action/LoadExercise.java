@@ -15,11 +15,6 @@ public class LoadExercise implements Action {
 
 	private static App app = App.get();
 	
-	/**
-	 * Reduces the editors width and displays the task in the enabled task view
-	 * window. Also shows buttons for exiting this exercise view and for displaying
-	 * the sample solution.
-	 */
 	@Override
 	public void run() {
 		Control.wipe();

@@ -24,9 +24,6 @@ public class StepManually implements Action {
 		this.redex = redex;
 	}
 
-	/**
-	 * Delegates the step to the Executor.
-	 */
 	@Override
 	public void run() {
 		app.executor().stepForward(redex);

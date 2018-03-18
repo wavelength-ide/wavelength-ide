@@ -10,10 +10,6 @@ public class Pause implements Action {
 
 	private static App app = App.get();
 	
-	/**
-	 * Pause the running execution and enable the step-by-step buttons. Also allow
-	 * output window interactions and enable the reduction order option.
-	 */
 	@Override
 	public void run() {
 		app.executor().pause();

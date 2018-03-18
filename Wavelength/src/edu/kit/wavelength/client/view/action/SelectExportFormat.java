@@ -22,11 +22,7 @@ public class SelectExportFormat implements Action {
 		this.exportFormat = exportFormat;
 	}
 
-	/**
-	 * Gets the representation of the current output in the selected export format
-	 * and writes it into the export output window. Displays this window and disables
-	 * user interaction with all elements, except the export window.
-	 */
+
 	@Override
 	public void run() {
 		if (!app.executor().isPaused()) {

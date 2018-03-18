@@ -11,6 +11,9 @@ import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.view.App;
 
+/**
+ * Includes the selected library. This only affects newly started executions.
+ */
 public class SelectLibrary implements Action {
 
 	private static App app = App.get();

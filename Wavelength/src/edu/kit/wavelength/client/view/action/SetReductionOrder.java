@@ -11,9 +11,6 @@ public class SetReductionOrder implements Action {
 	
 	private static App app = App.get();
 
-	/**
-	 * Changes the reduction order to the selected one.
-	 */
 	@Override
 	public void run() {
 		if (app.executor().isTerminated()) {

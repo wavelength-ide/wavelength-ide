@@ -9,7 +9,6 @@ import java.util.stream.Collectors;
 import org.gwtbootstrap3.client.ui.CheckBox;
 import org.gwtbootstrap3.client.ui.html.Text;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.library.Libraries;
@@ -22,7 +21,8 @@ import edu.kit.wavelength.client.model.term.parsing.ParseException;
 import edu.kit.wavelength.client.view.App;
 
 /**
- * This class starts a new reduction process and sets the view accordingly.
+ * This class starts a new reduction process and sets the view accordingly. It
+ * reads the users input and all required options needed to start the execution.
  */
 public class RunExecution implements Action {
 
@@ -32,11 +32,6 @@ public class RunExecution implements Action {
 		return list.stream().filter(pred).findFirst().get();
 	}
 
-	/**
-	 * Reads the users input and all required options from the option menus and
-	 * delegates the reduction process to the Executor. Disables the editor and
-	 * option menus and toggles the play button.
-	 */
 	@Override
 	public void run() {
 		String code = app.editor().read();
@@ -50,13 +45,13 @@ public class RunExecution implements Action {
 		List<Library> libraries = app.libraryCheckBoxes().stream().filter(CheckBox::getValue)
 				.map(libraryCheckbox -> find(Libraries.all(), l -> libraryCheckbox.getText().equals(l.getName())))
 				.collect(Collectors.toList());
-		
+
 		if (!app.executor().isTerminated()) {
 			app.executor().terminate();
 		}
-		
+
 		app.outputArea().clear();
-		
+
 		app.editor().unerror();
 		try {
 			app.executor().start(code, order, size, libraries);
@@ -74,7 +69,7 @@ public class RunExecution implements Action {
 			app.editor().error(message, row, row, columnStart, columnEnd);
 			return;
 		}
-		
+
 		Control.updateControls();
 	}
 }

@@ -9,10 +9,6 @@ public class EnterDefaultMode implements Action {
 
 	private static App app = App.get();
 
-	/**
-	 * Resizes the editor window to full width, hides the solution and task
-	 * windows and hides the buttons for exiting and showing the solution.
-	 */
 	@Override
 	public void run() {
 		Control.wipe();

@@ -13,8 +13,8 @@ import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.SerializationObserver;
 
 /**
- * This action toggles the permalink panel. The permalink encodes the current
- * input, output and settings.
+ * This action generates the permalink and toggles the dedicated panel. The
+ * permalink encodes the current input, output and settings.
  */
 
 public class UseShare implements Action {
@@ -24,7 +24,7 @@ public class UseShare implements Action {
 
 	/**
 	 * Creates a new UseShare action with a given list of
-	 * {@link SerializationOutput} that are updated each time the action runs.
+	 * {@link SerializationObserver} that are updated each time the action runs.
 	 * 
 	 * @param serializationOutputs
 	 *            observers that are updated with the id of the database entry for
@@ -34,10 +34,6 @@ public class UseShare implements Action {
 		this.serializationOutputs = serializationOutputs;
 	}
 
-	/**
-	 * Hides the share panel if it is currently shown, otherwise generates the
-	 * permalink that encodes the current input, output and settings.
-	 */
 	@Override
 	public void run() {
 		if (app.executor().isRunning()) {
@@ -63,7 +59,7 @@ public class UseShare implements Action {
 			databaseService.addEntry(serialization, addEntryCallback);
 			sharePanel.setVisible(true);
 		}
-		
+
 	}
 
 }

@@ -7,7 +7,7 @@ import edu.kit.wavelength.client.model.serialization.Serializable;
  * a solution specifying what the result should look like. Additionally
  * exercises may provide a basis for a given task.
  */
-public interface Exercise extends Serializable{
+public interface Exercise extends Serializable {
 
 	/**
 	 * Gets the name of the exercise.

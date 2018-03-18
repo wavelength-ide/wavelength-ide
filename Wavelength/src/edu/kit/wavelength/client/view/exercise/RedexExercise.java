@@ -7,47 +7,62 @@ import edu.kit.wavelength.client.model.reduction.ReductionOrder;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.export.BasicExportVisitor;
 
+/**
+ * Exercise which generates Lambda Terms randomly and asks the user to search
+ * for reducible expressions.
+ */
 public class RedexExercise implements Exercise {
 
 	private int minTermDepth = 3;
 	private int maxTermDepth = 8;
-	
+
 	private ReductionOrder myReductionOrder;
 	private TermGenerator termGenerator;
 	private String predefinitions;
-	
+
 	private String firstRedex;
-	
+
+	/**
+	 * Creates a new random redex exercise that uses the given {@link ReductionOrder}.
+	 * 
+	 * @param reduction
+	 *            The {@link ReductionOrder} the user should use
+	 */
 	public RedexExercise(ReductionOrder reduction) {
 		this.myReductionOrder = reduction;
 		termGenerator = new TermGenerator();
 	}
-	
+
+	/**
+	 * Creates a new random redex exercise that uses the given {@link ReductionOrder} and the given {@link TermGenerator}.
+	 * @param reduction The {@link ReductionOrder} the user should use
+	 * @param generator  The {@link TermGenerator} used for term generation.
+	 */
 	public RedexExercise(ReductionOrder reduction, TermGenerator generator) {
 		myReductionOrder = reduction;
 		termGenerator = generator;
 		reset();
 	}
-	
+
 	@Override
 	public String getName() {
 		return "β-Redex - " + myReductionOrder.getName() + "*";
 	}
 
 	@Override
-	public String getTask() {	
-		return "Does the displayed term contain a redex and if so which redex will be reduced first using " + myReductionOrder.getName()
-		+ " reduction order?";
+	public String getTask() {
+		return "Does the displayed term contain a redex and if so which redex will be reduced first using "
+				+ myReductionOrder.getName() + " reduction order?";
 	}
 
 	@Override
 	public String getSolution() {
 		if (firstRedex == null) {
 			return "Using the " + myReductionOrder.getName()
-			+  " reduction order, the displayed term does not contain a redex.";
+					+ " reduction order, the displayed term does not contain a redex.";
 		} else {
 			return "\"" + firstRedex + " \" is the first redex to be reduced using the " + myReductionOrder.getName()
-			+ " reduction order.";
+					+ " reduction order.";
 		}
 	}
 
@@ -59,14 +74,15 @@ public class RedexExercise implements Exercise {
 			return true;
 		}
 	}
-	
+
 	@Override
 	public String getPredefinitions() {
 		return predefinitions;
 	}
-	
+
 	/**
-	 * Resets the exercise by randomly creating a new term and updating predefinition and solution.
+	 * Resets the exercise by randomly creating a new term and updating
+	 * predefinition and solution.
 	 */
 	public void reset() {
 		BoundVariableResolver resolver = new BoundVariableResolver();
@@ -81,7 +97,7 @@ public class RedexExercise implements Exercise {
 		if (redex == null) {
 			firstRedex = null;
 		} else {
-			LambdaTerm resolvedRedex =  resolver.resolveVariables(newTerm, redex);
+			LambdaTerm resolvedRedex = resolver.resolveVariables(newTerm, redex);
 			firstRedex = resolvedRedex.acceptVisitor(stringMaker).toString();
 		}
 	}

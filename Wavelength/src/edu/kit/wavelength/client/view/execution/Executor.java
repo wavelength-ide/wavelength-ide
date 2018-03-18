@@ -19,33 +19,35 @@ import edu.kit.wavelength.client.model.term.parsing.ParseException;
  * Concurrently reduces lambda terms.
  */
 public class Executor implements Serializable {
-	
-	private enum S { Running, Paused, Terminated }
-	
-	private static class State { 
+
+	private enum S {
+		Running, Paused, Terminated
+	}
+
+	private static class State {
 		S val;
-		
-		State(S v) { 
-			this.val = v; 
+
+		State(S v) {
+			this.val = v;
 		}
-		
-		State(State s) { 
-			this(s.val); 
+
+		State(State s) {
+			this(s.val);
 		}
 	}
-	
+
 	private static int allowedReductionTimeMS = 100;
 
 	private List<ExecutionObserver> executionObservers;
 	private List<ControlObserver> controlObservers;
-	
+
 	private State state = new State(S.Terminated);
-	
-	private void setState(S v) { 
-		state.val = v; 
-		state = new State(state); 
+
+	private void setState(S v) {
+		state.val = v;
+		state = new State(state);
 	}
-	
+
 	private ExecutionEngine engine;
 
 	/**
@@ -68,7 +70,7 @@ public class Executor implements Serializable {
 	private void pushTerms(Iterable<LambdaTerm> ts) {
 		ts.forEach(this::pushTerm);
 	}
-	
+
 	private void pushError(String error) {
 		executionObservers.forEach(o -> o.pushError(error));
 	}
@@ -164,7 +166,7 @@ public class Executor implements Serializable {
 			pushTerm(engine.getDisplayed().get(0));
 		}
 	}
-	
+
 	/**
 	 * Pauses the automatic execution, transitioning into the step by step mode.
 	 */
@@ -373,14 +375,24 @@ public class Executor implements Serializable {
 		engine.setReductionOrder(reduction);
 		executionObservers.forEach(o -> o.reloadTerm());
 	}
-	
+
+	/**
+	 * Causes the last displayed term to be reloaded if a new output format was
+	 * selected.
+	 */
 	public void updatedOutputFormat() {
 		if (isTerminated()) {
 			throw new IllegalStateException("trying to set option while execution is terminated");
 		}
 		executionObservers.forEach(o -> o.reloadTerm());
 	}
-	
+
+	/**
+	 * Changes the active output size to the entered one.
+	 * 
+	 * @param s
+	 *            The new output size
+	 */
 	public void setOutputSize(OutputSize s) {
 		if (isTerminated()) {
 			throw new IllegalStateException("trying to set option while execution is terminated");

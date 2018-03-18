@@ -37,7 +37,7 @@ public class TermGenerator {
 	 * @param abstractionDepth The number of abstractions enclosing this term.
 	 * @return The newly created subterm.
 	 */
-	public LambdaTerm getNewTerm (int minDepth, int maxDepth, int termDepth, int abstractionDepth) {
+	public LambdaTerm getNewTerm(int minDepth, int maxDepth, int termDepth, int abstractionDepth) {
 		if (minDepth > maxDepth) {
 			throw new IllegalArgumentException("MinDepth has to be lower than maxDepth.");
 		}
@@ -89,7 +89,7 @@ public class TermGenerator {
 	}
 	
 	/**
-	 * Return a random integer in [0,bound)
+	 * Return a random integer in [0,bound).
 	 * @param bound The upper bound to use
 	 * @return a random integer
 	 */

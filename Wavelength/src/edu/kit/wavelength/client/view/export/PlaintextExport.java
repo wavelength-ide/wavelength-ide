@@ -7,9 +7,8 @@ import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
- * This class translates the given lambda terms into plain text. This especially
- * means that the generated representation does not contain unicode symbols (if
- * the user didn't define any terms or variable with unicode symbols).
+ * This class translates the given lambda terms into plain text. The lambda
+ * symbol is represented by a backslash.
  */
 public class PlaintextExport implements Export {
 
@@ -27,14 +26,14 @@ public class PlaintextExport implements Export {
 		if (displayedTerms.size() == 0) {
 			return "";
 		}
-		
+
 		BasicExportVisitor visitor = new BasicExportVisitor(libraries, LAMBDA);
 		StringBuilder result = new StringBuilder();
 
 		if (displayedTerms.size() == 1) {
 			return result.append(displayedTerms.get(0).acceptVisitor(visitor)).toString();
 		}
-		
+
 		// No arrow for first Line
 		assert (displayedTerms.size() > 1);
 		result.append(displayedTerms.get(0).acceptVisitor(visitor));

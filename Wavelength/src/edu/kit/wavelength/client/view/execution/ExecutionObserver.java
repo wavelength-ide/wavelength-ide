@@ -29,4 +29,11 @@ public interface ExecutionObserver {
 	 * Reloads the last displayed term.
 	 */
 	void reloadTerm();
+	
+	/**
+	 * Pushes an error message.
+	 * 
+	 * @param error - message
+	 */
+	void pushError(String error);
 }

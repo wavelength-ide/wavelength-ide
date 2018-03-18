@@ -1,7 +1,10 @@
 package edu.kit.wavelength.client.view.action;
 
+<<<<<<< HEAD
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
+=======
+>>>>>>> depthlimit
 import edu.kit.wavelength.client.view.App;
 
 public class SetOutputSize implements Action {
@@ -17,7 +20,7 @@ public class SetOutputSize implements Action {
 		OutputSize newSize = OutputSizes.all().stream().filter(s -> s.getName().equals(sizeName)).findFirst()
 				.get();
 		app.executor().setOutputSize(newSize);
-		
+
 		Control.updateControls();
 	}
 

@@ -6,6 +6,7 @@ import java.util.List;
 import com.google.gwt.core.client.Scheduler;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.model.ExecutionException;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -67,6 +68,10 @@ public class Executor implements Serializable {
 	private void pushTerms(Iterable<LambdaTerm> ts) {
 		ts.forEach(this::pushTerm);
 	}
+	
+	private void pushError(String error) {
+		executionObservers.forEach(o -> o.pushError(error));
+	}
 
 	private void scheduleExecution() {
 		final State state = this.state;
@@ -84,7 +89,15 @@ public class Executor implements Serializable {
 						controlObservers.forEach(ControlObserver::finish);
 						return false;
 					}
-					List<LambdaTerm> displayedTerms = engine.stepForward();
+					List<LambdaTerm> displayedTerms;
+					try {
+						displayedTerms = engine.stepForward();
+					} catch (ExecutionException e) {
+						setState(S.Paused);
+						pushError(e.getMessage());
+						controlObservers.forEach(ControlObserver::finish);
+						return false;
+					}
 					pushTerms(displayedTerms);
 					Date end = new Date();
 					if (end.getTime() - start.getTime() > allowedReductionTimeMS) {
@@ -196,7 +209,15 @@ public class Executor implements Serializable {
 		if (!isPaused()) {
 			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
-		List<LambdaTerm> displayedTerms = engine.stepForward();
+		List<LambdaTerm> displayedTerms;
+		try {
+			displayedTerms = engine.stepForward();
+		} catch (ExecutionException e) {
+			setState(S.Paused);
+			pushError(e.getMessage());
+			controlObservers.forEach(ControlObserver::finish);
+			return;
+		}
 		pushTerms(displayedTerms);
 		if (!engine.isCurrentDisplayed()) {
 			LambdaTerm current = engine.displayCurrent();
@@ -215,7 +236,15 @@ public class Executor implements Serializable {
 		if (!isPaused()) {
 			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
-		List<LambdaTerm> displayedTerms = engine.stepForward(redex);
+		List<LambdaTerm> displayedTerms;
+		try {
+			displayedTerms = engine.stepForward(redex);
+		} catch (ExecutionException e) {
+			setState(S.Paused);
+			pushError(e.getMessage());
+			controlObservers.forEach(ControlObserver::finish);
+			return;
+		}
 		pushTerms(displayedTerms);
 	}
 

@@ -38,6 +38,14 @@ public final class BoundVariable implements LambdaTerm {
 	public int getDeBruijnIndex() {
 		return deBruijnIndex;
 	}
+	
+	/**
+	 * Returns the depth of this bound variable.
+	 * @return The depth of this bound variable
+	 */
+	public int getDepth() {
+		return 1;
+	}
 
 	@Override
 	public boolean equals(Object other) {

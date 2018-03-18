@@ -15,6 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.model.ExecutionException;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
 import edu.kit.wavelength.client.model.output.Full;
@@ -81,7 +82,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void deserialize1Test() throws ParseException {
+	public void deserialize1Test() throws ParseException, ExecutionException {
 		ExecutionEngine original = new ExecutionEngine(idRedex, new NormalOrder(), new Full(), Collections.emptyList());
 		original.stepForward();
 		ExecutionEngine restored = new ExecutionEngine(original.serialize().toString());
@@ -92,7 +93,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void basicReductionTest() throws ParseException {
+	public void basicReductionTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(idRedex, new NormalOrder(), new Full(), Collections.emptyList());
 		List<LambdaTerm> terms = engine.stepForward();
 		assertEquals(terms.size(), 1);
@@ -110,7 +111,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void changeReductionOrder() throws ParseException {
+	public void changeReductionOrder() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(twoRedex, new NormalOrder(), new Full(), Collections.emptyList());
 		List<LambdaTerm> normalTerms = engine.stepForward();
 		engine.stepBackward();
@@ -125,7 +126,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void displayTest() throws ParseException {
+	public void displayTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(infinite, new NormalOrder(), new Periodic(5), Collections.emptyList());
 		assertTrue(engine.stepForward().isEmpty());
 		assertTrue(engine.stepForward().isEmpty());
@@ -149,7 +150,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void validDisplayCTest() throws ParseException {
+	public void validDisplayCTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(infinite, new NormalOrder(), new Periodic(3), Collections.emptyList());
 		LambdaTerm firstTerm = testParser.parse(infinite);
 		engine.stepForward();
@@ -161,14 +162,14 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test(expected = IllegalStateException.class)
-	public void finishedStepForwardTest() throws ParseException {
+	public void finishedStepForwardTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(idRedex, new NormalOrder(), new Full(), Collections.emptyList());
 		engine.stepForward();
 		engine.stepForward();
 	}
 	
 	@Test
-	public void setOutputSizeTest() throws ParseException {
+	public void setOutputSizeTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
 		assertEquals(0, engine.stepForward().size());
 		assertEquals(1, engine.stepForward().size());
@@ -184,7 +185,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void getStepNumber1Test() throws ParseException {
+	public void getStepNumber1Test() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
 		assertEquals(0, engine.getStepNumber());
 		for (int i = 1; i <= 8; ++i) {
@@ -194,7 +195,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void getStepNumber2Test() throws ParseException {
+	public void getStepNumber2Test() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(nestedId, new NormalOrder(), new Periodic(2), Collections.emptyList());
 		assertEquals(0, engine.getStepNumber());
 		assertEquals(0, engine.stepForward().size());
@@ -215,7 +216,7 @@ public class ExecutionEngineTest {
 	}
 	
 	@Test
-	public void pushTest() throws ParseException {
+	public void pushTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine(multi, new NormalOrder(), new Periodic(2), Collections.emptyList());
 		LambdaTerm start = engine.getDisplayed().get(engine.getDisplayed().size() - 1);
 		assertThat(start, instanceOf(Application.class));

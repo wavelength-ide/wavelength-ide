@@ -38,6 +38,14 @@ public final class FreeVariable implements LambdaTerm {
 	public String getName() {
 		return name;
 	}
+	
+	/**
+	 * Returns the depth of this free variable.
+	 * @return The depth of this free variable
+	 */
+	public int getDepth() {
+		return 1;
+	}
 
 	@Override
 	public boolean equals(Object other) {

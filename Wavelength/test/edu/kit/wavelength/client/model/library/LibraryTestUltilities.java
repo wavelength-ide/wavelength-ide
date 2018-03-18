@@ -4,10 +4,12 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.List;
 
 import edu.kit.wavelength.client.model.ExecutionEngine;
+import edu.kit.wavelength.client.model.ExecutionException;
 import edu.kit.wavelength.client.model.output.ResultOnly;
 import edu.kit.wavelength.client.model.reduction.NormalOrder;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -40,7 +42,11 @@ public class LibraryTestUltilities {
 			if (engine.isFinished()) {
 				return engine.getDisplayed().get(engine.getDisplayed().size() - 1);
 			} else {
-				engine.stepForward();
+				try {
+					engine.stepForward();
+				} catch (ExecutionException ex) {
+					fail("An error occurred during execution.");
+				}
 			}
 		}
 	}

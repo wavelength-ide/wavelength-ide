@@ -9,8 +9,9 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
 /**
- * The CustomLibrary class represents a library which starts out empty, but to which any term and name can be added.
- * It is used by the Parser to store all name assignments defined by the user.
+ * The CustomLibrary class represents a library which starts out empty, but to
+ * which any term and name can be added. It is used by the Parser to store all
+ * name assignments defined by the user.
  */
 public class CustomLibrary implements Library {
 
@@ -20,6 +21,12 @@ public class CustomLibrary implements Library {
 
 	public static final char ID = 'c';
 
+	/**
+	 * Creates a new empty custom library.
+	 * 
+	 * @param name
+	 *            The name of the library
+	 */
 	public CustomLibrary(String name) {
 		this.name = name;
 		names = new ArrayList<String>();
@@ -40,7 +47,9 @@ public class CustomLibrary implements Library {
 
 	/**
 	 * Restores a {@link CustomLibrary} object from a serialization String.
-	 * @param serialized The serialization from which to restore the library
+	 * 
+	 * @param serialized
+	 *            The serialization from which to restore the library
 	 * @return A CustomLibrary equal to the library processed to the input String
 	 */
 	public static CustomLibrary fromSerialized(String serialized) {

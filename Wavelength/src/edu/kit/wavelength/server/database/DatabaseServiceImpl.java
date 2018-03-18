@@ -28,7 +28,8 @@ public class DatabaseServiceImpl extends RemoteServiceServlet implements Databas
 
 	// SQL-Commands
 	private static final String databasePath = "jdbc:sqlite:database/database.db";
-	private static final String createDatabase = "CREATE TABLE IF NOT EXISTS map (\n id text PRIMARY KEY, \n serialization text);";
+	private static final String createDatabase = 
+			"CREATE TABLE IF NOT EXISTS map (\n id text PRIMARY KEY, \n serialization text);";
 	private static final String selectSerialization = "SELECT serialization FROM map WHERE id = ?";
 	private static final String selectID = "SELECT id FROM map WHERE serialization = ?";
 	private static final String insertEntry = "INSERT INTO map (id, serialization) VALUES (?,?)";

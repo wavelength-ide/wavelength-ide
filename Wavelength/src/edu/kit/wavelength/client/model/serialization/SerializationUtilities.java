@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import edu.kit.wavelength.client.model.term.FreeVariable;
 
 /**
  * Static class that provides tools for serializing and deserializing aggregate

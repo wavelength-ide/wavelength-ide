@@ -70,14 +70,13 @@ public final class Boolean implements Library {
 	public StringBuilder serialize() {
 		return new StringBuilder("" + ID);
 	}
-	
+
 	@Override
 	public List<TermInfo> getTermInfos() {
 		return Arrays.asList(new TermInfo("true", "literal or 'true a b' yields a"),
-		                     new TermInfo("false", "literal or 'false a b' yields b"),
-		                     new TermInfo("and a b", "a && b for a, b : bool") ,
-		                     new TermInfo("or a b", "a || b for a, b : bool"),
-		                     new TermInfo("not a", "!a for a : bool"),
-		                     new TermInfo("ifThenElse a b c", "b if a and c if not a for a : bool"));
+				new TermInfo("false", "literal or 'false a b' yields b"),
+				new TermInfo("and a b", "a && b for a, b : bool"), new TermInfo("or a b", "a || b for a, b : bool"),
+				new TermInfo("not a", "!a for a : bool"),
+				new TermInfo("ifThenElse a b c", "b if a and c if not a for a : bool"));
 	}
 }

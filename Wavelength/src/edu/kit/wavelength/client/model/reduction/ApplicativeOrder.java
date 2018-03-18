@@ -19,8 +19,7 @@ public final class ApplicativeOrder implements ReductionOrder {
 	public static final char ID = 'a';
 	
 	@Override
-	public Application next(LambdaTerm term)
-	{
+	public Application next(LambdaTerm term) {
 		if (term == null) {
 			throw new IllegalArgumentException("Term may not be null.");
 		}

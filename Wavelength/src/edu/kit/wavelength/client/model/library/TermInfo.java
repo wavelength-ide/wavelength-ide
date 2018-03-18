@@ -7,22 +7,25 @@ package edu.kit.wavelength.client.model.library;
 public class TermInfo {
 
 	/**
-	 * Name of the term
+	 * Name of the term.
 	 */
 	public final String name;
 	/**
-	 * Description of what the term does
+	 * Description of what the term does.
 	 */
 	public final String description;
-	
+
 	/**
-	 * Constructor
-	 * @param name - Name of the term
-	 * @param description - Description of what the term does
+	 * Creates the meta data object for a term with the given name and description.
+	 * 
+	 * @param name
+	 *            Name of the term
+	 * @param description
+	 *            Description of what the term does
 	 */
 	public TermInfo(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
-	
+
 }

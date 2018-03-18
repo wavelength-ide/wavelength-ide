@@ -7,11 +7,11 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 /**
  * This interface is used to interact with the different libraries provided by
- * the application. 
+ * the application.
  * 
- * Each library contains a set of {@link LambdaTerm}s and their
- * assigned names. These names can be used in place of terms to both shorten
- * terms and make them easier to understand.
+ * Each library contains a set of {@link LambdaTerm}s and their assigned names.
+ * These names can be used in place of terms to both shorten terms and make them
+ * easier to understand.
  */
 public interface Library extends Serializable {
 
@@ -37,17 +37,17 @@ public interface Library extends Serializable {
 	boolean containsName(String name);
 
 	/**
-	 * Returns the library's name
+	 * Returns the library's name.
 	 * 
 	 * @return The name of the library
 	 */
 	String getName();
-	
+
 	/**
-	 * Returns info for the terms that this library provides
+	 * Returns info for the terms that this library provides.
 	 * 
 	 * @return infos
 	 */
 	List<TermInfo> getTermInfos();
-	
+
 }

@@ -13,7 +13,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface DatabaseService extends RemoteService {
 	/**
 	 * Returns serialization belonging to given id if an entry exists, else returns
-	 * {@code null}
+	 * {@code null}.
 	 * 
 	 * @param id
 	 *            unique id

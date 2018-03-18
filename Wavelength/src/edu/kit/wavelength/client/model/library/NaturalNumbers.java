@@ -101,16 +101,13 @@ public final class NaturalNumbers implements Library {
 		NaturalNumbers naturalNumbers = (NaturalNumbers) o;
 		return this.turbo == naturalNumbers.turbo;
 	}
-	
+
 	@Override
 	public List<TermInfo> getTermInfos() {
 		return Arrays.asList(new TermInfo("[number]", "integer literals"),
-		                     new TermInfo("plus a b", "a + b for a, b : nat"),
-		                     new TermInfo("minus a b", "a - b for a, b : nat"),
-		                     new TermInfo("times a b", "a * b for a, b : nat"),
-		                     new TermInfo("pow a b", "a^b for a, b : nat"),
-		                     new TermInfo("pred a", "a - 1 for a : nat"),
-		                     new TermInfo("succ a", "a + 1 for a : nat"));
+				new TermInfo("plus a b", "a + b for a, b : nat"), new TermInfo("minus a b", "a - b for a, b : nat"),
+				new TermInfo("times a b", "a * b for a, b : nat"), new TermInfo("pow a b", "a^b for a, b : nat"),
+				new TermInfo("pred a", "a - 1 for a : nat"), new TermInfo("succ a", "a + 1 for a : nat"));
 	}
-	
+
 }

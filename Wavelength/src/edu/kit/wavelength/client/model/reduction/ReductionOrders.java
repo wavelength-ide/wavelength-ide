@@ -44,6 +44,8 @@ public final class ReductionOrders {
 
 		case NormalOrder.ID:
 			return new NormalOrder();
+			
+		default: break;
 		}
 
 		throw new IllegalArgumentException("serialized must represent a reduction order");

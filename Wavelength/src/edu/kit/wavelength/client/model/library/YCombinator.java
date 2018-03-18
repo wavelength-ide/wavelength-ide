@@ -9,7 +9,6 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 
-
 /**
  * A {@link Library} containing a definition of the Y combinator.
  */
@@ -17,7 +16,7 @@ public final class YCombinator implements Library {
 
 	public static final char ID = 'Y';
 	public static final String NAME = "Y-Combinator";
-	
+
 	private final NamedTerm yCombinator = new NamedTerm("Y",
 			new Abstraction("f",
 					new Application(
@@ -26,11 +25,10 @@ public final class YCombinator implements Library {
 											new Application(new BoundVariable(1), new BoundVariable(1)))),
 							new Abstraction("x", new Application(new BoundVariable(2),
 									new Application(new BoundVariable(1), new BoundVariable(1)))))));
-	
 
 	@Override
 	public LambdaTerm getTerm(String name) {
-		if(yCombinator.getName().equals(name)) {
+		if (yCombinator.getName().equals(name)) {
 			return yCombinator.getInner();
 		}
 		return null;
@@ -38,7 +36,7 @@ public final class YCombinator implements Library {
 
 	@Override
 	public boolean containsName(String name) {
-		if(yCombinator.getName().equals(name)) {
+		if (yCombinator.getName().equals(name)) {
 			return true;
 		}
 		return false;
@@ -53,7 +51,7 @@ public final class YCombinator implements Library {
 	public StringBuilder serialize() {
 		return new StringBuilder("" + ID);
 	}
-	
+
 	@Override
 	public List<TermInfo> getTermInfos() {
 		return Arrays.asList(new TermInfo("Y f", "f (Y f)"));

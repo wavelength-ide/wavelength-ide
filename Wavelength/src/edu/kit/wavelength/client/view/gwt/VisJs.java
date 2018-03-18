@@ -18,7 +18,8 @@ public class VisJs {
 	 *            The panel to wrap the network in
 	 */
 	public static native void loadNetwork(String nodes, String edges, Panel parent)/*-{
-		var idParent = parent.@com.google.gwt.user.client.ui.Panel::getElement()().@com.google.gwt.dom.client.Element::getId()();
+		var idParent = 
+			parent.@com.google.gwt.user.client.ui.Panel::getElement()().@com.google.gwt.dom.client.Element::getId()();
 		var parent = $doc.getElementById(idParent);
 		var data = {
 			nodes : eval(nodes),

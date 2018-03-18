@@ -15,7 +15,8 @@ public final class Libraries {
 	 *         {@link Library} known to the model
 	 */
 	public static List<Library> all() {
-		return Arrays.asList(new NaturalNumbers(true), new NaturalNumbers(false), new Boolean(), new TuplesAndLists(), new YCombinator());
+		return Arrays.asList(new NaturalNumbers(true), new NaturalNumbers(false), new Boolean(), new TuplesAndLists(),
+				new YCombinator());
 	}
 
 	/**
@@ -47,6 +48,8 @@ public final class Libraries {
 
 		case YCombinator.ID:
 			return new YCombinator();
+			
+		default: break;
 		}
 
 		throw new IllegalArgumentException("serialized must represent a library");

@@ -11,11 +11,10 @@ import java.util.List;
 public final class OutputSizes {
 
 	/**
-	 * Returns an unmodifiable list of all {@link OutputSize}s known to the
-	 * model.
+	 * Returns an unmodifiable list of all {@link OutputSize}s known to the model.
 	 * 
-	 * @return An unmodifiable list containing all {@link OutputSize}s known to
-	 *         the model
+	 * @return An unmodifiable list containing all {@link OutputSize}s known to the
+	 *         model
 	 */
 	public static List<OutputSize> all() {
 		ArrayList<OutputSize> allOutputs = new ArrayList<OutputSize>();
@@ -31,8 +30,8 @@ public final class OutputSizes {
 	 * 
 	 * @param serialized
 	 *            The string to be deserialized
-	 * @return The {@link OutputSize} that the given string represents, if known
-	 *         to the model
+	 * @return The {@link OutputSize} that the given string represents, if known to
+	 *         the model
 	 */
 	public static OutputSize deserialize(String serialized) {
 		if (serialized == null || serialized.isEmpty())
@@ -52,6 +51,8 @@ public final class OutputSizes {
 
 		case Shortened.ID:
 			return Shortened.fromSerialized(stripped);
+			
+		default: break;
 		}
 
 		throw new IllegalArgumentException("serialized must represent an output size");

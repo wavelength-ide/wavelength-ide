@@ -74,6 +74,7 @@ public class MonacoEditor {
 			wordWrap: "on",
 			theme: "lambdaTheme",
 			language: "lambda",
+			quickSuggestions: false,
 			// adds space for error icons on the side
 			glyphMargin: true
 		};

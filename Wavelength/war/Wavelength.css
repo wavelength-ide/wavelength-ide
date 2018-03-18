@@ -108,6 +108,19 @@ select.form-control {
 	border-width: 1px;
 }
 
+/* fix gwt setting overflow: hidden on everything, hiding the editor menu */
+.ioPanel > div {
+	overflow: visible !important;
+}
+
+.inputPanel > div {
+	overflow: visible !important;
+}
+
+.editorExercisePanel > div {
+	overflow: visible !important;
+}
+
 /* set red icon color in line where error occured */
 .editorErrorGlyphMargin {
 	color: red;

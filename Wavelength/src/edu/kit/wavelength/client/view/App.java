@@ -392,10 +392,12 @@ public class App implements Serializable {
 		footerPanel.add(sharePanel);
 		
 		ioPanel = new SplitLayoutPanel(3);
+		ioPanel.addStyleName("ioPanel");
 		ioPanel.getElement().setId("ioPanel");
 		mainPanel.add(ioPanel);
 
 		inputPanel = new DockLayoutPanel(Unit.EM);
+		inputPanel.addStyleName("inputPanel");
 		inputPanel.getElement().setId("inputPanel");
 		ioPanel.addNorth(inputPanel, 0.45 * Window.getClientHeight());
 
@@ -700,7 +702,6 @@ public class App implements Serializable {
 				Arrays.asList(new FinishExecution()));	
 		
 		Control.updateControls();
-
 		
 		// try deserialization if possible
 		String state = Window.Location.getParameter(KEY);

@@ -326,11 +326,11 @@ Bei dem plus im folgenden Testfall handelt es sich um die Funktion aus den Bibli
 
 \subsection{Unicode}
 \subsubsection{Redexe}
-Nur Redexe im  Term werden als anklickbar markiert und nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
+Nur Redexe im Term werden als anklickbar markiert und nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
 
 
 \subsubsection{Mouse-over}
-Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
+Nur beim Hovern über einem Redex erscheint eine Markierung; diese erstreckt sich über den gesamten Redex. Weiterhin wird bei Mouse-over die Markierung der Reduktionsordnung entfernt. 
 
 
 \subsubsection{Hintergrund}
@@ -338,42 +338,43 @@ Jeder neue Term wird in einer neuen Zeile ausgegeben und verschiedene Terme werd
 
 
 \subsubsection{Schritt vor}
-Bei Schritt vor bleibt (per Button oder manuellem Klick) die Markierung des ausgewerteten Redex korrekt erhalten. Weiterhin sind Redexe im ursprünglichen Term nicht mehr anklickbar und auch bei mouse-over zeigen diese keine Reaktion. Der neu angezeigte Term verhält sich wie in den vorherigen Tests spezifiziert.
+Bei Schritt-vor bleibt (per Button oder manuellem Klick) die Markierung des ausgewerteten Redex korrekt erhalten. Weiterhin sind Redexe im ursprünglichen Term nicht mehr anklickbar und auch bei Mouse-over zeigen diese keine Reaktion. Der neu angezeigte Term verhält sich wie in den vorherigen Tests spezifiziert.
 
 \subsubsection{Schritt zurück}
 \paragraph{Test 1:} 
-Im Ausgabefenster wird ein einzelner Term angezeigt. Bei Schritt zurück wird dieser entfernt und das Ausgabefenster ist leer. 
+Im Ausgabefenster wird ein einzelner Term angezeigt. Bei Schritt-zurück wird dieser entfernt und das Ausgabefenster ist leer. 
 Dieser Test funktioniert unabhängig von einem bestimmten Term.
 
 \paragraph{Test 2:} 
-Im Ausgabefenster wird mehr als ein Term angezeigt. Bei Schritt zurück wird der zuletzt angezeigte Term entfernt.
-Beim nun letzten Term werden die Markierungen zurückgesetzt, das bedeutet, dass die Markierung des reduzierten Redex durch die Markierung der aktuell gewählten Reduktionsordnung ersetzt wird. Weiterhin sind nun alle Redexe wieder klickbar und mouse-over verhält sich wie oben getestet.
+Im Ausgabefenster wird mehr als ein Term angezeigt. Bei Schritt-zurück wird der zuletzt angezeigte Term entfernt.
+Beim nun letzten Term werden die Markierungen zurückgesetzt; das bedeutet, dass die Markierung des reduzierten Redex durch die Markierung der aktuell gewählten Reduktionsordnung ersetzt wird. 
+Weiterhin sind nun alle Redexe wieder klickbar und Mouse-over verhält sich wie oben getestet.
 
 \subsubsection{Reduktionsordnung}
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechend der neuen Reduktionsordnung neu markiert. 
 
 \subsection{Syntaxbaum} \label{Baumtests}
 \subsubsection{Knotenmarkierung}
-Nur Knoten von Redexen werden im Baum als solche farblich markiert. Dabei ist der Knoten mit dem Redex, welcher als nächstes ausgewertet wird anders markiert als die übrigen Redexe.
+Nur Knoten von Redexen werden im Baum als solche farblich markiert. Dabei ist der Knoten mit dem Redex, welcher als nächstes ausgewertet wird, anders markiert als die übrigen Redexe.
 
 \subsubsection{Änderung der Reduktionsordnung}
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechend der neuen Reduktionsordnung neu gefärbt. Die restlichen Bäume behalten ihre bisherige Färbung bei.
 
 \subsubsection{Schritt vor und Schritt zurück}
-\paragraph{Test 1:} Bei Schritt nach vorne bleibt die Knotenfärbung des aktuellen Baumes erhalten.
+\paragraph{Test 1:} Bei Schritt-nach-vorne bleibt die Knotenfärbung des aktuellen Baumes erhalten.
 
-\paragraph{Test 2:} Bei Schritt nach vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
+\paragraph{Test 2:} Bei Schritt-nach-vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
 
 %\, ist wichtig
-\paragraph{Test\, 3:} Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
+\paragraph{Test\, 3:} Bei Schritt-zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
 
 \subsection{Formatwechsel}
 \paragraph{Test 1:} Bei nicht leerem Ausgabefenster und einem Wechsel des Ausgabeformats wird nur der zuletzt angezeigte Term neu geladen entsprechend des neuen Formats. Die restlichen angezeigten Terme bleiben unverändert.
 
-\paragraph{Test 2:} Bei Schritt vor (per Button, manuell oder durch Wiederaufnehmen der automatischen Ausführung) wird der neue Term entsprechend des neu gewählten Ausgabeformats angezeigt. 
+\paragraph{Test 2:} Bei Schritt-vor (per Button, manuell oder durch Wiederaufnehmen der automatischen Ausführung) wird der neue Term entsprechend des neu gewählten Ausgabeformats angezeigt. 
 
 %\, ist wichtig
-\paragraph{Test\, 3:} Ein Formatwechsel hat keine Auswirkung auf bereits angezeigte Terme bei Schritt zurück. Diese werden in ihrem alten Ausgabeformat angezeigt (und ggf. neu markiert, siehe obige Tests).
+\paragraph{Test\, 3:} Ein Formatwechsel hat keine Auswirkung auf bereits angezeigte Terme bei Schritt-zurück. Diese werden in ihrem alten Ausgabeformat angezeigt (und ggf. neu markiert, siehe obige Tests).
 
 \paragraph{Test 4:} Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsistent.
 
@@ -395,11 +396,11 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	%issue 23
 	\issue{Beim Öffnen einer neuen Redex-Übungsaufgabe kommt es manchmal zu einem Fehler.}
 	{Enthält der gesuchte Redex eine gebundene Variable, deren bindende Abstraktion außerhalb des Redex liegt, ist der Redex-Subterm kein valider Lambda-Term, was zu einem Fehler bei der Ausgabe als String führt.}
-	{Vor der Ausgabe wird ein bereinigter Term für die Ausgabe erstellt. In diesem Term wurden alle gebundenen Variablen deren bindende Abstraktion nicht innerhalb des Redex liegt durch freie Variablen mit dem Namen der abstrahierten Variable ersetzt.}
+	{Vor der Ausgabe wird ein bereinigter Term für die Ausgabe erstellt. In diesem Term wurden alle gebundenen Variablen, deren bindende Abstraktion nicht innerhalb des Redex liegt, durch freie Variablen mit dem Namen der abstrahierten Variablen ersetzt.}
 	
 	% issue 16
 	\issue{Namenszuweisungen schattieren einander nicht, sondern es wird immer die erste Zuweisung verwendet.}
-	{Die zugewiesenen Namen wurden in der falschen Reiehenfolge zur Auflösung durchsucht.}
+	{Die zugewiesenen Namen wurden in der falschen Reihenfolge zur Auflösung durchsucht.}
 	{Die Durchsuchungsreihenfolge wurde umgekehrt.}
 	
 	% issue 4
@@ -428,21 +429,24 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	%issue 27
 	\issue{Wird die Lösung einer aktiven Übungsaufgabe angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen, sondern die Lösung der neuen Aufgabe angezeigt. }
 	{Beim Öffnen einer neuen Übungsaufgabe wird der Status des Lösungsfensters nicht zurückgesetzt.}
-	{Die LoadExercise Action setzt nun den Status des Lösungsfensters zurück, bevor eine neue Übungsaufgabe angezeigt wird}
+	{Die LoadExercise Action setzt nun den Status des Lösungsfensters zurück, bevor eine neue Übungsaufgabe angezeigt wird.}
 	
 	% issue 14; TODO 
-	\issue{Die farbliche Abgrenzung der Terme im Unicode-Ausgabeformat verhält sich nicht korrekt bei mehrmaligem Formatwechsel. Der Hintergrund zweier aufeinanderfolgender Terme wird bei Wechsel, Schritt vor und Schritt zurück gleich gefärbt.}{Alle Interaktion des Ausgabefensters, unabhängig von der Wahl des Formats, haben Einfluss auf die Hintergrundfarbe.}{Die Hintergrundfarbe wird nur verändert, wenn Terme im Unicodeformat hinzugefügt, entfernt oder manipuliert werden.}
+	\issue{Die farbliche Abgrenzung der Terme im Unicode-Ausgabeformat verhält sich nicht korrekt bei mehrmaligem Formatwechsel. Der Hintergrund zweier aufeinanderfolgender Terme wird bei Wechsel, Schritt-vor und Schritt-zurück gleich gefärbt.}
+	{Alle Interaktion des Ausgabefensters, unabhängig von der Wahl des Formats, haben Einfluss auf die Hintergrundfarbe.}
+	{Die Hintergrundfarbe wird nur verändert, wenn Terme im Unicode-Format hinzugefügt, entfernt oder manipuliert werden.}
 \end{itemize}
 
 \subsection{Steuerung betreffend}
 
 \begin{itemize}[itemsep=3ex]
 	% issue 13
-	\issue{Bei Wechseln des Ausgabeformats sind verschiedene Formate in der Ausgabe gemischt angezeigt. Schritt zurück resultiert in Konvertierung des zuletzt angezeigten Terms in das neue Ausgabeformat.}{Formatwechsel während einer Ausgabe wurden nicht deaktiviert. Dies ist ein Resultat des überarbeiteten Workflows.
-	}{Formatwechsel ist nun möglich, auch während einer laufenden Auswertung. Dabei wird nur der zuletzt angezeigte und alle folgenden Terme entsprechend des neuen Ausgabeformats geladen. Die bisher angezeigten Terme bleiben in ihrem ursprünglichen Format erhalten und werden bei Schritt zurück auch entsprechend dieses Formats behandelt.}
+	\issue{Beim Wechseln des Ausgabeformats werden verschiedene Formate in der Ausgabe gemischt angezeigt. Schritt-zurück resultiert in Konvertierung des zuletzt angezeigten Terms in das neue Ausgabeformat.}
+	{Formatwechsel während einer Ausgabe wurden nicht deaktiviert. Dies ist ein Resultat des überarbeiteten Workflows.}
+	{Formatwechsel ist nun möglich, auch während einer laufenden Auswertung. Dabei wird nur der zuletzt angezeigte und alle folgenden Terme entsprechend des neuen Ausgabeformats geladen. Die bisher angezeigten Terme bleiben in ihrem ursprünglichen 	Format erhalten und werden bei Schritt-zurück auch entsprechend dieses Formats behandelt.}
 
 	\issue{Durch verschiedene Abfolgen von Aktionen auf der Ausführung konnten die Kontroll-Buttons in einen blockierenden oder undefinierten Zustand gebracht werden.}
-	{Für mehrere Aktionen wurde nicht alle Fälle beachtet, die zu einer Änderung der Kontroll-Buttons führen konnten.}
+	{Für mehrere Aktionen wurden nicht alle Fälle beachtet, die zu einer Änderung der Kontroll-Buttons führen konnten.}
 	{Es wurde eine \texttt{Control} Klasse eingefügt, die eine \texttt{updateControll()} Methode bereitstellt und abhängig vom Zustand der Applikation das Verhalten der Buttons richtig setzt.}
 
 	%issue 2
@@ -460,8 +464,8 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	{Die Deserialisierung des Executors findet nach dem Setzen des Output-Formats statt.}
 	
 	% issue 12
-	\issue{Veränderungen an von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt.}
-	{Beim der Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term überschrieben.}
+	\issue{Veränderungen am von einer Übungsaufgabe vorgegebenen Term werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt.}
+	{Beim Deserialisieren des Anwendungszustands wird zwar der Inhalt des Eingabefeldes wiederhergestellt, befand sich die Anwendung zum Zeitpunkt der Serialisierung jedoch im Übungsmodus, wird dieser daraufhin mit dem vorgegebenen Term 			überschrieben.}
 	{Der Inhalt des Eingabefeldes wird nun nach der Wiederherstellung der Übungsaufgabe wiederhergestellt und der vorgegebene Term gegebenenfalls überschrieben.}
 	
 	% issue 33

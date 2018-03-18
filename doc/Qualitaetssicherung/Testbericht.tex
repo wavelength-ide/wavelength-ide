@@ -29,6 +29,9 @@
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}% 
 
+\usepackage[]{hyperref}
+\usepackage{makecell}
+
 
 %Change enummeration pattern from 1. to 1)
 \renewcommand\labelenumi{\theenumi)}
@@ -66,7 +69,7 @@ Output-Size geändert werden können.
 Mittlerweile kann jede einzelne Option sowohl während einer laufenden Auswertung als auch im Schritt-für-Schritt Modus
 geändert werden. Die Änderungen gelten nur für den aktuellen und alle nachfolgenden Terme.
 
-\subsection{Workflow}
+\subsection{Workflow}\label{changeWorkflow}
 Um die Auswertung von $\lambda$-Termen flüssiger zu gestalten wurden die Knöpfe überarbeitet:
 
 Es gibt nun einen run-Button, der eine neue Komplettauswertung startet und einen clear-Button, der das Output-Fenster leert.
@@ -129,10 +132,10 @@ Nutzer eine Fehlermeldung angezeigt werden kann.
 
 \subsection{Veränderung des Sytax für Eingaben}
 Die Syntax für die Eingabe von $\lambda$-Termen hat sich an einigen Stellen verändert. 
-Kommentare werden durch "-$\,$-" anstatt "$\backslash\backslash$" markiert 
-und die Bezeichnung für einige Bibliotheksfunktionen wurde geändert. 
+Kommentare werden durch "-$\,$-" anstatt "$\backslash\backslash$" markiert\label{changeComment} 
+und die Bezeichnung für einige Bibliotheksfunktionen wurde geändert\label{changeBib}. 
 Die ursprüngliche Spezifikation erlaubte keine doppelte Namensbindung. 
-In der finalen Version der Applikation überschatten sich die Namensbindungen.
+In der finalen Version der Applikation überschatten sich die Namensbindungen\label{changeBinding}.
 
 \section{Abdeckung der Tests im Pflichtenheft}
 
@@ -149,7 +152,7 @@ In der finalen Version der Applikation überschatten sich die Namensbindungen.
 		&T1.2 & (\cmark) & Das Verhalten des Editors wurde nicht getestet \\
 		&T1.3 & \cmark & \\ 
 		\multicolumn{4}{l}{\small \textsc{\textbf{T2} Schritt-für-Schritt-Modus}}\\ 
-		&T2.1 & \cmark & An die neue Benutzeroberfläche angepasst \\
+		&T2.1 & \cmark & An die neue Benutzeroberfläche angepasst vgl. \ref{changeWorkflow} \\
 		&T2.2 - T2.9 & \cmark & \\
 		\multicolumn{4}{l}{\small \textsc{\textbf{T3} Erstellen von Permalinks}}\\ 	
 		&T3.1 - T3.4 & \cmark & \\
@@ -169,19 +172,19 @@ In der finalen Version der Applikation überschatten sich die Namensbindungen.
 		&T6.1 - T6.3 & \cmark & \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T7} Namensbindung}}\\ 
 		&T7.1 - T7.2 & \cmark & \\
-		&T7.3 & \cmark & Spezifikation für doppelte Namensbindung wurde geändert \\ %TODO Anmerkung in einem Text
+		&T7.3 & \cmark & \makecell[r]{Spezifikation für doppelte Namensbindung\\wurde geändert vgl. \ref{changeBinding}} \\
 		\multicolumn{4}{l}{\small \textsc{\textbf{T8} Auswahl des Ausgabeumfangs}}\\ 
 		&T8.1 - T8.2 & \cmark & \\
 		&T8.3 & \xmark & Wurde nur manuell getestet \\ %TODO Anmerkung in einem Text
 		\multicolumn{4}{l}{\small \textsc{\textbf{T9} Wechsel des Auswertungsmodus}}\\ 
 		&T9.1 - T9.2 & \cmark & \\
-		&T9.3 & \cmark & An die neue Benutzeroberfläche angepasst \\
+		&T9.3 & \cmark & An die neue Benutzeroberfläche angepasst  vgl. \ref{changeWorkflow}\\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T10} Standardbibliothek}}\\ 
 		&T10.1 - T10.7 & \cmark & \\
-		&T10.8 - T10.9 & \cmark & Bibliotheksfunktionen umbenannt und leicht angepasst \\
+		&T10.8 - T10.9 & \cmark & \makecell[r]{Bibliotheksfunktionen umbenannt\\und leicht angepasst vlg. \ref{changeBib}} \\
 		\multicolumn{3}{l|}{\small \textsc{\textbf{T11} Fehlerdiagnostik}}\\ 
 		&T11.1 - T11.3 & \cmark & \\
-		&T11.4 & \cmark & Syntax für Kommentare wurde geändert \\
+		&T11.4 & \cmark & Syntax für Kommentare wurde geändert vgl. \ref{changeComment} \\
 		&T11.5 & \cmark & \\
 		\bottomrule
 	\end{tabular}

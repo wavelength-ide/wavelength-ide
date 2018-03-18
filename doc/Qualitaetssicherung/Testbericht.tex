@@ -429,8 +429,8 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 \begin{itemize}[itemsep=3ex]
 	%issue 26
 	\issue{Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt.}
-	{}
-	{}
+	{DIe Deserialisierung des Executors findet vor dem Setzen des Output-Formats statt. Der Executor liest beim Deserialisieren das OutputFormat aus, das standardmäßig der Unicode-Output ist.}
+	{Die Deserialisierung des Executors findet nach dem Setzen des Output-Formats statt.}
 	
 	% issue 12; TODO
 	\issue{Veränderungen an von einer Übungsaufgabe vorgegebenen Term  werden beim Laden eines Serialisierungs-Links nicht wiederhergestellt, stattdessen wird der ursprünglich vorgegebene Term angezeigt.}

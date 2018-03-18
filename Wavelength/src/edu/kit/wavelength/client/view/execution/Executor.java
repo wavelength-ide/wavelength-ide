@@ -40,7 +40,8 @@ public class Executor implements Serializable {
 
 	private List<ExecutionObserver> executionObservers;
 	private List<ControlObserver> controlObservers;
-
+	private List<ReductionStepCountObserver> reductionStepCountObserver;
+	
 	private State state = new State(S.Terminated);
 
 	private void setState(S v) {
@@ -58,11 +59,20 @@ public class Executor implements Serializable {
 	 * @param controlObservers
 	 *            Observers to notify when executor reaches certain states
 	 */
-	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers) {
+	public Executor(List<ExecutionObserver> executionObservers, List<ControlObserver> controlObservers, List<ReductionStepCountObserver> reductionStepCountObserver) {
 		this.executionObservers = executionObservers;
 		this.controlObservers = controlObservers;
+		this.reductionStepCountObserver = reductionStepCountObserver;
 	}
 
+	private void pushCount(int n) {
+		reductionStepCountObserver.forEach(o -> o.update(n));
+	}
+	
+	private void pushEngineCount() {
+		pushCount(engine.getStepNumber());
+	}
+	
 	private void pushTerm(LambdaTerm t) {
 		executionObservers.forEach(o -> o.pushTerm(t));
 	}
@@ -100,6 +110,7 @@ public class Executor implements Serializable {
 						controlObservers.forEach(ControlObserver::finish);
 						return false;
 					}
+					pushEngineCount();
 					pushTerms(displayedTerms);
 					Date end = new Date();
 					if (end.getTime() - start.getTime() > allowedReductionTimeMS) {
@@ -136,6 +147,7 @@ public class Executor implements Serializable {
 		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}
+		pushEngineCount();
 		scheduleExecution();
 	}
 
@@ -165,6 +177,7 @@ public class Executor implements Serializable {
 		if (!engine.getDisplayed().isEmpty()) {
 			pushTerm(engine.getDisplayed().get(0));
 		}
+		pushEngineCount();
 	}
 
 	/**
@@ -179,6 +192,7 @@ public class Executor implements Serializable {
 			LambdaTerm current = engine.displayCurrent();
 			pushTerm(current);
 		}
+		pushEngineCount();
 	}
 
 	/**
@@ -201,6 +215,7 @@ public class Executor implements Serializable {
 			throw new IllegalStateException("trying to terminate a terminated execution");
 		}
 		setState(S.Terminated);
+		pushCount(0);
 		engine = null;
 	}
 
@@ -225,6 +240,7 @@ public class Executor implements Serializable {
 			LambdaTerm current = engine.displayCurrent();
 			pushTerm(current);
 		}
+		pushEngineCount();
 	}
 
 	/**
@@ -248,6 +264,7 @@ public class Executor implements Serializable {
 			return;
 		}
 		pushTerms(displayedTerms);
+		pushEngineCount();
 	}
 
 	/**
@@ -258,8 +275,8 @@ public class Executor implements Serializable {
 			throw new IllegalStateException("trying to step while execution isn't paused");
 		}
 		engine.stepBackward();
+		pushEngineCount();
 		executionObservers.forEach(o -> o.removeLastTerm());
-
 	}
 
 	/**

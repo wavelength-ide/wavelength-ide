@@ -1,34 +1,13 @@
 package edu.kit.wavelength.client.view.update;
 
-import com.google.gwt.user.client.ui.Label;
-
-import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
-import edu.kit.wavelength.client.view.execution.ExecutionObserver;
+import edu.kit.wavelength.client.view.execution.ReductionStepCountObserver;
 
-public class UpdateReductionStepCounter implements ExecutionObserver {
+public class UpdateReductionStepCounter implements ReductionStepCountObserver {
 
-	private static Label counter = App.get().reductionStepCounterLabel();
-	
 	@Override
-	public void pushTerm(LambdaTerm t) {
-		counter.setText(String.valueOf(Integer.valueOf(counter.getText()) + 1));
+	public void update(int count) {
+		App.get().reductionStepCounterLabel().setText(String.valueOf(count));
 	}
-
-	@Override
-	public void removeLastTerm() {
-		counter.setText(String.valueOf(Integer.valueOf(counter.getText()) - 1));
-	}
-
-	@Override
-	public void clear() {
-		counter.setText("0");
-	}
-
-	@Override
-	public void reloadTerm() {}
-
-	@Override
-	public void pushError(String error) {}
 
 }

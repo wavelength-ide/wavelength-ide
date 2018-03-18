@@ -708,8 +708,9 @@ public class App implements Serializable {
 		RootLayoutPanel.get().add(mainPanel);
 		editor = MonacoEditor.load(editorPanel);
 
-		executor = new Executor(Arrays.asList(new UpdateOutput(), new UpdateReductionStepCounter()),
-				Arrays.asList(new FinishExecution()));	
+		executor = new Executor(Arrays.asList(new UpdateOutput()),
+				Arrays.asList(new FinishExecution()),
+				Arrays.asList(new UpdateReductionStepCounter()));	
 		
 		Control.updateControls();
 		

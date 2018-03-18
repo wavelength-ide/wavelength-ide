@@ -1,4 +1,4 @@
-package edu.kit.wavelength.model;
+package edu.kit.wavelength.client.model;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertArrayEquals;

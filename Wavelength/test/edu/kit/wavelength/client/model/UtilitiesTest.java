@@ -1,4 +1,4 @@
-package edu.kit.wavelength.model;
+package edu.kit.wavelength.client.model;
 
 import static org.junit.Assert.assertEquals;
 

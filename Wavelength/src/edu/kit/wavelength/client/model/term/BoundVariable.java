@@ -43,7 +43,7 @@ public final class BoundVariable implements LambdaTerm {
 	 * Returns the depth of this bound variable.
 	 * @return The depth of this bound variable
 	 */
-	public int getDepth() {
+	public int getSize() {
 		return 1;
 	}
 

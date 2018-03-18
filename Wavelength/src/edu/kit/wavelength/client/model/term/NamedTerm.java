@@ -27,9 +27,9 @@ public final class NamedTerm implements LambdaTerm {
 	public NamedTerm(String name, LambdaTerm inner) {
 		this.name = name;
 		this.inner = inner;
-		this.depth = inner.acceptVisitor(new GetDepthVisitor()) + 1;
+		this.depth = inner.acceptVisitor(new GetSizeVisitor()) + 1;
 		
-		if (this.depth > LambdaTerm.MAX_DEPTH)
+		if (this.depth > LambdaTerm.MAX_SIZE)
 			throw new TermTooDeepException();
 	}
 
@@ -60,7 +60,7 @@ public final class NamedTerm implements LambdaTerm {
 	 * Returns the depth of this named term.
 	 * @return The depth of this named term
 	 */
-	public int getDepth() {
+	public int getSize() {
 		return depth;
 	}
 

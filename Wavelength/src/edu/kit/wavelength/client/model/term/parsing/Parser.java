@@ -103,7 +103,7 @@ public class Parser {
 		try {
 			return parseTerm(lastLine, 0);
 		} catch (TermTooDeepException ex) {
-			throw new ParseException("Term too deep", rows.size() - 1, 0, lastLine.length());
+			throw new ParseException("Term too large", rows.size() - 1, 0, lastLine.length());
 		}
 	}
 
@@ -117,7 +117,7 @@ public class Parser {
 			try {
 				term = parseTerm(termString, input.length() - termString.length());
 			} catch (TermTooDeepException ex) {
-				throw new ParseException("Term too deep", rowPos, input.length() - termString.trim().length(), input.length());
+				throw new ParseException("Term too large", rowPos, input.length() - termString.trim().length(), input.length());
 			}
 			inputLibrary.addTerm(term, name);
 		} else {

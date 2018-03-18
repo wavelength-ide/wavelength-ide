@@ -122,7 +122,7 @@ public class ExecutionEngine {
 		} catch (TermTooDeepException ex) {
 			++currentNum;
 			current.set(currentNum, null);
-			throw new ExecutionException("Term too deep.");
+			throw new ExecutionException("Term too large.");
 		}
 		++currentNum;
 

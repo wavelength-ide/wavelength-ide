@@ -1,35 +1,35 @@
 package edu.kit.wavelength.client.model.term;
 
-final class GetDepthVisitor implements Visitor<Integer> {
+final class GetSizeVisitor implements Visitor<Integer> {
 
 	@Override
 	public Integer visitAbstraction(Abstraction abs) {
-		return abs.getDepth();
+		return abs.getSize();
 	}
 
 	@Override
 	public Integer visitApplication(Application app) {
-		return app.getDepth();
+		return app.getSize();
 	}
 
 	@Override
 	public Integer visitBoundVariable(BoundVariable var) {
-		return var.getDepth();
+		return var.getSize();
 	}
 
 	@Override
 	public Integer visitFreeVariable(FreeVariable var) {
-		return var.getDepth();
+		return var.getSize();
 	}
 
 	@Override
 	public Integer visitNamedTerm(NamedTerm term) {
-		return term.getDepth();
+		return term.getSize();
 	}
 
 	@Override
 	public Integer visitPartialApplication(PartialApplication app) {
-		return app.getDepth();
+		return app.getSize();
 	}
 
 }

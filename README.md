@@ -73,8 +73,8 @@ Selecting a new reduction order while stepping manually will affect the executio
 In case you do not want to get every step of the execution displayed you can change the output size with the right-most combobox.
 </p>
 <p>
-<b> Full:</b> Every step of the exeution is displayed.<br>
-<b> Periodically:</b> Every 50th step of the exeution is displayed. <br>
+<b> Full:</b> Every step of the execution is displayed.<br>
+<b> Periodically:</b> Every 50th step of the execution is displayed. <br>
 <b> Shortened:</b> Only the first and last 10 steps are displayed. <br>
 <b> Result only:</b> Only the result is displayed. <br>
 </p>

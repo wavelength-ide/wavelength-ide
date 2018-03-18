@@ -402,10 +402,6 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 \subsection{Anzeige betreffend}
 %TODO z.B. 45, 42, 28, 24, 8, 7, 5
 \begin{itemize}[itemsep=3ex]
-	%issue 44
-	\issue{Wird die Position eines Fehlers in der Eingabe ausgegeben, ist die rechte Grenze des Positionsintervalls genau um Eins größer als erwartet.}
-	{arg2}
-	{arg3}
 	
 	%issue 27
 	\issue{Wird die Lösung einer aktiven Übungsaufgabe angezeigt und eine neue Aufgabe geöffnet, wird das Lösungsfenster nicht geschlossen, sondern die Lösung der neuen Aufgabe angezeigt. }
@@ -420,7 +416,7 @@ Test4: Bei Formatwechsel bleibt die Hintergrundfärbung der Unicode-Terme konsis
 %TODO z.B. 34, 31, 30, 13, 6
 \begin{itemize}[itemsep=3ex]
 	% issue 13; TODO
-	\issue{Bei Wechseln des Ausgabeformats sind verschiedene Formate in der Ausgabe gemischt angezeigt. Schritt zurück resultiert in Konvertierung des zuletzt angezeigten Terms in das neue Ausgabeformat.}{Formatwechsel während einer Ausgabe wurden nicht deaktiviert. Dies ist ein Resultat des neuen Workflows. %TODO: hier kann Marc evtl mehr zu schreiben
+	\issue{Bei Wechseln des Ausgabeformats sind verschiedene Formate in der Ausgabe gemischt angezeigt. Schritt zurück resultiert in Konvertierung des zuletzt angezeigten Terms in das neue Ausgabeformat.}{Formatwechsel während einer Ausgabe wurden nicht deaktiviert. Dies ist ein Resultat des überarbeiteten Workflows.
 	}{Formatwechsel ist nun möglich, auch während einer laufenden Auswertung. Dabei wird nur der zuletzt angezeigte und alle folgenden Terme entsprechend des neuen Ausgabeformats geladen. Die bisher angezeigten Terme bleiben in ihrem ursprünglichen Format erhalten und werden bei Schritt zurück auch entsprechend dieses Formats behandelt.}
 \end{itemize}
 

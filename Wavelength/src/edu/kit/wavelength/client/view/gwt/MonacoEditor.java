@@ -31,7 +31,7 @@ public class MonacoEditor {
 			+ "--\n"
 			+ "-- (\\m.\\n.\\s.\\z. m (n s) z) (\\s.\\z.s (s z)) (\\s.\\z.s (s (s z)))\n"
 			+ "--\n"
-			+ "-- For large computations, it may be desirable not to see all reductions steps\n"
+			+ "-- For large computations, it may be desirable not to see all reduction steps\n"
 			+ "-- that are performed. Using the rightmost combobox, you can adjust which\n"
 			+ "-- reductions steps are shown.\n"
 			+ "--\n"

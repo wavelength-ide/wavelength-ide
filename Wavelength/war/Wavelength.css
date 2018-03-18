@@ -41,10 +41,14 @@ select.form-control {
 	margin-top: 2px;
 }
 
-/* add right padding so menu items don't touch menu border and remove margin from button */
+/* remove margin from button */
 .mainMenuPanel {
-	padding-right: 4px !important;
 	margin-top: 0px !important;
+}
+
+/* reduce margin for more sensible spacing */
+.libraryCheckBox {
+	margin-bottom: 5px !important;
 }
 
 /* prevent checkbox from touching the left side of the menu (default margin-left is -20px) */
@@ -55,6 +59,45 @@ select.form-control {
 /* remove margin to title for consistency with exercise buttons */
 .libraryCheckBox:first-of-type {
 	margin-top: 0px;
+}
+
+/* stretch label to 100% so toggleInfoButton floats on the right of the menu */
+.libraryCheckBox > label {
+	width: 100%;
+}
+
+/* move button to the right and slightly to the bottom */
+.toggleInfoButton {
+	position: relative;
+	float: right; 
+	padding: 0 !important;
+	width: 10px;
+	height: 14px;
+	margin-left: 30px;
+	top: 3px;
+}
+
+/* animate closing the info */
+.closedTermInfo {
+	margin: 0;
+	opacity: 0;
+	padding: 0;
+	font-size: 0;
+	height: 0px !important;
+	transition: opacity .125s,
+                font-size .25s .125s,
+                margin .25s .125s,
+                padding .25s .125s;
+}
+
+/* animate opening the info */
+.openedTermInfo {
+	font-size: 12px;
+	color: slategray;
+    transition: font-size .125s,
+                margin .125s,
+                padding .125s,
+                opacity .25s .125s;
 }
 
 /* add borders to separate editor from control */

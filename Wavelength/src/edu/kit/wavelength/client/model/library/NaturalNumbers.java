@@ -104,7 +104,7 @@ public final class NaturalNumbers implements Library {
 	
 	@Override
 	public List<TermInfo> getTermInfos() {
-		return Arrays.asList(new TermInfo("<number>", "Allows you to type any natural number as an integer literal."),
+		return Arrays.asList(new TermInfo("[number]", "Allows you to type any natural number as an integer literal."),
 		                     new TermInfo("plus a b", "'plus a b' yields a + b for a, b : nat."),
 		                     new TermInfo("minus a b", "'minus a b' yields a - b for a, b : nat."),
 		                     new TermInfo("times a b", "'times a b' yields a * b for a, b : nat."),

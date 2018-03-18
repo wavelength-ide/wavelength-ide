@@ -75,9 +75,9 @@ public final class Boolean implements Library {
 	public List<TermInfo> getTermInfos() {
 		return Arrays.asList(new TermInfo("true", "Used as a literal or 'true a b' yields a."),
 		                     new TermInfo("false", "Used as a literal or 'false a b' yields b."),
-		                     new TermInfo("and a b", "'and a b' yields a && b for a, b in {false, true}.") ,
-		                     new TermInfo("or a b", "'or a b' yields a || b for a, b in {false, true}."),
-		                     new TermInfo("not a", "'not a' yields !a for a in {false, true}."),
-		                     new TermInfo("ifThenElse a b c", "'ifThenElse a b c' yields b if a and c if not a for a in {false, true}.") );
+		                     new TermInfo("and a b", "'and a b' yields a && b for a, b : bool.") ,
+		                     new TermInfo("or a b", "'or a b' yields a || b for a, b : bool."),
+		                     new TermInfo("not a", "'not a' yields !a for a : bool."),
+		                     new TermInfo("ifThenElse a b c", "'ifThenElse a b c' yields b if a and c if not a for a : bool.") );
 	}
 }

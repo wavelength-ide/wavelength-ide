@@ -3,6 +3,7 @@ package edu.kit.wavelength.client.view;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.gwtbootstrap3.client.ui.AnchorListItem;
 import org.gwtbootstrap3.client.ui.Button;
@@ -23,6 +24,7 @@ import org.gwtbootstrap3.client.ui.constants.Toggle;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.editor.client.Editor;
@@ -44,6 +46,7 @@ import edu.kit.wavelength.client.database.DatabaseService;
 import edu.kit.wavelength.client.database.DatabaseServiceAsync;
 import edu.kit.wavelength.client.model.library.Libraries;
 import edu.kit.wavelength.client.model.library.Library;
+import edu.kit.wavelength.client.model.library.TermInfo;
 import edu.kit.wavelength.client.model.output.OutputSize;
 import edu.kit.wavelength.client.model.output.OutputSizes;
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -64,6 +67,7 @@ import edu.kit.wavelength.client.view.action.SetOutputSize;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
+import edu.kit.wavelength.client.view.action.ToggleTermInfo;
 import edu.kit.wavelength.client.view.action.Unpause;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
@@ -117,6 +121,8 @@ public class App implements Serializable {
 	private DropDownMenu mainMenuPanel;
 	private DropDownHeader mainMenuLibraryTitle;
 	private List<CheckBox> libraryCheckBoxes;
+	private List<FlowPanel> libraryTermInfos;
+	private List<Button> libraryTermInfoToggleButtons;
 	private Divider mainMenuDivider;
 	private DropDownHeader mainMenuExerciseTitle;
 	private List<AnchorListItem> exerciseButtons;
@@ -285,11 +291,36 @@ public class App implements Serializable {
 		mainMenuPanel.add(mainMenuLibraryTitle);
 
 		libraryCheckBoxes = new ArrayList<>();
+		libraryTermInfos = new ArrayList<>();
+		libraryTermInfoToggleButtons = new ArrayList<>();
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
 			libraryCheckBox.addStyleName("libraryCheckBox");
+			
+			List<TermInfo> infos = lib.getTermInfos();
+			FlowPanel infoDiv = new FlowPanel();
+			infoDiv.addStyleName("closedTermInfo");
+			String infoText = infos.stream().map(info -> info.name).collect(Collectors.joining("<br/>"));
+			infoDiv.add(new HTML(infoText));
+			
+			// we need to add the Element to the checkbox div for formatting reasons.
+			// then we also need to make sure that the event fires,
+			// as the button click handler won't fire for the element anymore.
+			Button toggleTermInfoButton = new Button();
+			toggleTermInfoButton.addStyleName("fa fa-info fa-fw");
+			toggleTermInfoButton.addStyleName("toggleInfoButton");
+			Element e = toggleTermInfoButton.getElement();
+			Event.sinkEvents(e, Event.ONCLICK);
+			ToggleTermInfo toggle = new ToggleTermInfo(infoDiv);
+			Event.setEventListener(e, ev -> toggle.run());
+			
 			mainMenuPanel.add(libraryCheckBox);
+			libraryCheckBox.getElement().getChild(0).appendChild(e);
+			libraryCheckBox.getElement().getChild(0).appendChild(infoDiv.getElement());
+			
 			libraryCheckBoxes.add(libraryCheckBox);
+			libraryTermInfoToggleButtons.add(toggleTermInfoButton);
+			libraryTermInfos.add(infoDiv);
 		});
 
 		mainMenuDivider = new Divider();
@@ -601,8 +632,7 @@ public class App implements Serializable {
 		exportPopupOkButton.addClickHandler(e -> exportPopup.hide());
 		List<Library> libraries = Libraries.all();
 		for (int i = 0; i < libraries.size(); i++) {
-			SelectLibrary action = new SelectLibrary();
-			libraryCheckBoxes.get(i).addChangeHandler(e -> action.run());
+			libraryCheckBoxes.get(i).addChangeHandler(e -> new SelectLibrary().run());
 		}
 		List<Exercise> exercises = Exercises.all();
 		for (int i = 0; i < exercises.size(); i++) {
@@ -834,6 +864,14 @@ public class App implements Serializable {
 
 	public List<CheckBox> libraryCheckBoxes() {
 		return libraryCheckBoxes;
+	}
+	
+	public List<Button> libraryTermInfoToggleButtons() {
+		return libraryTermInfoToggleButtons;
+	}
+	
+	public List<FlowPanel> libraryTermInfos() {
+		return libraryTermInfos;
 	}
 
 	public Divider mainMenuDivider() {

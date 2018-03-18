@@ -171,17 +171,7 @@ Testfälle in Unittests festgehalten, um Regressionen entgegenzuwirken.
 
 \chapter{Testprotokolle}
 
-\section{UI Tests}
-%TODO Begründung warum keine Unittests
-
-
-
-\subsection{Ausgabe}
-
-\subsubsection{Unicode: Syntax Test}
-Bei diesem Test ist lediglich die Syntax der Ausgabe relevant. Markierungen werden in späteren Tests abgedeckt.
-Dieser Test wird mit folgenden Einstellungen durchgeführt: Reduktionsordnung 'Normal Order' und Ausgabegröße 'Full'. Es wurde immer die gesamte Ausgabe (sofern der Term terminiert) auf Syntaxfehler überprüft.
-
+\section{Ausgabe Highlighttests}
 
 Die nachfolgenden Tests wurden mit folgenden Eingaben getestet:
 
@@ -201,32 +191,24 @@ Die nachfolgenden Tests wurden mit folgenden Eingaben getestet:
 
 %TODO: mehr Terme
 
-\subsubsection{Unicode: Syntax Test}
-Bei diesem Test ist lediglich die Syntax der Ausgabe relevant. Markierungen werden in späteren Tests abgedeckt.
-Dieser Test wird mit folgenden Einstellungen durchgeführt: Reduktionsordnung 'Normal Order' und Ausgabegröße 'full'. Es wurde immer die gesamte Ausgabe (sofern der Term terminiert) auf Syntaxfehler überprüft.
-
-\subsubsection{Unicode: Highlight Tests}
-
-\paragraph{Redexe}
+\subsection{Redexe}
 Nur Redexe im  Term werden als anklickbar markiert und ob nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus.
 
 
-\paragraph{Mouse-over}
+\subsection{Mouse-over}
 Dieser Test testet das korrekte Verhalten bei Bewegen der Maus über Lambda-Terme. Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
 
 
 Nur Redexe im  Term werden als anklickbar markiert und ob nur diese lösen bei Klick eine Reaktion aus. Alle nicht markierten Teile des Terms sind nicht klickbar und lösen keine Reaktion aus. %TODO: link to issue
 
-\paragraph{Mouse-over}
-Dieser Test testet das korrekte Verhalten bei Bewegen der Maus über Lambda-Terme. Nur bei hovern über einem Redex erscheint eine Markierung, diese erstreckt sich über den gesamten Redex. Weiterhin wird bei mouse-over die Markierung der Reduktionsordnung entfernt. 
-\paragraph{Hintergrund}
+\subsection{Hintergrund}
 Jeder neue Term wird in einer neuen Zeile ausgegeben und verschiedene Terme werden durch verschiedene Hintergrundfarben unterscheidbar gemacht.
 
 
-\subsubsection{Unicode: Schritt vor}
+\subsection{Unicode: Schritt vor}
 Bei Schritt vor bleibt (per Button oder manuellem Klick) die Markierung des ausgewerteten Redex korrekt erhalten. Weiterhin sind Redexe im ursprünglichen Term nicht mehr anklickbar und auch bei mouse-over zeigen diese keine Reaktion. Der neu angezeigte Term verhält sich wie in den vorherigen Tests spezifiziert.
 
-\subsubsection{Unicode: Schritt zurück}
+\subsection{Unicode: Schritt zurück}
 Test1: 
 Im Ausgabefenster wird ein einzelner Term angezeigt. Bei Schritt zurück wird dieser entfernt und das Ausgabefenster ist leer. 
 Dieser Test funktioniert unabhängig von einem bestimmten Term.
@@ -235,35 +217,24 @@ Test2:
 Im Ausgabefenster wird mehr als ein Term angezeigt. Bei Schritt zurück wird der zuletzt angezeigte Term entfernt.
 Beim nun letzten Term werden die Markierungen zurückgesetzt, das bedeutet, dass die Markierung des reduzierten Redex durch die Markierung der aktuell gewählten Reduktionsordnung ersetzt wird. Weiterhin sind nun alle Redexe wieder klickbar und mouse-over verhält sich wie oben getestet.
 
-\subsubsection{Unicode: Reduktionsordnung}
+\subsection{Unicode: Reduktionsordnung}
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechend der neuen Reduktionsordnung neu markiert. 
 
-\subsubsection{Baum: Highlight Tests}
-Nur Knoten von Redexen werden im Baum als solche farblich markiert.
-
-\subsubsection{Baum: Änderung der Reduktionsordnung}
-%TODO: siehe git issue
-Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechend der neuen Reduktionsordnung neu gefärbt.
-
-
-\subsubsection{Unicode: Reduktionsordnung}
-Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Term entsprechend der neuen Reduktionsordnung neu markiert. 
-
-\subsubsection{Baum: Highlight Tests}
+\subsection{Baum: Knotenmarkierung}
 Nur Knoten von Redexen werden im Baum als solche farblich markiert. Dabei ist der Knoten mit dem Redex, welcher als nächstes ausgewertet wird anders markiert als die übrigen Redexe.
 
-\subsubsection{Baum: Änderung der Reduktionsordnung}
+\subsection{Baum: Änderung der Reduktionsordnung}
 %TODO: siehe git issue
 Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechend der neuen Reduktionsordnung neu gefärbt. Die restlichen Bäume behalten ihre bisherige Färbung bei.
 
-\subsubsection{Baum: Schritt vor und Schritt zurück}
+\subsection{Baum: Schritt vor und Schritt zurück}
 Test1: Bei Schritt nach vorne bleibt die Knotenfärbung des aktuellen Baumes erhalten.
 
 Test2: Bei Schritt nach vorne wird der neu anzuzeigende Baum unter den restlichen Bäumen in die Ausgabe eingefügt. Alle anderen Bäume bleiben unverändert.
 
 Test3: Bei Schritt zurück wird der aktuelle Baum aus der Ausgabe entfernt und der nun letzte Baum ist entsprechend der gewählten Reduktionsordnung neu gefärbt.
 
-\subsubsection{Formatwechsel}
+\subsection{Formatwechsel}
 Test1: Bei nicht leerem Ausgabefenster und einem Wechsel des Ausgabeformats wird nur der zuletzt angezeigte Term neu geladen entsprechend des neuen Formats. Die restlichen angezeigten Terme bleiben unverändert.
 
 Test2: Bei Schritt vor (per Button, manuell oder durch Wiederaufnehmen der automatischen Ausführung) wird der neue Term entsprechend des neu gewählten Ausgabeformats angezeigt. 

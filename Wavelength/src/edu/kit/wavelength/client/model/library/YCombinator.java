@@ -56,6 +56,6 @@ public final class YCombinator implements Library {
 	
 	@Override
 	public List<TermInfo> getTermInfos() {
-		return Arrays.asList(new TermInfo("Y f", "'Y f' yields f (Y f)."));
+		return Arrays.asList(new TermInfo("Y f", "f (Y f)"));
 	}
 }

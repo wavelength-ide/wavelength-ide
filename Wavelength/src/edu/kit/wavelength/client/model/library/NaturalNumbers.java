@@ -104,13 +104,13 @@ public final class NaturalNumbers implements Library {
 	
 	@Override
 	public List<TermInfo> getTermInfos() {
-		return Arrays.asList(new TermInfo("[number]", "Allows you to type any natural number as an integer literal."),
-		                     new TermInfo("plus a b", "'plus a b' yields a + b for a, b : nat."),
-		                     new TermInfo("minus a b", "'minus a b' yields a - b for a, b : nat."),
-		                     new TermInfo("times a b", "'times a b' yields a * b for a, b : nat."),
-		                     new TermInfo("pow a b", "'pow a b' yields a^b for a, b : nat."),
-		                     new TermInfo("pred a", "'pred a' yields a - 1 for a : nat."),
-		                     new TermInfo("succ a", "'succ a' yields a + 1 for a : nat."));
+		return Arrays.asList(new TermInfo("[number]", "integer literals"),
+		                     new TermInfo("plus a b", "a + b for a, b : nat"),
+		                     new TermInfo("minus a b", "a - b for a, b : nat"),
+		                     new TermInfo("times a b", "a * b for a, b : nat"),
+		                     new TermInfo("pow a b", "a^b for a, b : nat"),
+		                     new TermInfo("pred a", "a - 1 for a : nat"),
+		                     new TermInfo("succ a", "a + 1 for a : nat"));
 	}
 	
 }

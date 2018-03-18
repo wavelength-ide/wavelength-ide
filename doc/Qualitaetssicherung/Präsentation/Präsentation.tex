@@ -95,42 +95,57 @@
 \end{frame}
 }
 
-\begin{frame}{JUnit}
-Komponententests der GWT unabhängigen Pakete:
-\begin{itemize}
-\item[•] edu.kit.wavelength.client.model
-\item[•] edu.kit.wavelength.client.view.exercise
-\item[•] edu.kit.wavelength.client.view.view
-\item[•] edu.kit.wavelength.server.database
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Selenium}
-Automatisierte Tests aller Pfichtenheft-Testszenarien
-\end{frame}
-
-\begin{frame} {Fuzzer}
-Testen des Parser mittels Javan Warty Pig
+\begin{frame}{Veränderungen}
+	\item[•] Quality-of-Life Verbesserungen:
+	\begin{itemize}
+		\item[•] Tooltips
+		\item[•] Statusanzeige und Reduktionsschrittzähler
+		\item[•] Vorschlagsfunktion für Bibliotheksterme
+		\item[•] Tastenkürzel zum Starten und Beenden der Auswertung
+		\item[•] Überarbeitete Steuerung der Auswertung
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Veränderungen}
-Veränderungen gegenüber der Implementierungsphase:
 \begin{itemize}
-\item[•] Quality-of-Life Verbesserungen:
-\begin{itemize}
-\item[•] Tooltips
-\item[•] Statusanzeiger und Reduktionsschrittzähler
-\item[•] Vorschlagsfunktion für Bibliotheksterme
-\item[•] Tastenkürzel zum Starten und Beenden der Auswertung
-\item[•] Überarbeitete Steuerung der Auswertung
-\end{itemize}
 \item[•] Änderung von Ausgabeformat, Ausgabeumfang und Reduktionsordnung während laufende Auswertung möglich.
 \item[•] Wiederholbare Übungsaufgabe zu den Reduktionsordnungen
-\item[•] Serialisierung nur auf Klick des Share-Buttons
+\item[•] On-Demand Serialisierung
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fuzzing}
+\begin{itemize}
+	\item Verwendet wurde die JWP-Bibliothek
+	\item Gezieltes Testen des Parsers auf Randfälle
+	\item 
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{JUnit}
+Komponententests der nicht-UI Pakete:
+\begin{itemize}
+\item[•] edu.kit.wavelength.client.model
+\item[•] edu.kit.wavelength.client.view.exercise
+\item[•] edu.kit.wavelength.client.view.export
+\item[•] edu.kit.wavelength.server.database
+\end{itemize}
+Testüberdeckung: 95,8 \%
+\end{frame}
+
+
+
+\begin{frame}{Selenium}
+\begin{itemize}
+\item[•] Abdeckung aller Testszenarien aus dem Pflichtenheft
+\item[•] automatische Regressionstests
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Statistiken} %TODO Zahlen 
+% 59.6 globale Coverage
+% 95,8 coverage der getesteten packages
 \begin{itemize}
 \item Lines of code:
 \item Anzahl Tests:

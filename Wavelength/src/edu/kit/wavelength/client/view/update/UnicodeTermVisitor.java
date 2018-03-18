@@ -3,8 +3,6 @@ package edu.kit.wavelength.client.view.update;
 import java.util.List;
 import java.util.Objects;
 
-import org.gwtbootstrap3.client.ui.html.Paragraph;
-import org.gwtbootstrap3.client.ui.html.Span;
 import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -24,6 +22,7 @@ import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.FreeVariable;
 import edu.kit.wavelength.client.model.term.IsRedexVisitor;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.model.term.NameAgnosticVisitor;
 import edu.kit.wavelength.client.model.term.NamedTerm;
 import edu.kit.wavelength.client.model.term.PartialApplication;
 import edu.kit.wavelength.client.model.term.ResolvedNamesVisitor;
@@ -137,12 +136,12 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		// if the given named term is a redex: make the redex clickable and add
 		// styling for hovering over the redex
 		if (term.getInner().acceptVisitor(new IsRedexVisitor())) {
-			clickableRedex((Application) term.getInner(), panel, a);
+			Application t = term.getInner().acceptVisitor(new ExtractApplicationVisitor());
+			clickableRedex(t, panel, a);
 			if (term.getInner() == this.nextRedex) {
 				panel.addStyleName("nextRedex");
 			}
 		}
-
 		return new UnicodeTuple(panel, a);
 	}
 
@@ -232,6 +231,10 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 	// helper method to add click- and mouse over/out handlers to a given redex and
 	// its panel and anchor
 	private void clickableRedex(Application redex, FlowPanel panel, Anchor a) {
+		if (!redex.acceptVisitor(new IsRedexVisitor())) {
+			return;
+		}
+
 		panel.addStyleName("application");
 		a.addStyleName("clickable");
 
@@ -264,6 +267,35 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 				parent.setStyleName("parent", true);
 			}
 		});
+	}
+	
+	private class ExtractApplicationVisitor extends NameAgnosticVisitor<Application> {
+
+		@Override
+		public Application visitPartialApplication(PartialApplication app) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public Application visitAbstraction(Abstraction abs) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public Application visitApplication(Application app) {
+			return app;
+		}
+
+		@Override
+		public Application visitBoundVariable(BoundVariable var) {
+			throw new UnsupportedOperationException();
+		}
+
+		@Override
+		public Application visitFreeVariable(FreeVariable var) {
+			throw new UnsupportedOperationException();
+		}
+		
 	}
 
 }

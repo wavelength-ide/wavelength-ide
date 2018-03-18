@@ -64,7 +64,7 @@ In dieser Phase wurden wie versprochen Features nachgeliefert, wie die Serialisi
 Es kam aber auch zu einigen Änderungen an bestehenden Features, meist um die Benutzbarkeit zu erhöhen.
 
 Weiterhin konnten durch intensives Testen viele Spezialfälle und Ausnahmen behandelt werden.
-Dazu wurden verschiedene Testparadigmen ausprobiert.
+Dazu wurden verschiedene Testparadigmen verwendet.
 Zum Einsatz kamen JUnit 4, Fuzzing und Selenium.
 
 \section{Änderungen in der Applikation}
@@ -137,6 +137,12 @@ Maximaltiefe und Maximalgröße für $\lambda$-Terme eingeführt. Werden diese b
 eines $\lambda$-Terms überschritten, wird eine Ausnahme generiert, sodass dem
 Nutzer eine Fehlermeldung angezeigt werden kann.
 
+Ein negativer Seiteneffekt dieser Überprüfungen ist ist eine merkliche Auswirkung
+auf die Performance der Applikation. Obwohl die Größe eines Terms in konstanter Zeit
+validiert wird, können Performanceeinbußen von über 50\% beobachtet werden. Die
+Stabilität der Applikation wurde jedoch bewusst der besseren Performance vorgezogen.
+Optimierungen, die die Stabilitätseigenschaften präservieren, sind denkbar.
+
 \subsection{Veränderung der Sytax für Eingaben}
 Die Syntax für die Eingabe von $\lambda$-Termen hat sich an einigen Stellen verändert. 
 Kommentare werden durch "\texttt{--}" anstatt "\texttt{//}" markiert\label{changeComment} 
@@ -148,8 +154,8 @@ In der finalen Version der Applikation überschatten sich die Namensbindungen\la
 
 Die folgende Tabelle greift die im Pflichtenheft definierten Test auf und gibt an,
 welche davon automatisch getestet werden. 
-Es ist zu beachten, dass, mit Ausnahme derjenigen Testszenarien die in Entwurfs- oder
-Implementierungsphase verworfen wurden, \\ alle Tests als automatisierte Selenium Tests implementiert wurden, und kein Test unter den vorausgesetzten Bedingungen fehlschlägt.
+Es ist zu beachten, dass, mit Ausnahme derjenigen Testszenarien, die in Entwurfs- oder
+Implementierungsphase verworfen wurden, \\ alle Tests als automatisierte Selenium-Tests implementiert wurden, und kein Test unter den vorausgesetzten Bedingungen fehlschlägt.
 
 Einige Testszenarien wurden an die aktuelle Spezifikation der Applikation angepasst. 
 Lediglich die Tests zur Baum-Ausgabe konnten nicht automatisch durchgeführt werden und wurden manuell getestet (vgl. \ref{Baumtests}).
@@ -210,11 +216,11 @@ Wavelength wird in 64 Testklassen mit insgesamt 303 Tests
 und 5862 Zeilen Testcode getestet.
 
 Innerhalb der durch JUnit testbaren Pakete wurde eine 
-Testabdeckung von 95,8\% erreicht. Dies entspricht 59,6 \%
+Testabdeckung von 95,8\% erreicht. Dies entspricht 59,6\%
 des gesamten Quelltexts.
 
 Im Verlauf der fünfwöchigen Qualitätssicherungsphase wurden
-48 Github-Issues erstellt und Änderungen committed.
+48 Github-Issues erstellt und über 250 Änderungen committed.
 
 
 \chapter{Testmethoden}
@@ -483,7 +489,7 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	\issue{Die Seite wird nicht neu geladen, wenn sich nur das History-Token ändert. Um die Seite neu zu Laden muss zweimal ENTER gedrückt werden. 
 	Dies verhindert den Einsatz eines WebDrivers, wie er beispielsweise für die Selenium-Tests gebraucht wird, da dieser ewig darauf wartet, dass die Seite neu geladen wird.}
 	{Die Serialisierungs-ID der Anwendung wird in Form eines History-Tokens in der URL gesetzt. Wird nur das History-Token geändert, so wird die Seite nicht neu geladen.}
-	{Die ständige Serialisierung der Anwendung wird entfernt. Dadurch ist es nicht notwendig den Zustand in der URL zu spiegeln, was der einzige Grund für die History-Tokens war.
+	{Die ständige Serialisierung der Anwendung wird entfernt. Dadurch ist es nicht notwendig, den Zustand in der URL zu spiegeln, was der einzige Grund für die History-Tokens war.
 	Dadurch konnte der Umstieg auf URL-Parameter erfolgen, die bei einer Änderung dafür sorgen, dass die Seite neu geladen wird.}
 \end{itemize}
 

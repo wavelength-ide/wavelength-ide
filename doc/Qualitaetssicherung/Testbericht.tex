@@ -396,9 +396,9 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 \begin{itemize}[itemsep=3ex]
 	%TODO vielleicht weiß Marc noch etwas dazu
 	%issue 19
-	\issue{Die Webworker des Monako Editors werden nicht korrekt initialisiert}
-	{Fehlende Anweisung in der HTML Datei}
-	{Die Fehlende Anweisung wurde ergänzt}
+	\issue{Die Webworker des Monaco Editors werden nicht korrekt initialisiert.}
+	{Fehlende Anweisung in der HTML Datei.}
+	{Die Fehlende Anweisung wurde ergänzt.}
 \end{itemize}
 
 \subsection{Anzeige betreffend}
@@ -420,10 +420,15 @@ Bei Änderung der Reduktionsordnung wird der zuletzt angezeigte Baum entsprechen
 	% issue 13; TODO
 	\issue{Bei Wechseln des Ausgabeformats sind verschiedene Formate in der Ausgabe gemischt angezeigt. Schritt zurück resultiert in Konvertierung des zuletzt angezeigten Terms in das neue Ausgabeformat.}{Formatwechsel während einer Ausgabe wurden nicht deaktiviert. Dies ist ein Resultat des überarbeiteten Workflows.
 	}{Formatwechsel ist nun möglich, auch während einer laufenden Auswertung. Dabei wird nur der zuletzt angezeigte und alle folgenden Terme entsprechend des neuen Ausgabeformats geladen. Die bisher angezeigten Terme bleiben in ihrem ursprünglichen Format erhalten und werden bei Schritt zurück auch entsprechend dieses Formats behandelt.}
+
+	%issue 2
+	\issue{Nachdem im Übungsmodus ein Term in den Editor geladen wurde, führt eine Deserialisierung zur Auswertung des Terms und die Steuerung für eine erneute Auswertung blockiert.}
+	{Der Executor gerät beim Laden einer Übungsaufgabe in einen inkonsistenten Zustand, was kaskadierende Fehler verursacht.}
+	{Der Executor wird während des Ladens einer Übungsaufgabe komplett zurückgesetzt.}
 \end{itemize}
 
 \subsection{De-/Serialisierung betreffend}
-%TODO z.B. 2
+
 \begin{itemize}[itemsep=3ex]
 	%issue 26
 	\issue{Wenn eine Rechnung in TreeOutput erfolgt und die Applikation anschließend serialisiert wird, werden die Teilschritte im UnicodeOutput angezeigt.}

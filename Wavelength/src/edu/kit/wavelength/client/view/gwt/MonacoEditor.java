@@ -23,9 +23,9 @@ public class MonacoEditor {
 			+ "-- λ-term and reduce it down to its normal form using one of Wavelength's four\n"
 			+ "-- reduction orders. For example, try uncommenting the following line and pressing\n"
 			+ "-- the fast-forward button on the right:\n" + "--\n"
-			+ "-- (λm.λn.λs.λz. m (n s) z) (λs.λz.s (s z)) (λs.λz.s (s (s z)))\n" + "--\n"
+			+ "-- (λm. λn. λs. λz. m (n s) z) (λs. λz. s (s z)) (λs. λz. s (s (s z)))\n" + "--\n"
 			+ "-- Of course, you can also use backslashes instead of lambda symbols:\n" + "--\n"
-			+ "-- (\\m.\\n.\\s.\\z. m (n s) z) (\\s.\\z.s (s z)) (\\s.\\z.s (s (s z)))\n" + "--\n"
+			+ "-- (\\m. \\n. \\s. \\z. m (n s) z) (\\s. \\z. s (s z)) (\\s. \\z. s (s (s z)))\n" + "--\n"
 			+ "-- For large computations, it may be desirable not to see all reduction steps\n"
 			+ "-- that are performed. Using the rightmost combobox, you can adjust which\n"
 			+ "-- reductions steps are shown.\n" + "--\n"
@@ -40,12 +40,18 @@ public class MonacoEditor {
 			+ "-- id (λs.λz. z)\n" + "--\n"
 			+ "-- To make common tasks easier, Wavelength provides several libraries out of the\n"
 			+ "-- box. Simply select the libraries you like from the hamburger menu on the top\n"
-			+ "-- left and you are good to go. At the same place, you can find a set of exercises\n"
+			+ "-- left and you are good to go. Use the 'i' icon to see which terms are provided by the library.\n"
+			+ "-- At the same place, you can find a set of exercises\n"
 			+ "-- to deepen your understanding of λ-calculus.\n" + "--\n"
 			+ "-- If you want to keep or share your work, you can choose to either export your\n"
 			+ "-- results to one of several different formats or generate a shareable link that\n"
 			+ "-- will bring you right back to where you left off. Both features can be found in\n"
-			+ "-- the lower left of the application.";
+			+ "-- the lower left of the application.\n--\n"
+			+ "-- The following are some of the most useful hotkeys:\n"
+			+ "-- CTRL + Enter: Run new execution\n"
+			+ "-- CTRL + Backspace: Clear output window\n"
+			+ "-- CTRL + Space (in editor): Display all loaded library terms as suggestions\n"
+			+ "--                           or any term that matches the text below the cursor";
 
 	private static native JavaScriptObject config() /*-{
 		var c = {

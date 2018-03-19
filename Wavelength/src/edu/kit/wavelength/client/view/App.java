@@ -723,7 +723,7 @@ public class App implements Serializable {
 				if (!backdrop.getClassName().equals("dropdown-backdrop")) {
 					return;
 				}
-				mainMenu.getElement().getChild(1).removeFromParent();
+				backdrop.removeFromParent();
 			}
 		}, KeyDownEvent.getType());
 		
@@ -739,7 +739,7 @@ public class App implements Serializable {
 				if (!backdrop.getClassName().equals("dropdown-backdrop")) {
 					return;
 				}
-				mainMenu.getElement().getChild(1).removeFromParent();
+				backdrop.removeFromParent();
 			}
 		}, KeyDownEvent.getType());
 		

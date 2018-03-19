@@ -21,7 +21,6 @@ import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
-import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
@@ -32,7 +31,6 @@ import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -758,7 +756,7 @@ public class App implements Serializable {
 			AsyncCallback<String> callback = new AsyncCallback<String>() {
 				@Override
 				public void onFailure(Throwable caught) {
-					App.get().outputArea().add(new Text(caught.getMessage()));
+					System.err.println(caught.getMessage());
 				}
 
 				@Override

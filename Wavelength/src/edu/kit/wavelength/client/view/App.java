@@ -25,6 +25,7 @@ import org.gwtbootstrap3.client.ui.html.Text;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.Node;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.editor.client.Editor;
@@ -697,6 +698,14 @@ public class App implements Serializable {
 			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 				loadExercisePopupOkButton.click();
 				mainMenu.removeStyleName("open");
+				Node backdropNode = mainMenu.getElement().getChild(1);
+				if (backdropNode.getNodeType() != Node.ELEMENT_NODE) {
+					return;
+				}
+				Element backdrop = (Element) backdropNode;
+				if (!backdrop.getClassName().equals("dropdown-backdrop")) {
+					return;
+				}
 				mainMenu.getElement().getChild(1).removeFromParent();
 			}
 		}, KeyDownEvent.getType());
@@ -705,6 +714,14 @@ public class App implements Serializable {
 			if (event.getNativeKeyCode() == KeyCodes.KEY_ESCAPE) {
 				loadExercisePopupCancelButton.click();
 				mainMenu.removeStyleName("open");
+				Node backdropNode = mainMenu.getElement().getChild(1);
+				if (backdropNode.getNodeType() != Node.ELEMENT_NODE) {
+					return;
+				}
+				Element backdrop = (Element) backdropNode;
+				if (!backdrop.getClassName().equals("dropdown-backdrop")) {
+					return;
+				}
 				mainMenu.getElement().getChild(1).removeFromParent();
 			}
 		}, KeyDownEvent.getType());

@@ -19,7 +19,7 @@ import edu.kit.wavelength.client.model.term.NamedTerm;
  */
 public final class Boolean implements Library {
 
-	public static final String NAME = "Church Boolean";
+	public static final String NAME = "Church Booleans";
 	public static final char ID = 'b';
 
 	private final NamedTerm tru = new NamedTerm("true",

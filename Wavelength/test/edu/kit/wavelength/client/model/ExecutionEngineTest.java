@@ -247,13 +247,8 @@ public class ExecutionEngineTest {
 	public void selfReferenceTest() throws ParseException, ExecutionException {
 		ExecutionEngine engine = new ExecutionEngine("plus = plus 1\nplus=plus\nplus 2", new NormalOrder(), new Full(),
 				Collections.singletonList(new NaturalNumbers(false)));
-		LambdaTerm preResult = engine.getDisplayed().get(engine.getDisplayed().size() - 1);
-
-		System.out.println(preResult.acceptVisitor(new BasicExportVisitor(
-				Collections.singletonList(new NaturalNumbers(false)), "\\")).toString());
 
 		engine.stepForward();
-
 		engine.stepForward();
 		engine.stepForward();
 		engine.stepForward();

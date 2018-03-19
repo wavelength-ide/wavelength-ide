@@ -9,7 +9,7 @@ public final class Library {
 	
 	public static final String AcceleratedNaturalNumbers = "Accelerated Natural Numbers";
 	public static final String NaturalNumbers = "Natural Numbers";
-	public static final String ChurchBooleans = "Church Boolean";
+	public static final String ChurchBooleans = "Church Booleans";
 	public static final String ChurchLists = "Church Tuples and Lists";
 	public static final String YCombinator = "Y-Combinator";
 	

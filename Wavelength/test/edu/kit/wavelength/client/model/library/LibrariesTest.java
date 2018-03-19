@@ -19,7 +19,7 @@ public class LibrariesTest {
 		List<Library> libs = Libraries.all();
 		String[] names = { "Accelerated Natural Numbers",
 				"Natural Numbers",
-				"Church Boolean",
+				"Church Booleans",
 				"Church Tuples and Lists",
 				"Y-Combinator" };
 		for (int i = 0; i < libs.size(); i++) {

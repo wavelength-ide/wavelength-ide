@@ -14,7 +14,7 @@ public final class Exercise {
 	public static final String RandomApplicativeOrder = "β-Redex - Applicative Order*";
 	public static final String ExerciseMode = "Exercise mode";
 	public static final String Variables1 = "Variables";
-	public static final String Variables2 = "Variable II";
+	public static final String Variables2 = "Variables II";
 	public static final String NormalOrder = "Normal Order";
 	public static final String ApplicativeOrder = "Applicative Order";
 	public static final String CallByName = "Call-by-Name";

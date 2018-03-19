@@ -36,7 +36,7 @@ public final class Exercises {
 		String varPredef = "v ((λx. λv. (v x)) x)";
 		Exercise var = new ConcreteExercise(varName, varTask, varSolution, varPredef);
 
-		String freeVarName = "Variable II";
+		String freeVarName = "Variables II";
 		String freeVarTask = "Which variables in the displayed term are bound variables?";
 		String freeVarSolution = "The term's first x, second y, first v and fourth x are bound variables. "
 				+ "<br/> All other variables are free.";

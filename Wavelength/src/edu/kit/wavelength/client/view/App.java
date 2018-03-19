@@ -31,6 +31,7 @@ import com.google.gwt.editor.client.Editor;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Event;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -695,6 +696,16 @@ public class App implements Serializable {
 		loadExercisePopup.addDomHandler(event -> {
 			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
 				loadExercisePopupOkButton.click();
+				mainMenu.removeStyleName("open");
+				mainMenu.getElement().getChild(1).removeFromParent();
+			}
+		}, KeyDownEvent.getType());
+		
+		loadExercisePopup.addDomHandler(event -> {
+			if (event.getNativeKeyCode() == KeyCodes.KEY_ESCAPE) {
+				loadExercisePopupCancelButton.click();
+				mainMenu.removeStyleName("open");
+				mainMenu.getElement().getChild(1).removeFromParent();
 			}
 		}, KeyDownEvent.getType());
 		
@@ -703,6 +714,13 @@ public class App implements Serializable {
 				closeExercisePopupOkButton.click();
 			}
 		}, KeyDownEvent.getType());
+		
+		exportPopup.addDomHandler(event -> {
+			if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+				exportPopupOkButton.click();
+			}
+		}, KeyDownEvent.getType());
+
 		
 		
 		// ui needs to be created BEFORE loading the editor for the ids to exist

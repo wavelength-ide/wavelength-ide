@@ -73,7 +73,6 @@ public class StepForward implements Action {
 			wrapper.add(error);
 			app.outputArea().add(wrapper);
 			app.editor().error(message, row, row, columnStart, columnEnd);
-			return;
 		}
 		
 		Control.updateControls();

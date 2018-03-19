@@ -5,7 +5,7 @@
 
 /* slightly increase list box width while removing inner spacing */
 select.form-control {
-	width: 130px;
+	width: 140px;
 	padding: 0px;
 	padding-left: 3px;
 	height: 26px;

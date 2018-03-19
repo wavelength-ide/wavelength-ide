@@ -214,6 +214,7 @@ public class FSDTest {
 		p.reset();
 
 		// T5.1
+		p.outputSizeBox().select(OutputSize.Full);
 		p.editor().write("(\\x. x) y");
 		p.runAndWait();
 		String expectedHTML = "<span class='applicationWrapper nextRedex application'><span class='abstractionWrapper'><span class='outputText'>(</span><a class='gwt-Anchor abstraction clickable' href='javascript:;'>λx</a><span class='outputText'>. </span><span class='outputText'>x</span><span class='outputText'>)</span></span><span class='outputText'> </span><span class='outputText'>y</span></span>\n"
@@ -232,6 +233,7 @@ public class FSDTest {
 		p.reset();
 
 		// T6.1
+		p.outputSizeBox().select(OutputSize.Full);
 		p.editor().write("(\\x. x x) (\\x. x) (\\x. x) x");
 		p.runAndWait();
 		p.openExportMenuButton().click();
@@ -261,6 +263,7 @@ public class FSDTest {
 		assertTrue(p.libraryCheckBox(Library.ChurchLists).isSelected());
 		p.openMainMenuButton().click();
 		assertFalse(p.mainMenuPanel().isVisible());
+		p.outputSizeBox().select(OutputSize.Full);
 		p.editor().write("curry = \\f. \\a. \\b. f (pair a b)\n" + "(curry (\\p. (first p) (second p))) x x");
 		p.runAndWait();
 		assertEquals("curry (λp. first p (second p)) x x\n" + "(λa. λb. (λp. first p (second p)) (pair a b)) x x\n"

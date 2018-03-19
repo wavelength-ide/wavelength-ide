@@ -59,7 +59,7 @@ public class Page {
 		}
 		outputFormatBox().select(OutputFormat.Unicode);
 		reductionOrderBox().select(ReductionOrder.NormalOrder);
-		outputSizeBox().select(OutputSize.Full);
+		outputSizeBox().select(OutputSize.ResultOnly);
 		if (exportMenu().isVisible()) {
 			openExportMenuButton().click();
 		}

@@ -99,10 +99,10 @@ public final class TuplesAndLists implements Library {
 				new TermInfo("false", "literal or 'false a b' yields b"), new TermInfo("pair a b", "(a, b)"),
 				new TermInfo("newList", "[]"), new TermInfo("first a", "a[0] for a : pair or a : list"),
 				new TermInfo("second a", "a[1] for a : pair or a[1:end] for a : list"),
-				new TermInfo("prepend a b", "a:b for a : list."),
-				new TermInfo("head a", "a[0] for a : list or a : pair."),
-				new TermInfo("tail a", "a[1:end] for a : list or a[1] for a : pair."),
-				new TermInfo("isEmpty a", "true if a == [] or false if a != [] for a : list."));
+				new TermInfo("prepend a b", "a:b for a : list"),
+				new TermInfo("head a", "a[0] for a : list or a : pair"),
+				new TermInfo("tail a", "a[1:end] for a : list or a[1] for a : pair"),
+				new TermInfo("isEmpty a", "true if a == [] or false if a != [] for a : list"));
 	}
 
 }

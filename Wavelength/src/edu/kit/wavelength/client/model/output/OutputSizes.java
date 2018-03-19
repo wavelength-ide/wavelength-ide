@@ -18,10 +18,10 @@ public final class OutputSizes {
 	 */
 	public static List<OutputSize> all() {
 		ArrayList<OutputSize> allOutputs = new ArrayList<OutputSize>();
-		allOutputs.add(new Full());
-		allOutputs.add(new Periodic(50));
-		allOutputs.add(new Shortened(10));
 		allOutputs.add(new ResultOnly());
+		allOutputs.add(new Shortened(10));
+		allOutputs.add(new Periodic(50));
+		allOutputs.add(new Full());
 		return Collections.unmodifiableList(allOutputs);
 	}
 

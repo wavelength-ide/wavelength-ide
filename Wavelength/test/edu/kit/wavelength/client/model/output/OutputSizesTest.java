@@ -34,10 +34,10 @@ public class OutputSizesTest {
 	@Test
 	public void allTest() {
 		List<OutputSize> expectedList = new ArrayList<OutputSize>();
-		expectedList.add(new Full());
-		expectedList.add(new Periodic(50));
-		expectedList.add(new Shortened(10));
 		expectedList.add(new ResultOnly());
+		expectedList.add(new Shortened(10));
+		expectedList.add(new Periodic(50));
+		expectedList.add(new Full());
 		List<OutputSize> all = OutputSizes.all();
 		for (int i = 0; i < all.size(); i++) {
 			assertEquals(expectedList.get(i), all.get(i));

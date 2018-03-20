@@ -5,23 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.gwtbootstrap3.client.ui.AnchorListItem;
-import org.gwtbootstrap3.client.ui.Button;
-import org.gwtbootstrap3.client.ui.ButtonGroup;
-import org.gwtbootstrap3.client.ui.CheckBox;
-import org.gwtbootstrap3.client.ui.Divider;
-import org.gwtbootstrap3.client.ui.DropDown;
-import org.gwtbootstrap3.client.ui.DropDownHeader;
-import org.gwtbootstrap3.client.ui.DropDownMenu;
-import org.gwtbootstrap3.client.ui.ListBox;
-import org.gwtbootstrap3.client.ui.Modal;
-import org.gwtbootstrap3.client.ui.ModalBody;
-import org.gwtbootstrap3.client.ui.ModalFooter;
-import org.gwtbootstrap3.client.ui.TextArea;
-import org.gwtbootstrap3.client.ui.TextBox;
-import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
-import org.gwtbootstrap3.client.ui.constants.Toggle;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Node;
@@ -41,6 +24,23 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
+
+import org.gwtbootstrap3.client.ui.AnchorListItem;
+import org.gwtbootstrap3.client.ui.Button;
+import org.gwtbootstrap3.client.ui.ButtonGroup;
+import org.gwtbootstrap3.client.ui.CheckBox;
+import org.gwtbootstrap3.client.ui.Divider;
+import org.gwtbootstrap3.client.ui.DropDown;
+import org.gwtbootstrap3.client.ui.DropDownHeader;
+import org.gwtbootstrap3.client.ui.DropDownMenu;
+import org.gwtbootstrap3.client.ui.ListBox;
+import org.gwtbootstrap3.client.ui.Modal;
+import org.gwtbootstrap3.client.ui.ModalBody;
+import org.gwtbootstrap3.client.ui.ModalFooter;
+import org.gwtbootstrap3.client.ui.TextArea;
+import org.gwtbootstrap3.client.ui.TextBox;
+import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
+import org.gwtbootstrap3.client.ui.constants.Toggle;
 
 import edu.kit.wavelength.client.database.DatabaseService;
 import edu.kit.wavelength.client.database.DatabaseServiceAsync;
@@ -76,6 +76,7 @@ import edu.kit.wavelength.client.view.exercise.Exercises;
 import edu.kit.wavelength.client.view.export.Export;
 import edu.kit.wavelength.client.view.export.Exports;
 import edu.kit.wavelength.client.view.gwt.MonacoEditor;
+import edu.kit.wavelength.client.view.gwt.Notify;
 import edu.kit.wavelength.client.view.update.FinishExecution;
 import edu.kit.wavelength.client.view.update.UpdateOutput;
 import edu.kit.wavelength.client.view.update.UpdateReductionStepCounter;
@@ -756,13 +757,15 @@ public class App implements Serializable {
 			AsyncCallback<String> callback = new AsyncCallback<String>() {
 				@Override
 				public void onFailure(Throwable caught) {
-					System.err.println(caught.getMessage());
+					Notify.error("Deserialization of application state failed");
 				}
 
 				@Override
 				public void onSuccess(String result) {
 					if (result != null) {
 						deserialize(result);
+					} else {
+						Notify.error("Unknown URL");
 					}
 
 				}

@@ -136,6 +136,7 @@ public class App implements Serializable {
 	private ButtonGroup shareGroup;
 	private Button shareButton;
 	private TextBox sharePanel;
+	private Button copyShareURLButton;
 	private Label reductionStepCounterLabel;
 	private SplitLayoutPanel ioPanel;
 	private DockLayoutPanel inputPanel;
@@ -181,6 +182,7 @@ public class App implements Serializable {
 	private ModalBody exportPopupBody;
 	private TextArea exportArea;
 	private ModalFooter exportPopupFooter;
+	private Button exportPopupCopyButton;
 	private Button exportPopupOkButton;
 	
 	private MonacoEditor editor;
@@ -217,7 +219,8 @@ public class App implements Serializable {
 		 *					exportButtons
 		 *			shareGroup
 		 *				shareButton
- 		 *			sharePanel	
+		 *			sharePanel
+		 *			copyShareURLButton
  		 *			reductionStepCounterLabel
 		 *		ioPanel
 		 *			inputPanel
@@ -263,7 +266,8 @@ public class App implements Serializable {
 		 *		exportPopupBody
 		 *			exportArea
 		 *		exportPopupFooter
-		 *			exportPopupBodyOkButton
+		 *			exportPopupCopyButton
+		 *			exportPopupOkButton
 		 */
 		
 		mainPanel = new DockLayoutPanel(Unit.EM);
@@ -396,6 +400,13 @@ public class App implements Serializable {
 		sharePanel.setReadOnly(true);
 		sharePanel.setVisible(false);
 		footerPanel.add(sharePanel);
+
+		copyShareURLButton = new Button();
+		copyShareURLButton.setTitle("Copy to clipboard.");
+		copyShareURLButton.setId("copyShareURLButton");
+		copyShareURLButton.addStyleName("fa fa-clipboard");
+		copyShareURLButton.setVisible(false);
+		footerPanel.add(copyShareURLButton);
 		
 		reductionStepCounterLabel = new Label();
 		reductionStepCounterLabel.getElement().setId("reductionStepCounterLabel");
@@ -631,6 +642,11 @@ public class App implements Serializable {
 		exportPopupFooter.setId("exportPopupFooter");
 		exportPopup.add(exportPopupFooter);
 
+		exportPopupCopyButton = new Button();
+		exportPopupCopyButton.setId("exportPopupCopyButton");
+		exportPopupCopyButton.addStyleName("fa fa-clipboard");
+		exportPopupFooter.add(exportPopupCopyButton);
+
 		exportPopupOkButton = new Button();
 		exportPopupOkButton.setId("exportPopupOkButton");
 		exportPopupOkButton.addStyleName("fa fa-check");
@@ -643,6 +659,7 @@ public class App implements Serializable {
 		loadExercisePopupCancelButton.addClickHandler(e -> loadExercisePopup.hide());
 		closeExercisePopupOkButton.addClickHandler(e -> new EnterDefaultMode().run());
 		closeExercisePopupCancelButton.addClickHandler(e -> closeExercisePopup.hide());
+		exportPopupCopyButton.addClickHandler(e -> copyToClipboard(exportArea.getId()));
 		exportPopupOkButton.addClickHandler(e -> exportPopup.hide());
 		List<Library> libraries = Libraries.all();
 		for (int i = 0; i < libraries.size(); i++) {
@@ -672,6 +689,7 @@ public class App implements Serializable {
 			exportButtons.get(i).addClickHandler(e -> action.run());
 		}
 		shareButton.addClickHandler(e -> new UseShare(Arrays.asList(new UpdateShareURL())).run());
+		copyShareURLButton.addClickHandler(e -> copyToClipboard(sharePanel.getId()));
 
 		// keybindings
 		Event.addNativePreviewHandler(event -> {
@@ -963,9 +981,13 @@ public class App implements Serializable {
 	public Button shareButton() {
 		return shareButton;
 	}
-	
+
 	public TextBox sharePanel() {
 		return sharePanel;
+	}
+
+	public Button copyShareURLButton() {
+		return copyShareURLButton;
 	}
 	
 	public Label reductionStepCounterLabel() {
@@ -1171,6 +1193,11 @@ public class App implements Serializable {
 		var elem = $doc.getElementById('scroll');
 		elem.scrollTop = elem.scrollHeight;
 		return;
+	}-*/;
+
+	public static native void copyToClipboard(String id) /*-{
+		$doc.getElementById(id).select();
+		$doc.execCommand("Copy");
 	}-*/;
 	
 	public void setCurrentExercise(Exercise e) {

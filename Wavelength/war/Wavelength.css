@@ -170,7 +170,7 @@ select.form-control {
 }
 
 /* prevent flowpanels from filling the entire width of the control panel */
-.controlPanel>* {
+.controlPanel > * {
 	display: inline-block;
 }
 

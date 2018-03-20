@@ -2,6 +2,7 @@ package edu.kit.wavelength.client.view.action;
 
 import java.util.List;
 
+import org.gwtbootstrap3.client.ui.Button;
 import org.gwtbootstrap3.client.ui.TextBox;
 
 import com.google.gwt.core.client.GWT;
@@ -11,6 +12,7 @@ import edu.kit.wavelength.client.database.DatabaseService;
 import edu.kit.wavelength.client.database.DatabaseServiceAsync;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.SerializationObserver;
+import edu.kit.wavelength.client.view.gwt.Notify;
 
 /**
  * This action generates the permalink and toggles the dedicated panel. The
@@ -40,23 +42,28 @@ public class UseShare implements Action {
 			Control.updateControls();
 		}
 		TextBox sharePanel = app.sharePanel();
+		Button copyShareURLButton = app.copyShareURLButton();
 		if (sharePanel.isVisible()) {
 			sharePanel.setVisible(false);
+			copyShareURLButton.setVisible(false);
 		} else {
 			// create database entry and url
 			String serialization = App.get().serialize().toString();
 			DatabaseServiceAsync databaseService = GWT.create(DatabaseService.class);
 			AsyncCallback<String> addEntryCallback = new AsyncCallback<String>() {
 				public void onFailure(Throwable caught) {
-					System.err.println(caught.getMessage());
+					Notify.error(caught.getMessage());
 				}
 
 				public void onSuccess(String id) {
 					serializationOutputs.forEach(o -> o.updateSerialized(id));
+					sharePanel.setVisible(true);
+					sharePanel.setFocus(true);
+					sharePanel.selectAll();
+					copyShareURLButton.setVisible(true);
 				}
 			};
 			databaseService.addEntry(serialization, addEntryCallback);
-			sharePanel.setVisible(true);
 		}
 
 	}

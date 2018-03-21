@@ -35,17 +35,6 @@ select.form-control {
 	padding: 14px;
 }
 
-/* add slight margin so menu button isn't in the corner of the screen */
-.mainMenu {
-	margin-left: 2px;
-	margin-top: 2px;
-}
-
-/* remove margin from button */
-.mainMenuPanel {
-	margin-top: 0px !important;
-}
-
 /* reduce margin for more sensible spacing */
 .libraryCheckBox {
 	margin-bottom: 5px !important;
@@ -71,14 +60,17 @@ select.form-control {
 	position: relative;
 	float: right; 
 	padding: 0 !important;
-	width: 10px;
 	height: 14px;
-	margin-left: 30px;
+	margin-right: 10px;
+	min-height: 0px !important;
 	top: 3px;
 }
 
+.termInfo {
+	color: #909090;
+}
 /* animate closing the info */
-.closedTermInfo {
+.toggleInfoCheckBox:not(:checked) ~ .termInfo {
 	margin: 0;
 	opacity: 0;
 	padding: 0;
@@ -91,9 +83,8 @@ select.form-control {
 }
 
 /* animate opening the info */
-.openedTermInfo {
+.toggleInfoCheckBox:checked ~ .termInfo {
 	font-size: 12px;
-	color: slategray;
     transition: font-size .125s,
                 margin .125s,
                 padding .125s,
@@ -247,7 +238,7 @@ select.form-control {
 	cursor: default;
 }
 
-/* abstractions (that are not part of a redex) inside applications should not look like they can be cliked */
+/* abstractions (that are not part of a redex) inside applications should not look like they can be clicked */
 .application a {
 	pointer-events: none;
 }
@@ -293,3 +284,46 @@ select.form-control {
 .customClick .nextRedex.reduced {
 	border-bottom: 1px solid #2b91af
 }
+
+
+#mainMenuLibraryTitle, #mainMenuExerciseTitle {
+    padding: 3px 20px;
+    font-size: 1.3em;
+    color: #e0e0e0;
+    font-weight: bold;
+}
+
+/* Slide-in menu */
+#toggleMenuCheckBox ~ div {
+    transition:all 200ms ease-in;
+}
+.mainMenuPanel {
+	overflow-y: auto;  /* If content is too large, allow scrolling */
+	background-color: #3c3c3c;
+    color: #fffffe;
+    width:260px;
+    padding-left: 10px;
+    position: fixed;  /* for having full height at 100% */
+    top:0px;
+    height:100%;
+    margin:0 0 0 -260px;
+    transition:all 200ms ease-in;
+}
+
+.mainMenuPanel li a {
+	color: #fffffe;
+	line-height: 1.8em;
+}
+
+#toggleMenuLabel { /* Actual menu graphic */
+    margin-top:6px;
+    margin-left:10px;
+    font-size:1.2em;
+    transition:all 200ms ease-in;
+    z-index:500;
+}
+
+#toggleMenuCheckBox:checked ~ div {
+    margin-left: 260px;  /* Use margin-left instead of transform to ensure resizing of the main panel */
+}
+

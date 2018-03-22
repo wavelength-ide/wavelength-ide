@@ -67,7 +67,7 @@ select.form-control {
 }
 
 .termInfo {
-	color: #909090;
+	color: #cccccc;
 }
 /* animate closing the info */
 .toggleInfoCheckBox:not(:checked) ~ .termInfo {
@@ -320,7 +320,18 @@ select.form-control {
     margin-left:10px;
     font-size:1.2em;
     transition:all 200ms ease-in;
+    cursor: pointer;
     z-index:500;
+    position: relative;
+}
+/* pseudo element to adjust clickable region of label */
+#toggleMenuLabel:after {
+    position: absolute;
+    content: '';
+    top: -6px;
+    right: -10px;
+    left: -10px;
+    bottom: -6px;
 }
 
 #toggleMenuCheckBox:checked ~ div {

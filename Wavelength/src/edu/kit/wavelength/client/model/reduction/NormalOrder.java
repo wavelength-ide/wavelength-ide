@@ -23,7 +23,7 @@ public final class NormalOrder implements ReductionOrder {
 		if (term == null) {
 			throw new IllegalArgumentException("Term may not be null.");
 		}
-		return (Application) term.acceptVisitor(new NormalOrderVisitor());
+		return term.acceptVisitor(new NormalOrderVisitor());
 	}
 
 	@Override
@@ -48,12 +48,12 @@ public final class NormalOrder implements ReductionOrder {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return (Application) app.getRepresented().acceptVisitor(this);
+			return null;
 		}
 
 		@Override
 		public Application visitAbstraction(Abstraction abs) {
-			return (Application) abs.getInner().acceptVisitor(this);
+			return abs.getInner().acceptVisitor(this);
 		}
 
 		@Override
@@ -64,11 +64,11 @@ public final class NormalOrder implements ReductionOrder {
 			if (app.acceptVisitor(new IsRedexVisitor())) {
 				return app;
 			} else {
-				Application leftResult = (Application) app.getLeftHandSide().acceptVisitor(this);
+				Application leftResult = app.getLeftHandSide().acceptVisitor(this);
 				if (leftResult != null) {
 					return leftResult;
 				} else {
-					return (Application) app.getRightHandSide().acceptVisitor(this);
+					return app.getRightHandSide().acceptVisitor(this);
 				}
 			}
 		}

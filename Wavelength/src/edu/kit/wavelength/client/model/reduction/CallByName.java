@@ -50,7 +50,7 @@ public final class CallByName implements ReductionOrder {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return (Application) app.getRepresented().acceptVisitor(this);
+			return null;
 		}
 
 		@Override
@@ -69,11 +69,11 @@ public final class CallByName implements ReductionOrder {
 			if (app.acceptVisitor(new IsRedexVisitor())) {
 				return app;
 			} else {
-				Application possibleRedex = (Application) app.getLeftHandSide().acceptVisitor(this);
+				Application possibleRedex = app.getLeftHandSide().acceptVisitor(this);
 				if (possibleRedex != null) {
 					return possibleRedex;
 				} else {
-					return (Application) app.getRightHandSide().acceptVisitor(this);
+					return app.getRightHandSide().acceptVisitor(this);
 				}
 			}
 		}

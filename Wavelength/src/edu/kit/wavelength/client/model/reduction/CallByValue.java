@@ -51,7 +51,7 @@ public final class CallByValue implements ReductionOrder {
 
 		@Override
 		public Application visitPartialApplication(PartialApplication app) {
-			return app.getRepresented().acceptVisitor(this);
+			return null;
 		}
 
 		@Override

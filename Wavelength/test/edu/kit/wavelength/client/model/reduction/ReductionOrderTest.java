@@ -232,17 +232,15 @@ public class ReductionOrderTest {
 			assertEquals(app, byValue.next(app));
 		}
 	}
-
+	
 	@Test
-	public void partialApplicationTest() {
+	public void applicativeOrderPartialAppRedexTest() {
 		PartialApplication[] pApps = { new PartialApplication.Addition(), new PartialApplication.Subtraction(),
 				new PartialApplication.Exponentiation(), new PartialApplication.Multiplication(),
 				new PartialApplication.Predecessor(), new PartialApplication.Successor() };
 		for (PartialApplication partialApp : pApps) {
-			assertEquals(normal.next(partialApp), normal.next(partialApp.getRepresented()));
-			assertEquals(applicative.next(partialApp), applicative.next(partialApp.getRepresented()));
-			assertEquals(byName.next(partialApp), byName.next(partialApp.getRepresented()));
-			assertEquals(byValue.next(partialApp), byValue.next(partialApp.getRepresented()));
+			LambdaTerm app = new Application(partialApp, LambdaTerm.churchNumber(5));
+			assertEquals(app, applicative.next(app));
 		}
 	}
 }

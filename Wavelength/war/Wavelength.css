@@ -52,7 +52,7 @@ select.form-control {
 
 /* stretch label to 100% so toggleInfoButton floats on the right of the menu */
 .libraryCheckBox > label {
-	width: 100%;
+	min-width: 240px;
 }
 
 /* move button to the right and slightly to the bottom */
@@ -313,6 +313,7 @@ select.form-control {
 .mainMenuPanel li a {
 	color: #fffffe;
 	line-height: 1.8em;
+	display: block;
 }
 
 #toggleMenuLabel { /* Actual menu graphic */

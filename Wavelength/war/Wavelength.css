@@ -298,8 +298,8 @@ select.form-control {
     transition:all 200ms ease-in;
 }
 .mainMenuPanel {
-	overflow-y: auto;  /* If content is too large, allow scrolling */
-	background-color: #3c3c3c;
+    overflow-y: auto;  /* If content is too large, allow scrolling */
+    background-color: #3c3c3c;
     color: #fffffe;
     width:260px;
     padding-left: 10px;
@@ -311,9 +311,9 @@ select.form-control {
 }
 
 .mainMenuPanel li a {
-	color: #fffffe;
-	line-height: 1.8em;
-	display: block;
+    color: #fffffe;
+    line-height: 1.8em;
+    display: block;
 }
 
 #toggleMenuLabel { /* Actual menu graphic */

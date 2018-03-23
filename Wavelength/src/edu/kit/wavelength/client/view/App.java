@@ -284,12 +284,12 @@ public class App implements Serializable {
 		toggleMenuCheckBox.setId("toggleMenuCheckBox");
 		toggleMenuCheckBox.getStyle().setDisplay(Display.NONE);
 
-		LabelElement tmp = Document.get().createLabelElement();
-		tmp.setId("toggleMenuLabel");
-		tmp.setHtmlFor("toggleMenuCheckBox");
-		tmp.addClassName("fa fa-bars");
+		LabelElement toggleMenuLabel = Document.get().createLabelElement();
+		toggleMenuLabel.setId("toggleMenuLabel");
+		toggleMenuLabel.setHtmlFor("toggleMenuCheckBox");
+		toggleMenuLabel.addClassName("fa fa-bars");
 		mainPanel.getElement().appendChild(toggleMenuCheckBox);
-		mainMenu.getElement().appendChild(tmp);
+		mainMenu.getElement().appendChild(toggleMenuLabel);
 
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui
@@ -299,7 +299,6 @@ public class App implements Serializable {
 		mainMenuPanel.setId("mainMenuPanel");
 		mainMenuPanel.addStyleName("mainMenuPanel");
 		mainMenu.add(mainMenuPanel);
-
 
 		mainMenuLibraryTitle = new DropDownHeader("Libraries");
 		mainMenuLibraryTitle.getElement().setId("mainMenuLibraryTitle");
@@ -319,17 +318,17 @@ public class App implements Serializable {
 			infoDiv.add(new HTML(infoText));
 			
 			// Create an invisible checkbox to target from CSS
-			InputElement tmpbox = Document.get().createCheckInputElement();
-			tmpbox.setId(HTMLPanel.createUniqueId());
-			tmpbox.getStyle().setDisplay(Display.NONE);
-			tmpbox.addClassName("toggleInfoCheckBox");
+			InputElement toggleInfoCheckBox = Document.get().createCheckInputElement();
+			toggleInfoCheckBox.setId(HTMLPanel.createUniqueId());
+			toggleInfoCheckBox.getStyle().setDisplay(Display.NONE);
+			toggleInfoCheckBox.addClassName("toggleInfoCheckBox");
 
 			LabelElement toggleTermInfoButton = Document.get().createLabelElement();
-			toggleTermInfoButton.setHtmlFor(tmpbox.getId());
+			toggleTermInfoButton.setHtmlFor(toggleInfoCheckBox.getId());
 			toggleTermInfoButton.addClassName("toggleInfoButton fa fa-info fa-fw btn btn-default");
 
 			mainMenuPanel.add(libraryCheckBox);
-			libraryCheckBox.getElement().getChild(0).appendChild(tmpbox);
+			libraryCheckBox.getElement().getChild(0).appendChild(toggleInfoCheckBox);
 			libraryCheckBox.getElement().getChild(0).appendChild(toggleTermInfoButton);
 			libraryCheckBox.getElement().getChild(0).appendChild(infoDiv.getElement());
 

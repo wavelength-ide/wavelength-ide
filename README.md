@@ -149,7 +149,7 @@ To test your understanding of the untyped lambda calculus, Wavelength provides d
 
 ## License
 <p>
-Copyright (C) 2018 Muhammet Guemues, Markus Himmel, Marc Huisinga, Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt
+Copyright (c) 2017-2018 Muhammet Gümüs, Markus Himmel, Marc Huisinga, Philip Klemens, Julia Schmid, Jean-Pierre von der Heydt
 
 Wavelength is licensed under BSD 3-Clause.
 </p>

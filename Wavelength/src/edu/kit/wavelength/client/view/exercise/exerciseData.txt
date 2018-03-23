@@ -99,13 +99,13 @@ Translate the expression "if (!C1 && (C2 || C3)) { A } else { B }" into a lambda
 -- The Church-encoding of boolean values
 -- Technically, any definition that allows differentiating between two values (one for true, one for false)
 -- could be used to encode booleans, but traditionally, the following two definitions are used:
-true  = \\t. \\f. t
-false = \\t. \\f. f
--- i.e. \"true\" is a function taking two parameters, and returning the first, and \"false\" is a similar function
+true  = λt. λf. t
+false = λt. λf. f
+-- i.e. "true" is a function taking two parameters, and returning the first, and "false" is a similar function
 -- returning the second parameter. (true a b) =>* a, and similarly (false a b) =>* b.
 
 -- This is useful because a functional if-C-then-A-else-B construct becomes (C A B)
--- (If C evaluates to '\\t.\\f. t', the whole expression will evaluate to the result of A, if C evaluates to '\\t.\\f. f',
+-- (If C evaluates to 'λt.λf. t', the whole expression will evaluate to the result of A, if C evaluates to 'λt.λf. f',
 -- it will evaluate to the result of B)
 
 not = 
@@ -123,18 +123,18 @@ Example: checks whether a number is prime or not.
 Requires an implementation of natural numbers, booleans, and the Y combinator
 ---------------
 ---------------
-isZero = \n. n (\p. false) (true)
+isZero = λn. n (λp. false) (true)
 -- Two natural numbers are equal if they are both zero or their predecessors are equal
-eq = Y (\eq. \n. \m. isZero n (isZero m) (isZero m false (eq (pred n) (pred m))))
+eq = Y (λeq. λn. λm. isZero n (isZero m) (isZero m false (eq (pred n) (pred m))))
 
 -- (a < b) if (a-b) = 0 and (b-a) != 0 (for natural numbers)
-less = \a. \b. (isZero (minus a b)) (isZero (minus b a) false true) false
+less = λa. λb. (isZero (minus a b)) (isZero (minus b a) false true) false
 -- Euler's algorithm for divisibility
-divides = Y (\divides. \a. \b. isZero b true ((less b a) false (divides a (minus b a))))
+divides = Y (λdivides. λa. λb. isZero b true ((less b a) false (divides a (minus b a))))
 
 -- Tries out all number up to acc as divisors for n
-isPrimeUpTo = Y (\isPrimeUpTo. \n. \acc. isZero (pred acc) true (divides acc n false (isPrimeUpTo n (pred acc))))
-isPrime = \n. isZero (pred n) false (isPrimeUpTo n (pred n))
+isPrimeUpTo = Y (λisPrimeUpTo. λn. λacc. isZero (pred acc) true (divides acc n false (isPrimeUpTo n (pred acc))))
+isPrime = λn. isZero (pred n) false (isPrimeUpTo n (pred n))
 
 isPrime 5
 ==============
@@ -144,8 +144,8 @@ Example: A function which, given a church number n, computes the elements of the
 (Assuming the Collatz conjecture holds, this function is a constant function of value 1)
 --------------
 --------------
-not = \a. a false true
-even = \n. n not true
-leq = \n. n (\f.\z. z (f false) false) (\z. true) true;
-div2 = \n.\s.\z. n (\n.\b. b (s (n false)) (n true)) (\n. z) false
-collatz = Y (\collatz.\n. leq n n (even n (collatz (div2 n)) (collatz (succ (times 3 n)))))
+not = λa. a false true
+even = λn. n not true
+leq = λn. n (λf.λz. z (f false) false) (λz. true) true;
+div2 = λn.λs.λz. n (λn.λb. b (s (n false)) (n true)) (λn. z) false
+collatz = Y (λcollatz.λn. leq n n (even n (collatz (div2 n)) (collatz (succ (times 3 n)))))

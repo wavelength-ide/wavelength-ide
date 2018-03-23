@@ -2,7 +2,7 @@
 Exercise mode
 ------------
 The current exercise's task will be displayed here. 
- <br/> To show a solution for the current exercise press the lightbulb button to the right.
+To show a solution for the current exercise press the lightbulb button to the right.
 ------------
 To leave the exercise mode press the X button in the upper right corner.
 ---------
@@ -12,9 +12,9 @@ Variables
 ------------
 In lambda calculus, bound variables are variables enclosed in the body of an abstraction,
  while free variables are those not enclosed by an abstraction.
-<br/> Note that the same variable may appear as a bound and as a free variable in the same term. 
-<br/> Which variables in the displayed term are free?
-<br/> Which are bound?
+Note that the same variable may appear as a bound and as a free variable in the same term. 
+Which variables in the displayed term are free?
+Which are bound?
 ------------
 The first v, and last x are free variables.
 All other variables are bound.
@@ -32,11 +32,10 @@ All other variables are free.
 ============
 α-conversion
 ------------
-α-conversion enables renaming variables bound by an abstraction with some restrictions 
-to prevent the term from changing its structure: 
-<br/> The renaming must not result in free variables becoming bound ones and only variables bound to the selected abstraction may be renamed. 
-<br/> If a term can be transformed into another term only by α-renaming variables, the two terms are α-equivalent.
-<br/> Knowing these restrictions which of these terms are α-equivalent to the first one?
+α-conversion enables renaming variables bound by an abstraction with some restrictions to prevent the term from changing its structure: 
+The renaming must not result in free variables becoming bound ones and only variables bound to the selected abstraction may be renamed. 
+If a term can be transformed into another term only by α-renaming variables, the two terms are α-equivalent.
+Knowing these restrictions which of these terms are α-equivalent to the first one?
 ------------
 Only the first and fourth terms are α-equivalent.
 ---------
@@ -50,10 +49,10 @@ Only the first and fourth terms are α-equivalent.
 Normal Order
 ------------
 If a λ-term contains multiple reducable expressions the question which to reduce first is answered by the applied reduction order  one of which is the normal reduction order. 
-<br/> Using this reduction order the outermost leftmost redex is reduced first. 
-<br/> In respect to the tree output format this is equivalent to traversing the term-tree according to a depth-first-search until one reaches a redex.
-<br/> Which abstraction in the displayed term makes up the left part of the redex to reduce first?
-<br/> You can check your answer by selecting normal order and reducing the term using the Step-Forward-Button.
+Using this reduction order the outermost leftmost redex is reduced first. 
+In respect to the tree output format this is equivalent to traversing the term-tree according to a depth-first-search until one reaches a redex.
+Which abstraction in the displayed term makes up the left part of the redex to reduce first?
+You can check your answer by selecting normal order and reducing the term using the Step-Forward-Button.
 ------------
 (λz. z) x
 ---------
@@ -62,9 +61,9 @@ If a λ-term contains multiple reducable expressions the question which to reduc
 Applicative Order
 ------------
 Applicative Order is the exact opposite of the normal reduction order: the innermost rightmost redex is reduced first. 
-<br/> This means a redex is only reduced when it does not contain any redex itself. 
-<br/> In respect to tree output no redex is reduced until all redexes in its subtree have been reduced.
-<br/> Using applicative order which redex in the displayed term will be reduced first?
+This means a redex is only reduced when it does not contain any redex itself. 
+In respect to tree output no redex is reduced until all redexes in its subtree have been reduced.
+Using applicative order which redex in the displayed term will be reduced first?
 ------------
 (λv. x v) z  will be reduced first
 ---------
@@ -73,9 +72,9 @@ Applicative Order is the exact opposite of the normal reduction order: the inner
 Call-by-Name
 ------------
 Call-by-Name reduction is similar to the normal reduction order: the outermost leftmost redex is reduced first.
-<br/> Call-by-Name's major difference is the restriction that only redexes not enclosed in the body of an abstraction may be reduced.
-<br/> This means that when using Call-by-Name a term might still contain redexes but will not be reduced further.
-<br/> Using Call-by-Name which redex in the displayed term will be reduced first?
+Call-by-Name's major difference is the restriction that only redexes not enclosed in the body of an abstraction may be reduced.
+This means that when using Call-by-Name a term might still contain redexes but will not be reduced further.
+Using Call-by-Name which redex in the displayed term will be reduced first?
 ------------
 (λz. ((λv. v x) x) z z)(u v) will be reduced first.
 ---------
@@ -84,8 +83,8 @@ Call-by-Name reduction is similar to the normal reduction order: the outermost l
 Call-by-Value
 ------------
 Just like Call-by-Name using the Call-by-Value reduction order the outermost leftmost redex is reduced first and redexes enclosed by an abstraction will never be reduced but in addition this reduction order demands that the right side of aredex has to be a value if it is to be reduced.
-<br/> "Value" refers to a lambda term that can not be reduced any further meaning that it is either a variable or an abstraction.
-<br/> Using call-by-value which redex in the displayed term will be reduced first?
+"Value" refers to a lambda term that can not be reduced any further meaning that it is either a variable or an abstraction.
+Using call-by-value which redex in the displayed term will be reduced first?
 ------------
 (λx. x)(λz. z x)
 ------------
@@ -94,7 +93,7 @@ Just like Call-by-Name using the Call-by-Value reduction order the outermost lef
 Church Booleans
 ------------
 Read the explanation and define the logical connectives "not", "and", "or".
-<br>Translate the expression "if (!C1 && (C2 || C3)) { A } else { B }" into a lambda-calculus expression.
+Translate the expression "if (!C1 && (C2 || C3)) { A } else { B }" into a lambda-calculus expression.
 ------------
 ------------
 -- The Church-encoding of boolean values
@@ -121,7 +120,7 @@ expr = ...
 Example: isPrime
 ---------------
 Example: checks whether a number is prime or not.
-<br>Requires an implementation of natural numbers, booleans, and the Y combinator
+Requires an implementation of natural numbers, booleans, and the Y combinator
 ---------------
 ---------------
 isZero = \n. n (\p. false) (true)
@@ -142,7 +141,7 @@ isPrime 5
 Example: Collatz function
 --------------
 Example: A function which, given a church number n, computes the elements of the collatz series for that number until it converges to 1.
-<br>(Assuming the Collatz conjecture holds, this function is a constant function of value 1)
+(Assuming the Collatz conjecture holds, this function is a constant function of value 1)
 --------------
 --------------
 not = \a. a false true

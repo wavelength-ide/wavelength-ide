@@ -1,0 +1,211 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% option passed to the outer theme
+%    progressstyle=fixedCircCnt,   % fixedCircCnt, movingCircCnt (moving is deault)
+  ]{Feather}
+  
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+\definecolor{grey}{rgb}{0.52, 0.52, 0.51}
+
+% Change the bar colors:
+\setbeamercolor{Feather}{fg=grey!20,bg=grey}
+\include{beamerinnerthemeFeather}
+% Change the color of the structural elements:
+\setbeamercolor{structure}{fg=grey}
+
+% Change the frame title text color:
+%\setbeamercolor{frametitle}{fg=blue}
+
+% Change the normal text color background:
+\setbeamercolor{normal text}{fg=black,bg=gray!10}
+
+%-------------------------------------------------------
+% INCLUDE PACKAGES
+%-------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet}
+
+
+%-------------------------------------------------------
+% DEFFINING AND REDEFINING COMMANDS
+%-------------------------------------------------------
+
+% colored hyperlinks
+\newcommand{\chref}[2]{
+  \href{#1}{{\usebeamercolor[bg]{Feather}#2}}
+}
+
+%-------------------------------------------------------
+% INFORMATION IN THE TITLE PAGE
+%-------------------------------------------------------
+
+\title[] % [] is optional - is placed on the bottom of the sidebar on every slide
+{ % is placed on the title page
+      \textbf{Wavelength}
+}
+
+\subtitle[$\lambda$-IDE]
+{
+      \textbf{$\lambda$-IDE}
+}
+
+\author[wavelength]
+{      Muhammet Guemues \\
+	   \textbf{Jean-Pierre von der Heydt} \\
+       \textbf{Markus Himmel} \\
+       Marc Huisinga \\
+       Philip Klemens \\ 
+       \textbf{Julia Schmid} \\       
+}
+
+\institute[]
+{
+      
+  
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+\date{\today}
+
+%-------------------------------------------------------
+% THE BODY OF THE PRESENTATION
+%-------------------------------------------------------
+
+\begin{document}
+
+%-------------------------------------------------------
+% THE TITLEPAGE
+%-------------------------------------------------------
+
+{\1% % this is the name of the PDF file for the background
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page, noframenumbering removes the numbering of this frame only
+  \titlepage % call the title page information from above
+\end{frame}}
+
+\begin{frame}{$\lambda$-IDE}{}
+	\begin{overprint}
+    \onslide<1>\includegraphics[scale = 0.5]{img/startseite}
+    \onslide<2>\includegraphics[scale = 0.2]{img/GUI}
+    \end{overprint}
+\end{frame}
+
+
+\begin{frame}{Statistiken}{}
+	\begin{itemize}
+		\item Lines of Code: 10.208
+		\begin{itemize}
+			\item Java: 9.644
+			\item JavaScript: 269
+			\item CSS: 295
+		\end{itemize}
+		\item Anzahl Klassen: 116
+		\item Anzahl Packages: 19
+		\item Lines of Testcode: 5809 
+		\item Anzahl Git-Commits: 1.032, Tendenz steigend
+	\end{itemize}
+	
+	\begin{overprint}
+    \onslide<1>\includegraphics[width = \textwidth]{img/GitCommits}
+    \onslide<2>\includegraphics[width = \textwidth]{img/GitCommitsWithApp}
+    \end{overprint}
+\end{frame}
+
+
+\begin{frame}{Tools und Bibliotheken}{}
+	\begin{itemize}
+		\item Pencil
+		\item PlantUML
+		\item Doclet
+		\item GWT
+		\item Eclipse
+		\item GWT Eclipse Plugin
+		\item GWT Bootstrap
+		\item SQLite
+		\item JUnit
+		\item vis.js
+		\item Monaco
+		\item Selenium
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tools}{Pencil}
+	\begin{itemize}
+		\item UI Design Tool
+		\item Probleme:
+			\begin{itemize}
+				\item Layering nicht möglich
+				\item lustige Bugs bei pdf Export
+			\end{itemize} 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tools}{PlantUML}
+	\begin{itemize}
+		\item UML Sequenzdiagramme
+		\item UML Klassen-Diagramme aus Java Code
+		\item Problem: 
+			\begin{itemize}
+				\item schlechtes Layout bei Klassendiagrammen $\rightarrow$ Inkscape
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tools}{Doclet}
+	\begin{itemize}
+		\item sammelt Java-Doc aus Java Projekt in \LaTeX \ Datei
+		\item eigenes Doclet geschrieben
+	\end{itemize}
+\end{frame
+
+\begin{frame}{Tools}{GWT}
+	\begin{itemize}
+		\item GWT: Java zu JavaScript Transpiler 
+		\item Probleme: 
+		\begin{itemize}
+			\item Komponenten $\rightarrow$ GWTBootstrap
+			\item Java Standardfunktionen nicht verfügbar
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Tools}{Eclipse und GWT Plugin}
+	\begin{itemize}
+		\item Änderungen im Development-Mode  
+		\item Probleme:
+		\begin{itemize}
+			\item hochgradig nichtdeterministisches Verhalten
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Bibliotheken}{vis.js}
+	\begin{itemize}
+		\item Grafikbibliothek zur Datenvisualisierung
+		\item Probleme: 
+			\begin{itemize}
+				\item{Baumbreite}
+				\item{Terme anklicken}
+			\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Review}{}
+	\begin{itemize}
+		\item UI-Planung zu Beginn
+		\item UI-Prototyp
+		\item Implementieren in Entwurfsphase
+		\item Merge-Tag
+	\end{itemize}
+	
+\end{frame}
+
+{\1
+\begin{frame}[plain,noframenumbering]
+  \finalpage{DANKE}
+\end{frame}}
+
+\end{document}

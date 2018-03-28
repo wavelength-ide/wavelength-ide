@@ -77,8 +77,8 @@ public final class Exercises {
 				+ "<br/> This means a redex is only reduced when it does not contain any redex itself. "
 				+ "<br/> In respect to tree output no redex is reduced until all redexes in its subtree have been reduced."
 				+ "<br/> Using applicative order which redex in the displayed term will be reduced first?";
-		String order2Solution = "(λv. x v) z  will be reduced first";
-		String order2Predef = "λx. x((λz. v z) x)((λv. v ((λv. x v) z))j)";
+		String order2Solution = "((λk. x k) z)  will be reduced first";
+		String order2Predef = "λx. x ((λz. v z) x) ((λv. v ((λk. x k) z)) j)";
 		Exercise order2 = new ConcreteExercise(order2Name, order2Task, order2Solution, order2Predef);
 
 		String order3Name = "Call-by-Name";

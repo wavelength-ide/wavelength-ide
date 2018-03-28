@@ -72,11 +72,11 @@ public final class Exercises {
 		Exercise order1 = new ConcreteExercise(order1Name, order1Task, order1Solution, order1Predef);
 
 		String order2Name = "Applicative Order";
-		String order2Task = "Applicative Order is the exact opposite of the normal reduction order: the innermost "
+		String order2Task = "Applicative Order is the exact opposite of the Normal Order: The innermost "
 				+ "rightmost redex is reduced first. "
-				+ "<br/> This means a redex is only reduced when it does not contain any redex itself. "
+				+ "<br/> This means a redex is only reduced once it does not contain any redex itself. "
 				+ "<br/> In respect to tree output no redex is reduced until all redexes in its subtree have been reduced."
-				+ "<br/> Using applicative order which redex in the displayed term will be reduced first?";
+				+ "<br/> Which redex in the displayed term will be reduced first, using Applicative Order?";
 		String order2Solution = "((λk. x k) z)  will be reduced first";
 		String order2Predef = "λx. x ((λz. v z) x) ((λv. v ((λk. x k) z)) j)";
 		Exercise order2 = new ConcreteExercise(order2Name, order2Task, order2Solution, order2Predef);

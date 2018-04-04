@@ -4,7 +4,7 @@
   <property name="gwt.args" value="" />
 
   <!-- Configure path to GWT SDK -->
-  <property name="gwt.sdk" location="C:/gwt" />
+  <property name="gwt.sdk" location="lib/gwt-2.8.2" />
 
   <path id="project.class.path">
     <pathelement location="war/WEB-INF/classes"/>
@@ -89,8 +89,8 @@
         <pathelement location="src" />
         <pathelement location="test" />
         <path refid="project.class.path" />
-        <pathelement location="C:/gwt/validation-api-1.0.0.GA.jar" />
-        <pathelement location="C:/gwt/validation-api-1.0.0.GA-sources.jar" />
+        <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
+        <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
         <pathelement location="lib/jwp-agent.jar" />
         <pathelement location="lib/selenium-server-standalone-3.9.1.jar" />
         <pathelement location="lib/junit-4.12.jar" />
@@ -115,8 +115,8 @@
         <pathelement location="src" />
         <pathelement location="test" />
         <path refid="project.class.path" />
-        <pathelement location="C:/gwt/validation-api-1.0.0.GA.jar" />
-        <pathelement location="C:/gwt/validation-api-1.0.0.GA-sources.jar" />
+        <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA.jar" />
+        <pathelement location="${gwt.sdk}/validation-api-1.0.0.GA-sources.jar" />
         <pathelement location="lib/jwp-agent.jar" />
         <pathelement location="lib/selenium-server-standalone-3.9.1.jar" />
         <pathelement location="lib/junit-4.12.jar" />

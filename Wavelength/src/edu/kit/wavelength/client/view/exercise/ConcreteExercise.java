@@ -28,7 +28,7 @@ public class ConcreteExercise implements Exercise {
 			throw new IllegalArgumentException("Invalid parameters!");
 		}
 		this.name = name;
-		this.task = task;
+		this.task = String.join("<br/>", task.split("\n"));
 		this.solution = solution;
 		this.predefinitions = predefinitions;
 	}

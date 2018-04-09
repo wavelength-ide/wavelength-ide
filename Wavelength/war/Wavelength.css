@@ -304,6 +304,7 @@ select.form-control {
     width:260px;
     padding-left: 10px;
     position: fixed;  /* for having full height at 100% */
+    list-style: none; /* hide list item bullets */
     top:0px;
     height:100%;
     margin:0 0 0 -260px;

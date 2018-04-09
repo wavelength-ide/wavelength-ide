@@ -278,8 +278,11 @@ public class App implements Serializable {
 		mainMenu.setId("mainMenu");
 		mainMenu.addStyleName("mainMenu");
 
-		// To let CSS handle the main menu sliding in, the main menu button (actually a checkbox) must be a sibling of the elements it styles
-		// Since GWT auto-wraps every widget in some container element, we have to manually create the relevant element.
+		// The main menu sliding in and out is handled in CSS.
+		// For this, we create an invisible checkbox, which controls whether the menu is visible.
+		// Styling is done using the :checked pseudo-element and its negation. The actual "button" the user sees
+		// is a label for this checkbox. Due to CSS selector limitations, the checkbox must be a sibling of the elements it styles.
+		// Since GWT auto-wraps every widget in some container element, we manually create Elements instead of GWT Widgets.
 		InputElement toggleMenuCheckBox = Document.get().createCheckInputElement();
 		toggleMenuCheckBox.setId("toggleMenuCheckBox");
 		toggleMenuCheckBox.getStyle().setDisplay(Display.NONE);
@@ -317,7 +320,8 @@ public class App implements Serializable {
 			String infoText = infos.stream().map(info -> info.name).collect(Collectors.joining("<br/>"));
 			infoDiv.add(new HTML(infoText));
 			
-			// Create an invisible checkbox to target from CSS
+			// We use the same trick we used for showing and hiding the main menu for the library info buttons
+			// (We use an invisible checkbox and a corresponding label)
 			InputElement toggleInfoCheckBox = Document.get().createCheckInputElement();
 			toggleInfoCheckBox.setId(HTMLPanel.createUniqueId());
 			toggleInfoCheckBox.getStyle().setDisplay(Display.NONE);

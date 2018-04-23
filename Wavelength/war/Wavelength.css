@@ -299,6 +299,7 @@ select.form-control {
 }
 .mainMenuPanel {
     overflow-y: auto;  /* If content is too large, allow scrolling */
+    overflow-x: hidden;
     background-color: #3c3c3c;
     color: #fffffe;
     width:260px;
@@ -315,25 +316,23 @@ select.form-control {
     color: #fffffe;
     line-height: 1.8em;
     display: block;
+    padding-left: 1.4em;
 }
 
 #toggleMenuLabel { /* Actual menu graphic */
-    margin-top:6px;
-    margin-left:10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
     font-size:1.2em;
     transition:all 200ms ease-in;
     cursor: pointer;
     z-index:500;
     position: relative;
 }
-/* pseudo element to adjust clickable region of label */
-#toggleMenuLabel:after {
-    position: absolute;
-    content: '';
-    top: -6px;
-    right: -10px;
-    left: -10px;
-    bottom: -6px;
+
+#toggleMenuLabel:hover {
+	background: #e6e6e6;
 }
 
 #toggleMenuCheckBox:checked ~ div {

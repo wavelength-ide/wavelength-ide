@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.dom.client.InputElement;
+import com.google.gwt.dom.client.LabelElement;
 import com.google.gwt.dom.client.Node;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.editor.client.Editor;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.KeyCodes;
 import com.google.gwt.event.dom.client.KeyDownEvent;
 import com.google.gwt.user.client.Event;
@@ -41,6 +44,8 @@ import org.gwtbootstrap3.client.ui.TextArea;
 import org.gwtbootstrap3.client.ui.TextBox;
 import org.gwtbootstrap3.client.ui.constants.ModalBackdrop;
 import org.gwtbootstrap3.client.ui.constants.Toggle;
+import org.gwtbootstrap3.client.ui.gwt.HTMLPanel;
+import org.gwtbootstrap3.client.ui.html.UnorderedList;
 
 import edu.kit.wavelength.client.database.DatabaseService;
 import edu.kit.wavelength.client.database.DatabaseServiceAsync;
@@ -67,7 +72,6 @@ import edu.kit.wavelength.client.view.action.SetOutputSize;
 import edu.kit.wavelength.client.view.action.SetReductionOrder;
 import edu.kit.wavelength.client.view.action.StepBackward;
 import edu.kit.wavelength.client.view.action.StepForward;
-import edu.kit.wavelength.client.view.action.ToggleTermInfo;
 import edu.kit.wavelength.client.view.action.Unpause;
 import edu.kit.wavelength.client.view.action.UseShare;
 import edu.kit.wavelength.client.view.execution.Executor;
@@ -120,12 +124,11 @@ public class App implements Serializable {
 	private DockLayoutPanel mainPanel;
 	private DropDown mainMenu;
 	private Button openMainMenuButton;
-	private DropDownMenu mainMenuPanel;
+	private UnorderedList mainMenuPanel;
 	private DropDownHeader mainMenuLibraryTitle;
 	private List<CheckBox> libraryCheckBoxes;
 	private List<FlowPanel> libraryTermInfos;
-	private List<Button> libraryTermInfoToggleButtons;
-	private Divider mainMenuDivider;
+	private List<LabelElement> libraryTermInfoToggleButtons;
 	private DropDownHeader mainMenuExerciseTitle;
 	private List<AnchorListItem> exerciseButtons;
 	private FlowPanel footerPanel;
@@ -202,13 +205,14 @@ public class App implements Serializable {
 		/**
 		 * Structure:
 		 * mainPanel
+		 * 		toggleMenuCheckBox
 		 * 		mainMenu
-		 * 			openMainMenuButton
+		 * 			toggleMenuLabel
 		 * 			mainMenuPanel
 		 * 				mainMenuLibraryTitle
 		 * 				libraryCheckBoxes
 		 * 					libraryTermInfos
-		 * 					libraryTermInfoToggleButtons
+		 * 					libraryTermInfoToggleButtons & checkboxes
 		 * 				mainMenuDivider
 		 * 				mainMenuExerciseTitle
 		 * 				exerciseButtons
@@ -277,23 +281,30 @@ public class App implements Serializable {
 		mainMenu = new DropDown();
 		mainMenu.setId("mainMenu");
 		mainMenu.addStyleName("mainMenu");
+
+		// The main menu sliding in and out is handled in CSS.
+		// For this, we create an invisible checkbox, which controls whether the menu is visible.
+		// Styling is done using the :checked pseudo-element and its negation. The actual "button" the user sees
+		// is a label for this checkbox. Due to CSS selector limitations, the checkbox must be a sibling of the elements it styles.
+		// Since GWT auto-wraps every widget in some container element, we manually create Elements instead of GWT Widgets.
+		InputElement toggleMenuCheckBox = Document.get().createCheckInputElement();
+		toggleMenuCheckBox.setId("toggleMenuCheckBox");
+		toggleMenuCheckBox.getStyle().setDisplay(Display.NONE);
+
+		LabelElement toggleMenuLabel = Document.get().createLabelElement();
+		toggleMenuLabel.setId("toggleMenuLabel");
+		toggleMenuLabel.setHtmlFor("toggleMenuCheckBox");
+		toggleMenuLabel.addClassName("fa fa-bars");
+		mainPanel.getElement().appendChild(toggleMenuCheckBox);
+		mainMenu.getElement().appendChild(toggleMenuLabel);
+
 		mainPanel.addNorth(mainMenu, 2.1);
 		// hack to display menu on top of rest of ui
 		mainMenu.getElement().getParentElement().getStyle().setOverflow(Overflow.VISIBLE);
 
-		openMainMenuButton = new Button();
-		openMainMenuButton.setTitle("Open/Close the main menu.");
-		openMainMenuButton.setId("openMainMenuButton");
-		openMainMenuButton.addStyleName("fa fa-bars");
-		openMainMenuButton.setToggleCaret(false);
-		openMainMenuButton.setDataToggle(Toggle.DROPDOWN);
-		mainMenu.add(openMainMenuButton);
-
-		mainMenuPanel = new DropDownMenu();
+		mainMenuPanel = new UnorderedList();
 		mainMenuPanel.setId("mainMenuPanel");
 		mainMenuPanel.addStyleName("mainMenuPanel");
-		// prevent dropdown from closing when clicking inside
-		mainMenuPanel.addDomHandler(event -> event.stopPropagation(), ClickEvent.getType());
 		mainMenu.add(mainMenuPanel);
 
 		mainMenuLibraryTitle = new DropDownHeader("Libraries");
@@ -306,34 +317,35 @@ public class App implements Serializable {
 		Libraries.all().forEach(lib -> {
 			CheckBox libraryCheckBox = new CheckBox(lib.getName());
 			libraryCheckBox.addStyleName("libraryCheckBox");
-			
+
 			List<TermInfo> infos = lib.getTermInfos();
 			FlowPanel infoDiv = new FlowPanel();
-			infoDiv.addStyleName("closedTermInfo");
+			infoDiv.addStyleName("termInfo");
 			String infoText = infos.stream().map(info -> info.name).collect(Collectors.joining("<br/>"));
 			infoDiv.add(new HTML(infoText));
 			
-			// we need to add the Element to the checkbox div for formatting reasons.
-			// then we also need to make sure that the event fires,
-			// as the button click handler won't fire for the element anymore.
-			Button toggleTermInfoButton = new Button();
-			toggleTermInfoButton.addStyleName("fa fa-info fa-fw");
-			toggleTermInfoButton.addStyleName("toggleInfoButton");
-			Element e = toggleTermInfoButton.getElement();
-			Event.sinkEvents(e, Event.ONCLICK);
-			ToggleTermInfo toggle = new ToggleTermInfo(infoDiv);
-			Event.setEventListener(e, ev -> toggle.run());
-			
+			// We use the same trick we used for showing and hiding the main menu for the library info buttons
+			// (We use an invisible checkbox and a corresponding label)
+			InputElement toggleInfoCheckBox = Document.get().createCheckInputElement();
+			toggleInfoCheckBox.setId(HTMLPanel.createUniqueId());
+			toggleInfoCheckBox.getStyle().setDisplay(Display.NONE);
+			toggleInfoCheckBox.addClassName("toggleInfoCheckBox");
+
+			LabelElement toggleTermInfoButton = Document.get().createLabelElement();
+			toggleTermInfoButton.setHtmlFor(toggleInfoCheckBox.getId());
+			toggleTermInfoButton.addClassName("toggleInfoButton fa fa-info fa-fw btn btn-default");
+
 			mainMenuPanel.add(libraryCheckBox);
-			libraryCheckBox.getElement().getChild(0).appendChild(e);
+			libraryCheckBox.getElement().getChild(0).appendChild(toggleInfoCheckBox);
+			libraryCheckBox.getElement().getChild(0).appendChild(toggleTermInfoButton);
 			libraryCheckBox.getElement().getChild(0).appendChild(infoDiv.getElement());
-			
+
 			libraryCheckBoxes.add(libraryCheckBox);
 			libraryTermInfoToggleButtons.add(toggleTermInfoButton);
 			libraryTermInfos.add(infoDiv);
 		});
 
-		mainMenuDivider = new Divider();
+		Divider mainMenuDivider = new Divider();
 		mainMenuDivider.getElement().setId("mainMenuDivider");
 		mainMenuPanel.add(mainMenuDivider);
 
@@ -922,7 +934,7 @@ public class App implements Serializable {
 		return openMainMenuButton;
 	}
 
-	public DropDownMenu mainMenuPanel() {
+	public UnorderedList mainMenuPanel() {
 		return mainMenuPanel;
 	}
 
@@ -934,16 +946,12 @@ public class App implements Serializable {
 		return libraryCheckBoxes;
 	}
 	
-	public List<Button> libraryTermInfoToggleButtons() {
+	public List<LabelElement> libraryTermInfoToggleButtons() {
 		return libraryTermInfoToggleButtons;
 	}
 	
 	public List<FlowPanel> libraryTermInfos() {
 		return libraryTermInfos;
-	}
-
-	public Divider mainMenuDivider() {
-		return mainMenuDivider;
 	}
 
 	public DropDownHeader mainMenuExerciseTitle() {

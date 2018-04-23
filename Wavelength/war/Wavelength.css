@@ -325,7 +325,6 @@ select.form-control {
     padding-left: 10px;
     padding-right: 10px;
     font-size:1.2em;
-    transition:all 200ms ease-in;
     cursor: pointer;
     z-index:500;
     position: relative;

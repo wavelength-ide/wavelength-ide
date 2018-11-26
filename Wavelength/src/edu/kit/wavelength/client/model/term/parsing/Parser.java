@@ -31,6 +31,17 @@ public class Parser {
 	private RegExp assignmentRegExp = RegExp.compile("^\\s*[a-zA-Z0-9]+\\s*=\\s*[^=]+\\s*$");
 	private ArrayList<String> boundVariables;
 	private int rowPos = 1;
+	
+	/**
+	 * Convenience method for defining the stdlib. Use judiciously.
+	 */
+	public static LambdaTerm parseUnresolved(String input) {
+		try {
+			return new Parser(new ArrayList<>()).parse(input);
+		} catch (ParseException e) {
+			return null;
+		}
+	}
 
 	/**
 	 * Initializes a new parser.

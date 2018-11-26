@@ -14,6 +14,7 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
 import edu.kit.wavelength.client.view.gwt.VisJs;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Updates the output.
@@ -59,6 +60,9 @@ public class UpdateOutput implements ExecutionObserver {
 			break;
 		case TREE:
 			pushTreeTerm(term, wrapper, nextRedex);
+			break;
+		case PLUGDIAGRAM:
+			pushPlugDiagramTerm(term, wrapper, nextRedex);
 			break;
 		default:
 			break;
@@ -195,6 +199,8 @@ public class UpdateOutput implements ExecutionObserver {
 			return OutputFormat.UNICODE;
 		case "Tree Output":
 			return OutputFormat.TREE;
+		case "Plug Diagram":
+			return OutputFormat.PLUGDIAGRAM;
 		default:
 			return null;
 		}
@@ -228,6 +234,12 @@ public class UpdateOutput implements ExecutionObserver {
 		// display the new panel and add the tree
 		app.outputArea().add(wrapper);
 		VisJs.loadNetwork(nodes, edges, wrapper);
+	}
+	
+	private void pushPlugDiagramTerm(LambdaTerm t, FlowPanel wrapper, Application nextRedex) {
+		PlugDiagramRenderer.renderDiagram(t, nextRedex, wrapper);
+		panels.add(wrapper);
+		app.outputArea().add(wrapper);
 	}
 
 }

@@ -12,5 +12,9 @@ public enum OutputFormat {
 	/**
 	 * Representation of lambda terms as syntax trees.
 	 */
-	TREE
+	TREE,
+	/**
+	 * SVG-based diagrams 
+	 */
+	PLUGDIAGRAM
 }

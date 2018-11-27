@@ -55,15 +55,15 @@ public class PlugDiagramRenderer {
 
 		PlugDiagramRenderer.doc = OMSVGParser.currentDocument();
 		OMSVGSVGElement svg = doc.createSVGSVGElement();
-		svg.setAttribute("width", "100%");
-		
 		
 		SVGElement root = PlugDiagramRenderer.layoutLambdaTerm(t);
 		root.translate(spacing, spacing);
 		root.clearAbsoluteLayout();
 		root.calculateAbsoluteLayout();
 		
-		svg.setAttribute("height", Float.toString(root.height + 2*spacing) + "px");
+		svg.setAttribute("width", Float.toString(root.width + root.x + spacing) + "px");
+		svg.setAttribute("height", Float.toString(root.height + root.y + spacing) + "px");
+		
 		for (OMSVGElement el : root.render()) {
 			svg.appendChild(el);
 		}
@@ -77,10 +77,17 @@ public class PlugDiagramRenderer {
 		if (term instanceof BoundVariable) return layoutBoundVariable((BoundVariable) term);
 		if (term instanceof FreeVariable) return layoutFreeVariable((FreeVariable) term);
 		if (term instanceof NamedTerm) return layoutNamedTerm((NamedTerm) term);
+		if (term instanceof PartialApplication) return layoutPartialApplication((PartialApplication) term);
 		GWT.log(term.getClass().toString() + "has been forgotten!");
 		return null;
 	}
 	
+	private static SVGElement layoutPartialApplication(PartialApplication term) {
+		// String.repeat for java <11
+		String primes = new String(new char[term.getNumReceived()]).replace("\0", "'");
+		return layoutBorderedText(term.getName() + primes);
+	}
+
 	private static SVGElement layoutBorderedText(String text) {
 		SVGElement border = new SVGRoundedRectElement();
 		SVGElement textElem = new SVGTextElement(text);

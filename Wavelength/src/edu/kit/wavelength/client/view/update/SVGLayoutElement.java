@@ -12,6 +12,7 @@ import org.vectomatic.dom.svg.OMSVGPathSegList;
 import org.vectomatic.dom.svg.OMSVGRectElement;
 import org.vectomatic.dom.svg.OMSVGTextElement;
 
+import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.update.SVGLayoutElement.LayoutItemType;
 
@@ -21,7 +22,9 @@ class SVGLayoutElement {
 		RECT,
 		ABS,
 		TEXT,
-		
+		DEBUG,
+		LINE,
+		ARROWHEAD,
 		CHEVRON,
 		PACMAN,
 		// ...
@@ -31,9 +34,15 @@ class SVGLayoutElement {
 	public float y;
 	public float width;
 	public float height;
+	
+	// absolute positioning may be recalculated multiple times 
+	// from different roots (we need it while drawing arrows
+	// for each abstraction), so we need these separately
+	public float abs_x;
+	public float abs_y;
 	public SVGLayoutElement.LayoutItemType type;
 	private List<SVGLayoutElement> children;
-	private LambdaTerm term;
+	LambdaTerm term;
 	private String text;
 
 	public SVGLayoutElement(String text) {
@@ -60,13 +69,21 @@ class SVGLayoutElement {
 		this.y = y;
 	}
 	
+	public void clearAbsoluteLayout() {
+		this.abs_x = x;
+		this.abs_y = y;
+		for (SVGLayoutElement child : children) {
+			child.clearAbsoluteLayout();
+		}
+	}
 	/**
 	 * propagates relative positions through the tree, turning relative x-y-coordinates to absolute ones
 	 */
-	public void finalizeLayout() {
+	public void calculateAbsoluteLayout() {
 		for (SVGLayoutElement child : children) {
-			child.translate(this.x, this.y);
-			child.finalizeLayout();
+			child.abs_x += abs_x;
+			child.abs_y += abs_y;
+			child.calculateAbsoluteLayout();
 		}
 		
 	}
@@ -75,6 +92,30 @@ class SVGLayoutElement {
 		this.x += x;
 		this.y += y;
 	}
+	
+	/*
+	 * Since we want to render arrows from an Abstraction to its bound variables, we need
+	 * to find all layout elements corresponding to a certain abstraction's binding
+	 */
+	public Set<SVGLayoutElement> boundVariableLayoutElements() {
+		return boundVariableLayoutElements(0);
+	}
+	
+	public Set<SVGLayoutElement> boundVariableLayoutElements(int deBruijnIndex) {
+		Set<SVGLayoutElement> res = new HashSet<>();
+		if (type == LayoutItemType.ABS) {
+			deBruijnIndex += 1;
+		} else if (term != null && term instanceof BoundVariable && ((BoundVariable) term).getDeBruijnIndex() == deBruijnIndex) {
+			res.add(this);
+			return res;
+		}
+		for (SVGLayoutElement child : children) {
+			res.addAll(child.boundVariableLayoutElements(deBruijnIndex));
+		}
+		return res;
+	}
+	
+
 	
 	public Set<OMSVGElement> renderPacman() {
 		// m 978.895 193.92
@@ -87,9 +128,10 @@ class SVGLayoutElement {
 		// a 14.4852 14.4852 0     0 0 -6.5235 -1.56836
 		// Z
 
+		// TODO maybe use pacmanRadius?
 		OMSVGPathElement pacman = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = pacman.getPathSegList();
-		segs.appendItem(pacman.createSVGPathSegMovetoAbs(this.x + 14.4844f, this.y - 14.4844f));
+		segs.appendItem(pacman.createSVGPathSegMovetoAbs(this.abs_x + 14.4844f, this.abs_y - 14.4844f));
 		segs.appendItem(pacman.createSVGPathSegArcRel(-14.4843f, 14.4844f, 14.4852f, 14.4852f, 0f, false, false));
 		segs.appendItem(pacman.createSVGPathSegArcRel(14.4843f, 14.4863f, 14.4852f, 14.4852f, 0f, false, false));
 		segs.appendItem(pacman.createSVGPathSegArcRel(7.4629f, -2.08789f, 14.4852f, 14.4852f, 0f, false, false));
@@ -112,7 +154,7 @@ class SVGLayoutElement {
 	public OMSVGElement renderChevron() {
 		OMSVGPathElement chevron = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = chevron.getPathSegList();
-        segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.x + this.width, this.y));
+        segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.abs_x + this.width, this.abs_y));
         segs.appendItem(chevron.createSVGPathSegLinetoRel(-this.width, this.height / 2));
         segs.appendItem(chevron.createSVGPathSegLinetoRel(this.width, this.height / 2));
         chevron.setAttribute("stroke-width", PlugDiagramRenderer.strokeWidth);
@@ -150,23 +192,23 @@ class SVGLayoutElement {
 	}
 	
 	private OMSVGElement renderText(String text) {
-		OMSVGTextElement elem = PlugDiagramRenderer.doc.createSVGTextElement(x, y+PlugDiagramRenderer.fontSize, OMSVGLength.SVG_LENGTHTYPE_PX, text);
+		OMSVGTextElement elem = PlugDiagramRenderer.doc.createSVGTextElement(abs_x, abs_y+PlugDiagramRenderer.fontSize, OMSVGLength.SVG_LENGTHTYPE_PX, text);
 		elem.setAttribute("font-size", Float.toString(PlugDiagramRenderer.fontSize) + "px");
 		elem.setAttribute("font-family", "monospace");
 		return elem;
 	}
 	
 	private OMSVGElement renderDebugRect(String stroke) {
-		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(x, y, width, height, 0, 0);
+		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, 0, 0);
 		rect.setAttribute("stroke", stroke == null ? "#DD0000" : stroke);
 		rect.setAttribute("stroke-width", PlugDiagramRenderer.strokeWidth);
-		rect.setAttribute("fill", "#101010");
+		rect.setAttribute("fill", "none");
 		return rect;
 	}
 	
 	private OMSVGElement renderRoundedRect() {
 		
-		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(x, y, width, height, 2* height / 5, 2 * height / 5);
+		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, 2* height / 5, 2 * height / 5);
 		rect.setAttribute("stroke", "#000000");
 		rect.setAttribute("stroke-width", PlugDiagramRenderer.strokeWidth);
 		rect.setAttribute("fill", "none");

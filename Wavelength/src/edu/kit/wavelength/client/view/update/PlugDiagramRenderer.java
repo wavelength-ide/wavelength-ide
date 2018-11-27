@@ -38,9 +38,15 @@ public class PlugDiagramRenderer {
 	private static final float chevronSharpness = 0.6f;
 	static final float strokeWidth = 2f;
 	private static final float spacing = 7f;
+	
 	static final float pacmanRadius = 14.4844f;
-	static final float arrowWidth = 5f;
+	static final float pacmanOverlap = 14.4844f;
+	
+	static final float arrowheadWidth = 30f;
+	static final float arrowheadHeight = 12f;
+	static final float arrowStrokeWidth = 8f;
 	static final float arrowOverlap = 10f;
+	
 	static final float boundVarRectWidth = 30f;
 	static final float boundVarRectHeight = 30f;
 	static OMSVGDocument doc;
@@ -105,50 +111,58 @@ public class PlugDiagramRenderer {
 	private static SVGElement layoutAbstraction(Abstraction term) {
 		// abs is the container element, it should encompass all others
 		SVGElement abs = new SVGAbstractionElement(term);
-		SVGElement lam = new SVGTextElement("λ" + term.getPreferredName() + ".");
 		SVGElement body = layoutLambdaTerm(term.getInner());
 		SVGElement pacman = new SVGPacmanElement();
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
 
-		lam.translate(0, /* centering */ Math.max(0, (body.height - lam.height)/2f ));
-		body.translate(lam.width, 0);
-		
 		pacman.translate(body.x + body.width + spacing, 0);
 
-		abs.addChild(lam);
 		abs.addChild(body);
 		abs.addChild(pacman);
-		abs.height = Math.max(lam.height, body.height);
+		abs.height = body.height;
 
 		Set<SVGElement> substitution_targets = abs.boundVariableLayoutElements();
 		if (!substitution_targets.isEmpty()) {
 			// we need space for arrows, but maybe centering has already provided that for us
-			abs.height = Math.max(body.y + body.height + spacing + arrowWidth, abs.height);
+			abs.height = Math.max(body.y + body.height + spacing + arrowStrokeWidth, abs.height);
 			float leftmost = pacman.x;
 			
 			// we will need the positions of BoundVariable layout elements relative to this element
 			abs.clearAbsoluteLayout();
 			abs.calculateAbsoluteLayout();
+			
+			SVGElement bottomBar = new SVGLineElement(arrowStrokeWidth);
+			// we'll need bottomBar to be at its final height for the vertical arrow segments
+			bottomBar.translate(0, body.y + body.height + spacing);
+			
 			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
 				leftmost = Math.min(leftmost, var.abs_x);
 				// draw arrow head for this child
 				SVGElement arrowhead = new SVGArrowheadElement();
-				arrowhead.width = var.width;
-				arrowhead.height = 3*spacing;
 				
-				arrowhead.translate(var.abs_x, var.abs_y + var.height - arrowOverlap);
-				
+				float arrowhead_x = var.abs_x + /* centering */ (var.width - arrowhead.width)/2;
+				float arrowhead_y = var.abs_y + var.height - arrowOverlap;
+				arrowhead.translate(arrowhead_x, arrowhead_y);
 				abs.addChild(arrowhead);
+				
+				SVGLineElement lastSegment = new SVGLineElement(arrowStrokeWidth);
+				lastSegment.translate(arrowhead_x + arrowhead.width/2, arrowhead.y + arrowhead.height);
+				lastSegment.height = bottomBar.y - lastSegment.y;
+				abs.addChild(lastSegment);
 			}
-			SVGElement bottomBar = new SVGLineElement(arrowWidth);
-			bottomBar.translate(leftmost, body.y + body.height + spacing);
-			bottomBar.width += pacman.x - leftmost;
-			
+			bottomBar.translate(leftmost + arrowheadWidth/2, 0);
+			bottomBar.width += pacman.x - leftmost - arrowheadWidth/2 + pacmanOverlap;
+
 			// vertically center pacman
 			pacman.translate(0, abs.height/2f );
+			
+			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth);
+			firstSegment.translate(pacman.x + pacmanOverlap, pacman.y + pacmanOverlap);
+			firstSegment.height = bottomBar.y - pacman.y - pacmanOverlap;
+			abs.addChild(firstSegment);
 
-			abs.width += lam.width + body.width + spacing + pacman.width;
+			abs.width += body.width + spacing + pacman.width;
 			
 			
 			
@@ -161,7 +175,7 @@ public class PlugDiagramRenderer {
 
 	public static SVGElement layoutApplication(Application app) {
 		SVGElement roundedRect = new SVGRoundedRectElement();
-		SVGElement appElem = new SVGApplicationElement(app);
+		SVGElement appElem = new SVGElement();
 		roundedRect.addChild(appElem);
 		
 		LambdaTerm left = app.getLeftHandSide();
@@ -171,7 +185,11 @@ public class PlugDiagramRenderer {
 		SVGElement rres = layoutLambdaTerm(right);
 	
 		float maxheight = Math.max(lres.height, rres.height);
-		lres.translate(spacing, Math.max(0, (maxheight - lres.height) / 2 + spacing));
+		lres.translate(
+				/* (\x.\x.\x....) tends to make lres overlap the border*/
+				2 * spacing,
+				/* vertical centering */
+				Math.max(0, (maxheight - lres.height) / 2 + spacing));
 		rres.translate(spacing, Math.max(0, (maxheight - rres.height) / 2 + spacing));
 		
 		SVGElement chevron = new SVGChevronElement();

@@ -13,6 +13,11 @@ import org.vectomatic.dom.svg.OMSVGTextElement;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
+/**
+ * Collection of different layouting nodes needed for SVG diagrams. Since many of these are very small,
+ * it made no sense to split them into different files. 
+ */
+
 class SVGDebugElement extends SVGElement {
 
 	String stroke;
@@ -38,6 +43,7 @@ class SVGTextElement extends SVGElement {
 		this.text = text;
 		this.width = PlugDiagramRenderer.fontSize * text.length() * 0.6f;
 		this.height = PlugDiagramRenderer.fontSize;
+		
 	}
 
 	public Set<OMSVGElement> render() {
@@ -45,6 +51,7 @@ class SVGTextElement extends SVGElement {
 		OMSVGTextElement elem = PlugDiagramRenderer.doc.createSVGTextElement(abs_x, abs_y + PlugDiagramRenderer.fontSize, OMSVGLength.SVG_LENGTHTYPE_PX, text);
 		elem.setAttribute("font-size", Float.toString(PlugDiagramRenderer.fontSize) + "px");
 		elem.setAttribute("font-family", "monospace");
+		elem.setAttribute("dominant-baseline", "ideographic");
 		res.add(elem);
 		return res;
 		
@@ -86,16 +93,6 @@ class SVGPacmanElement extends SVGElement {
 	public Set<OMSVGElement> render() {
 		Set<OMSVGElement> res = super.render();
 
-		// m 978.895 193.92
-		// a rx ry angle 0 0 dx dy
-		// a 14.4852 14.4852 0 0 0 -14.4843 14.4844
-		// a 14.4852 14.4852 0 0 0 14.4843 14.4863
-		// a 14.4852 14.4852 0 0 0 7.4629 -2.08789
-		// l -6.9082 -13.6738
-		// l 5.9688 -11.6406
-		// a 14.4852 14.4852 0 0 0 -6.5235 -1.56836
-		// Z
-
 		// TODO maybe use pacmanRadius?
 		OMSVGPathElement pacman = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = pacman.getPathSegList();
@@ -115,13 +112,6 @@ class SVGPacmanElement extends SVGElement {
 	}
 }
 
-class SVGApplicationElement extends SVGElement {
-	private LambdaTerm term;
-	
-	public SVGApplicationElement(LambdaTerm term) {
-		this.term = term;
-	}
-}
 
 class SVGLineElement extends SVGElement {
 	
@@ -145,10 +135,9 @@ class SVGLineElement extends SVGElement {
 	}
 }
 
-class SVGVariableElement extends SVGDebugElement {
+class SVGVariableElement extends SVGElement {
 	
 	public SVGVariableElement(LambdaTerm term) {
-		super("#dddddd");
 		this.term = term;
 		this.width = PlugDiagramRenderer.boundVarRectWidth;
 		this.height = PlugDiagramRenderer.boundVarRectHeight;
@@ -179,8 +168,23 @@ class SVGAbstractionElement extends SVGElement {
 	}
 }
 
-class SVGArrowheadElement extends SVGDebugElement {
+class SVGArrowheadElement extends SVGElement {
 	public SVGArrowheadElement() {
-		super("#0000ff"); // TODO
+		width = PlugDiagramRenderer.arrowheadWidth;
+		height = PlugDiagramRenderer.arrowheadHeight;
+	}
+	
+	public Set<OMSVGElement> render() {
+		Set<OMSVGElement> res = super.render();
+		OMSVGPathElement line = PlugDiagramRenderer.doc.createSVGPathElement();
+		OMSVGPathSegList segs = line.getPathSegList();
+		segs.appendItem(line.createSVGPathSegMovetoAbs(this.abs_x + width/2, this.abs_y));
+		segs.appendItem(line.createSVGPathSegLinetoRel(this.width/2, this.height));
+		segs.appendItem(line.createSVGPathSegLinetoRel(-this.width, 0));
+		segs.appendItem(line.createSVGPathSegClosePath());
+		line.setAttribute("stroke-linecap", "butt");
+		line.setAttribute("fill", "#000000");
+		res.add(line);
+		return res;
 	}
 }

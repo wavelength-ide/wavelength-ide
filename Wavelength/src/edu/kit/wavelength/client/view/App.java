@@ -448,10 +448,12 @@ public class App implements Serializable {
 		inputControlPanel.add(optionBarPanel);
 
 		outputFormatBox = new ListBox();
+
 		outputFormatBox.setId("outputFormatBox");
+		outputFormatBox.addItem("Plug Diagram"); // TODO
 		outputFormatBox.addItem("Unicode Output");
 		outputFormatBox.addItem("Tree Output");
-		outputFormatBox.addItem("Plug Diagram");
+
 		optionBarPanel.add(outputFormatBox);
 
 		reductionOrderBox = new ListBox();

@@ -1,7 +1,6 @@
 package edu.kit.wavelength.client;
 
 import com.google.gwt.core.client.EntryPoint;
-
 import edu.kit.wavelength.client.view.App;
 
 /**
@@ -18,5 +17,4 @@ public class Wavelength implements EntryPoint {
 		// initializes the app
 		App.get();
 	}
-
 }

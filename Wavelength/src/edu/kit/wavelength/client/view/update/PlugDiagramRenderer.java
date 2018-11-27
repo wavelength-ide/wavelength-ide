@@ -11,7 +11,6 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 
 import edu.kit.wavelength.client.model.term.*;
-import edu.kit.wavelength.client.view.update.SVGLayoutElement.LayoutItemType;
 
 public class PlugDiagramRenderer {
 	
@@ -37,11 +36,13 @@ public class PlugDiagramRenderer {
 	
 	static final float fontSize = 17f;
 	private static final float chevronSharpness = 0.6f;
-	static final String strokeWidth = "2px";
+	static final float strokeWidth = 2f;
 	private static final float spacing = 7f;
 	static final float pacmanRadius = 14.4844f;
 	static final float arrowWidth = 5f;
 	static final float arrowOverlap = 10f;
+	static final float boundVarRectWidth = 30f;
+	static final float boundVarRectHeight = 30f;
 	static OMSVGDocument doc;
 	
 	public static void renderDiagram(LambdaTerm t, Application nextRedex, Panel target) {
@@ -51,7 +52,7 @@ public class PlugDiagramRenderer {
 		svg.setAttribute("width", "100%");
 		
 		
-		SVGLayoutElement root = PlugDiagramRenderer.layoutLambdaTerm(t);
+		SVGElement root = PlugDiagramRenderer.layoutLambdaTerm(t);
 		root.translate(spacing, spacing);
 		root.clearAbsoluteLayout();
 		root.calculateAbsoluteLayout();
@@ -64,7 +65,7 @@ public class PlugDiagramRenderer {
 		target.getElement().appendChild(svg.getElement());
 	}
 	
-	private static SVGLayoutElement layoutLambdaTerm(LambdaTerm term) {
+	private static SVGElement layoutLambdaTerm(LambdaTerm term) {
 		if (term instanceof Application) return layoutApplication((Application) term);
 		if (term instanceof Abstraction) return layoutAbstraction((Abstraction) term);
 		if (term instanceof BoundVariable) return layoutBoundVariable((BoundVariable) term);
@@ -74,9 +75,9 @@ public class PlugDiagramRenderer {
 		return null;
 	}
 	
-	private static SVGLayoutElement layoutBorderedText(String text) {
-		SVGLayoutElement border = new SVGLayoutElement(SVGLayoutElement.LayoutItemType.RECT);
-		SVGLayoutElement textElem = new SVGLayoutElement(text);
+	private static SVGElement layoutBorderedText(String text) {
+		SVGElement border = new SVGRoundedRectElement();
+		SVGElement textElem = new SVGTextElement(text);
 		border.width = textElem.width + 2*spacing;
 		border.height = textElem.height + 2*spacing;
 		textElem.translate(spacing, spacing);
@@ -84,35 +85,29 @@ public class PlugDiagramRenderer {
 		return border;
 	}
 	
-	private static SVGLayoutElement layoutNamedTerm(NamedTerm term) {
+	private static SVGElement layoutNamedTerm(NamedTerm term) {
 		// print like a free variable
 		return layoutBorderedText(term.getName());
 	}
 
 
-	private static SVGLayoutElement layoutFreeVariable(FreeVariable term) {
-		// TODO Auto-generated method stub
-		return new SVGLayoutElement(term.getName());
+	private static SVGElement layoutFreeVariable(FreeVariable term) {
+		return new SVGTextElement(term.getName());
 	}
 
 
-	private static SVGLayoutElement layoutBoundVariable(BoundVariable term) {
-		// TODO this pseudo-div in the tree is just there to hold the BoundVariable reference
-		SVGLayoutElement var = new SVGLayoutElement(LayoutItemType.DEBUG, term);
-		SVGLayoutElement tmp = layoutBorderedText(Integer.toString(term.getDeBruijnIndex()));
-		var.addChild(tmp);
-		var.width = tmp.width;
-		var.height = tmp.height;
+	private static SVGElement layoutBoundVariable(BoundVariable term) {
+		SVGElement var = new SVGVariableElement(term);
 		return var;
 	}
 
 
-	private static SVGLayoutElement layoutAbstraction(Abstraction term) {
+	private static SVGElement layoutAbstraction(Abstraction term) {
 		// abs is the container element, it should encompass all others
-		SVGLayoutElement abs = new SVGLayoutElement(LayoutItemType.ABS);
-		SVGLayoutElement lam = new SVGLayoutElement("λ" + term.getPreferredName() + ".");
-		SVGLayoutElement body = layoutLambdaTerm(term.getInner());
-		SVGLayoutElement pacman = new SVGLayoutElement(SVGLayoutElement.LayoutItemType.PACMAN);
+		SVGElement abs = new SVGAbstractionElement(term);
+		SVGElement lam = new SVGTextElement("λ" + term.getPreferredName() + ".");
+		SVGElement body = layoutLambdaTerm(term.getInner());
+		SVGElement pacman = new SVGPacmanElement();
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
 
@@ -126,7 +121,7 @@ public class PlugDiagramRenderer {
 		abs.addChild(pacman);
 		abs.height = Math.max(lam.height, body.height);
 
-		Set<SVGLayoutElement> substitution_targets = abs.boundVariableLayoutElements();
+		Set<SVGElement> substitution_targets = abs.boundVariableLayoutElements();
 		if (!substitution_targets.isEmpty()) {
 			// we need space for arrows, but maybe centering has already provided that for us
 			abs.height = Math.max(body.y + body.height + spacing + arrowWidth, abs.height);
@@ -135,10 +130,10 @@ public class PlugDiagramRenderer {
 			// we will need the positions of BoundVariable layout elements relative to this element
 			abs.clearAbsoluteLayout();
 			abs.calculateAbsoluteLayout();
-			for (SVGLayoutElement var : abs.boundVariableLayoutElements(0)) {
+			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
 				leftmost = Math.min(leftmost, var.abs_x);
 				// draw arrow head for this child
-				SVGLayoutElement arrowhead = new SVGLayoutElement(LayoutItemType.ARROWHEAD);
+				SVGElement arrowhead = new SVGArrowheadElement();
 				arrowhead.width = var.width;
 				arrowhead.height = 3*spacing;
 				
@@ -146,10 +141,9 @@ public class PlugDiagramRenderer {
 				
 				abs.addChild(arrowhead);
 			}
-			SVGLayoutElement bottomBar = new SVGLayoutElement(LayoutItemType.LINE);
+			SVGElement bottomBar = new SVGLineElement(arrowWidth);
 			bottomBar.translate(leftmost, body.y + body.height + spacing);
 			bottomBar.width += pacman.x - leftmost;
-			bottomBar.height = arrowWidth; // TODO
 			
 			// vertically center pacman
 			pacman.translate(0, abs.height/2f );
@@ -165,20 +159,22 @@ public class PlugDiagramRenderer {
 	}
 
 
-	public static SVGLayoutElement layoutApplication(Application app) {
-		SVGLayoutElement roundedRect = new SVGLayoutElement(SVGLayoutElement.LayoutItemType.RECT, app);
+	public static SVGElement layoutApplication(Application app) {
+		SVGElement roundedRect = new SVGRoundedRectElement();
+		SVGElement appElem = new SVGApplicationElement(app);
+		roundedRect.addChild(appElem);
 		
 		LambdaTerm left = app.getLeftHandSide();
-		SVGLayoutElement lres = layoutLambdaTerm(left);
+		SVGElement lres = layoutLambdaTerm(left);
 		
 		LambdaTerm right = app.getRightHandSide();
-		SVGLayoutElement rres = layoutLambdaTerm(right);
+		SVGElement rres = layoutLambdaTerm(right);
 	
 		float maxheight = Math.max(lres.height, rres.height);
 		lres.translate(spacing, Math.max(0, (maxheight - lres.height) / 2 + spacing));
 		rres.translate(spacing, Math.max(0, (maxheight - rres.height) / 2 + spacing));
 		
-		SVGLayoutElement chevron = new SVGLayoutElement(SVGLayoutElement.LayoutItemType.CHEVRON);
+		SVGElement chevron = new SVGChevronElement();
 		chevron.height = maxheight + 2*spacing; // spacing above and below
 		chevron.width = chevron.height * chevronSharpness / 2;
 		
@@ -196,9 +192,9 @@ public class PlugDiagramRenderer {
 		roundedRect.width = rres.x + rres.width + spacing;
 		roundedRect.height = chevron.height;
 		
-		roundedRect.addChild(lres);
-		roundedRect.addChild(chevron);
-		roundedRect.addChild(rres);
+		appElem.addChild(lres);
+		appElem.addChild(chevron);
+		appElem.addChild(rres);
 		
 		return roundedRect;
 	}

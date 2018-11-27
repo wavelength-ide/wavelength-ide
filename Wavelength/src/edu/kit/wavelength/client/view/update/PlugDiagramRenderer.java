@@ -123,6 +123,7 @@ public class PlugDiagramRenderer {
 		abs.height = body.height;
 
 		Set<SVGElement> substitution_targets = abs.boundVariableLayoutElements();
+		SVGElement bottomBar = null;
 		if (!substitution_targets.isEmpty()) {
 			// we need space for arrows, but maybe centering has already provided that for us
 			abs.height = Math.max(body.y + body.height + spacing + arrowStrokeWidth, abs.height);
@@ -132,8 +133,8 @@ public class PlugDiagramRenderer {
 			abs.clearAbsoluteLayout();
 			abs.calculateAbsoluteLayout();
 			
-			SVGElement bottomBar = new SVGLineElement(arrowStrokeWidth);
-			// we'll need bottomBar to be at its final height for the vertical arrow segments
+			bottomBar = new SVGLineElement(arrowStrokeWidth);
+			// we need bottomBar to be at its final y pos before creating vertical arrow segments
 			bottomBar.translate(0, body.y + body.height + spacing);
 			
 			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
@@ -153,28 +154,28 @@ public class PlugDiagramRenderer {
 			}
 			bottomBar.translate(leftmost + arrowheadWidth/2, 0);
 			bottomBar.width += pacman.x - leftmost - arrowheadWidth/2 + pacmanOverlap;
-
-			// vertically center pacman
-			pacman.translate(0, abs.height/2f );
-			
+		}
+		// vertically center pacman
+		pacman.translate(0, abs.height/2f );
+		
+		
+		if (!substitution_targets.isEmpty()) {
 			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth);
 			firstSegment.translate(pacman.x + pacmanOverlap, pacman.y + pacmanOverlap);
 			firstSegment.height = bottomBar.y - pacman.y - pacmanOverlap;
 			abs.addChild(firstSegment);
-
-			abs.width += body.width + spacing + pacman.width;
-			
-			
-			
 			abs.addChild(bottomBar);
 		}
+
+		abs.width += body.width + spacing + pacman.width;
+
 		
 		return abs;
 	}
 
 
 	public static SVGElement layoutApplication(Application app) {
-		SVGElement roundedRect = new SVGRoundedRectElement();
+		SVGRoundedRectElement roundedRect = new SVGRoundedRectElement();
 		SVGElement appElem = new SVGElement();
 		roundedRect.addChild(appElem);
 		
@@ -209,6 +210,11 @@ public class PlugDiagramRenderer {
 		
 		roundedRect.width = rres.x + rres.width + spacing;
 		roundedRect.height = chevron.height;
+		// if rres is less wide than the roundedRect's radius, the chevron get all ugly
+		if (rres.width < roundedRect.getRadius()) {
+			roundedRect.width += roundedRect.getRadius() - rres.width;
+		}
+
 		
 		appElem.addChild(lres);
 		appElem.addChild(chevron);

@@ -59,11 +59,15 @@ class SVGTextElement extends SVGElement {
 }
 
 class SVGRoundedRectElement extends SVGElement {
-
+	public float getRadius() {
+		return 2 * height / 5;
+	}
+	
 	public Set<OMSVGElement> render() {
 		Set<OMSVGElement> res = super.render();
 
-		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, 2* height / 5, 2 * height / 5);
+		float r = getRadius();
+		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, r, r);
 		rect.setAttribute("stroke", "#000000");
 		rect.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		rect.setAttribute("fill", "none");

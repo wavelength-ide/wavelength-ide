@@ -120,9 +120,17 @@ class SVGPacmanElement extends SVGElement {
 class SVGLineElement extends SVGElement {
 	
 	String strokeWidth;
+	String stroke;
+	String linecap;
 	
 	public SVGLineElement(float strokeWidth) {
+		this(strokeWidth, "#000000", "round");
+	}
+	
+	public SVGLineElement(float strokeWidth, String stroke, String linecap) {
 		this.strokeWidth = Float.toString(strokeWidth) + "px";
+		this.stroke = stroke;
+		this.linecap = linecap;
 	}
 	
 	public Set<OMSVGElement> render() {
@@ -132,8 +140,8 @@ class SVGLineElement extends SVGElement {
 		segs.appendItem(line.createSVGPathSegMovetoAbs(this.abs_x, this.abs_y));
 		segs.appendItem(line.createSVGPathSegLinetoRel(this.width, this.height));
 		line.setAttribute("stroke-width", strokeWidth);
-		line.setAttribute("stroke-linecap", "round");
-		line.setAttribute("stroke", "#000000");
+		line.setAttribute("stroke-linecap", linecap);
+		line.setAttribute("stroke", stroke);
 		res.add(line);
 		return res;
 	}

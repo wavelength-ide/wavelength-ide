@@ -147,10 +147,16 @@ public class PlugDiagramRenderer {
 				arrowhead.translate(arrowhead_x, arrowhead_y);
 				abs.addChild(arrowhead);
 				
+				SVGLineElement lastSegmentBackground = new SVGLineElement(arrowStrokeWidth+6, "#FFFFFF", "butt");
+				lastSegmentBackground.translate(arrowhead_x + arrowhead.width/2, arrowhead.y + arrowhead.height);
+				lastSegmentBackground.height = bottomBar.y - lastSegmentBackground.y;
+				abs.addChild(lastSegmentBackground);
 				SVGLineElement lastSegment = new SVGLineElement(arrowStrokeWidth);
-				lastSegment.translate(arrowhead_x + arrowhead.width/2, arrowhead.y + arrowhead.height);
-				lastSegment.height = bottomBar.y - lastSegment.y;
+				lastSegment.translate(lastSegmentBackground.x, lastSegmentBackground.y);
+				lastSegment.height = lastSegmentBackground.height;
 				abs.addChild(lastSegment);
+				
+				
 			}
 			bottomBar.translate(leftmost + arrowheadWidth/2, 0);
 			bottomBar.width += pacman.x - leftmost - arrowheadWidth/2 + pacmanOverlap;

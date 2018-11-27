@@ -450,8 +450,8 @@ public class App implements Serializable {
 		outputFormatBox = new ListBox();
 
 		outputFormatBox.setId("outputFormatBox");
-		outputFormatBox.addItem("Plug Diagram"); // TODO
 		outputFormatBox.addItem("Unicode Output");
+		outputFormatBox.addItem("Plug Diagram");
 		outputFormatBox.addItem("Tree Output");
 
 		optionBarPanel.add(outputFormatBox);

@@ -14,7 +14,6 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.view.App;
 import edu.kit.wavelength.client.view.execution.ExecutionObserver;
 import edu.kit.wavelength.client.view.gwt.VisJs;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Updates the output.

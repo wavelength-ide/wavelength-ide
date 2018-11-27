@@ -35,12 +35,12 @@ public class PlugDiagramRenderer {
 	 */
 	
 	static final float fontSize = 17f;
-	private static final float chevronSharpness = 0.6f;
+	static final float chevronSharpness = 0.65f;
 	static final float strokeWidth = 2f;
 	private static final float spacing = 7f;
 	
-	static final float pacmanRadius = 14.4844f;
-	static final float pacmanOverlap = 14.4844f;
+	static final float pacmanRadius = 14.5f;
+	static final float pacmanOverlap = pacmanRadius;
 	
 	static final float arrowheadWidth = 30f;
 	static final float arrowheadHeight = 12f;
@@ -135,7 +135,7 @@ public class PlugDiagramRenderer {
 			
 			bottomBar = new SVGLineElement(arrowStrokeWidth);
 			// we need bottomBar to be at its final y pos before creating vertical arrow segments
-			bottomBar.translate(0, body.y + body.height + spacing);
+			bottomBar.translate(0, body.y + body.height + 2*spacing);
 			
 			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
 				leftmost = Math.min(leftmost, var.abs_x);

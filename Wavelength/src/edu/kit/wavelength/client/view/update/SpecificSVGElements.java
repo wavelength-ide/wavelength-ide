@@ -97,17 +97,26 @@ class SVGPacmanElement extends SVGElement {
 	public Set<OMSVGElement> render() {
 		Set<OMSVGElement> res = super.render();
 
-		// TODO maybe use pacmanRadius?
+		float r = PlugDiagramRenderer.pacmanRadius;
 		OMSVGPathElement pacman = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = pacman.getPathSegList();
-		segs.appendItem(pacman.createSVGPathSegMovetoAbs(this.abs_x + 14.4844f, this.abs_y - 14.4844f));
-		// endx, endy, rx, ry, ...
-		segs.appendItem(pacman.createSVGPathSegArcRel(-14.4843f, 14.4844f, 14.4852f, 14.4852f, 0f, false, false));
-		segs.appendItem(pacman.createSVGPathSegArcRel(14.4843f, 14.4863f, 14.4852f, 14.4852f, 0f, false, false));
-		segs.appendItem(pacman.createSVGPathSegArcRel(7.4629f, -2.08789f, 14.4852f, 14.4852f, 0f, false, false));
-		segs.appendItem(pacman.createSVGPathSegLinetoRel(-6.9082f, -13.6738f));
-		segs.appendItem(pacman.createSVGPathSegLinetoRel(5.9688f, -11.6406f));
-		segs.appendItem(pacman.createSVGPathSegArcRel(-6.5235f, -1.56836f, 14.4852f, 14.4852f, 0f, false, false));
+		// dis  /
+		// b   /  angle here is atan(1/sharpness) 
+		// pa./_ _ _ _
+		// cm \
+		// an  \
+		double alpha = Math.atan(1/PlugDiagramRenderer.chevronSharpness);
+		float center_right_corner_dx = (float) Math.cos(alpha) * r;
+		float center_top_corner_dy = (float) -Math.sin(alpha) * r;
+		// start at the top right corner
+		segs.appendItem(pacman.createSVGPathSegMovetoAbs(this.abs_x + r + center_right_corner_dx, this.abs_y + center_top_corner_dy));
+		segs.appendItem(pacman.createSVGPathSegArcAbs(this.abs_x + r, this.abs_y - r, r, r, 0f, false, false));  // top right flap 
+		// endx, endy, r, r
+		segs.appendItem(pacman.createSVGPathSegArcRel(-r, r, r, r, 0f, false, false)); // top left quarter
+		segs.appendItem(pacman.createSVGPathSegArcRel(r, r, r, r, 0f, false, false)); // bottom left quarter
+
+		segs.appendItem(pacman.createSVGPathSegArcAbs(this.abs_x + r + center_right_corner_dx, this.abs_y - center_top_corner_dy, r, r, 0f, false, false));
+		segs.appendItem(pacman.createSVGPathSegLinetoRel(-center_right_corner_dx, center_top_corner_dy));
 		segs.appendItem(pacman.createSVGPathSegClosePath());
 
 		res.add(pacman);

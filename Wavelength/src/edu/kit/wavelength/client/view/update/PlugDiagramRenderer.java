@@ -119,7 +119,7 @@ public class PlugDiagramRenderer {
 
 
 	private static SVGElement layoutAbstraction(Abstraction term, LambdaTerm nextRedex) {
-		String color = (nextRedex instanceof Application) && ((Application) nextRedex).getLeftHandSide().equals(term) ? redexColor : black;
+		String color = (nextRedex instanceof Application) && ((Application) nextRedex).getLeftHandSide() == term ? redexColor : black;
 		// abs is the container element, it should encompass all others
 		SVGElement abs = new SVGAbstractionElement(term);
 		SVGElement body = layoutLambdaTerm(term.getInner(), nextRedex);
@@ -193,7 +193,7 @@ public class PlugDiagramRenderer {
 
 
 	public static SVGElement layoutApplication(Application app, LambdaTerm nextRedex) {
-		String color = nextRedex.equals(app) ? redexColor : black;
+		String color = nextRedex == app ? redexColor : black;
 		SVGRoundedRectElement roundedRect = new SVGRoundedRectElement(color);
 		SVGElement appElem = new SVGElement();
 		roundedRect.addChild(appElem);

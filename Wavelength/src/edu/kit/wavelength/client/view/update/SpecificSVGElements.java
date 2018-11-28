@@ -18,18 +18,25 @@ import edu.kit.wavelength.client.model.term.LambdaTerm;
  * it made no sense to split them into different files. 
  */
 
-class SVGDebugElement extends SVGElement {
+abstract class SVGColoredElement extends SVGElement {
+	protected String color;
+	
+	public SVGColoredElement(String stroke) {
+		this.color = stroke;
+	}
+}
 
-	String stroke;
+class SVGDebugElement extends SVGColoredElement {
+	
 	public SVGDebugElement(String stroke) {
-		this.stroke = stroke;
+		super(stroke);
 	}
 
 	public Set<OMSVGElement> render() {
 		Set<OMSVGElement> res = super.render();
 		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, 0, 0);
 		rect.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
-		rect.setAttribute("stroke", stroke == null ? "#DD0000" : stroke);
+		rect.setAttribute("stroke", this.color == null ? "#DD0000" : this.color);
 		rect.setAttribute("fill", "none");
 		res.add(rect);
 		return res;
@@ -58,7 +65,12 @@ class SVGTextElement extends SVGElement {
 	}
 }
 
-class SVGRoundedRectElement extends SVGElement {
+class SVGRoundedRectElement extends SVGColoredElement {
+
+	public SVGRoundedRectElement(String stroke) {
+		super(stroke);
+	}
+
 	public float getRadius() {
 		return 2 * height / 5;
 	}
@@ -68,7 +80,7 @@ class SVGRoundedRectElement extends SVGElement {
 
 		float r = getRadius();
 		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, r, r);
-		rect.setAttribute("stroke", "#000000");
+		rect.setAttribute("stroke", this.color);
 		rect.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		rect.setAttribute("fill", "none");
 		res.add(rect);
@@ -76,7 +88,11 @@ class SVGRoundedRectElement extends SVGElement {
 	}
 }
 
-class SVGChevronElement extends SVGElement {
+class SVGChevronElement extends SVGColoredElement {
+
+	public SVGChevronElement(String stroke) {
+		super(stroke);
+	}
 
 	public Set<OMSVGElement> render() {
 		Set<OMSVGElement> res = super.render();
@@ -85,7 +101,7 @@ class SVGChevronElement extends SVGElement {
         segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.abs_x + this.width, this.abs_y));
         segs.appendItem(chevron.createSVGPathSegLinetoRel(-this.width, this.height / 2));
         segs.appendItem(chevron.createSVGPathSegLinetoRel(this.width, this.height / 2));
-        chevron.setAttribute("stroke", "#000000");
+        chevron.setAttribute("stroke", this.color);
         chevron.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
         chevron.setAttribute("fill", "none");
         res.add(chevron);
@@ -93,12 +109,21 @@ class SVGChevronElement extends SVGElement {
 	}
 }
 
-class SVGPacmanElement extends SVGElement {
+class SVGPacmanElement extends SVGColoredElement {
+
+	public SVGPacmanElement(String stroke) {
+		super(stroke);
+	}
+
 	public Set<OMSVGElement> render() {
 		Set<OMSVGElement> res = super.render();
 
 		float r = PlugDiagramRenderer.pacmanRadius;
 		OMSVGPathElement pacman = PlugDiagramRenderer.doc.createSVGPathElement();
+		// 
+		pacman.setAttribute("stroke", "#FFFFFF");
+		pacman.setAttribute("fill", this.color);
+		
 		OMSVGPathSegList segs = pacman.getPathSegList();
 		// dis  /
 		// b   /  angle here is atan(1/sharpness) 
@@ -126,19 +151,14 @@ class SVGPacmanElement extends SVGElement {
 }
 
 
-class SVGLineElement extends SVGElement {
+class SVGLineElement extends SVGColoredElement {
 	
 	String strokeWidth;
-	String stroke;
 	String linecap;
 	
-	public SVGLineElement(float strokeWidth) {
-		this(strokeWidth, "#000000", "round");
-	}
-	
 	public SVGLineElement(float strokeWidth, String stroke, String linecap) {
+		super(stroke);
 		this.strokeWidth = Float.toString(strokeWidth) + "px";
-		this.stroke = stroke;
 		this.linecap = linecap;
 	}
 	
@@ -150,7 +170,7 @@ class SVGLineElement extends SVGElement {
 		segs.appendItem(line.createSVGPathSegLinetoRel(this.width, this.height));
 		line.setAttribute("stroke-width", strokeWidth);
 		line.setAttribute("stroke-linecap", linecap);
-		line.setAttribute("stroke", stroke);
+		line.setAttribute("stroke", this.color);
 		res.add(line);
 		return res;
 	}
@@ -189,8 +209,10 @@ class SVGAbstractionElement extends SVGElement {
 	}
 }
 
-class SVGArrowheadElement extends SVGElement {
-	public SVGArrowheadElement() {
+class SVGArrowheadElement extends SVGColoredElement {
+
+	public SVGArrowheadElement(String stroke) {
+		super(stroke);
 		width = PlugDiagramRenderer.arrowheadWidth;
 		height = PlugDiagramRenderer.arrowheadHeight;
 	}
@@ -204,7 +226,7 @@ class SVGArrowheadElement extends SVGElement {
 		segs.appendItem(line.createSVGPathSegLinetoRel(-this.width, 0));
 		segs.appendItem(line.createSVGPathSegClosePath());
 		line.setAttribute("stroke-linecap", "butt");
-		line.setAttribute("fill", "#000000");
+		line.setAttribute("fill", this.color);
 		res.add(line);
 		return res;
 	}

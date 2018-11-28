@@ -49,17 +49,16 @@ public class PlugDiagramRenderer {
 	
 	static final float boundVarRectWidth = 30f;
 	static final float boundVarRectHeight = 30f;
-	// static final String redexColor = "#2b91af";  // unicode output teal
-	static final String redexColor = "#009782";  // KIT green  :|
 	static final String black = "#000000";  // readability
 	static OMSVGDocument doc;
 	
 	public static void renderDiagram(LambdaTerm t, Application nextRedex, Panel target) {
+		target.addStyleName("autoHighlight");
 
 		PlugDiagramRenderer.doc = OMSVGParser.currentDocument();
 		OMSVGSVGElement svg = doc.createSVGSVGElement();
 		
-		SVGElement root = PlugDiagramRenderer.layoutLambdaTerm(t, nextRedex);
+		SVGElement root = PlugDiagramRenderer.layoutLambdaTerm(t, nextRedex, null, target);
 		root.translate(spacing, spacing);
 		root.clearAbsoluteLayout();
 		root.calculateAbsoluteLayout();
@@ -74,9 +73,12 @@ public class PlugDiagramRenderer {
 		target.getElement().appendChild(svg.getElement());
 	}
 	
-	private static SVGElement layoutLambdaTerm(LambdaTerm term, LambdaTerm nextRedex) {
-		if (term instanceof Application) return layoutApplication((Application) term, nextRedex);
-		if (term instanceof Abstraction) return layoutAbstraction((Abstraction) term, nextRedex);
+	/**
+	 * parentRedex only really applies to Application and Abstraction
+	 */
+	private static SVGElement layoutLambdaTerm(LambdaTerm term, LambdaTerm nextRedex, Application parentRedex, Panel wrapper) {
+		if (term instanceof Application) return layoutApplication((Application) term, nextRedex, wrapper);
+		if (term instanceof Abstraction) return layoutAbstraction((Abstraction) term, nextRedex, parentRedex, wrapper);
 		if (term instanceof BoundVariable) return layoutBoundVariable((BoundVariable) term, nextRedex);
 		if (term instanceof FreeVariable) return layoutFreeVariable((FreeVariable) term, nextRedex);
 		if (term instanceof NamedTerm) return layoutNamedTerm((NamedTerm) term, nextRedex);
@@ -92,7 +94,7 @@ public class PlugDiagramRenderer {
 	}
 
 	private static SVGElement layoutBorderedText(String text) {
-		SVGElement border = new SVGRoundedRectElement(black);
+		SVGElement border = new SVGRoundedRectElement(false);
 		SVGElement textElem = new SVGTextElement(text);
 		border.width = textElem.width + 2*spacing;
 		border.height = textElem.height + 2*spacing;
@@ -118,19 +120,18 @@ public class PlugDiagramRenderer {
 	}
 
 
-	private static SVGElement layoutAbstraction(Abstraction term, LambdaTerm nextRedex) {
-		String color = (nextRedex instanceof Application) && ((Application) nextRedex).getLeftHandSide() == term ? redexColor : black;
+	private static SVGElement layoutAbstraction(Abstraction term, LambdaTerm nextRedex, Application thisRedex, Panel wrapper) {
+		boolean isNextRedex = nextRedex != null && nextRedex == thisRedex;
 		// abs is the container element, it should encompass all others
 		SVGElement abs = new SVGAbstractionElement(term);
-		SVGElement body = layoutLambdaTerm(term.getInner(), nextRedex);
-		SVGElement pacman = new SVGPacmanElement(color);
+		SVGElement body = layoutLambdaTerm(term.getInner(), nextRedex, null, wrapper);
+		SVGElement pacman = new SVGPacmanElement(isNextRedex, thisRedex, wrapper);
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
 
 		pacman.translate(body.x + body.width + spacing, 0);
 
 		abs.addChild(body);
-		abs.addChild(pacman);
 		abs.height = body.height;
 
 		Set<SVGElement> substitution_targets = abs.boundVariableLayoutElements();
@@ -144,25 +145,25 @@ public class PlugDiagramRenderer {
 			abs.clearAbsoluteLayout();
 			abs.calculateAbsoluteLayout();
 			
-			bottomBar = new SVGLineElement(arrowStrokeWidth, color, "round");
+			bottomBar = new SVGLineElement(arrowStrokeWidth, isNextRedex, "round");
 			// we need bottomBar to be at its final y pos before creating vertical arrow segments
 			bottomBar.translate(0, body.y + body.height + 2*spacing);
 			
 			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
 				leftmost = Math.min(leftmost, var.abs_x);
 				// draw arrow head for this child
-				SVGElement arrowhead = new SVGArrowheadElement(color);
+				SVGElement arrowhead = new SVGArrowheadElement(isNextRedex);
 				
 				float arrowhead_x = var.abs_x + /* centering */ (var.width - arrowhead.width)/2;
 				float arrowhead_y = var.abs_y + var.height - arrowOverlap;
 				arrowhead.translate(arrowhead_x, arrowhead_y);
 				abs.addChild(arrowhead);
 				
-				SVGLineElement lastSegmentBackground = new SVGLineElement(arrowStrokeWidth+6, "#FFFFFF", "butt");
+				SVGLineElement lastSegmentBackground = new SVGLineElement(arrowStrokeWidth+6, false, "#FFFFFF", "butt");
 				lastSegmentBackground.translate(arrowhead_x + arrowhead.width/2, arrowhead.y + arrowhead.height);
 				lastSegmentBackground.height = bottomBar.y - lastSegmentBackground.y;
 				abs.addChild(lastSegmentBackground);
-				SVGLineElement lastSegment = new SVGLineElement(arrowStrokeWidth, color, "butt");
+				SVGLineElement lastSegment = new SVGLineElement(arrowStrokeWidth, isNextRedex, "butt");
 				lastSegment.translate(lastSegmentBackground.x, lastSegmentBackground.y - 1);
 				lastSegment.height = lastSegmentBackground.height + 1;
 				abs.addChild(lastSegment);
@@ -177,14 +178,15 @@ public class PlugDiagramRenderer {
 		
 		
 		if (!substitution_targets.isEmpty()) {
-			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth, color, "round");
-			// the 5 pixel offset is to ensure the line doesn't just touch the pacman in a single point
-			firstSegment.translate(pacman.x + pacmanOverlap, pacman.y + pacmanOverlap - 5);
-			firstSegment.height = bottomBar.y - pacman.y - pacmanOverlap + 5;
+			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth, isNextRedex, "butt");
+			// the pixel offset is to ensure the line doesn't just touch the pacman in a single point
+			firstSegment.translate(pacman.x + pacmanOverlap, pacman.y + pacmanOverlap - 1);
+			firstSegment.height = bottomBar.y - pacman.y - pacmanOverlap + 1;
 			abs.addChild(firstSegment);
 			abs.addChild(bottomBar);
 		}
-
+		// finally, draw pacman over arrow
+		abs.addChild(pacman);
 		abs.width += body.width + spacing + pacman.width;
 
 		
@@ -192,17 +194,24 @@ public class PlugDiagramRenderer {
 	}
 
 
-	public static SVGElement layoutApplication(Application app, LambdaTerm nextRedex) {
-		String color = nextRedex == app ? redexColor : black;
-		SVGRoundedRectElement roundedRect = new SVGRoundedRectElement(color);
+	public static SVGElement layoutApplication(Application app, LambdaTerm nextRedex, Panel wrapper) {
+		boolean isNextRedex = nextRedex == app;
+		boolean isRedex = isNextRedex || app.acceptVisitor(new IsRedexVisitor());
+		
+		SVGRoundedRectElement roundedRect = new SVGRoundedRectElement(isNextRedex);
 		SVGElement appElem = new SVGElement();
 		roundedRect.addChild(appElem);
 		
 		LambdaTerm left = app.getLeftHandSide();
-		SVGElement lres = layoutLambdaTerm(left, nextRedex);
+		SVGElement lres;
+		if (isRedex) {
+			lres = layoutLambdaTerm(left, nextRedex, app, wrapper);
+		} else {
+			lres = layoutLambdaTerm(left, nextRedex, null, wrapper);
+		}
 		
 		LambdaTerm right = app.getRightHandSide();
-		SVGElement rres = layoutLambdaTerm(right, nextRedex);
+		SVGElement rres = layoutLambdaTerm(right, nextRedex, null, wrapper);
 	
 		float maxheight = Math.max(lres.height, rres.height);
 		lres.translate(
@@ -212,7 +221,7 @@ public class PlugDiagramRenderer {
 				Math.max(0, (maxheight - lres.height) / 2 + spacing));
 		rres.translate(spacing, Math.max(0, (maxheight - rres.height) / 2 + spacing));
 		
-		SVGElement chevron = new SVGChevronElement(color);
+		SVGElement chevron = new SVGChevronElement(isNextRedex);
 		chevron.height = maxheight + 2*spacing; // spacing above and below
 		chevron.width = chevron.height * chevronSharpness / 2;
 		

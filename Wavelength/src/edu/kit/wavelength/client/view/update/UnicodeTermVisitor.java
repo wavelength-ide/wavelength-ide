@@ -92,7 +92,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 			panel.addStyleName("nextRedex");
 		}
 
-		parent.addStyleName("autoUnderline");
+		parent.addStyleName("autoHighlight");
 
 		// get the anchor of the left side of the application for potential manipulation
 		Anchor a = left.anchor;
@@ -130,7 +130,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		Anchor a = new Anchor(term.getName());
 		a.addStyleName("abstraction");
 		panel.add(a);
-		parent.addStyleName("autoUnderline");
+		parent.addStyleName("autoHighlight");
 
 		// if the given named term is a redex: make the redex clickable and add
 		// styling for hovering over the redex
@@ -242,7 +242,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		// underlining of nextRedex
 		a.addMouseOverHandler(new MouseOverHandler() {
 			public void onMouseOver(MouseOverEvent event) {
-				parent.setStyleName("autoUnderline", false);
+				parent.setStyleName("autoHighlight", false);
 				panel.addStyleName("hover");
 			}
 		});
@@ -252,7 +252,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		a.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				parent.removeStyleName("nextRedex");
-				parent.removeStyleName("autoUnderline");
+				parent.removeStyleName("autoHighlight");
 				parent.addStyleName("customClick");
 				panel.addStyleName("reduced");
 				new StepManually(redex).run();
@@ -264,7 +264,7 @@ public class UnicodeTermVisitor extends ResolvedNamesVisitor<UnicodeTuple> {
 		a.addMouseOutHandler(new MouseOutHandler() {
 			public void onMouseOut(MouseOutEvent event) {
 				panel.removeStyleName("hover");
-				parent.setStyleName("autoUnderline", true);
+				parent.setStyleName("autoHighlight", true);
 			}
 		});
 	}

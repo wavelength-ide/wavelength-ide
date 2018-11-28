@@ -244,6 +244,10 @@ public class UpdateOutput implements ExecutionObserver {
 	
 	private void pushPlugDiagramTerm(LambdaTerm t, FlowPanel wrapper, Application nextRedex) {
 		PlugDiagramRenderer.renderDiagram(t, nextRedex, wrapper);
+		// make previous panel unclickable (if user *didn't* click on it already)
+		if (!panels.isEmpty()) {
+			panels.get(panels.size() - 1).addStyleName("notclickable");
+		}
 		panels.add(wrapper);
 		app.outputArea().add(wrapper);
 	}

@@ -71,7 +71,10 @@ class SVGTextElement extends SVGElement {
 		Set<OMSVGElement> res = super.render();
 		OMSVGTextElement elem = PlugDiagramRenderer.doc.createSVGTextElement(abs_x,
 				abs_y + PlugDiagramRenderer.fontSize, OMSVGLength.SVG_LENGTHTYPE_PX, text);
-		elem.setAttribute("font-size", Float.toString(PlugDiagramRenderer.fontSize) + "px");
+		// due to text rendering being inscrutable, a 17px "font-size" actually gets layouted as 20px
+		// So to get the font size at which centering isn't off, subtract some (empirically tested) amount
+		// from the layouting-size
+		elem.setAttribute("font-size", Float.toString(PlugDiagramRenderer.fontSize - 3) + "px");
 		elem.setAttribute("font-family", "monospace");
 		elem.setAttribute("dominant-baseline", "ideographic");
 		res.add(elem);
@@ -133,6 +136,12 @@ class SVGChevronElement extends SVGRedexElement {
 }
 
 class SVGPacmanElement extends SVGRedexElement {
+	
+	/*
+	 * The pacman elements are special in their handling of coordinates:
+	 * Their point of origin is vertically centered on the left side.
+	 * This makes centering them easier
+	 */
 	Application clickRedex;
 	Panel wrapper;
 

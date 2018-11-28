@@ -34,7 +34,7 @@ public class PlugDiagramRenderer {
 	 * All layout functions have a local coordinate system centered at the top-left corner of the AST node.
 	 */
 	
-	static final float fontSize = 17f;
+	static final float fontSize = 20f;
 	static final float chevronSharpness = 0.65f;
 	static final float strokeWidth = 2f;
 	private static final float spacing = 7f;
@@ -129,10 +129,11 @@ public class PlugDiagramRenderer {
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
 
-		pacman.translate(body.x + body.width + spacing, 0);
+		pacman.translate(body.x + body.width + spacing, spacing);
 
 		abs.addChild(body);
-		abs.height = body.height;
+		// We don't want pacman to bump against the frame, no matter how small the body may be
+		abs.height = Math.max(body.height, pacman.y + pacmanRadius + spacing);
 
 		Set<SVGElement> substitution_targets = abs.boundVariableLayoutElements();
 		SVGElement bottomBar = null;
@@ -172,9 +173,12 @@ public class PlugDiagramRenderer {
 			}
 			bottomBar.translate(leftmost + arrowheadWidth/2, 0);
 			bottomBar.width += pacman.x - leftmost - arrowheadWidth/2 + pacmanOverlap;
+		} else {
+			// no substitution targets, no arrows... center body
+			body.translate(0, (abs.height - body.height)/2f );
 		}
 		// vertically center pacman
-		pacman.translate(0, abs.height/2f );
+		pacman.translate(0, (abs.height - 2*spacing)/2f );
 		
 		
 		if (!substitution_targets.isEmpty()) {

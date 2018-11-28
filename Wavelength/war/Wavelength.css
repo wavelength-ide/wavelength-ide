@@ -266,7 +266,7 @@ select.form-control {
 }
 
 /* indicates the next reduced redex considering the current reduction order */
-.parent .nextRedex {
+.autoUnderline .nextRedex {
 	border-bottom: 1px solid #2b91af
 }
 

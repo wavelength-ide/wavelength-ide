@@ -7,7 +7,6 @@ import org.vectomatic.dom.svg.OMSVGElement;
 import org.vectomatic.dom.svg.OMSVGSVGElement;
 import org.vectomatic.dom.svg.utils.OMSVGParser;
 
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.Panel;
 
 import edu.kit.wavelength.client.model.term.*;
@@ -83,8 +82,8 @@ public class PlugDiagramRenderer {
 		if (term instanceof FreeVariable) return layoutFreeVariable((FreeVariable) term, nextRedex);
 		if (term instanceof NamedTerm) return layoutNamedTerm((NamedTerm) term, nextRedex);
 		if (term instanceof PartialApplication) return layoutPartialApplication((PartialApplication) term, nextRedex);
-		GWT.log(term.getClass().toString() + "has been forgotten!");
-		return null;
+		// Should be dead code, unless someone adds new types of LambdaTerms
+		throw new UnsupportedOperationException("Don't know how to layout terms of type " + term.getClass().getCanonicalName() + "as plug diagram");
 	}
 	
 	private static SVGElement layoutPartialApplication(PartialApplication term, LambdaTerm nextRedex) {

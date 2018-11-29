@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.gwtbootstrap3.client.ui.html.Text;
 
-import com.google.gwt.core.shared.GWT;
 import com.google.gwt.user.client.ui.FlowPanel;
 
 import edu.kit.wavelength.client.model.reduction.ReductionOrder;
@@ -65,8 +64,7 @@ public class UpdateOutput implements ExecutionObserver {
 			pushPlugDiagramTerm(term, wrapper, nextRedex);
 			break;
 		default:
-			GWT.log("Tried to add item of unknown format to output window");
-			break;
+			throw new UnsupportedOperationException("Tried to add item of unknown format to output window");
 		}
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
@@ -174,8 +172,7 @@ public class UpdateOutput implements ExecutionObserver {
 			pushPlugDiagramTerm(term, wrapper, nextRedex);
 			break;
 		default:
-			GWT.log("Tried to reload term of unknown format");
-			break;
+			throw new UnsupportedOperationException("Tried to reload term of unknown format");
 		}
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
@@ -207,8 +204,7 @@ public class UpdateOutput implements ExecutionObserver {
 		case "Plug Diagram":
 			return OutputFormat.PLUGDIAGRAM;
 		default:
-			GWT.log("Unknown format selected");
-			return null;
+			throw new UnsupportedOperationException("Unknown format selected");
 		}
 	}
 

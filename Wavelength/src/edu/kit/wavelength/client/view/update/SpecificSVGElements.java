@@ -12,6 +12,10 @@ import org.vectomatic.dom.svg.OMSVGTextElement;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
 import com.google.gwt.user.client.ui.Panel;
 
 import edu.kit.wavelength.client.model.term.Application;
@@ -191,11 +195,23 @@ class SVGPacmanElement extends SVGRedexElement {
 			pacman.addClickHandler(new ClickHandler() {
 				public void onClick(ClickEvent event) {
 					wrapper.addStyleName("notclickable");
-					wrapper.removeStyleName("autoHighlight");
 					new StepManually(clickRedex).run();
+					wrapper.removeStyleName("autoHighlight");
 				}
 			});
-
+			pacman.addMouseOverHandler(new MouseOverHandler() {
+				public void onMouseOver(MouseOverEvent event) {
+					wrapper.removeStyleName("autoHighlight");
+				}
+			});
+			pacman.addMouseOutHandler(new MouseOutHandler() {
+				public void onMouseOut(MouseOutEvent event) {
+					if (wrapper.getStyleName().indexOf("notclickable") == -1) {
+						// SVG panel hasn't been disabled yet, we are still the active panel 
+						wrapper.addStyleName("autoHighlight");
+					}
+				}
+			});
 		}
 		res.add(pacman);
 		return res;

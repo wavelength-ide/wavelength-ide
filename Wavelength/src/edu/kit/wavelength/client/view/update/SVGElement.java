@@ -7,7 +7,15 @@ import java.util.Set;
 
 import org.vectomatic.dom.svg.OMSVGElement;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.MouseOutEvent;
+import com.google.gwt.event.dom.client.MouseOutHandler;
+import com.google.gwt.event.dom.client.MouseOverEvent;
+import com.google.gwt.event.dom.client.MouseOverHandler;
+
 import edu.kit.wavelength.client.model.term.LambdaTerm;
+import edu.kit.wavelength.client.view.action.StepManually;
 
 class SVGElement {
 	
@@ -78,6 +86,6 @@ class SVGElement {
 		return res;
 		
 	}
-	
+		
 }
 

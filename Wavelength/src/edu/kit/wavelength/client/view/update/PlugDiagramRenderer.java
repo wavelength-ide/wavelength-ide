@@ -102,8 +102,13 @@ public class PlugDiagramRenderer {
 		return border;
 	}
 	
-	private static SVGElement layoutNamedTerm(NamedTerm term, LambdaTerm nextRedex) {
-		// print like a free variable
+	
+	private static SVGElement layoutNamedTerm(NamedTerm term, LambdaTerm parentRedex) {
+		if (parentRedex == null) {
+			// print like a free variable
+			return layoutBorderedText(term.getName());
+		}
+		// we're a stand-in for something reducible, let's add a click handler TODO
 		return layoutBorderedText(term.getName());
 	}
 

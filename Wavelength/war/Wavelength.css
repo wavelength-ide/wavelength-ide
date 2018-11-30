@@ -232,6 +232,7 @@ select.form-control {
 
 path.clickable:hover {
 	fill: #50cabd !important;
+	cursor: pointer;
 }
 
 /* overwrite default anchor styling, abstractions should look like normal text by default */

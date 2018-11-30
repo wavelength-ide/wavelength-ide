@@ -124,9 +124,9 @@ class SVGChevronElement extends SVGRedexElement {
 		Set<OMSVGElement> res = super.render();
 		OMSVGPathElement chevron = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = chevron.getPathSegList();
-		segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.abs_x + this.width, this.abs_y));
-		segs.appendItem(chevron.createSVGPathSegLinetoRel(-this.width, this.height / 2));
+		segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.abs_x, this.abs_y));
 		segs.appendItem(chevron.createSVGPathSegLinetoRel(this.width, this.height / 2));
+		segs.appendItem(chevron.createSVGPathSegLinetoRel(-this.width, this.height / 2));
 		chevron.setAttribute("stroke", PlugDiagramRenderer.black);
 		chevron.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		chevron.setAttribute("fill", "none");
@@ -143,8 +143,8 @@ class SVGPacmanElement extends SVGRedexElement {
 	
 	/*
 	 * The pacman elements are special in their handling of coordinates:
-	 * Their point of origin is vertically centered on the left side.
-	 * This makes centering them easier
+	 * Their point of origin is vertically centered on the left side of
+	 * the circle with pacmanRadius.
 	 */
 	Application clickRedex;
 	Panel wrapper;
@@ -174,19 +174,19 @@ class SVGPacmanElement extends SVGRedexElement {
 		// cm \
 		// an  \
 		double alpha = Math.atan(1 / PlugDiagramRenderer.chevronSharpness);
-		float center_right_corner_dx = (float) Math.cos(alpha) * r;
+		float left_corner_center_dx = (float) Math.cos(alpha) * r;
 		float center_top_corner_dy = (float) -Math.sin(alpha) * r;
-		// start at the top right corner
-		segs.appendItem(pacman.createSVGPathSegMovetoAbs(this.abs_x + r + center_right_corner_dx,
-				this.abs_y + center_top_corner_dy));
-		segs.appendItem(pacman.createSVGPathSegArcAbs(this.abs_x + r, this.abs_y - r, r, r, 0f, false, false)); // top right flap
+		
+		// start at the bottom left corner
+		segs.appendItem(pacman.createSVGPathSegMovetoAbs(this.abs_x + r - left_corner_center_dx,
+				this.abs_y - center_top_corner_dy));
 		// endx, endy, r, r
-		segs.appendItem(pacman.createSVGPathSegArcRel(-r, r, r, r, 0f, false, false)); // top left quarter
-		segs.appendItem(pacman.createSVGPathSegArcRel(r, r, r, r, 0f, false, false)); // bottom left quarter
-
-		segs.appendItem(pacman.createSVGPathSegArcAbs(this.abs_x + r + center_right_corner_dx,
-				this.abs_y - center_top_corner_dy, r, r, 0f, false, false));
-		segs.appendItem(pacman.createSVGPathSegLinetoRel(-center_right_corner_dx, center_top_corner_dy));
+		segs.appendItem(pacman.createSVGPathSegArcAbs(this.abs_x + r, this.abs_y + r, r, r, 0f, false, false)); // bottom left flap
+		segs.appendItem(pacman.createSVGPathSegArcRel(r, -r, r, r, 0f, false, false)); // bottom right quarter
+		segs.appendItem(pacman.createSVGPathSegArcRel(-r,-r, r, r, 0f, false, false)); // top right quarter
+		segs.appendItem(pacman.createSVGPathSegArcAbs(this.abs_x + r - left_corner_center_dx,
+				this.abs_y + center_top_corner_dy, r, r, 0f, false, false)); // top left flap
+		segs.appendItem(pacman.createSVGPathSegLinetoRel(left_corner_center_dx, -center_top_corner_dy));
 		segs.appendItem(pacman.createSVGPathSegClosePath());
 
 		if (clickRedex != null) {

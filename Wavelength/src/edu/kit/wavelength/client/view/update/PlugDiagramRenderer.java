@@ -39,7 +39,7 @@ public class PlugDiagramRenderer {
 	private static final float spacing = 7f;
 	
 	static final float pacmanRadius = 14.5f;
-	static final float pacmanOverlap = pacmanRadius;
+	static final float pacmanOverlap = pacmanRadius - 5;
 	
 	static final float arrowheadWidth = 30f;
 	static final float arrowheadHeight = 12f;
@@ -133,7 +133,8 @@ public class PlugDiagramRenderer {
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
 
-		pacman.translate(body.x + body.width + spacing, spacing);
+		pacman.translate(0, spacing);
+		body.translate(pacman.x + pacman.width + spacing, 0);
 
 		abs.addChild(body);
 		// We don't want pacman to bump against the frame, no matter how small the body may be
@@ -144,7 +145,7 @@ public class PlugDiagramRenderer {
 		if (!substitution_targets.isEmpty()) {
 			// we need space for arrows, but maybe centering has already provided that for us
 			abs.height = Math.max(body.y + body.height + spacing + arrowStrokeWidth, abs.height);
-			float leftmost = pacman.x;
+			float rightmost = pacman.x;
 			
 			// we will need the positions of BoundVariable layout elements relative to this element
 			abs.clearAbsoluteLayout();
@@ -152,10 +153,10 @@ public class PlugDiagramRenderer {
 			
 			bottomBar = new SVGLineElement(arrowStrokeWidth, isNextRedex, "round");
 			// we need bottomBar to be at its final y pos before creating vertical arrow segments
-			bottomBar.translate(0, body.y + body.height + 2*spacing);
+			bottomBar.translate(pacman.x + pacman.width - pacmanOverlap, body.y + body.height + 2*spacing);
 			
 			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
-				leftmost = Math.min(leftmost, var.abs_x);
+				rightmost = Math.max(rightmost, var.abs_x);
 				// draw arrow head for this child
 				SVGElement arrowhead = new SVGArrowheadElement(isNextRedex);
 				
@@ -175,8 +176,7 @@ public class PlugDiagramRenderer {
 				
 				
 			}
-			bottomBar.translate(leftmost + arrowheadWidth/2, 0);
-			bottomBar.width += pacman.x - leftmost - arrowheadWidth/2 + pacmanOverlap;
+			bottomBar.width += rightmost - pacman.x - pacman.width + pacmanOverlap + arrowheadWidth/2;
 		} else {
 			// no substitution targets, no arrows... center body
 			body.translate(0, (abs.height - body.height)/2f );
@@ -188,7 +188,7 @@ public class PlugDiagramRenderer {
 		if (!substitution_targets.isEmpty()) {
 			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth, isNextRedex, "butt");
 			// the pixel offset is to ensure the line doesn't just touch the pacman in a single point
-			firstSegment.translate(pacman.x + pacmanOverlap, pacman.y + pacmanOverlap - 1);
+			firstSegment.translate(pacman.x + pacman.width - pacmanOverlap, pacman.y + pacmanOverlap - 1);
 			firstSegment.height = bottomBar.y - pacman.y - pacmanOverlap + 1;
 			abs.addChild(firstSegment);
 			abs.addChild(bottomBar);
@@ -222,39 +222,40 @@ public class PlugDiagramRenderer {
 		SVGElement rres = layoutLambdaTerm(right, nextRedex, null, wrapper);
 	
 		float maxheight = Math.max(lres.height, rres.height);
-		lres.translate(
-				/* (\x.\x.\x....) tends to make lres overlap the border*/
-				2 * spacing,
-				/* vertical centering */
-				Math.max(0, (maxheight - lres.height) / 2 + spacing));
-		rres.translate(spacing, Math.max(0, (maxheight - rres.height) / 2 + spacing));
+		rres.translate(spacing, /* vertical centering */
+				Math.max(0, (maxheight - rres.height) / 2 + spacing));
+		lres.translate(spacing, Math.max(0, (maxheight - lres.height) / 2 + spacing));
 		
 		SVGElement chevron = new SVGChevronElement(isNextRedex);
 		chevron.height = maxheight + 2*spacing; // spacing above and below
 		chevron.width = chevron.height * chevronSharpness / 2;
 		
 		if (left instanceof Abstraction) {
-			// make the left part of the Application a bit smaller, so the abstraction's
+			// move the right hand side of the diagram a bit to the left, so the abstraction's
 			// pacman plug slots *just right* into the chevron
-			lres.width -= pacmanRadius;
+			lres.translate(-pacmanRadius - spacing, 0);
+			// additionally, make it a bit wider, since \x.\x.... messes with the right border
+			// as a general rule of thumb, we can use 
+			lres.width += lres.height / 6;
 		} else {
 			chevron.translate(spacing, 0);
 		}
 
-		chevron.translate(lres.x + lres.width, 0);
-		rres.translate(chevron.x + chevron.width, 0);
+		chevron.translate(rres.x + rres.width, 0);
+		lres.translate(chevron.x + chevron.width, 0);
 		
-		roundedRect.width = rres.x + rres.width + spacing;
+		roundedRect.width = lres.x + lres.width + spacing;
 		roundedRect.height = chevron.height;
-		// if rres is less wide than the roundedRect's radius, the chevron get all ugly
-		if (rres.width < roundedRect.getRadius()) {
-			roundedRect.width += roundedRect.getRadius() - rres.width;
+		// if lres is less wide than the roundedRect's radius, the chevron get all ugly
+		if (lres.width < roundedRect.getRadius()) {
+			roundedRect.width += roundedRect.getRadius() - lres.width;
 		}
 
 		
+		appElem.addChild(rres);
 		appElem.addChild(lres);
 		appElem.addChild(chevron);
-		appElem.addChild(rres);
+
 		
 		return roundedRect;
 	}

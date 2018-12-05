@@ -25,6 +25,15 @@ public class PlugDiagramRenderer {
 	 * So generally, we create a bunch of layout elements and manually do the layout, spacing, etc.
 	 * and "rendering" it means creating the corresponding SVG nodes with the newly computed absolute positioning.
 	 * 
+	 * As for the principles of how the diagrams should *look*, the general rule is that the algorithmically
+	 * rendered diagrams should look like what a human would produce when instructed to make *good* diagrams.
+	 * As a consequence, there's a few special cases we handle to make the diagrams prettier, less confusing,
+	 * or more visually instructive, even if it complicates rendering or the transformation from textual representation.
+	 * The big two being:
+	 * * A top-level abstraction is rendered with a border, because it looks better and keeps diagrams visually consistent
+	 * * Bound variables directly within abstractions are also bordered, since this is the only case in which 
+	 *   an arrow points at a location that doesn't necessarily look like a "hole". The border fixes that.   
+	 * 
 	 * The coordinate system is as follows:
 	 * +--> x
 	 * |
@@ -57,7 +66,7 @@ public class PlugDiagramRenderer {
 		PlugDiagramRenderer.doc = OMSVGParser.currentDocument();
 		OMSVGSVGElement svg = doc.createSVGSVGElement();
 		
-		SVGElement root = PlugDiagramRenderer.layoutLambdaTerm(t, nextRedex, null, target);
+		SVGElement root = PlugDiagramRenderer.layoutRootLambdaTerm(t, nextRedex, target);
 		root.translate(spacing, spacing);
 		root.clearAbsoluteLayout();
 		root.calculateAbsoluteLayout();
@@ -86,20 +95,45 @@ public class PlugDiagramRenderer {
 		throw new UnsupportedOperationException("Don't know how to layout terms of type " + term.getClass().getCanonicalName() + "as plug diagram");
 	}
 	
+	/**
+	 * Perform layout of a "whole" lambda term. There's only one special case, compared to layoutLambdaTerm:
+	 * Top-level absractions should be wrapped in their own box. I dislike special casing them, but 
+	 * "raw" Abstractions on the top level look wrong. 
+	 */
+	private static SVGElement layoutRootLambdaTerm(LambdaTerm term, LambdaTerm nextRedex, Panel wrapper) {
+		if (term instanceof Abstraction) {
+			SVGElement elem = layoutLambdaTerm(term, nextRedex, null, wrapper);
+			return RoundedRectAround(elem);
+		}
+		return layoutLambdaTerm(term, nextRedex, null, wrapper);
+	}
+	
+	private static SVGElement RoundedRectAround(SVGElement other) {
+		SVGElement border = new SVGRoundedRectElement(false);
+		border.addChild(other);
+		other.translate(spacing, spacing);
+		border.width = other.width + 2*spacing;
+		border.height = other.height + 2*spacing;
+		// this is our ideal frame for the other element, however,
+		// it might intersect with the content due to the rounded
+		// corners
+		float offset = other.height / 12;
+		border.width += offset;
+		border.height += 2*offset;
+		other.translate(0, offset);
+		return border;
+	}
+	
 	private static SVGElement layoutPartialApplication(PartialApplication term, LambdaTerm nextRedex) {
-		// "'".repeat(term.getNumReceived()) for java <11, see https://stackoverflow.com/questions/1235179/simple-way-to-repeat-a-string-in-java
+		// "'".repeat(term.getNumReceived()) for java <11
+		// see https://stackoverflow.com/questions/1235179/simple-way-to-repeat-a-string-in-java
 		String primes = new String(new char[term.getNumReceived()]).replace("\0", "'");
 		return layoutBorderedText(term.getName() + primes);
 	}
 
 	private static SVGElement layoutBorderedText(String text) {
-		SVGElement border = new SVGRoundedRectElement(false);
 		SVGElement textElem = new SVGTextElement(text);
-		border.width = textElem.width + 2*spacing;
-		border.height = textElem.height + 2*spacing;
-		textElem.translate(spacing, spacing);
-		border.addChild(textElem);
-		return border;
+		return RoundedRectAround(textElem);
 	}
 	
 	
@@ -128,7 +162,12 @@ public class PlugDiagramRenderer {
 		boolean isNextRedex = nextRedex != null && nextRedex == thisRedex;
 		// abs is the container element, it should encompass all others
 		SVGElement abs = new SVGAbstractionElement(term);
-		SVGElement body = layoutLambdaTerm(term.getInner(), nextRedex, null, wrapper);
+		SVGElement body;
+		if (term.getInner() instanceof BoundVariable) {
+			body = RoundedRectAround(layoutBoundVariable((BoundVariable) term.getInner(), nextRedex));
+		} else {
+			body = layoutLambdaTerm(term.getInner(), nextRedex, null, wrapper);
+		}
 		SVGElement pacman = new SVGPacmanElement(isNextRedex, thisRedex, wrapper);
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
@@ -235,7 +274,9 @@ public class PlugDiagramRenderer {
 			// pacman plug slots *just right* into the chevron
 			lres.translate(-pacmanRadius - spacing, 0);
 			// additionally, make it a bit wider, since \x.\x.... messes with the right border
-			// as a general rule of thumb, we can use 
+			// as a general rule of thumb, the taller the inner element, the higher the chance
+			// of it intersecting, and the more we need to add to the width. the divisor is a
+			// magic number adjusted to look good.
 			lres.width += lres.height / 6;
 		} else {
 			chevron.translate(spacing, 0);
@@ -246,9 +287,13 @@ public class PlugDiagramRenderer {
 		
 		roundedRect.width = lres.x + lres.width + spacing;
 		roundedRect.height = chevron.height;
-		// if lres is less wide than the roundedRect's radius, the chevron get all ugly
-		if (lres.width < roundedRect.getRadius()) {
-			roundedRect.width += roundedRect.getRadius() - lres.width;
+		// if rres is less wide than the roundedRect's radius, the chevron gets all ugly
+		if (chevron.x < roundedRect.getRadius()) {
+			float dx = roundedRect.getRadius() - chevron.x;
+			roundedRect.width += dx;
+			chevron.translate(dx, 0);
+			lres.translate(dx, 0);
+			
 		}
 
 		

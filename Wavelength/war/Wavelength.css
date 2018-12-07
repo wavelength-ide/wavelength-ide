@@ -230,8 +230,12 @@ select.form-control {
 	background-color: #2b91af45;
 }
 
-path.clickable:hover {
+.clickable:hover .fillHighlight {
 	fill: #50cabd !important;
+	cursor: pointer;
+}
+.clickable:hover .strokeHighlight {
+	stroke: #50cabd !important;
 	cursor: pointer;
 }
 
@@ -276,11 +280,11 @@ path.clickable:hover {
 	border-bottom: 1px solid #2b91af;
 }
 
-/* beautiful, beautiful KIT green for auto-selected redexes */
-.autoHighlight .nextRedex.stroke {
+/* beautiful, beautiful KIT green for selected redexes */
+.autoHighlight .nextRedex .strokeHighlight, .reduced .strokeHighlight {
 	stroke: #009782;
 }
-.autoHighlight .nextRedex.fill {
+.autoHighlight .nextRedex .fillHighlight, .reduced .fillHighlight {
 	fill: #009782;
 }
 

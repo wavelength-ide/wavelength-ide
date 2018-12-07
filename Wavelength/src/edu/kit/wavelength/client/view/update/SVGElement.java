@@ -7,15 +7,7 @@ import java.util.Set;
 
 import org.vectomatic.dom.svg.OMSVGElement;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.MouseOutEvent;
-import com.google.gwt.event.dom.client.MouseOutHandler;
-import com.google.gwt.event.dom.client.MouseOverEvent;
-import com.google.gwt.event.dom.client.MouseOverHandler;
-
 import edu.kit.wavelength.client.model.term.LambdaTerm;
-import edu.kit.wavelength.client.view.action.StepManually;
 
 class SVGElement {
 	
@@ -23,6 +15,19 @@ class SVGElement {
 	public float y;
 	public float width;
 	public float height;
+	/**
+	 * the object graph ("children" relationship) determines the
+	 * layout and which objects are positioned relative to one
+	 * another. However, in order to get mouse-over highlighting
+	 * to work correctly, the rendered OMSVGElements must be places
+	 * in groups that do not correspond to the hierarchy of the
+	 * layout. Every SVGElement therefore optionally belongs to an
+	 * SVGGElement it will be rendered in.
+	 * 
+	 * This also means that any element which has non-null clickGroup
+	 * should *not* be included in the elements returned by render(),
+	 */
+	public SVGElementGroup clickGroup;
 	
 	// absolute positioning may be recalculated multiple times 
 	// from different roots (we need it while drawing arrows
@@ -35,6 +40,14 @@ class SVGElement {
 	public SVGElement() {
 		this.children = new ArrayList<>();
 	}
+	
+	public void addToGroup(SVGElementGroup group) {
+		this.clickGroup = group;
+		if (group != null) {
+			group.addChild(this);
+		}
+	}
+	
 	public void addChild(SVGElement elem) {
 		this.children.add(elem);
 	}
@@ -78,13 +91,18 @@ class SVGElement {
 		return res;
 	}
 	
-	public Set<OMSVGElement> render() {
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
 		Set<OMSVGElement> res = new HashSet<>();
-		for (SVGElement child : children) {
-			res.addAll(child.render());
+		for (SVGElement child : children) { 
+			res.addAll(child.renderForRoot(root));
 		}
 		return res;
-		
+	}
+	
+	public void addResultForRoot(Set<OMSVGElement> results, OMSVGElement el, SVGElement root) {
+		if (root == this.clickGroup) {
+			results.add(el);
+		}
 	}
 		
 }

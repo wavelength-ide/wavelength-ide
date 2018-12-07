@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.vectomatic.dom.svg.OMSVGElement;
+import org.vectomatic.dom.svg.OMSVGGElement;
 import org.vectomatic.dom.svg.OMSVGLength;
 import org.vectomatic.dom.svg.OMSVGPathElement;
 import org.vectomatic.dom.svg.OMSVGPathSegList;
@@ -26,6 +27,22 @@ import edu.kit.wavelength.client.view.action.StepManually;
 /**
  * Collection of different layouting nodes needed for SVG diagrams. Since many
  * of these are very small, it made no sense to split them into different files.
+ * 
+ * The CSS classes used by this SVG renderer are the following:
+ * 
+ *  - autoHighlight:  Should the next redex (as chosen by the reduction order)
+ *                    be highlighted right now?
+ *  - nextRedex:      This element is part of the next redex highlight
+ *  - strokeHighlight
+ *    fillHighlight:  This element, if highlighted, needs to have its stroke/fill
+ *                    changed
+ *  - clickable:      This element, when hovered over, will highlight, and
+ *                    performs a reduction when clicked.       
+ *  - reduced         This is the redex that was finally reduced, either by clicking,
+ *                    or because it was chosen by the reduction order
+ *  - notclickable:   SVG is inactive, hovering and clicking shouldn't do anything
+ *                    anymore.
+ * 
  */
 abstract class SVGColoredElement extends SVGElement {
 	protected String color;
@@ -35,28 +52,19 @@ abstract class SVGColoredElement extends SVGElement {
 	}
 }
 
-abstract class SVGRedexElement extends SVGElement {
-
-	protected boolean isNextRedex;
-
-	public SVGRedexElement(boolean isNextRedex) {
-		this.isNextRedex = isNextRedex;
-	}
-}
-
 class SVGDebugElement extends SVGColoredElement {
 
 	public SVGDebugElement(String color) {
 		super(color);
 	}
 
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, 0, 0);
 		rect.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		rect.setAttribute("stroke", this.color == null ? "#DD0000" : this.color);
 		rect.setAttribute("fill", "none");
-		res.add(rect);
+		addResultForRoot(res, rect, root);
 		return res;
 	}
 }
@@ -71,8 +79,8 @@ class SVGTextElement extends SVGElement {
 
 	}
 
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 		OMSVGTextElement elem = PlugDiagramRenderer.doc.createSVGTextElement(abs_x,
 				abs_y + PlugDiagramRenderer.fontSize, OMSVGLength.SVG_LENGTHTYPE_PX, text);
 		// due to text rendering being inscrutable, a 17px "font-size" actually gets layouted as 20px
@@ -81,47 +89,36 @@ class SVGTextElement extends SVGElement {
 		elem.setAttribute("font-size", Float.toString(PlugDiagramRenderer.fontSize - 3) + "px");
 		elem.setAttribute("font-family", "monospace");
 		elem.setAttribute("dominant-baseline", "ideographic");
-		res.add(elem);
+		addResultForRoot(res, elem, root);
 		return res;
 
 	}
 }
 
-class SVGRoundedRectElement extends SVGRedexElement {
-
-	public SVGRoundedRectElement(boolean isNextRedex) {
-		super(isNextRedex);
-	}
+class SVGRoundedRectElement extends SVGElement {
 
 	public float getRadius() {
 		return 2 * height / 5;
 	}
 
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 
 		float r = getRadius();
 		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, r, r);
 		rect.setAttribute("stroke", PlugDiagramRenderer.black);
 		rect.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		rect.setAttribute("fill", "none");
-		if (this.isNextRedex) {
-			rect.addClassNameBaseVal("nextRedex");
-			rect.addClassNameBaseVal("stroke");
-		}
-		res.add(rect);
+		rect.addClassNameBaseVal("strokeHighlight");
+		addResultForRoot(res, rect, root);
 		return res;
 	}
 }
 
-class SVGChevronElement extends SVGRedexElement {
+class SVGChevronElement extends SVGElement {
 
-	public SVGChevronElement(boolean isNextRedex) {
-		super(isNextRedex);
-	}
-
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 		OMSVGPathElement chevron = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = chevron.getPathSegList();
 		segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.abs_x, this.abs_y));
@@ -130,43 +127,29 @@ class SVGChevronElement extends SVGRedexElement {
 		chevron.setAttribute("stroke", PlugDiagramRenderer.black);
 		chevron.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		chevron.setAttribute("fill", "none");
-		if (this.isNextRedex) {
-			chevron.addClassNameBaseVal("nextRedex");
-			chevron.addClassNameBaseVal("stroke");
-		}
-		res.add(chevron);
+		chevron.addClassNameBaseVal("strokeHighlight");
+		addResultForRoot(res, chevron, root);
 		return res;
 	}
 }
 
-class SVGPacmanElement extends SVGRedexElement {
+class SVGPacmanElement extends SVGElement {
 	
 	/*
 	 * The pacman elements are special in their handling of coordinates:
 	 * Their point of origin is vertically centered on the left side of
 	 * the circle with pacmanRadius.
 	 */
-	Application clickRedex;
-	Panel wrapper;
 
-	public SVGPacmanElement(boolean isNextRedex, Application clickRedex, Panel wrapper) {
-		super(isNextRedex);
-		this.clickRedex = clickRedex;
-		this.wrapper = wrapper;
-	}
-
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 
 		float r = PlugDiagramRenderer.pacmanRadius;
 		OMSVGPathElement pacman = PlugDiagramRenderer.doc.createSVGPathElement();
 		pacman.setAttribute("stroke", "none");
 		pacman.setAttribute("fill", PlugDiagramRenderer.black);
-		if (this.isNextRedex) {
-			pacman.addClassNameBaseVal("nextRedex");
-			pacman.addClassNameBaseVal("fill");
-		}
-
+		pacman.addClassNameBaseVal("fillHighlight");
+		
 		OMSVGPathSegList segs = pacman.getPathSegList();
 		// dis  /
 		// b   / angle here is atan(1/sharpness)
@@ -189,54 +172,31 @@ class SVGPacmanElement extends SVGRedexElement {
 		segs.appendItem(pacman.createSVGPathSegLinetoRel(left_corner_center_dx, -center_top_corner_dy));
 		segs.appendItem(pacman.createSVGPathSegClosePath());
 
-		if (clickRedex != null) {
-			pacman.addClassNameBaseVal("clickable");
-			// when clicked reduce the clicked application
-			pacman.addClickHandler(new ClickHandler() {
-				public void onClick(ClickEvent event) {
-					wrapper.addStyleName("notclickable");
-					new StepManually(clickRedex).run();
-					wrapper.removeStyleName("autoHighlight");
-				}
-			});
-			pacman.addMouseOverHandler(new MouseOverHandler() {
-				public void onMouseOver(MouseOverEvent event) {
-					wrapper.removeStyleName("autoHighlight");
-				}
-			});
-			pacman.addMouseOutHandler(new MouseOutHandler() {
-				public void onMouseOut(MouseOutEvent event) {
-					if (wrapper.getStyleName().indexOf("notclickable") == -1) {
-						// SVG panel hasn't been disabled yet, we are still the active panel 
-						wrapper.addStyleName("autoHighlight");
-					}
-				}
-			});
-		}
-		res.add(pacman);
+		addResultForRoot(res, pacman, root);
 		return res;
 	}
 }
 
-class SVGLineElement extends SVGRedexElement {
+class SVGLineElement extends SVGElement {
 
 	String strokeWidth;
 	String linecap;
 	String stroke;
+	boolean highlight;
 
-	public SVGLineElement(float strokeWidth, boolean isNextRedex, String linecap) {
-		this(strokeWidth, isNextRedex, PlugDiagramRenderer.black, linecap);
+	public SVGLineElement(float strokeWidth, String linecap) {
+		this(strokeWidth, PlugDiagramRenderer.black, linecap, true);
 	}
 	
-	public SVGLineElement(float strokeWidth, boolean isNextRedex, String color, String linecap) {
-		super(isNextRedex);
+	public SVGLineElement(float strokeWidth, String color, String linecap, boolean highlight) {
 		this.strokeWidth = Float.toString(strokeWidth) + "px";
 		this.linecap = linecap;
 		this.stroke = color;
+		this.highlight = highlight;
 	}
 
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 		OMSVGPathElement line = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = line.getPathSegList();
 		segs.appendItem(line.createSVGPathSegMovetoAbs(this.abs_x, this.abs_y));
@@ -244,11 +204,10 @@ class SVGLineElement extends SVGRedexElement {
 		line.setAttribute("stroke-width", strokeWidth);
 		line.setAttribute("stroke-linecap", linecap);
 		line.setAttribute("stroke", stroke);
-		if (this.isNextRedex) {
-			line.addClassNameBaseVal("nextRedex");
-			line.addClassNameBaseVal("stroke");
+		if (this.highlight) {
+			line.addClassNameBaseVal("strokeHighlight");
 		}
-		res.add(line);
+		addResultForRoot(res, line, root);
 		return res;
 	}
 }
@@ -286,16 +245,15 @@ class SVGAbstractionElement extends SVGElement {
 	}
 }
 
-class SVGArrowheadElement extends SVGRedexElement {
+class SVGArrowheadElement extends SVGElement {
 
-	public SVGArrowheadElement(boolean isNextRedex) {
-		super(isNextRedex);
+	public SVGArrowheadElement() {
 		width = PlugDiagramRenderer.arrowheadWidth;
 		height = PlugDiagramRenderer.arrowheadHeight;
 	}
 
-	public Set<OMSVGElement> render() {
-		Set<OMSVGElement> res = super.render();
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		Set<OMSVGElement> res = super.renderForRoot(root);
 		OMSVGPathElement line = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = line.getPathSegList();
 		segs.appendItem(line.createSVGPathSegMovetoAbs(this.abs_x + width / 2, this.abs_y));
@@ -304,11 +262,70 @@ class SVGArrowheadElement extends SVGRedexElement {
 		segs.appendItem(line.createSVGPathSegClosePath());
 		line.setAttribute("stroke-linecap", "butt");
 		line.setAttribute("fill", PlugDiagramRenderer.black);
-		if (this.isNextRedex) {
-			line.addClassNameBaseVal("nextRedex");
-			line.addClassNameBaseVal("fill");
-		}
-		res.add(line);
+		line.addClassNameBaseVal("fillHighlight");
+		addResultForRoot(res, line, root);
 		return res;
 	}
+}
+
+class SVGElementGroup extends SVGElement {
+	boolean isNextRedex;
+	Panel wrapper;
+	Application clickRedex;
+	public SVGElementGroup(boolean isNextRedex, Panel wrapper, Application clickRedex) {
+		this.isNextRedex = isNextRedex;
+		this.wrapper = wrapper;
+		this.clickRedex = clickRedex;
+	}
+	
+	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+		OMSVGGElement group = new OMSVGGElement();
+		HashSet<OMSVGElement> res = new HashSet<>(this.children.size());
+		if (this == root) {
+			// sanity check
+			res.add(group);
+		}
+		if (isNextRedex) {
+			// this class, in conjunction with either "fillHighlight" or "strokeHighlight",
+			// is what colors the next-redex via CSS
+			group.addClassNameBaseVal("nextRedex");
+		}
+		if (clickRedex != null) {
+			group.addClassNameBaseVal("clickable");
+
+			group.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					wrapper.addStyleName("notclickable");
+					new StepManually(clickRedex).run();
+					wrapper.removeStyleName("autoHighlight"); // turn off autoHighlight, since that wasn't how the redex was chosen
+					group.addClassNameBaseVal("reduced");
+				}
+			});
+			group.addMouseOverHandler(new MouseOverHandler() {
+				@Override
+				public void onMouseOver(MouseOverEvent event) {
+					wrapper.removeStyleName("autoHighlight");
+					group.addClassNameBaseVal("reduced");
+				}
+			});
+			group.addMouseOutHandler(new MouseOutHandler() {
+				public void onMouseOut(MouseOutEvent event) {
+					if (wrapper.getStyleName().indexOf("notclickable") == -1) {
+						// SVG panel hasn't been disabled yet, we are still the active panel
+						wrapper.addStyleName("autoHighlight");
+						group.removeClassNameBaseVal("reduced");
+					}
+				}
+			});
+		}
+
+		for (SVGElement element : this.children) {
+			for (OMSVGElement elem : element.renderForRoot(this)) {
+				group.appendChild(elem);
+			}
+		}
+		return res;
+	}
+	
 }

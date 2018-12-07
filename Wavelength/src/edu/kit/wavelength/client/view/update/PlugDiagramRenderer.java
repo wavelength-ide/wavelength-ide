@@ -1,5 +1,8 @@
 package edu.kit.wavelength.client.view.update;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.Set;
 
 import org.vectomatic.dom.svg.OMSVGDocument;
@@ -45,7 +48,7 @@ public class PlugDiagramRenderer {
 	static final float fontSize = 20f;
 	static final float chevronSharpness = 0.65f;
 	static final float strokeWidth = 2f;
-	private static final float spacing = 7f;
+	static final float spacing = 7f;
 	
 	static final float pacmanRadius = 14.5f;
 	static final float pacmanOverlap = pacmanRadius - 5;
@@ -66,27 +69,40 @@ public class PlugDiagramRenderer {
 		PlugDiagramRenderer.doc = OMSVGParser.currentDocument();
 		OMSVGSVGElement svg = doc.createSVGSVGElement();
 		
-		SVGElement root = PlugDiagramRenderer.layoutRootLambdaTerm(t, nextRedex, target);
-		root.translate(spacing, spacing);
+		List<SVGElement> groupRoots = new ArrayList<>();
+		SVGElement root = PlugDiagramRenderer.layoutRootLambdaTerm(t, nextRedex, target, groupRoots);
 		root.clearAbsoluteLayout();
 		root.calculateAbsoluteLayout();
-		
-		svg.setAttribute("width", Float.toString(root.width + root.x + spacing) + "px");
-		svg.setAttribute("height", Float.toString(root.height + root.y + spacing) + "px");
-		
-		for (OMSVGElement el : root.render()) {
-			svg.appendChild(el);
+
+		float maxWidth = root.x + root.width;
+		float maxHeight = root.y + root.height;
+		for (SVGElement groupRoot : groupRoots) {
+			maxWidth = Math.max(maxWidth, groupRoot.x + groupRoot.width);
+			maxHeight = Math.max(maxHeight, groupRoot.y + groupRoot.height);
 		}
-		
+		svg.setAttribute("width", Float.toString(maxWidth + spacing) + "px");
+		svg.setAttribute("height", Float.toString(maxHeight + spacing) + "px");
+		ListIterator<SVGElement> li = groupRoots.listIterator(groupRoots.size());
+		while(li.hasPrevious()) {
+			SVGElement groupRoot = li.previous();
+			for (OMSVGElement elem : groupRoot.renderForRoot(groupRoot)) {
+				svg.appendChild(elem);
+			}
+		}
+
+		for (OMSVGElement elem : root.renderForRoot(null)) {
+			svg.appendChild(elem);
+		}
+
 		target.getElement().appendChild(svg.getElement());
 	}
 	
 	/**
 	 * parentRedex only really applies to Application and Abstraction
 	 */
-	private static SVGElement layoutLambdaTerm(LambdaTerm term, LambdaTerm nextRedex, Application parentRedex, Panel wrapper) {
-		if (term instanceof Application) return layoutApplication((Application) term, nextRedex, wrapper);
-		if (term instanceof Abstraction) return layoutAbstraction((Abstraction) term, nextRedex, parentRedex, wrapper);
+	private static SVGElement layoutLambdaTerm(LambdaTerm term, LambdaTerm nextRedex, SVGElementGroup group, Panel wrapper, List<SVGElement> groups) {
+		if (term instanceof Application) return layoutApplication((Application) term, nextRedex, wrapper, groups);
+		if (term instanceof Abstraction) return layoutAbstraction((Abstraction) term, nextRedex, group, wrapper, groups);
 		if (term instanceof BoundVariable) return layoutBoundVariable((BoundVariable) term, nextRedex);
 		if (term instanceof FreeVariable) return layoutFreeVariable((FreeVariable) term, nextRedex);
 		if (term instanceof NamedTerm) return layoutNamedTerm((NamedTerm) term, nextRedex);
@@ -100,16 +116,20 @@ public class PlugDiagramRenderer {
 	 * Top-level absractions should be wrapped in their own box. I dislike special casing them, but 
 	 * "raw" Abstractions on the top level look wrong. 
 	 */
-	private static SVGElement layoutRootLambdaTerm(LambdaTerm term, LambdaTerm nextRedex, Panel wrapper) {
+	private static SVGElement layoutRootLambdaTerm(LambdaTerm term, LambdaTerm nextRedex, Panel wrapper, List<SVGElement> groups) {
+		SVGElement root;
 		if (term instanceof Abstraction) {
-			SVGElement elem = layoutLambdaTerm(term, nextRedex, null, wrapper);
-			return RoundedRectAround(elem);
+			SVGElement elem = layoutLambdaTerm(term, nextRedex, null, wrapper, groups);
+			root = RoundedRectAround(elem);
+		} else {
+			root = layoutLambdaTerm(term, nextRedex, null, wrapper, groups);
 		}
-		return layoutLambdaTerm(term, nextRedex, null, wrapper);
+		root.translate(spacing, spacing);
+		return root;
 	}
 	
 	private static SVGElement RoundedRectAround(SVGElement other) {
-		SVGElement border = new SVGRoundedRectElement(false);
+		SVGElement border = new SVGRoundedRectElement();
 		border.addChild(other);
 		other.translate(spacing, spacing);
 		border.width = other.width + 2*spacing;
@@ -158,17 +178,17 @@ public class PlugDiagramRenderer {
 	}
 
 
-	private static SVGElement layoutAbstraction(Abstraction term, LambdaTerm nextRedex, Application thisRedex, Panel wrapper) {
-		boolean isNextRedex = nextRedex != null && nextRedex == thisRedex;
+	private static SVGElement layoutAbstraction(Abstraction term, LambdaTerm nextRedex, SVGElementGroup thisRedexClickables, Panel wrapper, List<SVGElement> groups) {		
 		// abs is the container element, it should encompass all others
 		SVGElement abs = new SVGAbstractionElement(term);
+
 		SVGElement body;
 		if (term.getInner() instanceof BoundVariable) {
 			body = RoundedRectAround(layoutBoundVariable((BoundVariable) term.getInner(), nextRedex));
 		} else {
-			body = layoutLambdaTerm(term.getInner(), nextRedex, null, wrapper);
+			body = layoutLambdaTerm(term.getInner(), nextRedex, null, wrapper, groups);
 		}
-		SVGElement pacman = new SVGPacmanElement(isNextRedex, thisRedex, wrapper);
+		SVGElement pacman = new SVGPacmanElement();
 		pacman.width = pacmanRadius * 2;
 		pacman.height = pacmanRadius * 2;
 
@@ -190,30 +210,32 @@ public class PlugDiagramRenderer {
 			abs.clearAbsoluteLayout();
 			abs.calculateAbsoluteLayout();
 			
-			bottomBar = new SVGLineElement(arrowStrokeWidth, isNextRedex, "round");
+			bottomBar = new SVGLineElement(arrowStrokeWidth, "round");
 			// we need bottomBar to be at its final y pos before creating vertical arrow segments
 			bottomBar.translate(pacman.x + pacman.width - pacmanOverlap, body.y + body.height + 2*spacing);
 			
 			for (SVGElement var : abs.boundVariableLayoutElements(0)) {
 				rightmost = Math.max(rightmost, var.abs_x);
 				// draw arrow head for this child
-				SVGElement arrowhead = new SVGArrowheadElement(isNextRedex);
+				SVGElement arrowhead = new SVGArrowheadElement();
+				
 				
 				float arrowhead_x = var.abs_x + /* centering */ (var.width - arrowhead.width)/2;
 				float arrowhead_y = var.abs_y + var.height - arrowOverlap;
 				arrowhead.translate(arrowhead_x, arrowhead_y);
+				arrowhead.addToGroup(thisRedexClickables);
 				abs.addChild(arrowhead);
 				
-				SVGLineElement lastSegmentBackground = new SVGLineElement(arrowStrokeWidth+6, false, "#FFFFFF", "butt");
+				SVGLineElement lastSegmentBackground = new SVGLineElement(arrowStrokeWidth+6, "#FFFFFF", "butt", false);
 				lastSegmentBackground.translate(arrowhead_x + arrowhead.width/2, arrowhead.y + arrowhead.height);
 				lastSegmentBackground.height = bottomBar.y - lastSegmentBackground.y;
 				abs.addChild(lastSegmentBackground);
-				SVGLineElement lastSegment = new SVGLineElement(arrowStrokeWidth, isNextRedex, "butt");
+				lastSegmentBackground.addToGroup(thisRedexClickables);
+				SVGLineElement lastSegment = new SVGLineElement(arrowStrokeWidth, "butt");
 				lastSegment.translate(lastSegmentBackground.x, lastSegmentBackground.y - 1);
 				lastSegment.height = lastSegmentBackground.height + 1;
+				lastSegment.addToGroup(thisRedexClickables);
 				abs.addChild(lastSegment);
-				
-				
 			}
 			bottomBar.width += rightmost - pacman.x - pacman.width + pacmanOverlap + arrowheadWidth/2;
 		} else {
@@ -225,47 +247,52 @@ public class PlugDiagramRenderer {
 		
 		
 		if (!substitution_targets.isEmpty()) {
-			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth, isNextRedex, "butt");
+			SVGLineElement firstSegment = new SVGLineElement(arrowStrokeWidth, "butt");
 			// the pixel offset is to ensure the line doesn't just touch the pacman in a single point
 			firstSegment.translate(pacman.x + pacman.width - pacmanOverlap, pacman.y + pacmanOverlap - 1);
 			firstSegment.height = bottomBar.y - pacman.y - pacmanOverlap + 1;
+			firstSegment.addToGroup(thisRedexClickables);
 			abs.addChild(firstSegment);
+			bottomBar.addToGroup(thisRedexClickables);
 			abs.addChild(bottomBar);
 		}
 		// finally, draw pacman over arrow
 		abs.addChild(pacman);
+		pacman.addToGroup(thisRedexClickables);
 		abs.width += body.width + spacing + pacman.width;
-
 		
 		return abs;
 	}
 
 
-	public static SVGElement layoutApplication(Application app, LambdaTerm nextRedex, Panel wrapper) {
+	public static SVGElement layoutApplication(Application app, LambdaTerm nextRedex, Panel wrapper, List<SVGElement> groups) {
 		boolean isNextRedex = nextRedex == app;
 		boolean isRedex = isNextRedex || app.acceptVisitor(new IsRedexVisitor());
 		
-		SVGRoundedRectElement roundedRect = new SVGRoundedRectElement(isNextRedex);
+		SVGRoundedRectElement roundedRect = new SVGRoundedRectElement();
 		SVGElement appElem = new SVGElement();
 		roundedRect.addChild(appElem);
+		SVGElementGroup clickables = new SVGElementGroup(isNextRedex, wrapper, isRedex ? app : null);
+		groups.add(clickables);
+		roundedRect.addToGroup(clickables);
 		
 		LambdaTerm left = app.getLeftHandSide();
 		SVGElement lres;
 		if (isRedex) {
-			lres = layoutLambdaTerm(left, nextRedex, app, wrapper);
+			lres = layoutLambdaTerm(left, nextRedex, clickables, wrapper, groups);
 		} else {
-			lres = layoutLambdaTerm(left, nextRedex, null, wrapper);
+			lres = layoutLambdaTerm(left, nextRedex, null, wrapper, groups);
 		}
 		
 		LambdaTerm right = app.getRightHandSide();
-		SVGElement rres = layoutLambdaTerm(right, nextRedex, null, wrapper);
+		SVGElement rres = layoutLambdaTerm(right, nextRedex, null, wrapper, groups);
 	
 		float maxheight = Math.max(lres.height, rres.height);
 		rres.translate(spacing, /* vertical centering */
 				Math.max(0, (maxheight - rres.height) / 2 + spacing));
 		lres.translate(spacing, Math.max(0, (maxheight - lres.height) / 2 + spacing));
 		
-		SVGElement chevron = new SVGChevronElement(isNextRedex);
+		SVGElement chevron = new SVGChevronElement();
 		chevron.height = maxheight + 2*spacing; // spacing above and below
 		chevron.width = chevron.height * chevronSharpness / 2;
 		
@@ -284,7 +311,7 @@ public class PlugDiagramRenderer {
 
 		chevron.translate(rres.x + rres.width, 0);
 		lres.translate(chevron.x + chevron.width, 0);
-		
+
 		roundedRect.width = lres.x + lres.width + spacing;
 		roundedRect.height = chevron.height;
 		// if rres is less wide than the roundedRect's radius, the chevron gets all ugly
@@ -296,12 +323,11 @@ public class PlugDiagramRenderer {
 			
 		}
 
-		
 		appElem.addChild(rres);
 		appElem.addChild(lres);
 		appElem.addChild(chevron);
+		chevron.addToGroup(clickables);
 
-		
 		return roundedRect;
 	}
 }

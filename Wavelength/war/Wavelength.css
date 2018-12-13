@@ -230,13 +230,19 @@ select.form-control {
 	background-color: #2b91af45;
 }
 
+.clickable .fillHighlight, .clickable .strokeHighlight {
+	filter: url(#glow);
+	cursor: pointer;
+}
+.notclickable .fillHighlight, .notclickable .strokeHighlight {
+	filter: none;
+}
+
 .clickable:hover .fillHighlight {
 	fill: #50cabd !important;
-	cursor: pointer;
 }
 .clickable:hover .strokeHighlight {
 	stroke: #50cabd !important;
-	cursor: pointer;
 }
 
 /* overwrite default anchor styling, abstractions should look like normal text by default */

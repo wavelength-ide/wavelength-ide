@@ -58,8 +58,8 @@ class SVGDebugElement extends SVGColoredElement {
 		super(color);
 	}
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, 0, 0);
 		rect.setAttribute("stroke-width", Float.toString(PlugDiagramRenderer.strokeWidth));
 		rect.setAttribute("stroke", this.color == null ? "#DD0000" : this.color);
@@ -79,8 +79,8 @@ class SVGTextElement extends SVGElement {
 
 	}
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 		OMSVGTextElement elem = PlugDiagramRenderer.doc.createSVGTextElement(abs_x,
 				abs_y + PlugDiagramRenderer.fontSize, OMSVGLength.SVG_LENGTHTYPE_PX, text);
 		// due to text rendering being inscrutable, a 17px "font-size" actually gets layouted as 20px
@@ -101,8 +101,8 @@ class SVGRoundedRectElement extends SVGElement {
 		return 2 * height / 5;
 	}
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 
 		float r = getRadius();
 		OMSVGRectElement rect = PlugDiagramRenderer.doc.createSVGRectElement(abs_x, abs_y, width, height, r, r);
@@ -117,8 +117,8 @@ class SVGRoundedRectElement extends SVGElement {
 
 class SVGChevronElement extends SVGElement {
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 		OMSVGPathElement chevron = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = chevron.getPathSegList();
 		segs.appendItem(chevron.createSVGPathSegMovetoAbs(this.abs_x, this.abs_y));
@@ -141,8 +141,8 @@ class SVGPacmanElement extends SVGElement {
 	 * the circle with pacmanRadius.
 	 */
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 
 		float r = PlugDiagramRenderer.pacmanRadius;
 		OMSVGPathElement pacman = PlugDiagramRenderer.doc.createSVGPathElement();
@@ -195,8 +195,8 @@ class SVGLineElement extends SVGElement {
 		this.highlight = highlight;
 	}
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 		OMSVGPathElement line = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = line.getPathSegList();
 		segs.appendItem(line.createSVGPathSegMovetoAbs(this.abs_x, this.abs_y));
@@ -252,8 +252,8 @@ class SVGArrowheadElement extends SVGElement {
 		height = PlugDiagramRenderer.arrowheadHeight;
 	}
 
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
-		Set<OMSVGElement> res = super.renderForRoot(root);
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
+		Set<OMSVGElement> res = super.renderHierarchy(root);
 		OMSVGPathElement line = PlugDiagramRenderer.doc.createSVGPathElement();
 		OMSVGPathSegList segs = line.getPathSegList();
 		segs.appendItem(line.createSVGPathSegMovetoAbs(this.abs_x + width / 2, this.abs_y));
@@ -278,7 +278,7 @@ class SVGElementGroup extends SVGElement {
 		this.clickRedex = clickRedex;
 	}
 	
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
 		OMSVGGElement group = new OMSVGGElement();
 		HashSet<OMSVGElement> res = new HashSet<>(this.children.size());
 		if (this == root) {
@@ -321,7 +321,7 @@ class SVGElementGroup extends SVGElement {
 		}
 
 		for (SVGElement element : this.children) {
-			for (OMSVGElement elem : element.renderForRoot(this)) {
+			for (OMSVGElement elem : element.renderHierarchy(this)) {
 				group.appendChild(elem);
 			}
 		}

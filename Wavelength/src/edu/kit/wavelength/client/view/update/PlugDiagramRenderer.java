@@ -5,11 +5,22 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
+import org.vectomatic.dom.svg.OMSVGAnimateElement;
+import org.vectomatic.dom.svg.OMSVGDefsElement;
 import org.vectomatic.dom.svg.OMSVGDocument;
 import org.vectomatic.dom.svg.OMSVGElement;
+import org.vectomatic.dom.svg.OMSVGFECompositeElement;
+import org.vectomatic.dom.svg.OMSVGFEFloodElement;
+import org.vectomatic.dom.svg.OMSVGFEGaussianBlurElement;
+import org.vectomatic.dom.svg.OMSVGFEMergeElement;
+import org.vectomatic.dom.svg.OMSVGFEMergeNodeElement;
+import org.vectomatic.dom.svg.OMSVGFilterElement;
 import org.vectomatic.dom.svg.OMSVGSVGElement;
 import org.vectomatic.dom.svg.utils.OMSVGParser;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Panel;
 
 import edu.kit.wavelength.client.model.term.*;
@@ -65,13 +76,35 @@ public class PlugDiagramRenderer {
 	static final float boundVarRectWidth = 30f;
 	static final float boundVarRectHeight = 30f;
 	static final String black = "#000000";  // readability
+	static final String glowColor = "#009782";
+	static final String glowFilterName = "glow";
 	static OMSVGDocument doc;
 	
 	public static void renderDiagram(LambdaTerm t, Application nextRedex, Panel target) {
 		target.addStyleName("autoHighlight");
 
 		PlugDiagramRenderer.doc = OMSVGParser.currentDocument();
-		OMSVGSVGElement svg = doc.createSVGSVGElement();
+
+		/*
+		 * Due to browsers not wiring up SVG animations correctly if you add them via the
+		 * DOM API, we have to jump through some hoops to get both animations and click handlers
+		 * to work:
+		 * First we create an SVG with the animation via the DOM API, and force the browser to
+		 * properly register the animation by forcing it to *parse* the HTML definition as text
+		 * (Sadly, I found no other way of doing that, no amount of forced redraws or pausing/
+		 * unpausing animations did the trick)
+		 * With this in place, we fetch the SVG Element, and render into it, registering click
+		 * handlers along the way.
+		 */
+		OMSVGSVGElement draftSvg = doc.createSVGSVGElement();
+		// create glowing animation for mouseover elements
+		draftSvg.appendChild(getSVGGlowAnimation());
+		
+		String htmlString = draftSvg.getElement().getString();
+		HTML parsedSvgWrapper = new HTML(htmlString);
+		Element svgElement = parsedSvgWrapper.getElement().getFirstChildElement();
+		target.getElement().appendChild(svgElement);
+
 		
 		List<SVGElement> groupRoots = new ArrayList<>();
 		SVGElement root = PlugDiagramRenderer.layoutRootLambdaTerm(t, nextRedex, target, groupRoots);
@@ -84,21 +117,73 @@ public class PlugDiagramRenderer {
 			maxWidth = Math.max(maxWidth, groupRoot.x + groupRoot.width);
 			maxHeight = Math.max(maxHeight, groupRoot.y + groupRoot.height);
 		}
-		svg.setAttribute("width", Float.toString(maxWidth + spacing) + "px");
-		svg.setAttribute("height", Float.toString(maxHeight + spacing) + "px");
+		
+		svgElement.setAttribute("width", Float.toString(maxWidth + spacing) + "px");
+		svgElement.setAttribute("height", Float.toString(maxHeight + spacing) + "px");
 		ListIterator<SVGElement> li = groupRoots.listIterator(groupRoots.size());
 		while(li.hasPrevious()) {
 			SVGElement groupRoot = li.previous();
-			for (OMSVGElement elem : groupRoot.renderForRoot(groupRoot)) {
-				svg.appendChild(elem);
+			for (OMSVGElement elem : groupRoot.renderHierarchy(groupRoot)) {
+				GWT.log("PING");
+				svgElement.appendChild(elem.getElement());
 			}
 		}
 
-		for (OMSVGElement elem : root.renderForRoot(null)) {
-			svg.appendChild(elem);
+		for (OMSVGElement elem : root.renderHierarchy(null)) {
+			svgElement.appendChild(elem.getElement());
 		}
+		
 
-		target.getElement().appendChild(svg.getElement());
+
+	}
+	
+	// There's no reason *not* to memoize this.
+	private static OMSVGDefsElement memoizedGlowAnimation;
+	
+	private static OMSVGDefsElement getSVGGlowAnimation() {
+		if (memoizedGlowAnimation != null)
+			return memoizedGlowAnimation;
+		
+		OMSVGDefsElement defs = new OMSVGDefsElement();
+		OMSVGFilterElement filter = new OMSVGFilterElement();
+		// without this, horizontal and vertical lines disappear, because their bbox size is 0x0
+		filter.setAttribute("filterUnits", "userSpaceOnUse");
+		defs.appendChild(filter);
+		filter.setId(glowFilterName);
+		filter.setAttribute("x", "-1");
+		filter.setAttribute("y", "-1");
+		filter.setAttribute("width", "300%");
+		filter.setAttribute("height", "300%");
+		OMSVGFEGaussianBlurElement blur = new OMSVGFEGaussianBlurElement();
+		blur.setAttribute("result", "blurOut");
+		blur.setAttribute("in", "");
+		blur.setAttribute("stdDeviation", "7");
+		filter.appendChild(blur);
+		OMSVGFEFloodElement flood = new OMSVGFEFloodElement();
+		flood.setId("glowFlood");
+		flood.setAttribute("flood-color", glowColor);
+		flood.setAttribute("flood-opacity", "1");
+		filter.appendChild(flood);
+		OMSVGFECompositeElement composite = new OMSVGFECompositeElement();
+		composite.setAttribute("in2", "blurOut");
+		composite.setAttribute("operator", "in");
+		filter.appendChild(composite);
+		OMSVGFEMergeElement merge = new OMSVGFEMergeElement();
+		merge.appendChild(new OMSVGFEMergeNodeElement());
+		OMSVGFEMergeNodeElement mergenode = new OMSVGFEMergeNodeElement();
+		mergenode.setAttribute("in", "SourceGraphic");
+		merge.appendChild(mergenode);
+		filter.appendChild(merge);
+		
+		OMSVGAnimateElement animation = new OMSVGAnimateElement();
+		animation.setAttribute("xlink:href", "#glowFlood");
+		animation.setAttribute("attributeName", "flood-opacity");
+		animation.setAttribute("repeatCount", "indefinite");
+		animation.setAttribute("values", "1;0;1");
+		animation.setAttribute("dur", "1s");
+		defs.appendChild(animation);
+		memoizedGlowAnimation = defs;
+		return defs;
 	}
 	
 	/**

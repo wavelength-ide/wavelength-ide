@@ -7,6 +7,8 @@ import java.util.Set;
 
 import org.vectomatic.dom.svg.OMSVGElement;
 
+import com.google.gwt.core.client.GWT;
+
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 
 class SVGElement {
@@ -91,10 +93,17 @@ class SVGElement {
 		return res;
 	}
 	
-	public Set<OMSVGElement> renderForRoot(SVGElement root) {
+	public Set<OMSVGElement> renderHierarchy(SVGElement root) {
 		Set<OMSVGElement> res = new HashSet<>();
-		for (SVGElement child : children) { 
-			res.addAll(child.renderForRoot(root));
+		
+		// Every node belonging to a group is registered to the group, so if we were given an explicit root,
+		// we don't want to render our children recursively, or else we would render some elements multiple times
+		if (root != null) {
+			return res;
+		}
+		
+		for (SVGElement child : children) {
+			res.addAll(child.renderHierarchy(root));
 		}
 		return res;
 	}

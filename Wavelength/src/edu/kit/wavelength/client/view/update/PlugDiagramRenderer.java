@@ -17,7 +17,6 @@ import edu.kit.wavelength.client.model.term.*;
 public class PlugDiagramRenderer {
 	
 	/**
-	 * 
 	 * A layout tree for rendering plug diagrams as SVGs. The reason for this data structure is
 	 * because once created, SVG nodes aren't always simple to move around.
 	 * Paths, for instance, always have location (0,0), and move the pen as their first command.
@@ -27,6 +26,11 @@ public class PlugDiagramRenderer {
 	 * 
 	 * So generally, we create a bunch of layout elements and manually do the layout, spacing, etc.
 	 * and "rendering" it means creating the corresponding SVG nodes with the newly computed absolute positioning.
+	 * 
+	 * Each node in the layout tree may optionally be part of an SVGElementGroup. This doesn't affect the hierarchical
+	 * positioning of a node, but its location in the resulting SVG. The idea is to render different nodes into different
+	 * <g> tags, to allow styling of groups of layout elements via CSS. (i.e. hovering over a redex should highlight all
+	 * layout elements specific to this redex)
 	 * 
 	 * As for the principles of how the diagrams should *look*, the general rule is that the algorithmically
 	 * rendered diagrams should look like what a human would produce when instructed to make *good* diagrams.

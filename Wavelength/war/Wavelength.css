@@ -230,6 +230,21 @@ select.form-control {
 	background-color: #2b91af45;
 }
 
+.clickable .fillHighlight, .clickable .strokeHighlight {
+	filter: url(#glow);
+	cursor: pointer;
+}
+.notclickable .fillHighlight, .notclickable .strokeHighlight {
+	filter: none;
+}
+
+.clickable:hover .fillHighlight {
+	fill: #50cabd !important;
+}
+.clickable:hover .strokeHighlight {
+	stroke: #50cabd !important;
+}
+
 /* overwrite default anchor styling, abstractions should look like normal text by default */
 .abstraction {
 	pointer-events: none;
@@ -244,7 +259,7 @@ select.form-control {
 }
 
 /* indicates a redex as clickable*/
-.application a.clickable {
+.application .clickable {
 	color: #2b91af;
 	text-decoration: none;
 	pointer-events: auto;
@@ -255,6 +270,7 @@ select.form-control {
 .notclickable {
 	color: black;
 	cursor: default;
+	pointer-events: none;  /* takes care of disabling SVG pointer events */
 }
 
 /* revert click-indicating stylings from notclickable terms */
@@ -266,8 +282,16 @@ select.form-control {
 }
 
 /* indicates the next reduced redex considering the current reduction order */
-.parent .nextRedex {
-	border-bottom: 1px solid #2b91af
+.autoHighlight .nextRedex {
+	border-bottom: 1px solid #2b91af;
+}
+
+/* beautiful, beautiful KIT green for selected redexes */
+.autoHighlight .nextRedex .strokeHighlight, .reduced .strokeHighlight {
+	stroke: #009782;
+}
+.autoHighlight .nextRedex .fillHighlight, .reduced .fillHighlight {
+	fill: #009782;
 }
 
 /* indicates what redex was reduced */

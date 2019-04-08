@@ -60,8 +60,11 @@ public class UpdateOutput implements ExecutionObserver {
 		case TREE:
 			pushTreeTerm(term, wrapper, nextRedex);
 			break;
-		default:
+		case PLUGDIAGRAM:
+			pushPlugDiagramTerm(term, wrapper, nextRedex);
 			break;
+		default:
+			throw new UnsupportedOperationException("Tried to add item of unknown format to output window");
 		}
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
@@ -165,8 +168,11 @@ public class UpdateOutput implements ExecutionObserver {
 		case TREE:
 			pushTreeTerm(term, wrapper, nextRedex);
 			break;
-		default:
+		case PLUGDIAGRAM:
+			pushPlugDiagramTerm(term, wrapper, nextRedex);
 			break;
+		default:
+			throw new UnsupportedOperationException("Tried to reload term of unknown format");
 		}
 		// when a new term was printed, scroll down so the user can see it
 		App.autoScrollOutput();
@@ -195,8 +201,10 @@ public class UpdateOutput implements ExecutionObserver {
 			return OutputFormat.UNICODE;
 		case "Tree Output":
 			return OutputFormat.TREE;
+		case "Plug Diagram":
+			return OutputFormat.PLUGDIAGRAM;
 		default:
-			return null;
+			throw new UnsupportedOperationException("Unknown format selected");
 		}
 	}
 
@@ -228,6 +236,16 @@ public class UpdateOutput implements ExecutionObserver {
 		// display the new panel and add the tree
 		app.outputArea().add(wrapper);
 		VisJs.loadNetwork(nodes, edges, wrapper);
+	}
+	
+	private void pushPlugDiagramTerm(LambdaTerm t, FlowPanel wrapper, Application nextRedex) {
+		PlugDiagramRenderer.renderDiagram(t, nextRedex, wrapper);
+		// make previous panel unclickable (if user *didn't* click on it already)
+		if (!panels.isEmpty()) {
+			panels.get(panels.size() - 1).addStyleName("notclickable");
+		}
+		panels.add(wrapper);
+		app.outputArea().add(wrapper);
 	}
 
 }

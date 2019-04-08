@@ -8,6 +8,7 @@ import edu.kit.wavelength.client.model.term.Application;
 import edu.kit.wavelength.client.model.term.BoundVariable;
 import edu.kit.wavelength.client.model.term.LambdaTerm;
 import edu.kit.wavelength.client.model.term.NamedTerm;
+import edu.kit.wavelength.client.model.term.parsing.Parser;
 
 /**
  * A {@link Library} contains definitions for {@link LambdaTerms}s for tuples
@@ -41,26 +42,25 @@ public final class TuplesAndLists implements Library {
 	// Where 'a' is the head of the list and 'b' the tail (possibly containing
 	// more pairs).
 	// A List containing only one Element 'a' should be constructed by:
-	// '(prepend a newList)'
+	// '(cons a nil)'
 	// same as 'false'
-	private final NamedTerm newList = new NamedTerm("newList",
+	private final NamedTerm nil = new NamedTerm("nil",
 			new Abstraction("t", new Abstraction("f", new BoundVariable(1))));
 	// same as 'pair'
-	private final NamedTerm prepend = new NamedTerm("prepend",
+	private final NamedTerm cons = new NamedTerm("cons",
 			new Abstraction("x", new Abstraction("y",
 					new Abstraction("z", new Application(new Application(new BoundVariable(1), new BoundVariable(3)),
 							new BoundVariable(2))))));
 	// same as 'first'
 	private final NamedTerm head = new NamedTerm("head", new Abstraction("p",
 			new Application(new BoundVariable(1), new Abstraction("x", new Abstraction("y", new BoundVariable(2))))));
-	// same as 'second'
-	private final NamedTerm tail = new NamedTerm("tail", new Abstraction("p",
-			new Application(new BoundVariable(1), new Abstraction("x", new Abstraction("y", new BoundVariable(1))))));
+	// \l. l (\a b c. b) nil
+	private final NamedTerm tail = new NamedTerm("tail", Parser.parseUnresolved("λl. l (λa. λb. λc. b) (λc. λn. n)"));
 	private final NamedTerm isEmpty = new NamedTerm("isEmpty",
 			new Abstraction("l", new Application(new Application(new BoundVariable(1),
 					new Abstraction("h", new Abstraction("t", new Abstraction("d", fal)))), tru)));
 
-	private final List<NamedTerm> definitions = Arrays.asList(tru, fal, pair, first, second, newList, prepend, head,
+	private final List<NamedTerm> definitions = Arrays.asList(tru, fal, pair, first, second, nil, cons, head,
 			tail, isEmpty);
 
 	@Override
@@ -96,10 +96,12 @@ public final class TuplesAndLists implements Library {
 	@Override
 	public List<TermInfo> getTermInfos() {
 		return Arrays.asList(new TermInfo("true", "literal or 'true a b' yields a"),
-				new TermInfo("false", "literal or 'false a b' yields b"), new TermInfo("pair a b", "(a, b)"),
-				new TermInfo("newList", "[]"), new TermInfo("first a", "a[0] for a : pair or a : list"),
+				new TermInfo("false", "literal or 'false a b' yields b"),
+				new TermInfo("pair a b", "(a, b)"),
+				new TermInfo("nil", "[]"),
+				new TermInfo("first a", "a[0] for a : pair or a : list"),
 				new TermInfo("second a", "a[1] for a : pair or a[1:end] for a : list"),
-				new TermInfo("prepend a b", "a:b for a : list"),
+				new TermInfo("cons a b", "a:b for a : list"),
 				new TermInfo("head a", "a[0] for a : list or a : pair"),
 				new TermInfo("tail a", "a[1:end] for a : list or a[1] for a : pair"),
 				new TermInfo("isEmpty a", "true if a == [] or false if a != [] for a : list"));
